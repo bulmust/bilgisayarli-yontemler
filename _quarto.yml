@@ -1,8 +1,7 @@
 project:
   type: website
-  output-dir: _site
+  output-dir: projects
   preview:
-    port: 4200
     browser: true
 
 execute:
@@ -32,7 +31,7 @@ website:
     contents:
       - section: "**İçerik**"
         contents:
-          - href: icerik/tavsiye-izlence.qmd
+          - href: icerik/izlence.qmd
       - section: "**Konular**"
         contents:
           - section: Adi Diferansiyel Denklemler
