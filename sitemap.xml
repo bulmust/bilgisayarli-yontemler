@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/index.html</loc>
-    <lastmod>2024-02-27T13:37:38.031Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler.html</loc>
-    <lastmod>2024-02-27T13:37:44.423Z</lastmod>
-  </url>
-  <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/izlence.html</loc>
-    <lastmod>2024-02-27T13:37:26.983Z</lastmod>
+    <lastmod>2024-02-27T14:10:30.860Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html</loc>
-    <lastmod>2024-02-27T13:37:49.363Z</lastmod>
+    <lastmod>2024-02-27T14:10:30.860Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/index.html</loc>
+    <lastmod>2024-02-27T14:10:30.860Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler.html</loc>
+    <lastmod>2024-02-27T14:10:30.860Z</lastmod>
   </url>
 </urlset>
