@@ -1,17 +1,14 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Bilgisayarlı Yöntemler",
+    "objectID": "icerik/tavsiye-izlence.html",
+    "href": "icerik/tavsiye-izlence.html",
+    "title": "Tavsiye İzlence",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
-  },
-  {
-    "objectID": "index.html#bilgisayarlı-yöntemler",
-    "href": "index.html#bilgisayarlı-yöntemler",
-    "title": "Bilgisayarlı Yöntemler",
-    "section": "Bilgisayarlı Yöntemler",
-    "text": "Bilgisayarlı Yöntemler"
+    "text": "Bu bölümde tavsiye edilen izlenceleri bulabilirsiniz. İzlencelerin üzerine tıklayarak izleyebilirsiniz.",
+    "crumbs": [
+      "**İçerik**",
+      "Tavsiye İzlence"
+    ]
   },
   {
     "objectID": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html",
@@ -38,6 +35,20 @@
     ]
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Bilgisayarlı Yöntemler",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "index.html#bilgisayarlı-yöntemler",
+    "href": "index.html#bilgisayarlı-yöntemler",
+    "title": "Bilgisayarlı Yöntemler",
+    "section": "Bilgisayarlı Yöntemler",
+    "text": "Bilgisayarlı Yöntemler"
+  },
+  {
     "objectID": "icerik/konular/adi-diferansiyel-denklemler.html",
     "href": "icerik/konular/adi-diferansiyel-denklemler.html",
     "title": "Adi Diferansiyel Denklemler",
@@ -57,17 +68,6 @@
     "crumbs": [
       "**Konular**",
       "Adi Diferansiyel Denklemler"
-    ]
-  },
-  {
-    "objectID": "icerik/tavsiye-izlence.html",
-    "href": "icerik/tavsiye-izlence.html",
-    "title": "Tavsiye İzlence",
-    "section": "",
-    "text": "Bu bölümde tavsiye edilen izlenceleri bulabilirsiniz. İzlencelerin üzerine tıklayarak izleyebilirsiniz.",
-    "crumbs": [
-      "**İçerik**",
-      "Tavsiye İzlence"
     ]
   }
 ]
