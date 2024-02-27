@@ -1,41 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Bilgisayarlı Yöntemler",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
-  },
-  {
-    "objectID": "index.html#bilgisayarlı-yöntemler",
-    "href": "index.html#bilgisayarlı-yöntemler",
-    "title": "Bilgisayarlı Yöntemler",
-    "section": "Bilgisayarlı Yöntemler",
-    "text": "Bilgisayarlı Yöntemler"
-  },
-  {
-    "objectID": "icerik/konular/adi-diferansiyel-denklemler.html",
-    "href": "icerik/konular/adi-diferansiyel-denklemler.html",
-    "title": "Adi Diferansiyel Denklemler",
-    "section": "",
-    "text": "Note\n\n\n\ny'=F(x,y) denklemini, y(a)=\\alpha başlangıç koşuluyla çözüp y(x)’i istenilen aralıkta elde etmek.\n\n\nAşağıdaki gibi formda olan diferansiyel denklemlere birinci dereceden adi diferansiyel denklemler denir.\n\n\\frac{dy}{dx}=y'=f(x)\n\nHer iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır. - Eğer n. dereceden diferansiyel denklem varsa, yani $ y{(n)}=f(x,y,y’,,y{(n-1)}) $, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.\nYüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,\n\ny''=-y \\qquad y'(x)=v(x) \\qquad v'(x)=-y(x)\n\nYukarıdaki denklemin koşulları y(0)=1, v(0)=1 şeklinde ise başlangıç değer problemi, y(0)=1 ve v(100)=0 şeklinde farklı ise sınır değer problemi olarak tanımlanır.\nDiferansiyel denklemler tek halde bulunabildiği gibi çoklu halde de bulunabilir. Örneğin,\n\n\\textbf{y}'=\\textbf{F}(x,\\textbf{y})\n\n\n\\begin{bmatrix}\ny_1' \\\\\ny_2' \\\\\n\\vdots \\\\\ny_n'\n\\end{bmatrix}=\n\\begin{bmatrix}\nf_1(x,y_1,y_2,\\cdots,y_n) \\\\\nf_2(x,y_1,y_2,\\cdots,y_n) \\\\\n\\vdots \\\\\nf_n(x,y_1,y_2,\\cdots,y_n)\n\\end{bmatrix}",
-    "crumbs": [
-      "**Konular**",
-      "Adi Diferansiyel Denklemler"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/adi-diferansiyel-denklemler.html#başlangıç-değer-problemleri",
-    "href": "icerik/konular/adi-diferansiyel-denklemler.html#başlangıç-değer-problemleri",
-    "title": "Adi Diferansiyel Denklemler",
-    "section": "",
-    "text": "Note\n\n\n\ny'=F(x,y) denklemini, y(a)=\\alpha başlangıç koşuluyla çözüp y(x)’i istenilen aralıkta elde etmek.\n\n\nAşağıdaki gibi formda olan diferansiyel denklemlere birinci dereceden adi diferansiyel denklemler denir.\n\n\\frac{dy}{dx}=y'=f(x)\n\nHer iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır. - Eğer n. dereceden diferansiyel denklem varsa, yani $ y{(n)}=f(x,y,y’,,y{(n-1)}) $, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.\nYüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,\n\ny''=-y \\qquad y'(x)=v(x) \\qquad v'(x)=-y(x)\n\nYukarıdaki denklemin koşulları y(0)=1, v(0)=1 şeklinde ise başlangıç değer problemi, y(0)=1 ve v(100)=0 şeklinde farklı ise sınır değer problemi olarak tanımlanır.\nDiferansiyel denklemler tek halde bulunabildiği gibi çoklu halde de bulunabilir. Örneğin,\n\n\\textbf{y}'=\\textbf{F}(x,\\textbf{y})\n\n\n\\begin{bmatrix}\ny_1' \\\\\ny_2' \\\\\n\\vdots \\\\\ny_n'\n\\end{bmatrix}=\n\\begin{bmatrix}\nf_1(x,y_1,y_2,\\cdots,y_n) \\\\\nf_2(x,y_1,y_2,\\cdots,y_n) \\\\\n\\vdots \\\\\nf_n(x,y_1,y_2,\\cdots,y_n)\n\\end{bmatrix}",
-    "crumbs": [
-      "**Konular**",
-      "Adi Diferansiyel Denklemler"
-    ]
-  },
-  {
     "objectID": "icerik/izlence.html",
     "href": "icerik/izlence.html",
     "title": "İzlence",
@@ -79,6 +43,42 @@
       "**Konular**",
       "Adi Diferansiyel Denklemler",
       "Euler Yöntemi"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Bilgisayarlı Yöntemler",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "index.html#bilgisayarlı-yöntemler",
+    "href": "index.html#bilgisayarlı-yöntemler",
+    "title": "Bilgisayarlı Yöntemler",
+    "section": "Bilgisayarlı Yöntemler",
+    "text": "Bilgisayarlı Yöntemler"
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler.html",
+    "href": "icerik/konular/adi-diferansiyel-denklemler.html",
+    "title": "Adi Diferansiyel Denklemler",
+    "section": "",
+    "text": "Note\n\n\n\ny'=F(x,y) denklemini, y(a)=\\alpha başlangıç koşuluyla çözüp y(x)’i istenilen aralıkta elde etmek.\n\n\nAşağıdaki gibi formda olan diferansiyel denklemlere birinci dereceden adi diferansiyel denklemler denir.\n\n\\frac{dy}{dx}=y'=f(x)\n\nHer iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır. - Eğer n. dereceden diferansiyel denklem varsa, yani $ y{(n)}=f(x,y,y’,,y{(n-1)}) $, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.\nYüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,\n\ny''=-y \\qquad y'(x)=v(x) \\qquad v'(x)=-y(x)\n\nYukarıdaki denklemin koşulları y(0)=1, v(0)=1 şeklinde ise başlangıç değer problemi, y(0)=1 ve v(100)=0 şeklinde farklı ise sınır değer problemi olarak tanımlanır.\nDiferansiyel denklemler tek halde bulunabildiği gibi çoklu halde de bulunabilir. Örneğin,\n\n\\textbf{y}'=\\textbf{F}(x,\\textbf{y})\n\n\n\\begin{bmatrix}\ny_1' \\\\\ny_2' \\\\\n\\vdots \\\\\ny_n'\n\\end{bmatrix}=\n\\begin{bmatrix}\nf_1(x,y_1,y_2,\\cdots,y_n) \\\\\nf_2(x,y_1,y_2,\\cdots,y_n) \\\\\n\\vdots \\\\\nf_n(x,y_1,y_2,\\cdots,y_n)\n\\end{bmatrix}",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler.html#başlangıç-değer-problemleri",
+    "href": "icerik/konular/adi-diferansiyel-denklemler.html#başlangıç-değer-problemleri",
+    "title": "Adi Diferansiyel Denklemler",
+    "section": "",
+    "text": "Note\n\n\n\ny'=F(x,y) denklemini, y(a)=\\alpha başlangıç koşuluyla çözüp y(x)’i istenilen aralıkta elde etmek.\n\n\nAşağıdaki gibi formda olan diferansiyel denklemlere birinci dereceden adi diferansiyel denklemler denir.\n\n\\frac{dy}{dx}=y'=f(x)\n\nHer iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır. - Eğer n. dereceden diferansiyel denklem varsa, yani $ y{(n)}=f(x,y,y’,,y{(n-1)}) $, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.\nYüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,\n\ny''=-y \\qquad y'(x)=v(x) \\qquad v'(x)=-y(x)\n\nYukarıdaki denklemin koşulları y(0)=1, v(0)=1 şeklinde ise başlangıç değer problemi, y(0)=1 ve v(100)=0 şeklinde farklı ise sınır değer problemi olarak tanımlanır.\nDiferansiyel denklemler tek halde bulunabildiği gibi çoklu halde de bulunabilir. Örneğin,\n\n\\textbf{y}'=\\textbf{F}(x,\\textbf{y})\n\n\n\\begin{bmatrix}\ny_1' \\\\\ny_2' \\\\\n\\vdots \\\\\ny_n'\n\\end{bmatrix}=\n\\begin{bmatrix}\nf_1(x,y_1,y_2,\\cdots,y_n) \\\\\nf_2(x,y_1,y_2,\\cdots,y_n) \\\\\n\\vdots \\\\\nf_n(x,y_1,y_2,\\cdots,y_n)\n\\end{bmatrix}",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler"
     ]
   }
 ]
