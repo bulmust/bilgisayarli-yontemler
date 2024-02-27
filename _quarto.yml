@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: projects
+  output-dir: _site
   preview:
     browser: true
 
@@ -12,7 +12,7 @@ website:
   favicon: "resimler/favicon.png"
   reader-mode: true
   page-navigation: true
-  site-url: "https://bulmust.github.io/projects/bilgisayarli-yontemler"
+  site-url: "https://bulmust.github.io/bilgisayarli-yontemler"
   repo-url: https://github.com/bulmust/bilgisayarli-yontemler
   repo-actions: [edit, issue]
   page-footer:
@@ -31,7 +31,7 @@ website:
     contents:
       - section: "**İçerik**"
         contents:
-          - href: icerik/izlence.qmd
+          - href: icerik/tavsiye-izlence.qmd
       - section: "**Konular**"
         contents:
           - section: Adi Diferansiyel Denklemler
