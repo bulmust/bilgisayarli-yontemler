@@ -4,22 +4,14 @@
     "href": "icerik/izlence.html",
     "title": "İzlence",
     "section": "",
-    "text": "Bu bölümde MSGSÜ Fizik Bölümü’nde verilen derslerin izlenceleri yer almaktadır.",
-    "crumbs": [
-      "**İçerik**",
-      "İzlence"
-    ]
+    "text": "Bu bölümde MSGSÜ Fizik Bölümü’nde verilen derslerin izlenceleri yer almaktadır."
   },
   {
     "objectID": "icerik/izlence.html#fiz366---fizikte-bilgisayarlı-yöntemler-ii",
     "href": "icerik/izlence.html#fiz366---fizikte-bilgisayarlı-yöntemler-ii",
     "title": "İzlence",
     "section": "FIZ366 - Fizikte Bilgisayarlı Yöntemler II",
-    "text": "FIZ366 - Fizikte Bilgisayarlı Yöntemler II\n\n2023-2024 Bahar Dönemi\n\nÖğretim Üyesi: Taygun Bulmuş\nDers Gün ve Saatleri: Salı 09:00-12:00\nUygulama Gün ve Saatleri: Cuma 15:00-17:00 (MS Teams)\nNotlandımra: İki Vize (%20 + %20), Quizler ve Ödevler (20%), Final (40%)\n\nDers İçeriği:\n\nAdi Diferansiyel Denklemler - Başlangıç Değer Problemleri\nAdi Diferasiyel Denklemler - Sınır Değer Problemleri\nFourier Analizi\nPandas Kütüphanesi\nVeri İşleme ve Analizi\nTemel İstatistik ve Olasılık\n\n\n\n\n\n\n\nNote\n\n\n\nKonuların işleyiş sırası değişebilir. Dönem içerisinde konu eklenebilir verya çıkarılabilir.\n\n\nKaynaklar:\n\nBilgisayarlı Yöntemler Github Sitesi\nNumerical Python: Scientiﬁc Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019\nNumerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013\nThink Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014\n\n\n\n\n\n\n\nNote\n\n\n\nDiğer kullanılacak kaynaklar Github sitesine eklenecektir.",
-    "crumbs": [
-      "**İçerik**",
-      "İzlence"
-    ]
+    "text": "FIZ366 - Fizikte Bilgisayarlı Yöntemler II\n\n2023-2024 Bahar Dönemi\n\nÖğretim Üyesi: Taygun Bulmuş\nDers Gün ve Saatleri: Salı 09:00-12:00\nUygulama Gün ve Saatleri: Cuma 15:00-17:00 (MS Teams)\nNotlandımra: İki Vize (%20 + %20), Quizler ve Ödevler (20%), Final (40%)\n\nDers İçeriği:\n\nAdi Diferansiyel Denklemler - Başlangıç Değer Problemleri\nAdi Diferasiyel Denklemler - Sınır Değer Problemleri\nFourier Analizi\nPandas Kütüphanesi\nVeri İşleme ve Analizi\nTemel İstatistik ve Olasılık\n\n\n\n\n\n\n\nNote\n\n\n\nKonuların işleyiş sırası değişebilir. Dönem içerisinde konu eklenebilir verya çıkarılabilir.\n\n\nKaynaklar:\n\nBilgisayarlı Yöntemler Github Sitesi, https://bulmust.github.io/bilgisayarli-yontemler/\nNumerical Python: Scientiﬁc Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019\nNumerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013\nThink Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014\n\n\n\n\n\n\n\nNote\n\n\n\nDiğer kullanılacak kaynaklar Github sitesine eklenecektir."
   },
   {
     "objectID": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html",

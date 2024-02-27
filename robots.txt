@@ -1,1 +1,1 @@
-Sitemap: https://bulmust.github.io/projects/bilgisayarli-yontemler/sitemap.xml
+Sitemap: https://bulmust.github.io/bilgisayarli-yontemler/sitemap.xml
