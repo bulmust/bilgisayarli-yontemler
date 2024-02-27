@@ -1,9 +1,8 @@
 # Bilgisayarlı Yöntemler
 
-Çeşitli kaynaklardan derlenerek hazırlanan sayısal yöntem veya bilgisayarlı yöntemler notları.
+Çeşitli kaynaklardan derlenerek hazırlanan sayısal yöntem veya bilgisayarlı yöntemler notlarını içerir.
 
 ## İçerik
-
 
 ## Quarto Detayları
 

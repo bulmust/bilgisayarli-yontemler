@@ -1,12 +1,5 @@
 ---
 title: "Euler Yöntemi"
-author: "Taygun Bulmus"
-toc: true
-highlight-style: pygments
-format: 
-  html: 
-    code-fold: false
-    html-math-method: katex
 ---
 
 ## Euler'in Yöntemi

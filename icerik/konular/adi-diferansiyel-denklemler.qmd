@@ -1,11 +1,5 @@
 ---
 title: "Adi Diferansiyel Denklemler"
-author: "Taygun Bulmus"
-toc: true
-highlight-style: pygments
-format: 
-  html: 
-    html-math-method: katex
 ---
 
 ## Başlangıç Değer Problemleri

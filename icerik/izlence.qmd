@@ -1,11 +1,5 @@
 ---
 title: "İzlence"
-author: "Taygun Bulmus"
-toc: true
-highlight-style: pygments
-format: 
-  html: 
-    html-math-method: katex
 ---
 
 Bu bölümde MSGSÜ Fizik Bölümü'nde verilen derslerin izlenceleri yer almaktadır.
@@ -29,17 +23,14 @@ Bu bölümde MSGSÜ Fizik Bölümü'nde verilen derslerin izlenceleri yer almakt
 5. Veri İşleme ve Analizi
 6. Temel İstatistik ve Olasılık
 
-::: {.callout-note}
+::: {.callout-warning}
 Konuların işleyiş sırası değişebilir. Dönem içerisinde konu eklenebilir verya çıkarılabilir.
 :::
 
 **Kaynaklar:**
 
 1. [Bilgisayarlı Yöntemler Github Sitesi, https://bulmust.github.io/bilgisayarli-yontemler/](https://bulmust.github.io/bilgisayarli-yontemler/)
-2. Numerical Python: Scientiﬁc Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019
-3. Numerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013
-4. Think Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014
 
 ::: {.callout-note}
-Diğer kullanılacak kaynaklar Github sitesine eklenecektir.
+Kullanılacak kaynaklar bu sitedeki ilgili notun altına eklenecektir.
 :::
