@@ -50,7 +50,6 @@ format:
     code-copy: true
     code-overflow: scroll
     code-fold: false
-    #code-tools: true
     code-line-numbers: true
     highlight-style: github
     code-link: true
