@@ -1,0 +1,5 @@
+---
+title: "Python Modülü"
+---
+
+Bilgisayarlı yöntemler notlarında kullanılan fonksiyonlardan oluşan modül bu linktedir: [bilYonMod.py](/moduller/bilYonMod.py)

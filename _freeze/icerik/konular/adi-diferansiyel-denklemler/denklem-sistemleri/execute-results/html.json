@@ -1,0 +1,12 @@
+{
+  "hash": "6c99b2d005a2f0dad975527ac77fb0e6",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Denklem Sistemleri\"\n---\n\nAdi diferansiyel denklem sistemlerini çözmek için Euler yöntemini vektör haline getirip kullanabiliriz. Bunun için [bilYonMod.py](/moduller/bilYonMod.py) modülündende tanımlanan `add_coz_euler_sistem(fonk_yVek_x, xBaslangic, xBitis, yBaslangic_vek, adimSayisi)` fonksiyonunu kullanılmalıdır.\n\n::: {.callout-note}\n`add_coz_euler_sistem` fonksiyonunu inceleyiniz.\n:::\n\n### Örnek 1\n\nAşağıdaki denklem sistemini Euler yöntemi ile çözelim.\n\n$$\n\\begin{align*}\ny'(x,v) &= x \\\\\nv'(x,y) &= x^{2}\n\\end{align*}\n$$\n\nÇözüm başlangıç koşulları $y(0)=1$ ve $v(0)=1$ olsun. Çözüm aralığı $x=0$ ile $x=10$ arasında olsun. Çözüm adım sayısı $n=100$ olsun.\n\n::: {#bcdec33f .cell execution_count=1}\n``` {.python .cell-code}\n################################################\n## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma\nimport os\nimport sys\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nmodule_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')\n# moduller dizinini yol olarak ekle\nsys.path.append(module_dir)\n# bilYonMod.py modülünü içe aktar\nimport bilYonMod as bym\n################################################\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef fonk_yVek_x(yVek, x):\n    y = yVek[0]\n    v = yVek[1]\n    dydx = x\n    dvdx = x**2\n    return np.array([dydx, dvdx])\n\ny0 = 1\nv0 = 1\nx0 = 0\nx1 = 10\nn = 100\n\n# add_coz_euler_sistem(fonk_yVek_x, xBaslangic, xBitis, yBaslangic_vek, adimSayisi)\nxTum, yTum_Vek = bym.add_coz_euler_sistem(fonk_yVek_x, x0, x1, np.array([y0, v0]), n)\n# Analitik çözüm\nyAnalitik = xTum**2/2 + 1\nvAnalitik = xTum**3/3 + 1\n# Grafik\nplt.plot(xTum, yTum_Vek[0], label='y(x)', color='red')\nplt.plot(xTum, yAnalitik, label='y(x) analitik', color='black', linestyle='--')\nplt.plot(xTum, yTum_Vek[1], label='v(x)', color='blue')\nplt.plot(xTum, vAnalitik, label='v(x) analitik', color='black', linestyle='--')\nplt.xlabel('x')\nplt.ylabel('y(x), v(x)')\nplt.legend()\nplt.show()\n```\n\n::: {.cell-output .cell-output-display}\n![](denklem-sistemleri_files/figure-html/cell-2-output-1.png){width=593 height=433}\n:::\n:::\n\n\n## Alıştırma 1\n\n",
+    "supporting": [
+      "denklem-sistemleri_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

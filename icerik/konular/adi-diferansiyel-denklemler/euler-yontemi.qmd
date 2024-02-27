@@ -1,8 +1,7 @@
 ---
 title: "Euler Yöntemi"
+bibliography: euler-yontemi.bib
 ---
-
-## Euler'in Yöntemi
 
 - Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.
 - Alternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.
@@ -51,36 +50,63 @@ Euler yöntemi ile diferansiyel denklem çözümünde kesme hata payı $h$ adım
 
 ### Euler Yönteminin Geometrik Tasviri
 
-- Basitlik için çözmek istediğimiz $y$ fonksiyonu bir değişkene bağlı olsun. Bu fonksiyonun $x$ ve $x+h$ arasındaki değişimi aşağıdaki gibi olur [[1]](https://tutorial.math.lamar.edu/classes/de/eulersmethod.aspx).
+- Basitlik için çözmek istediğimiz $y$ fonksiyonu bir değişkene bağlı olsun. Bu fonksiyonun $x$ ve $x+h$ arasındaki değişimi aşağıdaki gibi olur [@BibEntry2024Feb].
 
 $$
 y(x+h)=y(x)+h\times y'(x)
 $$
 
+![Euler Yönteminin Geometrik Tasviri](https://tutorial.math.lamar.edu/classes/de/EulersMethod_Files/image001.png)
+
 ### Euler Yönteminin Kodlanması
 
+`add_coz_euler` adlı fonksiyon [bilYonMod.py](/moduller/bilYonMod.py) modülünde tanımlıdır.
+
+::: {.callout-note}
+`add_coz_euler` fonksiyonunu inceleyiniz.
+:::
+
+::: {.callout-caution}
+`add_coz_euler(fonk_y_x, xBaslangic, xBitis, yBaslangic, adimSayisi)` fonksiyonunu çağırırken denklemin sağ tarafında yer alan ve çözmeniz gereken fonksiyonda önce **y** ardından **x** tanımlanmalıdır. Yani fonksiyon $f(y,x)$ şeklinde yazılmalıdır. Burada $y$ değişkeni $y(x)$ olarak tanımlanır, $x$ ise bağımsız değişkendir.
+:::
+
+Aşağıdaki diferansiyel denklemi çözen bir örneği inceleyelim.
+
+$$
+\frac{d}{dx}y(x) = x, \quad y(0)=1, \quad x=[0, 1], \quad n=10000
+$$
+
+Çözüm aşağıdaki gibi olacaktır.
+
+$$
+y(x)=1+\frac{x^{2}}{2}
+$$
+
 ```{python}
+################################################
+## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma
+import os
+import sys
+# Bu dosyanın bulunduğu dizini al
+current_dir = os.path.abspath('')
+# 3 üst dizine çık
+module_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')
+# moduller dizinini yol olarak ekle
+sys.path.append(module_dir)
+# bilYonMod.py modülünü içe aktar
+import bilYonMod as bym
+################################################
 import numpy as np
 import matplotlib.pyplot as plt
 
-def add_coz_euler(fonk_x_y, xBaslangic, xBitis, yBaslangic, adimSayisi):
-    xTum= np.array([xBaslangic])
-    yTum= np.array([yBaslangic])
-    
-    h= (xBitis- xBaslangic)/ adimSayisi
-    for i in range(adimSayisi):
-        xTum= np.append(xTum, xTum[i]+ h)
-        yTum= np.append(yTum, yTum[i]+ h* fonk_x_y(xTum[i], yTum[i]))
-    return xTum, yTum
-
-def f(x, y):
+def fonk_y_x(y, x):
     return x
 
 x0 = 0
 y0 = 1
 xStop = 1
 n = 10000
-xAll, yAll = add_coz_euler(f, x0, xStop, y0, n)
+xAll, yAll = bym.add_coz_euler(fonk_y_x, x0, xStop, y0, n)
 
 plt.plot(xAll, yAll, 'o-', color='r', label='Euler')
 plt.plot(xAll, 1+(xAll**2)/2, 'k', label='Analitik')
@@ -104,10 +130,49 @@ $$
 y(x)=\frac{31}{32}e^{-4x} + \frac{1}{4}x^{2}- \frac{1}{8}x + \frac{1}{32}
 $$
 
-### Alıştırma 2
+---
 
-1. Sürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton'un ikinci yasasını kullanarak çizin. $g=9.81$ m/s $^{2}$ sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları $v(0)=0$ ve $y(0)=100$ olsun. Çözümü $n=100$ s adımda yapın. Zaman aralığı $t=0$ s'den $t=10$ s'ye kadar olsun.
-2. Aynı denklemi ilk hızı $v(0)=10$ m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.
+**Çözüm:**
+
+```{python}
+################################################
+## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma
+import os
+import sys
+# Bu dosyanın bulunduğu dizini al
+current_dir = os.path.abspath('')
+# 3 üst dizine çık
+module_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')
+# moduller dizinini yol olarak ekle
+sys.path.append(module_dir)
+# bilYonMod.py modülünü içe aktar
+import bilYonMod as bym
+################################################
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Fonksiyon
+def fonk_y_x(y, x):
+    return -4*y + x**2
+
+x0 = 0
+y0 = 1
+xStop = 0.03
+n = 10
+xAll, yAll = bym.add_coz_euler(fonk_y_x, x0, xStop, y0, n)
+# Analitik çözüm
+yAnalitik=(31/32)*np.exp(-4*xAll) + (1/4)*(xAll**2) - (1/8)*xAll + (1/32)
+# Çizdir
+plt.plot(xAll, yAll, 'o-', color='r', label='Euler')
+plt.plot(xAll, yAnalitik, 'k', label='Analitik')
+plt.xlabel('$x$')
+plt.ylabel('$y(x)$')
+plt.legend()
+plt.show()
+```
 
 ### Problemler
+
+## Referanslar
 

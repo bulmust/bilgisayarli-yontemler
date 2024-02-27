@@ -10,3 +10,9 @@
 /env/
 /_site/
 /projects/
+
+# Ders ile alakalı
+/dersler/
+
+# pycache
+__pycache__/

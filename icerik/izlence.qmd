@@ -10,9 +10,10 @@ Bu bölümde MSGSÜ Fizik Bölümü'nde verilen derslerin izlenceleri yer almakt
 ### 2023-2024 Bahar Dönemi
 
 - **Öğretim Üyesi:** Taygun Bulmuş
+- **E-posta:** [taygun.bulmus@msgsu.edu.tr](mailto:taygun.bulmus@msgsu.edu.tr)
 - **Ders Gün ve Saatleri:** Salı 09:00-12:00
 - **Uygulama Gün ve Saatleri:** Cuma 15:00-17:00 (MS Teams)
-- **Notlandımra:** İki Vize (%20 + %20), Quizler ve Ödevler (20%), Final (40%)
+- **Notlandımra:** İki Vize (%20 + %20), Quizler ve Ödevler (%20), Final (%40)
 
 **Ders İçeriği:**
 
@@ -32,5 +33,43 @@ Konuların işleyiş sırası değişebilir. Dönem içerisinde konu eklenebilir
 1. [Bilgisayarlı Yöntemler Github Sitesi, https://bulmust.github.io/bilgisayarli-yontemler/](https://bulmust.github.io/bilgisayarli-yontemler/)
 
 ::: {.callout-note}
-Kullanılacak kaynaklar bu sitedeki ilgili notun altına eklenecektir.
+Kullanılacak kaynaklar, notların altına eklenecektir.
 :::
+
+## FIZ365 - Fizikte Bilgisayarlı Yöntemler I
+
+### 2022-2023 Güz Dönemi
+
+- **Öğretim Üyesi:** Taygun Bulmuş
+- **E-posta:** [taygun.bulmus@msgsu.edu.tr](mailto:taygun.bulmus@msgsu.edu.tr)
+- **Ders Gün ve Saatleri:** Cuma 13:00-16:00
+- **Uygulama Gün ve Saatleri:** Cuma 16:00-18:00
+- **Ofis Saatleri:** Cuma 10:00-12:00
+- **Notlandımra:** İki Vize (%20 + %20), Quizler (%10), Ödevler (%10), Final (%40)
+
+**Ders İçeriği:**
+
+1. Dersin Tanıtımı, Python ile Programlamaya Giriş
+1. Temel Python Programlama - I
+1. Temel Python Programlama - II
+1. Numpy-Scipy-Matplotlib
+1. Arasınav - I
+1. Doğrusal Denklem Sistemleri - I
+1. Doğrusal Denklem Sistemleri - II
+1. İnterpolasyon
+1. Eğri Uydurma
+1. Arasınav - II
+1. Kök Bulma
+1. Sayısal Türev Alma
+1. Sayısal İntegral Alma
+1. Adi Diferansiyel Denklemler\
+
+::: {.callout-warning}
+Konuların işleyiş sırası değişebilir. Dönem içerisinde konu eklenebilir verya çıkarılabilir.
+:::
+
+**Kaynaklar:**
+
+1. Numerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013,
+2. Introduction to Engineering and Scientific Computing with Python, David E. Clough, Steven C. Chapra, 1. Baskı, 2022,
+3. Sayısal Analiz ve Mühendislik Uygulamaları, İrfan Karagöz, 5. Baskı, 2019.

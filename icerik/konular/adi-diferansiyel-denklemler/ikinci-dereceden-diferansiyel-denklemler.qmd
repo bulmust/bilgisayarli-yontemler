@@ -1,0 +1,42 @@
+---
+title: "İkinci Dereceden Diferansiyel Denklemler"
+---
+
+İkinci dereceden diferansiyel denklemleri çözmek için Euler yöntemini iki kere kullanmak gerekir. Örneğin,
+
+$$
+y''+4y=0
+$$
+
+İlk adımda $y''$ türevi yerine $y'(x)=v(x)$ tanımlaması yapalım bu durumda denklem şu şekilde olur.
+
+$$
+v'=-4y
+$$
+
+Yukarıdaki denklem birinci dereceden bir diferansiyel denklem olduğu için Euler yöntemi ile çözülebilir. Bu denklemi çözdükten sonra $y(x)$ fonksiyonunu bulmak için $y'(x)=v(x)$ denklemini çözmemiz gerekir.
+
+Dikkat edilmesi gereken husus başlangıç koşullarının $y(x)$ ve $v(x)$ fonksiyonları için yazmaktır. İkinci dereden bir diferansiyel denklemin çözümünü bulabilmek için hem $y(x_{0})$ hem de $y'(x_{0})=v(x_{0})$ koşullarına ihtiyaç vardır.
+
+İkinci dereceden diferansiyel denklemleri çözmek üst üste Euler çözücü fonksiyonu çağırmak yerine denklemi vektörel bir şekilde yazabiliriz. Yukarıdaki örnek için bu işlemi yapalım.
+
+$$
+\begin{bmatrix} y'(x,v) \\ v'(x,y) \end{bmatrix} = \begin{bmatrix} v(x,y) \\ -4y(x) \end{bmatrix}
+$$
+
+Bu denklemi $y_{0}$ ve $y_{1}$ için yazalım. 
+
+$$
+\begin{bmatrix} y_{0}'(x,y_{0},y_{1}) \\ y_{1}'(x,y_{0},y_{1}) \end{bmatrix} = \begin{bmatrix} y_{1}(x,,y_{0},y_{1}) \\ -4y_{0}(x) \end{bmatrix}
+$$
+
+
+Bizim bulmak istediğimiz fonksiyon $y_{0}$. Bu örneği, $y_{0}(0)=1$, $y_{1}(0)=v(0)=1$ başlangıç koşulları için kod yardımı ile çözelim.
+
+### Alıştırma 1 {#sec-alistirma1}
+
+Sürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton'un ikinci yasasını kullanarak çizin. $g=9.81$ m/s $^{2}$ sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları $v(0)=0$ ve $y(0)=100$ olsun. Çözümü $n=100$ s adımda yapın. Zaman aralığı $t=0$ s'den $t=10$ s'ye kadar olsun.
+
+### Alıştırma 2
+
+@sec-alistirma1 verilen denklemi ilk hızı $v(0)=10$ m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.""

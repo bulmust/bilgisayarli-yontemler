@@ -15,7 +15,8 @@ $$
 $$
 
 Her iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.
-- Eğer n. dereceden diferansiyel denklem varsa, yani $ y^{(n)}=f(x,y,y',\cdots,y^{(n-1)}) $, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.
+
+Eğer n. dereceden diferansiyel denklem varsa, yani $y^{(n)}=f(x,y,y',\cdots,y^{(n-1)})$, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.
   
 Yüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,
 

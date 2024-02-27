@@ -32,12 +32,15 @@ website:
       - section: "**İçerik**"
         contents:
           - href: icerik/izlence.qmd
+          - href: icerik/bilYonMod.qmd
       - section: "**Konular**"
         contents:
           - section: Adi Diferansiyel Denklemler
             href: icerik/konular/adi-diferansiyel-denklemler.qmd
             contents:
               - icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.qmd
+              - icerik/konular/adi-diferansiyel-denklemler/denklem-sistemleri.qmd
+              - icerik/konular/adi-diferansiyel-denklemler/ikinci-dereceden-diferansiyel-denklemler.qmd
 
 format:
   html:
