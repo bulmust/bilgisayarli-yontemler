@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>Bilgisayarlı Yöntemler - Adi Diferansiyel Denklemler</title>
+<title>Bilgisayarlı Yöntemler - Python Modülü</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,27 +24,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html" rel="next">
-<link href="../../icerik/bilYonMod.html" rel="prev">
-<link href="../../resimler/favicon.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../icerik/konular/adi-diferansiyel-denklemler.html" rel="next">
+<link href="../icerik/izlence.html" rel="prev">
+<link href="../resimler/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -73,37 +73,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -115,7 +86,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../icerik/izlence.html"><strong>İçerik</strong></a></li><li class="breadcrumb-item"><a href="../icerik/bilYonMod.html">Python Modülü</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -129,8 +100,8 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../resimler/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../resimler/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/bulmust/bilgisayarli-yontemler" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
@@ -161,13 +132,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/izlence.html" class="sidebar-item-text sidebar-link">
+  <a href="../icerik/izlence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İzlence</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/bilYonMod.html" class="sidebar-item-text sidebar-link">
+  <a href="../icerik/bilYonMod.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Python Modülü</span></a>
   </div>
 </li>
@@ -184,28 +155,28 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/adi-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link active">
+            <a href="../icerik/konular/adi-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Adi Diferansiyel Denklemler</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Bölümü değiştir">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html" class="sidebar-item-text sidebar-link">
+  <a href="../icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Euler Yöntemi</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
+  <a href="../icerik/konular/adi-diferansiyel-denklemler/denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Denklem Sistemleri</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+  <a href="../icerik/konular/adi-diferansiyel-denklemler/ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İkinci Dereceden Diferansiyel Denklemler</span></a>
   </div>
 </li>
@@ -219,20 +190,14 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Bu sayfada</h2>
-   
-  <ul>
-  <li><a href="#başlangıç-değer-problemleri" id="toc-başlangıç-değer-problemleri" class="nav-link active" data-scroll-target="#başlangıç-değer-problemleri">Başlangıç Değer Problemleri</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../icerik/izlence.html"><strong>İçerik</strong></a></li><li class="breadcrumb-item"><a href="../icerik/bilYonMod.html">Python Modülü</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Adi Diferansiyel Denklemler</h1>
+<h1 class="title">Python Modülü</h1>
 </div>
 
 
@@ -261,53 +226,9 @@ window.Quarto = {
 </header>
 
 
-<section id="başlangıç-değer-problemleri" class="level2">
-<h2 class="anchored" data-anchor-id="başlangıç-değer-problemleri">Başlangıç Değer Problemleri</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Not
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(y'=F(x,y)\)</span> denklemini, <span class="math inline">\(y(a)=\alpha\)</span> başlangıç koşuluyla çözüp <span class="math inline">\(y(x)\)</span>’i istenilen aralıkta elde etmek.</p>
-</div>
-</div>
-<p>Aşağıdaki gibi formda olan diferansiyel denklemlere birinci dereceden adi diferansiyel denklemler denir.</p>
-<p><span class="math display">\[
-\frac{dy}{dx}=y'=f(x)
-\]</span></p>
-<p>Her iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.</p>
-<p>Eğer n.&nbsp;dereceden diferansiyel denklem varsa, yani <span class="math inline">\(y^{(n)}=f(x,y,y',\cdots,y^{(n-1)})\)</span>, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.</p>
-<p>Yüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,</p>
-<p><span class="math display">\[
-y''=-y \qquad y'(x)=v(x) \qquad v'(x)=-y(x)
-\]</span></p>
-<p>Yukarıdaki denklemin koşulları <span class="math inline">\(y(0)=1\)</span>, <span class="math inline">\(v(0)=1\)</span> şeklinde ise başlangıç değer problemi, <span class="math inline">\(y(0)=1\)</span> ve <span class="math inline">\(v(100)=0\)</span> şeklinde farklı ise sınır değer problemi olarak tanımlanır.</p>
-<p>Diferansiyel denklemler tek halde bulunabildiği gibi çoklu halde de bulunabilir. Örneğin,</p>
-<p><span class="math display">\[
-\textbf{y}'=\textbf{F}(x,\textbf{y})
-\]</span></p>
-<p><span class="math display">\[
-\begin{bmatrix}
-y_1' \\
-y_2' \\
-\vdots \\
-y_n'
-\end{bmatrix}=
-\begin{bmatrix}
-f_1(x,y_1,y_2,\cdots,y_n) \\
-f_2(x,y_1,y_2,\cdots,y_n) \\
-\vdots \\
-f_n(x,y_1,y_2,\cdots,y_n)
-\end{bmatrix}
-\]</span></p>
+<p>Bilgisayarlı yöntemler notlarında kullanılan fonksiyonlardan oluşan modül bu linktedir: <a href="../moduller/bilYonMod.py">bilYonMod.py</a></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -843,13 +764,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../icerik/bilYonMod.html" class="pagination-link" aria-label="Python Modülü">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Python Modülü</span>
+      <a href="../icerik/izlence.html" class="pagination-link" aria-label="İzlence">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">İzlence</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html" class="pagination-link" aria-label="Euler Yöntemi">
-        <span class="nav-page-text">Euler Yöntemi</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../icerik/konular/adi-diferansiyel-denklemler.html" class="pagination-link" aria-label="Adi Diferansiyel Denklemler">
+        <span class="nav-page-text">Adi Diferansiyel Denklemler</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -861,7 +782,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/bilYonMod.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>
