@@ -45,5 +45,15 @@ format:
       light: cosmo
       dark: darkly
     css: styles.css
+    author: "Taygun Bulmus"
+    toc: true
+    code-copy: true
+    code-overflow: scroll
+    code-fold: false
+    code-line-numbers: true
+    highlight-style: github
+    code-link: true
 
+date: last-modified
+lang: "tr"
 
