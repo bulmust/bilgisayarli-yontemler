@@ -1,0 +1,12 @@
+{
+  "hash": "1a8f5a7fe9ea239ac90068acacb80175",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: Adi Diferansiyel Denklemler\nauthor: Taygun Bulmus\ntoc: true\nhighlight-style: pygments\nformat:\n  html:\n    code-fold: true\n    html-math-method: katex\n---\n\n## Başlangıç Değer Problemleri\n\n::: {.callout-note}\n$y'=F(x,y)$ denklemini, $y(a)=\\alpha$ başlangıç koşuluyla çözüp $y(x)$'i istenilen aralıkta elde etmek.\n:::\n\nAşağıdaki gibi formda olan diferansiyel denklemlere birinci dereceden adi diferansiyel denklemler denir.\n\n$$\n\\frac{dy}{dx}=y'=f(x)\n$$\n\nHer iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.\n- Eğer n. dereceden diferansiyel denklem varsa, yani $ y^{(n)}=f(x,y,y',\\cdots,y^{(n-1)}) $, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.\n  \nYüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,\n\n$$\ny''=-y \\qquad y'(x)=v(x) \\qquad v'(x)=-y(x)\n$$\n\nYukarıdaki denklemin koşulları $y(0)=1$, $v(0)=1$ şeklinde ise başlangıç değer problemi, $y(0)=1$ ve $v(100)=0$ şeklinde farklı ise sınır değer problemi olarak tanımlanır.\n\nDiferansiyel denklemler tek halde bulunabildiği gibi çoklu halde de bulunabilir. Örneğin,\n\n$$\n\\textbf{y}'=\\textbf{F}(x,\\textbf{y})\n$$\n\n$$\n\\begin{bmatrix}\ny_1' \\\\\ny_2' \\\\\n\\vdots \\\\\ny_n'\n\\end{bmatrix}=\n\\begin{bmatrix}\nf_1(x,y_1,y_2,\\cdots,y_n) \\\\\nf_2(x,y_1,y_2,\\cdots,y_n) \\\\\n\\vdots \\\\\nf_n(x,y_1,y_2,\\cdots,y_n)\n\\end{bmatrix}\n$$\n\n",
+    "supporting": [
+      "adi-diferansiyel-denklemler_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

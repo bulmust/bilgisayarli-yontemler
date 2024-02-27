@@ -1,0 +1,55 @@
+project:
+  type: website
+  output-dir: _site
+  preview:
+    port: 4200
+    browser: true
+
+execute:
+  freeze: auto
+
+website:
+  title: "Bilgisayarlı Yöntemler"
+  favicon: "resimler/favicon.png"
+  reader-mode: true
+  page-navigation: true
+  site-url: "https://bulmust.github.io/projects/bilgisayarli-yontemler"
+  repo-url: https://github.com/bulmust/bilgisayarli-yontemler
+  repo-actions: [edit, issue]
+  page-footer:
+    left: |
+      This website is built with [![](https://quarto.org/quarto.png){fig-alt="Quarto" width=80px}](https://quarto.org/).
+    right: "&copy; Copyright 2024, Taygun Bulmus"
+  sidebar: 
+    logo: "resimler/logo.png"
+    pinned: false
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/bulmust/bilgisayarli-yontemler
+      - icon: file-person
+        href: https://bulmust.github.io/
+    contents:
+      - section: "**İçerik**"
+        contents:
+          - href: icerik/tavsiye-izlence.qmd
+      - section: "**Konular**"
+        contents:
+          - section: Adi Diferansiyel Denklemler
+            href: icerik/konular/adi-diferansiyel-denklemler.qmd
+            contents:
+              - icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.qmd
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    css: styles.css
+    toc: true
+    code-copy: true
+    code-overflow: wrap
+    highlight-style: github
+
+
+

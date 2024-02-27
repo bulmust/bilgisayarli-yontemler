@@ -1,0 +1,53 @@
+---
+title: "Adi Diferansiyel Denklemler"
+author: "Taygun Bulmus"
+toc: true
+highlight-style: pygments
+format: 
+  html: 
+    html-math-method: katex
+---
+
+## Başlangıç Değer Problemleri
+
+::: {.callout-note}
+$y'=F(x,y)$ denklemini, $y(a)=\alpha$ başlangıç koşuluyla çözüp $y(x)$'i istenilen aralıkta elde etmek.
+:::
+
+Aşağıdaki gibi formda olan diferansiyel denklemlere birinci dereceden adi diferansiyel denklemler denir.
+
+$$
+\frac{dy}{dx}=y'=f(x)
+$$
+
+Her iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.
+- Eğer n. dereceden diferansiyel denklem varsa, yani $ y^{(n)}=f(x,y,y',\cdots,y^{(n-1)}) $, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.
+  
+Yüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,
+
+$$
+y''=-y \qquad y'(x)=v(x) \qquad v'(x)=-y(x)
+$$
+
+Yukarıdaki denklemin koşulları $y(0)=1$, $v(0)=1$ şeklinde ise başlangıç değer problemi, $y(0)=1$ ve $v(100)=0$ şeklinde farklı ise sınır değer problemi olarak tanımlanır.
+
+Diferansiyel denklemler tek halde bulunabildiği gibi çoklu halde de bulunabilir. Örneğin,
+
+$$
+\textbf{y}'=\textbf{F}(x,\textbf{y})
+$$
+
+$$
+\begin{bmatrix}
+y_1' \\
+y_2' \\
+\vdots \\
+y_n'
+\end{bmatrix}=
+\begin{bmatrix}
+f_1(x,y_1,y_2,\cdots,y_n) \\
+f_2(x,y_1,y_2,\cdots,y_n) \\
+\vdots \\
+f_n(x,y_1,y_2,\cdots,y_n)
+\end{bmatrix}
+$$

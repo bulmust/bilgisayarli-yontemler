@@ -1,0 +1,6 @@
+---
+title: "Tavsiye İzlence"
+format: html
+---
+
+Bu bölümde tavsiye edilen izlenceleri bulabilirsiniz. İzlencelerin üzerine tıklayarak izleyebilirsiniz.

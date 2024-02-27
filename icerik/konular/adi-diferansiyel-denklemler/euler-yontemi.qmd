@@ -1,0 +1,120 @@
+---
+title: "Euler Yöntemi"
+author: "Taygun Bulmus"
+toc: true
+highlight-style: pygments
+format: 
+  html: 
+    code-fold: false
+    html-math-method: katex
+---
+
+## Euler'in Yöntemi
+
+- Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.
+- Alternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.
+- Kabaca türevin tanımını kullanır.
+
+$$
+y'(x)= \frac{y(x+h)-y(x)}{h}
+$$
+
+$$
+y(x+h)=y(x)+h\times y'(x)
+$$
+
+- Amacımız başlangıç koşulundan itibaren adım adım $y(x)$ fonksiyonunu bulmaktır.
+- $x$ noktasından $x+h$ noktasına ilerlediğimiz için bu yöntem "ileri adım" yöntemidir.
+
+### Hata Analizi
+
+Bir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki $f(x+h)$ fonksiyonunu $f(x)$ etrafında seriye açıyoruz ve $n$'nci dereceden bir terimden sonra kesiyoruz. $E_{n}$ terimi, kestiğimiz terimden sonraki terimler yani hata terimi olsun.
+
+$$
+f(x+h)=f(x)+f'(x)h+\frac{f''(x)}{2!}h^2+\cdots+\frac{f^{(n)}(x)}{n!}h^n+E_{n}
+$$
+
+Hata terimi $E_{n}$'e kesme hatası (truncation error) adı verilir. Bu hatanın en büyük değeri Taylor teoreminden bulunabilir.
+
+$$
+E_{n}=f^{n+1}(\xi)\frac{h^{n+1}}{(n+1)!}
+$$
+
+Burada $\xi$ $x$ ile $x+h$ arasında bir değerdir. Bu değer ulaşılabilir değilse kesme hatasını belirleyen terim $h$ adım aralığı olacaktır. Yani 
+
+$$
+E_{n}=O(h^{n+1})
+$$
+
+### Euler Yöntemi ile Çözümde Hata Analizi
+
+- Euler yöntemi kullanılırken her bir adımdaki kesme hatası $O(h^2)$'dir çünkü ikinci dereceden türev terimlerini içerir. Her $h$ adımda bu hata üst üste binecektir. Yani denklem $n$ adımda çözülüyorsa kesme hatası da $n$ kere tekrarlanacaktır.
+
+$$
+E_{acc}=nE_{2}=\frac{x_{n}-x_{0}}{h}E_{2}=O(h)
+$$
+
+Euler yöntemi ile diferansiyel denklem çözümünde kesme hata payı $h$ adım aralığı ile orantılı olacaktır.
+
+### Euler Yönteminin Geometrik Tasviri
+
+- Basitlik için çözmek istediğimiz $y$ fonksiyonu bir değişkene bağlı olsun. Bu fonksiyonun $x$ ve $x+h$ arasındaki değişimi aşağıdaki gibi olur [[1]](https://tutorial.math.lamar.edu/classes/de/eulersmethod.aspx).
+
+$$
+y(x+h)=y(x)+h\times y'(x)
+$$
+
+### Euler Yönteminin Kodlanması
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def add_coz_euler(fonk_x_y, xBaslangic, xBitis, yBaslangic, adimSayisi):
+    xTum= np.array([xBaslangic])
+    yTum= np.array([yBaslangic])
+    
+    h= (xBitis- xBaslangic)/ adimSayisi
+    for i in range(adimSayisi):
+        xTum= np.append(xTum, xTum[i]+ h)
+        yTum= np.append(yTum, yTum[i]+ h* fonk_x_y(xTum[i], yTum[i]))
+    return xTum, yTum
+
+def f(x, y):
+    return x
+
+x0 = 0
+y0 = 1
+xStop = 1
+n = 10000
+xAll, yAll = add_coz_euler(f, x0, xStop, y0, n)
+
+plt.plot(xAll, yAll, 'o-', color='r', label='Euler')
+plt.plot(xAll, 1+(xAll**2)/2, 'k', label='Analitik')
+plt.xlabel('$x$')
+plt.ylabel('$y(x)$')
+plt.legend()
+plt.show()
+```
+
+### Alıştırma 1
+
+1. Euler yöntemi ile aşağıdaki diferansiyel denklemleri çözün ve analitik çözüm ile karşılaştırın.
+
+$$
+y' + 4y = x^{2}, \quad y(0)=1, \quad x=[0, 0.03], \quad n=10
+$$
+
+Analitik çözüm: 
+
+$$
+y(x)=\frac{31}{32}e^{-4x} + \frac{1}{4}x^{2}- \frac{1}{8}x + \frac{1}{32}
+$$
+
+### Alıştırma 2
+
+1. Sürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton'un ikinci yasasını kullanarak çizin. $g=9.81$ m/s $^{2}$ sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları $v(0)=0$ ve $y(0)=100$ olsun. Çözümü $n=100$ s adımda yapın. Zaman aralığı $t=0$ s'den $t=10$ s'ye kadar olsun.
+2. Aynı denklemi ilk hızı $v(0)=10$ m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.
+
+### Problemler
+
