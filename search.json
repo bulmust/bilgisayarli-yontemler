@@ -1,40 +1,5 @@
 [
   {
-    "objectID": "icerik/tavsiye-izlence.html",
-    "href": "icerik/tavsiye-izlence.html",
-    "title": "Tavsiye İzlence",
-    "section": "",
-    "text": "Bu bölümde tavsiye edilen izlenceleri bulabilirsiniz. İzlencelerin üzerine tıklayarak izleyebilirsiniz.",
-    "crumbs": [
-      "**İçerik**",
-      "Tavsiye İzlence"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html",
-    "href": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html",
-    "title": "Euler Yöntemi",
-    "section": "",
-    "text": "Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.\nAlternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.\nKabaca türevin tanımını kullanır.\n\n\ny'(x)= \\frac{y(x+h)-y(x)}{h}\n\n\ny(x+h)=y(x)+h\\times y'(x)\n\n\nAmacımız başlangıç koşulundan itibaren adım adım y(x) fonksiyonunu bulmaktır.\nx noktasından x+h noktasına ilerlediğimiz için bu yöntem “ileri adım” yöntemidir.\n\n\n\nBir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki f(x+h) fonksiyonunu f(x) etrafında seriye açıyoruz ve n’nci dereceden bir terimden sonra kesiyoruz. E_{n} terimi, kestiğimiz terimden sonraki terimler yani hata terimi olsun.\n\nf(x+h)=f(x)+f'(x)h+\\frac{f''(x)}{2!}h^2+\\cdots+\\frac{f^{(n)}(x)}{n!}h^n+E_{n}\n\nHata terimi E_{n}’e kesme hatası (truncation error) adı verilir. Bu hatanın en büyük değeri Taylor teoreminden bulunabilir.\n\nE_{n}=f^{n+1}(\\xi)\\frac{h^{n+1}}{(n+1)!}\n\nBurada \\xi x ile x+h arasında bir değerdir. Bu değer ulaşılabilir değilse kesme hatasını belirleyen terim h adım aralığı olacaktır. Yani\n\nE_{n}=O(h^{n+1})\n\n\n\n\n\nEuler yöntemi kullanılırken her bir adımdaki kesme hatası O(h^2)’dir çünkü ikinci dereceden türev terimlerini içerir. Her h adımda bu hata üst üste binecektir. Yani denklem n adımda çözülüyorsa kesme hatası da n kere tekrarlanacaktır.\n\n\nE_{acc}=nE_{2}=\\frac{x_{n}-x_{0}}{h}E_{2}=O(h)\n\nEuler yöntemi ile diferansiyel denklem çözümünde kesme hata payı h adım aralığı ile orantılı olacaktır.\n\n\n\n\nBasitlik için çözmek istediğimiz y fonksiyonu bir değişkene bağlı olsun. Bu fonksiyonun x ve x+h arasındaki değişimi aşağıdaki gibi olur [1].\n\n\ny(x+h)=y(x)+h\\times y'(x)\n\n\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef add_coz_euler(fonk_x_y, xBaslangic, xBitis, yBaslangic, adimSayisi):\n    xTum= np.array([xBaslangic])\n    yTum= np.array([yBaslangic])\n    \n    h= (xBitis- xBaslangic)/ adimSayisi\n    for i in range(adimSayisi):\n        xTum= np.append(xTum, xTum[i]+ h)\n        yTum= np.append(yTum, yTum[i]+ h* fonk_x_y(xTum[i], yTum[i]))\n    return xTum, yTum\n\ndef f(x, y):\n    return x\n\nx0 = 0\ny0 = 1\nxStop = 1\nn = 10000\nxAll, yAll = add_coz_euler(f, x0, xStop, y0, n)\n\nplt.plot(xAll, yAll, 'o-', color='r', label='Euler')\nplt.plot(xAll, 1+(xAll**2)/2, 'k', label='Analitik')\nplt.xlabel('$x$')\nplt.ylabel('$y(x)$')\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nEuler yöntemi ile aşağıdaki diferansiyel denklemleri çözün ve analitik çözüm ile karşılaştırın.\n\n\ny' + 4y = x^{2}, \\quad y(0)=1, \\quad x=[0, 0.03], \\quad n=10\n\nAnalitik çözüm:\n\ny(x)=\\frac{31}{32}e^{-4x} + \\frac{1}{4}x^{2}- \\frac{1}{8}x + \\frac{1}{32}\n\n\n\n\n\nSürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. g=9.81 m/s ^{2} sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları v(0)=0 ve y(0)=100 olsun. Çözümü n=100 s adımda yapın. Zaman aralığı t=0 s’den t=10 s’ye kadar olsun.\nAynı denklemi ilk hızı v(0)=10 m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.",
-    "crumbs": [
-      "**Konular**",
-      "Adi Diferansiyel Denklemler",
-      "Euler Yöntemi"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html#eulerin-yöntemi",
-    "href": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html#eulerin-yöntemi",
-    "title": "Euler Yöntemi",
-    "section": "",
-    "text": "Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.\nAlternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.\nKabaca türevin tanımını kullanır.\n\n\ny'(x)= \\frac{y(x+h)-y(x)}{h}\n\n\ny(x+h)=y(x)+h\\times y'(x)\n\n\nAmacımız başlangıç koşulundan itibaren adım adım y(x) fonksiyonunu bulmaktır.\nx noktasından x+h noktasına ilerlediğimiz için bu yöntem “ileri adım” yöntemidir.\n\n\n\nBir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki f(x+h) fonksiyonunu f(x) etrafında seriye açıyoruz ve n’nci dereceden bir terimden sonra kesiyoruz. E_{n} terimi, kestiğimiz terimden sonraki terimler yani hata terimi olsun.\n\nf(x+h)=f(x)+f'(x)h+\\frac{f''(x)}{2!}h^2+\\cdots+\\frac{f^{(n)}(x)}{n!}h^n+E_{n}\n\nHata terimi E_{n}’e kesme hatası (truncation error) adı verilir. Bu hatanın en büyük değeri Taylor teoreminden bulunabilir.\n\nE_{n}=f^{n+1}(\\xi)\\frac{h^{n+1}}{(n+1)!}\n\nBurada \\xi x ile x+h arasında bir değerdir. Bu değer ulaşılabilir değilse kesme hatasını belirleyen terim h adım aralığı olacaktır. Yani\n\nE_{n}=O(h^{n+1})\n\n\n\n\n\nEuler yöntemi kullanılırken her bir adımdaki kesme hatası O(h^2)’dir çünkü ikinci dereceden türev terimlerini içerir. Her h adımda bu hata üst üste binecektir. Yani denklem n adımda çözülüyorsa kesme hatası da n kere tekrarlanacaktır.\n\n\nE_{acc}=nE_{2}=\\frac{x_{n}-x_{0}}{h}E_{2}=O(h)\n\nEuler yöntemi ile diferansiyel denklem çözümünde kesme hata payı h adım aralığı ile orantılı olacaktır.\n\n\n\n\nBasitlik için çözmek istediğimiz y fonksiyonu bir değişkene bağlı olsun. Bu fonksiyonun x ve x+h arasındaki değişimi aşağıdaki gibi olur [1].\n\n\ny(x+h)=y(x)+h\\times y'(x)\n\n\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef add_coz_euler(fonk_x_y, xBaslangic, xBitis, yBaslangic, adimSayisi):\n    xTum= np.array([xBaslangic])\n    yTum= np.array([yBaslangic])\n    \n    h= (xBitis- xBaslangic)/ adimSayisi\n    for i in range(adimSayisi):\n        xTum= np.append(xTum, xTum[i]+ h)\n        yTum= np.append(yTum, yTum[i]+ h* fonk_x_y(xTum[i], yTum[i]))\n    return xTum, yTum\n\ndef f(x, y):\n    return x\n\nx0 = 0\ny0 = 1\nxStop = 1\nn = 10000\nxAll, yAll = add_coz_euler(f, x0, xStop, y0, n)\n\nplt.plot(xAll, yAll, 'o-', color='r', label='Euler')\nplt.plot(xAll, 1+(xAll**2)/2, 'k', label='Analitik')\nplt.xlabel('$x$')\nplt.ylabel('$y(x)$')\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nEuler yöntemi ile aşağıdaki diferansiyel denklemleri çözün ve analitik çözüm ile karşılaştırın.\n\n\ny' + 4y = x^{2}, \\quad y(0)=1, \\quad x=[0, 0.03], \\quad n=10\n\nAnalitik çözüm:\n\ny(x)=\\frac{31}{32}e^{-4x} + \\frac{1}{4}x^{2}- \\frac{1}{8}x + \\frac{1}{32}\n\n\n\n\n\nSürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. g=9.81 m/s ^{2} sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları v(0)=0 ve y(0)=100 olsun. Çözümü n=100 s adımda yapın. Zaman aralığı t=0 s’den t=10 s’ye kadar olsun.\nAynı denklemi ilk hızı v(0)=10 m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.",
-    "crumbs": [
-      "**Konular**",
-      "Adi Diferansiyel Denklemler",
-      "Euler Yöntemi"
-    ]
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Bilgisayarlı Yöntemler",
@@ -68,6 +33,52 @@
     "crumbs": [
       "**Konular**",
       "Adi Diferansiyel Denklemler"
+    ]
+  },
+  {
+    "objectID": "icerik/izlence.html",
+    "href": "icerik/izlence.html",
+    "title": "İzlence",
+    "section": "",
+    "text": "Bu bölümde MSGSÜ Fizik Bölümü’nde verilen derslerin izlenceleri yer almaktadır.",
+    "crumbs": [
+      "**İçerik**",
+      "İzlence"
+    ]
+  },
+  {
+    "objectID": "icerik/izlence.html#fiz366---fizikte-bilgisayarlı-yöntemler-ii",
+    "href": "icerik/izlence.html#fiz366---fizikte-bilgisayarlı-yöntemler-ii",
+    "title": "İzlence",
+    "section": "FIZ366 - Fizikte Bilgisayarlı Yöntemler II",
+    "text": "FIZ366 - Fizikte Bilgisayarlı Yöntemler II\n\n2023-2024 Bahar Dönemi\n\nÖğretim Üyesi: Taygun Bulmuş\nDers Gün ve Saatleri: Salı 09:00-12:00\nUygulama Gün ve Saatleri: Cuma 15:00-17:00 (MS Teams)\nNotlandımra: İki Vize (%20 + %20), Quizler ve Ödevler (20%), Final (40%)\n\nDers İçeriği:\n\nAdi Diferansiyel Denklemler - Başlangıç Değer Problemleri\nAdi Diferasiyel Denklemler - Sınır Değer Problemleri\nFourier Analizi\nPandas Kütüphanesi\nVeri İşleme ve Analizi\nTemel İstatistik ve Olasılık\n\n\n\n\n\n\n\nNote\n\n\n\nKonuların işleyiş sırası değişebilir. Dönem içerisinde konu eklenebilir verya çıkarılabilir.\n\n\nKaynaklar:\n\nBilgisayarlı Yöntemler Github Sitesi\nNumerical Python: Scientiﬁc Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019\nNumerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013\nThink Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014\n\n\n\n\n\n\n\nNote\n\n\n\nDiğer kullanılacak kaynaklar Github sitesine eklenecektir.",
+    "crumbs": [
+      "**İçerik**",
+      "İzlence"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html",
+    "title": "Euler Yöntemi",
+    "section": "",
+    "text": "Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.\nAlternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.\nKabaca türevin tanımını kullanır.\n\n\ny'(x)= \\frac{y(x+h)-y(x)}{h}\n\n\ny(x+h)=y(x)+h\\times y'(x)\n\n\nAmacımız başlangıç koşulundan itibaren adım adım y(x) fonksiyonunu bulmaktır.\nx noktasından x+h noktasına ilerlediğimiz için bu yöntem “ileri adım” yöntemidir.\n\n\n\nBir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki f(x+h) fonksiyonunu f(x) etrafında seriye açıyoruz ve n’nci dereceden bir terimden sonra kesiyoruz. E_{n} terimi, kestiğimiz terimden sonraki terimler yani hata terimi olsun.\n\nf(x+h)=f(x)+f'(x)h+\\frac{f''(x)}{2!}h^2+\\cdots+\\frac{f^{(n)}(x)}{n!}h^n+E_{n}\n\nHata terimi E_{n}’e kesme hatası (truncation error) adı verilir. Bu hatanın en büyük değeri Taylor teoreminden bulunabilir.\n\nE_{n}=f^{n+1}(\\xi)\\frac{h^{n+1}}{(n+1)!}\n\nBurada \\xi x ile x+h arasında bir değerdir. Bu değer ulaşılabilir değilse kesme hatasını belirleyen terim h adım aralığı olacaktır. Yani\n\nE_{n}=O(h^{n+1})\n\n\n\n\n\nEuler yöntemi kullanılırken her bir adımdaki kesme hatası O(h^2)’dir çünkü ikinci dereceden türev terimlerini içerir. Her h adımda bu hata üst üste binecektir. Yani denklem n adımda çözülüyorsa kesme hatası da n kere tekrarlanacaktır.\n\n\nE_{acc}=nE_{2}=\\frac{x_{n}-x_{0}}{h}E_{2}=O(h)\n\nEuler yöntemi ile diferansiyel denklem çözümünde kesme hata payı h adım aralığı ile orantılı olacaktır.\n\n\n\n\nBasitlik için çözmek istediğimiz y fonksiyonu bir değişkene bağlı olsun. Bu fonksiyonun x ve x+h arasındaki değişimi aşağıdaki gibi olur [1].\n\n\ny(x+h)=y(x)+h\\times y'(x)\n\n\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef add_coz_euler(fonk_x_y, xBaslangic, xBitis, yBaslangic, adimSayisi):\n    xTum= np.array([xBaslangic])\n    yTum= np.array([yBaslangic])\n    \n    h= (xBitis- xBaslangic)/ adimSayisi\n    for i in range(adimSayisi):\n        xTum= np.append(xTum, xTum[i]+ h)\n        yTum= np.append(yTum, yTum[i]+ h* fonk_x_y(xTum[i], yTum[i]))\n    return xTum, yTum\n\ndef f(x, y):\n    return x\n\nx0 = 0\ny0 = 1\nxStop = 1\nn = 10000\nxAll, yAll = add_coz_euler(f, x0, xStop, y0, n)\n\nplt.plot(xAll, yAll, 'o-', color='r', label='Euler')\nplt.plot(xAll, 1+(xAll**2)/2, 'k', label='Analitik')\nplt.xlabel('$x$')\nplt.ylabel('$y(x)$')\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nEuler yöntemi ile aşağıdaki diferansiyel denklemleri çözün ve analitik çözüm ile karşılaştırın.\n\n\ny' + 4y = x^{2}, \\quad y(0)=1, \\quad x=[0, 0.03], \\quad n=10\n\nAnalitik çözüm:\n\ny(x)=\\frac{31}{32}e^{-4x} + \\frac{1}{4}x^{2}- \\frac{1}{8}x + \\frac{1}{32}\n\n\n\n\n\nSürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. g=9.81 m/s ^{2} sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları v(0)=0 ve y(0)=100 olsun. Çözümü n=100 s adımda yapın. Zaman aralığı t=0 s’den t=10 s’ye kadar olsun.\nAynı denklemi ilk hızı v(0)=10 m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "Euler Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html#eulerin-yöntemi",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html#eulerin-yöntemi",
+    "title": "Euler Yöntemi",
+    "section": "",
+    "text": "Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.\nAlternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.\nKabaca türevin tanımını kullanır.\n\n\ny'(x)= \\frac{y(x+h)-y(x)}{h}\n\n\ny(x+h)=y(x)+h\\times y'(x)\n\n\nAmacımız başlangıç koşulundan itibaren adım adım y(x) fonksiyonunu bulmaktır.\nx noktasından x+h noktasına ilerlediğimiz için bu yöntem “ileri adım” yöntemidir.\n\n\n\nBir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki f(x+h) fonksiyonunu f(x) etrafında seriye açıyoruz ve n’nci dereceden bir terimden sonra kesiyoruz. E_{n} terimi, kestiğimiz terimden sonraki terimler yani hata terimi olsun.\n\nf(x+h)=f(x)+f'(x)h+\\frac{f''(x)}{2!}h^2+\\cdots+\\frac{f^{(n)}(x)}{n!}h^n+E_{n}\n\nHata terimi E_{n}’e kesme hatası (truncation error) adı verilir. Bu hatanın en büyük değeri Taylor teoreminden bulunabilir.\n\nE_{n}=f^{n+1}(\\xi)\\frac{h^{n+1}}{(n+1)!}\n\nBurada \\xi x ile x+h arasında bir değerdir. Bu değer ulaşılabilir değilse kesme hatasını belirleyen terim h adım aralığı olacaktır. Yani\n\nE_{n}=O(h^{n+1})\n\n\n\n\n\nEuler yöntemi kullanılırken her bir adımdaki kesme hatası O(h^2)’dir çünkü ikinci dereceden türev terimlerini içerir. Her h adımda bu hata üst üste binecektir. Yani denklem n adımda çözülüyorsa kesme hatası da n kere tekrarlanacaktır.\n\n\nE_{acc}=nE_{2}=\\frac{x_{n}-x_{0}}{h}E_{2}=O(h)\n\nEuler yöntemi ile diferansiyel denklem çözümünde kesme hata payı h adım aralığı ile orantılı olacaktır.\n\n\n\n\nBasitlik için çözmek istediğimiz y fonksiyonu bir değişkene bağlı olsun. Bu fonksiyonun x ve x+h arasındaki değişimi aşağıdaki gibi olur [1].\n\n\ny(x+h)=y(x)+h\\times y'(x)\n\n\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef add_coz_euler(fonk_x_y, xBaslangic, xBitis, yBaslangic, adimSayisi):\n    xTum= np.array([xBaslangic])\n    yTum= np.array([yBaslangic])\n    \n    h= (xBitis- xBaslangic)/ adimSayisi\n    for i in range(adimSayisi):\n        xTum= np.append(xTum, xTum[i]+ h)\n        yTum= np.append(yTum, yTum[i]+ h* fonk_x_y(xTum[i], yTum[i]))\n    return xTum, yTum\n\ndef f(x, y):\n    return x\n\nx0 = 0\ny0 = 1\nxStop = 1\nn = 10000\nxAll, yAll = add_coz_euler(f, x0, xStop, y0, n)\n\nplt.plot(xAll, yAll, 'o-', color='r', label='Euler')\nplt.plot(xAll, 1+(xAll**2)/2, 'k', label='Analitik')\nplt.xlabel('$x$')\nplt.ylabel('$y(x)$')\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nEuler yöntemi ile aşağıdaki diferansiyel denklemleri çözün ve analitik çözüm ile karşılaştırın.\n\n\ny' + 4y = x^{2}, \\quad y(0)=1, \\quad x=[0, 0.03], \\quad n=10\n\nAnalitik çözüm:\n\ny(x)=\\frac{31}{32}e^{-4x} + \\frac{1}{4}x^{2}- \\frac{1}{8}x + \\frac{1}{32}\n\n\n\n\n\nSürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. g=9.81 m/s ^{2} sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları v(0)=0 ve y(0)=100 olsun. Çözümü n=100 s adımda yapın. Zaman aralığı t=0 s’den t=10 s’ye kadar olsun.\nAynı denklemi ilk hızı v(0)=10 m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "Euler Yöntemi"
     ]
   }
 ]
