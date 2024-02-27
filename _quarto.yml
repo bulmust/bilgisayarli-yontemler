@@ -44,16 +44,6 @@ format:
     theme:
       light: cosmo
       dark: darkly
-    author: "Taygun Bulmus"
     css: styles.css
-    toc: true
-    code-copy: true
-    code-overflow: scroll
-    code-fold: false
-    code-line-numbers: true
-    highlight-style: github
-    code-link: true
 
-date: last-modified
-lang: "tr"
 
