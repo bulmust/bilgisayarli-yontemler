@@ -1,0 +1,73 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Bilgisayarlı Yöntemler",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "index.html#bilgisayarlı-yöntemler",
+    "href": "index.html#bilgisayarlı-yöntemler",
+    "title": "Bilgisayarlı Yöntemler",
+    "section": "Bilgisayarlı Yöntemler",
+    "text": "Bilgisayarlı Yöntemler"
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html",
+    "title": "Euler Yöntemi",
+    "section": "",
+    "text": "Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.\nAlternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.\nKabaca türevin tanımını kullanır.\n\n\ny'(x)= \\frac{y(x+h)-y(x)}{h}\n\n\ny(x+h)=y(x)+h\\times y'(x)\n\n\nAmacımız başlangıç koşulundan itibaren adım adım y(x) fonksiyonunu bulmaktır.\nx noktasından x+h noktasına ilerlediğimiz için bu yöntem “ileri adım” yöntemidir.\n\n\n\nBir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki f(x+h) fonksiyonunu f(x) etrafında seriye açıyoruz ve n’nci dereceden bir terimden sonra kesiyoruz. E_{n} terimi, kestiğimiz terimden sonraki terimler yani hata terimi olsun.\n\nf(x+h)=f(x)+f'(x)h+\\frac{f''(x)}{2!}h^2+\\cdots+\\frac{f^{(n)}(x)}{n!}h^n+E_{n}\n\nHata terimi E_{n}’e kesme hatası (truncation error) adı verilir. Bu hatanın en büyük değeri Taylor teoreminden bulunabilir.\n\nE_{n}=f^{n+1}(\\xi)\\frac{h^{n+1}}{(n+1)!}\n\nBurada \\xi x ile x+h arasında bir değerdir. Bu değer ulaşılabilir değilse kesme hatasını belirleyen terim h adım aralığı olacaktır. Yani\n\nE_{n}=O(h^{n+1})\n\n\n\n\n\nEuler yöntemi kullanılırken her bir adımdaki kesme hatası O(h^2)’dir çünkü ikinci dereceden türev terimlerini içerir. Her h adımda bu hata üst üste binecektir. Yani denklem n adımda çözülüyorsa kesme hatası da n kere tekrarlanacaktır.\n\n\nE_{acc}=nE_{2}=\\frac{x_{n}-x_{0}}{h}E_{2}=O(h)\n\nEuler yöntemi ile diferansiyel denklem çözümünde kesme hata payı h adım aralığı ile orantılı olacaktır.\n\n\n\n\nBasitlik için çözmek istediğimiz y fonksiyonu bir değişkene bağlı olsun. Bu fonksiyonun x ve x+h arasındaki değişimi aşağıdaki gibi olur [1].\n\n\ny(x+h)=y(x)+h\\times y'(x)\n\n\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef add_coz_euler(fonk_x_y, xBaslangic, xBitis, yBaslangic, adimSayisi):\n    xTum= np.array([xBaslangic])\n    yTum= np.array([yBaslangic])\n    \n    h= (xBitis- xBaslangic)/ adimSayisi\n    for i in range(adimSayisi):\n        xTum= np.append(xTum, xTum[i]+ h)\n        yTum= np.append(yTum, yTum[i]+ h* fonk_x_y(xTum[i], yTum[i]))\n    return xTum, yTum\n\ndef f(x, y):\n    return x\n\nx0 = 0\ny0 = 1\nxStop = 1\nn = 10000\nxAll, yAll = add_coz_euler(f, x0, xStop, y0, n)\n\nplt.plot(xAll, yAll, 'o-', color='r', label='Euler')\nplt.plot(xAll, 1+(xAll**2)/2, 'k', label='Analitik')\nplt.xlabel('$x$')\nplt.ylabel('$y(x)$')\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nEuler yöntemi ile aşağıdaki diferansiyel denklemleri çözün ve analitik çözüm ile karşılaştırın.\n\n\ny' + 4y = x^{2}, \\quad y(0)=1, \\quad x=[0, 0.03], \\quad n=10\n\nAnalitik çözüm:\n\ny(x)=\\frac{31}{32}e^{-4x} + \\frac{1}{4}x^{2}- \\frac{1}{8}x + \\frac{1}{32}\n\n\n\n\n\nSürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. g=9.81 m/s ^{2} sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları v(0)=0 ve y(0)=100 olsun. Çözümü n=100 s adımda yapın. Zaman aralığı t=0 s’den t=10 s’ye kadar olsun.\nAynı denklemi ilk hızı v(0)=10 m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "Euler Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html#eulerin-yöntemi",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html#eulerin-yöntemi",
+    "title": "Euler Yöntemi",
+    "section": "",
+    "text": "Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.\nAlternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.\nKabaca türevin tanımını kullanır.\n\n\ny'(x)= \\frac{y(x+h)-y(x)}{h}\n\n\ny(x+h)=y(x)+h\\times y'(x)\n\n\nAmacımız başlangıç koşulundan itibaren adım adım y(x) fonksiyonunu bulmaktır.\nx noktasından x+h noktasına ilerlediğimiz için bu yöntem “ileri adım” yöntemidir.\n\n\n\nBir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki f(x+h) fonksiyonunu f(x) etrafında seriye açıyoruz ve n’nci dereceden bir terimden sonra kesiyoruz. E_{n} terimi, kestiğimiz terimden sonraki terimler yani hata terimi olsun.\n\nf(x+h)=f(x)+f'(x)h+\\frac{f''(x)}{2!}h^2+\\cdots+\\frac{f^{(n)}(x)}{n!}h^n+E_{n}\n\nHata terimi E_{n}’e kesme hatası (truncation error) adı verilir. Bu hatanın en büyük değeri Taylor teoreminden bulunabilir.\n\nE_{n}=f^{n+1}(\\xi)\\frac{h^{n+1}}{(n+1)!}\n\nBurada \\xi x ile x+h arasında bir değerdir. Bu değer ulaşılabilir değilse kesme hatasını belirleyen terim h adım aralığı olacaktır. Yani\n\nE_{n}=O(h^{n+1})\n\n\n\n\n\nEuler yöntemi kullanılırken her bir adımdaki kesme hatası O(h^2)’dir çünkü ikinci dereceden türev terimlerini içerir. Her h adımda bu hata üst üste binecektir. Yani denklem n adımda çözülüyorsa kesme hatası da n kere tekrarlanacaktır.\n\n\nE_{acc}=nE_{2}=\\frac{x_{n}-x_{0}}{h}E_{2}=O(h)\n\nEuler yöntemi ile diferansiyel denklem çözümünde kesme hata payı h adım aralığı ile orantılı olacaktır.\n\n\n\n\nBasitlik için çözmek istediğimiz y fonksiyonu bir değişkene bağlı olsun. Bu fonksiyonun x ve x+h arasındaki değişimi aşağıdaki gibi olur [1].\n\n\ny(x+h)=y(x)+h\\times y'(x)\n\n\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef add_coz_euler(fonk_x_y, xBaslangic, xBitis, yBaslangic, adimSayisi):\n    xTum= np.array([xBaslangic])\n    yTum= np.array([yBaslangic])\n    \n    h= (xBitis- xBaslangic)/ adimSayisi\n    for i in range(adimSayisi):\n        xTum= np.append(xTum, xTum[i]+ h)\n        yTum= np.append(yTum, yTum[i]+ h* fonk_x_y(xTum[i], yTum[i]))\n    return xTum, yTum\n\ndef f(x, y):\n    return x\n\nx0 = 0\ny0 = 1\nxStop = 1\nn = 10000\nxAll, yAll = add_coz_euler(f, x0, xStop, y0, n)\n\nplt.plot(xAll, yAll, 'o-', color='r', label='Euler')\nplt.plot(xAll, 1+(xAll**2)/2, 'k', label='Analitik')\nplt.xlabel('$x$')\nplt.ylabel('$y(x)$')\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\nEuler yöntemi ile aşağıdaki diferansiyel denklemleri çözün ve analitik çözüm ile karşılaştırın.\n\n\ny' + 4y = x^{2}, \\quad y(0)=1, \\quad x=[0, 0.03], \\quad n=10\n\nAnalitik çözüm:\n\ny(x)=\\frac{31}{32}e^{-4x} + \\frac{1}{4}x^{2}- \\frac{1}{8}x + \\frac{1}{32}\n\n\n\n\n\nSürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. g=9.81 m/s ^{2} sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları v(0)=0 ve y(0)=100 olsun. Çözümü n=100 s adımda yapın. Zaman aralığı t=0 s’den t=10 s’ye kadar olsun.\nAynı denklemi ilk hızı v(0)=10 m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "Euler Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler.html",
+    "href": "icerik/konular/adi-diferansiyel-denklemler.html",
+    "title": "Adi Diferansiyel Denklemler",
+    "section": "",
+    "text": "Note\n\n\n\ny'=F(x,y) denklemini, y(a)=\\alpha başlangıç koşuluyla çözüp y(x)’i istenilen aralıkta elde etmek.\n\n\nAşağıdaki gibi formda olan diferansiyel denklemlere birinci dereceden adi diferansiyel denklemler denir.\n\n\\frac{dy}{dx}=y'=f(x)\n\nHer iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır. - Eğer n. dereceden diferansiyel denklem varsa, yani $ y{(n)}=f(x,y,y’,,y{(n-1)}) $, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.\nYüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,\n\ny''=-y \\qquad y'(x)=v(x) \\qquad v'(x)=-y(x)\n\nYukarıdaki denklemin koşulları y(0)=1, v(0)=1 şeklinde ise başlangıç değer problemi, y(0)=1 ve v(100)=0 şeklinde farklı ise sınır değer problemi olarak tanımlanır.\nDiferansiyel denklemler tek halde bulunabildiği gibi çoklu halde de bulunabilir. Örneğin,\n\n\\textbf{y}'=\\textbf{F}(x,\\textbf{y})\n\n\n\\begin{bmatrix}\ny_1' \\\\\ny_2' \\\\\n\\vdots \\\\\ny_n'\n\\end{bmatrix}=\n\\begin{bmatrix}\nf_1(x,y_1,y_2,\\cdots,y_n) \\\\\nf_2(x,y_1,y_2,\\cdots,y_n) \\\\\n\\vdots \\\\\nf_n(x,y_1,y_2,\\cdots,y_n)\n\\end{bmatrix}",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler.html#başlangıç-değer-problemleri",
+    "href": "icerik/konular/adi-diferansiyel-denklemler.html#başlangıç-değer-problemleri",
+    "title": "Adi Diferansiyel Denklemler",
+    "section": "",
+    "text": "Note\n\n\n\ny'=F(x,y) denklemini, y(a)=\\alpha başlangıç koşuluyla çözüp y(x)’i istenilen aralıkta elde etmek.\n\n\nAşağıdaki gibi formda olan diferansiyel denklemlere birinci dereceden adi diferansiyel denklemler denir.\n\n\\frac{dy}{dx}=y'=f(x)\n\nHer iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır. - Eğer n. dereceden diferansiyel denklem varsa, yani $ y{(n)}=f(x,y,y’,,y{(n-1)}) $, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.\nYüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,\n\ny''=-y \\qquad y'(x)=v(x) \\qquad v'(x)=-y(x)\n\nYukarıdaki denklemin koşulları y(0)=1, v(0)=1 şeklinde ise başlangıç değer problemi, y(0)=1 ve v(100)=0 şeklinde farklı ise sınır değer problemi olarak tanımlanır.\nDiferansiyel denklemler tek halde bulunabildiği gibi çoklu halde de bulunabilir. Örneğin,\n\n\\textbf{y}'=\\textbf{F}(x,\\textbf{y})\n\n\n\\begin{bmatrix}\ny_1' \\\\\ny_2' \\\\\n\\vdots \\\\\ny_n'\n\\end{bmatrix}=\n\\begin{bmatrix}\nf_1(x,y_1,y_2,\\cdots,y_n) \\\\\nf_2(x,y_1,y_2,\\cdots,y_n) \\\\\n\\vdots \\\\\nf_n(x,y_1,y_2,\\cdots,y_n)\n\\end{bmatrix}",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler"
+    ]
+  },
+  {
+    "objectID": "icerik/tavsiye-izlence.html",
+    "href": "icerik/tavsiye-izlence.html",
+    "title": "Tavsiye İzlence",
+    "section": "",
+    "text": "Bu bölümde tavsiye edilen izlenceleri bulabilirsiniz. İzlencelerin üzerine tıklayarak izleyebilirsiniz.",
+    "crumbs": [
+      "**İçerik**",
+      "Tavsiye İzlence"
+    ]
+  }
+]
