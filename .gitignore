@@ -12,7 +12,8 @@
 /projects/
 
 # Ders ile alakalı
-/dersler/
+/msgsu/
+*-cevaplar.qmd
 
 # pycache
 __pycache__/

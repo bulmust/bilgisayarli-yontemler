@@ -1,0 +1,206 @@
+---
+title: "BDP - Denklem Sistemleri"
+---
+
+## BDP - Denklem Sistemleri
+
+Adi diferansiyel denklem sistemlerini çözmek için Euler yöntemini vektör haline getirip kullanabiliriz. Bunun için [bilYonMod.py](/moduller/bilYonMod.py) modülündende tanımlanan `add_coz_euler_sistem(fonk_yVek_x, xBaslangic, xBitis, yBaslangic_vek, adimSayisi)` fonksiyonunu kullanılmalıdır.
+
+::: {.callout-note}
+`add_coz_euler_sistem` fonksiyonunu inceleyiniz.
+:::
+
+## Euler Yönteminin Denklem Sistemleri İçin Uygulanması
+
+Örneğin aşağıdaki denklem sistemini ele alalım. By denklem sisteminde iki adet birbirinden bağımsız diferansiyel denklem bulunmaktadır. Bu denklemleri birlikte çözebiliriz.
+
+$$
+\begin{align*}
+\frac{d}{dx}y(x) &= x \\
+\frac{d}{dx}v(x) &= x^{2}
+\end{align*}
+$$
+
+Denklem sistemi vektör haline getirilirse:
+
+$$
+\begin{align*}
+\vec{y}'(x) &= \begin{bmatrix} y'(x,v) \\ v'(x,y) \end{bmatrix} = \begin{bmatrix} x \\ x^{2} \end{bmatrix}
+\end{align*}
+$$
+
+Çözüm başlangıç koşulları $y(0)=1$ ve $v(0)=1$ olsun. Çözüm aralığı $x=0$ ile $x=10$ arasında olsun. Çözüm adım sayısı $n=100$ olsun.
+
+```{python}
+################################################
+## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma
+import os
+import sys
+# Bu dosyanın bulunduğu dizini al
+current_dir = os.path.abspath('')
+# 3 üst dizine çık
+module_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')
+# moduller dizinini yol olarak ekle
+sys.path.append(module_dir)
+# bilYonMod.py modülünü içe aktar
+import bilYonMod as bym
+################################################
+
+import numpy as np
+import matplotlib.pyplot as plt
+# Fonksiyon
+def fonk_yVek_x(yVek, x):
+    y = yVek[0]
+    v = yVek[1]
+    dydx = x
+    dvdx = x**2
+    return np.array([dydx, dvdx])
+# Başlangıç koşulları
+y0 = 1
+v0 = 1
+x0 = 0
+xSon = 10
+n = 100
+# Çöz
+# xTum, yTum_Vek= add_coz_euler_sistem(fonk_yVek_x, xBaslangic, xBitis, yBaslangic_vek, adimSayisi)
+# yTum_Vek[0] => y(x)
+# yTum_Vek[1] => v(x)
+xTum, yTum_Vek = bym.add_coz_euler_sistem(fonk_yVek_x, x0, xSon, np.array([y0, v0]), n)
+# Analitik çözüm
+yAnalitik = xTum**2/2 + 1
+vAnalitik = xTum**3/3 + 1
+# Çiz
+plt.plot(xTum, yTum_Vek[0], 'o-', color='red', label='y(x)')
+plt.plot(xTum, yAnalitik, label='y(x) analitik', color='black', linestyle='--')
+plt.plot(xTum, yTum_Vek[1], 'o-',label='v(x)', color='blue')
+plt.plot(xTum, vAnalitik, label='v(x) analitik', color='cyan', linestyle='--')
+plt.xlabel('x')
+plt.ylabel('y(x), v(x)')
+plt.legend()
+plt.show()
+```
+
+## Alıştırma 1
+
+Birbirine bağlı iki adet diferansiyel denklemi çözmek için Euler yöntemini kullanınız.
+
+Denklem sistemi aşağıdaki gibidir.
+
+$$
+\begin{align*}
+\frac{d}{dx}y(v,x) &= v(x) \\
+\frac{d}{dx}v(x) &= x
+\end{align*}
+$$
+
+Denklem sistemi vektör haline getirilirse:
+
+$$
+\begin{align*}
+\vec{y}'(x) &= \begin{bmatrix} y'(v,x) \\ v'(x) \end{bmatrix} = \begin{bmatrix} v(x) \\ x \end{bmatrix}
+\end{align*}
+$$
+
+Bu durumda sağ taraftaki vektör fonksiyonu aşağıdaki gibi tanımlanır.
+
+```{python}
+def fonk_yVek_x(yVek, x):
+    # İlk çözülmesi gereken denklem y'(v,x) = v(x). 
+    # fonk_yVek_x fonksiyonu girdi olarak (yVek,x) alacak. Bu yVek vektörünün
+    # ilk elemanı y'(x) 'in sağ tarafı olmalı. dydx diyelim.
+    # dydx <= yVek[0]
+    dydx = yVek[0]
+    # İkinci çözülmesi gereken denklem v'(y,x) = x.
+    # fonk_yVek_x fonksiyonu girdi olarak (yVek,x) alacak. Bu yVek vektörünün
+    # ikinci elemanı v'(x) 'in sağ tarafı olmalı. dvdx diyelim.
+    # dvdx <= yVek[1] 
+    # dvdx = x
+    # Sonuç olarak da [dydx, dvdx] vektörünü döndürmeli.
+    return np.array([dydx, x])
+```
+
+Başlangıç koşulları $y(0)=1$ ve $v(0)=0$ olsun. Çözüm aralığı $x=0$ ile $x=10$ arasında olsun. Çözüm adım sayısı $n=100$ olsun.
+
+Analitik çözümü elde ederken önce $v(x)$'i çözmek gerekir. $v(x)=\frac{x^2}{2}$ olur. Bu durumda $y(x)=\frac{x^3}{6}+1$ olur.
+
+### Çözüm
+
+```{python}
+################################################
+## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma
+import os
+import sys
+# Bu dosyanın bulunduğu dizini al
+current_dir = os.path.abspath('')
+# 3 üst dizine çık
+module_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')
+# moduller dizinini yol olarak ekle
+sys.path.append(module_dir)
+# bilYonMod.py modülünü içe aktar
+import bilYonMod as bym
+################################################
+
+import numpy as np
+import matplotlib.pyplot as plt
+# Fonksiyon
+def fonk_yVek_x(yVek, x):
+    dydx = yVek[1]
+    return np.array([dydx, x])
+# Başlangıç koşulları
+y0 = 1
+v0 = 0
+x0 = 0
+xSon = 10
+n = 100
+# Çöz
+xTum, yTum_Vek = bym.add_coz_euler_sistem(fonk_yVek_x, x0, xSon, np.array([y0, v0]), n)
+# Analitik çözüm
+yAnalitik = xTum**3/6 + 1
+vAnalitik = xTum**2/2
+# Çiz
+fig, ax = plt.subplots(1, 2)
+# Sol grafik
+ax[0].plot(xTum, yTum_Vek[0], 'o-', label='y(x)', color='red')
+ax[0].plot(xTum, yAnalitik, label='y(x) analitik', color='black', linestyle='--')
+ax[0].set_xlabel('x')
+ax[0].set_ylabel('y(x)')
+ax[0].legend()
+# Sağ grafik
+ax[1].plot(xTum, yTum_Vek[1], 'o-', label='v(x)', color='blue')
+ax[1].plot(xTum, vAnalitik, label='v(x) analitik', color='cyan', linestyle='--')
+ax[1].set_xlabel('x')
+ax[1].set_ylabel('v(x)')
+ax[1].legend()
+plt.show()
+```
+
+## Problemler
+
+### Problemi 1
+
+Lorenz atraktörünün denklemini Euler yöntemiyle çözünüz. Sabitler için $\rho=28$, $\sigma=10$ ve $\beta=8/3$ alınız. Başlangıç koşullarını: $x_{0}=1$, $y_{0}=1$ ve $z_{0}=1$ olarak alınız. En iyi sonucu görebilmek için $t=0-10$ aralığında ve $n= 1000$ adımda yapınız. 3 boyutlu grafik çizilirse ünlü şekil ortaya çıkacaktır.
+
+$$
+\frac{dx}{dt}=\sigma(y-x)
+$$
+
+$$
+\frac{dy}{dt}=x(\rho-z)-y
+$$
+
+$$
+\frac{dz}{dt}=xy-\beta z
+$$
+
+### Problem 2
+
+Lotka-Volterra Modelini Euler yöntemiyle çözünüz. Sabitler için $a=1.5$, $b=1$, $c=3$ ve $d=1$ alınız. Başlangıç koşulu olarak 10 tavşan ($x_{0}$) ve 5 vaşak ($y_{0}$) alınız. En iyi sonucu görebilmek için $t=0-20$ aralığında ve $n= 1000$ adımda yapınız.
+*Bu model av-avcı popülasyonunu veya tavşan-vaşak popülasyonu simülasyonudur.*
+
+$$
+\frac{dx}{dt}=ax-bxy
+$$
+
+$$
+\frac{dy}{dt}=-cy+dxy
+$$

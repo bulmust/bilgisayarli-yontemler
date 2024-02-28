@@ -22,7 +22,9 @@ website:
   sidebar: 
     logo: "resimler/logo.png"
     pinned: false
-    align: center
+    alignment: center
+    border: true
+    collapse-level: 3
     tools:
       - icon: github
         href: https://github.com/bulmust/bilgisayarli-yontemler
@@ -38,25 +40,37 @@ website:
           - section: Adi Diferansiyel Denklemler
             href: icerik/konular/adi-diferansiyel-denklemler.qmd
             contents:
-              - icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.qmd
-              - icerik/konular/adi-diferansiyel-denklemler/denklem-sistemleri.qmd
-              - icerik/konular/adi-diferansiyel-denklemler/ikinci-dereceden-diferansiyel-denklemler.qmd
+              - icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.qmd
+              - icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.qmd
+              - icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.qmd
+              - icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.qmd
+              - icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.qmd
+              - icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.qmd
 
 format:
   html:
+    link-external-icon: true
+    link-external-newwindow: true
     theme:
       light: cosmo
       dark: darkly
     css: styles.css
     author: "Taygun Bulmus"
     toc: true
+    toc-expand: true
+    toc-title: "**Bu sayfada**"
+    highlight-style: github
     code-copy: true
     code-overflow: scroll
     code-fold: false
     code-line-numbers: true
-    highlight-style: github
     code-link: true
+    code-links:
+      - text: bilYonMod.py
+        icon: file-code
+        href: moduller/bilYonMod.py
 
 date: last-modified
 lang: "tr"
-
+bibliography: "bib/bilgisayarli-yontemler.bib"
+csl: "bib/american-physics-society.csl"

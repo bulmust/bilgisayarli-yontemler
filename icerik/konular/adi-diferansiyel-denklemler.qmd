@@ -2,7 +2,9 @@
 title: "Adi Diferansiyel Denklemler"
 ---
 
-## Başlangıç Değer Problemleri
+## Adi Diferansiyel Denklemler
+
+### Başlangıç Değer Problemleri (BDP)
 
 ::: {.callout-note}
 $y'=F(x,y)$ denklemini, $y(a)=\alpha$ başlangıç koşuluyla çözüp $y(x)$'i istenilen aralıkta elde etmek.
@@ -46,3 +48,5 @@ f_2(x,y_1,y_2,\cdots,y_n) \\
 f_n(x,y_1,y_2,\cdots,y_n)
 \end{bmatrix}
 $$
+
+### Sınır Değer Problemleri (SDP)

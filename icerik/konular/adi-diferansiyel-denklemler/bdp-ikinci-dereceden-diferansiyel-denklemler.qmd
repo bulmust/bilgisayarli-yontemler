@@ -1,0 +1,142 @@
+---
+title: "BDP - İkinci Dereceden Diferansiyel Denklemler"
+---
+
+## BDP - İkinci Dereceden Diferansiyel Denklemler
+
+İkinci dereceden diferansiyel denklemleri çözmek için Euler yöntemini iki kere kullanmak gerekir. Örneğin,
+
+$$
+y''+4y=0
+$$
+
+İlk adımda $y''$ türevi yerine $y'(x)=v(x)$ tanımlaması yapalım bu durumda denklem şu şekilde olur.
+
+$$
+v'=-4y
+$$
+
+Yukarıdaki denklem birinci dereceden bir diferansiyel denklem olduğu için Euler yöntemi ile çözülebilir. Bu denklemi çözdükten sonra $y(x)$ fonksiyonunu bulmak için $y'(x)\equiv v(x)$ denklemini çözmemiz gerekir.
+
+Dikkat edilmesi gereken husus başlangıç koşullarının $y(x)$ ve $v(x)$ fonksiyonları için yazmaktır. İkinci dereden bir diferansiyel denklemin çözümünü bulabilmek için hem $y(x_{0})$ hem de $y'(x_{0})=v(x_{0})$ koşullarına ihtiyaç vardır.
+
+İkinci dereceden diferansiyel denklemleri çözmek üst üste Euler çözücü fonksiyonu çağırmak yerine denklemi vektörel bir şekilde yazabiliriz. 
+
+## Alıştırma 1 {#sec-alistirma1}
+
+Sürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton'un ikinci yasasını kullanarak çizin. $g=9.81$ m/s $^{2}$ sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları $v(0)=0$ ve $y(0)=100$ olsun. Çözümü $n=100$ s adımda yapın. Zaman aralığı $t=0$ s'den $t=10$ s'ye kadar olsun.
+
+### Çözüm
+
+```{python}
+################################################
+## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma
+import os
+import sys
+# Bu dosyanın bulunduğu dizini al
+current_dir = os.path.abspath('')
+# 3 üst dizine çık
+module_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')
+# moduller dizinini yol olarak ekle
+sys.path.append(module_dir)
+# bilYonMod.py modülünü içe aktar
+import bilYonMod as bym
+################################################
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Global değişkenler
+g=9.81
+# Denklemin sağ tarafı
+def F(yVek, x):
+    # F=m*a
+    # F=m*y''(t)
+    # -g=y''(t)
+    # y'(t)=v(t)
+    # v'(t)=-g
+    return np.array([yVek[1], -g])
+# Başlangıç koşulları
+x0=0
+yVek=np.array([100, 0])
+xStop=5
+n=100
+# Çöz
+xTum, yVekTum = bym.add_coz_euler_sistem(F, x0, xStop, yVek, n)
+# Analitik çözüm
+# y(t) = y0 + v0*t - (1/2)*g*t^2
+# v(t) = v0 - g*t
+yAnalitik= yVek[0] + yVek[1]*xTum - (1/2)*g*xTum**2
+vAnalitik= yVek[1] - g*xTum
+# Çiz
+fig,axs=plt.subplots(1,2)
+# Soldaki grafik
+axs[0].plot(xTum, yVekTum[0,:], 'o-', color='r', label='Euler $y(t)$')
+axs[0].plot(xTum, yAnalitik, 'k', label='Analitik $y(t)$')
+axs[0].set_ylabel('$y(t)$')
+axs[0].legend()
+# Sağdaki grafik
+axs[1].plot(xTum, yVekTum[1,:], 'o-', color='r', label='Euler $v(t)$')
+axs[1].plot(xTum, vAnalitik, 'k', label='Analitik $v(t)$')
+axs[1].set_ylabel('$v(t)$')
+axs[1].set_xlabel('$t$')
+axs[1].legend()
+# Sıkıştır
+plt.tight_layout()
+# Göster
+plt.show()
+```
+
+## Problemler
+
+### Problem 1 {#sec-problem1}
+
+@sec-alistirma1 verilen denklemi ilk hızı $v(0)=10$ m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.
+
+### Problem 2 {#sec-problem2}
+
+Yatay düzlemde $k=100$ N/m sabitine sahip $m=1$ kg kütleli yay olsun. Bu cisme denge noktasından $x_{0}=0.1$ m sıkıştırılarak harekete başlatılıyor. Cisim bırakıldığı anda hızı $v_{0}=0$ m/s. Bu cismin hareket denklemini $t=0-5$ aralığında Euler yöntemiyle çözünüz.
+
+$$
+-kx=m\frac{d^{2}x}{dt^{2}}
+$$
+
+Analitik çözüm: $x(t) = A\cos(\sqrt{k/m}x)+B\sin(\sqrt{k/m}x)$
+
+### Problem 3
+
+@sec-problem2 bölümündeki soruyu $F_{sürtünme}= -bv$ sürtünme kuvveti varlığında çözünüz. Burada $b=1$ Ns/m sabit ve $v$ cismin hızıdır.
+
+$$
+-b\frac{dx}{dt}-kx=m\frac{d^{2}x}{dt^{2}}
+$$
+
+
+Analitik çözüm: $x(t) = Ae^{-\sigma t}e^{i\omega t}+ Be^{-\sigma t}e^{-i \omega t}$. Burada frekans $\omega = \sqrt{(k/m)-(b^{2}/4m^{2})} $ ve genliği belirleyen terim $\sigma=b/2m$ [@web2024Feb-2].
+
+### Problem 4 {#sec-problem4}
+
+Düşey düzlemde $m=1$ kg kütleli bir cisim salınsın. Bu cisim denge noktasından $\theta_{0}=\pi/9$ rad açı ile harekete başlıyor. Cisim bırakıldığı anda açısal hızı $\omega_{0}=$ rad/s. Bu cismin hareket denklemini $t=0-10$ arasında Euler yöntemiyle çözünüz. En uygun sonuç için $n=10000$ adım alınız. ($g=9.81$)
+
+$$
+\frac{d^{2}\theta}{dt^{2}}=-\frac{g}{l}\sin \theta
+$$
+
+Analitik çözüm: $x(t) = A\cos(\sqrt{g/l}x)+B\sin(\sqrt{g/l}x)$
+
+### Problem 5
+
+@sec-problem4 bölümündeki problemi $\theta_{0}=\pi/2$ başlangıç koşulu için tekrar çalıştırınız. $\sin \theta \approx \theta$ yaklaşıklığı artık geçerli olmadığı için analitik çözümün hatalı olduğunu unutmayınız.
+
+### Problem 6
+
+İki cisim problemini (baryosentrik yani merkezdeki cisim hareket etmesin) Euler yöntemiyle çözünüz. Burada $\mu=3.98\times 10^{5}$ km $^{3}$/s ^{2}, Dünya'nın kütleçekim parametresi ($G\times M$), $x_{0}=-2500$ km, $y_{0}=-5500$ km, $v_{x0}=7.5$ km/s, $v_{y0}=0.5$ km/s olarak alın. Aşağıdaki denklemleri $t=0-100000$ s arasında çözün. $y-x$ grafiği çizin.
+
+$$
+\frac{d^{2}x}{dt^{2}}=-\frac{\mu}{(x^{2}+y^{2})^{3/2}}x
+$$
+
+$$
+\frac{d^{2}y}{dt^{2}}=-\frac{\mu}{(x^{2}+y^{2})^{3/2}}y
+$$
+
+## Referanslar
