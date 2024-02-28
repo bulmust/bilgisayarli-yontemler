@@ -9,7 +9,7 @@
 *_cache/
 /env/
 /_site/
-/projects/
+/_freeze/
 
 # Ders ile alakalı
 /msgsu/

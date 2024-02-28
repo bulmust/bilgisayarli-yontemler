@@ -393,5 +393,3 @@ Başlangıç koşulları ve sabitler:
    - $b=0.1$ Ns/m
    - $x(t=0)=1$ m
    - $v(t=0)=0$ m/s
-
-## Referanslar

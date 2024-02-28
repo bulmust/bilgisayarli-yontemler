@@ -138,5 +138,3 @@ $$
 $$
 \frac{d^{2}y}{dt^{2}}=-\frac{\mu}{(x^{2}+y^{2})^{3/2}}y
 $$
-
-## Referanslar

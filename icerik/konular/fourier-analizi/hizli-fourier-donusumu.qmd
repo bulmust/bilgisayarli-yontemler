@@ -1,0 +1,145 @@
+---
+title: "Hızlı Fourier Dönüşümü"
+---
+
+## Hızlı Fourier Dönüşümü (Fast Fourier Transform, FFT), HFD
+
+HFD, Gauss'un yayınlanmamış 1805 yılındaki çalışmalarına dayanır. Temel olarak DFT algoritmasını daha küçük parçalara bölerek hesaplar. Bu küçük parçaları hesaplamak için ise rekürsif bir algoritma kullanır.
+
+### KFD'deki Simetriler
+
+KFD denklemini hatırlayalım.
+
+$$
+X_{k} = \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N}
+$$
+
+$k+N$'inci frekansın değeri ise aşağıdaki gibidir.
+
+$$
+X_{k+N} = \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi (k+N) n / N}
+$$
+
+$e^{-i2\pi n}=1$ özelliğini kullanalım.
+
+$$
+\begin{align*}
+X_{k+N} =& \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N} e^{-i 2 \pi N n / N}\\
+=& \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N}\\
+=& X_{k}
+\end{align*}
+$$
+
+Yani $X_{k+N}=X_{k}$'dır. Bu da $X_{k}$'nın $N$'inci frekansın değerine eşit olduğunu gösterir. Bu da $X_{k+i\times N}=X_{k}$ şeklinde genelleştirilebilir. Burada $i$ bir tam sayıdır.
+
+## HFD'deki Numaralar
+
+KFD algoritmasının simetri özelliğini kullanarak N sayısını 2'ye bölelim. Böldüğümüz kısımlar $n$'in tek ve çift olduğu durumlar olsun.
+
+$$
+\begin{align*}
+X_{k} =& \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N}\\
+=& \sum_{m=0}^{N/2-1} x_{2m} e^{-i 2 \pi k (2m) / N} + \sum_{m=0}^{N/2-1} x_{2m+1} e^{-i 2 \pi k (2m+1) / N}\\
+\end{align*}
+$$
+
+Bu toplamdaki ilk terim $n$'in çift terimlerinden oluşuyor, ikinci terim ise tek terimlerden oluşuyor. Hesaplamaya devam edelim ($2m/N$ yerine $m/(N/2)$ yaz.)
+
+$$
+\begin{align*}
+X_{k} =& \sum_{m=0}^{N/2-1} x_{2m} e^{-i 2 \pi k m / (N/2)} + \sum_{m=0}^{N/2-1} x_{2m+1} e^{-i 2 \pi k (2m+1) / N}\\
+=& \sum_{m=0}^{N/2-1} x_{2m} e^{-i 2 \pi k m / (N/2)} + e^{-i 2 \pi k / N} \sum_{m=0}^{N/2-1} x_{2m+1} e^{-i 2 \pi k m / (N/2)}\\
+\end{align*}
+$$
+
+DFT'deki simetri bize şunu söyler. $X_{k}$'yı hesaplarken $N/2$'ye kadar olan kısmı hesaplayabiliriz. Yani yukarıdaki toplamın sadece birisini hesapladığımızda diğerini de hesaplamış oluruz. Bu da hesaplama zamanını yarı yarıya azaltır.
+
+Yarıya bölme işlemini tekrar ederek en küçük parçaya gidilir.
+
+FFT algoritması bu şekilde çalışarak hesaplama zamanını oldukça azaltır.
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+
+def FFT(x):
+    """
+    A recursive implementation of
+    the 1D Cooley-Tukey FFT, the
+    input should have a length of
+    power of 2.
+    """
+    N= len(x)
+    if N == 1:
+        return x
+    else:
+        X_even= FFT(x[::2])
+        X_odd= FFT(x[1::2])
+        
+        factor = np.exp(-2j* np.pi* np.arange(N)/ N)
+        
+        X = np.concatenate(\
+            [X_even+ factor[:int(N/2)]*X_odd,
+             X_even+ factor[int(N/2):]*X_odd])
+        return X
+    
+# sampling rate
+sr = 128
+# sampling interval
+ts = 1.0/sr
+t = np.arange(0,1,ts)
+freq = 1.
+x = 3*np.sin(2*np.pi*freq*t)
+freq = 4
+x += np.sin(2*np.pi*freq*t)
+freq = 7
+x += 0.5* np.sin(2*np.pi*freq*t)
+plt.figure(figsize = (8, 6))
+plt.plot(t, x, "r")
+plt.ylabel("Amplitude")
+plt.show()
+
+X=FFT(x)
+# calculate the frequency
+N = len(X)
+n = np.arange(N)
+T = N/sr
+freq = n/T
+plt.figure(figsize = (12, 6))
+plt.subplot(121)
+plt.stem(freq, abs(X), "b", markerfmt=" ", basefmt="-b")
+plt.xlabel("Freq (Hz)")
+plt.ylabel("FFT Amplitude |X(freq)|")
+# Get the one-sided spectrum
+n_oneside = N//2
+# get the one side frequency
+f_oneside = freq[:n_oneside]
+# normalize the amplitude
+X_oneside =X[:n_oneside]/n_oneside
+plt.subplot(122)
+plt.stem(f_oneside, abs(X_oneside), "b", markerfmt=" ", basefmt="-b")
+plt.xlabel("Freq (Hz)")
+plt.ylabel("Normalized FFT Amplitude |X(freq)|")
+plt.tight_layout()
+plt.show()
+
+def gen_sig(sr):
+    """
+    function to generate
+    a simple 1D signal with
+    different sampling rate
+    """
+    ts = 1.0/sr
+    t = np.arange(0,1,ts)
+    freq = 1.
+    x = 3*np.sin(2*np.pi*freq*t)
+    return x
+# sampling rate =2048
+sr = 2048
+%timeit FFT(gen_sig(sr))
+```
+
+## Kaynaklar
+
+1. Python Programming and Numerical Methods, Qingkai Kong, 2018
+2. <https://www.ams.org/journals/mcom/1965-19-090/S0025-5718-1965-0178586-1/>

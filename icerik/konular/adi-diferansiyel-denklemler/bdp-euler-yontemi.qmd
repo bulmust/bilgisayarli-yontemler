@@ -192,6 +192,3 @@ $$
 $$
 
 Analitik çözüm: $N(t) = N_{0}e^{-t(\ln 2/\tau)}$
-
-## Referanslar
-

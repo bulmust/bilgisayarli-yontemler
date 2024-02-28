@@ -2,75 +2,7 @@
 title: "SDP - Atış Yöntemi"
 ---
 
-## Adi Diferansiyel Denklemler
-
-Aşağıdaki gibi bir adet diferansiyel denklem veya denklem sistemimiz olsun.
-
-$$
-\begin{equation}
-    \frac{d}{dx}y(x) = F(x,y)
-\end{equation}
-$$
-
-- Bu denklemi çözmek demek sağ ve sol tarafın integralini almak demektir.
-- Bu denklemi çözmek demek *sayısal* olarak $y(x)$ fonksiyonunu bulmak demektir. Yani istenilen bir x değeri için $y(x)$ fonksiyonunun değerini elde ederiz.
-- $y(x)$ ve $F(x,y)$ birer vektör olabilir. Örneğin $\vec{y}(x) = (y_{1}(x), y_{2}(x))$.
-- İkinci dereceden diferansiyel denklemleri çözmek için denklemi iki adet birinci dereceden diferansiyel denkleme indirgeme yapmamız gerekmektedir.
-
-$$
-\begin{align*}
-    \frac{d^{2}}{dx^{2}}y(x) =& F(x,y)\\
-    \frac{d}{dx}y(x) =& v(x,y) \qquad \text{ve} \qquad \frac{d}{dx}v(x) = F(x,y)
-\end{align*}
-$$
-
-1. Çözüme başlamak için fonksiyonun başlangıçtaki değerine ihtiyacınız vardır; **Başlangıç Değer Problemi, BDP (IVP)**
-2. Çözümün sınırlarında hangi değerler aldığını bilerek de fonksiyonu elde edebiliriz; **Sınır Değer Problemi, SDP (BVP)**
-
-**Örneğin**
-
-- Başlangıç değer problemi:
-
-$$
-y''(x)= -y, \qquad y(0)=1, \qquad y'(0)=0 \text{.}
-$$
-
-- Sınır değer problemi:
-
-$$
-y''(x)= -y, \qquad y(0)=1, \qquad y'(\pi)=0 \text{.}
-$$
-
-## Sınır Değer Problemi
-
-- Farz edelim ki aşağıdaki gibi ikinci dereceden diferansiyel denklemimiz olsun.
-
-$$
-y''(x) = f(x,y,y')
-$$
-
-- Bu denklemdeki $y(x)$ ve $y'(x)$ fonksiyonunun aynı $x$ (ör. $x=0$) noktasındaki değerini biliyorsak bu denklem başlangıç değer problemidir.
-- Bu denklemin $y(x=a)$ ve $y(x=b)$ noktalarındaki değerlerini biliyorsak bu denklem **sınır değer problemidir.**
-- Yukarıda verdiğimiz örneğe iki-noktalı sınır değer problemi de denir (2-point boundary value problem).
-- Birinci dereceden diferansiyel denklem için sınır değer problemi ile başlangıç değer problemi aynıdır, çünkü denklem bir adet koşula sahiptir.
-
-**Örneğin** Kuyudaki bir parçacığın hareket denklemi aşağıdaki gibi yazılır.
-
-$$
-\frac{-h}{4\pi m}\frac{d^{2}}{dx^{2}}\psi(x) = E\psi(x), \qquad \psi(x=-L/2)=0, \qquad \psi(x=L/2)=0 \text{.}
-$$
-
-Birinci türeve ait bir koşul bilmiyoruz. Sadece bulmak istediğimiz fonksiyonun sınır değerlerini biliyoruz.
-
-::: {.callout-warning}
-Başlangıç değer probleminde n. dereceden diferansiyel denklemi çözebilmek için n adet başlangıç koşuluna ihtiyaç vardır. Bu başlangıç koşulları da (n-1). dereceden türeve kadar olmak zorundadır.
-:::
-
-- Sınır değer problemlerini çözmek için birinci türeve ait olan denklemdeki başlangıç koşuluna ihtiyaç vardır. Bu sorunu:
-  1. Başlangıç koşulunu <span style="color:red"> tahmin ederek </span> aşabiliriz. Bu yönteme *atış yöntemi* (shooting method) denir.
-  2. Diferansiyel denklemi <span style="color:red"> örgü noktalarına </span> (mesh points) bölerek çözebiliriz. Bu yönteme *sonlu farklar yöntemi* (finite difference method) denir.
-
-### Atış Yöntemi
+## Atış Yöntemi
 
 Aşağıdaki denklemi çözelim.
 
@@ -248,7 +180,7 @@ $$
 1. Elde ettiğiniz çözümü yani $y(t)$ fonksiyonunu çizdirin.
 2. Bu denklemi analitik olarak çözün ve çözümü de çizdirin.
 
-## Referanslar
+## Kaynaklar
 
 1. Numerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013, **Syf:293**
 2. Python Programming and Numerical Methods: A Guide for Engineers and Scientists, Qingkai Kong & Timmy Siauw & Alexandre Bayen, 2020, [chapter23.02-The-Shooting-Method](https://pythonnumericalmethods.berkeley.edu/notebooks/chapter23.02-The-Shooting-Method.html)

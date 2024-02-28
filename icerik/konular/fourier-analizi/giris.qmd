@@ -1,0 +1,156 @@
+---
+title: "Giriş"
+---
+
+## Fourier Analizi
+
+### Dalgalar
+
+Basit bir sinüs dalgası oluşturalım.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+x= np.linspace(0,8*np.pi,1000)
+y= np.sin(x)
+
+plt.plot(x,y)
+plt.ylabel('Genlik')
+plt.xlabel('x')
+plt.show()
+```
+
+Sinüs dalgası hem zamanda hem de uzayda değişir. Yukarıda çizilen dalga zaman içerisinde değişmemektedir yani durağan bir dalgadır. Durağan olmayan dalgalara bir örnek verelim.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig= plt.figure(figsize=(8,8))
+times= np.arange(5)
+
+n= len(times)
+
+for t in times:
+    plt.subplot(n,1,t+1)
+    y= np.sin(x+t)
+    plt.plot(x,y, 'b')
+    plt.plot(x[25], y[25], 'ro')
+    plt.ylim(-1.1,1.1)
+    plt.ylabel('y')
+    plt.title(f"t={t}")
+plt.xlabel('x')
+plt.tight_layout()
+plt.show()
+```
+
+Yukarıdaki grafikte kırmızı nokta durağan olmayan bir dalganın konumunu göstermektedir. Tıpkı bir su dalgası üzerinde bulunan bir odun parçasının yükarı aşağıya gitmesi gibi.
+
+## Dalgaların Karakteristikleri
+
+Dalgaların karakteristikleri şunlardır:
+
+1. Frekans: Dalganın birim zamanda kaç kez tekrarlandığını gösterir. Birimi Hz (Hertz)'dir. 1 Hz = 1 s$^{-1}$
+2. Periyot: Dalganın bir tam periyotu tamamlaması için geçen süredir. Birimi s (saniye)'dir. Periyod ile frekans ters orantılıdır. Yani frekans = 1 / periyot.
+3. Genlik: Dalganın alabileceği maksimum değeridir.
+4. Dalgaboyu: Dalganın bir tam periyotu boyunca aldığı uzunluktur. Birimi uzunluk (metre)'dir.
+
+Bu nicelikleri grafik üzerinde gösteren python kodunu yazalım [@chatGPT].
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Dalganın karakteristikleri
+frekans = 2  # Hz
+periyot = 1 / frekans  # s
+genlik = 1
+dalga_uzunlugu = 2  # metre
+
+# Zaman aralığı
+t = np.linspace(0, 2*periyot, 50)
+
+# Dalganın formülü
+dalga = genlik * np.sin(2 * np.pi * frekans * t)
+
+# Dalga grafiği
+plt.plot(t, dalga, 'o-', label='Dalga', color='blue')
+
+# Genlik oku
+plt.annotate('', xy=(0.12, genlik), xytext=(0.12, 0),
+             arrowprops=dict(facecolor='red'))
+plt.text(0.08, genlik / 2.8, 'GENLİK', rotation=90, color='red')
+
+# Periyot oku
+plt.annotate('', xy=(0.6, 1), xytext=(0.15, 1),
+             arrowprops=dict(facecolor='green'))
+plt.text(0.32, 0.85, 'PERİYOT', rotation=0, color='green')
+
+# Etiketler ve işaretler
+plt.title('Dalganın Özellikleri')
+plt.xlabel('Zaman (s)')
+plt.ylabel('Genlik')
+
+# Eksen sınırları
+plt.xlim(0, 2*periyot)
+plt.ylim(-1.3, 1.3)
+
+# İzler
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+
+# Grafiği göster
+plt.show()
+```
+
+Yukarıdaki şekilde mavi noktalar ise örneklemdir (sampling).
+
+Örneklem oranı (sampling rate) ise örneklem sıklığını gösterir. Örneklem sıklığını yukarıdaki grafikte noktaların sıklığı olarak görebiliriz.
+
+Diğer karakteristikleri de anlamak için örnek olarak durağan olmayan bir sinüs dalgası ele alalım.
+
+$$
+y(t) = A \sin(\omega t + \phi)
+$$
+
+Burada $A$ genlik, $\omega$ açısal frekans, $\phi$ ise fazdır.
+
+Açısal frekans ise $\omega = 2 \pi f$ şeklinde hesaplanır. Burada $f$ frekansıdır. 
+
+Faz, $\phi$ ise dalganın başlangıç noktasıdır.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Örneklem frekansı (rate)
+sr = 100.0 # Kaç adet nokta olsun?
+# Örneklem aralığı
+ts = 1.0/sr # Noktaların aralığı ne olsun?
+t = np.arange(0,2*np.pi,ts) # 0'dan 2pi'ye kadar ts aralıklarla t oluştur
+# Çizdir
+plt.title("Farklı Frekanslar")
+plt.plot(t, np.cos(2*np.pi*0.2*t), "b", label="sin(2$\pi$0.2t)")
+plt.plot(t, np.cos(2*np.pi*0.4*t), "r", label="sin(2$\pi$0.4t)")
+plt.ylabel("Genlik")
+plt.xlabel("Zaman (s)")
+# X label in terms of pi
+plt.xticks([0, np.pi/2, np.pi, 3*np.pi/2, 2*np.pi],
+              ["0", "$\pi$/2", "$\pi$", "3$\pi$/2", "2$\pi$"])
+plt.legend()
+plt.show()
+plt.close()
+# --------------------
+plt.title("Faz Farkı")
+plt.plot(t, np.cos(2*np.pi*0.2*t), "g", label="sin(2$\pi$0.2t)")
+plt.plot(t, np.cos(2*np.pi*0.2*t+ np.pi/2), "k", label="sin(2$\pi$0.2t + $\pi$/2)")
+plt.ylabel("Genlik")
+plt.xlabel("Zaman (s)")
+# X label in terms of pi
+plt.xticks([0, np.pi/2, np.pi, 3*np.pi/2, 2*np.pi],
+              ["0", "$\pi$/2", "$\pi$", "3$\pi$/2", "2$\pi$"])
+plt.legend()
+plt.show()
+```

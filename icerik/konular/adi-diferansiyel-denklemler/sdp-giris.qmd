@@ -1,0 +1,32 @@
+---
+title: "SDP - Giriş"
+---
+
+## Sınır Değer Problemi
+
+- Farz edelim ki aşağıdaki gibi ikinci dereceden diferansiyel denklemimiz olsun.
+
+$$
+y''(x) = f(x,y,y')
+$$
+
+- Bu denklemdeki $y(x)$ ve $y'(x)$ fonksiyonunun aynı $x$ (ör. $x=0$) noktasındaki değerini biliyorsak bu denklem başlangıç değer problemidir.
+- Bu denklemin $y(x=a)$ ve $y(x=b)$ noktalarındaki değerlerini biliyorsak bu denklem **sınır değer problemidir.**
+- Yukarıda verdiğimiz örneğe iki-noktalı sınır değer problemi de denir (2-point boundary value problem).
+- Birinci dereceden diferansiyel denklem için sınır değer problemi ile başlangıç değer problemi aynıdır, çünkü denklem bir adet koşula sahiptir.
+
+**Örneğin** Kuyudaki bir parçacığın hareket denklemi aşağıdaki gibi yazılır.
+
+$$
+\frac{-h}{4\pi m}\frac{d^{2}}{dx^{2}}\psi(x) = E\psi(x), \qquad \psi(x=-L/2)=0, \qquad \psi(x=L/2)=0 \text{.}
+$$
+
+Birinci türeve ait bir koşul bilmiyoruz. Sadece bulmak istediğimiz fonksiyonun sınır değerlerini biliyoruz.
+
+::: {.callout-warning}
+Başlangıç değer probleminde n. dereceden diferansiyel denklemi çözebilmek için n adet başlangıç koşuluna ihtiyaç vardır. Bu başlangıç koşulları da (n-1). dereceden türeve kadar olmak zorundadır.
+:::
+
+- Sınır değer problemlerini çözmek için birinci türeve ait olan denklemdeki başlangıç koşuluna ihtiyaç vardır. Bu sorunu:
+  1. Başlangıç koşulunu <span style="color:red"> tahmin ederek </span> aşabiliriz. Bu yönteme *atış yöntemi* (shooting method) denir.
+  2. Diferansiyel denklemi <span style="color:red"> örgü noktalarına </span> (mesh points) bölerek çözebiliriz. Bu yönteme *sonlu farklar yöntemi* (finite difference method) denir.

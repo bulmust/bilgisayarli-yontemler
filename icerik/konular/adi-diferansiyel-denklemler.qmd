@@ -4,49 +4,39 @@ title: "Adi Diferansiyel Denklemler"
 
 ## Adi Diferansiyel Denklemler
 
-### Başlangıç Değer Problemleri (BDP)
-
-::: {.callout-note}
-$y'=F(x,y)$ denklemini, $y(a)=\alpha$ başlangıç koşuluyla çözüp $y(x)$'i istenilen aralıkta elde etmek.
-:::
-
-Aşağıdaki gibi formda olan diferansiyel denklemlere birinci dereceden adi diferansiyel denklemler denir.
+Aşağıdaki gibi bir adet diferansiyel denklem veya denklem sistemimiz olsun.
 
 $$
-\frac{dy}{dx}=y'=f(x)
+\begin{equation}
+    \frac{d}{dx}y(x) = F(x,y)
+\end{equation}
 $$
 
-Her iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.
-
-Eğer n. dereceden diferansiyel denklem varsa, yani $y^{(n)}=f(x,y,y',\cdots,y^{(n-1)})$, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.
-  
-Yüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,
-
-$$
-y''=-y \qquad y'(x)=v(x) \qquad v'(x)=-y(x)
-$$
-
-Yukarıdaki denklemin koşulları $y(0)=1$, $v(0)=1$ şeklinde ise başlangıç değer problemi, $y(0)=1$ ve $v(100)=0$ şeklinde farklı ise sınır değer problemi olarak tanımlanır.
-
-Diferansiyel denklemler tek halde bulunabildiği gibi çoklu halde de bulunabilir. Örneğin,
+- Bu denklemi çözmek demek sağ ve sol tarafın integralini almak demektir.
+- Bu denklemi çözmek demek *sayısal* olarak $y(x)$ fonksiyonunu bulmak demektir. Yani istenilen bir x değeri için $y(x)$ fonksiyonunun değerini elde ederiz.
+- $y(x)$ ve $F(x,y)$ birer vektör olabilir. Örneğin $\vec{y}(x) = (y_{1}(x), y_{2}(x))$.
+- İkinci dereceden diferansiyel denklemleri çözmek için denklemi iki adet birinci dereceden diferansiyel denkleme indirgeme yapmamız gerekmektedir.
 
 $$
-\textbf{y}'=\textbf{F}(x,\textbf{y})
+\begin{align*}
+    \frac{d^{2}}{dx^{2}}y(x) =& F(x,y)\\
+    \frac{d}{dx}y(x) =& v(x,y) \qquad \text{ve} \qquad \frac{d}{dx}v(x) = F(x,y)
+\end{align*}
 $$
 
+1. Çözüme başlamak için fonksiyonun başlangıçtaki değerine ihtiyacınız vardır; **Başlangıç Değer Problemi, BDP (IVP)**
+2. Çözümün sınırlarında hangi değerler aldığını bilerek de fonksiyonu elde edebiliriz; **Sınır Değer Problemi, SDP (BVP)**
+
+### Örnek
+
+- Başlangıç değer problemi:
+
 $$
-\begin{bmatrix}
-y_1' \\
-y_2' \\
-\vdots \\
-y_n'
-\end{bmatrix}=
-\begin{bmatrix}
-f_1(x,y_1,y_2,\cdots,y_n) \\
-f_2(x,y_1,y_2,\cdots,y_n) \\
-\vdots \\
-f_n(x,y_1,y_2,\cdots,y_n)
-\end{bmatrix}
+y''(x)= -y, \qquad y(0)=1, \qquad y'(0)=0 \text{.}
 $$
 
-### Sınır Değer Problemleri (SDP)
+- Sınır değer problemi:
+
+$$
+y''(x)= -y, \qquad y(0)=1, \qquad y'(\pi)=0 \text{.}
+$$

@@ -40,12 +40,20 @@ website:
           - section: Adi Diferansiyel Denklemler
             href: icerik/konular/adi-diferansiyel-denklemler.qmd
             contents:
+              - icerik/konular/adi-diferansiyel-denklemler/bdp-giris.qmd
               - icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.qmd
               - icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.qmd
               - icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.qmd
               - icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.qmd
+              - icerik/konular/adi-diferansiyel-denklemler/sdp-giris.qmd
               - icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.qmd
               - icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.qmd
+          - section: Fourier Analizi
+            href: icerik/konular/fourier-analizi.qmd
+            contents:
+              - icerik/konular/fourier-analizi/giris.qmd
+              - icerik/konular/fourier-analizi/fourier-donusumu.qmd
+              - icerik/konular/fourier-analizi/hizli-fourier-donusumu.qmd
 
 format:
   html:

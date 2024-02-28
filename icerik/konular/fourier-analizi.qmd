@@ -1,0 +1,11 @@
+---
+title: "Fourier Analizi"
+---
+
+## Fourier Analizi
+
+Fourier analizi, matematik ve mühendislikte temel bir rol oynayan güçlü bir araçtır. İsmini 18. yüzyıl Fransız matematikçisi Joseph Fourier'den alan bu analiz yöntemi, karmaşık dalgaları basit sinüzoidal bileşenlere ayırarak, doğrusal olmayan sistemlerin incelenmesinde ve sinyal işlemede kullanılır. Başlangıçta ısı iletimi problemlerini çözmek için geliştirilmiş olmasına rağmen, günümüzde birçok disiplinde geniş bir uygulama alanı bulmuştur. Ses, görüntü ve veri işleme gibi alanlarda sıklıkla kullanılan Fourier analizi, bir sinyalin frekans bileşenlerini ayrıştırarak, karmaşıklığı anlamamıza ve sistemleri daha iyi anlamamıza olanak tanır.
+
+Fourier dönüşümü, bir sinyalin zaman alanındaki işaretini frekans alanına dönüştürmek için integral hesabını kullanır. Bu dönüşüm, sürekli zamanlı sinyaller için integral formunda ifade edilirken, aynı prensibi kullanarak, dijital sinyaller için de uygulanabilir.
+
+Fourier analizi, ses işleme, görüntü işleme, telekomünikasyon, sinyal işleme ve birçok fiziksel ve mühendislik uygulamasında yaygın olarak kullanılır. Örneğin, bir ses dosyasının frekans içeriğini analiz ederek, hangi frekanslardaki seslerin baskın olduğunu belirleyebiliriz. Benzer şekilde, bir elektrik devresinin frekans tepkisi incelenebilir veya bir görüntünün frekans bileşenleri üzerinde işlem yapılabilir. Bu şekilde, Fourier analizi, karmaşık sistemlerin anlaşılmasına ve işlenmesine olanak sağlar. [@chatGPT]

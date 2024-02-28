@@ -271,7 +271,7 @@ $$
 \psi(x)=\sqrt{\frac{2}{L}}\sin\left(\frac{n\pi x}{L}\right)
 $$
 
-## Referanslar
+## Kaynaklar
 
 1. Numerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013, **Syf:307**
 2. [Sonlu Farklar Yöntemi, Youtube Videosu](https://www.youtube.com/watch?v=-RK5r65OF-Y)
