@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
 <link href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" rel="next">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" rel="prev">
+<link href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -227,6 +227,12 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Giriş</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Euler Yöntemi</span></a>
   </div>
@@ -251,6 +257,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SDP - Giriş</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">SDP - Atış Yöntemi</span></a>
   </div>
@@ -259,6 +271,35 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Sonlu Farklar Yöntemi</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../icerik/konular/fourier-analizi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier Analizi</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Giriş</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier Dönüşümü</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
       </ul>
@@ -275,11 +316,7 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#adi-diferansiyel-denklemler" id="toc-adi-diferansiyel-denklemler" class="nav-link active" data-scroll-target="#adi-diferansiyel-denklemler">Adi Diferansiyel Denklemler</a></li>
-  <li><a href="#sınır-değer-problemi" id="toc-sınır-değer-problemi" class="nav-link" data-scroll-target="#sınır-değer-problemi">Sınır Değer Problemi</a>
-  <ul class="collapse">
-  <li><a href="#atış-yöntemi" id="toc-atış-yöntemi" class="nav-link" data-scroll-target="#atış-yöntemi">Atış Yöntemi</a></li>
-  </ul></li>
+  <li><a href="#atış-yöntemi" id="toc-atış-yöntemi" class="nav-link active" data-scroll-target="#atış-yöntemi">Atış Yöntemi</a></li>
   <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a>
   <ul class="collapse">
   <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
@@ -288,7 +325,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
   </ul></li>
-  <li><a href="#referanslar" id="toc-referanslar" class="nav-link" data-scroll-target="#referanslar">Referanslar</a></li>
+  <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
@@ -326,85 +363,8 @@ window.Quarto = {
 </header>
 
 
-<section id="adi-diferansiyel-denklemler" class="level2">
-<h2 class="anchored" data-anchor-id="adi-diferansiyel-denklemler">Adi Diferansiyel Denklemler</h2>
-<p>Aşağıdaki gibi bir adet diferansiyel denklem veya denklem sistemimiz olsun.</p>
-<p><span class="math display">\[
-\begin{equation}
-    \frac{d}{dx}y(x) = F(x,y)
-\end{equation}
-\]</span></p>
-<ul>
-<li>Bu denklemi çözmek demek sağ ve sol tarafın integralini almak demektir.</li>
-<li>Bu denklemi çözmek demek <em>sayısal</em> olarak <span class="math inline">\(y(x)\)</span> fonksiyonunu bulmak demektir. Yani istenilen bir x değeri için <span class="math inline">\(y(x)\)</span> fonksiyonunun değerini elde ederiz.</li>
-<li><span class="math inline">\(y(x)\)</span> ve <span class="math inline">\(F(x,y)\)</span> birer vektör olabilir. Örneğin <span class="math inline">\(\vec{y}(x) = (y_{1}(x), y_{2}(x))\)</span>.</li>
-<li>İkinci dereceden diferansiyel denklemleri çözmek için denklemi iki adet birinci dereceden diferansiyel denkleme indirgeme yapmamız gerekmektedir.</li>
-</ul>
-<p><span class="math display">\[
-\begin{align*}
-    \frac{d^{2}}{dx^{2}}y(x) =&amp; F(x,y)\\
-    \frac{d}{dx}y(x) =&amp; v(x,y) \qquad \text{ve} \qquad \frac{d}{dx}v(x) = F(x,y)
-\end{align*}
-\]</span></p>
-<ol type="1">
-<li>Çözüme başlamak için fonksiyonun başlangıçtaki değerine ihtiyacınız vardır; <strong>Başlangıç Değer Problemi, BDP (IVP)</strong></li>
-<li>Çözümün sınırlarında hangi değerler aldığını bilerek de fonksiyonu elde edebiliriz; <strong>Sınır Değer Problemi, SDP (BVP)</strong></li>
-</ol>
-<p><strong>Örneğin</strong></p>
-<ul>
-<li>Başlangıç değer problemi:</li>
-</ul>
-<p><span class="math display">\[
-y''(x)= -y, \qquad y(0)=1, \qquad y'(0)=0 \text{.}
-\]</span></p>
-<ul>
-<li>Sınır değer problemi:</li>
-</ul>
-<p><span class="math display">\[
-y''(x)= -y, \qquad y(0)=1, \qquad y'(\pi)=0 \text{.}
-\]</span></p>
-</section>
-<section id="sınır-değer-problemi" class="level2">
-<h2 class="anchored" data-anchor-id="sınır-değer-problemi">Sınır Değer Problemi</h2>
-<ul>
-<li>Farz edelim ki aşağıdaki gibi ikinci dereceden diferansiyel denklemimiz olsun.</li>
-</ul>
-<p><span class="math display">\[
-y''(x) = f(x,y,y')
-\]</span></p>
-<ul>
-<li>Bu denklemdeki <span class="math inline">\(y(x)\)</span> ve <span class="math inline">\(y'(x)\)</span> fonksiyonunun aynı <span class="math inline">\(x\)</span> (ör. <span class="math inline">\(x=0\)</span>) noktasındaki değerini biliyorsak bu denklem başlangıç değer problemidir.</li>
-<li>Bu denklemin <span class="math inline">\(y(x=a)\)</span> ve <span class="math inline">\(y(x=b)\)</span> noktalarındaki değerlerini biliyorsak bu denklem <strong>sınır değer problemidir.</strong></li>
-<li>Yukarıda verdiğimiz örneğe iki-noktalı sınır değer problemi de denir (2-point boundary value problem).</li>
-<li>Birinci dereceden diferansiyel denklem için sınır değer problemi ile başlangıç değer problemi aynıdır, çünkü denklem bir adet koşula sahiptir.</li>
-</ul>
-<p><strong>Örneğin</strong> Kuyudaki bir parçacığın hareket denklemi aşağıdaki gibi yazılır.</p>
-<p><span class="math display">\[
-\frac{-h}{4\pi m}\frac{d^{2}}{dx^{2}}\psi(x) = E\psi(x), \qquad \psi(x=-L/2)=0, \qquad \psi(x=L/2)=0 \text{.}
-\]</span></p>
-<p>Birinci türeve ait bir koşul bilmiyoruz. Sadece bulmak istediğimiz fonksiyonun sınır değerlerini biliyoruz.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Uyarı
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Başlangıç değer probleminde n.&nbsp;dereceden diferansiyel denklemi çözebilmek için n adet başlangıç koşuluna ihtiyaç vardır. Bu başlangıç koşulları da (n-1). dereceden türeve kadar olmak zorundadır.</p>
-</div>
-</div>
-<ul>
-<li>Sınır değer problemlerini çözmek için birinci türeve ait olan denklemdeki başlangıç koşuluna ihtiyaç vardır. Bu sorunu:
-<ol type="1">
-<li>Başlangıç koşulunu <span style="color:red"> tahmin ederek </span> aşabiliriz. Bu yönteme <em>atış yöntemi</em> (shooting method) denir.</li>
-<li>Diferansiyel denklemi <span style="color:red"> örgü noktalarına </span> (mesh points) bölerek çözebiliriz. Bu yönteme <em>sonlu farklar yöntemi</em> (finite difference method) denir.</li>
-</ol></li>
-</ul>
-<section id="atış-yöntemi" class="level3">
-<h3 class="anchored" data-anchor-id="atış-yöntemi">Atış Yöntemi</h3>
+<section id="atış-yöntemi" class="level2">
+<h2 class="anchored" data-anchor-id="atış-yöntemi">Atış Yöntemi</h2>
 <p>Aşağıdaki denklemi çözelim.</p>
 <p><span class="math display">\[
 y'' = f(x,y,y'), \qquad y(a)=\alpha, \qquad y(b)=\beta \text{.}
@@ -445,7 +405,6 @@ y(b)= \theta(u) \text{.}
 <li>Denklem çözüldü.</li>
 </ol>
 </section>
-</section>
 <section id="alıştırma-1" class="level2">
 <h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h2>
 <p>Aşağıda verilen difarensiyel denklemi atış yöntemi ile çözelim. <span class="math display">\[
@@ -483,7 +442,7 @@ y(t)=-\frac{gt^2}{2} + 40t
 \theta(u) - 50 = 0\text{.}
 \]</span></p>
 <p>O halde <span class="math inline">\(\theta(u)\)</span> fonksiyonu başlangıç değer probleminin çözümüne bağlı. Bunu bir fonksiyon gibi tanımlayıp kökünü bulalım.</p>
-<div id="86511336" class="cell" data-execution_count="1">
+<div id="c9ff4118" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> scipy.integrate <span class="im">as</span> scInteg</span>
@@ -570,8 +529,8 @@ y''(t)=t, \quad y(0)=1, \quad y(3)=9
 </ol>
 </section>
 </section>
-<section id="referanslar" class="level2">
-<h2 class="anchored" data-anchor-id="referanslar">Referanslar</h2>
+<section id="kaynaklar" class="level2">
+<h2 class="anchored" data-anchor-id="kaynaklar">Kaynaklar</h2>
 <ol type="1">
 <li>Numerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013, <strong>Syf:293</strong></li>
 <li>Python Programming and Numerical Methods: A Guide for Engineers and Scientists, Qingkai Kong &amp; Timmy Siauw &amp; Alexandre Bayen, 2020, <a href="https://pythonnumericalmethods.berkeley.edu/notebooks/chapter23.02-The-Shooting-Method.html">chapter23.02-The-Shooting-Method</a></li>
@@ -1134,8 +1093,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="pagination-link" aria-label="BDP - Runge-Kutta Yöntemleri">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">BDP - Runge-Kutta Yöntemleri</span>
+      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="pagination-link" aria-label="SDP - Giriş">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">SDP - Giriş</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

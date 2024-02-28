@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>Bilgisayarlı Yöntemler - BDP - Euler Yöntemi</title>
+<title>Bilgisayarlı Yöntemler - Fourier Dönüşümü</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,8 +85,8 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" rel="next">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" rel="prev">
+<link href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html" rel="next">
+<link href="../../../icerik/konular/fourier-analizi/giris.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -169,7 +169,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html">BDP - Euler Yöntemi</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html">Fourier Dönüşümü</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -253,7 +253,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Euler Yöntemi</span></a>
   </div>
 </li>
@@ -312,7 +312,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Fourier Dönüşümü</span></a>
   </div>
 </li>
@@ -336,29 +336,19 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#başlangıç-değer-problemi---euler-yöntemi" id="toc-başlangıç-değer-problemi---euler-yöntemi" class="nav-link active" data-scroll-target="#başlangıç-değer-problemi---euler-yöntemi">Başlangıç Değer Problemi - Euler Yöntemi</a></li>
-  <li><a href="#hata-analizi" id="toc-hata-analizi" class="nav-link" data-scroll-target="#hata-analizi">Hata Analizi</a></li>
-  <li><a href="#euler-yöntemi-ile-çözümde-hata-analizi" id="toc-euler-yöntemi-ile-çözümde-hata-analizi" class="nav-link" data-scroll-target="#euler-yöntemi-ile-çözümde-hata-analizi">Euler Yöntemi ile Çözümde Hata Analizi</a></li>
-  <li><a href="#euler-yönteminin-geometrik-tasviri" id="toc-euler-yönteminin-geometrik-tasviri" class="nav-link" data-scroll-target="#euler-yönteminin-geometrik-tasviri">Euler Yönteminin Geometrik Tasviri</a></li>
-  <li><a href="#euler-yönteminin-kodlanması" id="toc-euler-yönteminin-kodlanması" class="nav-link" data-scroll-target="#euler-yönteminin-kodlanması">Euler Yönteminin Kodlanması</a></li>
-  <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a>
-  <ul class="collapse">
-  <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
-  </ul></li>
-  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
-  <ul class="collapse">
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
-  </ul></li>
+  <li><a href="#kesikli-fourier-dönüşümü-discrete-fourier-transform-ddt-kfd" id="toc-kesikli-fourier-dönüşümü-discrete-fourier-transform-ddt-kfd" class="nav-link active" data-scroll-target="#kesikli-fourier-dönüşümü-discrete-fourier-transform-ddt-kfd">Kesikli Fourier Dönüşümü (Discrete Fourier Transform, DDT), KFD</a></li>
+  <li><a href="#ters-kesikli-fourier-dönüşümü-inverse-discrete-fourier-transform-idft-tkfd" id="toc-ters-kesikli-fourier-dönüşümü-inverse-discrete-fourier-transform-idft-tkfd" class="nav-link" data-scroll-target="#ters-kesikli-fourier-dönüşümü-inverse-discrete-fourier-transform-idft-tkfd">Ters Kesikli Fourier Dönüşümü, (Inverse Discrete Fourier Transform, IDFT), TKFD</a></li>
+  <li><a href="#kfdnin-limitleri" id="toc-kfdnin-limitleri" class="nav-link" data-scroll-target="#kfdnin-limitleri">KFD’nin Limitleri</a></li>
+  <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/fourier-analizi/fourier-donusumu.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html">BDP - Euler Yöntemi</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html">Fourier Dönüşümü</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">BDP - Euler Yöntemi</h1>
+<h1 class="title">Fourier Dönüşümü</h1>
 </div>
 
 
@@ -387,231 +377,187 @@ window.Quarto = {
 </header>
 
 
-<section id="başlangıç-değer-problemi---euler-yöntemi" class="level2">
-<h2 class="anchored" data-anchor-id="başlangıç-değer-problemi---euler-yöntemi">Başlangıç Değer Problemi - Euler Yöntemi</h2>
+<section id="kesikli-fourier-dönüşümü-discrete-fourier-transform-ddt-kfd" class="level2">
+<h2 class="anchored" data-anchor-id="kesikli-fourier-dönüşümü-discrete-fourier-transform-ddt-kfd">Kesikli Fourier Dönüşümü (Discrete Fourier Transform, DDT), KFD</h2>
+<p>Basit bir dalgada periyot/frekans, genlik faz gibi kavramları anladık. Peki daha karışık dalgaları nasıl analiz edeceğiz?</p>
+<p><span class="math display">\[
+y(t) = \sin(\omega t + \phi) + \cos(2* \omega t + \phi)
+\]</span></p>
+<div id="80761b43" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Örneklem frekansı (rate)</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>sr <span class="op">=</span> <span class="fl">100.0</span> <span class="co"># Kaç adet nokta olsun?</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Örneklem aralığı</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>ts <span class="op">=</span> <span class="fl">1.0</span><span class="op">/</span>sr <span class="co"># Noktaların aralığı ne olsun?</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>t<span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">4</span><span class="op">*</span>np.pi, ts)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>omega<span class="op">=</span> <span class="dv">2</span><span class="op">*</span> np.pi<span class="op">*</span> <span class="fl">0.2</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a>plt.plot(t, np.cos(omega<span class="op">*</span>t)<span class="op">+</span> np.sin(<span class="dv">2</span><span class="op">*</span>omega<span class="op">*</span>t), <span class="st">'b'</span>, label<span class="op">=</span> <span class="st">'$\sin(\omega*t)+ \cos(\omega*t)$'</span>)</span>
+<span id="cb1-11"><a href="#cb1-11"></a>plt.ylabel(<span class="st">"Genlik"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12"></a>plt.xlabel(<span class="st">"Zaman (s)"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13"></a>plt.xticks([<span class="dv">0</span>, np.pi<span class="op">/</span><span class="dv">2</span>, np.pi, <span class="dv">3</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">5</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">3</span><span class="op">*</span>np.pi, <span class="dv">7</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">4</span><span class="op">*</span>np.pi],</span>
+<span id="cb1-14"><a href="#cb1-14"></a>           [<span class="st">"0"</span>, <span class="st">"$\pi$/2"</span>, <span class="st">"$\pi$"</span>, <span class="st">"3$\pi$/2"</span>, <span class="st">"2$\pi$"</span>, <span class="st">"5$\pi$/2"</span>, <span class="st">"3$\pi$"</span>, <span class="st">"7$\pi$/2"</span>, <span class="st">"4$\pi$"</span>])</span>
+<span id="cb1-15"><a href="#cb1-15"></a>plt.legend()</span>
+<span id="cb1-16"><a href="#cb1-16"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="fourier-donusumu_files/figure-html/cell-2-output-1.png" width="600" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Bu şekilde tek bir frekans değeri değeri belirleyemeyiz. Benzer şekilde genlik de gözükmemektedir.</p>
+<p>Bu ve bunun gibi dalgaları analiz etmek için Fourier dönüşümü kullanılır. Fourier dönüşümü, bir dalgayı frekans bileşenlerine ayırır. Kesikli Fourier dönüşümünün formülü aşağıdaki gibidir.</p>
+<p><span class="math display">\[
+X_{k} = \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N}
+\]</span></p>
+<p><span class="math display">\[
+X_{k}= \sum_{n=0}^{N-1} x_{n} \left[ \cos \left( \frac{2 \pi k n}{N} \right) - i \sin \left( \frac{2 \pi k n}{N} \right) \right]
+\]</span></p>
+<p>Burada</p>
 <ul>
-<li>Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.</li>
-<li>Alternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.</li>
-<li>Kabaca türevin tanımını kullanır.</li>
+<li>N: Örnek sayısı</li>
+<li>n: Örnek numarası</li>
+<li>k: Frekans numarası (0, 1, 2, …, N-1)</li>
+<li><span class="math inline">\(x_{n}\)</span>: n.&nbsp;örneğin değeri</li>
+<li>X_{k}: k. frekansın değeri</li>
 </ul>
-<p><span class="math display">\[
-y'(x)= \frac{y(x+h)-y(x)}{h}
-\]</span></p>
-<p><span class="math display">\[
-y(x+h)=y(x)+h\times y'(x)
-\]</span></p>
-<ul>
-<li>Amacımız başlangıç koşulundan itibaren adım adım <span class="math inline">\(y(x)\)</span> fonksiyonunu bulmaktır.</li>
-<li><span class="math inline">\(x\)</span> noktasından <span class="math inline">\(x+h\)</span> noktasına ilerlediğimiz için bu yöntem “ileri adım” yöntemidir.</li>
-</ul>
-</section>
-<section id="hata-analizi" class="level2">
-<h2 class="anchored" data-anchor-id="hata-analizi">Hata Analizi</h2>
-<p>Bir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki <span class="math inline">\(f(x+h)\)</span> fonksiyonunu <span class="math inline">\(f(x)\)</span> etrafında seriye açıyoruz ve <span class="math inline">\(n\)</span>’nci dereceden bir terimden sonra kesiyoruz. <span class="math inline">\(E_{n}\)</span> terimi, kestiğimiz terimden sonraki terimler yani hata terimi olsun.</p>
-<p><span class="math display">\[
-f(x+h)=f(x)+f'(x)h+\frac{f''(x)}{2!}h^2+\cdots+\frac{f^{(n)}(x)}{n!}h^n+E_{n}
-\]</span></p>
-<p>Hata terimi <span class="math inline">\(E_{n}\)</span>’e kesme hatası (truncation error) adı verilir. Bu hatanın en büyük değeri Taylor teoreminden bulunabilir.</p>
-<p><span class="math display">\[
-E_{n}=f^{n+1}(\xi)\frac{h^{n+1}}{(n+1)!}
-\]</span></p>
-<p>Burada <span class="math inline">\(\xi\)</span> <span class="math inline">\(x\)</span> ile <span class="math inline">\(x+h\)</span> arasında bir değerdir. Bu değer ulaşılabilir değilse kesme hatasını belirleyen terim <span class="math inline">\(h\)</span> adım aralığı olacaktır. Yani</p>
-<p><span class="math display">\[
-E_{n}=O(h^{n+1})
-\]</span></p>
-</section>
-<section id="euler-yöntemi-ile-çözümde-hata-analizi" class="level2">
-<h2 class="anchored" data-anchor-id="euler-yöntemi-ile-çözümde-hata-analizi">Euler Yöntemi ile Çözümde Hata Analizi</h2>
-<ul>
-<li>Euler yöntemi kullanılırken her bir adımdaki kesme hatası <span class="math inline">\(O(h^2)\)</span>’dir çünkü ikinci dereceden türev terimlerini içerir. Her <span class="math inline">\(h\)</span> adımda bu hata üst üste binecektir. Yani denklem <span class="math inline">\(n\)</span> adımda çözülüyorsa kesme hatası da <span class="math inline">\(n\)</span> kere tekrarlanacaktır.</li>
-</ul>
-<p><span class="math display">\[
-E_{acc}=nE_{2}=\frac{x_{n}-x_{0}}{h}E_{2}=O(h)
-\]</span></p>
-<p>Euler yöntemi ile diferansiyel denklem çözümünde kesme hata payı <span class="math inline">\(h\)</span> adım aralığı ile orantılı olacaktır.</p>
-</section>
-<section id="euler-yönteminin-geometrik-tasviri" class="level2">
-<h2 class="anchored" data-anchor-id="euler-yönteminin-geometrik-tasviri">Euler Yönteminin Geometrik Tasviri</h2>
-<ul>
-<li>Basitlik için çözmek istediğimiz <span class="math inline">\(y\)</span> fonksiyonu bir değişkene bağlı olsun. Bu fonksiyonun <span class="math inline">\(x\)</span> ve <span class="math inline">\(x+h\)</span> arasındaki değişimi aşağıdaki gibi olur <span class="citation" data-cites="web2024Feb-1">&nbsp;[<a href="#ref-web2024Feb-1" role="doc-biblioref">1</a>]</span>.</li>
-</ul>
-<p><span class="math display">\[
-y(x+h)=y(x)+h\times y'(x)
-\]</span></p>
+<p>Aşağıdaki şekilde birbirinden farklı genliğe ve frekansa sahip 3 dalganın üst üste binmesi ile açığa çıkan şekli görebilirsiniz <span class="citation" data-cites="web2024Feb-7">&nbsp;[<a href="#ref-web2024Feb-7" role="doc-biblioref">1</a>]</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://tutorial.math.lamar.edu/classes/de/EulersMethod_Files/image001.png" class="img-fluid figure-img"></p>
-<figcaption>Euler Yönteminin Geometrik Tasviri</figcaption>
+<p><img src="https://blog.dta.com.tr/wp-content/uploads/2020/03/fourier_donusumu.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-</section>
-<section id="euler-yönteminin-kodlanması" class="level2">
-<h2 class="anchored" data-anchor-id="euler-yönteminin-kodlanması">Euler Yönteminin Kodlanması</h2>
-<p><code>add_coz_euler</code> adlı fonksiyon <a href="../../../moduller/bilYonMod.py">bilYonMod.py</a> modülünde tanımlıdır.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<hr>
+<p>Örneğin elimizde 3 örnekli bir dalga olsun. Yani örneğin sinüs dalgasını 3 adet nokta ile örneklenmiş olsun. Bu noktalardan oluşan dalganın frekans bileşenlerini bulmak için Fourier dönüşümünü kullanabiliriz.</p>
+<p><span class="math display">\[
+X_{k} = \sum_{n=0}^{3} x_{n} e^{-i 2 \pi k n / 10}
+\]</span></p>
+<p><span class="math display">\[
+\begin{align*}
+    X_{0}=&amp; x_{0} e^{-i (2 \pi 0\times0) / 3} + x_{1} e^{-i (2 \pi 0\times1) / 3} + x_{2} e^{-i (2 \pi 0\times2) / 3}\\
+    =&amp; x_{0} e^{0} + x_{1} e^{0} + x_{2} e^{0}\\
+    =&amp; x_{0} + x_{1} + x_{2}\\
+    X_{1}= &amp; x_{0} e^{-i (2 \pi 1\times0) / 3} + x_{1} e^{-i (2 \pi 1\times1) / 3} + x_{2} e^{-i (2 \pi 1\times2) / 3}\\
+    =&amp; x_{0} e^{0} + x_{1} e^{-i 2 \pi / 3} + x_{2} e^{-i 4 \pi / 3}\\
+    =&amp; x_{0} + x_{1} (\cos(2 \pi / 3) - i \sin(2 \pi / 3)) + x_{2} (\cos(4 \pi / 3) - i \sin(4 \pi / 3))\\
+    =&amp; x_{0} + x_{1} (-0.5 - i 0.866) + x_{2} (-0.5 + i 0.866)\\
+    X_{2}= &amp; x_{0} e^{-i (2 \pi 2\times0) / 3} + x_{1} e^{-i (2 \pi 2\times1) / 3} + x_{2} e^{-i (2 \pi 2\times2) / 3}\\
+    =&amp; x_{0} + x_{1} e^{-i 4 \pi / 3} + x_{2} e^{-i 8 \pi / 3}\\
+    =&amp; x_{0} + x_{1} (\cos(4 \pi / 3) - i \sin(4 \pi / 3)) + x_{2} (\cos(8 \pi / 3) - i \sin(8 \pi / 3))\\
+    =&amp; x_{0} + x_{1} (-0.5 + i 0.866) + x_{2} (-0.5 - i 0.866)
+\end{align*}
+\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Not
+Önemli
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>add_coz_euler</code> fonksiyonunu inceleyiniz.</p>
+<ol type="1">
+<li>Her zaman <span class="math inline">\(X_{0}= \sum_{n=0}^{N-1} x_{n}\)</span> şeklinde olacaktır.</li>
+<li><span class="math inline">\(X_{n}\)</span> karmaşık bir sayıdır.</li>
+</ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-caution callout-titled">
+<p>Bir dalganın frekanslarını belirlemek için Fourier dönüşümü kullanacağımızı söylemiştik ancak elde ettiğimiz frekanslar <span class="math inline">\(X_{k}\)</span> karmaşık sayı olarak karşımıza çıktı. Gerçek frekans değerleri için <span class="math inline">\(X_{k}\)</span> değerlerinin modülünü, <span class="math inline">\(|X_{k}|\)</span>, alacağız.</p>
+<p>Sinyalin genliği (<span class="math inline">\(A_{k}\)</span>) ve fazı (<span class="math inline">\(\phi_{k}\)</span>) ise aşağıdaki şekilde hesaplanır.</p>
+<p><span class="math display">\[
+A_{k} = \frac{|X_{k}|}{N}
+\]</span></p>
+<p><span class="math display">\[
+\phi_{k} = \arctan \left( \frac{Im(X_{k})}{Re(X_{k})} \right)
+\]</span></p>
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Dikkat
+Uyarı
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>add_coz_euler(fonk_y_x, xBaslangic, xBitis, yBaslangic, adimSayisi)</code> fonksiyonunu çağırırken denklemin sağ tarafında yer alan ve çözmeniz gereken fonksiyonda önce <strong>y</strong> ardından <strong>x</strong> tanımlanmalıdır. Yani fonksiyon <span class="math inline">\(f(y,x)\)</span> şeklinde yazılmalıdır. Burada <span class="math inline">\(y\)</span> değişkeni <span class="math inline">\(y(x)\)</span> olarak tanımlanır, <span class="math inline">\(x\)</span> ise bağımsız değişkendir.</p>
+<ul>
+<li>Eğer tek sayıda örnek varsa, yani <span class="math inline">\(N\)</span> tek ise, k tane <span class="math inline">\(X\)</span> değerlerinin 1’den <span class="math inline">\((N-1)/2\)</span> kadar olanlar pozitif frekanslı <span class="math inline">\((N+1)/2\)</span>’den <span class="math inline">\(N-1\)</span> kadar olanlar negatif frekanslıdır.</li>
+<li>Eğer çift sayıda örnek varsa, yani <span class="math inline">\(N\)</span> çift ise, k tane <span class="math inline">\(X\)</span> değerlerinin 1’den <span class="math inline">\((N/2)-1\)</span> kadar olanlar pozitif frekanslı <span class="math inline">\((N/2)\)</span>’den <span class="math inline">\(N-1\)</span> kadar olanlar negatif frekanslıdır.</li>
+<li><span class="math inline">\(X_{k}\)</span> değerlerini hesaplarken modülünü aldığımızdan dolayı negatif frekanslı değerlerin modülü pozitif frekanslı değerlerin modülüne eşittir. Bundan dolayı negatif frekanslı değerleri hesaplamaya gerek yoktur. Bu yüzden <span class="math inline">\(X_{k}\)</span> değerlerini hesaplarken sadece pozitif frekanslı değerleri hesaplamak yeterlidir.</li>
+</ul>
 </div>
 </div>
-<p>Aşağıdaki diferansiyel denklemi çözen bir örneği inceleyelim.</p>
-<p><span class="math display">\[
-\frac{d}{dx}y(x) = x, \quad y(0)=1, \quad x=[0, 1], \quad n=10000
-\]</span></p>
-<p>Çözüm aşağıdaki gibi olacaktır.</p>
-<p><span class="math display">\[
-y(x)=1+\frac{x^{2}}{2}
-\]</span></p>
-<div id="8aae0929" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> sys</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># 3 üst dizine çık</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>module_dir <span class="op">=</span> os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), <span class="st">'moduller'</span>)</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># moduller dizinini yol olarak ekle</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>sys.path.append(module_dir)</span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># bilYonMod.py modülünü içe aktar</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="im">import</span> bilYonMod <span class="im">as</span> bym</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co">################################################</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="kw">def</span> fonk_y_x(y, x):</span>
-<span id="cb1-18"><a href="#cb1-18"></a>    <span class="cf">return</span> x</span>
-<span id="cb1-19"><a href="#cb1-19"></a></span>
-<span id="cb1-20"><a href="#cb1-20"></a>x0 <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a>y0 <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a>xSon <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a>n <span class="op">=</span> <span class="dv">10000</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a>xTum, yTum <span class="op">=</span> bym.add_coz_euler(fonk_y_x, x0, xSon, y0, n)</span>
-<span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a>plt.plot(xTum, yTum, <span class="st">'o-'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Euler'</span>)</span>
-<span id="cb1-27"><a href="#cb1-27"></a>plt.plot(xTum, <span class="dv">1</span><span class="op">+</span>(xTum<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Analitik'</span>)</span>
-<span id="cb1-28"><a href="#cb1-28"></a>plt.xlabel(<span class="st">'$x$'</span>)</span>
-<span id="cb1-29"><a href="#cb1-29"></a>plt.ylabel(<span class="st">'$y(x)$'</span>)</span>
-<span id="cb1-30"><a href="#cb1-30"></a>plt.legend()</span>
-<span id="cb1-31"><a href="#cb1-31"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="bdp-euler-yontemi_files/figure-html/cell-2-output-1.png" width="591" height="429" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>Yukarıdaki gibi örnek oranının yarısına <strong>Nyquist frekansı</strong> denir. Yani <span class="math inline">\(N-1\)</span> üzerinden toplam almak yerine <span class="math inline">\(N/2\)</span> üzerinden toplam alırsak Nyquist frekansına ulaşırız.</p>
 </section>
-<section id="alıştırma-1" class="level2">
-<h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h2>
+<section id="ters-kesikli-fourier-dönüşümü-inverse-discrete-fourier-transform-idft-tkfd" class="level2">
+<h2 class="anchored" data-anchor-id="ters-kesikli-fourier-dönüşümü-inverse-discrete-fourier-transform-idft-tkfd">Ters Kesikli Fourier Dönüşümü, (Inverse Discrete Fourier Transform, IDFT), TKFD</h2>
+<p>DFT’nin tersi de yapılabilir. Yani <span class="math inline">\(X_{k}\)</span> değerlerinden <span class="math inline">\(x_{n}\)</span> değerlerini bulabiliriz. Ters DFT formülü aşağıdaki gibidir.</p>
+<p><span class="math display">\[
+x_{n} = \frac{1}{N} \sum_{k=0}^{N-1} X_{k} e^{i 2 \pi k n / N}
+\]</span></p>
+</section>
+<section id="kfdnin-limitleri" class="level2">
+<h2 class="anchored" data-anchor-id="kfdnin-limitleri">KFD’nin Limitleri</h2>
+<p>DFT metodu ile bir sinyalin frekanslarını bulabiliriz ancak büyük bir sinyalde bu işlemi yapmak çok uzun sürebilir.</p>
+<div id="ec564cc0" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">def</span> DFT(y):</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    N <span class="op">=</span> <span class="bu">len</span>(y)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    c <span class="op">=</span> np.zeros(N, <span class="bu">complex</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb2-7"><a href="#cb2-7"></a>        <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb2-8"><a href="#cb2-8"></a>            c[k] <span class="op">+=</span> y[n]<span class="op">*</span>np.exp(<span class="op">-</span><span class="ot">2j</span><span class="op">*</span>np.pi<span class="op">*</span>k<span class="op">*</span>n<span class="op">/</span>N)</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="cf">return</span> c</span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="kw">def</span> gen_sig(sr):</span>
+<span id="cb2-12"><a href="#cb2-12"></a>    <span class="co">"""</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co">    function to generate</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co">    a simple 1D signal with</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co">    different sampling rate</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="co">    """</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>    ts <span class="op">=</span> <span class="fl">1.0</span><span class="op">/</span>sr</span>
+<span id="cb2-18"><a href="#cb2-18"></a>    t <span class="op">=</span> np.arange(<span class="dv">0</span>,<span class="dv">1</span>,ts)</span>
+<span id="cb2-19"><a href="#cb2-19"></a>    freq <span class="op">=</span> <span class="fl">1.</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>    x <span class="op">=</span> <span class="dv">3</span><span class="op">*</span>np.sin(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>freq<span class="op">*</span>t)</span>
+<span id="cb2-21"><a href="#cb2-21"></a>    <span class="cf">return</span> x</span>
+<span id="cb2-22"><a href="#cb2-22"></a></span>
+<span id="cb2-23"><a href="#cb2-23"></a>samplingRate <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="co"># Toplam zamanı hesapla</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>samplingRate<span class="sc">}</span><span class="ss"> örneklem sayısı için geçen süre"</span>)</span>
+<span id="cb2-26"><a href="#cb2-26"></a><span class="op">%</span>timeit DFT(gen_sig(samplingRate))</span>
+<span id="cb2-27"><a href="#cb2-27"></a></span>
+<span id="cb2-28"><a href="#cb2-28"></a>samplingRate <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>samplingRate<span class="sc">}</span><span class="ss"> örneklem sayısı için geçen süre"</span>)</span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="co"># Toplam zamanı hesapla</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a><span class="op">%</span>timeit DFT(gen_sig(sr))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>20 örneklem sayısı için geçen süre
+546 µs ± 1.23 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+200 örneklem sayısı için geçen süre
+13.5 ms ± 15 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
+</div>
+</div>
+<p>Zaman sorunu aşmak için 1965’te Cooley ve Tukey bir algoritma geliştirdiler. Bu algoritma FFT (Fast Fourier Transform) olarak bilinir. FFT algoritması DFT’ye göre daha hızlı çalışır. FFT algoritmasının karmaşıklığı <span class="math inline">\(O(n \log n)\)</span> iken DFT’nin karmaşıklığı <span class="math inline">\(O(n^2)\)</span>’dir.</p>
+</section>
+<section id="kaynaklar" class="level2">
+<h2 class="anchored" data-anchor-id="kaynaklar">Kaynaklar</h2>
 <ol type="1">
-<li>Euler yöntemi ile aşağıdaki diferansiyel denklemi çözün ve analitik çözüm ile karşılaştırın.</li>
+<li>Python Programming and Numerical Methods, Qingkai Kong, 2018</li>
+<li><a href="https://www.ams.org/journals/mcom/1965-19-090/S0025-5718-1965-0178586-1/" class="uri">https://www.ams.org/journals/mcom/1965-19-090/S0025-5718-1965-0178586-1/</a></li>
 </ol>
-<p><span class="math display">\[
-y' + 4y = x^{2}, \quad y(0)=1, \quad x=[0, 0.03], \quad n=10
-\]</span></p>
-<p>Analitik çözüm:</p>
-<p><span class="math display">\[
-y(x)=\frac{31}{32}e^{-4x} + \frac{1}{4}x^{2}- \frac{1}{8}x + \frac{1}{32}
-\]</span></p>
-<section id="çözüm" class="level3">
-<h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="90d5240e" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="im">import</span> sys</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># 3 üst dizine çık</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>module_dir <span class="op">=</span> os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), <span class="st">'moduller'</span>)</span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="co"># moduller dizinini yol olarak ekle</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>sys.path.append(module_dir)</span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># bilYonMod.py modülünü içe aktar</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="im">import</span> bilYonMod <span class="im">as</span> bym</span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="co">################################################</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-17"><a href="#cb2-17"></a></span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="co"># Fonksiyon</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="kw">def</span> fonk_y_x(y, x):</span>
-<span id="cb2-20"><a href="#cb2-20"></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">4</span><span class="op">*</span>y <span class="op">+</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a><span class="co"># Başlangıç koşulları</span></span>
-<span id="cb2-22"><a href="#cb2-22"></a>x0 <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-23"><a href="#cb2-23"></a>y0 <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-24"><a href="#cb2-24"></a>xSon <span class="op">=</span> <span class="fl">0.03</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a>n <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb2-26"><a href="#cb2-26"></a><span class="co"># Çöz, Euler</span></span>
-<span id="cb2-27"><a href="#cb2-27"></a>xTum, yTum <span class="op">=</span> bym.add_coz_euler(fonk_y_x, x0, xSon, y0, n)</span>
-<span id="cb2-28"><a href="#cb2-28"></a><span class="co"># Analitik çözüm</span></span>
-<span id="cb2-29"><a href="#cb2-29"></a>yAnalitik<span class="op">=</span>(<span class="dv">31</span><span class="op">/</span><span class="dv">32</span>)<span class="op">*</span>np.exp(<span class="op">-</span><span class="dv">4</span><span class="op">*</span>xTum) <span class="op">+</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span>(xTum<span class="op">**</span><span class="dv">2</span>) <span class="op">-</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">8</span>)<span class="op">*</span>xTum <span class="op">+</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">32</span>)</span>
-<span id="cb2-30"><a href="#cb2-30"></a><span class="co"># Çizdir</span></span>
-<span id="cb2-31"><a href="#cb2-31"></a>plt.plot(xTum, yTum, <span class="st">'o-'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Euler'</span>)</span>
-<span id="cb2-32"><a href="#cb2-32"></a>plt.plot(xTum, yAnalitik, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Analitik'</span>)</span>
-<span id="cb2-33"><a href="#cb2-33"></a>plt.xlabel(<span class="st">'$x$'</span>)</span>
-<span id="cb2-34"><a href="#cb2-34"></a>plt.ylabel(<span class="st">'$y(x)$'</span>)</span>
-<span id="cb2-35"><a href="#cb2-35"></a>plt.legend()</span>
-<span id="cb2-36"><a href="#cb2-36"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="bdp-euler-yontemi_files/figure-html/cell-3-output-1.png" width="599" height="429" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="problemler" class="level2">
-<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
-<section id="problem-1" class="level3">
-<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
-<ol type="1">
-<li>Basit bir RC devresi ele alalım. Bu devrede voltaj kaynağı olmasın, kondansatör <span class="math inline">\(t=0\)</span> s’de <span class="math inline">\(V_{0}=10\)</span> V gerilime sahip olsun. Devrede <span class="math inline">\(R=220\)</span> k <span class="math inline">\(\Omega\)</span> direnci ve <span class="math inline">\(C=10\)</span> <span class="math inline">\(\mu\)</span> F kondansatörü olsun. Devre bu haldeyken devreyi tamamlayalım. Devrenin voltajı-zaman grafiğini Euler yöntemi kullanarak çiziniz.</li>
-</ol>
-<p><span class="math display">\[
-C\frac{dV}{dt}+\frac{V}{R}=0
-\]</span></p>
-<p>Analitik çözüm: <span class="math inline">\(V(t) = V_{0}e^{-t/RC}\)</span></p>
-</section>
-<section id="problem-2" class="level3">
-<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
-<p>Thoryum-234’ün yarılanma ömrü <span class="math inline">\(\tau=24.1\)</span> gündür. <span class="math inline">\(N_{0}=150\)</span> g saf Thoryum-234 izotopu <span class="math inline">\(100\)</span> gün bekletilmektedir. İçerisinde kalan içerisinde kalan Thoryum-234 miktarı-zaman grafiğini Euler metodu kullanarak çiziniz.</p>
-<p><span class="math display">\[
-\frac{dN}{dt}= -\frac{\ln 2}{\tau}N
-\]</span></p>
-<p>Analitik çözüm: <span class="math inline">\(N(t) = N_{0}e^{-t(\ln 2/\tau)}\)</span></p>
 
 
 
-</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
-<div id="ref-web2024Feb-1" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><em><a href="https://tutorial.math.lamar.edu/classes/de/eulersmethod.aspx"><span>Differential Equations - Euler’s Method</span></a></em>, (2024).</div>
+<div id="ref-web2024Feb-7" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><em><a href="https://blog.dta.com.tr/fourier-donusumu-nedir"><span>Fourier D<span>ö</span>n<span>ü</span><span>ş</span><span>ü</span>m<span>ü</span> Nedir? - Blog - DTA M<span>ü</span>hendislik</span></a></em>, Blog - DTA M<span>ü</span>hendislik (2022).</div>
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1167,13 +1113,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="pagination-link" aria-label="BDP - Giriş">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">BDP - Giriş</span>
+      <a href="../../../icerik/konular/fourier-analizi/giris.html" class="pagination-link" aria-label="Giriş">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Giriş</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="pagination-link" aria-label="BDP - Denklem Sistemleri">
-        <span class="nav-page-text">BDP - Denklem Sistemleri</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html" class="pagination-link" aria-label="Hızlı Fourier Dönüşümü">
+        <span class="nav-page-text">Hızlı Fourier Dönüşümü</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1185,7 +1131,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/fourier-analizi/fourier-donusumu.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>

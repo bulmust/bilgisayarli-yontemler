@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" rel="next">
+<link href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" rel="next">
 <link href="../../icerik/bilYonMod.html" rel="prev">
 <link href="../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
@@ -193,6 +193,12 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Giriş</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Euler Yöntemi</span></a>
   </div>
@@ -217,6 +223,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SDP - Giriş</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Atış Yöntemi</span></a>
   </div>
@@ -225,6 +237,35 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Sonlu Farklar Yöntemi</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../icerik/konular/fourier-analizi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier Analizi</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Giriş</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../icerik/konular/fourier-analizi/fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier Dönüşümü</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
       </ul>
@@ -243,8 +284,7 @@ window.Quarto = {
   <ul>
   <li><a href="#adi-diferansiyel-denklemler" id="toc-adi-diferansiyel-denklemler" class="nav-link active" data-scroll-target="#adi-diferansiyel-denklemler">Adi Diferansiyel Denklemler</a>
   <ul class="collapse">
-  <li><a href="#başlangıç-değer-problemleri-bdp" id="toc-başlangıç-değer-problemleri-bdp" class="nav-link" data-scroll-target="#başlangıç-değer-problemleri-bdp">Başlangıç Değer Problemleri (BDP)</a></li>
-  <li><a href="#sınır-değer-problemleri-sdp" id="toc-sınır-değer-problemleri-sdp" class="nav-link" data-scroll-target="#sınır-değer-problemleri-sdp">Sınır Değer Problemleri (SDP)</a></li>
+  <li><a href="#örnek" id="toc-örnek" class="nav-link" data-scroll-target="#örnek">Örnek</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
@@ -285,53 +325,42 @@ window.Quarto = {
 
 <section id="adi-diferansiyel-denklemler" class="level2">
 <h2 class="anchored" data-anchor-id="adi-diferansiyel-denklemler">Adi Diferansiyel Denklemler</h2>
-<section id="başlangıç-değer-problemleri-bdp" class="level3">
-<h3 class="anchored" data-anchor-id="başlangıç-değer-problemleri-bdp">Başlangıç Değer Problemleri (BDP)</h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Not
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(y'=F(x,y)\)</span> denklemini, <span class="math inline">\(y(a)=\alpha\)</span> başlangıç koşuluyla çözüp <span class="math inline">\(y(x)\)</span>’i istenilen aralıkta elde etmek.</p>
-</div>
-</div>
-<p>Aşağıdaki gibi formda olan diferansiyel denklemlere birinci dereceden adi diferansiyel denklemler denir.</p>
+<p>Aşağıdaki gibi bir adet diferansiyel denklem veya denklem sistemimiz olsun.</p>
 <p><span class="math display">\[
-\frac{dy}{dx}=y'=f(x)
+\begin{equation}
+    \frac{d}{dx}y(x) = F(x,y)
+\end{equation}
 \]</span></p>
-<p>Her iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.</p>
-<p>Eğer n.&nbsp;dereceden diferansiyel denklem varsa, yani <span class="math inline">\(y^{(n)}=f(x,y,y',\cdots,y^{(n-1)})\)</span>, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.</p>
-<p>Yüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,</p>
+<ul>
+<li>Bu denklemi çözmek demek sağ ve sol tarafın integralini almak demektir.</li>
+<li>Bu denklemi çözmek demek <em>sayısal</em> olarak <span class="math inline">\(y(x)\)</span> fonksiyonunu bulmak demektir. Yani istenilen bir x değeri için <span class="math inline">\(y(x)\)</span> fonksiyonunun değerini elde ederiz.</li>
+<li><span class="math inline">\(y(x)\)</span> ve <span class="math inline">\(F(x,y)\)</span> birer vektör olabilir. Örneğin <span class="math inline">\(\vec{y}(x) = (y_{1}(x), y_{2}(x))\)</span>.</li>
+<li>İkinci dereceden diferansiyel denklemleri çözmek için denklemi iki adet birinci dereceden diferansiyel denkleme indirgeme yapmamız gerekmektedir.</li>
+</ul>
 <p><span class="math display">\[
-y''=-y \qquad y'(x)=v(x) \qquad v'(x)=-y(x)
+\begin{align*}
+    \frac{d^{2}}{dx^{2}}y(x) =&amp; F(x,y)\\
+    \frac{d}{dx}y(x) =&amp; v(x,y) \qquad \text{ve} \qquad \frac{d}{dx}v(x) = F(x,y)
+\end{align*}
 \]</span></p>
-<p>Yukarıdaki denklemin koşulları <span class="math inline">\(y(0)=1\)</span>, <span class="math inline">\(v(0)=1\)</span> şeklinde ise başlangıç değer problemi, <span class="math inline">\(y(0)=1\)</span> ve <span class="math inline">\(v(100)=0\)</span> şeklinde farklı ise sınır değer problemi olarak tanımlanır.</p>
-<p>Diferansiyel denklemler tek halde bulunabildiği gibi çoklu halde de bulunabilir. Örneğin,</p>
+<ol type="1">
+<li>Çözüme başlamak için fonksiyonun başlangıçtaki değerine ihtiyacınız vardır; <strong>Başlangıç Değer Problemi, BDP (IVP)</strong></li>
+<li>Çözümün sınırlarında hangi değerler aldığını bilerek de fonksiyonu elde edebiliriz; <strong>Sınır Değer Problemi, SDP (BVP)</strong></li>
+</ol>
+<section id="örnek" class="level3">
+<h3 class="anchored" data-anchor-id="örnek">Örnek</h3>
+<ul>
+<li>Başlangıç değer problemi:</li>
+</ul>
 <p><span class="math display">\[
-\textbf{y}'=\textbf{F}(x,\textbf{y})
+y''(x)= -y, \qquad y(0)=1, \qquad y'(0)=0 \text{.}
 \]</span></p>
+<ul>
+<li>Sınır değer problemi:</li>
+</ul>
 <p><span class="math display">\[
-\begin{bmatrix}
-y_1' \\
-y_2' \\
-\vdots \\
-y_n'
-\end{bmatrix}=
-\begin{bmatrix}
-f_1(x,y_1,y_2,\cdots,y_n) \\
-f_2(x,y_1,y_2,\cdots,y_n) \\
-\vdots \\
-f_n(x,y_1,y_2,\cdots,y_n)
-\end{bmatrix}
+y''(x)= -y, \qquad y(0)=1, \qquad y'(\pi)=0 \text{.}
 \]</span></p>
-</section>
-<section id="sınır-değer-problemleri-sdp" class="level3">
-<h3 class="anchored" data-anchor-id="sınır-değer-problemleri-sdp">Sınır Değer Problemleri (SDP)</h3>
 
 
 </section>
@@ -896,8 +925,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="pagination-link" aria-label="BDP - Euler Yöntemi">
-        <span class="nav-page-text">BDP - Euler Yöntemi</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="pagination-link" aria-label="BDP - Giriş">
+        <span class="nav-page-text">BDP - Giriş</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
