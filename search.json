@@ -22,8 +22,8 @@
     ]
   },
   {
-    "objectID": "icerik/konular/adi-diferansiyel-denklemler.html#başlangıç-değer-problemleri",
-    "href": "icerik/konular/adi-diferansiyel-denklemler.html#başlangıç-değer-problemleri",
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler.html#adi-diferansiyel-denklemler",
+    "href": "icerik/konular/adi-diferansiyel-denklemler.html#adi-diferansiyel-denklemler",
     "title": "Adi Diferansiyel Denklemler",
     "section": "",
     "text": "Not\n\n\n\n\\(y'=F(x,y)\\) denklemini, \\(y(a)=\\alpha\\) başlangıç koşuluyla çözüp \\(y(x)\\)’i istenilen aralıkta elde etmek.\n\n\nAşağıdaki gibi formda olan diferansiyel denklemlere birinci dereceden adi diferansiyel denklemler denir.\n\\[\n\\frac{dy}{dx}=y'=f(x)\n\\]\nHer iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.\nEğer n. dereceden diferansiyel denklem varsa, yani \\(y^{(n)}=f(x,y,y',\\cdots,y^{(n-1)})\\), bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.\nYüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,\n\\[\ny''=-y \\qquad y'(x)=v(x) \\qquad v'(x)=-y(x)\n\\]\nYukarıdaki denklemin koşulları \\(y(0)=1\\), \\(v(0)=1\\) şeklinde ise başlangıç değer problemi, \\(y(0)=1\\) ve \\(v(100)=0\\) şeklinde farklı ise sınır değer problemi olarak tanımlanır.\nDiferansiyel denklemler tek halde bulunabildiği gibi çoklu halde de bulunabilir. Örneğin,\n\\[\n\\textbf{y}'=\\textbf{F}(x,\\textbf{y})\n\\]\n\\[\n\\begin{bmatrix}\ny_1' \\\\\ny_2' \\\\\n\\vdots \\\\\ny_n'\n\\end{bmatrix}=\n\\begin{bmatrix}\nf_1(x,y_1,y_2,\\cdots,y_n) \\\\\nf_2(x,y_1,y_2,\\cdots,y_n) \\\\\n\\vdots \\\\\nf_n(x,y_1,y_2,\\cdots,y_n)\n\\end{bmatrix}\n\\]",
@@ -33,15 +33,219 @@
     ]
   },
   {
-    "objectID": "icerik/konular/adi-diferansiyel-denklemler/ikinci-dereceden-diferansiyel-denklemler.html",
-    "href": "icerik/konular/adi-diferansiyel-denklemler/ikinci-dereceden-diferansiyel-denklemler.html",
-    "title": "İkinci Dereceden Diferansiyel Denklemler",
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html",
+    "title": "BDP - İkinci Dereceden Diferansiyel Denklemler",
     "section": "",
-    "text": "İkinci dereceden diferansiyel denklemleri çözmek için Euler yöntemini iki kere kullanmak gerekir. Örneğin,\n\\[\ny''+4y=0\n\\]\nİlk adımda \\(y''\\) türevi yerine \\(y'(x)=v(x)\\) tanımlaması yapalım bu durumda denklem şu şekilde olur.\n\\[\nv'=-4y\n\\]\nYukarıdaki denklem birinci dereceden bir diferansiyel denklem olduğu için Euler yöntemi ile çözülebilir. Bu denklemi çözdükten sonra \\(y(x)\\) fonksiyonunu bulmak için \\(y'(x)=v(x)\\) denklemini çözmemiz gerekir.\nDikkat edilmesi gereken husus başlangıç koşullarının \\(y(x)\\) ve \\(v(x)\\) fonksiyonları için yazmaktır. İkinci dereden bir diferansiyel denklemin çözümünü bulabilmek için hem \\(y(x_{0})\\) hem de \\(y'(x_{0})=v(x_{0})\\) koşullarına ihtiyaç vardır.\nİkinci dereceden diferansiyel denklemleri çözmek üst üste Euler çözücü fonksiyonu çağırmak yerine denklemi vektörel bir şekilde yazabiliriz. Yukarıdaki örnek için bu işlemi yapalım.\n\\[\n\\begin{bmatrix} y'(x,v) \\\\ v'(x,y) \\end{bmatrix} = \\begin{bmatrix} v(x,y) \\\\ -4y(x) \\end{bmatrix}\n\\]\nBu denklemi \\(y_{0}\\) ve \\(y_{1}\\) için yazalım.\n\\[\n\\begin{bmatrix} y_{0}'(x,y_{0},y_{1}) \\\\ y_{1}'(x,y_{0},y_{1}) \\end{bmatrix} = \\begin{bmatrix} y_{1}(x,,y_{0},y_{1}) \\\\ -4y_{0}(x) \\end{bmatrix}\n\\]\nBizim bulmak istediğimiz fonksiyon \\(y_{0}\\). Bu örneği, \\(y_{0}(0)=1\\), \\(y_{1}(0)=v(0)=1\\) başlangıç koşulları için kod yardımı ile çözelim.\n\nAlıştırma 1\nSürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. \\(g=9.81\\) m/s \\(^{2}\\) sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları \\(v(0)=0\\) ve \\(y(0)=100\\) olsun. Çözümü \\(n=100\\) s adımda yapın. Zaman aralığı \\(t=0\\) s’den \\(t=10\\) s’ye kadar olsun.\n\n\nAlıştırma 2\nBölüm 0.1 verilen denklemi ilk hızı \\(v(0)=10\\) m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.””",
+    "text": "İkinci dereceden diferansiyel denklemleri çözmek için Euler yöntemini iki kere kullanmak gerekir. Örneğin,\n\\[\ny''+4y=0\n\\]\nİlk adımda \\(y''\\) türevi yerine \\(y'(x)=v(x)\\) tanımlaması yapalım bu durumda denklem şu şekilde olur.\n\\[\nv'=-4y\n\\]\nYukarıdaki denklem birinci dereceden bir diferansiyel denklem olduğu için Euler yöntemi ile çözülebilir. Bu denklemi çözdükten sonra \\(y(x)\\) fonksiyonunu bulmak için \\(y'(x)\\equiv v(x)\\) denklemini çözmemiz gerekir.\nDikkat edilmesi gereken husus başlangıç koşullarının \\(y(x)\\) ve \\(v(x)\\) fonksiyonları için yazmaktır. İkinci dereden bir diferansiyel denklemin çözümünü bulabilmek için hem \\(y(x_{0})\\) hem de \\(y'(x_{0})=v(x_{0})\\) koşullarına ihtiyaç vardır.\nİkinci dereceden diferansiyel denklemleri çözmek üst üste Euler çözücü fonksiyonu çağırmak yerine denklemi vektörel bir şekilde yazabiliriz.",
     "crumbs": [
       "**Konular**",
       "Adi Diferansiyel Denklemler",
-      "İkinci Dereceden Diferansiyel Denklemler"
+      "BDP - İkinci Dereceden Diferansiyel Denklemler"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html#bdp---ikinci-dereceden-diferansiyel-denklemler",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html#bdp---ikinci-dereceden-diferansiyel-denklemler",
+    "title": "BDP - İkinci Dereceden Diferansiyel Denklemler",
+    "section": "",
+    "text": "İkinci dereceden diferansiyel denklemleri çözmek için Euler yöntemini iki kere kullanmak gerekir. Örneğin,\n\\[\ny''+4y=0\n\\]\nİlk adımda \\(y''\\) türevi yerine \\(y'(x)=v(x)\\) tanımlaması yapalım bu durumda denklem şu şekilde olur.\n\\[\nv'=-4y\n\\]\nYukarıdaki denklem birinci dereceden bir diferansiyel denklem olduğu için Euler yöntemi ile çözülebilir. Bu denklemi çözdükten sonra \\(y(x)\\) fonksiyonunu bulmak için \\(y'(x)\\equiv v(x)\\) denklemini çözmemiz gerekir.\nDikkat edilmesi gereken husus başlangıç koşullarının \\(y(x)\\) ve \\(v(x)\\) fonksiyonları için yazmaktır. İkinci dereden bir diferansiyel denklemin çözümünü bulabilmek için hem \\(y(x_{0})\\) hem de \\(y'(x_{0})=v(x_{0})\\) koşullarına ihtiyaç vardır.\nİkinci dereceden diferansiyel denklemleri çözmek üst üste Euler çözücü fonksiyonu çağırmak yerine denklemi vektörel bir şekilde yazabiliriz.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - İkinci Dereceden Diferansiyel Denklemler"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html#sec-alistirma1",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html#sec-alistirma1",
+    "title": "BDP - İkinci Dereceden Diferansiyel Denklemler",
+    "section": "Alıştırma 1",
+    "text": "Alıştırma 1\nSürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. \\(g=9.81\\) m/s \\(^{2}\\) sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları \\(v(0)=0\\) ve \\(y(0)=100\\) olsun. Çözümü \\(n=100\\) s adımda yapın. Zaman aralığı \\(t=0\\) s’den \\(t=10\\) s’ye kadar olsun.\n\nÇözüm\n\n################################################\n## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma\nimport os\nimport sys\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nmodule_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')\n# moduller dizinini yol olarak ekle\nsys.path.append(module_dir)\n# bilYonMod.py modülünü içe aktar\nimport bilYonMod as bym\n################################################\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Global değişkenler\ng=9.81\n# Denklemin sağ tarafı\ndef F(yVek, x):\n    # F=m*a\n    # F=m*y''(t)\n    # -g=y''(t)\n    # y'(t)=v(t)\n    # v'(t)=-g\n    return np.array([yVek[1], -g])\n# Başlangıç koşulları\nx0=0\nyVek=np.array([100, 0])\nxStop=5\nn=100\n# Çöz\nxTum, yVekTum = bym.add_coz_euler_sistem(F, x0, xStop, yVek, n)\n# Analitik çözüm\n# y(t) = y0 + v0*t - (1/2)*g*t^2\n# v(t) = v0 - g*t\nyAnalitik= yVek[0] + yVek[1]*xTum - (1/2)*g*xTum**2\nvAnalitik= yVek[1] - g*xTum\n# Çiz\nfig,axs=plt.subplots(1,2)\n# Soldaki grafik\naxs[0].plot(xTum, yVekTum[0,:], 'o-', color='r', label='Euler $y(t)$')\naxs[0].plot(xTum, yAnalitik, 'k', label='Analitik $y(t)$')\naxs[0].set_ylabel('$y(t)$')\naxs[0].legend()\n# Sağdaki grafik\naxs[1].plot(xTum, yVekTum[1,:], 'o-', color='r', label='Euler $v(t)$')\naxs[1].plot(xTum, vAnalitik, 'k', label='Analitik $v(t)$')\naxs[1].set_ylabel('$v(t)$')\naxs[1].set_xlabel('$t$')\naxs[1].legend()\n# Sıkıştır\nplt.tight_layout()\n# Göster\nplt.show()",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - İkinci Dereceden Diferansiyel Denklemler"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html#problemler",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html#problemler",
+    "title": "BDP - İkinci Dereceden Diferansiyel Denklemler",
+    "section": "Problemler",
+    "text": "Problemler\n\nProblem 1\nBölüm 2 verilen denklemi ilk hızı \\(v(0)=10\\) m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.\n\n\nProblem 2\nYatay düzlemde \\(k=100\\) N/m sabitine sahip \\(m=1\\) kg kütleli yay olsun. Bu cisme denge noktasından \\(x_{0}=0.1\\) m sıkıştırılarak harekete başlatılıyor. Cisim bırakıldığı anda hızı \\(v_{0}=0\\) m/s. Bu cismin hareket denklemini \\(t=0-5\\) aralığında Euler yöntemiyle çözünüz.\n\\[\n-kx=m\\frac{d^{2}x}{dt^{2}}\n\\]\nAnalitik çözüm: \\(x(t) = A\\cos(\\sqrt{k/m}x)+B\\sin(\\sqrt{k/m}x)\\)\n\n\nProblem 3\nBölüm 3.2 bölümündeki soruyu \\(F_{sürtünme}= -bv\\) sürtünme kuvveti varlığında çözünüz. Burada \\(b=1\\) Ns/m sabit ve \\(v\\) cismin hızıdır.\n\\[\n-b\\frac{dx}{dt}-kx=m\\frac{d^{2}x}{dt^{2}}\n\\]\nAnalitik çözüm: \\(x(t) = Ae^{-\\sigma t}e^{i\\omega t}+ Be^{-\\sigma t}e^{-i \\omega t}\\). Burada frekans $= $ ve genliği belirleyen terim \\(\\sigma=b/2m\\)  [1].\n\n\nProblem 4\nDüşey düzlemde \\(m=1\\) kg kütleli bir cisim salınsın. Bu cisim denge noktasından \\(\\theta_{0}=\\pi/9\\) rad açı ile harekete başlıyor. Cisim bırakıldığı anda açısal hızı \\(\\omega_{0}=\\) rad/s. Bu cismin hareket denklemini \\(t=0-10\\) arasında Euler yöntemiyle çözünüz. En uygun sonuç için \\(n=10000\\) adım alınız. (\\(g=9.81\\))\n\\[\n\\frac{d^{2}\\theta}{dt^{2}}=-\\frac{g}{l}\\sin \\theta\n\\]\nAnalitik çözüm: \\(x(t) = A\\cos(\\sqrt{g/l}x)+B\\sin(\\sqrt{g/l}x)\\)\n\n\nProblem 5\nBölüm 3.4 bölümündeki problemi \\(\\theta_{0}=\\pi/2\\) başlangıç koşulu için tekrar çalıştırınız. \\(\\sin \\theta \\approx \\theta\\) yaklaşıklığı artık geçerli olmadığı için analitik çözümün hatalı olduğunu unutmayınız.\n\n\nProblem 6\nİki cisim problemini (baryosentrik yani merkezdeki cisim hareket etmesin) Euler yöntemiyle çözünüz. Burada \\(\\mu=3.98\\times 10^{5}\\) km \\(^{3}\\)/s ^{2}, Dünya’nın kütleçekim parametresi (\\(G\\times M\\)), \\(x_{0}=-2500\\) km, \\(y_{0}=-5500\\) km, \\(v_{x0}=7.5\\) km/s, \\(v_{y0}=0.5\\) km/s olarak alın. Aşağıdaki denklemleri \\(t=0-100000\\) s arasında çözün. \\(y-x\\) grafiği çizin.\n\\[\n\\frac{d^{2}x}{dt^{2}}=-\\frac{\\mu}{(x^{2}+y^{2})^{3/2}}x\n\\]\n\\[\n\\frac{d^{2}y}{dt^{2}}=-\\frac{\\mu}{(x^{2}+y^{2})^{3/2}}y\n\\]",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - İkinci Dereceden Diferansiyel Denklemler"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html",
+    "title": "BDP - Euler Yöntemi",
+    "section": "",
+    "text": "Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.\nAlternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.\nKabaca türevin tanımını kullanır.\n\n\\[\ny'(x)= \\frac{y(x+h)-y(x)}{h}\n\\]\n\\[\ny(x+h)=y(x)+h\\times y'(x)\n\\]\n\nAmacımız başlangıç koşulundan itibaren adım adım \\(y(x)\\) fonksiyonunu bulmaktır.\n\\(x\\) noktasından \\(x+h\\) noktasına ilerlediğimiz için bu yöntem “ileri adım” yöntemidir.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Euler Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html#başlangıç-değer-problemi---euler-yöntemi",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html#başlangıç-değer-problemi---euler-yöntemi",
+    "title": "BDP - Euler Yöntemi",
+    "section": "",
+    "text": "Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.\nAlternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.\nKabaca türevin tanımını kullanır.\n\n\\[\ny'(x)= \\frac{y(x+h)-y(x)}{h}\n\\]\n\\[\ny(x+h)=y(x)+h\\times y'(x)\n\\]\n\nAmacımız başlangıç koşulundan itibaren adım adım \\(y(x)\\) fonksiyonunu bulmaktır.\n\\(x\\) noktasından \\(x+h\\) noktasına ilerlediğimiz için bu yöntem “ileri adım” yöntemidir.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Euler Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html#hata-analizi",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html#hata-analizi",
+    "title": "BDP - Euler Yöntemi",
+    "section": "Hata Analizi",
+    "text": "Hata Analizi\nBir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki \\(f(x+h)\\) fonksiyonunu \\(f(x)\\) etrafında seriye açıyoruz ve \\(n\\)’nci dereceden bir terimden sonra kesiyoruz. \\(E_{n}\\) terimi, kestiğimiz terimden sonraki terimler yani hata terimi olsun.\n\\[\nf(x+h)=f(x)+f'(x)h+\\frac{f''(x)}{2!}h^2+\\cdots+\\frac{f^{(n)}(x)}{n!}h^n+E_{n}\n\\]\nHata terimi \\(E_{n}\\)’e kesme hatası (truncation error) adı verilir. Bu hatanın en büyük değeri Taylor teoreminden bulunabilir.\n\\[\nE_{n}=f^{n+1}(\\xi)\\frac{h^{n+1}}{(n+1)!}\n\\]\nBurada \\(\\xi\\) \\(x\\) ile \\(x+h\\) arasında bir değerdir. Bu değer ulaşılabilir değilse kesme hatasını belirleyen terim \\(h\\) adım aralığı olacaktır. Yani\n\\[\nE_{n}=O(h^{n+1})\n\\]",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Euler Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html#euler-yöntemi-ile-çözümde-hata-analizi",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html#euler-yöntemi-ile-çözümde-hata-analizi",
+    "title": "BDP - Euler Yöntemi",
+    "section": "Euler Yöntemi ile Çözümde Hata Analizi",
+    "text": "Euler Yöntemi ile Çözümde Hata Analizi\n\nEuler yöntemi kullanılırken her bir adımdaki kesme hatası \\(O(h^2)\\)’dir çünkü ikinci dereceden türev terimlerini içerir. Her \\(h\\) adımda bu hata üst üste binecektir. Yani denklem \\(n\\) adımda çözülüyorsa kesme hatası da \\(n\\) kere tekrarlanacaktır.\n\n\\[\nE_{acc}=nE_{2}=\\frac{x_{n}-x_{0}}{h}E_{2}=O(h)\n\\]\nEuler yöntemi ile diferansiyel denklem çözümünde kesme hata payı \\(h\\) adım aralığı ile orantılı olacaktır.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Euler Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html#euler-yönteminin-geometrik-tasviri",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html#euler-yönteminin-geometrik-tasviri",
+    "title": "BDP - Euler Yöntemi",
+    "section": "Euler Yönteminin Geometrik Tasviri",
+    "text": "Euler Yönteminin Geometrik Tasviri\n\nBasitlik için çözmek istediğimiz \\(y\\) fonksiyonu bir değişkene bağlı olsun. Bu fonksiyonun \\(x\\) ve \\(x+h\\) arasındaki değişimi aşağıdaki gibi olur  [1].\n\n\\[\ny(x+h)=y(x)+h\\times y'(x)\n\\]\n\n\n\nEuler Yönteminin Geometrik Tasviri",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Euler Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html#euler-yönteminin-kodlanması",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html#euler-yönteminin-kodlanması",
+    "title": "BDP - Euler Yöntemi",
+    "section": "Euler Yönteminin Kodlanması",
+    "text": "Euler Yönteminin Kodlanması\nadd_coz_euler adlı fonksiyon bilYonMod.py modülünde tanımlıdır.\n\n\n\n\n\n\nNot\n\n\n\nadd_coz_euler fonksiyonunu inceleyiniz.\n\n\n\n\n\n\n\n\nDikkat\n\n\n\nadd_coz_euler(fonk_y_x, xBaslangic, xBitis, yBaslangic, adimSayisi) fonksiyonunu çağırırken denklemin sağ tarafında yer alan ve çözmeniz gereken fonksiyonda önce y ardından x tanımlanmalıdır. Yani fonksiyon \\(f(y,x)\\) şeklinde yazılmalıdır. Burada \\(y\\) değişkeni \\(y(x)\\) olarak tanımlanır, \\(x\\) ise bağımsız değişkendir.\n\n\nAşağıdaki diferansiyel denklemi çözen bir örneği inceleyelim.\n\\[\n\\frac{d}{dx}y(x) = x, \\quad y(0)=1, \\quad x=[0, 1], \\quad n=10000\n\\]\nÇözüm aşağıdaki gibi olacaktır.\n\\[\ny(x)=1+\\frac{x^{2}}{2}\n\\]\n\n################################################\n## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma\nimport os\nimport sys\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nmodule_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')\n# moduller dizinini yol olarak ekle\nsys.path.append(module_dir)\n# bilYonMod.py modülünü içe aktar\nimport bilYonMod as bym\n################################################\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef fonk_y_x(y, x):\n    return x\n\nx0 = 0\ny0 = 1\nxSon = 1\nn = 10000\nxTum, yTum = bym.add_coz_euler(fonk_y_x, x0, xSon, y0, n)\n\nplt.plot(xTum, yTum, 'o-', color='r', label='Euler')\nplt.plot(xTum, 1+(xTum**2)/2, 'k', label='Analitik')\nplt.xlabel('$x$')\nplt.ylabel('$y(x)$')\nplt.legend()\nplt.show()",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Euler Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html#alıştırma-1",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html#alıştırma-1",
+    "title": "BDP - Euler Yöntemi",
+    "section": "Alıştırma 1",
+    "text": "Alıştırma 1\n\nEuler yöntemi ile aşağıdaki diferansiyel denklemi çözün ve analitik çözüm ile karşılaştırın.\n\n\\[\ny' + 4y = x^{2}, \\quad y(0)=1, \\quad x=[0, 0.03], \\quad n=10\n\\]\nAnalitik çözüm:\n\\[\ny(x)=\\frac{31}{32}e^{-4x} + \\frac{1}{4}x^{2}- \\frac{1}{8}x + \\frac{1}{32}\n\\]\n\nÇözüm\n\n################################################\n## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma\nimport os\nimport sys\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nmodule_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')\n# moduller dizinini yol olarak ekle\nsys.path.append(module_dir)\n# bilYonMod.py modülünü içe aktar\nimport bilYonMod as bym\n################################################\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Fonksiyon\ndef fonk_y_x(y, x):\n    return -4*y + x**2\n# Başlangıç koşulları\nx0 = 0\ny0 = 1\nxSon = 0.03\nn = 10\n# Çöz, Euler\nxTum, yTum = bym.add_coz_euler(fonk_y_x, x0, xSon, y0, n)\n# Analitik çözüm\nyAnalitik=(31/32)*np.exp(-4*xTum) + (1/4)*(xTum**2) - (1/8)*xTum + (1/32)\n# Çizdir\nplt.plot(xTum, yTum, 'o-', color='r', label='Euler')\nplt.plot(xTum, yAnalitik, 'k', label='Analitik')\nplt.xlabel('$x$')\nplt.ylabel('$y(x)$')\nplt.legend()\nplt.show()",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Euler Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html#problemler",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html#problemler",
+    "title": "BDP - Euler Yöntemi",
+    "section": "Problemler",
+    "text": "Problemler\n\nProblem 1\n\nBasit bir RC devresi ele alalım. Bu devrede voltaj kaynağı olmasın, kondansatör \\(t=0\\) s’de \\(V_{0}=10\\) V gerilime sahip olsun. Devrede \\(R=220\\) k \\(\\Omega\\) direnci ve \\(C=10\\) \\(\\mu\\) F kondansatörü olsun. Devre bu haldeyken devreyi tamamlayalım. Devrenin voltajı-zaman grafiğini Euler yöntemi kullanarak çiziniz.\n\n\\[\nC\\frac{dV}{dt}+\\frac{V}{R}=0\n\\]\nAnalitik çözüm: \\(V(t) = V_{0}e^{-t/RC}\\)\n\n\nProblem 2\nThoryum-234’ün yarılanma ömrü \\(\\tau=24.1\\) gündür. \\(N_{0}=150\\) g saf Thoryum-234 izotopu \\(100\\) gün bekletilmektedir. İçerisinde kalan içerisinde kalan Thoryum-234 miktarı-zaman grafiğini Euler metodu kullanarak çiziniz.\n\\[\n\\frac{dN}{dt}= -\\frac{\\ln 2}{\\tau}N\n\\]\nAnalitik çözüm: \\(N(t) = N_{0}e^{-t(\\ln 2/\\tau)}\\)",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Euler Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html",
+    "title": "SDP - Atış Yöntemi",
+    "section": "",
+    "text": "Aşağıdaki gibi bir adet diferansiyel denklem veya denklem sistemimiz olsun.\n\\[\n\\begin{equation}\n    \\frac{d}{dx}y(x) = F(x,y)\n\\end{equation}\n\\]\n\nBu denklemi çözmek demek sağ ve sol tarafın integralini almak demektir.\nBu denklemi çözmek demek sayısal olarak \\(y(x)\\) fonksiyonunu bulmak demektir. Yani istenilen bir x değeri için \\(y(x)\\) fonksiyonunun değerini elde ederiz.\n\\(y(x)\\) ve \\(F(x,y)\\) birer vektör olabilir. Örneğin \\(\\vec{y}(x) = (y_{1}(x), y_{2}(x))\\).\nİkinci dereceden diferansiyel denklemleri çözmek için denklemi iki adet birinci dereceden diferansiyel denkleme indirgeme yapmamız gerekmektedir.\n\n\\[\n\\begin{align*}\n    \\frac{d^{2}}{dx^{2}}y(x) =& F(x,y)\\\\\n    \\frac{d}{dx}y(x) =& v(x,y) \\qquad \\text{ve} \\qquad \\frac{d}{dx}v(x) = F(x,y)\n\\end{align*}\n\\]\n\nÇözüme başlamak için fonksiyonun başlangıçtaki değerine ihtiyacınız vardır; Başlangıç Değer Problemi, BDP (IVP)\nÇözümün sınırlarında hangi değerler aldığını bilerek de fonksiyonu elde edebiliriz; Sınır Değer Problemi, SDP (BVP)\n\nÖrneğin\n\nBaşlangıç değer problemi:\n\n\\[\ny''(x)= -y, \\qquad y(0)=1, \\qquad y'(0)=0 \\text{.}\n\\]\n\nSınır değer problemi:\n\n\\[\ny''(x)= -y, \\qquad y(0)=1, \\qquad y'(\\pi)=0 \\text{.}\n\\]",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "SDP - Atış Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html#adi-diferansiyel-denklemler",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html#adi-diferansiyel-denklemler",
+    "title": "SDP - Atış Yöntemi",
+    "section": "",
+    "text": "Aşağıdaki gibi bir adet diferansiyel denklem veya denklem sistemimiz olsun.\n\\[\n\\begin{equation}\n    \\frac{d}{dx}y(x) = F(x,y)\n\\end{equation}\n\\]\n\nBu denklemi çözmek demek sağ ve sol tarafın integralini almak demektir.\nBu denklemi çözmek demek sayısal olarak \\(y(x)\\) fonksiyonunu bulmak demektir. Yani istenilen bir x değeri için \\(y(x)\\) fonksiyonunun değerini elde ederiz.\n\\(y(x)\\) ve \\(F(x,y)\\) birer vektör olabilir. Örneğin \\(\\vec{y}(x) = (y_{1}(x), y_{2}(x))\\).\nİkinci dereceden diferansiyel denklemleri çözmek için denklemi iki adet birinci dereceden diferansiyel denkleme indirgeme yapmamız gerekmektedir.\n\n\\[\n\\begin{align*}\n    \\frac{d^{2}}{dx^{2}}y(x) =& F(x,y)\\\\\n    \\frac{d}{dx}y(x) =& v(x,y) \\qquad \\text{ve} \\qquad \\frac{d}{dx}v(x) = F(x,y)\n\\end{align*}\n\\]\n\nÇözüme başlamak için fonksiyonun başlangıçtaki değerine ihtiyacınız vardır; Başlangıç Değer Problemi, BDP (IVP)\nÇözümün sınırlarında hangi değerler aldığını bilerek de fonksiyonu elde edebiliriz; Sınır Değer Problemi, SDP (BVP)\n\nÖrneğin\n\nBaşlangıç değer problemi:\n\n\\[\ny''(x)= -y, \\qquad y(0)=1, \\qquad y'(0)=0 \\text{.}\n\\]\n\nSınır değer problemi:\n\n\\[\ny''(x)= -y, \\qquad y(0)=1, \\qquad y'(\\pi)=0 \\text{.}\n\\]",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "SDP - Atış Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html#sınır-değer-problemi",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html#sınır-değer-problemi",
+    "title": "SDP - Atış Yöntemi",
+    "section": "Sınır Değer Problemi",
+    "text": "Sınır Değer Problemi\n\nFarz edelim ki aşağıdaki gibi ikinci dereceden diferansiyel denklemimiz olsun.\n\n\\[\ny''(x) = f(x,y,y')\n\\]\n\nBu denklemdeki \\(y(x)\\) ve \\(y'(x)\\) fonksiyonunun aynı \\(x\\) (ör. \\(x=0\\)) noktasındaki değerini biliyorsak bu denklem başlangıç değer problemidir.\nBu denklemin \\(y(x=a)\\) ve \\(y(x=b)\\) noktalarındaki değerlerini biliyorsak bu denklem sınır değer problemidir.\nYukarıda verdiğimiz örneğe iki-noktalı sınır değer problemi de denir (2-point boundary value problem).\nBirinci dereceden diferansiyel denklem için sınır değer problemi ile başlangıç değer problemi aynıdır, çünkü denklem bir adet koşula sahiptir.\n\nÖrneğin Kuyudaki bir parçacığın hareket denklemi aşağıdaki gibi yazılır.\n\\[\n\\frac{-h}{4\\pi m}\\frac{d^{2}}{dx^{2}}\\psi(x) = E\\psi(x), \\qquad \\psi(x=-L/2)=0, \\qquad \\psi(x=L/2)=0 \\text{.}\n\\]\nBirinci türeve ait bir koşul bilmiyoruz. Sadece bulmak istediğimiz fonksiyonun sınır değerlerini biliyoruz.\n\n\n\n\n\n\nUyarı\n\n\n\nBaşlangıç değer probleminde n. dereceden diferansiyel denklemi çözebilmek için n adet başlangıç koşuluna ihtiyaç vardır. Bu başlangıç koşulları da (n-1). dereceden türeve kadar olmak zorundadır.\n\n\n\nSınır değer problemlerini çözmek için birinci türeve ait olan denklemdeki başlangıç koşuluna ihtiyaç vardır. Bu sorunu:\n\nBaşlangıç koşulunu  tahmin ederek  aşabiliriz. Bu yönteme atış yöntemi (shooting method) denir.\nDiferansiyel denklemi  örgü noktalarına  (mesh points) bölerek çözebiliriz. Bu yönteme sonlu farklar yöntemi (finite difference method) denir.\n\n\n\nAtış Yöntemi\nAşağıdaki denklemi çözelim.\n\\[\ny'' = f(x,y,y'), \\qquad y(a)=\\alpha, \\qquad y(b)=\\beta \\text{.}\n\\]\n\nBu denklemi başlangıç değer problemine çevirmeye çalışalım.\n\n\\[\ny'' = f(x,y,y'), \\qquad y(a)=\\alpha, \\qquad y'(a)=u \\text{.}\n\\]\n\n\\(u\\) nedir? Tahmin edeceğiz. Buradan dif. denklemi tıpkı başlangıç değer problemi gibi \\(a\\)’dan \\(b\\)’ye kadar çözeceğiz.\nBulduğumuz çözümün son noktasındaki değerde yani \\(y_{cozum}(b)\\), \\(\\beta\\)’yu bulana kadar bu işleme devam edeceğiz.\nSistematik bir tahmin yürütme mekanizması kurmamız lazım. Bunun için \\(y(b)\\), \\(u\\)’nun bir fonksiyonu olsun tanımlaması yapalım.\n\n\\[\ny(b)= \\theta(u) \\text{.}\n\\]\nBuradan \\(u\\) değerini bulmak için yukarıda verilen denklemin kökünü bulmamız lazım.\n\\[\n\\theta(u)- \\beta \\equiv r(u) = 0 \\text{.}\n\\]\nBuradaki \\(r(u)\\) fonksiyonuna artık fonksiyon (residual function) denir. Bu fonksiyonun kökü \\(u\\) değeridir. \\(u\\) değerini biliyorsak sınır değer probleminden çevirdiğimiz başlangıç değer problemini çözebiliriz.\n\nArtık fonksiyonunun kökü \\(u\\) değerini verecek. Kök bulmak için Ridder’in yöntemi kullanabiliriz. (Bisection veya Newton-Raphson yöntemleri değil.)\n\nÇözüme giden adımları tekrar yazalım.\n\nİkinci dereceden diferansiyel denklemimiz var. \\(y''=f(x,y,y')\\).\nÇözüm kümesinin sınır değerlerini biliyoruz. \\(y(a)=\\alpha\\), \\(y(b)=\\beta\\).\nBizim çözebildiğimiz denklem tipinde başlangıç koşulları \\(y(a)=\\alpha\\) ve \\(y'(a)=u\\) şeklinde olmalı.\n\\(u\\) değerini tahmin edelim.\nTahmin ettiğimiz \\(u\\) değerini kullanarak \\(y''=f(x,y,y')\\) denklemini \\(b\\) noktasına kadar çözelim.\nElde ettiğimiz çözümün \\(b\\)’deki değeri \\(y(b)=\\beta\\) değerini veriyor mu? Eğer vermiyorsa \\(u\\) değerini değiştirerek tekrar deneyelim.\n\\(u\\)’nun bu değişimi sanki bir fonksiyon gibi olsun. Yukarıda bahsettiğimiz \\(\\theta(u)\\) fonksiyonu budur.\n\\(\\theta(u)\\) fonksiyonu \\(\\beta\\)’ya eşit olursa \\(u\\) değerini bulduk demektir. Yani \\(\\theta(u)- \\beta = 0\\) denkleminin kökünü bulmaya çalışıyoruz.\n\\(y(b)=\\beta\\) değerine yeteri kadar yaklaştı ise \\(u\\) değerini yani başlangıç koşulunu yani \\(y(x)\\) fonksiyonunu bulduk demektir.\nDenklem çözüldü.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "SDP - Atış Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html#alıştırma-1",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html#alıştırma-1",
+    "title": "SDP - Atış Yöntemi",
+    "section": "Alıştırma 1",
+    "text": "Alıştırma 1\nAşağıda verilen difarensiyel denklemi atış yöntemi ile çözelim. \\[\ny''(t) = -g, \\qquad y(0)=0, \\qquad y(5)=50 \\text{.}\n\\]\n\nÇözüm\n\nÇözüm adımlarından dördüncü olan ile başlayalım. \\(u\\) değerini tahmin edelim. \\(u=25\\) olsun. Bu değerle denklemi çözelim. Çözeceğimiz denklem aşağıdaki gibi olacak.\n\n\\[\ny''(t) = -g, \\qquad y(0)=0, \\qquad y'(5)=25 \\text{.}\n\\]\nBu denklemin çözümü\n\\[\ny'(t)= -gt + C_{1} \\text{,} \\qquad y'(5)=25 \\text{.}\n\\]\n\\[\ny'(t)= -gt + 25 \\text{,} \\qquad y(x)=-\\frac{gt^2}{2} + 25t + C_{2} \\text{.}\n\\]\n\\[\ny(t)=-\\frac{gt^2}{2} + 25t\n\\]\nŞimdi tahminimiz doğru mu deneyelim.\n\\[\ny(t=5)= -\\frac{10\\times 25}{2} + 25\\times 5 = 0 \\ne 50 \\text{.}\n\\]\nYanlış! Farklı bir \\(u\\) değeri almamız gerekecek. Aynı işlemi \\(u=40\\) ile tekrarlayalım. Sonuç:\n\\[\ny(t)=-\\frac{gt^2}{2} + 40t\n\\]\nOlacak denersek eğer \\(y(5)=75\\) olacak ve yanlış olacak.\nTeker teker denemek yerine \\(u\\) değeri sanki bir fonksiyonmuş gibi davranalım.\n\\[\n\\theta(u) - 50 = 0\\text{.}\n\\]\nO halde \\(\\theta(u)\\) fonksiyonu başlangıç değer probleminin çözümüne bağlı. Bunu bir fonksiyon gibi tanımlayıp kökünü bulalım.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport scipy.integrate as scInteg\nimport scipy.optimize as scOpt\n\n# Diff. Denk:\n# y'' = -10 , y(0)=0 , y(5)=50\n\n# f(x,y,y') = -10\n# y' = v   =&gt; f1= v\n# v' = -10 =&gt; f2= -10\n\n# Fonksiyon:\ndef fonk_SDP(t, y):\n    # y[0]= y\n    # y[1]= v\n    return np.array([y[1], -10])\n\n# Başlangıç Koşulları:\nt0=0.\ntStop=5.\ny0= 0.     # y(0) = 0\nyStop= 50. # y(5) = 50\n# v(0) = u (Bilmiyoruz)\n\n# Hangi Aralıkta Çözeceğiz: t0'dan tStop'e kadar\n\n# Theta fonksiyonu:\ndef thetaFonk(u):\n    #solve_ivp(fonksiyon, t_span, y0)\n    # t_span=[t0, tStop] (y(0) ve y(1) değerini biliyoruz.)\n    cozum = scInteg.solve_ivp(fonk_SDP, [t0, tStop], [y0, u])\n    \n    # Bizim için önemli olan y(1) değeri, v'nin değil.\n    # yani y'nin y(1) değerinin \n    yCozum = cozum.y[0]\n    return yCozum[-1]- yStop\n\n# Theta fonksiyonunun içerini şöyle düşünelim.\n# Polinom tipi bir g(x)=x^2+4x+4 fonksiyonu olsun. Bunun kökünü şöyle bulurduk.\n'''\ndef g(x):\n    return x**2 + 4*x + 4\n\n# Kökünü 0 ile 10 arasında bul.\nx0, = scOpt.ridder(g, 0, 10)\n'''\n# Aynı şekilde theta fonksiyonunun kökünü bulalım.\nthetaU_kok_v0= scOpt.ridder(thetaFonk, 0, 50)\n\n# Olması gereken başlangıç değeri:\nprint(f\"v0= {thetaU_kok_v0} m/s\")\n\n# Deneyelim. Gerçekten v0 bu değerdeyken y(5)= 50 oluyor mu?\n\ncozum= scInteg.solve_ivp(fonk_SDP, [t0, tStop], [y0, thetaU_kok_v0])\n\nprint(f\"y(5)= {cozum.y[0][-1]} m\")\n\nv0= 35.000000000001016 m/s\ny(5)= 50.00000000000507 m\n\n\nPython ile ne yaptık?\n\nSanki başlangıç değer problemi çözer gibi fonksiyon tanımladık.\nBaşlangıç koşullarını tanımladık. İkinci başlangıç değeri yani \\(y(b)\\) değerini tanımlamadık.\nAyrı bir fonksiyon ile başlangıç değer problemini çözdük. Bu fonksiyonun girdi değeri u, dönüş dğeri ise verilen \\(y(b)\\) değeri ile çözümün son değerinin farkıdır.\nBaşlangıç değer çözücü denklemi scipy.optimize.ridder(fonksiyon, kok_araligi_baslangic, kok_araligi_bitis) ile çözdük.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "SDP - Atış Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html#problemler",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html#problemler",
+    "title": "SDP - Atış Yöntemi",
+    "section": "Problemler",
+    "text": "Problemler\n\nProblem 1\nAşağıdaki denklemi atış yöntemi ile çözün.\n\\[\ny''(t)=t, \\quad y(0)=1, \\quad y(3)=9\n\\]\n\nElde ettiğiniz çözümü yani \\(y(t)\\) fonksiyonunu çizdirin.\nBu denklemi analitik olarak çözün ve çözümü de çizdirin.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "SDP - Atış Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html#referanslar",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html#referanslar",
+    "title": "SDP - Atış Yöntemi",
+    "section": "Referanslar",
+    "text": "Referanslar\n\nNumerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013, Syf:293\nPython Programming and Numerical Methods: A Guide for Engineers and Scientists, Qingkai Kong & Timmy Siauw & Alexandre Bayen, 2020, chapter23.02-The-Shooting-Method",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "SDP - Atış Yöntemi"
     ]
   },
   {
@@ -52,39 +256,219 @@
     "text": "Bu site, çeşitli kaynaklardan derlenerek hazırlanan sayısal yöntemler veya bilgisayarlı yöntemler notlarını içerir. Bu notlar, sayısal analiz, diferansiyel denklemler, optimizasyon, istatistik ve benzeri konularda kullanılan algoritmaları ve bu algoritmaların nasıl çalıştığını anlatır.\nEğer bu notlarla ilgili herhangi bir hata veya eksiklik bulursanız, lütfen GitHub Issue sayfasına yazınız. Bu link her sayfanın sağ tarafında bulunmaktadır.\nSol taraftaki menüden konulara ulaşabilirsiniz. Ayrıca, her sayfanın altında bulunan “Next” ve “Previous” butonları ile notları sırasıyla okuyabilirsiniz.\n\n\n\n\n\n\nUyarı\n\n\n\nBuradaki notlar ve kodlar açık kaynak kodudur. Kişisel kullanım ve eğitim amaçlıdır. Ticari amaçlar için kullanılmamalıdır."
   },
   {
-    "objectID": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html",
-    "href": "icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html",
-    "title": "Euler Yöntemi",
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html",
+    "title": "SDP - Sonlu Farklar Yöntemi",
     "section": "",
-    "text": "Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.\nAlternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.\nKabaca türevin tanımını kullanır.\n\\[\ny'(x)= \\frac{y(x+h)-y(x)}{h}\n\\]\n\\[\ny(x+h)=y(x)+h\\times y'(x)\n\\]",
+    "text": "Sonlu farklar yöntemini kullanarak sınır değer problemine ait diferansiyel denklem çözeceğiz. Bunun için taylor açılımını kullanacağız.\nTaylor açılımında birinci türevi orta noktayı kullanarak yazalım.\n\\[\ny'_{i} = \\frac{y_{i+1}-y_{i-1}}{2h}\n\\]\nŞimdi \\(y'_{i}=g_{i}\\) gibi bir fonksiyon olsun. Yukarıdaki bağıntı yerine \\(g_{i}\\) koyalım.\n\\[\ng'_{i} = \\frac{g_{i+1}-g_{i-1}}{2h}\n\\]\nBiliyoruz ki \\(g_{i}=y'_{i}\\)’dir.\n\\[\ny''_{i} = \\frac{y'_{i+1}-y'_{i-1}}{2h}\n\\]\n\\[\ny''_{i} = \\frac{1}{2h}\\left(\\frac{y_{i+2}-y_{i}}{2h}-\\frac{y_{i}-y_{i-2}}{2h}\\right)\n\\]\nBiraz düzenleyelim.\n\\[\ny''_{i} = \\frac{1}{4h^2}\\left(y_{i+2}-y_{i}-y_{i}+y_{i-2}\\right)\n\\]\n\\[\ny''_{i} = \\frac{y_{i+2}-2y_{i}+y_{i-2}}{4h^2}\n\\]\nEğer adım aralığını yarıya indirirsek yani \\(h \\rightarrow h/2\\) yaparsak \\(y_{i+2}\\) noktasından \\(y_{i+1}\\) noktasına gelebiliriz. Benzer şekilde \\(y_{i-2}\\) noktasından \\(y_{i-1}\\) noktasına geliriz. Bu adım sadece sabit adım aralığı için geçerlidir. O halde ikinci türeve ait olan denklem şöyle olur.\n\\[\ny''_{i} = \\frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}\n\\]\nBu denklemi kullanarak sınır değer problemlerini çözeceğiz. Yukarıdaki bağıntı, diferansiyel denklemi cebirsel denklem sistemine dönüştürür.\n\\[\ny''_{i} = f\\left(x,y_{i},\\frac{y_{i+1}-y_{i-1}}{2h}\\right)=\\frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}\n\\]",
     "crumbs": [
       "**Konular**",
       "Adi Diferansiyel Denklemler",
-      "Euler Yöntemi"
+      "SDP - Sonlu Farklar Yöntemi"
     ]
   },
   {
-    "objectID": "icerik/konular/adi-diferansiyel-denklemler/denklem-sistemleri.html",
-    "href": "icerik/konular/adi-diferansiyel-denklemler/denklem-sistemleri.html",
-    "title": "Denklem Sistemleri",
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html#sonlu-farklar-yöntemi",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html#sonlu-farklar-yöntemi",
+    "title": "SDP - Sonlu Farklar Yöntemi",
     "section": "",
-    "text": "Adi diferansiyel denklem sistemlerini çözmek için Euler yöntemini vektör haline getirip kullanabiliriz. Bunun için bilYonMod.py modülündende tanımlanan add_coz_euler_sistem(fonk_yVek_x, xBaslangic, xBitis, yBaslangic_vek, adimSayisi) fonksiyonunu kullanılmalıdır.",
+    "text": "Sonlu farklar yöntemini kullanarak sınır değer problemine ait diferansiyel denklem çözeceğiz. Bunun için taylor açılımını kullanacağız.\nTaylor açılımında birinci türevi orta noktayı kullanarak yazalım.\n\\[\ny'_{i} = \\frac{y_{i+1}-y_{i-1}}{2h}\n\\]\nŞimdi \\(y'_{i}=g_{i}\\) gibi bir fonksiyon olsun. Yukarıdaki bağıntı yerine \\(g_{i}\\) koyalım.\n\\[\ng'_{i} = \\frac{g_{i+1}-g_{i-1}}{2h}\n\\]\nBiliyoruz ki \\(g_{i}=y'_{i}\\)’dir.\n\\[\ny''_{i} = \\frac{y'_{i+1}-y'_{i-1}}{2h}\n\\]\n\\[\ny''_{i} = \\frac{1}{2h}\\left(\\frac{y_{i+2}-y_{i}}{2h}-\\frac{y_{i}-y_{i-2}}{2h}\\right)\n\\]\nBiraz düzenleyelim.\n\\[\ny''_{i} = \\frac{1}{4h^2}\\left(y_{i+2}-y_{i}-y_{i}+y_{i-2}\\right)\n\\]\n\\[\ny''_{i} = \\frac{y_{i+2}-2y_{i}+y_{i-2}}{4h^2}\n\\]\nEğer adım aralığını yarıya indirirsek yani \\(h \\rightarrow h/2\\) yaparsak \\(y_{i+2}\\) noktasından \\(y_{i+1}\\) noktasına gelebiliriz. Benzer şekilde \\(y_{i-2}\\) noktasından \\(y_{i-1}\\) noktasına geliriz. Bu adım sadece sabit adım aralığı için geçerlidir. O halde ikinci türeve ait olan denklem şöyle olur.\n\\[\ny''_{i} = \\frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}\n\\]\nBu denklemi kullanarak sınır değer problemlerini çözeceğiz. Yukarıdaki bağıntı, diferansiyel denklemi cebirsel denklem sistemine dönüştürür.\n\\[\ny''_{i} = f\\left(x,y_{i},\\frac{y_{i+1}-y_{i-1}}{2h}\\right)=\\frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}\n\\]",
     "crumbs": [
       "**Konular**",
       "Adi Diferansiyel Denklemler",
-      "Denklem Sistemleri"
+      "SDP - Sonlu Farklar Yöntemi"
     ]
   },
   {
-    "objectID": "icerik/konular/adi-diferansiyel-denklemler/denklem-sistemleri.html#alıştırma-1",
-    "href": "icerik/konular/adi-diferansiyel-denklemler/denklem-sistemleri.html#alıştırma-1",
-    "title": "Denklem Sistemleri",
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html#alıştırma-1",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html#alıştırma-1",
+    "title": "SDP - Sonlu Farklar Yöntemi",
     "section": "Alıştırma 1",
-    "text": "Alıştırma 1",
+    "text": "Alıştırma 1\nAşağıdaki denklemi adım adım çözelim.\n\\[\ny''(t)=t, \\quad y(0)=1, \\quad y(3)=9\n\\]\n\nÇözüm\nAdım aralığı \\(h=1\\) olsun. \\(t\\)’nin değerleri \\(0, 1, 2, 3\\) olacaktır. Bu değerlerden \\(y\\) değerlerini bulalım.\n\\[\ny''(t)=t=\\frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}\n\\]\nÇözüme \\(y(0)\\)’dan başlayalım. Bunun için \\(y(0) \\equiv y_{i-1}\\) almamız gerekecektir. Aksi taktirde köşe noktalar için denklemi çözemeyiz.\nAşağıdaki tabloyu \\(h=1\\) için yazalım.\n\n\n\n\\(y_{0}\\)\n\\(y_{1}\\)\n\\(y_{2}\\)\n\\(y_{3}\\)\n\n\n\n\n\\(y(0)\\)\n\\(y(0+h)\\)\n\\(y(0+2h)\\)\n\\(y(0+3h)\\)\n\n\n\\(y(t=0)\\)\n\\(y(t=1)\\)\n\\(y(t=2)\\)\n\\(y(t=3)\\)\n\n\n1\n?\n?\n9\n\n\n\nÖrneğin aşağıdaki tabloyu da \\(h=0.5\\) için yazalım.\n\n\n\n\n\n\n\n\n\n\n\n\n\\(y_{0}\\)\n\\(y_{1}\\)\n\\(y_{2}\\)\n\\(y_{3}\\)\n\\(y_{4}\\)\n\\(y_{5}\\)\n\\(y_{6}\\)\n\n\n\n\n\\(y(0)\\)\n\\(y(0.5)\\)\n\\(y(1)\\)\n\\(y(1.5)\\)\n\\(y(2)\\)\n\\(y(2.5)\\)\n\\(y(3)\\)\n\n\n1\n?\n?\n?\n?\n?\n9\n\n\n\nŞimdi yukarıdaki elde ettiğimiz denklemi yazalım.\n\\[\ny''(t)=t=\\frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}\n\\]\n\\(i=1\\) olmalı. Bundan dolayı \\(t\\) ilk değil bir sonraki adımından yani \\(t+h=0+0.5\\)’den itibaren başlatmalıyız. \\[\n0.5 = \\frac{y_{2}-2y_{1}+y_{0}}{h^2}\n\\]\nBu denklemi \\(h=0.5\\) için adım adım yazalım.\n\\[\n0.5\\times (0.5)^{2} = y_{2}-2y_{1}+y_{0}\\\\\n1\\times (0.5)^{2} = y_{3}-2y_{2}+y_{1}\\\\\n1.5\\times (0.5)^{2} = y_{4}-2y_{3}+y_{2}\\\\\n2\\times (0.5)^{2} = y_{5}-2y_{4}+y_{3}\\\\\n2.5\\times (0.5)^{2} = y_{6}-2y_{5}+y_{4}\n\\]\nYukarıdaki denklemleri matris şeklinde yazalım. Yazarken \\(y_{0}=1\\) ve \\(y_{6}=9\\) yazacağız.\n\\[\\begin{align*}\n-0.875 =& y_{2}-2y_{1}\\\\\n0.25 =& y_{3}-2y_{2}+y_{1}\\\\\n0.375 =& y_{4}-2y_{3}+y_{2}\\\\\n0.5 =& y_{5}-2y_{4}+y_{3}\\\\\n-8.375 =& -2y_{5}+y_{4}\n\\end{align*}\\]\n\\[\n\\begin{bmatrix}\n    -2 & 1 & 0 & 0 & 0\\\\\n    1 & -2 & 1 & 0 & 0\\\\\n    0 & 1 & -2 & 1 & 0\\\\\n    0 & 0 & 1 & -2 & 1\\\\\n    0 & 0 & 0 & 1 & -2\\\\\n\\end{bmatrix}\n\\begin{bmatrix}\n    y_{1}\\\\\n    y_{2}\\\\\n    y_{3}\\\\\n    y_{4}\\\\\n    y_{5}\\\\\n\\end{bmatrix}=\n\\begin{bmatrix}\n    -0.875\\\\\n    0.25\\\\\n    0.375\\\\\n    0.5\\\\\n    -8.375    \n\\end{bmatrix}\n\\]\nBu denklemi çözmeyi biliyoruz. Denklemi çözdüğümüzde \\(y_{1}, y_{2}, y_{3}, y_{4}, y_{5}\\) değerlerini bulmuş oluruz.\n\n\nÇözüm Kod\n\nimport numpy as np\nfrom scipy.linalg import solve\nimport matplotlib.pyplot as plt\n\ncoefMat= np.array([\\\n      [-2, 1, 0, 0, 0]\\\n    , [ 1,-2, 1, 0, 0]\\\n    , [ 0, 1,-2, 1, 0]\\\n    , [ 0, 0, 1,-2, 1]\\\n    , [ 0, 0, 0, 1,-2]])\nsolMat= np.array([-0.875,0.25,0.375,0.5,-8.375])\n\nsolution=solve(coefMat, solMat)\ny0= 1.\nsolution=np.insert(solution, 0, y0)\nyEnd= 9.\nsolution=np.append(solution, yEnd)\nx= np.linspace(0, 3, 7)\n\nplt.plot(x, solution, 'o-')\n# Analitik Çözüm\n# y''= t y(0)=1 y(3)=9\n# y'= t^2/2  + C1\n# y= t^3/6  + C1 t + C2\n# y(0)=1 =&gt; C2=1\n# y(3)=9 =&gt; 9=27/6 + 3C1 + 1=9 =&gt; C1=27/18\n\n#=&gt; y(t)= t^3/6 + 21t/18 + 1\n\nplt.plot(x, x**3/6 + 21*x/18 + 1, 'r-')\nplt.show()\n\n# --------------------------------------------\nh=0.1\nx2=np.linspace(0, 3, 31)\nilkDenklemSagTaraf=0.1*(0.1**2)-y0\nsonDenklemSagTaraf=2.9*(0.1**2)-yEnd\n\naraDenklemlerSagTaraf=np.array(ilkDenklemSagTaraf)\nfor i in range(27):\n    araDenklemlerSagTaraf= np.append(araDenklemlerSagTaraf,x2[i+1]*(0.1**2))\n\naraDenklemlerSagTaraf= np.append(araDenklemlerSagTaraf,sonDenklemSagTaraf)\n# Coefficient Matrix\ncoefMat2= np.zeros((29, 29))\n\nfor i in range(29):\n    coefMat2[i, i]= -2\n    if not i == 28:\n        coefMat2[i, i+1]= 1\n    if not i == 0:\n        coefMat2[i, i-1]= 1\n\nsolution2=solve(coefMat2, araDenklemlerSagTaraf)\nsolution2=np.insert(solution2, 0, y0)\nsolution2=np.append(solution2, yEnd)\n\nplt.plot(x2, solution2, 'o-')\nplt.show()\n# --------------------------------------------",
     "crumbs": [
       "**Konular**",
       "Adi Diferansiyel Denklemler",
-      "Denklem Sistemleri"
+      "SDP - Sonlu Farklar Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html#sonlu-farklar-yönteminin-çalışmadığı-örnek",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html#sonlu-farklar-yönteminin-çalışmadığı-örnek",
+    "title": "SDP - Sonlu Farklar Yöntemi",
+    "section": "Sonlu Farklar Yönteminin Çalışmadığı Örnek",
+    "text": "Sonlu Farklar Yönteminin Çalışmadığı Örnek\nEğer oluşturduğumuz diferansiyel denklem sistemi doğrusal değilse, yukarıdaki algoritmayı kullanmayız. Aşağıdaki örneği inceleyelim.\n\\[\ny''(t)=tyy'(t)\n\\]\nÇözmemiz gereken denklem\n\\[\ny''(t)=tyy'(t)=\\frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}\n\\]\n\\(i=1\\) için yazalım.\n\\[\nty_{1}y_{1}'=\\frac{y_{2}-2y_{1}+y_{0}}{h^2}\n\\]\nTürevi de açıkça yazalım.\n\\[\nty_{1} \\frac{y_{2}-y_{0}}{2h}=\\frac{y_{2}-2y_{1}+y_{0}}{h^2}\n\\]\nDüzenleyelim.\n\\[\n\\frac{th}{2} (y_{1}y_{2}-y_{1}y_{0}) -y_{2}+2y_{1}-y_{0} = 0\n\\]\n\\(y_{1}y_{2}\\) gibi terimlerin varlığından dolayı bu denklem doğrusal olmayan (nonlineer) denklemdir. Klasik yöntemlerle (LU ayrıştırma veya Gauss eleme) çözülemez.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "SDP - Sonlu Farklar Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html#problemler",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html#problemler",
+    "title": "SDP - Sonlu Farklar Yöntemi",
+    "section": "Problemler",
+    "text": "Problemler\n\nProblem 1\nAşağıdaki diferansiyel denklemi sonlu farklar yöntemini kullanarak \\(h=0.1\\) için adım adım çözün.\n\\[\ny''(t) + t y'(t) + y = 2t^{2}, \\quad y(0)=1, \\quad y(0.8)=1\n\\]\n\n\nProblem 2\nAşağıdaki diferansiyel denklemi sonlu farklar yöntemini kullanarak \\(h=0.2\\) için adım adım çözün. Bu çözümü atış metodu ile de çözün. Sonuçları karşılaştırın.\n\\[\n\\frac{\\hbar^{2}}{2 m}\\frac{d^{2}}{dx^{2}}\\psi(x) = E\\psi(x), \\qquad \\psi(x=0)=0, \\qquad \\psi(x=L)=0 \\text{.}\n\\]\nÇözümü \\(n=1\\) ve \\(n=2\\) için çizdirin. Uygun \\(L\\) değerini siz belirleyin.\nBuradaki katsayılar:\n\n\\(\\hbar=1.1\\times 10^{-34}\\) J \\(\\times\\) s\n\\(m=9.1\\times 10^{-31}\\) kg\n\\(E=\\frac{\\pi^{2}\\hbar^{2}}{2mL^{2}}n^{2}\\) J.\n\nAnalitik Çözüm:\n\\[\n\\psi(x)=\\sqrt{\\frac{2}{L}}\\sin\\left(\\frac{n\\pi x}{L}\\right)\n\\]",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "SDP - Sonlu Farklar Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html#referanslar",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html#referanslar",
+    "title": "SDP - Sonlu Farklar Yöntemi",
+    "section": "Referanslar",
+    "text": "Referanslar\n\nNumerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013, Syf:307\nSonlu Farklar Yöntemi, Youtube Videosu\nNumerical Solutions of Schrodinger’s Equation, Neill Lambert, 2001",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "SDP - Sonlu Farklar Yöntemi"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html",
+    "title": "BDP - Runge-Kutta Yöntemleri",
+    "section": "",
+    "text": "Euler yöntemi için Taylor serisini birinci dereceden türevli terimden kesmiştik. Eğer Taylor serisinde daha yüksek mertebelerden türevler kullanılırsa, bu yöntemlere Runge-Kutta yöntemleri adı verilir.\n\n\n\n\n\n\nDikkat\n\n\n\nYüksek mertebeden türevler kullanmak demek, yüksek mertebe diferansiyel denklem çözümü anlamına gelmez. Örneğin, birinci dereceden diferansiyel denklemi, Taylor serisinin üçüncü dereceden teriminden keserek çözebiliriz. Runge-Kutta yöntemleri, Euler yönteminin bir genelleştirilmesidir.\n\n\n\n\n\nAna daklem: \\(y'(x)=F(x,y)\\)\nEuler yöntemini hatırlayalım:\n\n\\[\ny(x+h)= y(x)+hy'(x,y) = y(x)+hyf(x,y)\n\\]\n\nTaylor serisinin ikinci mertebesinden kesmeden önce en genel formülü yazalım.\n\n\\[\ny(x+h)= y(x)+c_{0}hF(x,y) + c_{1}hF(x+ph,y+qhF(x,y))\n\\]\nBurada \\(c_{0},c_{1},p,q\\) birer katsayıdır. Taylor serisine dönelim.\n\\[\n\\begin{align*}\ny(x+h) &= y(x) + y'(x)h + \\frac{1}{2}y''(x)h^{2}\\\\\n       &= y(x) + F(x,y)h + \\frac{1}{2}F'(x,y)h^{2}    \n\\end{align*}\n\\]\n\nBurada \\(F'(x,y)\\) aşağıdaki gibi yazılır.\n\n\\[\nF'(x,y)= \\frac{\\partial F}{\\partial x} + \\frac{\\partial F}{\\partial y}F\n\\]\n\\[\nF'(x,y)= \\frac{\\partial F}{\\partial x} + \\frac{\\partial F}{\\partial y}y'\n\\]\n\nVektörize edilmiş \\(F\\) için ise,\n\n\\[\nF'(x,y)= \\frac{\\partial F}{\\partial x} + \\sum_{i=0}^{n-1}\\frac{\\partial F}{\\partial y_{i}}F_{i}(x,y)\n\\]\nşeklinde yazılır. (2) numaralı denklemde yerine koyarsak,\n\\[\ny(x+h)= y(x) + F(x,y)h + \\frac{h^{2}}{2}\\frac{\\partial F}{\\partial x} + \\sum_{i=0}^{n-1}\\frac{\\partial F}{\\partial y_{i}}F_{i}(x,y)\n\\]\nifadesini elde ederiz. Şimdi genelleştirilmiş formülü, yani \\(y(x+h)= y(x)+c_{0}hF(x,y) + c_{1}hF(x+ph,y+qhF(x,y))\\) terimindeki \\(F(x+ph,y+qhF(x,y))\\) terimi açalım.\n\\[\nF(x+ph,y+qhF(x,y)) = F(x,y) + \\frac{\\partial F}{\\partial x}ph + \\sum_{i=0}^{n-1}\\frac{\\partial F}{\\partial y_{i}}qhF_{i}(x,y)\n\\]\n\nYukarıdaki açılımı genelleştirilmiş formülde yerine koyalım.\n\n\\[\ny(x+h) = y(x) + (c_{0}+c_{1})F(x,y)h+ c_{1}\\left[\\frac{\\partial F}{\\partial x}ph + qh \\sum_{i=1}^{n-1}\\frac{\\partial F}{\\partial y_{i}}F_{i}(x,y)\\right]\n\\]\nBurada elde ettiğimiz formül ile Taylor serisinde elde ettiğimiz formülü karşılaştıralım. Eğer\n\\[\nc_{0}+c_{1}=1 \\quad \\text{ve} \\quad c_{1}p=c_{1}q=\\frac{1}{2}\n\\]\nolursa, iki formül de aynı olur. Buradaki \\(c_{0}, c_{1},q,p\\) parametreleri farklı farklı seçilebilir. Bazı farklı seçimler için özel isimlendirme yapılır.\n\n\n\nİsim\n\\(c_{0}\\)\n\\(c_{1}\\)\np\nq\n\n\n\n\nDeğiştirilmiş (Modified) Euler\n0\n1\n1/2\n1/2\n\n\nHeun Yöntemi\n1/2\n1/2\n1\n1\n\n\nRalston Yöntemi\n1/3\n2/3\n3/4\n3/4\n\n\n\n\nTüm bu sınıflandırma 2. derece Runge-Kutta yöntemleri altındadır.\nBu yöntemler birbirlerinden üstün değildir.\nBirinci derece Runge-Kutta yöntemi olan Euler yönteminde ise \\(c_{0}=1\\) ve diğer terimler sıfırdır.\n\nGenelleştirmek adına değiştirilmiş Euler motdunu aşağıdaki gibi yazabiliriz.\n\\[\n\\vec{y}(x+h) = \\vec{y}(x) + \\vec{F}\\left[x+\\frac{h}{2},\\vec{y}+\\frac{h}{2}\\vec{F}(x,\\vec{y}) \\right]\n\\]\nRunge-Kutta metodları için \\(\\vec{K}_{i}\\) vektörleri tanımlanır.\n\\[\n\\vec{K}_{0} = h\\vec{F}(x,\\vec{y})\n\\]\n\nEn popüler Runge-Kutta diferansiyel denklem çözme yöntemi dördüncü dereceden Runge-Kutta yöntemidir.\n\n\n\n\nDördüncü Derece Runge-Kutta yöntemi için \\(\\vec{K}_{i}\\) vektörleri tanımlanır.\n\\[\n\\begin{align*}\n    \\vec{K}_{0} &= h\\vec{F}(x,\\vec{y})\\\\\n    \\vec{K}_{1} &= h\\vec{F}\\left(x+\\frac{h}{2},\\vec{y}+\\frac{1}{2}\\vec{K}_{0}\\right)\\\\\n    \\vec{K}_{2} &= h\\vec{F}\\left(x+\\frac{h}{2},\\vec{y}+\\frac{1}{2}\\vec{K}_{1}\\right)\\\\\n    \\vec{K}_{3} &= h\\vec{F}\\left(x+h,\\vec{y}+\\vec{K}_{2}\\right)\n\\end{align*}\n\\]\nSonuç olarak bir sonraki adım aşağıdaki gibi yazılır.\n\\[\n\\vec{y}(x+h)= \\vec{y}(x) + \\frac{1}{6}\\left(\\vec{K}_{0}+2\\vec{K}_{1}+2\\vec{K}_{2}+\\vec{K}_{3}\\right)\n\\]\nKatsayı tablosu oluşturalım.\n\n\n\n\n\n\n\n\n\n$k_{0}\n\\(k_{1}\\)\n\\(k_{2}\\)\n\\(k_{3}\\)\n\n\n\n\n\\(hF(x,y)\\)\n\\(hF\\left(x+\\frac{h}{2},y+\\frac{1}{2}k_{0}\\right)\\)\n\\(hF\\left(x+\\frac{h}{2},y+\\frac{1}{2}k_{1}\\right)\\)\n\\(hF\\left(x+h,y+k_{2}\\right)\\)\n\n\n\nKatsayıları kullanarak bir sonraki adım hesaplanır.\n\\[\ny(x+h)= y(x) + \\frac{1}{6}(k_{0}+2k_{1}+2k_{2}+k_{3})\n\\]\nPython kodunu yazalım. add_coz_rk4_sistem adlı fonksiyon bilYonMod.py modülünde tanımlıdır.\n\n\n\n\n\n\nNot\n\n\n\nadd_coz_rk4_sistem fonksiyonunu inceleyiniz.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Runge-Kutta Yöntemleri"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html#runge-kutta-yöntemleri",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html#runge-kutta-yöntemleri",
+    "title": "BDP - Runge-Kutta Yöntemleri",
+    "section": "",
+    "text": "Euler yöntemi için Taylor serisini birinci dereceden türevli terimden kesmiştik. Eğer Taylor serisinde daha yüksek mertebelerden türevler kullanılırsa, bu yöntemlere Runge-Kutta yöntemleri adı verilir.\n\n\n\n\n\n\nDikkat\n\n\n\nYüksek mertebeden türevler kullanmak demek, yüksek mertebe diferansiyel denklem çözümü anlamına gelmez. Örneğin, birinci dereceden diferansiyel denklemi, Taylor serisinin üçüncü dereceden teriminden keserek çözebiliriz. Runge-Kutta yöntemleri, Euler yönteminin bir genelleştirilmesidir.\n\n\n\n\n\nAna daklem: \\(y'(x)=F(x,y)\\)\nEuler yöntemini hatırlayalım:\n\n\\[\ny(x+h)= y(x)+hy'(x,y) = y(x)+hyf(x,y)\n\\]\n\nTaylor serisinin ikinci mertebesinden kesmeden önce en genel formülü yazalım.\n\n\\[\ny(x+h)= y(x)+c_{0}hF(x,y) + c_{1}hF(x+ph,y+qhF(x,y))\n\\]\nBurada \\(c_{0},c_{1},p,q\\) birer katsayıdır. Taylor serisine dönelim.\n\\[\n\\begin{align*}\ny(x+h) &= y(x) + y'(x)h + \\frac{1}{2}y''(x)h^{2}\\\\\n       &= y(x) + F(x,y)h + \\frac{1}{2}F'(x,y)h^{2}    \n\\end{align*}\n\\]\n\nBurada \\(F'(x,y)\\) aşağıdaki gibi yazılır.\n\n\\[\nF'(x,y)= \\frac{\\partial F}{\\partial x} + \\frac{\\partial F}{\\partial y}F\n\\]\n\\[\nF'(x,y)= \\frac{\\partial F}{\\partial x} + \\frac{\\partial F}{\\partial y}y'\n\\]\n\nVektörize edilmiş \\(F\\) için ise,\n\n\\[\nF'(x,y)= \\frac{\\partial F}{\\partial x} + \\sum_{i=0}^{n-1}\\frac{\\partial F}{\\partial y_{i}}F_{i}(x,y)\n\\]\nşeklinde yazılır. (2) numaralı denklemde yerine koyarsak,\n\\[\ny(x+h)= y(x) + F(x,y)h + \\frac{h^{2}}{2}\\frac{\\partial F}{\\partial x} + \\sum_{i=0}^{n-1}\\frac{\\partial F}{\\partial y_{i}}F_{i}(x,y)\n\\]\nifadesini elde ederiz. Şimdi genelleştirilmiş formülü, yani \\(y(x+h)= y(x)+c_{0}hF(x,y) + c_{1}hF(x+ph,y+qhF(x,y))\\) terimindeki \\(F(x+ph,y+qhF(x,y))\\) terimi açalım.\n\\[\nF(x+ph,y+qhF(x,y)) = F(x,y) + \\frac{\\partial F}{\\partial x}ph + \\sum_{i=0}^{n-1}\\frac{\\partial F}{\\partial y_{i}}qhF_{i}(x,y)\n\\]\n\nYukarıdaki açılımı genelleştirilmiş formülde yerine koyalım.\n\n\\[\ny(x+h) = y(x) + (c_{0}+c_{1})F(x,y)h+ c_{1}\\left[\\frac{\\partial F}{\\partial x}ph + qh \\sum_{i=1}^{n-1}\\frac{\\partial F}{\\partial y_{i}}F_{i}(x,y)\\right]\n\\]\nBurada elde ettiğimiz formül ile Taylor serisinde elde ettiğimiz formülü karşılaştıralım. Eğer\n\\[\nc_{0}+c_{1}=1 \\quad \\text{ve} \\quad c_{1}p=c_{1}q=\\frac{1}{2}\n\\]\nolursa, iki formül de aynı olur. Buradaki \\(c_{0}, c_{1},q,p\\) parametreleri farklı farklı seçilebilir. Bazı farklı seçimler için özel isimlendirme yapılır.\n\n\n\nİsim\n\\(c_{0}\\)\n\\(c_{1}\\)\np\nq\n\n\n\n\nDeğiştirilmiş (Modified) Euler\n0\n1\n1/2\n1/2\n\n\nHeun Yöntemi\n1/2\n1/2\n1\n1\n\n\nRalston Yöntemi\n1/3\n2/3\n3/4\n3/4\n\n\n\n\nTüm bu sınıflandırma 2. derece Runge-Kutta yöntemleri altındadır.\nBu yöntemler birbirlerinden üstün değildir.\nBirinci derece Runge-Kutta yöntemi olan Euler yönteminde ise \\(c_{0}=1\\) ve diğer terimler sıfırdır.\n\nGenelleştirmek adına değiştirilmiş Euler motdunu aşağıdaki gibi yazabiliriz.\n\\[\n\\vec{y}(x+h) = \\vec{y}(x) + \\vec{F}\\left[x+\\frac{h}{2},\\vec{y}+\\frac{h}{2}\\vec{F}(x,\\vec{y}) \\right]\n\\]\nRunge-Kutta metodları için \\(\\vec{K}_{i}\\) vektörleri tanımlanır.\n\\[\n\\vec{K}_{0} = h\\vec{F}(x,\\vec{y})\n\\]\n\nEn popüler Runge-Kutta diferansiyel denklem çözme yöntemi dördüncü dereceden Runge-Kutta yöntemidir.\n\n\n\n\nDördüncü Derece Runge-Kutta yöntemi için \\(\\vec{K}_{i}\\) vektörleri tanımlanır.\n\\[\n\\begin{align*}\n    \\vec{K}_{0} &= h\\vec{F}(x,\\vec{y})\\\\\n    \\vec{K}_{1} &= h\\vec{F}\\left(x+\\frac{h}{2},\\vec{y}+\\frac{1}{2}\\vec{K}_{0}\\right)\\\\\n    \\vec{K}_{2} &= h\\vec{F}\\left(x+\\frac{h}{2},\\vec{y}+\\frac{1}{2}\\vec{K}_{1}\\right)\\\\\n    \\vec{K}_{3} &= h\\vec{F}\\left(x+h,\\vec{y}+\\vec{K}_{2}\\right)\n\\end{align*}\n\\]\nSonuç olarak bir sonraki adım aşağıdaki gibi yazılır.\n\\[\n\\vec{y}(x+h)= \\vec{y}(x) + \\frac{1}{6}\\left(\\vec{K}_{0}+2\\vec{K}_{1}+2\\vec{K}_{2}+\\vec{K}_{3}\\right)\n\\]\nKatsayı tablosu oluşturalım.\n\n\n\n\n\n\n\n\n\n$k_{0}\n\\(k_{1}\\)\n\\(k_{2}\\)\n\\(k_{3}\\)\n\n\n\n\n\\(hF(x,y)\\)\n\\(hF\\left(x+\\frac{h}{2},y+\\frac{1}{2}k_{0}\\right)\\)\n\\(hF\\left(x+\\frac{h}{2},y+\\frac{1}{2}k_{1}\\right)\\)\n\\(hF\\left(x+h,y+k_{2}\\right)\\)\n\n\n\nKatsayıları kullanarak bir sonraki adım hesaplanır.\n\\[\ny(x+h)= y(x) + \\frac{1}{6}(k_{0}+2k_{1}+2k_{2}+k_{3})\n\\]\nPython kodunu yazalım. add_coz_rk4_sistem adlı fonksiyon bilYonMod.py modülünde tanımlıdır.\n\n\n\n\n\n\nNot\n\n\n\nadd_coz_rk4_sistem fonksiyonunu inceleyiniz.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Runge-Kutta Yöntemleri"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html#alıştırma-1",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html#alıştırma-1",
+    "title": "BDP - Runge-Kutta Yöntemleri",
+    "section": "Alıştırma 1",
+    "text": "Alıştırma 1\nBirbirine bağlı iki adet diferansiyel denklemi çözmek için Euler yöntemini, 4. Mertebe Runge-Kutta ve scipy.integrate.odeint yöntemlerini kullanınız. Toplamda 10 adım kullanın.\nDenklem sistemi aşağıdaki gibidir.\n\\[\n\\begin{align*}\n\\frac{d}{dx}y(v,x) &= v(x) \\\\\n\\frac{d}{dx}v(x) &= x\n\\end{align*}\n\\]\n\nÇözüm\n\n################################################\n## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma\nimport os\nimport sys\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nmodule_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')\n# moduller dizinini yol olarak ekle\nsys.path.append(module_dir)\n# bilYonMod.py modülünü içe aktar\nimport bilYonMod as bym\n################################################\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport scipy.integrate as spInt\n# Fonksiyon\ndef fonk_yVek_x(yVek, x):\n    dydx = yVek[1]\n    return np.array([dydx, x])\n# Başlangıç koşulları\ny0 = 1\nv0 = 0\nx0 = 0\nxSon = 10\nn = 10\n# Çöz, Euler\nxTumEuler, yTum_VekEuler = bym.add_coz_euler_sistem(fonk_yVek_x, x0, xSon, np.array([y0, v0]), n)\n# Çöz, 4. Mertebe Runge-Kutta\nxTumRK4, yTum_VekRK4 = bym.add_coz_rk4_sistem(fonk_yVek_x, x0, xSon, np.array([y0, v0]), n)\n# Çöz, scipy.integrate.odeint\nxTumScipy= np.linspace(x0, xSon, n)\nyTumScipy= spInt.odeint(fonk_yVek_x, np.array([y0, v0]), xTumScipy)\n# Analitik çözüm\nyAnalitik = xTumEuler**3/6 + 1\nvAnalitik = xTumEuler**2/2\n# Çiz\nfig, ax = plt.subplots(1, 2)\n# Sol grafik\nax[0].plot(xTumEuler, yTum_VekEuler[0], lw='5', label='y(x) Euler', color='red')\nax[0].plot(xTumRK4, yTum_VekRK4[0], lw='3', label='y(x) RK4', color='green')\nax[0].plot(xTumScipy, yTumScipy[:,0], lw='1', label='y(x) Scipy', color='blue')\nax[0].plot(xTumEuler, yAnalitik, label='y(x) Analitik', color='black', linestyle='--')\nax[0].set_xlabel('x')\nax[0].set_ylabel('y(x)')\nax[0].legend()\n# Sağ grafik\nax[1].plot(xTumEuler, yTum_VekEuler[1], lw='5', label='v(x) Euler', color='blue')\nax[1].plot(xTumRK4, yTum_VekRK4[1], lw='3', label='v(x) RK4', color='green')\nax[1].plot(xTumScipy, yTumScipy[:,1], lw='1', label='v(x) Scipy', color='red')\nax[1].plot(xTumEuler, vAnalitik, label='v(x) Analitik', color='cyan', linestyle='--')\nax[1].set_xlabel('x')\nax[1].set_ylabel('v(x)')\nax[1].legend()\nplt.show()",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Runge-Kutta Yöntemleri"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html#alıştırma-2",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html#alıştırma-2",
+    "title": "BDP - Runge-Kutta Yöntemleri",
+    "section": "Alıştırma 2",
+    "text": "Alıştırma 2\nAşağıdaki diferansiyel denklem sistemini tüm bildiğiniz çözüm yöntemleri ile çözün  [1].\n\n\n\n\n\n\\[\n\\begin{align*}\nm_{1}\\ddot{x}_{1}+b_{1}\\dot{x}_{1}+ k_{1}(x_{1} - L_{1})-k_{2}(x_{2}-x_{1}-L_{2})=0 \\\\\nm_{2}\\ddot{x}_{2}+b_{2}\\dot{x}_{2}+ k_{2}(x_{2}- x_{1}-L_{2})=0\n\\end{align*}\n\\]\n\n\\(m_{1}= 1\\) kg, \\(m_{2}=1.5\\) kg: Cisimlerin kütlesi\n\\(k_{1}= 8\\) N/m, \\(k_{2}=40.0\\) N/m: Yayların esneklik katsayısı\n\\(b_{1}= 0.8\\) Ns/m, \\(b_{2}=0.5\\) Ns/m: Sürtünme katsayısı\n\\(L_{1}= 0.5\\) m, \\(L_{2}=1.0\\) m: Yayların kuvvet yokkenki uzunluğu\n\nBaşlangıç koşulları:\n\n\\(x_{1}=0.5\\) m\n\\(v_{1}=0.0\\) m/s\n\\(x_{2}=2.25\\) m\n\\(v_{2}=0.0\\) m/s\n\n\nÇözüm\n\n################################################\n## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma\nimport os\nimport sys\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nmodule_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')\n# moduller dizinini yol olarak ekle\nsys.path.append(module_dir)\n# bilYonMod.py modülünü içe aktar\nimport bilYonMod as bym\n################################################\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport scipy.integrate as spInt\n# Global değişkenler\nm1 = 1.0\nm2 = 1.5\nk1 = 8.0\nk2 = 40.0\nL1 = 0.5\nL2 = 1.0\nb1 = 0.8\nb2 = 0.5\n# Fonksiyonlar\ndef fonkVek(yVek, t):\n    x1= yVek[0]\n    v1= yVek[1]\n    x2= yVek[2]\n    v2= yVek[3]\n    return np.array([v1\\\n        , (-b1 * v1 - k1 * (x1 - L1) + k2 * (x2 - x1 - L2)) / m1 \\\n        , v2 \\\n        , (-b2 * v2 - k2 * (x2 - x1 - L2)) / m2])\n# Başlangıç koşulları\nyVek0= np.array([0.5, 0.0, 2.25, 0.0])\nt0=0\ntSon=10\nn=100\n# Çöz, Euler\ntTumEuler, yTum_VekEuler = bym.add_coz_euler_sistem(fonkVek, t0, tSon, yVek0, n)\n# Çöz, 4. Mertebe Runge-Kutta\ntTumRK4, yTum_VekRK4 = bym.add_coz_rk4_sistem(fonkVek, t0, tSon, yVek0, n)\n# Çöz, scipy.integrate.odeint\ntTumScipy= np.linspace(t0, tSon, n)\nyTumScipy= spInt.odeint(fonkVek, yVek0, tTumScipy)\n# Çiz\nfig, ax = plt.subplots(2, 2)\n# Sol üst grafik\nax[0,0].plot(tTumEuler, yTum_VekEuler[0], lw='5', label='x1(t) Euler', color='red')\nax[0,0].plot(tTumRK4, yTum_VekRK4[0], lw='3', label='x1(t) RK4', color='green')\nax[0,0].plot(tTumScipy, yTumScipy[:,0], lw='1', label='x1(t) Scipy', color='blue')\nax[0,0].set_xlabel('t')\nax[0,0].set_ylabel('x1(t)')\nax[0,0].legend()\n# Sağ üst grafik\nax[0,1].plot(tTumEuler, yTum_VekEuler[1], lw='5', label='v1(t) Euler', color='blue')\nax[0,1].plot(tTumRK4, yTum_VekRK4[1], lw='3', label='v1(t) RK4', color='green')\nax[0,1].plot(tTumScipy, yTumScipy[:,1], lw='1', label='v1(t) Scipy', color='red')\nax[0,1].set_xlabel('t')\nax[0,1].set_ylabel('v1(t)')\nax[0,1].legend()\n# Sol alt grafik\nax[1,0].plot(tTumEuler, yTum_VekEuler[2], lw='5', label='x2(t) Euler', color='red')\nax[1,0].plot(tTumRK4, yTum_VekRK4[2], lw='3', label='x2(t) RK4', color='green')\nax[1,0].plot(tTumScipy, yTumScipy[:,2], lw='1', label='x2(t) Scipy', color='blue')\nax[1,0].set_xlabel('t')\nax[1,0].set_ylabel('x2(t)')\nax[1,0].legend()\n# Sağ alt grafik\nax[1,1].plot(tTumEuler, yTum_VekEuler[3], lw='5', label='v2(t) Euler', color='blue')\nax[1,1].plot(tTumRK4, yTum_VekRK4[3], lw='3', label='v2(t) RK4', color='green')\nax[1,1].plot(tTumScipy, yTumScipy[:,3], lw='1', label='v2(t) Scipy', color='red')\nax[1,1].set_xlabel('t')\nax[1,1].set_ylabel('v2(t)')\nax[1,1].legend()\nplt.show()",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Runge-Kutta Yöntemleri"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html#runge-kutta-fehlberg-rk45-yöntemi",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html#runge-kutta-fehlberg-rk45-yöntemi",
+    "title": "BDP - Runge-Kutta Yöntemleri",
+    "section": "Runge-Kutta-Fehlberg (RK45) Yöntemi",
+    "text": "Runge-Kutta-Fehlberg (RK45) Yöntemi\n\nRunge-Kutta-Fehlberg (RK45) yöntemi, dördüncü ve beşinci mertebe Runge-Kutta yöntemi kullanarak çözüm elde eder.\nRK45, değişken adım aralığı (adaptive step size) kullanır.\nRK45’in girdilerinden (input) biri rölatif (relative) hata değeridir. RK4 ile elde edilen sonuç ile RK5 ile elde edilen sonuç arasındaki fark rölatif hatadan büyükse adım aralığı küçültülür ve o adım tekrar hesaplanır.\nBunun gibi metotlara değişken (adaptive) adım aralığı yöntemleri denir.\nRunge-Kutta metotları açık (explicit) yöntemlerdir.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Runge-Kutta Yöntemleri"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html#scipy-paketleri-hakkında",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html#scipy-paketleri-hakkında",
+    "title": "BDP - Runge-Kutta Yöntemleri",
+    "section": "Scipy Paketleri Hakkında",
+    "text": "Scipy Paketleri Hakkında\n\nScipy içerisinde başlangıç değer problemi çözümleri için birçok fonksiyon var  [2].\nEski api olarak odeint hala kullanılabiliyor ancak scipy’ın gelecekteki versiyonlarında çıkarılma ihtimali çok yüksek.\nodeint fonksiyonunda çağırılan \\(f\\) fonksiyonunda \\(f(y,t)\\) olmak zorunda. solve_ivp’de ise bu durum tam tersi. Bu farklılığı tfirst=True parametresi ile değiştirebilirsiniz - 1.1.0 versiyonundan itibaren.\nodeint ile ilgili bilgi için  [3] referansına bakabilirsiniz.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Runge-Kutta Yöntemleri"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html#problemler",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html#problemler",
+    "title": "BDP - Runge-Kutta Yöntemleri",
+    "section": "Problemler",
+    "text": "Problemler\n\nProblem 1\nAşağıdaki matris denklemlerini yazdığımız rk4 fonksiyonu ile çözün.\n\\[\n\\begin{align*}\n\\frac{d}{dt}\n\\begin{bmatrix}\n\\rho_{11}(t) & \\rho_{12}(t) \\\\\n\\rho_{21}(t) & \\rho_{22}(t)\n\\end{bmatrix}\n=\n\\begin{bmatrix}\n-\\rho_{11}(t) & -2\\rho_{12}(t) \\\\\n-3\\rho_{21}(t) & -4\\rho_{22}(t)\n\\end{bmatrix}\n\\end{align*}\n\\]\n\n\nProblem 2\nscipy.integrate.solve_ivp fonksiyonunu kullanarak aşağıdaki denklemi çözün. Çözüm yöntemi olarak method='RK45' ve method='LSODA' kullanın.\n\\[\n\\frac{d}{dx}y(x) = \\sin(5x)\n\\]\nBaşlangıç koşulu: \\(y(-3)=4.5\\). Çözümü -3 ile 3 arasında çizdirin.\nAynı denklemi sağ taraf \\(\\sin(15x)\\) ve \\(\\sin(25x)\\) olacak şekilde çözün.\n\n\nProblem 3\nSönümlü harmonik salınıcının Lagranjiyen’i aşağıdaki gibidir.\n\\[\nL(x,v) = \\frac{1}{2}mv^{2} - \\frac{1}{2}kx^2\n\\]\nBurada \\(v\\) hız olup konumun \\(x\\) zamana göre birinci türevine eşittir. Lagrange hareket denklemleri aşağıdaki gibi yazılır.\n\\[\n    \\left(\\frac{d}{dt}\\frac{\\partial L}{\\partial v} \\right) - \\frac{\\partial L}{\\partial x} = \\frac{\\partial F^{dis}}{\\partial v}\n\\]\nYukarıda verilen formülden diferansiyel denklem setini oluşturun. Burada \\(F^{dis}=-\\frac{1}{2}bv^{2}\\) sönümleyici kuvvettir. \\(t=0-50\\) arasındaki değerler için ve \\(n=1000\\) adımda, - Runge-Kutta-4 (veya 5(4) mertebe için Runge-Kutta methodu) yöntemi ile çözün. - x ile t’nin oluşturduğu grafiği çizdirin.\nBaşlangıç koşulları ve sabitler: - \\(m=1\\) kg - \\(k=1\\) N/m - \\(b=0.1\\) Ns/m - \\(x(t=0)=1\\) m - \\(v(t=0)=0\\) m/s",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Runge-Kutta Yöntemleri"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html",
+    "title": "BDP - Denklem Sistemleri",
+    "section": "",
+    "text": "Adi diferansiyel denklem sistemlerini çözmek için Euler yöntemini vektör haline getirip kullanabiliriz. Bunun için bilYonMod.py modülündende tanımlanan add_coz_euler_sistem(fonk_yVek_x, xBaslangic, xBitis, yBaslangic_vek, adimSayisi) fonksiyonunu kullanılmalıdır.\n\n\n\n\n\n\nNot\n\n\n\nadd_coz_euler_sistem fonksiyonunu inceleyiniz.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Denklem Sistemleri"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html#bdp---denklem-sistemleri",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html#bdp---denklem-sistemleri",
+    "title": "BDP - Denklem Sistemleri",
+    "section": "",
+    "text": "Adi diferansiyel denklem sistemlerini çözmek için Euler yöntemini vektör haline getirip kullanabiliriz. Bunun için bilYonMod.py modülündende tanımlanan add_coz_euler_sistem(fonk_yVek_x, xBaslangic, xBitis, yBaslangic_vek, adimSayisi) fonksiyonunu kullanılmalıdır.\n\n\n\n\n\n\nNot\n\n\n\nadd_coz_euler_sistem fonksiyonunu inceleyiniz.",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Denklem Sistemleri"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html#euler-yönteminin-denklem-sistemleri-için-uygulanması",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html#euler-yönteminin-denklem-sistemleri-için-uygulanması",
+    "title": "BDP - Denklem Sistemleri",
+    "section": "Euler Yönteminin Denklem Sistemleri İçin Uygulanması",
+    "text": "Euler Yönteminin Denklem Sistemleri İçin Uygulanması\nÖrneğin aşağıdaki denklem sistemini ele alalım. By denklem sisteminde iki adet birbirinden bağımsız diferansiyel denklem bulunmaktadır. Bu denklemleri birlikte çözebiliriz.\n\\[\n\\begin{align*}\n\\frac{d}{dx}y(x) &= x \\\\\n\\frac{d}{dx}v(x) &= x^{2}\n\\end{align*}\n\\]\nDenklem sistemi vektör haline getirilirse:\n\\[\n\\begin{align*}\n\\vec{y}'(x) &= \\begin{bmatrix} y'(x,v) \\\\ v'(x,y) \\end{bmatrix} = \\begin{bmatrix} x \\\\ x^{2} \\end{bmatrix}\n\\end{align*}\n\\]\nÇözüm başlangıç koşulları \\(y(0)=1\\) ve \\(v(0)=1\\) olsun. Çözüm aralığı \\(x=0\\) ile \\(x=10\\) arasında olsun. Çözüm adım sayısı \\(n=100\\) olsun.\n\n################################################\n## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma\nimport os\nimport sys\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nmodule_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')\n# moduller dizinini yol olarak ekle\nsys.path.append(module_dir)\n# bilYonMod.py modülünü içe aktar\nimport bilYonMod as bym\n################################################\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n# Fonksiyon\ndef fonk_yVek_x(yVek, x):\n    y = yVek[0]\n    v = yVek[1]\n    dydx = x\n    dvdx = x**2\n    return np.array([dydx, dvdx])\n# Başlangıç koşulları\ny0 = 1\nv0 = 1\nx0 = 0\nxSon = 10\nn = 100\n# Çöz\n# xTum, yTum_Vek= add_coz_euler_sistem(fonk_yVek_x, xBaslangic, xBitis, yBaslangic_vek, adimSayisi)\n# yTum_Vek[0] =&gt; y(x)\n# yTum_Vek[1] =&gt; v(x)\nxTum, yTum_Vek = bym.add_coz_euler_sistem(fonk_yVek_x, x0, xSon, np.array([y0, v0]), n)\n# Analitik çözüm\nyAnalitik = xTum**2/2 + 1\nvAnalitik = xTum**3/3 + 1\n# Çiz\nplt.plot(xTum, yTum_Vek[0], 'o-', color='red', label='y(x)')\nplt.plot(xTum, yAnalitik, label='y(x) analitik', color='black', linestyle='--')\nplt.plot(xTum, yTum_Vek[1], 'o-',label='v(x)', color='blue')\nplt.plot(xTum, vAnalitik, label='v(x) analitik', color='cyan', linestyle='--')\nplt.xlabel('x')\nplt.ylabel('y(x), v(x)')\nplt.legend()\nplt.show()",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Denklem Sistemleri"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html#alıştırma-1",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html#alıştırma-1",
+    "title": "BDP - Denklem Sistemleri",
+    "section": "Alıştırma 1",
+    "text": "Alıştırma 1\nBirbirine bağlı iki adet diferansiyel denklemi çözmek için Euler yöntemini kullanınız.\nDenklem sistemi aşağıdaki gibidir.\n\\[\n\\begin{align*}\n\\frac{d}{dx}y(v,x) &= v(x) \\\\\n\\frac{d}{dx}v(x) &= x\n\\end{align*}\n\\]\nDenklem sistemi vektör haline getirilirse:\n\\[\n\\begin{align*}\n\\vec{y}'(x) &= \\begin{bmatrix} y'(v,x) \\\\ v'(x) \\end{bmatrix} = \\begin{bmatrix} v(x) \\\\ x \\end{bmatrix}\n\\end{align*}\n\\]\nBu durumda sağ taraftaki vektör fonksiyonu aşağıdaki gibi tanımlanır.\n\ndef fonk_yVek_x(yVek, x):\n    # İlk çözülmesi gereken denklem y'(v,x) = v(x). \n    # fonk_yVek_x fonksiyonu girdi olarak (yVek,x) alacak. Bu yVek vektörünün\n    # ilk elemanı y'(x) 'in sağ tarafı olmalı. dydx diyelim.\n    # dydx &lt;= yVek[0]\n    dydx = yVek[0]\n    # İkinci çözülmesi gereken denklem v'(y,x) = x.\n    # fonk_yVek_x fonksiyonu girdi olarak (yVek,x) alacak. Bu yVek vektörünün\n    # ikinci elemanı v'(x) 'in sağ tarafı olmalı. dvdx diyelim.\n    # dvdx &lt;= yVek[1] \n    # dvdx = x\n    # Sonuç olarak da [dydx, dvdx] vektörünü döndürmeli.\n    return np.array([dydx, x])\n\nBaşlangıç koşulları \\(y(0)=1\\) ve \\(v(0)=0\\) olsun. Çözüm aralığı \\(x=0\\) ile \\(x=10\\) arasında olsun. Çözüm adım sayısı \\(n=100\\) olsun.\nAnalitik çözümü elde ederken önce \\(v(x)\\)’i çözmek gerekir. \\(v(x)=\\frac{x^2}{2}\\) olur. Bu durumda \\(y(x)=\\frac{x^3}{6}+1\\) olur.\n\nÇözüm\n\n################################################\n## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma\nimport os\nimport sys\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nmodule_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')\n# moduller dizinini yol olarak ekle\nsys.path.append(module_dir)\n# bilYonMod.py modülünü içe aktar\nimport bilYonMod as bym\n################################################\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n# Fonksiyon\ndef fonk_yVek_x(yVek, x):\n    dydx = yVek[1]\n    return np.array([dydx, x])\n# Başlangıç koşulları\ny0 = 1\nv0 = 0\nx0 = 0\nxSon = 10\nn = 100\n# Çöz\nxTum, yTum_Vek = bym.add_coz_euler_sistem(fonk_yVek_x, x0, xSon, np.array([y0, v0]), n)\n# Analitik çözüm\nyAnalitik = xTum**3/6 + 1\nvAnalitik = xTum**2/2\n# Çiz\nfig, ax = plt.subplots(1, 2)\n# Sol grafik\nax[0].plot(xTum, yTum_Vek[0], 'o-', label='y(x)', color='red')\nax[0].plot(xTum, yAnalitik, label='y(x) analitik', color='black', linestyle='--')\nax[0].set_xlabel('x')\nax[0].set_ylabel('y(x)')\nax[0].legend()\n# Sağ grafik\nax[1].plot(xTum, yTum_Vek[1], 'o-', label='v(x)', color='blue')\nax[1].plot(xTum, vAnalitik, label='v(x) analitik', color='cyan', linestyle='--')\nax[1].set_xlabel('x')\nax[1].set_ylabel('v(x)')\nax[1].legend()\nplt.show()",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Denklem Sistemleri"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html#problemler",
+    "href": "icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html#problemler",
+    "title": "BDP - Denklem Sistemleri",
+    "section": "Problemler",
+    "text": "Problemler\n\nProblemi 1\nLorenz atraktörünün denklemini Euler yöntemiyle çözünüz. Sabitler için \\(\\rho=28\\), \\(\\sigma=10\\) ve \\(\\beta=8/3\\) alınız. Başlangıç koşullarını: \\(x_{0}=1\\), \\(y_{0}=1\\) ve \\(z_{0}=1\\) olarak alınız. En iyi sonucu görebilmek için \\(t=0-10\\) aralığında ve \\(n= 1000\\) adımda yapınız. 3 boyutlu grafik çizilirse ünlü şekil ortaya çıkacaktır.\n\\[\n\\frac{dx}{dt}=\\sigma(y-x)\n\\]\n\\[\n\\frac{dy}{dt}=x(\\rho-z)-y\n\\]\n\\[\n\\frac{dz}{dt}=xy-\\beta z\n\\]\n\n\nProblem 2\nLotka-Volterra Modelini Euler yöntemiyle çözünüz. Sabitler için \\(a=1.5\\), \\(b=1\\), \\(c=3\\) ve \\(d=1\\) alınız. Başlangıç koşulu olarak 10 tavşan (\\(x_{0}\\)) ve 5 vaşak (\\(y_{0}\\)) alınız. En iyi sonucu görebilmek için \\(t=0-20\\) aralığında ve \\(n= 1000\\) adımda yapınız. Bu model av-avcı popülasyonunu veya tavşan-vaşak popülasyonu simülasyonudur.\n\\[\n\\frac{dx}{dt}=ax-bxy\n\\]\n\\[\n\\frac{dy}{dt}=-cy+dxy\n\\]",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler",
+      "BDP - Denklem Sistemleri"
     ]
   },
   {

@@ -2,30 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/bilYonMod.html</loc>
-    <lastmod>2024-02-27T16:17:46.696Z</lastmod>
+    <lastmod>2024-02-28T14:15:07.316Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler.html</loc>
-    <lastmod>2024-02-27T16:17:46.696Z</lastmod>
+    <lastmod>2024-02-28T14:15:07.316Z</lastmod>
   </url>
   <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/ikinci-dereceden-diferansiyel-denklemler.html</loc>
-    <lastmod>2024-02-27T16:17:46.696Z</lastmod>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html</loc>
+    <lastmod>2024-02-28T14:15:07.316Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html</loc>
+    <lastmod>2024-02-28T14:15:07.316Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html</loc>
+    <lastmod>2024-02-28T14:15:07.316Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/index.html</loc>
-    <lastmod>2024-02-27T16:17:46.696Z</lastmod>
+    <lastmod>2024-02-28T14:15:07.316Z</lastmod>
   </url>
   <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html</loc>
-    <lastmod>2024-02-27T16:17:46.696Z</lastmod>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html</loc>
+    <lastmod>2024-02-28T14:15:07.316Z</lastmod>
   </url>
   <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/denklem-sistemleri.html</loc>
-    <lastmod>2024-02-27T16:17:46.696Z</lastmod>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html</loc>
+    <lastmod>2024-02-28T14:15:07.316Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html</loc>
+    <lastmod>2024-02-28T14:15:07.316Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/izlence.html</loc>
-    <lastmod>2024-02-27T16:17:46.696Z</lastmod>
+    <lastmod>2024-02-28T14:15:07.316Z</lastmod>
   </url>
 </urlset>

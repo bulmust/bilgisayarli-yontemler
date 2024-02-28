@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html" rel="next">
+<link href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" rel="next">
 <link href="../../icerik/bilYonMod.html" rel="prev">
 <link href="../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
@@ -193,20 +193,38 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Euler Yöntemi</span></a>
+  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Euler Yöntemi</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Denklem Sistemleri</span></a>
+  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Denklem Sistemleri</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">İkinci Dereceden Diferansiyel Denklemler</span></a>
+  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - İkinci Dereceden Diferansiyel Denklemler</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Runge-Kutta Yöntemleri</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SDP - Atış Yöntemi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SDP - Sonlu Farklar Yöntemi</span></a>
   </div>
 </li>
       </ul>
@@ -219,13 +237,17 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Bu sayfada</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#başlangıç-değer-problemleri" id="toc-başlangıç-değer-problemleri" class="nav-link active" data-scroll-target="#başlangıç-değer-problemleri">Başlangıç Değer Problemleri</a></li>
+  <li><a href="#adi-diferansiyel-denklemler" id="toc-adi-diferansiyel-denklemler" class="nav-link active" data-scroll-target="#adi-diferansiyel-denklemler">Adi Diferansiyel Denklemler</a>
+  <ul class="collapse">
+  <li><a href="#başlangıç-değer-problemleri-bdp" id="toc-başlangıç-değer-problemleri-bdp" class="nav-link" data-scroll-target="#başlangıç-değer-problemleri-bdp">Başlangıç Değer Problemleri (BDP)</a></li>
+  <li><a href="#sınır-değer-problemleri-sdp" id="toc-sınır-değer-problemleri-sdp" class="nav-link" data-scroll-target="#sınır-değer-problemleri-sdp">Sınır Değer Problemleri (SDP)</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -249,7 +271,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">27 Şubat 2024</p>
+      <p class="date">28 Şubat 2024</p>
     </div>
   </div>
   
@@ -261,8 +283,10 @@ window.Quarto = {
 </header>
 
 
-<section id="başlangıç-değer-problemleri" class="level2">
-<h2 class="anchored" data-anchor-id="başlangıç-değer-problemleri">Başlangıç Değer Problemleri</h2>
+<section id="adi-diferansiyel-denklemler" class="level2">
+<h2 class="anchored" data-anchor-id="adi-diferansiyel-denklemler">Adi Diferansiyel Denklemler</h2>
+<section id="başlangıç-değer-problemleri-bdp" class="level3">
+<h3 class="anchored" data-anchor-id="başlangıç-değer-problemleri-bdp">Başlangıç Değer Problemleri (BDP)</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -305,8 +329,12 @@ f_2(x,y_1,y_2,\cdots,y_n) \\
 f_n(x,y_1,y_2,\cdots,y_n)
 \end{bmatrix}
 \]</span></p>
+</section>
+<section id="sınır-değer-problemleri-sdp" class="level3">
+<h3 class="anchored" data-anchor-id="sınır-değer-problemleri-sdp">Sınır Değer Problemleri (SDP)</h3>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -533,6 +561,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/bulmust\.github\.io\/bilgisayarli-yontemler");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -848,8 +896,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html" class="pagination-link" aria-label="Euler Yöntemi">
-        <span class="nav-page-text">Euler Yöntemi</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="pagination-link" aria-label="BDP - Euler Yöntemi">
+        <span class="nav-page-text">BDP - Euler Yöntemi</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

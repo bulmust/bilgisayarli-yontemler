@@ -16,6 +16,7 @@ def add_coz_euler(fonk_y_x, xBaslangic, xBitis, yBaslangic, adimSayisi):
         xTum= np.append(xTum, xTum[i]+ h)
         yTum= np.append(yTum, yTum[i]+ h* fonk_y_x(yTum[i], xTum[i]))
     return xTum, yTum
+# Euler Yöntemi ile ADD Sistemi Çözme (Denklem Sistemi)
 def add_coz_euler_sistem(fonk_yVek_x, xBaslangic, xBitis, yBaslangic_vek, adimSayisi):
     xTum= np.array([xBaslangic])
     yBoy= len(yBaslangic_vek)
@@ -30,9 +31,28 @@ def add_coz_euler_sistem(fonk_yVek_x, xBaslangic, xBitis, yBaslangic_vek, adimSa
         xTum= np.append(xTum, xTum[i]+ h)
         yTum_vek[:,i+1]= yTum_vek[:,i]+ h* fonk_yVek_x(yTum_vek[:,i], xTum[i])
     return xTum, yTum_vek
+# 4. Derece Runge-Kutta Yöntemi
+def add_coz_rk4_sistem(fonk_yVek_x, xBaslangic, xBitis, yBaslangic_vek, adimSayisi):
+    xTum= np.array([xBaslangic])
+    yBoy= len(yBaslangic_vek)
+    yTum_vek= np.zeros((yBoy, adimSayisi+1))
+    yTum_vek[:,0]= yBaslangic_vek
+    #yTum_vek=
+    #[[y_{0}(0), y_{0}(0+h), y_{0}(0+2h), ... ],
+    # [y_{1}(0), y_{1}(0+h), y_{1}(0+2h), ... ]]
+    
+    h= (xBitis- xBaslangic)/ adimSayisi
+    for i in range(adimSayisi):
+        xTum= np.append(xTum, xTum[i]+ h)
+        k1= h* fonk_yVek_x(yTum_vek[:,i], xTum[i])
+        k2= h* fonk_yVek_x(yTum_vek[:,i]+ k1/2, xTum[i]+ h/2)
+        k3= h* fonk_yVek_x(yTum_vek[:,i]+ k2/2, xTum[i]+ h/2)
+        k4= h* fonk_yVek_x(yTum_vek[:,i]+ k3, xTum[i]+ h)
+        yTum_vek[:,i+1]= yTum_vek[:,i]+ (k1+ 2*k2+ 2*k3+ k4)/6
+    return xTum, yTum_vek
 ## ADD Çözme (odeint)
 # import scipy.integrate as spInt
-# yHep= spInt.odeint(fonk_y_x, y0, xHep)
+# yHep= spInt.odeint(fonk_y_x, np.array([y0, v0]), xHep)
  
 #! ===========================================
 #! Sayısal İntegral Alma

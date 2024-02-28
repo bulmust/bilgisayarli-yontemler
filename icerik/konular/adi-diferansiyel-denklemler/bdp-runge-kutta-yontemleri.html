@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Taygun Bulmus">
+
+<title>Bilgisayarlı Yöntemler - BDP - Runge-Kutta Yöntemleri</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" rel="next">
+<link href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" rel="prev">
+<link href="../../../resimler/favicon.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sonuç yok",
+    "search-matching-documents-text": "eşleşen belgeler",
+    "search-copy-link-title": "Aramak için bağlantıyı kopyalayın",
+    "search-hide-matches-text": "Ek eşleşmeleri gizle",
+    "search-more-match-text": "bu belgede daha fazla eşleşme",
+    "search-more-matches-text": "bu belgede daha fazla eşleşmeler",
+    "search-clear-button-title": "Temizle",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "İptal et",
+    "search-submit-button-title": "Göndermek",
+    "search-label": "Aramak"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html">BDP - Runge-Kutta Yöntemleri</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../resimler/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/bulmust/bilgisayarli-yontemler" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://bulmust.github.io/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-file-person"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Karanlık modu değiştir"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Okuyucu modunu değiştir">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Aramak"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>İçerik</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/izlence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">İzlence</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/bilYonMod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Modülü</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Konular</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../icerik/konular/adi-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Adi Diferansiyel Denklemler</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Euler Yöntemi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Denklem Sistemleri</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - İkinci Dereceden Diferansiyel Denklemler</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">BDP - Runge-Kutta Yöntemleri</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SDP - Atış Yöntemi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SDP - Sonlu Farklar Yöntemi</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
+   
+  <ul>
+  <li><a href="#runge-kutta-yöntemleri" id="toc-runge-kutta-yöntemleri" class="nav-link active" data-scroll-target="#runge-kutta-yöntemleri">Runge-Kutta Yöntemleri</a>
+  <ul class="collapse">
+  <li><a href="#ikinci-derece-runge-kutta-yöntemi" id="toc-ikinci-derece-runge-kutta-yöntemi" class="nav-link" data-scroll-target="#ikinci-derece-runge-kutta-yöntemi">İkinci Derece Runge-Kutta Yöntemi</a></li>
+  <li><a href="#dördüncü-derece-runge-kutta-yöntemi" id="toc-dördüncü-derece-runge-kutta-yöntemi" class="nav-link" data-scroll-target="#dördüncü-derece-runge-kutta-yöntemi">Dördüncü Derece Runge-Kutta Yöntemi</a></li>
+  </ul></li>
+  <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a>
+  <ul class="collapse">
+  <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
+  </ul></li>
+  <li><a href="#alıştırma-2" id="toc-alıştırma-2" class="nav-link" data-scroll-target="#alıştırma-2">Alıştırma 2</a>
+  <ul class="collapse">
+  <li><a href="#çözüm-1" id="toc-çözüm-1" class="nav-link" data-scroll-target="#çözüm-1">Çözüm</a></li>
+  </ul></li>
+  <li><a href="#runge-kutta-fehlberg-rk45-yöntemi" id="toc-runge-kutta-fehlberg-rk45-yöntemi" class="nav-link" data-scroll-target="#runge-kutta-fehlberg-rk45-yöntemi">Runge-Kutta-Fehlberg (RK45) Yöntemi</a></li>
+  <li><a href="#scipy-paketleri-hakkında" id="toc-scipy-paketleri-hakkında" class="nav-link" data-scroll-target="#scipy-paketleri-hakkında">Scipy Paketleri Hakkında</a></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
+  <ul class="collapse">
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  </ul></li>
+  <li><a href="#referanslar" id="toc-referanslar" class="nav-link" data-scroll-target="#referanslar">Referanslar</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html">BDP - Runge-Kutta Yöntemleri</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">BDP - Runge-Kutta Yöntemleri</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Yazar</div>
+    <div class="quarto-title-meta-contents">
+             <p>Taygun Bulmus </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">28 Şubat 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="runge-kutta-yöntemleri" class="level2">
+<h2 class="anchored" data-anchor-id="runge-kutta-yöntemleri">Runge-Kutta Yöntemleri</h2>
+<p>Euler yöntemi için Taylor serisini birinci dereceden türevli terimden kesmiştik. Eğer Taylor serisinde daha yüksek mertebelerden türevler kullanılırsa, bu yöntemlere Runge-Kutta yöntemleri adı verilir.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dikkat
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Yüksek mertebeden türevler kullanmak demek, yüksek mertebe diferansiyel denklem çözümü anlamına gelmez. Örneğin, birinci dereceden diferansiyel denklemi, Taylor serisinin üçüncü dereceden teriminden keserek çözebiliriz. Runge-Kutta yöntemleri, Euler yönteminin bir genelleştirilmesidir.</p>
+</div>
+</div>
+<section id="ikinci-derece-runge-kutta-yöntemi" class="level3">
+<h3 class="anchored" data-anchor-id="ikinci-derece-runge-kutta-yöntemi">İkinci Derece Runge-Kutta Yöntemi</h3>
+<ul>
+<li><p>Ana daklem: <span class="math inline">\(y'(x)=F(x,y)\)</span></p></li>
+<li><p>Euler yöntemini hatırlayalım:</p></li>
+</ul>
+<p><span class="math display">\[
+y(x+h)= y(x)+hy'(x,y) = y(x)+hyf(x,y)
+\]</span></p>
+<ul>
+<li>Taylor serisinin ikinci mertebesinden kesmeden önce en genel formülü yazalım.</li>
+</ul>
+<p><span class="math display">\[
+y(x+h)= y(x)+c_{0}hF(x,y) + c_{1}hF(x+ph,y+qhF(x,y))
+\]</span></p>
+<p>Burada <span class="math inline">\(c_{0},c_{1},p,q\)</span> birer katsayıdır. Taylor serisine dönelim.</p>
+<p><span class="math display">\[
+\begin{align*}
+y(x+h) &amp;= y(x) + y'(x)h + \frac{1}{2}y''(x)h^{2}\\
+       &amp;= y(x) + F(x,y)h + \frac{1}{2}F'(x,y)h^{2}    
+\end{align*}
+\]</span></p>
+<ul>
+<li>Burada <span class="math inline">\(F'(x,y)\)</span> aşağıdaki gibi yazılır.</li>
+</ul>
+<p><span class="math display">\[
+F'(x,y)= \frac{\partial F}{\partial x} + \frac{\partial F}{\partial y}F
+\]</span></p>
+<p><span class="math display">\[
+F'(x,y)= \frac{\partial F}{\partial x} + \frac{\partial F}{\partial y}y'
+\]</span></p>
+<ul>
+<li>Vektörize edilmiş <span class="math inline">\(F\)</span> için ise,</li>
+</ul>
+<p><span class="math display">\[
+F'(x,y)= \frac{\partial F}{\partial x} + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(x,y)
+\]</span></p>
+<p>şeklinde yazılır. (2) numaralı denklemde yerine koyarsak,</p>
+<p><span class="math display">\[
+y(x+h)= y(x) + F(x,y)h + \frac{h^{2}}{2}\frac{\partial F}{\partial x} + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(x,y)
+\]</span></p>
+<p>ifadesini elde ederiz. Şimdi genelleştirilmiş formülü, yani <span class="math inline">\(y(x+h)= y(x)+c_{0}hF(x,y) + c_{1}hF(x+ph,y+qhF(x,y))\)</span> terimindeki <span class="math inline">\(F(x+ph,y+qhF(x,y))\)</span> terimi açalım.</p>
+<p><span class="math display">\[
+F(x+ph,y+qhF(x,y)) = F(x,y) + \frac{\partial F}{\partial x}ph + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}qhF_{i}(x,y)
+\]</span></p>
+<ul>
+<li>Yukarıdaki açılımı genelleştirilmiş formülde yerine koyalım.</li>
+</ul>
+<p><span class="math display">\[
+y(x+h) = y(x) + (c_{0}+c_{1})F(x,y)h+ c_{1}\left[\frac{\partial F}{\partial x}ph + qh \sum_{i=1}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(x,y)\right]
+\]</span></p>
+<p>Burada elde ettiğimiz formül ile Taylor serisinde elde ettiğimiz formülü karşılaştıralım. Eğer</p>
+<p><span class="math display">\[
+c_{0}+c_{1}=1 \quad \text{ve} \quad c_{1}p=c_{1}q=\frac{1}{2}
+\]</span></p>
+<p>olursa, iki formül de aynı olur. Buradaki <span class="math inline">\(c_{0}, c_{1},q,p\)</span> parametreleri farklı farklı seçilebilir. Bazı farklı seçimler için özel isimlendirme yapılır.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>İsim</th>
+<th><span class="math inline">\(c_{0}\)</span></th>
+<th><span class="math inline">\(c_{1}\)</span></th>
+<th>p</th>
+<th>q</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Değiştirilmiş (Modified) Euler</td>
+<td>0</td>
+<td>1</td>
+<td>1/2</td>
+<td>1/2</td>
+</tr>
+<tr class="even">
+<td>Heun Yöntemi</td>
+<td>1/2</td>
+<td>1/2</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>Ralston Yöntemi</td>
+<td>1/3</td>
+<td>2/3</td>
+<td>3/4</td>
+<td>3/4</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Tüm bu sınıflandırma 2. derece Runge-Kutta yöntemleri altındadır.</li>
+<li>Bu yöntemler birbirlerinden üstün değildir.</li>
+<li>Birinci derece Runge-Kutta yöntemi olan Euler yönteminde ise <span class="math inline">\(c_{0}=1\)</span> ve diğer terimler sıfırdır.</li>
+</ul>
+<p>Genelleştirmek adına değiştirilmiş Euler motdunu aşağıdaki gibi yazabiliriz.</p>
+<p><span class="math display">\[
+\vec{y}(x+h) = \vec{y}(x) + \vec{F}\left[x+\frac{h}{2},\vec{y}+\frac{h}{2}\vec{F}(x,\vec{y}) \right]
+\]</span></p>
+<p>Runge-Kutta metodları için <span class="math inline">\(\vec{K}_{i}\)</span> vektörleri tanımlanır.</p>
+<p><span class="math display">\[
+\vec{K}_{0} = h\vec{F}(x,\vec{y})
+\]</span></p>
+<ul>
+<li>En popüler Runge-Kutta diferansiyel denklem çözme yöntemi d<strong>ördüncü dereceden Runge-Kutta yöntemi</strong>dir.</li>
+</ul>
+</section>
+<section id="dördüncü-derece-runge-kutta-yöntemi" class="level3">
+<h3 class="anchored" data-anchor-id="dördüncü-derece-runge-kutta-yöntemi">Dördüncü Derece Runge-Kutta Yöntemi</h3>
+<p>Dördüncü Derece Runge-Kutta yöntemi için <span class="math inline">\(\vec{K}_{i}\)</span> vektörleri tanımlanır.</p>
+<p><span class="math display">\[
+\begin{align*}
+    \vec{K}_{0} &amp;= h\vec{F}(x,\vec{y})\\
+    \vec{K}_{1} &amp;= h\vec{F}\left(x+\frac{h}{2},\vec{y}+\frac{1}{2}\vec{K}_{0}\right)\\
+    \vec{K}_{2} &amp;= h\vec{F}\left(x+\frac{h}{2},\vec{y}+\frac{1}{2}\vec{K}_{1}\right)\\
+    \vec{K}_{3} &amp;= h\vec{F}\left(x+h,\vec{y}+\vec{K}_{2}\right)
+\end{align*}
+\]</span></p>
+<p>Sonuç olarak bir sonraki adım aşağıdaki gibi yazılır.</p>
+<p><span class="math display">\[
+\vec{y}(x+h)= \vec{y}(x) + \frac{1}{6}\left(\vec{K}_{0}+2\vec{K}_{1}+2\vec{K}_{2}+\vec{K}_{3}\right)
+\]</span></p>
+<p>Katsayı tablosu oluşturalım.</p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">$k_{0}</th>
+<th style="text-align: center;"><span class="math inline">\(k_{1}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(k_{2}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(k_{3}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(hF(x,y)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(hF\left(x+\frac{h}{2},y+\frac{1}{2}k_{0}\right)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(hF\left(x+\frac{h}{2},y+\frac{1}{2}k_{1}\right)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(hF\left(x+h,y+k_{2}\right)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Katsayıları kullanarak bir sonraki adım hesaplanır.</p>
+<p><span class="math display">\[
+y(x+h)= y(x) + \frac{1}{6}(k_{0}+2k_{1}+2k_{2}+k_{3})
+\]</span></p>
+<p>Python kodunu yazalım. <code>add_coz_rk4_sistem</code> adlı fonksiyon <a href="../../../moduller/bilYonMod.py">bilYonMod.py</a> modülünde tanımlıdır.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Not
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>add_coz_rk4_sistem</code> fonksiyonunu inceleyiniz.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="alıştırma-1" class="level2">
+<h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h2>
+<p>Birbirine bağlı iki adet diferansiyel denklemi çözmek için Euler yöntemini, 4. Mertebe Runge-Kutta ve <code>scipy.integrate.odeint</code> yöntemlerini kullanınız. Toplamda 10 adım kullanın.</p>
+<p>Denklem sistemi aşağıdaki gibidir.</p>
+<p><span class="math display">\[
+\begin{align*}
+\frac{d}{dx}y(v,x) &amp;= v(x) \\
+\frac{d}{dx}v(x) &amp;= x
+\end{align*}
+\]</span></p>
+<section id="çözüm" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
+<div id="2bcc4508" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> sys</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># 3 üst dizine çık</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>module_dir <span class="op">=</span> os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), <span class="st">'moduller'</span>)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># moduller dizinini yol olarak ekle</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>sys.path.append(module_dir)</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># bilYonMod.py modülünü içe aktar</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="im">import</span> bilYonMod <span class="im">as</span> bym</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co">################################################</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="im">import</span> scipy.integrate <span class="im">as</span> spInt</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co"># Fonksiyon</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="kw">def</span> fonk_yVek_x(yVek, x):</span>
+<span id="cb1-20"><a href="#cb1-20"></a>    dydx <span class="op">=</span> yVek[<span class="dv">1</span>]</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    <span class="cf">return</span> np.array([dydx, x])</span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co"># Başlangıç koşulları</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>y0 <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>v0 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>x0 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>xSon <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>n <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="co"># Çöz, Euler</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a>xTumEuler, yTum_VekEuler <span class="op">=</span> bym.add_coz_euler_sistem(fonk_yVek_x, x0, xSon, np.array([y0, v0]), n)</span>
+<span id="cb1-30"><a href="#cb1-30"></a><span class="co"># Çöz, 4. Mertebe Runge-Kutta</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>xTumRK4, yTum_VekRK4 <span class="op">=</span> bym.add_coz_rk4_sistem(fonk_yVek_x, x0, xSon, np.array([y0, v0]), n)</span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="co"># Çöz, scipy.integrate.odeint</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a>xTumScipy<span class="op">=</span> np.linspace(x0, xSon, n)</span>
+<span id="cb1-34"><a href="#cb1-34"></a>yTumScipy<span class="op">=</span> spInt.odeint(fonk_yVek_x, np.array([y0, v0]), xTumScipy)</span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="co"># Analitik çözüm</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a>yAnalitik <span class="op">=</span> xTumEuler<span class="op">**</span><span class="dv">3</span><span class="op">/</span><span class="dv">6</span> <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a>vAnalitik <span class="op">=</span> xTumEuler<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="co"># Çiz</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb1-40"><a href="#cb1-40"></a><span class="co"># Sol grafik</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a>ax[<span class="dv">0</span>].plot(xTumEuler, yTum_VekEuler[<span class="dv">0</span>], lw<span class="op">=</span><span class="st">'5'</span>, label<span class="op">=</span><span class="st">'y(x) Euler'</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb1-42"><a href="#cb1-42"></a>ax[<span class="dv">0</span>].plot(xTumRK4, yTum_VekRK4[<span class="dv">0</span>], lw<span class="op">=</span><span class="st">'3'</span>, label<span class="op">=</span><span class="st">'y(x) RK4'</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb1-43"><a href="#cb1-43"></a>ax[<span class="dv">0</span>].plot(xTumScipy, yTumScipy[:,<span class="dv">0</span>], lw<span class="op">=</span><span class="st">'1'</span>, label<span class="op">=</span><span class="st">'y(x) Scipy'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb1-44"><a href="#cb1-44"></a>ax[<span class="dv">0</span>].plot(xTumEuler, yAnalitik, label<span class="op">=</span><span class="st">'y(x) Analitik'</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb1-45"><a href="#cb1-45"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'x'</span>)</span>
+<span id="cb1-46"><a href="#cb1-46"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">'y(x)'</span>)</span>
+<span id="cb1-47"><a href="#cb1-47"></a>ax[<span class="dv">0</span>].legend()</span>
+<span id="cb1-48"><a href="#cb1-48"></a><span class="co"># Sağ grafik</span></span>
+<span id="cb1-49"><a href="#cb1-49"></a>ax[<span class="dv">1</span>].plot(xTumEuler, yTum_VekEuler[<span class="dv">1</span>], lw<span class="op">=</span><span class="st">'5'</span>, label<span class="op">=</span><span class="st">'v(x) Euler'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb1-50"><a href="#cb1-50"></a>ax[<span class="dv">1</span>].plot(xTumRK4, yTum_VekRK4[<span class="dv">1</span>], lw<span class="op">=</span><span class="st">'3'</span>, label<span class="op">=</span><span class="st">'v(x) RK4'</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb1-51"><a href="#cb1-51"></a>ax[<span class="dv">1</span>].plot(xTumScipy, yTumScipy[:,<span class="dv">1</span>], lw<span class="op">=</span><span class="st">'1'</span>, label<span class="op">=</span><span class="st">'v(x) Scipy'</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb1-52"><a href="#cb1-52"></a>ax[<span class="dv">1</span>].plot(xTumEuler, vAnalitik, label<span class="op">=</span><span class="st">'v(x) Analitik'</span>, color<span class="op">=</span><span class="st">'cyan'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb1-53"><a href="#cb1-53"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'x'</span>)</span>
+<span id="cb1-54"><a href="#cb1-54"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">'v(x)'</span>)</span>
+<span id="cb1-55"><a href="#cb1-55"></a>ax[<span class="dv">1</span>].legend()</span>
+<span id="cb1-56"><a href="#cb1-56"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bdp-runge-kutta-yontemleri_files/figure-html/cell-2-output-1.png" width="597" height="432" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="alıştırma-2" class="level2">
+<h2 class="anchored" data-anchor-id="alıştırma-2">Alıştırma 2</h2>
+<p>Aşağıdaki diferansiyel denklem sistemini tüm bildiğiniz çözüm yöntemleri ile çözün <span class="citation" data-cites="web2024Feb-3">&nbsp;[<a href="#ref-web2024Feb-3" role="doc-biblioref">1</a>]</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://scipy-cookbook.readthedocs.io/_static/items/attachments/CoupledSpringMassSystem/two_springs_diagram.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p><span class="math display">\[
+\begin{align*}
+m_{1}\ddot{x}_{1}+b_{1}\dot{x}_{1}+ k_{1}(x_{1} - L_{1})-k_{2}(x_{2}-x_{1}-L_{2})=0 \\
+m_{2}\ddot{x}_{2}+b_{2}\dot{x}_{2}+ k_{2}(x_{2}- x_{1}-L_{2})=0
+\end{align*}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(m_{1}= 1\)</span> kg, <span class="math inline">\(m_{2}=1.5\)</span> kg: Cisimlerin kütlesi</li>
+<li><span class="math inline">\(k_{1}= 8\)</span> N/m, <span class="math inline">\(k_{2}=40.0\)</span> N/m: Yayların esneklik katsayısı</li>
+<li><span class="math inline">\(b_{1}= 0.8\)</span> Ns/m, <span class="math inline">\(b_{2}=0.5\)</span> Ns/m: Sürtünme katsayısı</li>
+<li><span class="math inline">\(L_{1}= 0.5\)</span> m, <span class="math inline">\(L_{2}=1.0\)</span> m: Yayların kuvvet yokkenki uzunluğu</li>
+</ul>
+<p>Başlangıç koşulları:</p>
+<ul>
+<li><span class="math inline">\(x_{1}=0.5\)</span> m</li>
+<li><span class="math inline">\(v_{1}=0.0\)</span> m/s</li>
+<li><span class="math inline">\(x_{2}=2.25\)</span> m</li>
+<li><span class="math inline">\(v_{2}=0.0\)</span> m/s</li>
+</ul>
+<section id="çözüm-1" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm-1">Çözüm</h3>
+<div id="ee483dfd" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="im">import</span> sys</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># 3 üst dizine çık</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>module_dir <span class="op">=</span> os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), <span class="st">'moduller'</span>)</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co"># moduller dizinini yol olarak ekle</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>sys.path.append(module_dir)</span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># bilYonMod.py modülünü içe aktar</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="im">import</span> bilYonMod <span class="im">as</span> bym</span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co">################################################</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="im">import</span> scipy.integrate <span class="im">as</span> spInt</span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="co"># Global değişkenler</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a>m1 <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>m2 <span class="op">=</span> <span class="fl">1.5</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a>k1 <span class="op">=</span> <span class="fl">8.0</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a>k2 <span class="op">=</span> <span class="fl">40.0</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>L1 <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a>L2 <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a>b1 <span class="op">=</span> <span class="fl">0.8</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a>b2 <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="co"># Fonksiyonlar</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="kw">def</span> fonkVek(yVek, t):</span>
+<span id="cb2-29"><a href="#cb2-29"></a>    x1<span class="op">=</span> yVek[<span class="dv">0</span>]</span>
+<span id="cb2-30"><a href="#cb2-30"></a>    v1<span class="op">=</span> yVek[<span class="dv">1</span>]</span>
+<span id="cb2-31"><a href="#cb2-31"></a>    x2<span class="op">=</span> yVek[<span class="dv">2</span>]</span>
+<span id="cb2-32"><a href="#cb2-32"></a>    v2<span class="op">=</span> yVek[<span class="dv">3</span>]</span>
+<span id="cb2-33"><a href="#cb2-33"></a>    <span class="cf">return</span> np.array([v1<span class="op">\</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a>        , (<span class="op">-</span>b1 <span class="op">*</span> v1 <span class="op">-</span> k1 <span class="op">*</span> (x1 <span class="op">-</span> L1) <span class="op">+</span> k2 <span class="op">*</span> (x2 <span class="op">-</span> x1 <span class="op">-</span> L2)) <span class="op">/</span> m1 <span class="op">\</span></span>
+<span id="cb2-35"><a href="#cb2-35"></a>        , v2 <span class="op">\</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a>        , (<span class="op">-</span>b2 <span class="op">*</span> v2 <span class="op">-</span> k2 <span class="op">*</span> (x2 <span class="op">-</span> x1 <span class="op">-</span> L2)) <span class="op">/</span> m2])</span>
+<span id="cb2-37"><a href="#cb2-37"></a><span class="co"># Başlangıç koşulları</span></span>
+<span id="cb2-38"><a href="#cb2-38"></a>yVek0<span class="op">=</span> np.array([<span class="fl">0.5</span>, <span class="fl">0.0</span>, <span class="fl">2.25</span>, <span class="fl">0.0</span>])</span>
+<span id="cb2-39"><a href="#cb2-39"></a>t0<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb2-40"><a href="#cb2-40"></a>tSon<span class="op">=</span><span class="dv">10</span></span>
+<span id="cb2-41"><a href="#cb2-41"></a>n<span class="op">=</span><span class="dv">100</span></span>
+<span id="cb2-42"><a href="#cb2-42"></a><span class="co"># Çöz, Euler</span></span>
+<span id="cb2-43"><a href="#cb2-43"></a>tTumEuler, yTum_VekEuler <span class="op">=</span> bym.add_coz_euler_sistem(fonkVek, t0, tSon, yVek0, n)</span>
+<span id="cb2-44"><a href="#cb2-44"></a><span class="co"># Çöz, 4. Mertebe Runge-Kutta</span></span>
+<span id="cb2-45"><a href="#cb2-45"></a>tTumRK4, yTum_VekRK4 <span class="op">=</span> bym.add_coz_rk4_sistem(fonkVek, t0, tSon, yVek0, n)</span>
+<span id="cb2-46"><a href="#cb2-46"></a><span class="co"># Çöz, scipy.integrate.odeint</span></span>
+<span id="cb2-47"><a href="#cb2-47"></a>tTumScipy<span class="op">=</span> np.linspace(t0, tSon, n)</span>
+<span id="cb2-48"><a href="#cb2-48"></a>yTumScipy<span class="op">=</span> spInt.odeint(fonkVek, yVek0, tTumScipy)</span>
+<span id="cb2-49"><a href="#cb2-49"></a><span class="co"># Çiz</span></span>
+<span id="cb2-50"><a href="#cb2-50"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb2-51"><a href="#cb2-51"></a><span class="co"># Sol üst grafik</span></span>
+<span id="cb2-52"><a href="#cb2-52"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].plot(tTumEuler, yTum_VekEuler[<span class="dv">0</span>], lw<span class="op">=</span><span class="st">'5'</span>, label<span class="op">=</span><span class="st">'x1(t) Euler'</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb2-53"><a href="#cb2-53"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].plot(tTumRK4, yTum_VekRK4[<span class="dv">0</span>], lw<span class="op">=</span><span class="st">'3'</span>, label<span class="op">=</span><span class="st">'x1(t) RK4'</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb2-54"><a href="#cb2-54"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].plot(tTumScipy, yTumScipy[:,<span class="dv">0</span>], lw<span class="op">=</span><span class="st">'1'</span>, label<span class="op">=</span><span class="st">'x1(t) Scipy'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-55"><a href="#cb2-55"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].set_xlabel(<span class="st">'t'</span>)</span>
+<span id="cb2-56"><a href="#cb2-56"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].set_ylabel(<span class="st">'x1(t)'</span>)</span>
+<span id="cb2-57"><a href="#cb2-57"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].legend()</span>
+<span id="cb2-58"><a href="#cb2-58"></a><span class="co"># Sağ üst grafik</span></span>
+<span id="cb2-59"><a href="#cb2-59"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].plot(tTumEuler, yTum_VekEuler[<span class="dv">1</span>], lw<span class="op">=</span><span class="st">'5'</span>, label<span class="op">=</span><span class="st">'v1(t) Euler'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-60"><a href="#cb2-60"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].plot(tTumRK4, yTum_VekRK4[<span class="dv">1</span>], lw<span class="op">=</span><span class="st">'3'</span>, label<span class="op">=</span><span class="st">'v1(t) RK4'</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb2-61"><a href="#cb2-61"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].plot(tTumScipy, yTumScipy[:,<span class="dv">1</span>], lw<span class="op">=</span><span class="st">'1'</span>, label<span class="op">=</span><span class="st">'v1(t) Scipy'</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb2-62"><a href="#cb2-62"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].set_xlabel(<span class="st">'t'</span>)</span>
+<span id="cb2-63"><a href="#cb2-63"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].set_ylabel(<span class="st">'v1(t)'</span>)</span>
+<span id="cb2-64"><a href="#cb2-64"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].legend()</span>
+<span id="cb2-65"><a href="#cb2-65"></a><span class="co"># Sol alt grafik</span></span>
+<span id="cb2-66"><a href="#cb2-66"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].plot(tTumEuler, yTum_VekEuler[<span class="dv">2</span>], lw<span class="op">=</span><span class="st">'5'</span>, label<span class="op">=</span><span class="st">'x2(t) Euler'</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb2-67"><a href="#cb2-67"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].plot(tTumRK4, yTum_VekRK4[<span class="dv">2</span>], lw<span class="op">=</span><span class="st">'3'</span>, label<span class="op">=</span><span class="st">'x2(t) RK4'</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb2-68"><a href="#cb2-68"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].plot(tTumScipy, yTumScipy[:,<span class="dv">2</span>], lw<span class="op">=</span><span class="st">'1'</span>, label<span class="op">=</span><span class="st">'x2(t) Scipy'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-69"><a href="#cb2-69"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].set_xlabel(<span class="st">'t'</span>)</span>
+<span id="cb2-70"><a href="#cb2-70"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].set_ylabel(<span class="st">'x2(t)'</span>)</span>
+<span id="cb2-71"><a href="#cb2-71"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].legend()</span>
+<span id="cb2-72"><a href="#cb2-72"></a><span class="co"># Sağ alt grafik</span></span>
+<span id="cb2-73"><a href="#cb2-73"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].plot(tTumEuler, yTum_VekEuler[<span class="dv">3</span>], lw<span class="op">=</span><span class="st">'5'</span>, label<span class="op">=</span><span class="st">'v2(t) Euler'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb2-74"><a href="#cb2-74"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].plot(tTumRK4, yTum_VekRK4[<span class="dv">3</span>], lw<span class="op">=</span><span class="st">'3'</span>, label<span class="op">=</span><span class="st">'v2(t) RK4'</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb2-75"><a href="#cb2-75"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].plot(tTumScipy, yTumScipy[:,<span class="dv">3</span>], lw<span class="op">=</span><span class="st">'1'</span>, label<span class="op">=</span><span class="st">'v2(t) Scipy'</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb2-76"><a href="#cb2-76"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].set_xlabel(<span class="st">'t'</span>)</span>
+<span id="cb2-77"><a href="#cb2-77"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].set_ylabel(<span class="st">'v2(t)'</span>)</span>
+<span id="cb2-78"><a href="#cb2-78"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].legend()</span>
+<span id="cb2-79"><a href="#cb2-79"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bdp-runge-kutta-yontemleri_files/figure-html/cell-3-output-1.png" width="604" height="443" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="runge-kutta-fehlberg-rk45-yöntemi" class="level2">
+<h2 class="anchored" data-anchor-id="runge-kutta-fehlberg-rk45-yöntemi">Runge-Kutta-Fehlberg (RK45) Yöntemi</h2>
+<ul>
+<li>Runge-Kutta-Fehlberg (RK45) yöntemi, dördüncü ve beşinci mertebe Runge-Kutta yöntemi kullanarak çözüm elde eder.</li>
+<li>RK45, değişken adım aralığı (adaptive step size) kullanır.</li>
+<li>RK45’in girdilerinden (input) biri rölatif (relative) hata değeridir. RK4 ile elde edilen sonuç ile RK5 ile elde edilen sonuç arasındaki fark rölatif hatadan büyükse adım aralığı küçültülür ve o adım tekrar hesaplanır.</li>
+<li>Bunun gibi metotlara değişken (adaptive) adım aralığı yöntemleri denir.</li>
+<li>Runge-Kutta metotları açık (explicit) yöntemlerdir.</li>
+</ul>
+</section>
+<section id="scipy-paketleri-hakkında" class="level2">
+<h2 class="anchored" data-anchor-id="scipy-paketleri-hakkında">Scipy Paketleri Hakkında</h2>
+<ul>
+<li>Scipy içerisinde başlangıç değer problemi çözümleri için birçok fonksiyon var <span class="citation" data-cites="web2024Feb-4">&nbsp;[<a href="#ref-web2024Feb-4" role="doc-biblioref">2</a>]</span>.</li>
+<li>Eski api olarak <code>odeint</code> hala kullanılabiliyor ancak <code>scipy</code>’ın gelecekteki versiyonlarında çıkarılma ihtimali çok yüksek.</li>
+<li><code>odeint</code> fonksiyonunda çağırılan <span class="math inline">\(f\)</span> fonksiyonunda <span class="math inline">\(f(y,t)\)</span> olmak zorunda. <code>solve_ivp</code>’de ise bu durum tam tersi. Bu farklılığı <code>tfirst=True</code> parametresi ile değiştirebilirsiniz - <strong>1.1.0 versiyonundan itibaren</strong>.</li>
+<li><code>odeint</code> ile ilgili bilgi için <span class="citation" data-cites="web2024Feb-5">&nbsp;[<a href="#ref-web2024Feb-5" role="doc-biblioref">3</a>]</span> referansına bakabilirsiniz.</li>
+</ul>
+</section>
+<section id="problemler" class="level2">
+<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
+<section id="problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
+<p>Aşağıdaki matris denklemlerini yazdığımız rk4 fonksiyonu ile çözün.</p>
+<p><span class="math display">\[
+\begin{align*}
+\frac{d}{dt}
+\begin{bmatrix}
+\rho_{11}(t) &amp; \rho_{12}(t) \\
+\rho_{21}(t) &amp; \rho_{22}(t)
+\end{bmatrix}
+=
+\begin{bmatrix}
+-\rho_{11}(t) &amp; -2\rho_{12}(t) \\
+-3\rho_{21}(t) &amp; -4\rho_{22}(t)
+\end{bmatrix}
+\end{align*}
+\]</span></p>
+</section>
+<section id="problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
+<p><code>scipy.integrate.solve_ivp</code> fonksiyonunu kullanarak aşağıdaki denklemi çözün. Çözüm yöntemi olarak <code>method='RK45'</code> ve <code>method='LSODA'</code> kullanın.</p>
+<p><span class="math display">\[
+\frac{d}{dx}y(x) = \sin(5x)
+\]</span></p>
+<p>Başlangıç koşulu: <span class="math inline">\(y(-3)=4.5\)</span>. Çözümü -3 ile 3 arasında çizdirin.</p>
+<p>Aynı denklemi sağ taraf <span class="math inline">\(\sin(15x)\)</span> ve <span class="math inline">\(\sin(25x)\)</span> olacak şekilde çözün.</p>
+</section>
+<section id="problem-3" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3">Problem 3</h3>
+<p>Sönümlü harmonik salınıcının Lagranjiyen’i aşağıdaki gibidir.</p>
+<p><span class="math display">\[
+L(x,v) = \frac{1}{2}mv^{2} - \frac{1}{2}kx^2
+\]</span></p>
+<p>Burada <span class="math inline">\(v\)</span> hız olup konumun <span class="math inline">\(x\)</span> zamana göre birinci türevine eşittir. Lagrange hareket denklemleri aşağıdaki gibi yazılır.</p>
+<p><span class="math display">\[
+    \left(\frac{d}{dt}\frac{\partial L}{\partial v} \right) - \frac{\partial L}{\partial x} = \frac{\partial F^{dis}}{\partial v}
+\]</span></p>
+<p>Yukarıda verilen formülden diferansiyel denklem setini oluşturun. Burada <span class="math inline">\(F^{dis}=-\frac{1}{2}bv^{2}\)</span> sönümleyici kuvvettir. <span class="math inline">\(t=0-50\)</span> arasındaki değerler için ve <span class="math inline">\(n=1000\)</span> adımda, - Runge-Kutta-4 (veya 5(4) mertebe için Runge-Kutta methodu) yöntemi ile çözün. - x ile t’nin oluşturduğu grafiği çizdirin.</p>
+<p>Başlangıç koşulları ve sabitler: - <span class="math inline">\(m=1\)</span> kg - <span class="math inline">\(k=1\)</span> N/m - <span class="math inline">\(b=0.1\)</span> Ns/m - <span class="math inline">\(x(t=0)=1\)</span> m - <span class="math inline">\(v(t=0)=0\)</span> m/s</p>
+</section>
+</section>
+<section id="referanslar" class="level2">
+
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-web2024Feb-3" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><em><a href="https://scipy-cookbook.readthedocs.io/items/CoupledSpringMassSystem.html"><span>Coupled spring-mass system <span>—</span> SciPy Cookbook documentation</span></a></em>, (2021).</div>
+</div>
+<div id="ref-web2024Feb-4" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline"><em><a href="https://docs.scipy.org/doc/scipy/reference/integrate.html#solving-initial-value-problems-for-ode-systems"><span>Integration and ODEs (scipy.integrate) <span>—</span> SciPy v1.12.0 Manual</span></a></em>, (2024).</div>
+</div>
+<div id="ref-web2024Feb-5" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline"><em><a href="https://docs.scipy.org/doc/scipy/reference/integrate.html#old-api"><span>Integration and ODEs (scipy.integrate) <span>—</span> SciPy v1.12.0 Manual</span></a></em>, (2024).</div>
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopyalandı");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopyalandı");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/bulmust\.github\.io\/bilgisayarli-yontemler");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="pagination-link" aria-label="BDP - İkinci Dereceden Diferansiyel Denklemler">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">BDP - İkinci Dereceden Diferansiyel Denklemler</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="pagination-link" aria-label="SDP - Atış Yöntemi">
+        <span class="nav-page-text">SDP - Atış Yöntemi</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>This website is built with <a href="https://quarto.org/"><img src="https://quarto.org/quarto.png" class="img-fluid" alt="Quarto" width="80"></a>.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>© Copyright 2024, Taygun Bulmus</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

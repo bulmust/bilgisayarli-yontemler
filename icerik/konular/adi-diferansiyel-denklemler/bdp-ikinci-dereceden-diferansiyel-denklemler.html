@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>Bilgisayarlı Yöntemler - Euler Yöntemi</title>
+<title>Bilgisayarlı Yöntemler - BDP - İkinci Dereceden Diferansiyel Denklemler</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,8 +85,8 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/denklem-sistemleri.html" rel="next">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler.html" rel="prev">
+<link href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" rel="next">
+<link href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -169,7 +169,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html">Euler Yöntemi</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html">BDP - İkinci Dereceden Diferansiyel Denklemler</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -247,20 +247,38 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Euler Yöntemi</span></a>
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Euler Yöntemi</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Denklem Sistemleri</span></a>
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Denklem Sistemleri</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">İkinci Dereceden Diferansiyel Denklemler</span></a>
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">BDP - İkinci Dereceden Diferansiyel Denklemler</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Runge-Kutta Yöntemleri</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SDP - Atış Yöntemi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SDP - Sonlu Farklar Yöntemi</span></a>
   </div>
 </li>
       </ul>
@@ -273,26 +291,34 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Bu sayfada</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#hata-analizi" id="toc-hata-analizi" class="nav-link active" data-scroll-target="#hata-analizi">Hata Analizi</a></li>
-  <li><a href="#euler-yöntemi-ile-çözümde-hata-analizi" id="toc-euler-yöntemi-ile-çözümde-hata-analizi" class="nav-link" data-scroll-target="#euler-yöntemi-ile-çözümde-hata-analizi">Euler Yöntemi ile Çözümde Hata Analizi</a></li>
-  <li><a href="#euler-yönteminin-geometrik-tasviri" id="toc-euler-yönteminin-geometrik-tasviri" class="nav-link" data-scroll-target="#euler-yönteminin-geometrik-tasviri">Euler Yönteminin Geometrik Tasviri</a></li>
-  <li><a href="#euler-yönteminin-kodlanması" id="toc-euler-yönteminin-kodlanması" class="nav-link" data-scroll-target="#euler-yönteminin-kodlanması">Euler Yönteminin Kodlanması</a></li>
-  <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a></li>
-  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a></li>
+  <li><a href="#bdp---ikinci-dereceden-diferansiyel-denklemler" id="toc-bdp---ikinci-dereceden-diferansiyel-denklemler" class="nav-link active" data-scroll-target="#bdp---ikinci-dereceden-diferansiyel-denklemler">BDP - İkinci Dereceden Diferansiyel Denklemler</a></li>
+  <li><a href="#sec-alistirma1" id="toc-sec-alistirma1" class="nav-link" data-scroll-target="#sec-alistirma1">Alıştırma 1</a>
+  <ul class="collapse">
+  <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
+  </ul></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
+  <ul class="collapse">
+  <li><a href="#sec-problem1" id="toc-sec-problem1" class="nav-link" data-scroll-target="#sec-problem1">Problem 1</a></li>
+  <li><a href="#sec-problem2" id="toc-sec-problem2" class="nav-link" data-scroll-target="#sec-problem2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  <li><a href="#sec-problem4" id="toc-sec-problem4" class="nav-link" data-scroll-target="#sec-problem4">Problem 4</a></li>
+  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
+  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
+  </ul></li>
   <li><a href="#referanslar" id="toc-referanslar" class="nav-link" data-scroll-target="#referanslar">Referanslar</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.html">Euler Yöntemi</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html">BDP - İkinci Dereceden Diferansiyel Denklemler</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Euler Yöntemi</h1>
+<h1 class="title">BDP - İkinci Dereceden Diferansiyel Denklemler</h1>
 </div>
 
 
@@ -309,7 +335,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">27 Şubat 2024</p>
+      <p class="date">28 Şubat 2024</p>
     </div>
   </div>
   
@@ -321,99 +347,26 @@ window.Quarto = {
 </header>
 
 
-<ul>
-<li>Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.</li>
-<li>Alternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.</li>
-<li>Kabaca türevin tanımını kullanır.</li>
-</ul>
+<section id="bdp---ikinci-dereceden-diferansiyel-denklemler" class="level2">
+<h2 class="anchored" data-anchor-id="bdp---ikinci-dereceden-diferansiyel-denklemler">BDP - İkinci Dereceden Diferansiyel Denklemler</h2>
+<p>İkinci dereceden diferansiyel denklemleri çözmek için Euler yöntemini iki kere kullanmak gerekir. Örneğin,</p>
 <p><span class="math display">\[
-y'(x)= \frac{y(x+h)-y(x)}{h}
+y''+4y=0
 \]</span></p>
+<p>İlk adımda <span class="math inline">\(y''\)</span> türevi yerine <span class="math inline">\(y'(x)=v(x)\)</span> tanımlaması yapalım bu durumda denklem şu şekilde olur.</p>
 <p><span class="math display">\[
-y(x+h)=y(x)+h\times y'(x)
+v'=-4y
 \]</span></p>
-<ul>
-<li>Amacımız başlangıç koşulundan itibaren adım adım <span class="math inline">\(y(x)\)</span> fonksiyonunu bulmaktır.</li>
-<li><span class="math inline">\(x\)</span> noktasından <span class="math inline">\(x+h\)</span> noktasına ilerlediğimiz için bu yöntem “ileri adım” yöntemidir.</li>
-</ul>
-<section id="hata-analizi" class="level3">
-<h3 class="anchored" data-anchor-id="hata-analizi">Hata Analizi</h3>
-<p>Bir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki <span class="math inline">\(f(x+h)\)</span> fonksiyonunu <span class="math inline">\(f(x)\)</span> etrafında seriye açıyoruz ve <span class="math inline">\(n\)</span>’nci dereceden bir terimden sonra kesiyoruz. <span class="math inline">\(E_{n}\)</span> terimi, kestiğimiz terimden sonraki terimler yani hata terimi olsun.</p>
-<p><span class="math display">\[
-f(x+h)=f(x)+f'(x)h+\frac{f''(x)}{2!}h^2+\cdots+\frac{f^{(n)}(x)}{n!}h^n+E_{n}
-\]</span></p>
-<p>Hata terimi <span class="math inline">\(E_{n}\)</span>’e kesme hatası (truncation error) adı verilir. Bu hatanın en büyük değeri Taylor teoreminden bulunabilir.</p>
-<p><span class="math display">\[
-E_{n}=f^{n+1}(\xi)\frac{h^{n+1}}{(n+1)!}
-\]</span></p>
-<p>Burada <span class="math inline">\(\xi\)</span> <span class="math inline">\(x\)</span> ile <span class="math inline">\(x+h\)</span> arasında bir değerdir. Bu değer ulaşılabilir değilse kesme hatasını belirleyen terim <span class="math inline">\(h\)</span> adım aralığı olacaktır. Yani</p>
-<p><span class="math display">\[
-E_{n}=O(h^{n+1})
-\]</span></p>
+<p>Yukarıdaki denklem birinci dereceden bir diferansiyel denklem olduğu için Euler yöntemi ile çözülebilir. Bu denklemi çözdükten sonra <span class="math inline">\(y(x)\)</span> fonksiyonunu bulmak için <span class="math inline">\(y'(x)\equiv v(x)\)</span> denklemini çözmemiz gerekir.</p>
+<p>Dikkat edilmesi gereken husus başlangıç koşullarının <span class="math inline">\(y(x)\)</span> ve <span class="math inline">\(v(x)\)</span> fonksiyonları için yazmaktır. İkinci dereden bir diferansiyel denklemin çözümünü bulabilmek için hem <span class="math inline">\(y(x_{0})\)</span> hem de <span class="math inline">\(y'(x_{0})=v(x_{0})\)</span> koşullarına ihtiyaç vardır.</p>
+<p>İkinci dereceden diferansiyel denklemleri çözmek üst üste Euler çözücü fonksiyonu çağırmak yerine denklemi vektörel bir şekilde yazabiliriz.</p>
 </section>
-<section id="euler-yöntemi-ile-çözümde-hata-analizi" class="level3">
-<h3 class="anchored" data-anchor-id="euler-yöntemi-ile-çözümde-hata-analizi">Euler Yöntemi ile Çözümde Hata Analizi</h3>
-<ul>
-<li>Euler yöntemi kullanılırken her bir adımdaki kesme hatası <span class="math inline">\(O(h^2)\)</span>’dir çünkü ikinci dereceden türev terimlerini içerir. Her <span class="math inline">\(h\)</span> adımda bu hata üst üste binecektir. Yani denklem <span class="math inline">\(n\)</span> adımda çözülüyorsa kesme hatası da <span class="math inline">\(n\)</span> kere tekrarlanacaktır.</li>
-</ul>
-<p><span class="math display">\[
-E_{acc}=nE_{2}=\frac{x_{n}-x_{0}}{h}E_{2}=O(h)
-\]</span></p>
-<p>Euler yöntemi ile diferansiyel denklem çözümünde kesme hata payı <span class="math inline">\(h\)</span> adım aralığı ile orantılı olacaktır.</p>
-</section>
-<section id="euler-yönteminin-geometrik-tasviri" class="level3">
-<h3 class="anchored" data-anchor-id="euler-yönteminin-geometrik-tasviri">Euler Yönteminin Geometrik Tasviri</h3>
-<ul>
-<li>Basitlik için çözmek istediğimiz <span class="math inline">\(y\)</span> fonksiyonu bir değişkene bağlı olsun. Bu fonksiyonun <span class="math inline">\(x\)</span> ve <span class="math inline">\(x+h\)</span> arasındaki değişimi aşağıdaki gibi olur <span class="citation" data-cites="BibEntry2024Feb">(<a href="#ref-BibEntry2024Feb" role="doc-biblioref"><span>“<span>Differential Equations - Euler’s Method</span>”</span> 2024</a>)</span>.</li>
-</ul>
-<p><span class="math display">\[
-y(x+h)=y(x)+h\times y'(x)
-\]</span></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://tutorial.math.lamar.edu/classes/de/EulersMethod_Files/image001.png" class="img-fluid figure-img"></p>
-<figcaption>Euler Yönteminin Geometrik Tasviri</figcaption>
-</figure>
-</div>
-</section>
-<section id="euler-yönteminin-kodlanması" class="level3">
-<h3 class="anchored" data-anchor-id="euler-yönteminin-kodlanması">Euler Yönteminin Kodlanması</h3>
-<p><code>add_coz_euler</code> adlı fonksiyon <a href="../../../moduller/bilYonMod.py">bilYonMod.py</a> modülünde tanımlıdır.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Not
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>add_coz_euler</code> fonksiyonunu inceleyiniz.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Dikkat
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>add_coz_euler(fonk_y_x, xBaslangic, xBitis, yBaslangic, adimSayisi)</code> fonksiyonunu çağırırken denklemin sağ tarafında yer alan ve çözmeniz gereken fonksiyonda önce <strong>y</strong> ardından <strong>x</strong> tanımlanmalıdır. Yani fonksiyon <span class="math inline">\(f(y,x)\)</span> şeklinde yazılmalıdır. Burada <span class="math inline">\(y\)</span> değişkeni <span class="math inline">\(y(x)\)</span> olarak tanımlanır, <span class="math inline">\(x\)</span> ise bağımsız değişkendir.</p>
-</div>
-</div>
-<p>Aşağıdaki diferansiyel denklemi çözen bir örneği inceleyelim.</p>
-<p><span class="math display">\[
-\frac{d}{dx}y(x) = x, \quad y(0)=1, \quad x=[0, 1], \quad n=10000
-\]</span></p>
-<p>Çözüm aşağıdaki gibi olacaktır.</p>
-<p><span class="math display">\[
-y(x)=1+\frac{x^{2}}{2}
-\]</span></p>
-<div id="5aeea80e" class="cell" data-execution_count="1">
+<section id="sec-alistirma1" class="level2">
+<h2 class="anchored" data-anchor-id="sec-alistirma1">Alıştırma 1</h2>
+<p>Sürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. <span class="math inline">\(g=9.81\)</span> m/s <span class="math inline">\(^{2}\)</span> sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları <span class="math inline">\(v(0)=0\)</span> ve <span class="math inline">\(y(0)=100\)</span> olsun. Çözümü <span class="math inline">\(n=100\)</span> s adımda yapın. Zaman aralığı <span class="math inline">\(t=0\)</span> s’den <span class="math inline">\(t=10\)</span> s’ye kadar olsun.</p>
+<section id="çözüm" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
+<div id="2bff8947" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -430,91 +383,99 @@ y(x)=1+\frac{x^{2}}{2}
 <span id="cb1-14"><a href="#cb1-14"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-15"><a href="#cb1-15"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="kw">def</span> fonk_y_x(y, x):</span>
-<span id="cb1-18"><a href="#cb1-18"></a>    <span class="cf">return</span> x</span>
-<span id="cb1-19"><a href="#cb1-19"></a></span>
-<span id="cb1-20"><a href="#cb1-20"></a>x0 <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a>y0 <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a>xStop <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a>n <span class="op">=</span> <span class="dv">10000</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a>xAll, yAll <span class="op">=</span> bym.add_coz_euler(fonk_y_x, x0, xStop, y0, n)</span>
-<span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a>plt.plot(xAll, yAll, <span class="st">'o-'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Euler'</span>)</span>
-<span id="cb1-27"><a href="#cb1-27"></a>plt.plot(xAll, <span class="dv">1</span><span class="op">+</span>(xAll<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Analitik'</span>)</span>
-<span id="cb1-28"><a href="#cb1-28"></a>plt.xlabel(<span class="st">'$x$'</span>)</span>
-<span id="cb1-29"><a href="#cb1-29"></a>plt.ylabel(<span class="st">'$y(x)$'</span>)</span>
-<span id="cb1-30"><a href="#cb1-30"></a>plt.legend()</span>
-<span id="cb1-31"><a href="#cb1-31"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co"># Global değişkenler</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a>g<span class="op">=</span><span class="fl">9.81</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co"># Denklemin sağ tarafı</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="kw">def</span> F(yVek, x):</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    <span class="co"># F=m*a</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>    <span class="co"># F=m*y''(t)</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>    <span class="co"># -g=y''(t)</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>    <span class="co"># y'(t)=v(t)</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>    <span class="co"># v'(t)=-g</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>    <span class="cf">return</span> np.array([yVek[<span class="dv">1</span>], <span class="op">-</span>g])</span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># Başlangıç koşulları</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>x0<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a>yVek<span class="op">=</span>np.array([<span class="dv">100</span>, <span class="dv">0</span>])</span>
+<span id="cb1-30"><a href="#cb1-30"></a>xStop<span class="op">=</span><span class="dv">5</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>n<span class="op">=</span><span class="dv">100</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="co"># Çöz</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a>xTum, yVekTum <span class="op">=</span> bym.add_coz_euler_sistem(F, x0, xStop, yVek, n)</span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="co"># Analitik çözüm</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="co"># y(t) = y0 + v0*t - (1/2)*g*t^2</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="co"># v(t) = v0 - g*t</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a>yAnalitik<span class="op">=</span> yVek[<span class="dv">0</span>] <span class="op">+</span> yVek[<span class="dv">1</span>]<span class="op">*</span>xTum <span class="op">-</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>g<span class="op">*</span>xTum<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a>vAnalitik<span class="op">=</span> yVek[<span class="dv">1</span>] <span class="op">-</span> g<span class="op">*</span>xTum</span>
+<span id="cb1-39"><a href="#cb1-39"></a><span class="co"># Çiz</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a>fig,axs<span class="op">=</span>plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb1-41"><a href="#cb1-41"></a><span class="co"># Soldaki grafik</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a>axs[<span class="dv">0</span>].plot(xTum, yVekTum[<span class="dv">0</span>,:], <span class="st">'o-'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Euler $y(t)$'</span>)</span>
+<span id="cb1-43"><a href="#cb1-43"></a>axs[<span class="dv">0</span>].plot(xTum, yAnalitik, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Analitik $y(t)$'</span>)</span>
+<span id="cb1-44"><a href="#cb1-44"></a>axs[<span class="dv">0</span>].set_ylabel(<span class="st">'$y(t)$'</span>)</span>
+<span id="cb1-45"><a href="#cb1-45"></a>axs[<span class="dv">0</span>].legend()</span>
+<span id="cb1-46"><a href="#cb1-46"></a><span class="co"># Sağdaki grafik</span></span>
+<span id="cb1-47"><a href="#cb1-47"></a>axs[<span class="dv">1</span>].plot(xTum, yVekTum[<span class="dv">1</span>,:], <span class="st">'o-'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Euler $v(t)$'</span>)</span>
+<span id="cb1-48"><a href="#cb1-48"></a>axs[<span class="dv">1</span>].plot(xTum, vAnalitik, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Analitik $v(t)$'</span>)</span>
+<span id="cb1-49"><a href="#cb1-49"></a>axs[<span class="dv">1</span>].set_ylabel(<span class="st">'$v(t)$'</span>)</span>
+<span id="cb1-50"><a href="#cb1-50"></a>axs[<span class="dv">1</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb1-51"><a href="#cb1-51"></a>axs[<span class="dv">1</span>].legend()</span>
+<span id="cb1-52"><a href="#cb1-52"></a><span class="co"># Sıkıştır</span></span>
+<span id="cb1-53"><a href="#cb1-53"></a>plt.tight_layout()</span>
+<span id="cb1-54"><a href="#cb1-54"></a><span class="co"># Göster</span></span>
+<span id="cb1-55"><a href="#cb1-55"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="euler-yontemi_files/figure-html/cell-2-output-1.png" width="591" height="429" class="figure-img"></p>
+<p><img src="bdp-ikinci-dereceden-diferansiyel-denklemler_files/figure-html/cell-2-output-1.png" width="660" height="470" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="alıştırma-1" class="level3">
-<h3 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h3>
-<ol type="1">
-<li>Euler yöntemi ile aşağıdaki diferansiyel denklemleri çözün ve analitik çözüm ile karşılaştırın.</li>
-</ol>
-<p><span class="math display">\[
-y' + 4y = x^{2}, \quad y(0)=1, \quad x=[0, 0.03], \quad n=10
-\]</span></p>
-<p>Analitik çözüm:</p>
-<p><span class="math display">\[
-y(x)=\frac{31}{32}e^{-4x} + \frac{1}{4}x^{2}- \frac{1}{8}x + \frac{1}{32}
-\]</span></p>
-<hr>
-<p><strong>Çözüm:</strong></p>
-<div id="de427a9b" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="im">import</span> sys</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># 3 üst dizine çık</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>module_dir <span class="op">=</span> os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), <span class="st">'moduller'</span>)</span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="co"># moduller dizinini yol olarak ekle</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>sys.path.append(module_dir)</span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># bilYonMod.py modülünü içe aktar</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="im">import</span> bilYonMod <span class="im">as</span> bym</span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="co">################################################</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-17"><a href="#cb2-17"></a></span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="co"># Fonksiyon</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="kw">def</span> fonk_y_x(y, x):</span>
-<span id="cb2-20"><a href="#cb2-20"></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">4</span><span class="op">*</span>y <span class="op">+</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a></span>
-<span id="cb2-22"><a href="#cb2-22"></a>x0 <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-23"><a href="#cb2-23"></a>y0 <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-24"><a href="#cb2-24"></a>xStop <span class="op">=</span> <span class="fl">0.03</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a>n <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb2-26"><a href="#cb2-26"></a>xAll, yAll <span class="op">=</span> bym.add_coz_euler(fonk_y_x, x0, xStop, y0, n)</span>
-<span id="cb2-27"><a href="#cb2-27"></a><span class="co"># Analitik çözüm</span></span>
-<span id="cb2-28"><a href="#cb2-28"></a>yAnalitik<span class="op">=</span>(<span class="dv">31</span><span class="op">/</span><span class="dv">32</span>)<span class="op">*</span>np.exp(<span class="op">-</span><span class="dv">4</span><span class="op">*</span>xAll) <span class="op">+</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span>(xAll<span class="op">**</span><span class="dv">2</span>) <span class="op">-</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">8</span>)<span class="op">*</span>xAll <span class="op">+</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">32</span>)</span>
-<span id="cb2-29"><a href="#cb2-29"></a><span class="co"># Çizdir</span></span>
-<span id="cb2-30"><a href="#cb2-30"></a>plt.plot(xAll, yAll, <span class="st">'o-'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Euler'</span>)</span>
-<span id="cb2-31"><a href="#cb2-31"></a>plt.plot(xAll, yAnalitik, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Analitik'</span>)</span>
-<span id="cb2-32"><a href="#cb2-32"></a>plt.xlabel(<span class="st">'$x$'</span>)</span>
-<span id="cb2-33"><a href="#cb2-33"></a>plt.ylabel(<span class="st">'$y(x)$'</span>)</span>
-<span id="cb2-34"><a href="#cb2-34"></a>plt.legend()</span>
-<span id="cb2-35"><a href="#cb2-35"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="euler-yontemi_files/figure-html/cell-3-output-1.png" width="599" height="429" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 </section>
-<section id="problemler" class="level3">
-<h3 class="anchored" data-anchor-id="problemler">Problemler</h3>
+<section id="problemler" class="level2">
+<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
+<section id="sec-problem1" class="level3">
+<h3 class="anchored" data-anchor-id="sec-problem1">Problem 1</h3>
+<p><a href="#sec-alistirma1" class="quarto-xref">Bölüm&nbsp;2</a> verilen denklemi ilk hızı <span class="math inline">\(v(0)=10\)</span> m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.</p>
+</section>
+<section id="sec-problem2" class="level3">
+<h3 class="anchored" data-anchor-id="sec-problem2">Problem 2</h3>
+<p>Yatay düzlemde <span class="math inline">\(k=100\)</span> N/m sabitine sahip <span class="math inline">\(m=1\)</span> kg kütleli yay olsun. Bu cisme denge noktasından <span class="math inline">\(x_{0}=0.1\)</span> m sıkıştırılarak harekete başlatılıyor. Cisim bırakıldığı anda hızı <span class="math inline">\(v_{0}=0\)</span> m/s. Bu cismin hareket denklemini <span class="math inline">\(t=0-5\)</span> aralığında Euler yöntemiyle çözünüz.</p>
+<p><span class="math display">\[
+-kx=m\frac{d^{2}x}{dt^{2}}
+\]</span></p>
+<p>Analitik çözüm: <span class="math inline">\(x(t) = A\cos(\sqrt{k/m}x)+B\sin(\sqrt{k/m}x)\)</span></p>
+</section>
+<section id="problem-3" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3">Problem 3</h3>
+<p><a href="#sec-problem2" class="quarto-xref">Bölüm&nbsp;3.2</a> bölümündeki soruyu <span class="math inline">\(F_{sürtünme}= -bv\)</span> sürtünme kuvveti varlığında çözünüz. Burada <span class="math inline">\(b=1\)</span> Ns/m sabit ve <span class="math inline">\(v\)</span> cismin hızıdır.</p>
+<p><span class="math display">\[
+-b\frac{dx}{dt}-kx=m\frac{d^{2}x}{dt^{2}}
+\]</span></p>
+<p>Analitik çözüm: <span class="math inline">\(x(t) = Ae^{-\sigma t}e^{i\omega t}+ Be^{-\sigma t}e^{-i \omega t}\)</span>. Burada frekans $= $ ve genliği belirleyen terim <span class="math inline">\(\sigma=b/2m\)</span> <span class="citation" data-cites="web2024Feb-2">&nbsp;[<a href="#ref-web2024Feb-2" role="doc-biblioref">1</a>]</span>.</p>
+</section>
+<section id="sec-problem4" class="level3">
+<h3 class="anchored" data-anchor-id="sec-problem4">Problem 4</h3>
+<p>Düşey düzlemde <span class="math inline">\(m=1\)</span> kg kütleli bir cisim salınsın. Bu cisim denge noktasından <span class="math inline">\(\theta_{0}=\pi/9\)</span> rad açı ile harekete başlıyor. Cisim bırakıldığı anda açısal hızı <span class="math inline">\(\omega_{0}=\)</span> rad/s. Bu cismin hareket denklemini <span class="math inline">\(t=0-10\)</span> arasında Euler yöntemiyle çözünüz. En uygun sonuç için <span class="math inline">\(n=10000\)</span> adım alınız. (<span class="math inline">\(g=9.81\)</span>)</p>
+<p><span class="math display">\[
+\frac{d^{2}\theta}{dt^{2}}=-\frac{g}{l}\sin \theta
+\]</span></p>
+<p>Analitik çözüm: <span class="math inline">\(x(t) = A\cos(\sqrt{g/l}x)+B\sin(\sqrt{g/l}x)\)</span></p>
+</section>
+<section id="problem-5" class="level3">
+<h3 class="anchored" data-anchor-id="problem-5">Problem 5</h3>
+<p><a href="#sec-problem4" class="quarto-xref">Bölüm&nbsp;3.4</a> bölümündeki problemi <span class="math inline">\(\theta_{0}=\pi/2\)</span> başlangıç koşulu için tekrar çalıştırınız. <span class="math inline">\(\sin \theta \approx \theta\)</span> yaklaşıklığı artık geçerli olmadığı için analitik çözümün hatalı olduğunu unutmayınız.</p>
+</section>
+<section id="problem-6" class="level3">
+<h3 class="anchored" data-anchor-id="problem-6">Problem 6</h3>
+<p>İki cisim problemini (baryosentrik yani merkezdeki cisim hareket etmesin) Euler yöntemiyle çözünüz. Burada <span class="math inline">\(\mu=3.98\times 10^{5}\)</span> km <span class="math inline">\(^{3}\)</span>/s ^{2}, Dünya’nın kütleçekim parametresi (<span class="math inline">\(G\times M\)</span>), <span class="math inline">\(x_{0}=-2500\)</span> km, <span class="math inline">\(y_{0}=-5500\)</span> km, <span class="math inline">\(v_{x0}=7.5\)</span> km/s, <span class="math inline">\(v_{y0}=0.5\)</span> km/s olarak alın. Aşağıdaki denklemleri <span class="math inline">\(t=0-100000\)</span> s arasında çözün. <span class="math inline">\(y-x\)</span> grafiği çizin.</p>
+<p><span class="math display">\[
+\frac{d^{2}x}{dt^{2}}=-\frac{\mu}{(x^{2}+y^{2})^{3/2}}x
+\]</span></p>
+<p><span class="math display">\[
+\frac{d^{2}y}{dt^{2}}=-\frac{\mu}{(x^{2}+y^{2})^{3/2}}y
+\]</span></p>
+</section>
 </section>
 <section id="referanslar" class="level2">
 
@@ -523,9 +484,9 @@ y(x)=\frac{31}{32}e^{-4x} + \frac{1}{4}x^{2}- \frac{1}{8}x + \frac{1}{32}
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-BibEntry2024Feb" class="csl-entry" role="listitem">
-<span>“<span>Differential Equations - Euler’s Method</span>”</span>. 2024. <a href="https://tutorial.math.lamar.edu/classes/de/eulersmethod.aspx">https://tutorial.math.lamar.edu/classes/de/eulersmethod.aspx</a>.
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-web2024Feb-2" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><em><a href="https://brilliant.org/wiki/damped-harmonic-oscillators"><span>Damped Harmonic Oscillators <span><span class="math inline">\(\vert\)</span></span> Brilliant Math <span>&amp;</span> Science Wiki</span></a></em>, (2024).</div>
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -751,6 +712,26 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/bulmust\.github\.io\/bilgisayarli-yontemler");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1061,13 +1042,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler.html" class="pagination-link" aria-label="Adi Diferansiyel Denklemler">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Adi Diferansiyel Denklemler</span>
+      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="pagination-link" aria-label="BDP - Denklem Sistemleri">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">BDP - Denklem Sistemleri</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/denklem-sistemleri.html" class="pagination-link" aria-label="Denklem Sistemleri">
-        <span class="nav-page-text">Denklem Sistemleri</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="pagination-link" aria-label="BDP - Runge-Kutta Yöntemleri">
+        <span class="nav-page-text">BDP - Runge-Kutta Yöntemleri</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1079,7 +1060,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/euler-yontemi.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>
