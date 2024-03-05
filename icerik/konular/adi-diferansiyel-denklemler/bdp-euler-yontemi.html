@@ -375,7 +375,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">28 Şubat 2024</p>
+      <p class="date">5 Mart 2024</p>
     </div>
   </div>
   
@@ -397,17 +397,29 @@ window.Quarto = {
 <p><span class="math display">\[
 y'(x)= \frac{y(x+h)-y(x)}{h}
 \]</span></p>
-<p><span class="math display">\[
-y(x+h)=y(x)+h\times y'(x)
+<p>Çözüm olarak Taylor serisini kullanacağız. <span class="math display">\[
+y(x+h)=y(x)+h\times y'(x)+\cdot
 \]</span></p>
 <ul>
-<li>Amacımız başlangıç koşulundan itibaren adım adım <span class="math inline">\(y(x)\)</span> fonksiyonunu bulmaktır.</li>
-<li><span class="math inline">\(x\)</span> noktasından <span class="math inline">\(x+h\)</span> noktasına ilerlediğimiz için bu yöntem “ileri adım” yöntemidir.</li>
+<li>Amacımız başlangıç koşulundan itibaren adım adım <span class="math inline">\(y(x)\)</span> fonksiyonunu bulmaktır. <span class="math inline">\(x\)</span> noktasından <span class="math inline">\(x+h\)</span> noktasına ilerlediğimiz için bu yöntem “ileri adım” yöntemidir.</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Not
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Alternatif olarak her (x+h) noktası için integral de alabiliriz ancak diferansiyel denklem çözerken sayısal integral alma yöntemleri kullanmak sakıncalıdır.</p>
+</div>
+</div>
 </section>
 <section id="hata-analizi" class="level2">
 <h2 class="anchored" data-anchor-id="hata-analizi">Hata Analizi</h2>
-<p>Bir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki <span class="math inline">\(f(x+h)\)</span> fonksiyonunu <span class="math inline">\(f(x)\)</span> etrafında seriye açıyoruz ve <span class="math inline">\(n\)</span>’nci dereceden bir terimden sonra kesiyoruz. <span class="math inline">\(E_{n}\)</span> terimi, kestiğimiz terimden sonraki terimler yani hata terimi olsun.</p>
+<p>Bir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki <span class="math inline">\(f(x+h)\)</span> fonksiyonunu <span class="math inline">\(f(x)\)</span> etrafında seriye açıyoruz ve <span class="math inline">\(n\)</span>’nci dereceden terimden sonrasını atıyoruz. <span class="math inline">\(E_{n}\)</span> terimi ise kestiğimiz terimden sonraki terimler yani hata terimi olarak tanımlansın.</p>
 <p><span class="math display">\[
 f(x+h)=f(x)+f'(x)h+\frac{f''(x)}{2!}h^2+\cdots+\frac{f^{(n)}(x)}{n!}h^n+E_{n}
 \]</span></p>
@@ -415,16 +427,14 @@ f(x+h)=f(x)+f'(x)h+\frac{f''(x)}{2!}h^2+\cdots+\frac{f^{(n)}(x)}{n!}h^n+E_{n}
 <p><span class="math display">\[
 E_{n}=f^{n+1}(\xi)\frac{h^{n+1}}{(n+1)!}
 \]</span></p>
-<p>Burada <span class="math inline">\(\xi\)</span> <span class="math inline">\(x\)</span> ile <span class="math inline">\(x+h\)</span> arasında bir değerdir. Bu değer ulaşılabilir değilse kesme hatasını belirleyen terim <span class="math inline">\(h\)</span> adım aralığı olacaktır. Yani</p>
+<p>Burada <span class="math inline">\(\xi\)</span>, <span class="math inline">\(x\)</span> ile <span class="math inline">\(x+h\)</span> arasında bir değerdir. Bu değer ulaşılabilir değilse kesme hatasını belirleyen terim <span class="math inline">\(h\)</span> adım aralığı olacaktır. Yani</p>
 <p><span class="math display">\[
-E_{n}=O(h^{n+1})
+E_{n}=\mathcal{O}(h^{n+1})
 \]</span></p>
 </section>
 <section id="euler-yöntemi-ile-çözümde-hata-analizi" class="level2">
 <h2 class="anchored" data-anchor-id="euler-yöntemi-ile-çözümde-hata-analizi">Euler Yöntemi ile Çözümde Hata Analizi</h2>
-<ul>
-<li>Euler yöntemi kullanılırken her bir adımdaki kesme hatası <span class="math inline">\(O(h^2)\)</span>’dir çünkü ikinci dereceden türev terimlerini içerir. Her <span class="math inline">\(h\)</span> adımda bu hata üst üste binecektir. Yani denklem <span class="math inline">\(n\)</span> adımda çözülüyorsa kesme hatası da <span class="math inline">\(n\)</span> kere tekrarlanacaktır.</li>
-</ul>
+<p>Euler yöntemi kullanılırken her bir adımdaki kesme hatası <span class="math inline">\(\mathcal{O}(h^2)\)</span>’dir çünkü ikinci dereceden türev terimlerini ihmal ediyoruz. Her <span class="math inline">\(h\)</span> adımda bu hata üst üste binecektir. Yani denklem <span class="math inline">\(n\)</span> adımda çözülüyorsa kesme hatası da <span class="math inline">\(n\)</span> kere tekrarlanacaktır.</p>
 <p><span class="math display">\[
 E_{acc}=nE_{2}=\frac{x_{n}-x_{0}}{h}E_{2}=O(h)
 \]</span></p>
@@ -432,12 +442,11 @@ E_{acc}=nE_{2}=\frac{x_{n}-x_{0}}{h}E_{2}=O(h)
 </section>
 <section id="euler-yönteminin-geometrik-tasviri" class="level2">
 <h2 class="anchored" data-anchor-id="euler-yönteminin-geometrik-tasviri">Euler Yönteminin Geometrik Tasviri</h2>
-<ul>
-<li>Basitlik için çözmek istediğimiz <span class="math inline">\(y\)</span> fonksiyonu bir değişkene bağlı olsun. Bu fonksiyonun <span class="math inline">\(x\)</span> ve <span class="math inline">\(x+h\)</span> arasındaki değişimi aşağıdaki gibi olur <span class="citation" data-cites="web2024Feb-1">&nbsp;[<a href="#ref-web2024Feb-1" role="doc-biblioref">1</a>]</span>.</li>
-</ul>
+<p>Basitlik için çözmek istediğimiz <span class="math inline">\(y(x)\)</span> fonksiyonu tek değişkene bağlı olsun. Bu fonksiyonun <span class="math inline">\(x\)</span> ve <span class="math inline">\(x+h\)</span> arasındaki değişimi aşağıdaki gibi olur <span class="citation" data-cites="web2024Feb-1">&nbsp;[<a href="#ref-web2024Feb-1" role="doc-biblioref">1</a>]</span>.</p>
 <p><span class="math display">\[
 y(x+h)=y(x)+h\times y'(x)
 \]</span></p>
+<p>Buradan şu sonuç çıkarılabilir. Bulmak istediğimiz <span class="math inline">\(y(x+h)\)</span> terimi, <span class="math inline">\(y(x)\)</span> terimine ve o noktadaki eğiminin (türevinin) adım aralığı kadar katının toplamına eşittir.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://tutorial.math.lamar.edu/classes/de/EulersMethod_Files/image001.png" class="img-fluid figure-img"></p>
@@ -471,7 +480,7 @@ Dikkat
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>add_coz_euler(fonk_y_x, xBaslangic, xBitis, yBaslangic, adimSayisi)</code> fonksiyonunu çağırırken denklemin sağ tarafında yer alan ve çözmeniz gereken fonksiyonda önce <strong>y</strong> ardından <strong>x</strong> tanımlanmalıdır. Yani fonksiyon <span class="math inline">\(f(y,x)\)</span> şeklinde yazılmalıdır. Burada <span class="math inline">\(y\)</span> değişkeni <span class="math inline">\(y(x)\)</span> olarak tanımlanır, <span class="math inline">\(x\)</span> ise bağımsız değişkendir.</p>
+<p><code>add_coz_euler(fonk_y_x, xBaslangic, xBitis, yBaslangic, adimSayisi)</code> fonksiyonunu çağırırken diferansiyel denklemin (<span class="math inline">\(y'(x)=f(y,x)\)</span>) sağ tarafında yer alan ve çözmeniz gereken fonksiyonda, <span class="math inline">\(f(y,x)\)</span>, önce <strong>y</strong> ardından <strong>x</strong> tanımlanmalıdır. Yani kodda fonksiyon <span class="math inline">\(f(y,x)\)</span> şeklinde yazılmalıdır. Burada <span class="math inline">\(y\)</span> değişkeni <span class="math inline">\(y(x)\)</span> olarak tanımlanır, <span class="math inline">\(x\)</span> ise bağımsız değişkendir.</p>
 </div>
 </div>
 <p>Aşağıdaki diferansiyel denklemi çözen bir örneği inceleyelim.</p>
@@ -482,7 +491,7 @@ Dikkat
 <p><span class="math display">\[
 y(x)=1+\frac{x^{2}}{2}
 \]</span></p>
-<div id="8aae0929" class="cell" data-execution_count="1">
+<div id="5035673c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -496,24 +505,26 @@ y(x)=1+\frac{x^{2}}{2}
 <span id="cb1-11"><a href="#cb1-11"></a><span class="co"># bilYonMod.py modülünü içe aktar</span></span>
 <span id="cb1-12"><a href="#cb1-12"></a><span class="im">import</span> bilYonMod <span class="im">as</span> bym</span>
 <span id="cb1-13"><a href="#cb1-13"></a><span class="co">################################################</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="kw">def</span> fonk_y_x(y, x):</span>
-<span id="cb1-18"><a href="#cb1-18"></a>    <span class="cf">return</span> x</span>
-<span id="cb1-19"><a href="#cb1-19"></a></span>
-<span id="cb1-20"><a href="#cb1-20"></a>x0 <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a>y0 <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a>xSon <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a>n <span class="op">=</span> <span class="dv">10000</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a>xTum, yTum <span class="op">=</span> bym.add_coz_euler(fonk_y_x, x0, xSon, y0, n)</span>
-<span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a>plt.plot(xTum, yTum, <span class="st">'o-'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Euler'</span>)</span>
-<span id="cb1-27"><a href="#cb1-27"></a>plt.plot(xTum, <span class="dv">1</span><span class="op">+</span>(xTum<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Analitik'</span>)</span>
-<span id="cb1-28"><a href="#cb1-28"></a>plt.xlabel(<span class="st">'$x$'</span>)</span>
-<span id="cb1-29"><a href="#cb1-29"></a>plt.ylabel(<span class="st">'$y(x)$'</span>)</span>
-<span id="cb1-30"><a href="#cb1-30"></a>plt.legend()</span>
-<span id="cb1-31"><a href="#cb1-31"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co"># Fonksiyon</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="kw">def</span> fonk_y_x(y, x):</span>
+<span id="cb1-19"><a href="#cb1-19"></a>    <span class="cf">return</span> x</span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co"># Başlangıç koşulları</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>x0 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>y0 <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>xSon <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>n <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="co"># Çöz</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>xTum, yTum <span class="op">=</span> bym.add_coz_euler(fonk_y_x, x0, xSon, y0, n)</span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># Çiz</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>plt.plot(xTum, yTum, <span class="st">'o-'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Euler'</span>)</span>
+<span id="cb1-29"><a href="#cb1-29"></a>plt.plot(xTum, <span class="dv">1</span><span class="op">+</span>(xTum<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Analitik'</span>)</span>
+<span id="cb1-30"><a href="#cb1-30"></a>plt.xlabel(<span class="st">'$x$'</span>)</span>
+<span id="cb1-31"><a href="#cb1-31"></a>plt.ylabel(<span class="st">'$y(x)$'</span>)</span>
+<span id="cb1-32"><a href="#cb1-32"></a>plt.legend()</span>
+<span id="cb1-33"><a href="#cb1-33"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -525,9 +536,7 @@ y(x)=1+\frac{x^{2}}{2}
 </section>
 <section id="alıştırma-1" class="level2">
 <h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h2>
-<ol type="1">
-<li>Euler yöntemi ile aşağıdaki diferansiyel denklemi çözün ve analitik çözüm ile karşılaştırın.</li>
-</ol>
+<p>Euler yöntemi ile aşağıdaki diferansiyel denklemi çözün ve analitik çözüm ile karşılaştırın.</p>
 <p><span class="math display">\[
 y' + 4y = x^{2}, \quad y(0)=1, \quad x=[0, 0.03], \quad n=10
 \]</span></p>
@@ -537,7 +546,7 @@ y(x)=\frac{31}{32}e^{-4x} + \frac{1}{4}x^{2}- \frac{1}{8}x + \frac{1}{32}
 \]</span></p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="90d5240e" class="cell" data-execution_count="2">
+<div id="3ff718e8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
@@ -554,26 +563,25 @@ y(x)=\frac{31}{32}e^{-4x} + \frac{1}{4}x^{2}- \frac{1}{8}x + \frac{1}{32}
 <span id="cb2-14"><a href="#cb2-14"></a></span>
 <span id="cb2-15"><a href="#cb2-15"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-16"><a href="#cb2-16"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-17"><a href="#cb2-17"></a></span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="co"># Fonksiyon</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="kw">def</span> fonk_y_x(y, x):</span>
-<span id="cb2-20"><a href="#cb2-20"></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">4</span><span class="op">*</span>y <span class="op">+</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a><span class="co"># Başlangıç koşulları</span></span>
-<span id="cb2-22"><a href="#cb2-22"></a>x0 <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-23"><a href="#cb2-23"></a>y0 <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-24"><a href="#cb2-24"></a>xSon <span class="op">=</span> <span class="fl">0.03</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a>n <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb2-26"><a href="#cb2-26"></a><span class="co"># Çöz, Euler</span></span>
-<span id="cb2-27"><a href="#cb2-27"></a>xTum, yTum <span class="op">=</span> bym.add_coz_euler(fonk_y_x, x0, xSon, y0, n)</span>
-<span id="cb2-28"><a href="#cb2-28"></a><span class="co"># Analitik çözüm</span></span>
-<span id="cb2-29"><a href="#cb2-29"></a>yAnalitik<span class="op">=</span>(<span class="dv">31</span><span class="op">/</span><span class="dv">32</span>)<span class="op">*</span>np.exp(<span class="op">-</span><span class="dv">4</span><span class="op">*</span>xTum) <span class="op">+</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span>(xTum<span class="op">**</span><span class="dv">2</span>) <span class="op">-</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">8</span>)<span class="op">*</span>xTum <span class="op">+</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">32</span>)</span>
-<span id="cb2-30"><a href="#cb2-30"></a><span class="co"># Çizdir</span></span>
-<span id="cb2-31"><a href="#cb2-31"></a>plt.plot(xTum, yTum, <span class="st">'o-'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Euler'</span>)</span>
-<span id="cb2-32"><a href="#cb2-32"></a>plt.plot(xTum, yAnalitik, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Analitik'</span>)</span>
-<span id="cb2-33"><a href="#cb2-33"></a>plt.xlabel(<span class="st">'$x$'</span>)</span>
-<span id="cb2-34"><a href="#cb2-34"></a>plt.ylabel(<span class="st">'$y(x)$'</span>)</span>
-<span id="cb2-35"><a href="#cb2-35"></a>plt.legend()</span>
-<span id="cb2-36"><a href="#cb2-36"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co"># Fonksiyon</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="kw">def</span> fonk_y_x(y, x):</span>
+<span id="cb2-19"><a href="#cb2-19"></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">4</span><span class="op">*</span>y <span class="op">+</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="co"># Başlangıç koşulları</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a>x0 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a>y0 <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>xSon <span class="op">=</span> <span class="fl">0.03</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a>n <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="co"># Çöz</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a>xTum, yTum <span class="op">=</span> bym.add_coz_euler(fonk_y_x, x0, xSon, y0, n)</span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="co"># Analitik çözüm</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a>yAnalitik<span class="op">=</span>(<span class="dv">31</span><span class="op">/</span><span class="dv">32</span>)<span class="op">*</span>np.exp(<span class="op">-</span><span class="dv">4</span><span class="op">*</span>xTum) <span class="op">+</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>)<span class="op">*</span>(xTum<span class="op">**</span><span class="dv">2</span>) <span class="op">-</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">8</span>)<span class="op">*</span>xTum <span class="op">+</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">32</span>)</span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="co"># Çiz</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a>plt.plot(xTum, yTum, <span class="st">'o-'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Euler'</span>)</span>
+<span id="cb2-31"><a href="#cb2-31"></a>plt.plot(xTum, yAnalitik, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Analitik'</span>)</span>
+<span id="cb2-32"><a href="#cb2-32"></a>plt.xlabel(<span class="st">'$x$'</span>)</span>
+<span id="cb2-33"><a href="#cb2-33"></a>plt.ylabel(<span class="st">'$y(x)$'</span>)</span>
+<span id="cb2-34"><a href="#cb2-34"></a>plt.legend()</span>
+<span id="cb2-35"><a href="#cb2-35"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">

@@ -375,7 +375,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">28 Şubat 2024</p>
+      <p class="date">5 Mart 2024</p>
     </div>
   </div>
   
@@ -391,13 +391,13 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="bdp---ikinci-dereceden-diferansiyel-denklemler">BDP - İkinci Dereceden Diferansiyel Denklemler</h2>
 <p>İkinci dereceden diferansiyel denklemleri çözmek için Euler yöntemini iki kere kullanmak gerekir. Örneğin,</p>
 <p><span class="math display">\[
-y''+4y=0
+y''(x)+4y(x)=0
 \]</span></p>
-<p>İlk adımda <span class="math inline">\(y''\)</span> türevi yerine <span class="math inline">\(y'(x)=v(x)\)</span> tanımlaması yapalım bu durumda denklem şu şekilde olur.</p>
+<p>İlk adımda <span class="math inline">\(y''\)</span> türevi yerine <span class="math inline">\(v(x) \equiv y'(x)\)</span> tanımlaması yapalım bu durumda denklem şu şekilde olur.</p>
 <p><span class="math display">\[
-v'=-4y
+v'(x)=-4y
 \]</span></p>
-<p>Yukarıdaki denklem birinci dereceden bir diferansiyel denklem olduğu için Euler yöntemi ile çözülebilir. Bu denklemi çözdükten sonra <span class="math inline">\(y(x)\)</span> fonksiyonunu bulmak için <span class="math inline">\(y'(x)\equiv v(x)\)</span> denklemini çözmemiz gerekir.</p>
+<p>Yukarıdaki denklem birinci dereceden bir diferansiyel denklem olduğu için Euler yöntemi ile çözülebilir. Bu denklemi çözdükten sonra <span class="math inline">\(y(x)\)</span> fonksiyonunu bulmak için <span class="math inline">\(y'(x)\equiv v(x)\)</span> denklemini çözmemiz gerekir. Sonuç olarak ikinci dereceden diferansiyel denklemi 2 adet birbirine bağlı dif. denk. sistemi olarak düşünebiliriz.</p>
 <p>Dikkat edilmesi gereken husus başlangıç koşullarının <span class="math inline">\(y(x)\)</span> ve <span class="math inline">\(v(x)\)</span> fonksiyonları için yazmaktır. İkinci dereden bir diferansiyel denklemin çözümünü bulabilmek için hem <span class="math inline">\(y(x_{0})\)</span> hem de <span class="math inline">\(y'(x_{0})=v(x_{0})\)</span> koşullarına ihtiyaç vardır.</p>
 <p>İkinci dereceden diferansiyel denklemleri çözmek üst üste Euler çözücü fonksiyonu çağırmak yerine denklemi vektörel bir şekilde yazabiliriz.</p>
 </section>
@@ -406,7 +406,7 @@ v'=-4y
 <p>Sürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. <span class="math inline">\(g=9.81\)</span> m/s <span class="math inline">\(^{2}\)</span> sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları <span class="math inline">\(v(0)=0\)</span> ve <span class="math inline">\(y(0)=100\)</span> olsun. Çözümü <span class="math inline">\(n=100\)</span> s adımda yapın. Zaman aralığı <span class="math inline">\(t=0\)</span> s’den <span class="math inline">\(t=10\)</span> s’ye kadar olsun.</p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="916655b2" class="cell" data-execution_count="1">
+<div id="a1d7e08e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
