@@ -20,7 +20,7 @@ Eğer n. dereceden diferansiyel denklem varsa, yani $y^{(n)}=f(x,y,y',\cdots,y^{
 Yüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,
 
 $$
-y''=-y \qquad y'(x)=v(x) \qquad v'(x)=-y(x)
+y''=-y(x) \qquad y'(x) \equiv v(x) \qquad v'(x)=-y(x)
 $$
 
 Yukarıdaki denklemin koşulları $y(0)=1$, $v(0)=1$ şeklinde ise başlangıç değer problemi, $y(0)=1$ ve $v(100)=0$ şeklinde farklı ise sınır değer problemi olarak tanımlanır.

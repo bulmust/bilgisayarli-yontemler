@@ -14,6 +14,7 @@
 # Ders ile alakalı
 /msgsu/
 *-cevaplar.qmd
+/icerik/tmp/
 
 # pycache
 __pycache__/

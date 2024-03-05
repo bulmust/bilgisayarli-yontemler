@@ -12,24 +12,24 @@ Adi diferansiyel denklem sistemlerini çözmek için Euler yöntemini vektör ha
 
 ## Euler Yönteminin Denklem Sistemleri İçin Uygulanması
 
-Örneğin aşağıdaki denklem sistemini ele alalım. By denklem sisteminde iki adet birbirinden bağımsız diferansiyel denklem bulunmaktadır. Bu denklemleri birlikte çözebiliriz.
+Örneğin aşağıdaki denklem sistemini ele alalım. Denklem sisteminde iki adet birbirinden bağımsız diferansiyel denklem olsun. Bu denklemleri, bilgisayar açısından daha ekonomik olması adına birlikte çözülmelidir. (Az döngü, vektörleştirme, paralelleştirme, ...)
 
 $$
 \begin{align*}
-\frac{d}{dx}y(x) &= x \\
-\frac{d}{dx}v(x) &= x^{2}
+    \frac{d}{dx}y(x) &= x \\
+    \frac{d}{dx}v(x) &= x^{2}
 \end{align*}
 $$
 
-Denklem sistemi vektör haline getirilirse:
+Denklem sistemi vektör haline getirilirse aşağıdaki gibi olur.
 
 $$
 \begin{align*}
-\vec{y}'(x) &= \begin{bmatrix} y'(x,v) \\ v'(x,y) \end{bmatrix} = \begin{bmatrix} x \\ x^{2} \end{bmatrix}
+    \vec{y}'(x) &= \begin{bmatrix} y'(x,v) \\ v'(x,y) \end{bmatrix} = \begin{bmatrix} x \\ x^{2} \end{bmatrix}
 \end{align*}
 $$
 
-Çözüm başlangıç koşulları $y(0)=1$ ve $v(0)=1$ olsun. Çözüm aralığı $x=0$ ile $x=10$ arasında olsun. Çözüm adım sayısı $n=100$ olsun.
+Başlangıç koşulları $y(0)=1$ ve $v(0)=1$ olsun. Çözüm aralığını $x=0$ ile $x=10$ arasında bulmaya çalışalım, $x=[0,10]$. Çözüm adım sayısı $n=100$ olsun.
 
 ```{python}
 ################################################

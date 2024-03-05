@@ -18,7 +18,7 @@ Bu bölümde MSGSÜ Fizik Bölümü'nde verilen derslerin izlenceleri yer almakt
 **Ders İçeriği:**
 
 1. Adi Diferansiyel Denklemler - Başlangıç Değer Problemleri
-2. Adi Diferasiyel Denklemler - Sınır Değer Problemleri
+2. Adi Diferansiyel Denklemler - Sınır Değer Problemleri
 3. Fourier Analizi
 4. Pandas Kütüphanesi
 5. Veri İşleme ve Analizi

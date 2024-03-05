@@ -7,16 +7,16 @@ title: "BDP - İkinci Dereceden Diferansiyel Denklemler"
 İkinci dereceden diferansiyel denklemleri çözmek için Euler yöntemini iki kere kullanmak gerekir. Örneğin,
 
 $$
-y''+4y=0
+y''(x)+4y(x)=0
 $$
 
-İlk adımda $y''$ türevi yerine $y'(x)=v(x)$ tanımlaması yapalım bu durumda denklem şu şekilde olur.
+İlk adımda $y''$ türevi yerine $v(x) \equiv y'(x)$ tanımlaması yapalım bu durumda denklem şu şekilde olur.
 
 $$
-v'=-4y
+v'(x)=-4y
 $$
 
-Yukarıdaki denklem birinci dereceden bir diferansiyel denklem olduğu için Euler yöntemi ile çözülebilir. Bu denklemi çözdükten sonra $y(x)$ fonksiyonunu bulmak için $y'(x)\equiv v(x)$ denklemini çözmemiz gerekir.
+Yukarıdaki denklem birinci dereceden bir diferansiyel denklem olduğu için Euler yöntemi ile çözülebilir. Bu denklemi çözdükten sonra $y(x)$ fonksiyonunu bulmak için $y'(x)\equiv v(x)$ denklemini çözmemiz gerekir. Sonuç olarak ikinci dereceden diferansiyel denklemi 2 adet birbirine bağlı dif. denk. sistemi olarak düşünebiliriz.
 
 Dikkat edilmesi gereken husus başlangıç koşullarının $y(x)$ ve $v(x)$ fonksiyonları için yazmaktır. İkinci dereden bir diferansiyel denklemin çözümünü bulabilmek için hem $y(x_{0})$ hem de $y'(x_{0})=v(x_{0})$ koşullarına ihtiyaç vardır.
 

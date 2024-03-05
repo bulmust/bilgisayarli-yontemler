@@ -12,16 +12,20 @@ $$
 y'(x)= \frac{y(x+h)-y(x)}{h}
 $$
 
+Çözüm olarak Taylor serisini kullanacağız.
 $$
-y(x+h)=y(x)+h\times y'(x)
+y(x+h)=y(x)+h\times y'(x)+\cdot
 $$
 
-- Amacımız başlangıç koşulundan itibaren adım adım $y(x)$ fonksiyonunu bulmaktır.
-- $x$ noktasından $x+h$ noktasına ilerlediğimiz için bu yöntem "ileri adım" yöntemidir.
+- Amacımız başlangıç koşulundan itibaren adım adım $y(x)$ fonksiyonunu bulmaktır. $x$ noktasından $x+h$ noktasına ilerlediğimiz için bu yöntem "ileri adım" yöntemidir.
+
+::: {.callout-note}
+Alternatif olarak her (x+h) noktası için integral de alabiliriz ancak diferansiyel denklem çözerken sayısal integral alma yöntemleri kullanmak sakıncalıdır.
+:::
 
 ## Hata Analizi
 
-Bir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki $f(x+h)$ fonksiyonunu $f(x)$ etrafında seriye açıyoruz ve $n$'nci dereceden bir terimden sonra kesiyoruz. $E_{n}$ terimi, kestiğimiz terimden sonraki terimler yani hata terimi olsun.
+Bir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki $f(x+h)$ fonksiyonunu $f(x)$ etrafında seriye açıyoruz ve $n$'nci dereceden terimden sonrasını atıyoruz. $E_{n}$ terimi ise kestiğimiz terimden sonraki terimler yani hata terimi olarak tanımlansın.
 
 $$
 f(x+h)=f(x)+f'(x)h+\frac{f''(x)}{2!}h^2+\cdots+\frac{f^{(n)}(x)}{n!}h^n+E_{n}
@@ -33,15 +37,15 @@ $$
 E_{n}=f^{n+1}(\xi)\frac{h^{n+1}}{(n+1)!}
 $$
 
-Burada $\xi$ $x$ ile $x+h$ arasında bir değerdir. Bu değer ulaşılabilir değilse kesme hatasını belirleyen terim $h$ adım aralığı olacaktır. Yani 
+Burada $\xi$, $x$ ile $x+h$ arasında bir değerdir. Bu değer ulaşılabilir değilse kesme hatasını belirleyen terim $h$ adım aralığı olacaktır. Yani 
 
 $$
-E_{n}=O(h^{n+1})
+E_{n}=\mathcal{O}(h^{n+1})
 $$
 
 ## Euler Yöntemi ile Çözümde Hata Analizi
 
-- Euler yöntemi kullanılırken her bir adımdaki kesme hatası $O(h^2)$'dir çünkü ikinci dereceden türev terimlerini içerir. Her $h$ adımda bu hata üst üste binecektir. Yani denklem $n$ adımda çözülüyorsa kesme hatası da $n$ kere tekrarlanacaktır.
+Euler yöntemi kullanılırken her bir adımdaki kesme hatası $\mathcal{O}(h^2)$'dir çünkü ikinci dereceden türev terimlerini ihmal ediyoruz. Her $h$ adımda bu hata üst üste binecektir. Yani denklem $n$ adımda çözülüyorsa kesme hatası da $n$ kere tekrarlanacaktır.
 
 $$
 E_{acc}=nE_{2}=\frac{x_{n}-x_{0}}{h}E_{2}=O(h)
@@ -51,11 +55,13 @@ Euler yöntemi ile diferansiyel denklem çözümünde kesme hata payı $h$ adım
 
 ## Euler Yönteminin Geometrik Tasviri
 
-- Basitlik için çözmek istediğimiz $y$ fonksiyonu bir değişkene bağlı olsun. Bu fonksiyonun $x$ ve $x+h$ arasındaki değişimi aşağıdaki gibi olur [@web2024Feb-1].
+Basitlik için çözmek istediğimiz $y(x)$ fonksiyonu tek değişkene bağlı olsun. Bu fonksiyonun $x$ ve $x+h$ arasındaki değişimi aşağıdaki gibi olur [@web2024Feb-1].
 
 $$
 y(x+h)=y(x)+h\times y'(x)
 $$
+
+Buradan şu sonuç çıkarılabilir. Bulmak istediğimiz $y(x+h)$ terimi, $y(x)$ terimine ve o noktadaki eğiminin (türevinin) adım aralığı kadar katının toplamına eşittir.
 
 ![Euler Yönteminin Geometrik Tasviri](https://tutorial.math.lamar.edu/classes/de/EulersMethod_Files/image001.png)
 
@@ -68,7 +74,7 @@ $$
 :::
 
 ::: {.callout-caution}
-`add_coz_euler(fonk_y_x, xBaslangic, xBitis, yBaslangic, adimSayisi)` fonksiyonunu çağırırken denklemin sağ tarafında yer alan ve çözmeniz gereken fonksiyonda önce **y** ardından **x** tanımlanmalıdır. Yani fonksiyon $f(y,x)$ şeklinde yazılmalıdır. Burada $y$ değişkeni $y(x)$ olarak tanımlanır, $x$ ise bağımsız değişkendir.
+`add_coz_euler(fonk_y_x, xBaslangic, xBitis, yBaslangic, adimSayisi)` fonksiyonunu çağırırken diferansiyel denklemin ($y'(x)=f(y,x)$) sağ tarafında yer alan ve çözmeniz gereken fonksiyonda, $f(y,x)$, önce **y** ardından **x** tanımlanmalıdır. Yani kodda fonksiyon $f(y,x)$ şeklinde yazılmalıdır. Burada $y$ değişkeni $y(x)$ olarak tanımlanır, $x$ ise bağımsız değişkendir.
 :::
 
 Aşağıdaki diferansiyel denklemi çözen bir örneği inceleyelim.
@@ -97,18 +103,20 @@ sys.path.append(module_dir)
 # bilYonMod.py modülünü içe aktar
 import bilYonMod as bym
 ################################################
+
 import numpy as np
 import matplotlib.pyplot as plt
-
+# Fonksiyon
 def fonk_y_x(y, x):
     return x
-
+# Başlangıç koşulları
 x0 = 0
 y0 = 1
 xSon = 1
 n = 10000
+# Çöz
 xTum, yTum = bym.add_coz_euler(fonk_y_x, x0, xSon, y0, n)
-
+# Çiz
 plt.plot(xTum, yTum, 'o-', color='r', label='Euler')
 plt.plot(xTum, 1+(xTum**2)/2, 'k', label='Analitik')
 plt.xlabel('$x$')
@@ -119,7 +127,7 @@ plt.show()
 
 ## Alıştırma 1
 
-1. Euler yöntemi ile aşağıdaki diferansiyel denklemi çözün ve analitik çözüm ile karşılaştırın.
+Euler yöntemi ile aşağıdaki diferansiyel denklemi çözün ve analitik çözüm ile karşılaştırın.
 
 $$
 y' + 4y = x^{2}, \quad y(0)=1, \quad x=[0, 0.03], \quad n=10
@@ -150,7 +158,6 @@ import bilYonMod as bym
 
 import numpy as np
 import matplotlib.pyplot as plt
-
 # Fonksiyon
 def fonk_y_x(y, x):
     return -4*y + x**2
@@ -159,11 +166,11 @@ x0 = 0
 y0 = 1
 xSon = 0.03
 n = 10
-# Çöz, Euler
+# Çöz
 xTum, yTum = bym.add_coz_euler(fonk_y_x, x0, xSon, y0, n)
 # Analitik çözüm
 yAnalitik=(31/32)*np.exp(-4*xTum) + (1/4)*(xTum**2) - (1/8)*xTum + (1/32)
-# Çizdir
+# Çiz
 plt.plot(xTum, yTum, 'o-', color='r', label='Euler')
 plt.plot(xTum, yAnalitik, 'k', label='Analitik')
 plt.xlabel('$x$')
