@@ -58,7 +58,7 @@ $$
 y''(t)=t, \quad y(0)=1, \quad y(3)=9
 $$
 
-### Çözüm
+### Çözüm (Elle)
 
 Adım aralığı $h=1$ olsun. Çözeceğimiz $t$'nin değerleri $0, 1, 2, 3$ olacaktır. Bu değerlerden $y$ değerlerini bulalım.
 
@@ -97,15 +97,18 @@ $$
 Bu denklemi $h=0.5$ için adım adım yazalım.
 
 $$
-0.5\times (0.5)^{2} = y_{2}-2y_{1}+y_{0}\\
-1\times (0.5)^{2} = y_{3}-2y_{2}+y_{1}\\
-1.5\times (0.5)^{2} = y_{4}-2y_{3}+y_{2}\\
-2\times (0.5)^{2} = y_{5}-2y_{4}+y_{3}\\
-2.5\times (0.5)^{2} = y_{6}-2y_{5}+y_{4}
+\begin{align*}
+    0.5\times (0.5)^{2} =& y_{2}-2y_{1}+y_{0}\\
+    1\times (0.5)^{2} =& y_{3}-2y_{2}+y_{1}\\
+    1.5\times (0.5)^{2} =& y_{4}-2y_{3}+y_{2}\\
+    2\times (0.5)^{2} =& y_{5}-2y_{4}+y_{3}\\
+    2.5\times (0.5)^{2} =& y_{6}-2y_{5}+y_{4}
+\end{align*}
 $$
 
 Yukarıdaki denklemleri matris şeklinde yazalım. Yazarken $y_{0}=1$ ve $y_{6}=9$ yazacağız.
 
+$$
 \begin{align*}
 -0.875 =& y_{2}-2y_{1}\\
 0.25 =& y_{3}-2y_{2}+y_{1}\\
@@ -113,6 +116,9 @@ Yukarıdaki denklemleri matris şeklinde yazalım. Yazarken $y_{0}=1$ ve $y_{6}=
 0.5 =& y_{5}-2y_{4}+y_{3}\\
 -8.375 =& -2y_{5}+y_{4}
 \end{align*}
+$$
+
+Matris şeklinde yazalım.
 
 $$
 \begin{bmatrix}
@@ -140,69 +146,110 @@ $$
 
 Bu denklemi çözmeyi biliyoruz. Denklemi çözdüğümüzde $y_{1}, y_{2}, y_{3}, y_{4}, y_{5}$ değerlerini bulmuş oluruz.
 
-### Çözüm Kod
+### Çözüm (Kod)
 
 ```{python}
 import numpy as np
 from scipy.linalg import solve
 import matplotlib.pyplot as plt
-
+# Katsayı Matrisi
 coefMat= np.array([\
       [-2, 1, 0, 0, 0]\
     , [ 1,-2, 1, 0, 0]\
     , [ 0, 1,-2, 1, 0]\
     , [ 0, 0, 1,-2, 1]\
     , [ 0, 0, 0, 1,-2]])
+# Sonuç Matrisi
 solMat= np.array([-0.875,0.25,0.375,0.5,-8.375])
-
+# Doğrusal Denklemi Çöz
 solution=solve(coefMat, solMat)
+# Başlangıç Değeri
 y0= 1.
+# Çözümü Başına Ekle
 solution=np.insert(solution, 0, y0)
-yEnd= 9.
-solution=np.append(solution, yEnd)
-x= np.linspace(0, 3, 7)
-
-plt.plot(x, solution, 'o-')
+# Bitiş Değeri
+ySon= 9.
+# Çözümü Sonuna Ekle
+solution=np.append(solution, ySon)
+# Çözmek istediğimiz t değerleri
+t= np.linspace(0, 3, 7)
+# Çiz
+plt.plot(t, solution, 'o-', label='Sonlu Farklar')
+# --------------------------------------------
 # Analitik Çözüm
 # y''= t y(0)=1 y(3)=9
 # y'= t^2/2  + C1
 # y= t^3/6  + C1 t + C2
 # y(0)=1 => C2=1
 # y(3)=9 => 9=27/6 + 3C1 + 1=9 => C1=27/18
-
 #=> y(t)= t^3/6 + 21t/18 + 1
-
-plt.plot(x, x**3/6 + 21*x/18 + 1, 'r-')
-plt.show()
-
 # --------------------------------------------
-h=0.1
-x2=np.linspace(0, 3, 31)
-ilkDenklemSagTaraf=0.1*(0.1**2)-y0
-sonDenklemSagTaraf=2.9*(0.1**2)-yEnd
+plt.plot(t, t**3/6 + 21*t/18 + 1, 'r-', label='Analitik')
+plt.legend()
+plt.show()
+```
 
+Matris denklemini el ile yazmadan yani başlangıçta biz vermeden çözmeye çalışalım.
+
+```{python}
+import numpy as np
+from scipy.linalg import solve
+import matplotlib.pyplot as plt
+# Fonksiyon
+def fonk(t):
+    return t
+# Sınır Değerleri
+y_t0=1
+y_t3=9
+# Adım aralığı
+h=0.5
+# Tum t değerleri
+t0=0
+tSon=3
+# adet=(tSon-t0/h)+1
+adet= int((tSon-t0)/h)+1
+tTum=np.linspace(t0, tSon, adet)
+# Yerine koyduğumuzda oluşan denklemler (tabloya bakınız)
+# y''(t)=t = (y_{i+1}-2y_{i}+y_{i-1})/h^2
+# t * h^2 = y_{i+1}-2y_{i}+y_{i-1}
+# ilk denklem için t= h olacak. i=1 olacak
+# h * h^2 = y_{2}-2y_{1}+y_{0}
+# ilkDenklemSagTaraf= h*(h**2)-y_{0}
+# Son denklem için t= tSon-h olacak. i=son-1 olacak
+# (tSon-h) * h^2 = y_{son}-2y_{son-1}+y_{son-2}
+# sonDenklemSagTaraf=(tSon-h)*(h**2)-y_{son}
+ilkDenklemSagTaraf=fonk(h)*(h**2)-y_t0
+sonDenklemSagTaraf=fonk(tSon-h)*(h**2)-y_t3
+# Ara denklemleri oluştur.
+# araDenklemlerSagTaraf[0]=ilkDenklemSagTaraf
 araDenklemlerSagTaraf=np.array(ilkDenklemSagTaraf)
-for i in range(27):
-    araDenklemlerSagTaraf= np.append(araDenklemlerSagTaraf,x2[i+1]*(0.1**2))
-
-araDenklemlerSagTaraf= np.append(araDenklemlerSagTaraf,sonDenklemSagTaraf)
-# Coefficient Matrix
-coefMat2= np.zeros((29, 29))
-
-for i in range(29):
-    coefMat2[i, i]= -2
-    if not i == 28:
-        coefMat2[i, i+1]= 1
+for i in range(1, adet-3):
+    araDenklemlerSagTaraf= np.append(araDenklemlerSagTaraf, fonk(tTum[i+1])*(h**2))
+# Son denklemi ekle
+sonucMatrisi= np.append(araDenklemlerSagTaraf,sonDenklemSagTaraf)
+# Katsayı Matrisi
+katsayiMat= np.zeros((adet-2, adet-2))
+# y''(t)=t = (y_{i+1}-2y_{i}+y_{i-1})/h^2
+# Denkleminde katsayılar hep aynı olur.
+for i in range(adet-2):
+    katsayiMat[i, i]= -2
+    if not i == adet-3:
+        katsayiMat[i, i+1]= 1
     if not i == 0:
-        coefMat2[i, i-1]= 1
-
-solution2=solve(coefMat2, araDenklemlerSagTaraf)
-solution2=np.insert(solution2, 0, y0)
-solution2=np.append(solution2, yEnd)
-
-plt.plot(x2, solution2, 'o-')
+        katsayiMat[i, i-1]= 1
+# Çöz
+print(f"Katsayı Matrisi: \n{katsayiMat}")
+print(f"Sonuç Matrisi: \n{sonucMatrisi}")
+cozum=solve(katsayiMat, sonucMatrisi)
+# İlk Çözümü Ekle
+cozum=np.insert(cozum, 0, y_t0)
+# Son Çözümü Ekle
+cozum=np.append(cozum, y_t3)
+# Çiz
+plt.plot(tTum, cozum, 'o-', label='Sonlu Farklar')
+plt.plot(tTum, tTum**3/6 + 21*tTum/18 + 1, 'r-', label='Analitik')
+plt.legend()
 plt.show()
-# --------------------------------------------
 ```
 
 ## Sonlu Farklar Yönteminin Çalışmadığı Örnek
@@ -251,25 +298,33 @@ $$
 
 ### Problem 2
 
-Aşağıdaki diferansiyel denklemi sonlu farklar yöntemini kullanarak $h=0.2$ için adım adım çözün. Bu çözümü atış metodu ile de çözün. Sonuçları karşılaştırın.
+Aşağıdaki diferansiyel çözebilir misinz?
 
 $$
 \frac{\hbar^{2}}{2 m}\frac{d^{2}}{dx^{2}}\psi(x) = E\psi(x), \qquad \psi(x=0)=0, \qquad \psi(x=L)=0 \text{.}
 $$
 
-Çözümü $n=1$ ve $n=2$ için çizdirin. Uygun $L$ değerini siz belirleyin.
+Çözümü $n=1$ ve $n=2$ için bulmaya çalışın. Hem bulduğunuz enerji değerlerini hem de dalga fonksiyonunun karesini (olasılık yoğunluğunu, $|\psi(x)|^{2}$) çizdirin. $x$ değerleri $0$ ile $L$ arasında $N=100$ adet olsun.
 
-Buradaki katsayılar:
+Denklemdeki katsayıları aşağıdaki gibi alın.
 
-1. $\hbar=1.1\times 10^{-34}$ J $\times$ s
-2. $m=9.1\times 10^{-31}$ kg
-3. $E=\frac{\pi^{2}\hbar^{2}}{2mL^{2}}n^{2}$ J.
+1. $\hbar=1$
+2. $m=1$ kg
+3. $L=2$
 
-Analitik Çözüm: 
+Enerji özdeğerinin gerçek değeri aşağıdaki gibi olmalıdır.
+
+$E=\frac{\pi^{2}\hbar^{2}}{2mL^{2}}n^{2}$ J.
+
+Dalga fonksiyonunun analitik çözümü aşağıdaki gibi olmalıdır. 
 
 $$
 \psi(x)=\sqrt{\frac{2}{L}}\sin\left(\frac{n\pi x}{L}\right)
 $$
+
+::: {.callout-tip}
+Bu problem bir özdeğer problemidir. Diferansiyel operatörü $\left(\frac{d^{2}}{dx^{2}}\right)$ doğrusal operatörü matris şeklinde yazmalısınız. Bu matrisi sonlu farklar yönteminde yazdık.
+:::
 
 ## Kaynaklar
 
