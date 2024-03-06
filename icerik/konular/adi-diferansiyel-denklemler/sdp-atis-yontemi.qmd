@@ -7,18 +7,18 @@ title: "SDP - Atış Yöntemi"
 Aşağıdaki denklemi çözelim.
 
 $$
-y'' = f(x,y,y'), \qquad y(a)=\alpha, \qquad y(b)=\beta \text{.}
+y'' = f(x,y(x),y'(x)), \qquad y(a)=\alpha, \qquad y(b)=\beta \text{.}
 $$
 
-- Bu denklemi başlangıç değer problemine çevirmeye çalışalım.
+Bu denklemi başlangıç değer problemine çevirmeye çalışalım.
 
 $$
-y'' = f(x,y,y'), \qquad y(a)=\alpha, \qquad y'(a)=u \text{.}
+y'' = f(x,y(x),y'(x)), \qquad y(a)=\alpha, \qquad y'(a)=u \text{.}
 $$
 
-- $u$ nedir? Tahmin edeceğiz. Buradan dif. denklemi tıpkı başlangıç değer problemi gibi $a$'dan $b$'ye kadar çözeceğiz.
-- Bulduğumuz çözümün son noktasındaki değerde yani $y_{cozum}(b)$,  $\beta$'yu bulana kadar bu işleme devam edeceğiz.
-- Sistematik bir tahmin yürütme mekanizması kurmamız lazım. Bunun için $y(b)$, $u$'nun bir fonksiyonu olsun tanımlaması yapalım.
+Bulmamız gereken değer $u$ değeridir. Bu değeri tahmin edeceğiz. Buradan diferansiyel denklemi tıpkı başlangıç değer problemi gibi $a$'dan $b$'ye kadar çözeceğiz. Bulduğumuz çözümün son noktasındaki değerde yani $y_{cozum}(b)$,  $\beta$'yu bulana kadar bu işleme devam edeceğiz.
+
+Sistematik bir tahmin yürütme mekanizması kurmamız lazım. Bunun için $y(b)$, $u$'nun bir fonksiyonu olsun tanımlaması yapalım.
 
 $$
 y(b)= \theta(u) \text{.}
@@ -32,16 +32,15 @@ $$
 
 Buradaki $r(u)$ fonksiyonuna *artık fonksiyon* (residual function) denir. Bu fonksiyonun kökü $u$ değeridir. $u$ değerini biliyorsak sınır değer probleminden çevirdiğimiz başlangıç değer problemini çözebiliriz.
 
-- **Artık fonksiyonunun kökü** $u$ değerini verecek. Kök bulmak için *Ridder'in yöntemi* kullanabiliriz. (Bisection veya Newton-Raphson yöntemleri değil.)
+**Artık fonksiyonunun kökü** $u$ değerini verecek. Kök bulmak için *Ridder'in yöntemi* kullanabiliriz. (Bisection veya Newton-Raphson yöntemleri değil.)
 
+### Çözüme Giden Adımları
 
-**Çözüme giden adımları** tekrar yazalım.
-
-1. İkinci dereceden diferansiyel denklemimiz var. $y''=f(x,y,y')$.
+1. İkinci dereceden diferansiyel denklemimiz var. $y''=f(x,y(x),y')(x)$.
 2. Çözüm kümesinin sınır değerlerini biliyoruz. $y(a)=\alpha$, $y(b)=\beta$.
 3. Bizim çözebildiğimiz denklem tipinde başlangıç koşulları $y(a)=\alpha$ ve $y'(a)=u$ şeklinde olmalı.
 4. $u$ değerini tahmin edelim.
-5. Tahmin ettiğimiz $u$ değerini kullanarak $y''=f(x,y,y')$ denklemini $b$ noktasına kadar çözelim.
+5. Tahmin ettiğimiz $u$ değerini kullanarak $y''=f(x,y(x),y'(x))$ denklemini $b$ noktasına kadar çözelim.
 6. Elde ettiğimiz çözümün $b$'deki değeri $y(b)=\beta$ değerini veriyor mu? Eğer vermiyorsa $u$ değerini değiştirerek tekrar deneyelim.
 7. $u$'nun bu değişimi sanki bir fonksiyon gibi olsun. Yukarıda bahsettiğimiz $\theta(u)$ fonksiyonu budur.
 8. $\theta(u)$ fonksiyonu $\beta$'ya eşit olursa $u$ değerini bulduk demektir. Yani $\theta(u)- \beta = 0$ denkleminin kökünü bulmaya çalışıyoruz.
@@ -57,7 +56,7 @@ $$
 
 ### Çözüm
 
-- Çözüm adımlarından dördüncü olan ile başlayalım. $u$ değerini tahmin edelim. $u=25$ olsun. Bu değerle denklemi çözelim. Çözeceğimiz denklem aşağıdaki gibi olacak.
+Çözüm adımlarından dördüncü olan ile başlayalım. $u$ değerini tahmin edelim. $u=25$ olsun. Bu değerle denklemi çözelim. Çözeceğimiz denklem aşağıdaki gibi olacak.
 
 $$
 y''(t) = -g, \qquad y(0)=0, \qquad y'(5)=25 \text{.}
@@ -66,18 +65,15 @@ $$
 Bu denklemin çözümü 
 
 $$
-y'(t)= -gt + C_{1} \text{,} \qquad y'(5)=25 \text{.}
+\begin{align*}
+    y'(t)&= -gt + C_{1} \text{,} \qquad y'(5)=25 \text{ ,} \\
+         &= -gt + 25 \text{ ,} \\
+     y(x)&= -\frac{gt^2}{2} + 25t + C_{2} \text{,} \qquad y(0)=0 \text{,} \\
+         &= -\frac{gt^2}{2} + 25t \text{.}
+\end{align*}
 $$
 
-$$
-y'(t)= -gt + 25 \text{,} \qquad y(x)=-\frac{gt^2}{2} + 25t + C_{2} \text{.}
-$$
-
-$$
-y(t)=-\frac{gt^2}{2} + 25t
-$$
-
-Şimdi tahminimiz doğru mu deneyelim. 
+Şimdi tahminimiz doğru mu deneyelim. Yani $y(t=5)$ değeri $50$ mi olacak?
 
 $$
 y(t=5)= -\frac{10\times 25}{2} + 25\times 5 = 0 \ne 50 \text{.}
@@ -97,47 +93,41 @@ $$
 \theta(u) - 50 = 0\text{.}
 $$
 
-O halde $\theta(u)$ fonksiyonu başlangıç değer probleminin çözümüne bağlı. Bunu bir fonksiyon gibi tanımlayıp kökünü bulalım.
+O halde $\theta(u)$ fonksiyonu başlangıç değer probleminin çözümüne bağlı. Bunu bir fonksiyon gibi tanımlayıp kökünü bulalım. Bu fonksiyon kodda şöyle tanımlanacak. `u` değeri girdi olacak. Bu `u` değerine göre başlangıç değer problemini çözecek. Çözümün son değeri $y(5)$ değeri olacak. Bu değer ile $50$ değeri arasındaki farkı döndürecek. Bu farkın kökünü bulmak için `scipy.optimize.ridder(fonksiyon, kok_araligi_baslangic, kok_araligi_bitis)` fonksiyonunu kullanacağız.
 
 ```{python}
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.integrate as scInteg
 import scipy.optimize as scOpt
-
 # Diff. Denk:
 # y'' = -10 , y(0)=0 , y(5)=50
-
-# f(x,y,y') = -10
-# y' = v   => f1= v
-# v' = -10 => f2= -10
-
 # Fonksiyon:
 def fonk_SDP(t, y):
     # y[0]= y
     # y[1]= v
     return np.array([y[1], -10])
-
-# Başlangıç Koşulları:
-t0=0.
-tStop=5.
-y0= 0.     # y(0) = 0
-yStop= 50. # y(5) = 50
+# Başlangıç Koşulları
+t0=0.0
+tSon=5.0
+y0= 0.0  # y(0) = 0
+ySon= 50. # y(5) = 50
 # v(0) = u (Bilmiyoruz)
-
-# Hangi Aralıkta Çözeceğiz: t0'dan tStop'e kadar
-
 # Theta fonksiyonu:
 def thetaFonk(u):
     #solve_ivp(fonksiyon, t_span, y0)
     # t_span=[t0, tStop] (y(0) ve y(1) değerini biliyoruz.)
-    cozum = scInteg.solve_ivp(fonk_SDP, [t0, tStop], [y0, u])
+    cozum = scInteg.solve_ivp(fonk_SDP, [t0, tSon], [y0, u])
     
-    # Bizim için önemli olan y(1) değeri, v'nin değil.
-    # yani y'nin y(1) değerinin 
+    # İkinci derece diferansiyel denklemin çözümü
+    # cozum.y[0] = y(t)
+    # cozum.y[1] = v(t)
     yCozum = cozum.y[0]
-    return yCozum[-1]- yStop
-
+    # yCozum bir array. Son elemanı yani y(t=5) değeri bizim için önemli.
+    # Bu da yCozum[-1] ile alınır.
+    # Eğer bulduğumuz yCozum[-1] değeri ySon değerine eşitse u değerini bulduk demektir.
+    return yCozum[-1]- ySon
+# ---------------------------
 # Theta fonksiyonunun içerini şöyle düşünelim.
 # Polinom tipi bir g(x)=x^2+4x+4 fonksiyonu olsun. Bunun kökünü şöyle bulurduk.
 '''
@@ -147,17 +137,16 @@ def g(x):
 # Kökünü 0 ile 10 arasında bul.
 x0, = scOpt.ridder(g, 0, 10)
 '''
-# Aynı şekilde theta fonksiyonunun kökünü bulalım.
+# ---------------------------
+# theta fonksiyonunun kökünü bulalım.
 thetaU_kok_v0= scOpt.ridder(thetaFonk, 0, 50)
-
 # Olması gereken başlangıç değeri:
 print(f"v0= {thetaU_kok_v0} m/s")
-
 # Deneyelim. Gerçekten v0 bu değerdeyken y(5)= 50 oluyor mu?
-
-cozum= scInteg.solve_ivp(fonk_SDP, [t0, tStop], [y0, thetaU_kok_v0])
-
-print(f"y(5)= {cozum.y[0][-1]} m")
+cozum= scInteg.solve_ivp(fonk_SDP, [t0, tSon], [y0, thetaU_kok_v0])
+# Son değerleri karşılaştıralım.
+print(f"y(t=5) Bulduğumuz Çözüm: {cozum.y[0][-1]:.1f} m")
+print(f"y(t=5) Gerçek Değer    : {ySon} m")
 ```
 
 Python ile ne yaptık?

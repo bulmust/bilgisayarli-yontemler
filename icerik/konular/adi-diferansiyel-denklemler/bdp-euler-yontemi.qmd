@@ -113,7 +113,7 @@ def fonk_y_x(y, x):
 x0 = 0
 y0 = 1
 xSon = 1
-n = 10000
+n = 10
 # Çöz
 xTum, yTum = bym.add_coz_euler(fonk_y_x, x0, xSon, y0, n)
 # Çiz

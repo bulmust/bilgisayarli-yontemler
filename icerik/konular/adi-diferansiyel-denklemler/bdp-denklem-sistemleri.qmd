@@ -109,7 +109,7 @@ def fonk_yVek_x(yVek, x):
     # fonk_yVek_x fonksiyonu girdi olarak (yVek,x) alacak. Bu yVek vektörünün
     # ilk elemanı y'(x) 'in sağ tarafı olmalı. dydx diyelim.
     # dydx <= yVek[0]
-    dydx = yVek[0]
+    dydx = yVek[1]
     # İkinci çözülmesi gereken denklem v'(y,x) = x.
     # fonk_yVek_x fonksiyonu girdi olarak (yVek,x) alacak. Bu yVek vektörünün
     # ikinci elemanı v'(x) 'in sağ tarafı olmalı. dvdx diyelim.

@@ -4,7 +4,7 @@ title: "BDP - Runge-Kutta Yöntemleri"
 
 ## Runge-Kutta Yöntemleri
 
-Euler yöntemi için Taylor serisini birinci dereceden türevli terimden kesmiştik. Eğer Taylor serisinde daha yüksek mertebelerden türevler kullanılırsa, bu yöntemlere Runge-Kutta yöntemleri adı verilir.
+Euler yöntemi için Taylor serisini birinci dereceden türevli terimden kesmiştik. Eğer Taylor serisinde daha yüksek mertebelerden türevler kullanılırsa, bu yöntemlere **Runge-Kutta** yöntemleri adı verilir.
 
 ::: {.callout-caution}
 Yüksek mertebeden türevler kullanmak demek, yüksek mertebe diferansiyel denklem çözümü anlamına gelmez. Örneğin, birinci dereceden diferansiyel denklemi, Taylor serisinin üçüncü dereceden teriminden keserek çözebiliriz. Runge-Kutta yöntemleri, Euler yönteminin bir genelleştirilmesidir.
@@ -12,18 +12,22 @@ Yüksek mertebeden türevler kullanmak demek, yüksek mertebe diferansiyel denkl
 
 ### İkinci Derece Runge-Kutta Yöntemi
 
-- Ana daklem: $y'(x)=F(x,y)$
-
-- Euler yöntemini hatırlayalım:
+Ana denklemi yazalım. 
 
 $$
-y(x+h)= y(x)+hy'(x,y) = y(x)+hyf(x,y)
+y'(x)=f(y,x)
 $$
 
-- Taylor serisinin ikinci mertebesinden kesmeden önce en genel formülü yazalım.
+Euler yöntemini hatırlayalım. $y'(x)=f(y,x)$ bağıntısını da kullanalım.
 
 $$
-y(x+h)= y(x)+c_{0}hF(x,y) + c_{1}hF(x+ph,y+qhF(x,y))
+y(x+h)= y(x)+hy'(y,x) = y(x)+hf(y,x)
+$$
+
+Taylor serisinin ikinci mertebesinden kesmeden önce en genel formülü yazalım. Bu formül Runge-Kutta yöntemlerinin genel formülüdür.
+
+$$
+y(x+h)= y(x)+c_{0}hF(y,x) + c_{1}hf(x+ph,y+qhF(y,x))
 $$
 
 Burada $c_{0},c_{1},p,q$ birer katsayıdır. Taylor serisine dönelim.
@@ -31,42 +35,41 @@ Burada $c_{0},c_{1},p,q$ birer katsayıdır. Taylor serisine dönelim.
 $$
 \begin{align*}
 y(x+h) &= y(x) + y'(x)h + \frac{1}{2}y''(x)h^{2}\\
-       &= y(x) + F(x,y)h + \frac{1}{2}F'(x,y)h^{2}    
+       &= y(x) + F(y,x)h + \frac{1}{2}f'(y,x)h^{2}    
 \end{align*}
 $$
 
-- Burada $F'(x,y)$ aşağıdaki gibi yazılır.
+Burada $f'(y,x)$ aşağıdaki gibi yazılır.
 
 $$
-F'(x,y)= \frac{\partial F}{\partial x} + \frac{\partial F}{\partial y}F
+\begin{align*}
+f'(y,x)&= \frac{\partial f}{\partial x} + \frac{\partial f}{\partial y}f \\
+       &= \frac{\partial f}{\partial x} + \frac{\partial f}{\partial y}y'
+\end{align*}
 $$
 
-$$
-F'(x,y)= \frac{\partial F}{\partial x} + \frac{\partial F}{\partial y}y'
-$$
-
-- Vektörize edilmiş $F$ için ise,
+Vektörize edilmiş $F$ için ise,
 
 $$
-F'(x,y)= \frac{\partial F}{\partial x} + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(x,y)
+F'(y,x)= \frac{\partial F}{\partial x} + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(y,x)
 $$
 
-şeklinde yazılır. (2) numaralı denklemde yerine koyarsak,
+şeklinde yazılır. Taylor açılımından elde ettiğimiz denklemde yerine koyarsak,
 
 $$
-y(x+h)= y(x) + F(x,y)h + \frac{h^{2}}{2}\frac{\partial F}{\partial x} + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(x,y)
+y(x+h)= y(x) + F(y,x)h + \frac{h^{2}}{2}\frac{\partial F}{\partial x} + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(y,x)
 $$
 
-ifadesini elde ederiz. Şimdi genelleştirilmiş formülü, yani $y(x+h)= y(x)+c_{0}hF(x,y) + c_{1}hF(x+ph,y+qhF(x,y))$ terimindeki $F(x+ph,y+qhF(x,y))$ terimi açalım.
+ifadesini elde ederiz. Şimdi genelleştirilmiş formülü, yani $y(x+h)= y(x)+c_{0}hF(y,x) + c_{1}hF(x+ph,y+qhF(y,x))$ terimindeki $F(x+ph,y+qhF(y,x))$ terimi açalım.
 
 $$
-F(x+ph,y+qhF(x,y)) = F(x,y) + \frac{\partial F}{\partial x}ph + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}qhF_{i}(x,y)
+F(x+ph,y+qhF(y,x)) = F(y,x) + \frac{\partial F}{\partial x}ph + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}qhF_{i}(y,x)
 $$
 
 - Yukarıdaki açılımı genelleştirilmiş formülde yerine koyalım.
 
 $$
-y(x+h) = y(x) + (c_{0}+c_{1})F(x,y)h+ c_{1}\left[\frac{\partial F}{\partial x}ph + qh \sum_{i=1}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(x,y)\right]
+y(x+h) = y(x) + (c_{0}+c_{1})F(y,x)h+ c_{1}\left[\frac{\partial F}{\partial x}ph + qh \sum_{i=1}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(y,x)\right]
 $$
 
 Burada elde ettiğimiz formül ile Taylor serisinde elde ettiğimiz formülü karşılaştıralım. Eğer 
@@ -123,14 +126,14 @@ $$
 
 Katsayı tablosu oluşturalım.
 
-| $k_{0} | $k_{1}$ | $k_{2}$ | $k_{3}$ |
+| $K_{0}$ | $K_{1}$ | $K_{2}$ | $K_{3}$ |
 |:---:|:---:|:---:|:---:|
-| $hF(x,y)$ | $hF\left(x+\frac{h}{2},y+\frac{1}{2}k_{0}\right)$ | $hF\left(x+\frac{h}{2},y+\frac{1}{2}k_{1}\right)$ | $hF\left(x+h,y+k_{2}\right)$ |
+| $hF(y,x)$ | $hF\left(y+\frac{1}{2}K_{0}, x+\frac{h}{2}\right)$ | $hF\left(y+\frac{1}{2}K_{1}, x+\frac{h}{2}\right)$ | $hF\left(y+K_{2}, x+h\right)$ |
 
 Katsayıları kullanarak bir sonraki adım hesaplanır.
 
 $$
-y(x+h)= y(x) + \frac{1}{6}(k_{0}+2k_{1}+2k_{2}+k_{3})
+y(x+h)= y(x) + \frac{1}{6}(K_{0}+2K_{1}+2K_{2}+K_{3})
 $$
 
 Python kodunu yazalım. `add_coz_rk4_sistem` adlı fonksiyon [bilYonMod.py](/moduller/bilYonMod.py) modülünde tanımlıdır.
@@ -147,9 +150,43 @@ Denklem sistemi aşağıdaki gibidir.
 
 $$
 \begin{align*}
-\frac{d}{dx}y(v,x) &= v(x) \\
+\frac{d}{dx}y(v(x), x) &= v(x) \\
 \frac{d}{dx}v(x) &= x
 \end{align*}
+$$
+
+Analitik çözümü yazabiliriz. Önce $v(x)$'i çözelim.
+
+$$
+\frac{d}{dx}v(x) = x \Rightarrow v(x) = \frac{x^{2}}{2} + C
+$$
+
+Başlangıç koşulunu, $v(0)=0$ koşulunu kullanarak $C$ sabitini bulalım.
+
+$$
+v(0) = 0 \Rightarrow C = 0  \Rightarrow v(x) = \frac{x^{2}}{2}
+$$
+
+Şimdi $y(x)$'i çözelim.
+
+$$
+\begin{align*}
+    \frac{d}{dx}y(v(x), x) =& v(x) \\
+    y(x) =& \int v(x)dx \\
+         =& \int \frac{x^{2}}{2}dx = \frac{x^{3}}{6} + C
+\end{align*}
+$$
+
+Başlangıç koşulunu, $y(0)=1$ koşulunu kullanarak $C$ sabitini bulalım.
+
+$$
+y(0) = 1 \Rightarrow C = 1 \Rightarrow y(x) = \frac{x^{3}}{6} + 1
+$$
+
+Analitik çözüm aşağıdaki gibi olur.
+
+$$
+y(x)= \frac{x^{3}}{6} + 1 \quad \text{ve} \quad v(x) = \frac{x^{2}}{2}
 $$
 
 ### Çözüm
@@ -279,7 +316,7 @@ def fonkVek(yVek, t):
 # Başlangıç koşulları
 yVek0= np.array([0.5, 0.0, 2.25, 0.0])
 t0=0
-tSon=10
+tSon=50
 n=100
 # Çöz, Euler
 tTumEuler, yTum_VekEuler = bym.add_coz_euler_sistem(fonkVek, t0, tSon, yVek0, n)

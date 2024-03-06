@@ -4,41 +4,41 @@ title: "SDP - Sonlu Farklar Yöntemi"
 
 ## Sonlu Farklar Yöntemi
 
-Sonlu farklar yöntemini kullanarak sınır değer problemine ait diferansiyel denklem çözeceğiz. Bunun için taylor açılımını kullanacağız.
-
-Taylor açılımında birinci türevi orta noktayı kullanarak yazalım.
+Sonlu farklar yöntemini kullanarak sınır değer problemine ait diferansiyel denklem çözeceğiz. Bunun için Taylor açılımını kullanacağız. Taylor açılımında birinci türevi orta noktayı kullanarak yazalım.
 
 $$
 y'_{i} = \frac{y_{i+1}-y_{i-1}}{2h}
 $$
 
-Şimdi $y'_{i}=g_{i}$ gibi bir fonksiyon olsun. Yukarıdaki bağıntı yerine $g_{i}$ koyalım.
+Farz edelim ki bu fonksiyonu $g_{i}$ için yazmışız.
 
 $$
 g'_{i} = \frac{g_{i+1}-g_{i-1}}{2h}
 $$
 
-Biliyoruz ki $g_{i}=y'_{i}$'dir.
+Bu $g_{i}$ fonksiyonu $y'_{i}$ fonksiyonuna eşit olsun. Yani $g_{i}=y'_{i}$ olur. Bu durumda
 
 $$
-y''_{i} = \frac{y'_{i+1}-y'_{i-1}}{2h}
-$$
-
-$$
-y''_{i} = \frac{1}{2h}\left(\frac{y_{i+2}-y_{i}}{2h}-\frac{y_{i}-y_{i-2}}{2h}\right)
+\begin{align*}
+    y''_{i} &= \frac{y'_{i+1}-y'_{i-1}}{2h} \\
+            &= \frac{1}{2h}\left(\frac{y_{i+2}-y_{i}}{2h}-\frac{y_{i}-y_{i-2}}{2h}\right)
+\end{align*}
 $$
 
 Biraz düzenleyelim.
 
 $$
-y''_{i} = \frac{1}{4h^2}\left(y_{i+2}-y_{i}-y_{i}+y_{i-2}\right)
+\begin{align*}
+    y''_{i} &= \frac{1}{4h^2}\left(y_{i+2}-y_{i}-y_{i}+y_{i-2}\right) \\
+            &= \frac{y_{i+2}-2y_{i}+y_{i-2}}{4h^2}
+\end{align*}
 $$
 
-$$
-y''_{i} = \frac{y_{i+2}-2y_{i}+y_{i-2}}{4h^2}
-$$
+Eğer adım aralığını yarıya indirirsek yani $h \rightarrow h/2$ yaparsak $y_{i+2}$ noktasından $y_{i+1}$ noktasına gelebiliriz. Benzer şekilde $y_{i-2}$ noktasından $y_{i-1}$ noktasına geliriz. O halde ikinci türeve ait olan denklem şöyle olur.
 
-Eğer adım aralığını yarıya indirirsek yani $h \rightarrow h/2$ yaparsak $y_{i+2}$ noktasından $y_{i+1}$ noktasına gelebiliriz. Benzer şekilde $y_{i-2}$ noktasından $y_{i-1}$ noktasına geliriz. Bu adım sadece sabit adım aralığı için geçerlidir. O halde ikinci türeve ait olan denklem şöyle olur.
+::: {.callout-note}
+Bu işlem sadece sabit adım aralığı için geçerlidir.
+:::
 
 $$
 y''_{i} = \frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}
@@ -60,7 +60,7 @@ $$
 
 ### Çözüm
 
-Adım aralığı $h=1$ olsun. $t$'nin değerleri $0, 1, 2, 3$ olacaktır. Bu değerlerden $y$ değerlerini bulalım.
+Adım aralığı $h=1$ olsun. Çözeceğimiz $t$'nin değerleri $0, 1, 2, 3$ olacaktır. Bu değerlerden $y$ değerlerini bulalım.
 
 $$
 y''(t)=t=\frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}
