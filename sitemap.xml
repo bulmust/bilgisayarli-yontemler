@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/bilYonMod.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi/fourier-donusumu.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/index.html</loc>
+    <lastmod>2024-03-06T20:41:36.280Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi/giris.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/index.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
+    <lastmod>2024-03-06T20:41:36.280Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi/hizli-fourier-donusumu.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
+    <lastmod>2024-03-06T20:41:36.280Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
+    <lastmod>2024-03-06T20:41:36.276Z</lastmod>
   </url>
   <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html</loc>
+    <lastmod>2024-03-06T20:41:36.280Z</lastmod>
   </url>
   <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html</loc>
+    <lastmod>2024-03-06T20:41:36.280Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html</loc>
+    <lastmod>2024-03-06T20:41:36.280Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/izlence.html</loc>
-    <lastmod>2024-03-05T06:06:28.531Z</lastmod>
+    <lastmod>2024-03-06T20:41:36.276Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/bilYonMod.html</loc>
+    <lastmod>2024-03-06T20:41:36.276Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html</loc>
+    <lastmod>2024-03-06T20:41:36.280Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html</loc>
+    <lastmod>2024-03-06T20:41:36.280Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html</loc>
+    <lastmod>2024-03-06T20:41:36.276Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html</loc>
+    <lastmod>2024-03-06T20:41:36.280Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler.html</loc>
+    <lastmod>2024-03-06T20:41:36.276Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi/fourier-donusumu.html</loc>
+    <lastmod>2024-03-06T20:41:36.280Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi.html</loc>
+    <lastmod>2024-03-06T20:41:36.280Z</lastmod>
   </url>
 </urlset>

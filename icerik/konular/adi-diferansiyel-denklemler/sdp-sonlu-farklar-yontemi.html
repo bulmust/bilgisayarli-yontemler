@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -354,7 +354,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">5 Mart 2024</p>
+      <p class="date">6 Mart 2024</p>
     </div>
   </div>
   
@@ -368,30 +368,42 @@ window.Quarto = {
 
 <section id="sonlu-farklar-yöntemi" class="level2">
 <h2 class="anchored" data-anchor-id="sonlu-farklar-yöntemi">Sonlu Farklar Yöntemi</h2>
-<p>Sonlu farklar yöntemini kullanarak sınır değer problemine ait diferansiyel denklem çözeceğiz. Bunun için taylor açılımını kullanacağız.</p>
-<p>Taylor açılımında birinci türevi orta noktayı kullanarak yazalım.</p>
+<p>Sonlu farklar yöntemini kullanarak sınır değer problemine ait diferansiyel denklem çözeceğiz. Bunun için Taylor açılımını kullanacağız. Taylor açılımında birinci türevi orta noktayı kullanarak yazalım.</p>
 <p><span class="math display">\[
 y'_{i} = \frac{y_{i+1}-y_{i-1}}{2h}
 \]</span></p>
-<p>Şimdi <span class="math inline">\(y'_{i}=g_{i}\)</span> gibi bir fonksiyon olsun. Yukarıdaki bağıntı yerine <span class="math inline">\(g_{i}\)</span> koyalım.</p>
+<p>Farz edelim ki bu fonksiyonu <span class="math inline">\(g_{i}\)</span> için yazmışız.</p>
 <p><span class="math display">\[
 g'_{i} = \frac{g_{i+1}-g_{i-1}}{2h}
 \]</span></p>
-<p>Biliyoruz ki <span class="math inline">\(g_{i}=y'_{i}\)</span>’dir.</p>
+<p>Bu <span class="math inline">\(g_{i}\)</span> fonksiyonu <span class="math inline">\(y'_{i}\)</span> fonksiyonuna eşit olsun. Yani <span class="math inline">\(g_{i}=y'_{i}\)</span> olur. Bu durumda</p>
 <p><span class="math display">\[
-y''_{i} = \frac{y'_{i+1}-y'_{i-1}}{2h}
-\]</span></p>
-<p><span class="math display">\[
-y''_{i} = \frac{1}{2h}\left(\frac{y_{i+2}-y_{i}}{2h}-\frac{y_{i}-y_{i-2}}{2h}\right)
+\begin{align*}
+    y''_{i} &amp;= \frac{y'_{i+1}-y'_{i-1}}{2h} \\
+            &amp;= \frac{1}{2h}\left(\frac{y_{i+2}-y_{i}}{2h}-\frac{y_{i}-y_{i-2}}{2h}\right)
+\end{align*}
 \]</span></p>
 <p>Biraz düzenleyelim.</p>
 <p><span class="math display">\[
-y''_{i} = \frac{1}{4h^2}\left(y_{i+2}-y_{i}-y_{i}+y_{i-2}\right)
+\begin{align*}
+    y''_{i} &amp;= \frac{1}{4h^2}\left(y_{i+2}-y_{i}-y_{i}+y_{i-2}\right) \\
+            &amp;= \frac{y_{i+2}-2y_{i}+y_{i-2}}{4h^2}
+\end{align*}
 \]</span></p>
-<p><span class="math display">\[
-y''_{i} = \frac{y_{i+2}-2y_{i}+y_{i-2}}{4h^2}
-\]</span></p>
-<p>Eğer adım aralığını yarıya indirirsek yani <span class="math inline">\(h \rightarrow h/2\)</span> yaparsak <span class="math inline">\(y_{i+2}\)</span> noktasından <span class="math inline">\(y_{i+1}\)</span> noktasına gelebiliriz. Benzer şekilde <span class="math inline">\(y_{i-2}\)</span> noktasından <span class="math inline">\(y_{i-1}\)</span> noktasına geliriz. Bu adım sadece sabit adım aralığı için geçerlidir. O halde ikinci türeve ait olan denklem şöyle olur.</p>
+<p>Eğer adım aralığını yarıya indirirsek yani <span class="math inline">\(h \rightarrow h/2\)</span> yaparsak <span class="math inline">\(y_{i+2}\)</span> noktasından <span class="math inline">\(y_{i+1}\)</span> noktasına gelebiliriz. Benzer şekilde <span class="math inline">\(y_{i-2}\)</span> noktasından <span class="math inline">\(y_{i-1}\)</span> noktasına geliriz. O halde ikinci türeve ait olan denklem şöyle olur.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Not
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Bu işlem sadece sabit adım aralığı için geçerlidir.</p>
+</div>
+</div>
 <p><span class="math display">\[
 y''_{i} = \frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}
 \]</span></p>
@@ -408,7 +420,7 @@ y''(t)=t, \quad y(0)=1, \quad y(3)=9
 \]</span></p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<p>Adım aralığı <span class="math inline">\(h=1\)</span> olsun. <span class="math inline">\(t\)</span>’nin değerleri <span class="math inline">\(0, 1, 2, 3\)</span> olacaktır. Bu değerlerden <span class="math inline">\(y\)</span> değerlerini bulalım.</p>
+<p>Adım aralığı <span class="math inline">\(h=1\)</span> olsun. Çözeceğimiz <span class="math inline">\(t\)</span>’nin değerleri <span class="math inline">\(0, 1, 2, 3\)</span> olacaktır. Bu değerlerden <span class="math inline">\(y\)</span> değerlerini bulalım.</p>
 <p><span class="math display">\[
 y''(t)=t=\frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}
 \]</span></p>
@@ -537,7 +549,7 @@ y''(t)=t=\frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}
 </section>
 <section id="çözüm-kod" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm-kod">Çözüm Kod</h3>
-<div id="3ffc4c10" class="cell" data-execution_count="1">
+<div id="c6d841c4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> scipy.linalg <span class="im">import</span> solve</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -913,6 +925,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -956,7 +973,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

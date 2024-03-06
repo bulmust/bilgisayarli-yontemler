@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -352,7 +352,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">5 Mart 2024</p>
+      <p class="date">6 Mart 2024</p>
     </div>
   </div>
   
@@ -397,7 +397,7 @@ Not
 \end{align*}
 \]</span></p>
 <p>Başlangıç koşulları <span class="math inline">\(y(0)=1\)</span> ve <span class="math inline">\(v(0)=1\)</span> olsun. Çözüm aralığını <span class="math inline">\(x=0\)</span> ile <span class="math inline">\(x=10\)</span> arasında bulmaya çalışalım, <span class="math inline">\(x=[0,10]\)</span>. Çözüm adım sayısı <span class="math inline">\(n=100\)</span> olsun.</p>
-<div id="67569215" class="cell" data-execution_count="1">
+<div id="71d5a95f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -470,13 +470,13 @@ Not
 \end{align*}
 \]</span></p>
 <p>Bu durumda sağ taraftaki vektör fonksiyonu aşağıdaki gibi tanımlanır.</p>
-<div id="c9282e1c" class="cell" data-execution_count="2">
+<div id="2ccaddce" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> fonk_yVek_x(yVek, x):</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="co"># İlk çözülmesi gereken denklem y'(v,x) = v(x). </span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>    <span class="co"># fonk_yVek_x fonksiyonu girdi olarak (yVek,x) alacak. Bu yVek vektörünün</span></span>
 <span id="cb2-4"><a href="#cb2-4"></a>    <span class="co"># ilk elemanı y'(x) 'in sağ tarafı olmalı. dydx diyelim.</span></span>
 <span id="cb2-5"><a href="#cb2-5"></a>    <span class="co"># dydx &lt;= yVek[0]</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>    dydx <span class="op">=</span> yVek[<span class="dv">0</span>]</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    dydx <span class="op">=</span> yVek[<span class="dv">1</span>]</span>
 <span id="cb2-7"><a href="#cb2-7"></a>    <span class="co"># İkinci çözülmesi gereken denklem v'(y,x) = x.</span></span>
 <span id="cb2-8"><a href="#cb2-8"></a>    <span class="co"># fonk_yVek_x fonksiyonu girdi olarak (yVek,x) alacak. Bu yVek vektörünün</span></span>
 <span id="cb2-9"><a href="#cb2-9"></a>    <span class="co"># ikinci elemanı v'(x) 'in sağ tarafı olmalı. dvdx diyelim.</span></span>
@@ -489,7 +489,7 @@ Not
 <p>Analitik çözümü elde ederken önce <span class="math inline">\(v(x)\)</span>’i çözmek gerekir. <span class="math inline">\(v(x)=\frac{x^2}{2}\)</span> olur. Bu durumda <span class="math inline">\(y(x)=\frac{x^3}{6}+1\)</span> olur.</p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="3d86f55e" class="cell" data-execution_count="3">
+<div id="add28887" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">################################################</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> os</span>
@@ -810,6 +810,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -853,7 +858,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

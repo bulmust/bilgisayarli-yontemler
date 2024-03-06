@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -316,7 +316,10 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#atış-yöntemi" id="toc-atış-yöntemi" class="nav-link active" data-scroll-target="#atış-yöntemi">Atış Yöntemi</a></li>
+  <li><a href="#atış-yöntemi" id="toc-atış-yöntemi" class="nav-link active" data-scroll-target="#atış-yöntemi">Atış Yöntemi</a>
+  <ul class="collapse">
+  <li><a href="#çözüme-giden-adımları" id="toc-çözüme-giden-adımları" class="nav-link" data-scroll-target="#çözüme-giden-adımları">Çözüme Giden Adımları</a></li>
+  </ul></li>
   <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a>
   <ul class="collapse">
   <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
@@ -351,7 +354,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">5 Mart 2024</p>
+      <p class="date">6 Mart 2024</p>
     </div>
   </div>
   
@@ -367,19 +370,14 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="atış-yöntemi">Atış Yöntemi</h2>
 <p>Aşağıdaki denklemi çözelim.</p>
 <p><span class="math display">\[
-y'' = f(x,y,y'), \qquad y(a)=\alpha, \qquad y(b)=\beta \text{.}
+y'' = f(x,y(x),y'(x)), \qquad y(a)=\alpha, \qquad y(b)=\beta \text{.}
 \]</span></p>
-<ul>
-<li>Bu denklemi başlangıç değer problemine çevirmeye çalışalım.</li>
-</ul>
+<p>Bu denklemi başlangıç değer problemine çevirmeye çalışalım.</p>
 <p><span class="math display">\[
-y'' = f(x,y,y'), \qquad y(a)=\alpha, \qquad y'(a)=u \text{.}
+y'' = f(x,y(x),y'(x)), \qquad y(a)=\alpha, \qquad y'(a)=u \text{.}
 \]</span></p>
-<ul>
-<li><span class="math inline">\(u\)</span> nedir? Tahmin edeceğiz. Buradan dif. denklemi tıpkı başlangıç değer problemi gibi <span class="math inline">\(a\)</span>’dan <span class="math inline">\(b\)</span>’ye kadar çözeceğiz.</li>
-<li>Bulduğumuz çözümün son noktasındaki değerde yani <span class="math inline">\(y_{cozum}(b)\)</span>, <span class="math inline">\(\beta\)</span>’yu bulana kadar bu işleme devam edeceğiz.</li>
-<li>Sistematik bir tahmin yürütme mekanizması kurmamız lazım. Bunun için <span class="math inline">\(y(b)\)</span>, <span class="math inline">\(u\)</span>’nun bir fonksiyonu olsun tanımlaması yapalım.</li>
-</ul>
+<p>Bulmamız gereken değer <span class="math inline">\(u\)</span> değeridir. Bu değeri tahmin edeceğiz. Buradan diferansiyel denklemi tıpkı başlangıç değer problemi gibi <span class="math inline">\(a\)</span>’dan <span class="math inline">\(b\)</span>’ye kadar çözeceğiz. Bulduğumuz çözümün son noktasındaki değerde yani <span class="math inline">\(y_{cozum}(b)\)</span>, <span class="math inline">\(\beta\)</span>’yu bulana kadar bu işleme devam edeceğiz.</p>
+<p>Sistematik bir tahmin yürütme mekanizması kurmamız lazım. Bunun için <span class="math inline">\(y(b)\)</span>, <span class="math inline">\(u\)</span>’nun bir fonksiyonu olsun tanımlaması yapalım.</p>
 <p><span class="math display">\[
 y(b)= \theta(u) \text{.}
 \]</span></p>
@@ -388,22 +386,22 @@ y(b)= \theta(u) \text{.}
 \theta(u)- \beta \equiv r(u) = 0 \text{.}
 \]</span></p>
 <p>Buradaki <span class="math inline">\(r(u)\)</span> fonksiyonuna <em>artık fonksiyon</em> (residual function) denir. Bu fonksiyonun kökü <span class="math inline">\(u\)</span> değeridir. <span class="math inline">\(u\)</span> değerini biliyorsak sınır değer probleminden çevirdiğimiz başlangıç değer problemini çözebiliriz.</p>
-<ul>
-<li><strong>Artık fonksiyonunun kökü</strong> <span class="math inline">\(u\)</span> değerini verecek. Kök bulmak için <em>Ridder’in yöntemi</em> kullanabiliriz. (Bisection veya Newton-Raphson yöntemleri değil.)</li>
-</ul>
-<p><strong>Çözüme giden adımları</strong> tekrar yazalım.</p>
+<p><strong>Artık fonksiyonunun kökü</strong> <span class="math inline">\(u\)</span> değerini verecek. Kök bulmak için <em>Ridder’in yöntemi</em> kullanabiliriz. (Bisection veya Newton-Raphson yöntemleri değil.)</p>
+<section id="çözüme-giden-adımları" class="level3">
+<h3 class="anchored" data-anchor-id="çözüme-giden-adımları">Çözüme Giden Adımları</h3>
 <ol type="1">
-<li>İkinci dereceden diferansiyel denklemimiz var. <span class="math inline">\(y''=f(x,y,y')\)</span>.</li>
+<li>İkinci dereceden diferansiyel denklemimiz var. <span class="math inline">\(y''=f(x,y(x),y')(x)\)</span>.</li>
 <li>Çözüm kümesinin sınır değerlerini biliyoruz. <span class="math inline">\(y(a)=\alpha\)</span>, <span class="math inline">\(y(b)=\beta\)</span>.</li>
 <li>Bizim çözebildiğimiz denklem tipinde başlangıç koşulları <span class="math inline">\(y(a)=\alpha\)</span> ve <span class="math inline">\(y'(a)=u\)</span> şeklinde olmalı.</li>
 <li><span class="math inline">\(u\)</span> değerini tahmin edelim.</li>
-<li>Tahmin ettiğimiz <span class="math inline">\(u\)</span> değerini kullanarak <span class="math inline">\(y''=f(x,y,y')\)</span> denklemini <span class="math inline">\(b\)</span> noktasına kadar çözelim.</li>
+<li>Tahmin ettiğimiz <span class="math inline">\(u\)</span> değerini kullanarak <span class="math inline">\(y''=f(x,y(x),y'(x))\)</span> denklemini <span class="math inline">\(b\)</span> noktasına kadar çözelim.</li>
 <li>Elde ettiğimiz çözümün <span class="math inline">\(b\)</span>’deki değeri <span class="math inline">\(y(b)=\beta\)</span> değerini veriyor mu? Eğer vermiyorsa <span class="math inline">\(u\)</span> değerini değiştirerek tekrar deneyelim.</li>
 <li><span class="math inline">\(u\)</span>’nun bu değişimi sanki bir fonksiyon gibi olsun. Yukarıda bahsettiğimiz <span class="math inline">\(\theta(u)\)</span> fonksiyonu budur.</li>
 <li><span class="math inline">\(\theta(u)\)</span> fonksiyonu <span class="math inline">\(\beta\)</span>’ya eşit olursa <span class="math inline">\(u\)</span> değerini bulduk demektir. Yani <span class="math inline">\(\theta(u)- \beta = 0\)</span> denkleminin kökünü bulmaya çalışıyoruz.</li>
 <li><span class="math inline">\(y(b)=\beta\)</span> değerine <em>yeteri kadar</em> yaklaştı ise <span class="math inline">\(u\)</span> değerini yani başlangıç koşulunu yani <span class="math inline">\(y(x)\)</span> fonksiyonunu bulduk demektir.</li>
 <li>Denklem çözüldü.</li>
 </ol>
+</section>
 </section>
 <section id="alıştırma-1" class="level2">
 <h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h2>
@@ -412,23 +410,20 @@ y''(t) = -g, \qquad y(0)=0, \qquad y(5)=50 \text{.}
 \]</span></p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<ul>
-<li>Çözüm adımlarından dördüncü olan ile başlayalım. <span class="math inline">\(u\)</span> değerini tahmin edelim. <span class="math inline">\(u=25\)</span> olsun. Bu değerle denklemi çözelim. Çözeceğimiz denklem aşağıdaki gibi olacak.</li>
-</ul>
+<p>Çözüm adımlarından dördüncü olan ile başlayalım. <span class="math inline">\(u\)</span> değerini tahmin edelim. <span class="math inline">\(u=25\)</span> olsun. Bu değerle denklemi çözelim. Çözeceğimiz denklem aşağıdaki gibi olacak.</p>
 <p><span class="math display">\[
 y''(t) = -g, \qquad y(0)=0, \qquad y'(5)=25 \text{.}
 \]</span></p>
 <p>Bu denklemin çözümü</p>
 <p><span class="math display">\[
-y'(t)= -gt + C_{1} \text{,} \qquad y'(5)=25 \text{.}
+\begin{align*}
+    y'(t)&amp;= -gt + C_{1} \text{,} \qquad y'(5)=25 \text{ ,} \\
+         &amp;= -gt + 25 \text{ ,} \\
+     y(x)&amp;= -\frac{gt^2}{2} + 25t + C_{2} \text{,} \qquad y(0)=0 \text{,} \\
+         &amp;= -\frac{gt^2}{2} + 25t \text{.}
+\end{align*}
 \]</span></p>
-<p><span class="math display">\[
-y'(t)= -gt + 25 \text{,} \qquad y(x)=-\frac{gt^2}{2} + 25t + C_{2} \text{.}
-\]</span></p>
-<p><span class="math display">\[
-y(t)=-\frac{gt^2}{2} + 25t
-\]</span></p>
-<p>Şimdi tahminimiz doğru mu deneyelim.</p>
+<p>Şimdi tahminimiz doğru mu deneyelim. Yani <span class="math inline">\(y(t=5)\)</span> değeri <span class="math inline">\(50\)</span> mi olacak?</p>
 <p><span class="math display">\[
 y(t=5)= -\frac{10\times 25}{2} + 25\times 5 = 0 \ne 50 \text{.}
 \]</span></p>
@@ -441,69 +436,63 @@ y(t)=-\frac{gt^2}{2} + 40t
 <p><span class="math display">\[
 \theta(u) - 50 = 0\text{.}
 \]</span></p>
-<p>O halde <span class="math inline">\(\theta(u)\)</span> fonksiyonu başlangıç değer probleminin çözümüne bağlı. Bunu bir fonksiyon gibi tanımlayıp kökünü bulalım.</p>
-<div id="dc56b0bb" class="cell" data-execution_count="1">
+<p>O halde <span class="math inline">\(\theta(u)\)</span> fonksiyonu başlangıç değer probleminin çözümüne bağlı. Bunu bir fonksiyon gibi tanımlayıp kökünü bulalım. Bu fonksiyon kodda şöyle tanımlanacak. <code>u</code> değeri girdi olacak. Bu <code>u</code> değerine göre başlangıç değer problemini çözecek. Çözümün son değeri <span class="math inline">\(y(5)\)</span> değeri olacak. Bu değer ile <span class="math inline">\(50\)</span> değeri arasındaki farkı döndürecek. Bu farkın kökünü bulmak için <code>scipy.optimize.ridder(fonksiyon, kok_araligi_baslangic, kok_araligi_bitis)</code> fonksiyonunu kullanacağız.</p>
+<div id="466ab4f3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> scipy.integrate <span class="im">as</span> scInteg</span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> scipy.optimize <span class="im">as</span> scOpt</span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># Diff. Denk:</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># y'' = -10 , y(0)=0 , y(5)=50</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># f(x,y,y') = -10</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co"># y' = v   =&gt; f1= v</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># v' = -10 =&gt; f2= -10</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co"># Fonksiyon:</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="kw">def</span> fonk_SDP(t, y):</span>
-<span id="cb1-15"><a href="#cb1-15"></a>    <span class="co"># y[0]= y</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a>    <span class="co"># y[1]= v</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a>    <span class="cf">return</span> np.array([y[<span class="dv">1</span>], <span class="op">-</span><span class="dv">10</span>])</span>
-<span id="cb1-18"><a href="#cb1-18"></a></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="co"># Başlangıç Koşulları:</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a>t0<span class="op">=</span><span class="fl">0.</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a>tStop<span class="op">=</span><span class="fl">5.</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a>y0<span class="op">=</span> <span class="fl">0.</span>     <span class="co"># y(0) = 0</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a>yStop<span class="op">=</span> <span class="fl">50.</span> <span class="co"># y(5) = 50</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="co"># v(0) = u (Bilmiyoruz)</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a><span class="co"># Hangi Aralıkta Çözeceğiz: t0'dan tStop'e kadar</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="co"># Theta fonksiyonu:</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="kw">def</span> thetaFonk(u):</span>
-<span id="cb1-30"><a href="#cb1-30"></a>    <span class="co">#solve_ivp(fonksiyon, t_span, y0)</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a>    <span class="co"># t_span=[t0, tStop] (y(0) ve y(1) değerini biliyoruz.)</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a>    cozum <span class="op">=</span> scInteg.solve_ivp(fonk_SDP, [t0, tStop], [y0, u])</span>
-<span id="cb1-33"><a href="#cb1-33"></a>    </span>
-<span id="cb1-34"><a href="#cb1-34"></a>    <span class="co"># Bizim için önemli olan y(1) değeri, v'nin değil.</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a>    <span class="co"># yani y'nin y(1) değerinin </span></span>
-<span id="cb1-36"><a href="#cb1-36"></a>    yCozum <span class="op">=</span> cozum.y[<span class="dv">0</span>]</span>
-<span id="cb1-37"><a href="#cb1-37"></a>    <span class="cf">return</span> yCozum[<span class="op">-</span><span class="dv">1</span>]<span class="op">-</span> yStop</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Diff. Denk:</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># y'' = -10 , y(0)=0 , y(5)=50</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># Fonksiyon:</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">def</span> fonk_SDP(t, y):</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    <span class="co"># y[0]= y</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="co"># y[1]= v</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>    <span class="cf">return</span> np.array([y[<span class="dv">1</span>], <span class="op">-</span><span class="dv">10</span>])</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co"># Başlangıç Koşulları</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>t0<span class="op">=</span><span class="fl">0.0</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>tSon<span class="op">=</span><span class="fl">5.0</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>y0<span class="op">=</span> <span class="fl">0.0</span>  <span class="co"># y(0) = 0</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>ySon<span class="op">=</span> <span class="fl">50.</span> <span class="co"># y(5) = 50</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co"># v(0) = u (Bilmiyoruz)</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co"># Theta fonksiyonu:</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="kw">def</span> thetaFonk(u):</span>
+<span id="cb1-20"><a href="#cb1-20"></a>    <span class="co">#solve_ivp(fonksiyon, t_span, y0)</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>    <span class="co"># t_span=[t0, tStop] (y(0) ve y(1) değerini biliyoruz.)</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>    cozum <span class="op">=</span> scInteg.solve_ivp(fonk_SDP, [t0, tSon], [y0, u])</span>
+<span id="cb1-23"><a href="#cb1-23"></a>    </span>
+<span id="cb1-24"><a href="#cb1-24"></a>    <span class="co"># İkinci derece diferansiyel denklemin çözümü</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>    <span class="co"># cozum.y[0] = y(t)</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>    <span class="co"># cozum.y[1] = v(t)</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>    yCozum <span class="op">=</span> cozum.y[<span class="dv">0</span>]</span>
+<span id="cb1-28"><a href="#cb1-28"></a>    <span class="co"># yCozum bir array. Son elemanı yani y(t=5) değeri bizim için önemli.</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a>    <span class="co"># Bu da yCozum[-1] ile alınır.</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>    <span class="co"># Eğer bulduğumuz yCozum[-1] değeri ySon değerine eşitse u değerini bulduk demektir.</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>    <span class="cf">return</span> yCozum[<span class="op">-</span><span class="dv">1</span>]<span class="op">-</span> ySon</span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="co"># ---------------------------</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="co"># Theta fonksiyonunun içerini şöyle düşünelim.</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="co"># Polinom tipi bir g(x)=x^2+4x+4 fonksiyonu olsun. Bunun kökünü şöyle bulurduk.</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="co">'''</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="co">def g(x):</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a><span class="co">    return x**2 + 4*x + 4</span></span>
 <span id="cb1-38"><a href="#cb1-38"></a></span>
-<span id="cb1-39"><a href="#cb1-39"></a><span class="co"># Theta fonksiyonunun içerini şöyle düşünelim.</span></span>
-<span id="cb1-40"><a href="#cb1-40"></a><span class="co"># Polinom tipi bir g(x)=x^2+4x+4 fonksiyonu olsun. Bunun kökünü şöyle bulurduk.</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a><span class="co"># Kökünü 0 ile 10 arasında bul.</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a><span class="co">x0, = scOpt.ridder(g, 0, 10)</span></span>
 <span id="cb1-41"><a href="#cb1-41"></a><span class="co">'''</span></span>
-<span id="cb1-42"><a href="#cb1-42"></a><span class="co">def g(x):</span></span>
-<span id="cb1-43"><a href="#cb1-43"></a><span class="co">    return x**2 + 4*x + 4</span></span>
-<span id="cb1-44"><a href="#cb1-44"></a></span>
-<span id="cb1-45"><a href="#cb1-45"></a><span class="co"># Kökünü 0 ile 10 arasında bul.</span></span>
-<span id="cb1-46"><a href="#cb1-46"></a><span class="co">x0, = scOpt.ridder(g, 0, 10)</span></span>
-<span id="cb1-47"><a href="#cb1-47"></a><span class="co">'''</span></span>
-<span id="cb1-48"><a href="#cb1-48"></a><span class="co"># Aynı şekilde theta fonksiyonunun kökünü bulalım.</span></span>
-<span id="cb1-49"><a href="#cb1-49"></a>thetaU_kok_v0<span class="op">=</span> scOpt.ridder(thetaFonk, <span class="dv">0</span>, <span class="dv">50</span>)</span>
-<span id="cb1-50"><a href="#cb1-50"></a></span>
-<span id="cb1-51"><a href="#cb1-51"></a><span class="co"># Olması gereken başlangıç değeri:</span></span>
-<span id="cb1-52"><a href="#cb1-52"></a><span class="bu">print</span>(<span class="ss">f"v0= </span><span class="sc">{</span>thetaU_kok_v0<span class="sc">}</span><span class="ss"> m/s"</span>)</span>
-<span id="cb1-53"><a href="#cb1-53"></a></span>
-<span id="cb1-54"><a href="#cb1-54"></a><span class="co"># Deneyelim. Gerçekten v0 bu değerdeyken y(5)= 50 oluyor mu?</span></span>
-<span id="cb1-55"><a href="#cb1-55"></a></span>
-<span id="cb1-56"><a href="#cb1-56"></a>cozum<span class="op">=</span> scInteg.solve_ivp(fonk_SDP, [t0, tStop], [y0, thetaU_kok_v0])</span>
-<span id="cb1-57"><a href="#cb1-57"></a></span>
-<span id="cb1-58"><a href="#cb1-58"></a><span class="bu">print</span>(<span class="ss">f"y(5)= </span><span class="sc">{</span>cozum<span class="sc">.</span>y[<span class="dv">0</span>][<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss"> m"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-42"><a href="#cb1-42"></a><span class="co"># ---------------------------</span></span>
+<span id="cb1-43"><a href="#cb1-43"></a><span class="co"># theta fonksiyonunun kökünü bulalım.</span></span>
+<span id="cb1-44"><a href="#cb1-44"></a>thetaU_kok_v0<span class="op">=</span> scOpt.ridder(thetaFonk, <span class="dv">0</span>, <span class="dv">50</span>)</span>
+<span id="cb1-45"><a href="#cb1-45"></a><span class="co"># Olması gereken başlangıç değeri:</span></span>
+<span id="cb1-46"><a href="#cb1-46"></a><span class="bu">print</span>(<span class="ss">f"v0= </span><span class="sc">{</span>thetaU_kok_v0<span class="sc">}</span><span class="ss"> m/s"</span>)</span>
+<span id="cb1-47"><a href="#cb1-47"></a><span class="co"># Deneyelim. Gerçekten v0 bu değerdeyken y(5)= 50 oluyor mu?</span></span>
+<span id="cb1-48"><a href="#cb1-48"></a>cozum<span class="op">=</span> scInteg.solve_ivp(fonk_SDP, [t0, tSon], [y0, thetaU_kok_v0])</span>
+<span id="cb1-49"><a href="#cb1-49"></a><span class="co"># Son değerleri karşılaştıralım.</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a><span class="bu">print</span>(<span class="ss">f"y(t=5) Bulduğumuz Çözüm: </span><span class="sc">{</span>cozum<span class="sc">.</span>y[<span class="dv">0</span>][<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.1f}</span><span class="ss"> m"</span>)</span>
+<span id="cb1-51"><a href="#cb1-51"></a><span class="bu">print</span>(<span class="ss">f"y(t=5) Gerçek Değer    : </span><span class="sc">{</span>ySon<span class="sc">}</span><span class="ss"> m"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>v0= 35.000000000001016 m/s
-y(5)= 50.00000000000507 m</code></pre>
+y(t=5) Bulduğumuz Çözüm: 50.0 m
+y(t=5) Gerçek Değer    : 50.0 m</code></pre>
 </div>
 </div>
 <p>Python ile ne yaptık?</p>
@@ -774,6 +763,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -817,7 +811,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

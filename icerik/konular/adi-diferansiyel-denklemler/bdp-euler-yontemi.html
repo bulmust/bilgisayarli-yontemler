@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -375,7 +375,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">5 Mart 2024</p>
+      <p class="date">6 Mart 2024</p>
     </div>
   </div>
   
@@ -491,7 +491,7 @@ Dikkat
 <p><span class="math display">\[
 y(x)=1+\frac{x^{2}}{2}
 \]</span></p>
-<div id="5035673c" class="cell" data-execution_count="1">
+<div id="93cca6ab" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -515,7 +515,7 @@ y(x)=1+\frac{x^{2}}{2}
 <span id="cb1-21"><a href="#cb1-21"></a>x0 <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb1-22"><a href="#cb1-22"></a>y0 <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb1-23"><a href="#cb1-23"></a>xSon <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a>n <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>n <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb1-25"><a href="#cb1-25"></a><span class="co"># Çöz</span></span>
 <span id="cb1-26"><a href="#cb1-26"></a>xTum, yTum <span class="op">=</span> bym.add_coz_euler(fonk_y_x, x0, xSon, y0, n)</span>
 <span id="cb1-27"><a href="#cb1-27"></a><span class="co"># Çiz</span></span>
@@ -546,7 +546,7 @@ y(x)=\frac{31}{32}e^{-4x} + \frac{1}{4}x^{2}- \frac{1}{8}x + \frac{1}{32}
 \]</span></p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="3ff718e8" class="cell" data-execution_count="2">
+<div id="4bff5a77" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
@@ -856,6 +856,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -899,7 +904,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

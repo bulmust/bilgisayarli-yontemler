@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -382,7 +382,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">5 Mart 2024</p>
+      <p class="date">6 Mart 2024</p>
     </div>
   </div>
   
@@ -396,7 +396,7 @@ window.Quarto = {
 
 <section id="runge-kutta-yöntemleri" class="level2">
 <h2 class="anchored" data-anchor-id="runge-kutta-yöntemleri">Runge-Kutta Yöntemleri</h2>
-<p>Euler yöntemi için Taylor serisini birinci dereceden türevli terimden kesmiştik. Eğer Taylor serisinde daha yüksek mertebelerden türevler kullanılırsa, bu yöntemlere Runge-Kutta yöntemleri adı verilir.</p>
+<p>Euler yöntemi için Taylor serisini birinci dereceden türevli terimden kesmiştik. Eğer Taylor serisinde daha yüksek mertebelerden türevler kullanılırsa, bu yöntemlere <strong>Runge-Kutta</strong> yöntemleri adı verilir.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -412,54 +412,49 @@ Dikkat
 </div>
 <section id="ikinci-derece-runge-kutta-yöntemi" class="level3">
 <h3 class="anchored" data-anchor-id="ikinci-derece-runge-kutta-yöntemi">İkinci Derece Runge-Kutta Yöntemi</h3>
-<ul>
-<li><p>Ana daklem: <span class="math inline">\(y'(x)=F(x,y)\)</span></p></li>
-<li><p>Euler yöntemini hatırlayalım:</p></li>
-</ul>
+<p>Ana denklemi yazalım.</p>
 <p><span class="math display">\[
-y(x+h)= y(x)+hy'(x,y) = y(x)+hyf(x,y)
+y'(x)=f(y,x)
 \]</span></p>
-<ul>
-<li>Taylor serisinin ikinci mertebesinden kesmeden önce en genel formülü yazalım.</li>
-</ul>
+<p>Euler yöntemini hatırlayalım. <span class="math inline">\(y'(x)=f(y,x)\)</span> bağıntısını da kullanalım.</p>
 <p><span class="math display">\[
-y(x+h)= y(x)+c_{0}hF(x,y) + c_{1}hF(x+ph,y+qhF(x,y))
+y(x+h)= y(x)+hy'(y,x) = y(x)+hf(y,x)
+\]</span></p>
+<p>Taylor serisinin ikinci mertebesinden kesmeden önce en genel formülü yazalım. Bu formül Runge-Kutta yöntemlerinin genel formülüdür.</p>
+<p><span class="math display">\[
+y(x+h)= y(x)+c_{0}hF(y,x) + c_{1}hf(x+ph,y+qhF(y,x))
 \]</span></p>
 <p>Burada <span class="math inline">\(c_{0},c_{1},p,q\)</span> birer katsayıdır. Taylor serisine dönelim.</p>
 <p><span class="math display">\[
 \begin{align*}
 y(x+h) &amp;= y(x) + y'(x)h + \frac{1}{2}y''(x)h^{2}\\
-       &amp;= y(x) + F(x,y)h + \frac{1}{2}F'(x,y)h^{2}    
+       &amp;= y(x) + F(y,x)h + \frac{1}{2}f'(y,x)h^{2}    
 \end{align*}
 \]</span></p>
-<ul>
-<li>Burada <span class="math inline">\(F'(x,y)\)</span> aşağıdaki gibi yazılır.</li>
-</ul>
+<p>Burada <span class="math inline">\(f'(y,x)\)</span> aşağıdaki gibi yazılır.</p>
 <p><span class="math display">\[
-F'(x,y)= \frac{\partial F}{\partial x} + \frac{\partial F}{\partial y}F
+\begin{align*}
+f'(y,x)&amp;= \frac{\partial f}{\partial x} + \frac{\partial f}{\partial y}f \\
+       &amp;= \frac{\partial f}{\partial x} + \frac{\partial f}{\partial y}y'
+\end{align*}
 \]</span></p>
+<p>Vektörize edilmiş <span class="math inline">\(F\)</span> için ise,</p>
 <p><span class="math display">\[
-F'(x,y)= \frac{\partial F}{\partial x} + \frac{\partial F}{\partial y}y'
+F'(y,x)= \frac{\partial F}{\partial x} + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(y,x)
 \]</span></p>
-<ul>
-<li>Vektörize edilmiş <span class="math inline">\(F\)</span> için ise,</li>
-</ul>
+<p>şeklinde yazılır. Taylor açılımından elde ettiğimiz denklemde yerine koyarsak,</p>
 <p><span class="math display">\[
-F'(x,y)= \frac{\partial F}{\partial x} + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(x,y)
+y(x+h)= y(x) + F(y,x)h + \frac{h^{2}}{2}\frac{\partial F}{\partial x} + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(y,x)
 \]</span></p>
-<p>şeklinde yazılır. (2) numaralı denklemde yerine koyarsak,</p>
+<p>ifadesini elde ederiz. Şimdi genelleştirilmiş formülü, yani <span class="math inline">\(y(x+h)= y(x)+c_{0}hF(y,x) + c_{1}hF(x+ph,y+qhF(y,x))\)</span> terimindeki <span class="math inline">\(F(x+ph,y+qhF(y,x))\)</span> terimi açalım.</p>
 <p><span class="math display">\[
-y(x+h)= y(x) + F(x,y)h + \frac{h^{2}}{2}\frac{\partial F}{\partial x} + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(x,y)
-\]</span></p>
-<p>ifadesini elde ederiz. Şimdi genelleştirilmiş formülü, yani <span class="math inline">\(y(x+h)= y(x)+c_{0}hF(x,y) + c_{1}hF(x+ph,y+qhF(x,y))\)</span> terimindeki <span class="math inline">\(F(x+ph,y+qhF(x,y))\)</span> terimi açalım.</p>
-<p><span class="math display">\[
-F(x+ph,y+qhF(x,y)) = F(x,y) + \frac{\partial F}{\partial x}ph + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}qhF_{i}(x,y)
+F(x+ph,y+qhF(y,x)) = F(y,x) + \frac{\partial F}{\partial x}ph + \sum_{i=0}^{n-1}\frac{\partial F}{\partial y_{i}}qhF_{i}(y,x)
 \]</span></p>
 <ul>
 <li>Yukarıdaki açılımı genelleştirilmiş formülde yerine koyalım.</li>
 </ul>
 <p><span class="math display">\[
-y(x+h) = y(x) + (c_{0}+c_{1})F(x,y)h+ c_{1}\left[\frac{\partial F}{\partial x}ph + qh \sum_{i=1}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(x,y)\right]
+y(x+h) = y(x) + (c_{0}+c_{1})F(y,x)h+ c_{1}\left[\frac{\partial F}{\partial x}ph + qh \sum_{i=1}^{n-1}\frac{\partial F}{\partial y_{i}}F_{i}(y,x)\right]
 \]</span></p>
 <p>Burada elde ettiğimiz formül ile Taylor serisinde elde ettiğimiz formülü karşılaştıralım. Eğer</p>
 <p><span class="math display">\[
@@ -542,24 +537,24 @@ c_{0}+c_{1}=1 \quad \text{ve} \quad c_{1}p=c_{1}q=\frac{1}{2}
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">$k_{0}</th>
-<th style="text-align: center;"><span class="math inline">\(k_{1}\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(k_{2}\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(k_{3}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(K_{0}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(K_{1}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(K_{2}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(K_{3}\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(hF(x,y)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(hF\left(x+\frac{h}{2},y+\frac{1}{2}k_{0}\right)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(hF\left(x+\frac{h}{2},y+\frac{1}{2}k_{1}\right)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(hF\left(x+h,y+k_{2}\right)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(hF(y,x)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(hF\left(y+\frac{1}{2}K_{0}, x+\frac{h}{2}\right)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(hF\left(y+\frac{1}{2}K_{1}, x+\frac{h}{2}\right)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(hF\left(y+K_{2}, x+h\right)\)</span></td>
 </tr>
 </tbody>
 </table>
 <p>Katsayıları kullanarak bir sonraki adım hesaplanır.</p>
 <p><span class="math display">\[
-y(x+h)= y(x) + \frac{1}{6}(k_{0}+2k_{1}+2k_{2}+k_{3})
+y(x+h)= y(x) + \frac{1}{6}(K_{0}+2K_{1}+2K_{2}+K_{3})
 \]</span></p>
 <p>Python kodunu yazalım. <code>add_coz_rk4_sistem</code> adlı fonksiyon <a href="../../../moduller/bilYonMod.py">bilYonMod.py</a> modülünde tanımlıdır.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -583,13 +578,37 @@ Not
 <p>Denklem sistemi aşağıdaki gibidir.</p>
 <p><span class="math display">\[
 \begin{align*}
-\frac{d}{dx}y(v,x) &amp;= v(x) \\
+\frac{d}{dx}y(v(x), x) &amp;= v(x) \\
 \frac{d}{dx}v(x) &amp;= x
 \end{align*}
 \]</span></p>
+<p>Analitik çözümü yazabiliriz. Önce <span class="math inline">\(v(x)\)</span>’i çözelim.</p>
+<p><span class="math display">\[
+\frac{d}{dx}v(x) = x \Rightarrow v(x) = \frac{x^{2}}{2} + C
+\]</span></p>
+<p>Başlangıç koşulunu, <span class="math inline">\(v(0)=0\)</span> koşulunu kullanarak <span class="math inline">\(C\)</span> sabitini bulalım.</p>
+<p><span class="math display">\[
+v(0) = 0 \Rightarrow C = 0  \Rightarrow v(x) = \frac{x^{2}}{2}
+\]</span></p>
+<p>Şimdi <span class="math inline">\(y(x)\)</span>’i çözelim.</p>
+<p><span class="math display">\[
+\begin{align*}
+    \frac{d}{dx}y(v(x), x) =&amp; v(x) \\
+    y(x) =&amp; \int v(x)dx \\
+         =&amp; \int \frac{x^{2}}{2}dx = \frac{x^{3}}{6} + C
+\end{align*}
+\]</span></p>
+<p>Başlangıç koşulunu, <span class="math inline">\(y(0)=1\)</span> koşulunu kullanarak <span class="math inline">\(C\)</span> sabitini bulalım.</p>
+<p><span class="math display">\[
+y(0) = 1 \Rightarrow C = 1 \Rightarrow y(x) = \frac{x^{3}}{6} + 1
+\]</span></p>
+<p>Analitik çözüm aşağıdaki gibi olur.</p>
+<p><span class="math display">\[
+y(x)= \frac{x^{3}}{6} + 1 \quad \text{ve} \quad v(x) = \frac{x^{2}}{2}
+\]</span></p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="5eb9d9a8" class="cell" data-execution_count="1">
+<div id="c9e36dc0" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -685,7 +704,7 @@ m_{2}\ddot{x}_{2}+b_{2}\dot{x}_{2}+ k_{2}(x_{2}- x_{1}-L_{2})=0
 </ul>
 <section id="çözüm-1" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm-1">Çözüm</h3>
-<div id="ae81b9eb" class="cell" data-execution_count="2">
+<div id="50daabb8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
@@ -725,7 +744,7 @@ m_{2}\ddot{x}_{2}+b_{2}\dot{x}_{2}+ k_{2}(x_{2}- x_{1}-L_{2})=0
 <span id="cb2-37"><a href="#cb2-37"></a><span class="co"># Başlangıç koşulları</span></span>
 <span id="cb2-38"><a href="#cb2-38"></a>yVek0<span class="op">=</span> np.array([<span class="fl">0.5</span>, <span class="fl">0.0</span>, <span class="fl">2.25</span>, <span class="fl">0.0</span>])</span>
 <span id="cb2-39"><a href="#cb2-39"></a>t0<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb2-40"><a href="#cb2-40"></a>tSon<span class="op">=</span><span class="dv">10</span></span>
+<span id="cb2-40"><a href="#cb2-40"></a>tSon<span class="op">=</span><span class="dv">50</span></span>
 <span id="cb2-41"><a href="#cb2-41"></a>n<span class="op">=</span><span class="dv">100</span></span>
 <span id="cb2-42"><a href="#cb2-42"></a><span class="co"># Çöz, Euler</span></span>
 <span id="cb2-43"><a href="#cb2-43"></a>tTumEuler, yTum_VekEuler <span class="op">=</span> bym.add_coz_euler_sistem(fonkVek, t0, tSon, yVek0, n)</span>
@@ -768,7 +787,7 @@ m_{2}\ddot{x}_{2}+b_{2}\dot{x}_{2}+ k_{2}(x_{2}- x_{1}-L_{2})=0
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="bdp-runge-kutta-yontemleri_files/figure-html/cell-3-output-1.png" width="604" height="443" class="figure-img"></p>
+<p><img src="bdp-runge-kutta-yontemleri_files/figure-html/cell-3-output-1.png" width="587" height="443" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -846,10 +865,10 @@ L(x,v) = \frac{1}{2}mv^{2} - \frac{1}{2}kx^2
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline"><em><a href="https://scipy-cookbook.readthedocs.io/items/CoupledSpringMassSystem.html"><span>Coupled spring-mass system <span>—</span> SciPy Cookbook documentation</span></a></em>, (2021).</div>
 </div>
 <div id="ref-web2024Feb-4" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline"><em><a href="https://docs.scipy.org/doc/scipy/reference/integrate.html#solving-initial-value-problems-for-ode-systems"><span>Integration and ODEs (scipy.integrate) <span>—</span> SciPy v1.12.0 Manual</span></a></em>, (2024).</div>
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline"><em><a href="https://docs.scipy.org/doc/scipy/reference/integrate.html#solving-initial-value-problems-for-ode-systems"><span>Integration and ODEs (scipy.integrate) <span>—</span> SciPy v1.12.0 Manual, solving initial value problems for ODE systems</span></a></em>, (2024).</div>
 </div>
 <div id="ref-web2024Feb-5" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline"><em><a href="https://docs.scipy.org/doc/scipy/reference/integrate.html#old-api"><span>Integration and ODEs (scipy.integrate) <span>—</span> SciPy v1.12.0 Manual</span></a></em>, (2024).</div>
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline"><em><a href="https://docs.scipy.org/doc/scipy/reference/integrate.html#old-api"><span>Integration and ODEs (scipy.integrate) <span>—</span> SciPy v1.12.0 Manual, (old API)</span></a></em>, (2024).</div>
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1086,6 +1105,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -1129,7 +1153,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
