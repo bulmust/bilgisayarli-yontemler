@@ -383,7 +383,7 @@ window.Quarto = {
 <p><span class="math display">\[
 y(t) = \sin(\omega t + \phi) + \cos(2* \omega t + \phi)
 \]</span></p>
-<div id="8495f30c" class="cell" data-execution_count="1">
+<div id="3f9d2b55" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Örneklem frekansı (rate)</span></span>
@@ -503,7 +503,7 @@ x_{n} = \frac{1}{N} \sum_{k=0}^{N-1} X_{k} e^{i 2 \pi k n / N}
 <section id="kfdnin-limitleri" class="level2">
 <h2 class="anchored" data-anchor-id="kfdnin-limitleri">KFD’nin Limitleri</h2>
 <p>DFT metodu ile bir sinyalin frekanslarını bulabiliriz ancak büyük bir sinyalde bu işlemi yapmak çok uzun sürebilir.</p>
-<div id="8bb5831b" class="cell" data-execution_count="2">
+<div id="d410a51c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="kw">def</span> DFT(y):</span>
@@ -537,9 +537,9 @@ x_{n} = \frac{1}{N} \sum_{k=0}^{N-1} X_{k} e^{i 2 \pi k n / N}
 <span id="cb2-31"><a href="#cb2-31"></a><span class="op">%</span>timeit DFT(gen_sig(sr))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>20 örneklem sayısı için geçen süre
-564 µs ± 4.58 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+558 µs ± 5.11 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 200 örneklem sayısı için geçen süre
-13.8 ms ± 29.1 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
+13.5 ms ± 24.8 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
 </div>
 </div>
 <p>Zaman sorunu aşmak için 1965’te Cooley ve Tukey bir algoritma geliştirdiler. Bu algoritma FFT (Fast Fourier Transform) olarak bilinir. FFT algoritması DFT’ye göre daha hızlı çalışır. FFT algoritmasının karmaşıklığı <span class="math inline">\(O(n \log n)\)</span> iken DFT’nin karmaşıklığı <span class="math inline">\(O(n^2)\)</span>’dir.</p>
