@@ -424,9 +424,10 @@ Yukarıda verilen formülden diferansiyel denklem setini oluşturun. Burada $F^{
    - Runge-Kutta-4 (veya 5(4) mertebe için Runge-Kutta methodu) yöntemi ile çözün.
    - x ile t'nin oluşturduğu grafiği çizdirin.
 
-Başlangıç koşulları ve sabitler:
-   - $m=1$ kg
-   - $k=1$ N/m
-   - $b=0.1$ Ns/m
-   - $x(t=0)=1$ m
-   - $v(t=0)=0$ m/s
+Başlangıç koşulları ve sabitler aşağıdaki gibidir.
+
+- $m=1$ kg
+- $k=1$ N/m
+- $b=0.1$ Ns/m
+- $x(t=0)=1$ m
+- $v(t=0)=0$ m/s

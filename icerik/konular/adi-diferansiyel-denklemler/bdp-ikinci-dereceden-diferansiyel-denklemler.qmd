@@ -111,7 +111,7 @@ $$
 $$
 
 
-Analitik çözüm: $x(t) = Ae^{-\sigma t}e^{i\omega t}+ Be^{-\sigma t}e^{-i \omega t}$. Burada frekans $\omega = \sqrt{(k/m)-(b^{2}/4m^{2})} $ ve genliği belirleyen terim $\sigma=b/2m$ [@web2024Feb-2].
+Analitik çözüm: $x(t) = Ae^{-\sigma t}e^{i\omega t}+ Be^{-\sigma t}e^{-i \omega t}$. Burada frekans $\omega = \sqrt{(k/m)-(b^{2}/4m^{2})}$ ve genliği belirleyen terim $\sigma=b/2m$ [@web2024Feb-2].
 
 ### Problem 4 {#sec-problem4}
 
@@ -129,7 +129,7 @@ Analitik çözüm: $x(t) = A\cos(\sqrt{g/l}x)+B\sin(\sqrt{g/l}x)$
 
 ### Problem 6
 
-İki cisim problemini (baryosentrik yani merkezdeki cisim hareket etmesin) Euler yöntemiyle çözünüz. Burada $\mu=3.98\times 10^{5}$ km $^{3}$/s ^{2}, Dünya'nın kütleçekim parametresi ($G\times M$), $x_{0}=-2500$ km, $y_{0}=-5500$ km, $v_{x0}=7.5$ km/s, $v_{y0}=0.5$ km/s olarak alın. Aşağıdaki denklemleri $t=0-100000$ s arasında çözün. $y-x$ grafiği çizin.
+İki cisim problemini (baryosentrik yani merkezdeki cisim hareket etmesin) Euler yöntemiyle ($n= 1000, 10000, 100000$ adımda) çözünüz. Burada $\mu=3.98\times 10^{5}$ km $^{3}$/s $^{2}$, $x_{0}=-2500$ km, $y_{0}=-5500$ km, $v_{x0}=7.5$ km/s, $v_{y0}=0.5$ km/s olarak alın. Aşağıdaki denklemleri $t=0-100000$ s arasında çözün. $y-x$ grafiği çizin. $(x,y)=(0,0)$ noktası merkezdeki cismin konumunu göstersin.
 
 $$
 \frac{d^{2}x}{dt^{2}}=-\frac{\mu}{(x^{2}+y^{2})^{3/2}}x
