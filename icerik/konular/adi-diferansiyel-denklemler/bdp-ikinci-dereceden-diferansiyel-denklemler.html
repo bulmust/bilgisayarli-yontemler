@@ -375,7 +375,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">6 Mart 2024</p>
+      <p class="date">9 Mart 2024</p>
     </div>
   </div>
   
@@ -406,7 +406,7 @@ v'(x)=-4y
 <p>Sürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. <span class="math inline">\(g=9.81\)</span> m/s <span class="math inline">\(^{2}\)</span> sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları <span class="math inline">\(v(0)=0\)</span> ve <span class="math inline">\(y(0)=100\)</span> olsun. Çözümü <span class="math inline">\(n=100\)</span> s adımda yapın. Zaman aralığı <span class="math inline">\(t=0\)</span> s’den <span class="math inline">\(t=10\)</span> s’ye kadar olsun.</p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="a95ac248" class="cell" data-execution_count="1">
+<div id="a416c9fe" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -492,7 +492,7 @@ v'(x)=-4y
 <p><span class="math display">\[
 -b\frac{dx}{dt}-kx=m\frac{d^{2}x}{dt^{2}}
 \]</span></p>
-<p>Analitik çözüm: <span class="math inline">\(x(t) = Ae^{-\sigma t}e^{i\omega t}+ Be^{-\sigma t}e^{-i \omega t}\)</span>. Burada frekans $= $ ve genliği belirleyen terim <span class="math inline">\(\sigma=b/2m\)</span> <span class="citation" data-cites="web2024Feb-2">&nbsp;[<a href="#ref-web2024Feb-2" role="doc-biblioref">1</a>]</span>.</p>
+<p>Analitik çözüm: <span class="math inline">\(x(t) = Ae^{-\sigma t}e^{i\omega t}+ Be^{-\sigma t}e^{-i \omega t}\)</span>. Burada frekans <span class="math inline">\(\omega = \sqrt{(k/m)-(b^{2}/4m^{2})}\)</span> ve genliği belirleyen terim <span class="math inline">\(\sigma=b/2m\)</span> <span class="citation" data-cites="web2024Feb-2">&nbsp;[<a href="#ref-web2024Feb-2" role="doc-biblioref">1</a>]</span>.</p>
 </section>
 <section id="sec-problem4" class="level3">
 <h3 class="anchored" data-anchor-id="sec-problem4">Problem 4</h3>
@@ -508,7 +508,7 @@ v'(x)=-4y
 </section>
 <section id="problem-6" class="level3">
 <h3 class="anchored" data-anchor-id="problem-6">Problem 6</h3>
-<p>İki cisim problemini (baryosentrik yani merkezdeki cisim hareket etmesin) Euler yöntemiyle çözünüz. Burada <span class="math inline">\(\mu=3.98\times 10^{5}\)</span> km <span class="math inline">\(^{3}\)</span>/s ^{2}, Dünya’nın kütleçekim parametresi (<span class="math inline">\(G\times M\)</span>), <span class="math inline">\(x_{0}=-2500\)</span> km, <span class="math inline">\(y_{0}=-5500\)</span> km, <span class="math inline">\(v_{x0}=7.5\)</span> km/s, <span class="math inline">\(v_{y0}=0.5\)</span> km/s olarak alın. Aşağıdaki denklemleri <span class="math inline">\(t=0-100000\)</span> s arasında çözün. <span class="math inline">\(y-x\)</span> grafiği çizin.</p>
+<p>İki cisim problemini (baryosentrik yani merkezdeki cisim hareket etmesin) Euler yöntemiyle (<span class="math inline">\(n= 1000, 10000, 100000\)</span> adımda) çözünüz. Burada <span class="math inline">\(\mu=3.98\times 10^{5}\)</span> km <span class="math inline">\(^{3}\)</span>/s <span class="math inline">\(^{2}\)</span>, <span class="math inline">\(x_{0}=-2500\)</span> km, <span class="math inline">\(y_{0}=-5500\)</span> km, <span class="math inline">\(v_{x0}=7.5\)</span> km/s, <span class="math inline">\(v_{y0}=0.5\)</span> km/s olarak alın. Aşağıdaki denklemleri <span class="math inline">\(t=0-100000\)</span> s arasında çözün. <span class="math inline">\(y-x\)</span> grafiği çizin. <span class="math inline">\((x,y)=(0,0)\)</span> noktası merkezdeki cismin konumunu göstersin.</p>
 <p><span class="math display">\[
 \frac{d^{2}x}{dt^{2}}=-\frac{\mu}{(x^{2}+y^{2})^{3/2}}x
 \]</span></p>
