@@ -313,13 +313,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fourier Dönüşümü</span></a>
+ <span class="menu-text">FD - Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Hızlı Fourier Dönüşümü</span></a>
+ <span class="menu-text">HFD - Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
       </ul>
@@ -341,6 +341,11 @@ window.Quarto = {
   <li><a href="#dalgalar" id="toc-dalgalar" class="nav-link" data-scroll-target="#dalgalar">Dalgalar</a></li>
   </ul></li>
   <li><a href="#dalgaların-karakteristikleri" id="toc-dalgaların-karakteristikleri" class="nav-link" data-scroll-target="#dalgaların-karakteristikleri">Dalgaların Karakteristikleri</a></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
+  <ul class="collapse">
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/fourier-analizi/giris.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
@@ -366,7 +371,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">9 Mart 2024</p>
+      <p class="date">11 Mart 2024</p>
     </div>
   </div>
   
@@ -383,13 +388,13 @@ window.Quarto = {
 <section id="dalgalar" class="level3">
 <h3 class="anchored" data-anchor-id="dalgalar">Dalgalar</h3>
 <p>Basit bir sinüs dalgası oluşturalım.</p>
-<div id="3a887d02" class="cell" data-execution_count="1">
+<div id="5c2ad8c4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># x-y noktaları</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a>x<span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">8</span><span class="op">*</span>np.pi,<span class="dv">1000</span>)</span>
 <span id="cb1-5"><a href="#cb1-5"></a>y<span class="op">=</span> np.sin(x)</span>
-<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># Çiz</span></span>
 <span id="cb1-7"><a href="#cb1-7"></a>plt.plot(x,y)</span>
 <span id="cb1-8"><a href="#cb1-8"></a>plt.ylabel(<span class="st">'Genlik'</span>)</span>
 <span id="cb1-9"><a href="#cb1-9"></a>plt.xlabel(<span class="st">'x'</span>)</span>
@@ -402,93 +407,92 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Sinüs dalgası hem zamanda hem de uzayda değişir. Yukarıda çizilen dalga zaman içerisinde değişmemektedir yani durağan bir dalgadır. Durağan olmayan dalgalara bir örnek verelim.</p>
-<div id="dd1b7f12" class="cell" data-execution_count="2">
+<p>Sinüs dalgası hem zamanda hem de uzayda değişebilir. Yukarıda çizilen dalga zaman içerisinde değişmemektedir yani durağan bir dalgadır. Durağan olmayan dalgalara örnek bir kod yazalım.</p>
+<div id="d6b645de" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a>fig<span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
-<span id="cb2-5"><a href="#cb2-5"></a>times<span class="op">=</span> np.arange(<span class="dv">5</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a>n<span class="op">=</span> <span class="bu">len</span>(times)</span>
-<span id="cb2-8"><a href="#cb2-8"></a></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="cf">for</span> t <span class="kw">in</span> times:</span>
-<span id="cb2-10"><a href="#cb2-10"></a>    plt.subplot(n,<span class="dv">1</span>,t<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb2-11"><a href="#cb2-11"></a>    y<span class="op">=</span> np.sin(x<span class="op">+</span>t)</span>
-<span id="cb2-12"><a href="#cb2-12"></a>    plt.plot(x,y, <span class="st">'b'</span>)</span>
-<span id="cb2-13"><a href="#cb2-13"></a>    plt.plot(x[<span class="dv">25</span>], y[<span class="dv">25</span>], <span class="st">'ro'</span>)</span>
-<span id="cb2-14"><a href="#cb2-14"></a>    plt.ylim(<span class="op">-</span><span class="fl">1.1</span>,<span class="fl">1.1</span>)</span>
-<span id="cb2-15"><a href="#cb2-15"></a>    plt.ylabel(<span class="st">'y'</span>)</span>
-<span id="cb2-16"><a href="#cb2-16"></a>    plt.title(<span class="ss">f"t=</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-17"><a href="#cb2-17"></a>plt.xlabel(<span class="st">'x'</span>)</span>
-<span id="cb2-18"><a href="#cb2-18"></a>plt.tight_layout()</span>
-<span id="cb2-19"><a href="#cb2-19"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Zaman</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>zaman<span class="op">=</span> np.arange(<span class="dv">5</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>x<span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">8</span><span class="op">*</span>np.pi,<span class="dv">1000</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>n<span class="op">=</span> <span class="bu">len</span>(zaman)</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#Çiz</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="cf">for</span> t <span class="kw">in</span> zaman:</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    plt.subplot(n,<span class="dv">1</span>,t<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb2-10"><a href="#cb2-10"></a>    y<span class="op">=</span> np.sin(x<span class="op">+</span>t)</span>
+<span id="cb2-11"><a href="#cb2-11"></a>    plt.plot(x,y, <span class="st">'b'</span>)</span>
+<span id="cb2-12"><a href="#cb2-12"></a>    plt.plot(x[<span class="dv">25</span>], y[<span class="dv">25</span>], <span class="st">'ro'</span>)</span>
+<span id="cb2-13"><a href="#cb2-13"></a>    plt.ylim(<span class="op">-</span><span class="fl">1.1</span>,<span class="fl">1.1</span>)</span>
+<span id="cb2-14"><a href="#cb2-14"></a>    plt.ylabel(<span class="st">'y'</span>)</span>
+<span id="cb2-15"><a href="#cb2-15"></a>    plt.title(<span class="ss">f"t=</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-16"><a href="#cb2-16"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb2-17"><a href="#cb2-17"></a>plt.tight_layout()</span>
+<span id="cb2-18"><a href="#cb2-18"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="giris_files/figure-html/cell-3-output-1.png" width="758" height="758" class="figure-img"></p>
+<p><img src="giris_files/figure-html/cell-3-output-1.png" width="662" height="470" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Yukarıdaki grafikte kırmızı nokta durağan olmayan bir dalganın konumunu göstermektedir. Tıpkı bir su dalgası üzerinde bulunan bir odun parçasının yükarı aşağıya gitmesi gibi.</p>
+<p>Yukarıdaki grafikte kırmızı nokta durağan olmayan bir dalganın konumunu göstermektedir. Bu davranış, tıpkı bir su dalgası üzerinde bulunan bir odun parçasının yukarı aşağıya gitmesi gibidir. Dalga x doğrultusunda ilerlerken, odun parçası yukarı aşağıya hareket eder.</p>
 </section>
 </section>
 <section id="dalgaların-karakteristikleri" class="level2">
 <h2 class="anchored" data-anchor-id="dalgaların-karakteristikleri">Dalgaların Karakteristikleri</h2>
-<p>Dalgaların karakteristikleri şunlardır:</p>
+<p>Dalgaların karakteristik özelliklerini tanımlayan bazı ifadeler aşağıda maddelenmiştir.</p>
 <ol type="1">
-<li>Frekans: Dalganın birim zamanda kaç kez tekrarlandığını gösterir. Birimi Hz (Hertz)’dir. 1 Hz = 1 s<span class="math inline">\(^{-1}\)</span></li>
-<li>Periyot: Dalganın bir tam periyotu tamamlaması için geçen süredir. Birimi s (saniye)’dir. Periyod ile frekans ters orantılıdır. Yani frekans = 1 / periyot.</li>
-<li>Genlik: Dalganın alabileceği maksimum değeridir.</li>
-<li>Dalgaboyu: Dalganın bir tam periyotu boyunca aldığı uzunluktur. Birimi uzunluk (metre)’dir.</li>
+<li><strong>Frekans</strong>: Dalganın birim zamanda kaç kez tekrarlandığını gösterir. Birimi Hz (Hertz)’dir. 1 Hz = 1 s<span class="math inline">\(^{-1}\)</span></li>
+<li><strong>Periyot</strong>: Dalganın bir tam periyotu tamamlaması için geçen süredir. Birimi s (saniye)’dir. Periyod ile frekans ters orantılıdır. Yani frekans = 1 / periyot.</li>
+<li><strong>Genlik</strong>: Dalganın alabileceği maksimum değeridir.</li>
+<li><strong>Dalgaboyu</strong>: Dalganın bir tam periyotu boyunca. Birimi uzunlukdur.</li>
 </ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Not
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dalgalar/sinyaller sürekli tekrar eder. Analiz yaparken dalgaların belirli bir aralıktaki değerini çizdiririz. Bu aralığa pencere aralığı denir. Örneğin bir ses dalgasının ekolayzorını yapmak isteyelim. Basların ve tizlerin yoğunluğunu belirli bir pencere aralığında gösteririz ve bu bas/tizler şarkının her pencere aralığında farklı değerler olacaktır.</p>
+</div>
+</div>
 <p>Bu nicelikleri grafik üzerinde gösteren python kodunu yazalım <span class="citation" data-cites="chatGPT">&nbsp;[<a href="#ref-chatGPT" role="doc-biblioref">1</a>]</span>.</p>
-<div id="431a1429" class="cell" data-execution_count="3">
+<div id="19ab5233" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># Dalganın karakteristikleri</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>frekans <span class="op">=</span> <span class="dv">2</span>  <span class="co"># Hz</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>periyot <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> frekans  <span class="co"># s</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>genlik <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>dalga_uzunlugu <span class="op">=</span> <span class="dv">2</span>  <span class="co"># metre</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co"># Zaman aralığı</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>periyot, <span class="dv">50</span>)</span>
-<span id="cb3-12"><a href="#cb3-12"></a></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co"># Dalganın formülü</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a>dalga <span class="op">=</span> genlik <span class="op">*</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> frekans <span class="op">*</span> t)</span>
-<span id="cb3-15"><a href="#cb3-15"></a></span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="co"># Dalga grafiği</span></span>
-<span id="cb3-17"><a href="#cb3-17"></a>plt.plot(t, dalga, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'Dalga'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb3-18"><a href="#cb3-18"></a></span>
-<span id="cb3-19"><a href="#cb3-19"></a><span class="co"># Genlik oku</span></span>
-<span id="cb3-20"><a href="#cb3-20"></a>plt.annotate(<span class="st">''</span>, xy<span class="op">=</span>(<span class="fl">0.12</span>, genlik), xytext<span class="op">=</span>(<span class="fl">0.12</span>, <span class="dv">0</span>),</span>
-<span id="cb3-21"><a href="#cb3-21"></a>             arrowprops<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">'red'</span>))</span>
-<span id="cb3-22"><a href="#cb3-22"></a>plt.text(<span class="fl">0.08</span>, genlik <span class="op">/</span> <span class="fl">2.8</span>, <span class="st">'GENLİK'</span>, rotation<span class="op">=</span><span class="dv">90</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
-<span id="cb3-23"><a href="#cb3-23"></a></span>
-<span id="cb3-24"><a href="#cb3-24"></a><span class="co"># Periyot oku</span></span>
-<span id="cb3-25"><a href="#cb3-25"></a>plt.annotate(<span class="st">''</span>, xy<span class="op">=</span>(<span class="fl">0.6</span>, <span class="dv">1</span>), xytext<span class="op">=</span>(<span class="fl">0.15</span>, <span class="dv">1</span>),</span>
-<span id="cb3-26"><a href="#cb3-26"></a>             arrowprops<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">'green'</span>))</span>
-<span id="cb3-27"><a href="#cb3-27"></a>plt.text(<span class="fl">0.32</span>, <span class="fl">0.85</span>, <span class="st">'PERİYOT'</span>, rotation<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
-<span id="cb3-28"><a href="#cb3-28"></a></span>
-<span id="cb3-29"><a href="#cb3-29"></a><span class="co"># Etiketler ve işaretler</span></span>
-<span id="cb3-30"><a href="#cb3-30"></a>plt.title(<span class="st">'Dalganın Özellikleri'</span>)</span>
-<span id="cb3-31"><a href="#cb3-31"></a>plt.xlabel(<span class="st">'Zaman (s)'</span>)</span>
-<span id="cb3-32"><a href="#cb3-32"></a>plt.ylabel(<span class="st">'Genlik'</span>)</span>
-<span id="cb3-33"><a href="#cb3-33"></a></span>
-<span id="cb3-34"><a href="#cb3-34"></a><span class="co"># Eksen sınırları</span></span>
-<span id="cb3-35"><a href="#cb3-35"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>periyot)</span>
-<span id="cb3-36"><a href="#cb3-36"></a>plt.ylim(<span class="op">-</span><span class="fl">1.3</span>, <span class="fl">1.3</span>)</span>
-<span id="cb3-37"><a href="#cb3-37"></a></span>
-<span id="cb3-38"><a href="#cb3-38"></a><span class="co"># İzler</span></span>
-<span id="cb3-39"><a href="#cb3-39"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb3-40"><a href="#cb3-40"></a>plt.legend()</span>
-<span id="cb3-41"><a href="#cb3-41"></a>plt.tight_layout()</span>
-<span id="cb3-42"><a href="#cb3-42"></a></span>
-<span id="cb3-43"><a href="#cb3-43"></a><span class="co"># Grafiği göster</span></span>
-<span id="cb3-44"><a href="#cb3-44"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># Dalganın karakteristikleri</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>frekans <span class="op">=</span> <span class="dv">2</span>  <span class="co"># Hz</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>periyot <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> frekans  <span class="co"># s</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>genlik <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>dalga_uzunlugu <span class="op">=</span> <span class="dv">2</span>  <span class="co"># metre</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co"># Zaman aralığı</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span> periyot, <span class="dv">50</span>)</span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co"># Dalganın formülü</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>dalga <span class="op">=</span> genlik <span class="op">*</span> np.sin(<span class="dv">2</span><span class="op">*</span> np.pi<span class="op">*</span> frekans<span class="op">*</span> t)</span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co"># Çiz</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a>plt.plot(t, dalga, label<span class="op">=</span><span class="st">'Dalga'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14"></a>plt.plot(t, dalga, <span class="st">'o'</span>, label<span class="op">=</span><span class="st">'Örneklemler'</span>, color<span class="op">=</span><span class="st">'magenta'</span>)</span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co"># Genlik oku</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>plt.annotate(<span class="st">''</span>, xy<span class="op">=</span>(<span class="fl">0.12</span>, genlik), xytext<span class="op">=</span>(<span class="fl">0.12</span>, <span class="dv">0</span>),</span>
+<span id="cb3-17"><a href="#cb3-17"></a>             arrowprops<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">'red'</span>))</span>
+<span id="cb3-18"><a href="#cb3-18"></a>plt.text(<span class="fl">0.08</span>, genlik <span class="op">/</span> <span class="fl">2.8</span>, <span class="st">'GENLİK'</span>, rotation<span class="op">=</span><span class="dv">90</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="co"># Periyot oku</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>plt.annotate(<span class="st">''</span>, xy<span class="op">=</span>(<span class="fl">0.6</span>, <span class="dv">1</span>), xytext<span class="op">=</span>(<span class="fl">0.15</span>, <span class="dv">1</span>),</span>
+<span id="cb3-21"><a href="#cb3-21"></a>             arrowprops<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">'green'</span>))</span>
+<span id="cb3-22"><a href="#cb3-22"></a>plt.text(<span class="fl">0.32</span>, <span class="fl">0.85</span>, <span class="st">'PERİYOT'</span>, rotation<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb3-23"><a href="#cb3-23"></a>plt.title(<span class="st">'Dalganın Özellikleri'</span>)</span>
+<span id="cb3-24"><a href="#cb3-24"></a>plt.xlabel(<span class="st">'Zaman (s)'</span>)</span>
+<span id="cb3-25"><a href="#cb3-25"></a>plt.ylabel(<span class="st">'Genlik'</span>)</span>
+<span id="cb3-26"><a href="#cb3-26"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>periyot)</span>
+<span id="cb3-27"><a href="#cb3-27"></a>plt.ylim(<span class="op">-</span><span class="fl">1.3</span>, <span class="fl">1.3</span>)</span>
+<span id="cb3-28"><a href="#cb3-28"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb3-29"><a href="#cb3-29"></a>plt.legend()</span>
+<span id="cb3-30"><a href="#cb3-30"></a>plt.tight_layout()</span>
+<span id="cb3-31"><a href="#cb3-31"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -497,47 +501,43 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Yukarıdaki şekilde mavi noktalar ise örneklemdir (sampling).</p>
-<p>Örneklem oranı (sampling rate) ise örneklem sıklığını gösterir. Örneklem sıklığını yukarıdaki grafikte noktaların sıklığı olarak görebiliriz.</p>
-<p>Diğer karakteristikleri de anlamak için örnek olarak durağan olmayan bir sinüs dalgası ele alalım.</p>
+<p>Yukarıdaki şekilde fuşya (galibarda, magenta) noktalar ise örneklemdir (sampling).</p>
+<p>Örneklem oranı (sampling rate) ise örneklem sıklığını gösterir. Örneklem sıklığını yukarıdaki grafikte noktaların sıklığı olarak düşünebiliriz. Örneklem oranı arttıkça dalga daha iyi bir şekilde temsil edilir.</p>
+<p>Diğer karakteristikleri de anlamak için durağan olmayan bir sinüs dalgası ele alalım.</p>
 <p><span class="math display">\[
 y(t) = A \sin(\omega t + \phi)
 \]</span></p>
 <p>Burada <span class="math inline">\(A\)</span> genlik, <span class="math inline">\(\omega\)</span> açısal frekans, <span class="math inline">\(\phi\)</span> ise fazdır.</p>
 <p>Açısal frekans ise <span class="math inline">\(\omega = 2 \pi f\)</span> şeklinde hesaplanır. Burada <span class="math inline">\(f\)</span> frekansıdır.</p>
-<p>Faz, <span class="math inline">\(\phi\)</span> ise dalganın başlangıç noktasıdır.</p>
-<div id="aff1d0a9" class="cell" data-execution_count="4">
+<p>Faz, <span class="math inline">\(\phi\)</span> ise dalganın başlangıç noktasını belirler.</p>
+<div id="2e56fe1f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Örneklem frekansı (rate)</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>sr <span class="op">=</span> <span class="fl">100.0</span> <span class="co"># Kaç adet nokta olsun?</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co"># Örneklem aralığı</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>ts <span class="op">=</span> <span class="fl">1.0</span><span class="op">/</span>sr <span class="co"># Noktaların aralığı ne olsun?</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>,<span class="dv">2</span><span class="op">*</span>np.pi,ts) <span class="co"># 0'dan 2pi'ye kadar ts aralıklarla t oluştur</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co"># Çizdir</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a>plt.title(<span class="st">"Farklı Frekanslar"</span>)</span>
-<span id="cb4-11"><a href="#cb4-11"></a>plt.plot(t, np.cos(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="fl">0.2</span><span class="op">*</span>t), <span class="st">"b"</span>, label<span class="op">=</span><span class="st">"sin(2$\pi$0.2t)"</span>)</span>
-<span id="cb4-12"><a href="#cb4-12"></a>plt.plot(t, np.cos(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="fl">0.4</span><span class="op">*</span>t), <span class="st">"r"</span>, label<span class="op">=</span><span class="st">"sin(2$\pi$0.4t)"</span>)</span>
-<span id="cb4-13"><a href="#cb4-13"></a>plt.ylabel(<span class="st">"Genlik"</span>)</span>
-<span id="cb4-14"><a href="#cb4-14"></a>plt.xlabel(<span class="st">"Zaman (s)"</span>)</span>
-<span id="cb4-15"><a href="#cb4-15"></a><span class="co"># X label in terms of pi</span></span>
-<span id="cb4-16"><a href="#cb4-16"></a>plt.xticks([<span class="dv">0</span>, np.pi<span class="op">/</span><span class="dv">2</span>, np.pi, <span class="dv">3</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">2</span><span class="op">*</span>np.pi],</span>
-<span id="cb4-17"><a href="#cb4-17"></a>              [<span class="st">"0"</span>, <span class="st">"$\pi$/2"</span>, <span class="st">"$\pi$"</span>, <span class="st">"3$\pi$/2"</span>, <span class="st">"2$\pi$"</span>])</span>
-<span id="cb4-18"><a href="#cb4-18"></a>plt.legend()</span>
-<span id="cb4-19"><a href="#cb4-19"></a>plt.show()</span>
-<span id="cb4-20"><a href="#cb4-20"></a>plt.close()</span>
-<span id="cb4-21"><a href="#cb4-21"></a><span class="co"># --------------------</span></span>
-<span id="cb4-22"><a href="#cb4-22"></a>plt.title(<span class="st">"Faz Farkı"</span>)</span>
-<span id="cb4-23"><a href="#cb4-23"></a>plt.plot(t, np.cos(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="fl">0.2</span><span class="op">*</span>t), <span class="st">"g"</span>, label<span class="op">=</span><span class="st">"sin(2$\pi$0.2t)"</span>)</span>
-<span id="cb4-24"><a href="#cb4-24"></a>plt.plot(t, np.cos(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="fl">0.2</span><span class="op">*</span>t<span class="op">+</span> np.pi<span class="op">/</span><span class="dv">2</span>), <span class="st">"k"</span>, label<span class="op">=</span><span class="st">"sin(2$\pi$0.2t + $\pi$/2)"</span>)</span>
-<span id="cb4-25"><a href="#cb4-25"></a>plt.ylabel(<span class="st">"Genlik"</span>)</span>
-<span id="cb4-26"><a href="#cb4-26"></a>plt.xlabel(<span class="st">"Zaman (s)"</span>)</span>
-<span id="cb4-27"><a href="#cb4-27"></a><span class="co"># X label in terms of pi</span></span>
-<span id="cb4-28"><a href="#cb4-28"></a>plt.xticks([<span class="dv">0</span>, np.pi<span class="op">/</span><span class="dv">2</span>, np.pi, <span class="dv">3</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">2</span><span class="op">*</span>np.pi],</span>
-<span id="cb4-29"><a href="#cb4-29"></a>              [<span class="st">"0"</span>, <span class="st">"$\pi$/2"</span>, <span class="st">"$\pi$"</span>, <span class="st">"3$\pi$/2"</span>, <span class="st">"2$\pi$"</span>])</span>
-<span id="cb4-30"><a href="#cb4-30"></a>plt.legend()</span>
-<span id="cb4-31"><a href="#cb4-31"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># Zaman</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>,<span class="dv">2</span><span class="op">*</span> np.pi, <span class="fl">0.1</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co"># Çiz (farklı frekanslar)</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>plt.title(<span class="st">"Farklı Frekanslar"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7"></a>plt.plot(t, np.cos(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="fl">0.2</span><span class="op">*</span>t), <span class="st">"b"</span>, label<span class="op">=</span><span class="st">"sin(2$\pi$0.2t)"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a>plt.plot(t, np.cos(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="fl">0.4</span><span class="op">*</span>t), <span class="st">"r"</span>, label<span class="op">=</span><span class="st">"sin(2$\pi$0.4t)"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9"></a>plt.ylabel(<span class="st">"Genlik"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10"></a>plt.xlabel(<span class="st">"Zaman (s)"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11"></a>plt.xticks([<span class="dv">0</span>, np.pi<span class="op">/</span><span class="dv">2</span>, np.pi, <span class="dv">3</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">2</span><span class="op">*</span>np.pi],</span>
+<span id="cb4-12"><a href="#cb4-12"></a>    [<span class="st">"0"</span>, <span class="st">"$\pi$/2"</span>, <span class="st">"$\pi$"</span>, <span class="st">"3$\pi$/2"</span>, <span class="st">"2$\pi$"</span>])</span>
+<span id="cb4-13"><a href="#cb4-13"></a>plt.legend()</span>
+<span id="cb4-14"><a href="#cb4-14"></a>plt.show()</span>
+<span id="cb4-15"><a href="#cb4-15"></a>plt.close()</span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="co"># Çiz (farklı fazlar)</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>plt.title(<span class="st">"Faz Farkı"</span>)</span>
+<span id="cb4-18"><a href="#cb4-18"></a>plt.plot(t, np.cos(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="fl">0.2</span><span class="op">*</span>t), <span class="st">"g"</span>, label<span class="op">=</span><span class="st">"sin(2$\pi$0.2t)"</span>)</span>
+<span id="cb4-19"><a href="#cb4-19"></a>plt.plot(t, np.cos(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="fl">0.2</span><span class="op">*</span>t<span class="op">+</span> np.pi<span class="op">/</span><span class="dv">2</span>),</span>
+<span id="cb4-20"><a href="#cb4-20"></a>    <span class="st">"k"</span>, label<span class="op">=</span><span class="st">"sin(2$\pi$0.2t + $\pi$/2)"</span>)</span>
+<span id="cb4-21"><a href="#cb4-21"></a>plt.ylabel(<span class="st">"Genlik"</span>)</span>
+<span id="cb4-22"><a href="#cb4-22"></a>plt.xlabel(<span class="st">"Zaman (s)"</span>)</span>
+<span id="cb4-23"><a href="#cb4-23"></a><span class="co"># X label in terms of pi</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a>plt.xticks([<span class="dv">0</span>, np.pi<span class="op">/</span><span class="dv">2</span>, np.pi, <span class="dv">3</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">2</span><span class="op">*</span>np.pi],</span>
+<span id="cb4-25"><a href="#cb4-25"></a>              [<span class="st">"0"</span>, <span class="st">"$\pi$/2"</span>, <span class="st">"$\pi$"</span>, <span class="st">"3$\pi$/2"</span>, <span class="st">"2$\pi$"</span>])</span>
+<span id="cb4-26"><a href="#cb4-26"></a>plt.legend()</span>
+<span id="cb4-27"><a href="#cb4-27"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -553,9 +553,32 @@ y(t) = A \sin(\omega t + \phi)
 </div>
 </div>
 </div>
+<p>Yukarıdaki grafikte farklı frekanslar ve farklı fazlar için dalgalar çizilmiştir. İki veya daha fazla dalganın üst üste binmesiyle oluşan dalgaların analizi için Fourier analizi kullanılır.</p>
+</section>
+<section id="problemler" class="level2">
+<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
+<section id="problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
+<ol type="1">
+<li>Frekansı 2 Hz, genliği 1 ve fazı 0 olan bir cosinüs dalgasını çizdirin.</li>
+<li>Bu dalgayı ve yeni bir dalgayı daha kullanarak yapıcı ve yıkıcı girişimleri gösteren bir grafik çizdirin.</li>
+</ol>
+</section>
+<section id="problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
+<p><span class="math inline">\(0\)</span> ile <span class="math inline">\(L\)</span> arasında sonsuz kuyuda hapsedilmiş parçacığın <strong>durağan</strong> dalga fonksiyonu aşağıdaki gibi yazılır.</p>
+<p><span class="math display">\[
+\psi(x)=\sqrt{\frac{2}{L}}\sin\left(\frac{n\pi x}{L}\right)
+\]</span></p>
+<p>Burada <span class="math inline">\(L=2\)</span> [birimsiz] kuyunun uzunluğu, <span class="math inline">\(n\)</span> ise kuantum numarasıdır. Aşağıdaki soruları cevaplayın.</p>
+<ol type="1">
+<li>Bu fonksiyonu <span class="math inline">\(N=1,2,3\)</span> için çizdirin. Grafiğin başlığına genliği, frekansı ve fazı yazın.</li>
+<li>Olasılık yoğunluğunu çizdirin. Olasılık yoğunluğu <span class="math inline">\(|&lt;\psi(x)|\psi(x)&gt;|^{2}\)</span> olarak hesaplanır.</li>
+</ol>
 
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
@@ -1130,8 +1153,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html" class="pagination-link" aria-label="Fourier Dönüşümü">
-        <span class="nav-page-text">Fourier Dönüşümü</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html" class="pagination-link" aria-label="FD - Fourier Dönüşümü">
+        <span class="nav-page-text">FD - Fourier Dönüşümü</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

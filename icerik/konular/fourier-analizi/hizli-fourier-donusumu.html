@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>Bilgisayarlı Yöntemler - Hızlı Fourier Dönüşümü</title>
+<title>Bilgisayarlı Yöntemler - HFD - Hızlı Fourier Dönüşümü</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -148,7 +168,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html">Hızlı Fourier Dönüşümü</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html">HFD - Hızlı Fourier Dönüşümü</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -292,13 +312,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Fourier Dönüşümü</span></a>
+ <span class="menu-text">FD - Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Hızlı Fourier Dönüşümü</span></a>
+ <span class="menu-text">HFD - Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
       </ul>
@@ -315,11 +335,12 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#hızlı-fourier-dönüşümü-fast-fourier-transform-fft-hfd" id="toc-hızlı-fourier-dönüşümü-fast-fourier-transform-fft-hfd" class="nav-link active" data-scroll-target="#hızlı-fourier-dönüşümü-fast-fourier-transform-fft-hfd">Hızlı Fourier Dönüşümü (Fast Fourier Transform, FFT), HFD</a>
+  <li><a href="#hfd---hızlı-fourier-dönüşümü-fft---fast-fourier-transform" id="toc-hfd---hızlı-fourier-dönüşümü-fft---fast-fourier-transform" class="nav-link active" data-scroll-target="#hfd---hızlı-fourier-dönüşümü-fft---fast-fourier-transform">HFD - Hızlı Fourier Dönüşümü (FFT - Fast Fourier Transform)</a>
   <ul class="collapse">
-  <li><a href="#kfddeki-simetriler" id="toc-kfddeki-simetriler" class="nav-link" data-scroll-target="#kfddeki-simetriler">KFD’deki Simetriler</a></li>
+  <li><a href="#kfd-formülündeki-simetri" id="toc-kfd-formülündeki-simetri" class="nav-link" data-scroll-target="#kfd-formülündeki-simetri">KFD Formülündeki Simetri</a></li>
   </ul></li>
-  <li><a href="#hfddeki-numaralar" id="toc-hfddeki-numaralar" class="nav-link" data-scroll-target="#hfddeki-numaralar">HFD’deki Numaralar</a></li>
+  <li><a href="#hızlanmak-için-yapılan-numaralar" id="toc-hızlanmak-için-yapılan-numaralar" class="nav-link" data-scroll-target="#hızlanmak-için-yapılan-numaralar">Hızlanmak İçin Yapılan Numaralar</a></li>
+  <li><a href="#kod" id="toc-kod" class="nav-link" data-scroll-target="#kod">Kod</a></li>
   <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/fourier-analizi/hizli-fourier-donusumu.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
@@ -327,9 +348,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html">Hızlı Fourier Dönüşümü</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html">HFD - Hızlı Fourier Dönüşümü</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Hızlı Fourier Dönüşümü</h1>
+<h1 class="title">HFD - Hızlı Fourier Dönüşümü</h1>
 </div>
 
 
@@ -346,7 +367,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">9 Mart 2024</p>
+      <p class="date">11 Mart 2024</p>
     </div>
   </div>
   
@@ -358,11 +379,11 @@ window.Quarto = {
 </header>
 
 
-<section id="hızlı-fourier-dönüşümü-fast-fourier-transform-fft-hfd" class="level2">
-<h2 class="anchored" data-anchor-id="hızlı-fourier-dönüşümü-fast-fourier-transform-fft-hfd">Hızlı Fourier Dönüşümü (Fast Fourier Transform, FFT), HFD</h2>
-<p>HFD, Gauss’un yayınlanmamış 1805 yılındaki çalışmalarına dayanır. Temel olarak DFT algoritmasını daha küçük parçalara bölerek hesaplar. Bu küçük parçaları hesaplamak için ise rekürsif bir algoritma kullanır.</p>
-<section id="kfddeki-simetriler" class="level3">
-<h3 class="anchored" data-anchor-id="kfddeki-simetriler">KFD’deki Simetriler</h3>
+<section id="hfd---hızlı-fourier-dönüşümü-fft---fast-fourier-transform" class="level2">
+<h2 class="anchored" data-anchor-id="hfd---hızlı-fourier-dönüşümü-fft---fast-fourier-transform">HFD - Hızlı Fourier Dönüşümü (FFT - Fast Fourier Transform)</h2>
+<p>HFD, Gauss’un yayınlanmamış 1805 yılındaki çalışmalarına dayanır. Temel olarak KFD algoritmasını daha küçük parçalara bölerek hesaplar. Bu küçük parçaları hesaplamak için ise tekrarlanan (rekürsif, recursive) bir algoritma kullanır.</p>
+<section id="kfd-formülündeki-simetri" class="level3">
+<h3 class="anchored" data-anchor-id="kfd-formülündeki-simetri">KFD Formülündeki Simetri</h3>
 <p>KFD denklemini hatırlayalım.</p>
 <p><span class="math display">\[
 X_{k} = \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N}
@@ -374,128 +395,162 @@ X_{k+N} = \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi (k+N) n / N}
 <p><span class="math inline">\(e^{-i2\pi n}=1\)</span> özelliğini kullanalım.</p>
 <p><span class="math display">\[
 \begin{align*}
-X_{k+N} =&amp; \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N} e^{-i 2 \pi N n / N}\\
-=&amp; \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N}\\
-=&amp; X_{k}
+    X_{k+N} =&amp; \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N} e^{-i 2 \pi N n / N}\\
+    =&amp; \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N}\\
+    =&amp; X_{k}
 \end{align*}
 \]</span></p>
-<p>Yani <span class="math inline">\(X_{k+N}=X_{k}\)</span>’dır. Bu da <span class="math inline">\(X_{k}\)</span>’nın <span class="math inline">\(N\)</span>’inci frekansın değerine eşit olduğunu gösterir. Bu da <span class="math inline">\(X_{k+i\times N}=X_{k}\)</span> şeklinde genelleştirilebilir. Burada <span class="math inline">\(i\)</span> bir tam sayıdır.</p>
+<p>Formülde bir simetri elde ettik <span class="math inline">\(X_{k+N}=X_{k}\)</span>.</p>
+<p>Bu simetrinin anlamı şudur: <span class="math inline">\(X_{k}\)</span>’nın değeri, <span class="math inline">\(X_{k+N}\)</span> değerine eşit olması demek, aynı değeri veren bazı <span class="math inline">\(X_{k}\)</span> değerleri olduğunu gösterir. Ayrıca gösterilebiliriz ki bu simetri <span class="math inline">\(k+N\)</span>, <span class="math inline">\(x+2N\)</span>, <span class="math inline">\(\cdots\)</span> için de geçerlidir. O halde simetriyi <span class="math inline">\(X_{k+i\times N}=X_{k}\)</span> şeklinde genelleştirebiliriz. Burada <span class="math inline">\(i\)</span> bir tam sayıdır.</p>
 </section>
 </section>
-<section id="hfddeki-numaralar" class="level2">
-<h2 class="anchored" data-anchor-id="hfddeki-numaralar">HFD’deki Numaralar</h2>
+<section id="hızlanmak-için-yapılan-numaralar" class="level2">
+<h2 class="anchored" data-anchor-id="hızlanmak-için-yapılan-numaralar">Hızlanmak İçin Yapılan Numaralar</h2>
 <p>KFD algoritmasının simetri özelliğini kullanarak N sayısını 2’ye bölelim. Böldüğümüz kısımlar <span class="math inline">\(n\)</span>’in tek ve çift olduğu durumlar olsun.</p>
 <p><span class="math display">\[
 \begin{align*}
 X_{k} =&amp; \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N}\\
-=&amp; \sum_{m=0}^{N/2-1} x_{2m} e^{-i 2 \pi k (2m) / N} + \sum_{m=0}^{N/2-1} x_{2m+1} e^{-i 2 \pi k (2m+1) / N}\\
+      =&amp; \sum_{m=0}^{N/2-1} x_{2m} e^{-i 2 \pi k (2m) / N} + \sum_{m=0}^{N/2-1} x_{2m+1} e^{-i 2 \pi k (2m+1) / N}\\
 \end{align*}
 \]</span></p>
-<p>Bu toplamdaki ilk terim <span class="math inline">\(n\)</span>’in çift terimlerinden oluşuyor, ikinci terim ise tek terimlerden oluşuyor. Hesaplamaya devam edelim (<span class="math inline">\(2m/N\)</span> yerine <span class="math inline">\(m/(N/2)\)</span> yaz.)</p>
+<p>Bu toplamdaki ilk terim <span class="math inline">\(n\)</span>’in çift terimlerinden oluşuyor, ikinci terim ise tek terimlerden oluşuyor. Hesaplamaya devam edelim ve <span class="math inline">\(2m/N\)</span> yerine <span class="math inline">\(m/(N/2)\)</span> yazalım.</p>
 <p><span class="math display">\[
 \begin{align*}
 X_{k} =&amp; \sum_{m=0}^{N/2-1} x_{2m} e^{-i 2 \pi k m / (N/2)} + \sum_{m=0}^{N/2-1} x_{2m+1} e^{-i 2 \pi k (2m+1) / N}\\
-=&amp; \sum_{m=0}^{N/2-1} x_{2m} e^{-i 2 \pi k m / (N/2)} + e^{-i 2 \pi k / N} \sum_{m=0}^{N/2-1} x_{2m+1} e^{-i 2 \pi k m / (N/2)}\\
+      =&amp; \sum_{m=0}^{N/2-1} x_{2m} e^{-i 2 \pi k m / (N/2)} + e^{-i 2 \pi k / N} \sum_{m=0}^{N/2-1} x_{2m+1} e^{-i 2 \pi k m / (N/2)}\\
 \end{align*}
 \]</span></p>
-<p>DFT’deki simetri bize şunu söyler. <span class="math inline">\(X_{k}\)</span>’yı hesaplarken <span class="math inline">\(N/2\)</span>’ye kadar olan kısmı hesaplayabiliriz. Yani yukarıdaki toplamın sadece birisini hesapladığımızda diğerini de hesaplamış oluruz. Bu da hesaplama zamanını yarı yarıya azaltır.</p>
-<p>Yarıya bölme işlemini tekrar ederek en küçük parçaya gidilir.</p>
-<p>FFT algoritması bu şekilde çalışarak hesaplama zamanını oldukça azaltır.</p>
-<div id="832c6d7e" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">def</span> FFT(x):</span>
-<span id="cb1-5"><a href="#cb1-5"></a>    <span class="co">"""</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co">    A recursive implementation of</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co">    the 1D Cooley-Tukey FFT, the</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">    input should have a length of</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">    power of 2.</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co">    """</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>    N<span class="op">=</span> <span class="bu">len</span>(x)</span>
-<span id="cb1-12"><a href="#cb1-12"></a>    <span class="cf">if</span> N <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb1-13"><a href="#cb1-13"></a>        <span class="cf">return</span> x</span>
-<span id="cb1-14"><a href="#cb1-14"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-15"><a href="#cb1-15"></a>        X_even<span class="op">=</span> FFT(x[::<span class="dv">2</span>])</span>
-<span id="cb1-16"><a href="#cb1-16"></a>        X_odd<span class="op">=</span> FFT(x[<span class="dv">1</span>::<span class="dv">2</span>])</span>
-<span id="cb1-17"><a href="#cb1-17"></a>        </span>
-<span id="cb1-18"><a href="#cb1-18"></a>        factor <span class="op">=</span> np.exp(<span class="op">-</span><span class="ot">2j</span><span class="op">*</span> np.pi<span class="op">*</span> np.arange(N)<span class="op">/</span> N)</span>
-<span id="cb1-19"><a href="#cb1-19"></a>        </span>
-<span id="cb1-20"><a href="#cb1-20"></a>        X <span class="op">=</span> np.concatenate(<span class="op">\</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a>            [X_even<span class="op">+</span> factor[:<span class="bu">int</span>(N<span class="op">/</span><span class="dv">2</span>)]<span class="op">*</span>X_odd,</span>
-<span id="cb1-22"><a href="#cb1-22"></a>             X_even<span class="op">+</span> factor[<span class="bu">int</span>(N<span class="op">/</span><span class="dv">2</span>):]<span class="op">*</span>X_odd])</span>
-<span id="cb1-23"><a href="#cb1-23"></a>        <span class="cf">return</span> X</span>
-<span id="cb1-24"><a href="#cb1-24"></a>    </span>
-<span id="cb1-25"><a href="#cb1-25"></a><span class="co"># sampling rate</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a>sr <span class="op">=</span> <span class="dv">128</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># sampling interval</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a>ts <span class="op">=</span> <span class="fl">1.0</span><span class="op">/</span>sr</span>
-<span id="cb1-29"><a href="#cb1-29"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>,<span class="dv">1</span>,ts)</span>
-<span id="cb1-30"><a href="#cb1-30"></a>freq <span class="op">=</span> <span class="fl">1.</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a>x <span class="op">=</span> <span class="dv">3</span><span class="op">*</span>np.sin(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>freq<span class="op">*</span>t)</span>
-<span id="cb1-32"><a href="#cb1-32"></a>freq <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a>x <span class="op">+=</span> np.sin(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>freq<span class="op">*</span>t)</span>
-<span id="cb1-34"><a href="#cb1-34"></a>freq <span class="op">=</span> <span class="dv">7</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a>x <span class="op">+=</span> <span class="fl">0.5</span><span class="op">*</span> np.sin(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>freq<span class="op">*</span>t)</span>
-<span id="cb1-36"><a href="#cb1-36"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>, <span class="dv">6</span>))</span>
-<span id="cb1-37"><a href="#cb1-37"></a>plt.plot(t, x, <span class="st">"r"</span>)</span>
-<span id="cb1-38"><a href="#cb1-38"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
-<span id="cb1-39"><a href="#cb1-39"></a>plt.show()</span>
-<span id="cb1-40"><a href="#cb1-40"></a></span>
-<span id="cb1-41"><a href="#cb1-41"></a>X<span class="op">=</span>FFT(x)</span>
-<span id="cb1-42"><a href="#cb1-42"></a><span class="co"># calculate the frequency</span></span>
-<span id="cb1-43"><a href="#cb1-43"></a>N <span class="op">=</span> <span class="bu">len</span>(X)</span>
-<span id="cb1-44"><a href="#cb1-44"></a>n <span class="op">=</span> np.arange(N)</span>
-<span id="cb1-45"><a href="#cb1-45"></a>T <span class="op">=</span> N<span class="op">/</span>sr</span>
-<span id="cb1-46"><a href="#cb1-46"></a>freq <span class="op">=</span> n<span class="op">/</span>T</span>
-<span id="cb1-47"><a href="#cb1-47"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">6</span>))</span>
-<span id="cb1-48"><a href="#cb1-48"></a>plt.subplot(<span class="dv">121</span>)</span>
-<span id="cb1-49"><a href="#cb1-49"></a>plt.stem(freq, <span class="bu">abs</span>(X), <span class="st">"b"</span>, markerfmt<span class="op">=</span><span class="st">" "</span>, basefmt<span class="op">=</span><span class="st">"-b"</span>)</span>
-<span id="cb1-50"><a href="#cb1-50"></a>plt.xlabel(<span class="st">"Freq (Hz)"</span>)</span>
-<span id="cb1-51"><a href="#cb1-51"></a>plt.ylabel(<span class="st">"FFT Amplitude |X(freq)|"</span>)</span>
-<span id="cb1-52"><a href="#cb1-52"></a><span class="co"># Get the one-sided spectrum</span></span>
-<span id="cb1-53"><a href="#cb1-53"></a>n_oneside <span class="op">=</span> N<span class="op">//</span><span class="dv">2</span></span>
-<span id="cb1-54"><a href="#cb1-54"></a><span class="co"># get the one side frequency</span></span>
-<span id="cb1-55"><a href="#cb1-55"></a>f_oneside <span class="op">=</span> freq[:n_oneside]</span>
-<span id="cb1-56"><a href="#cb1-56"></a><span class="co"># normalize the amplitude</span></span>
-<span id="cb1-57"><a href="#cb1-57"></a>X_oneside <span class="op">=</span>X[:n_oneside]<span class="op">/</span>n_oneside</span>
-<span id="cb1-58"><a href="#cb1-58"></a>plt.subplot(<span class="dv">122</span>)</span>
-<span id="cb1-59"><a href="#cb1-59"></a>plt.stem(f_oneside, <span class="bu">abs</span>(X_oneside), <span class="st">"b"</span>, markerfmt<span class="op">=</span><span class="st">" "</span>, basefmt<span class="op">=</span><span class="st">"-b"</span>)</span>
-<span id="cb1-60"><a href="#cb1-60"></a>plt.xlabel(<span class="st">"Freq (Hz)"</span>)</span>
-<span id="cb1-61"><a href="#cb1-61"></a>plt.ylabel(<span class="st">"Normalized FFT Amplitude |X(freq)|"</span>)</span>
-<span id="cb1-62"><a href="#cb1-62"></a>plt.tight_layout()</span>
-<span id="cb1-63"><a href="#cb1-63"></a>plt.show()</span>
-<span id="cb1-64"><a href="#cb1-64"></a></span>
-<span id="cb1-65"><a href="#cb1-65"></a><span class="kw">def</span> gen_sig(sr):</span>
-<span id="cb1-66"><a href="#cb1-66"></a>    <span class="co">"""</span></span>
-<span id="cb1-67"><a href="#cb1-67"></a><span class="co">    function to generate</span></span>
-<span id="cb1-68"><a href="#cb1-68"></a><span class="co">    a simple 1D signal with</span></span>
-<span id="cb1-69"><a href="#cb1-69"></a><span class="co">    different sampling rate</span></span>
-<span id="cb1-70"><a href="#cb1-70"></a><span class="co">    """</span></span>
-<span id="cb1-71"><a href="#cb1-71"></a>    ts <span class="op">=</span> <span class="fl">1.0</span><span class="op">/</span>sr</span>
-<span id="cb1-72"><a href="#cb1-72"></a>    t <span class="op">=</span> np.arange(<span class="dv">0</span>,<span class="dv">1</span>,ts)</span>
-<span id="cb1-73"><a href="#cb1-73"></a>    freq <span class="op">=</span> <span class="fl">1.</span></span>
-<span id="cb1-74"><a href="#cb1-74"></a>    x <span class="op">=</span> <span class="dv">3</span><span class="op">*</span>np.sin(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>freq<span class="op">*</span>t)</span>
-<span id="cb1-75"><a href="#cb1-75"></a>    <span class="cf">return</span> x</span>
-<span id="cb1-76"><a href="#cb1-76"></a><span class="co"># sampling rate =2048</span></span>
-<span id="cb1-77"><a href="#cb1-77"></a>sr <span class="op">=</span> <span class="dv">2048</span></span>
-<span id="cb1-78"><a href="#cb1-78"></a><span class="op">%</span>timeit FFT(gen_sig(sr))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>KFT’daki simetri bize şunu söyler. <span class="math inline">\(X_{k}\)</span>’yı hesaplarken <span class="math inline">\(N/2\)</span>’ye kadar olan kısmı hesaplıdır. Yani yukarıdaki toplamın sadece birisini hesapladığımızda diğerini de hesaplamış oluruz. Bu da bilgisayara yaptıracağımız işi yarıya indirir.</p>
+<p>Yukarıda yaptığımız yarıya bölme işlemini tekrar tekrar yaparak en küçük parçaya gidilir. HFD algoritmasının tekrarlanan yapısı da buradan gelir. Bunun için algoritmada kendi kendine çağıran bir yapı kullanacağız. Bu yapıya fonksyion tekrarlanması (function recursion) adı verilir <span class="citation" data-cites="web2024Mar-1">&nbsp;[<a href="#ref-web2024Mar-1" role="doc-biblioref">1</a>]</span>.</p>
+<p>HFD algoritması bu şekilde çalışarak hesaplama zamanını oldukça azaltır.</p>
+</section>
+<section id="kod" class="level2">
+<h2 class="anchored" data-anchor-id="kod">Kod</h2>
+<p><code>fourier_hfd</code> fonksiyonu <a href="../../../moduller/bilYonMod.py">bilYonMod.py</a> dosyasına tanımlıdır. Aşağıdaki kodu inceleyelim.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Not
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>fourier_hfd</code> fonksiyonunu inceleyiniz.</p>
+</div>
+</div>
+<div id="c532d7b6" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> sys</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># 3 üst dizine çık</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>module_dir <span class="op">=</span> os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), <span class="st">'moduller'</span>)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># moduller dizinini yol olarak ekle</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>sys.path.append(module_dir)</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># bilYonMod.py modülünü içe aktar</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="im">import</span> bilYonMod <span class="im">as</span> bym</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co">################################################</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co"># Örnelem sayısı</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a>orneklemOrani <span class="op">=</span> <span class="dv">128</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co"># Zaman</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>orneklemAraligi <span class="op">=</span> <span class="fl">1.0</span><span class="op">/</span>orneklemOrani</span>
+<span id="cb1-21"><a href="#cb1-21"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">1</span>, orneklemAraligi)</span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co"># Toplam Örnekleme Sayısı</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>N<span class="op">=</span> <span class="bu">len</span>(t)</span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="co"># Birinci dalgayı olustur</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="co"># Frekans</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>frek <span class="op">=</span> <span class="fl">1.</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># Birinci dalgayı oluştur</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>x <span class="op">=</span> <span class="dv">3</span><span class="op">*</span>np.sin(<span class="dv">2</span><span class="op">*</span> np.pi<span class="op">*</span> frek<span class="op">*</span> t)</span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="co"># İkinci dalganın frekansı</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>frek <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="co"># İkinci dalgayı oluştur</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a>x <span class="op">+=</span> np.sin(<span class="dv">2</span><span class="op">*</span> np.pi<span class="op">*</span> frek<span class="op">*</span> t)</span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="co"># Üçüncü dalganın frekansı</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a>frek <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="co"># Üçüncü dalgayı oluştur</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a>x <span class="op">+=</span> <span class="fl">0.5</span><span class="op">*</span> np.sin(<span class="dv">2</span><span class="op">*</span> np.pi<span class="op">*</span> frek<span class="op">*</span> t)</span>
+<span id="cb1-37"><a href="#cb1-37"></a><span class="co"># Sinyali Çiz</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a>plt.plot(t, x, <span class="st">"r"</span>, label<span class="op">=</span> <span class="st">"$3</span><span class="ch">\\</span><span class="st">sin(2</span><span class="ch">\\</span><span class="st">pi 1 t)+ 2</span><span class="ch">\\</span><span class="st">sin(2</span><span class="ch">\\</span><span class="st">pi 4 t)+ 0.5sin(2</span><span class="ch">\\</span><span class="st">pi 7 t)$"</span>)</span>
+<span id="cb1-39"><a href="#cb1-39"></a>plt.ylabel(<span class="st">"Genlik"</span>)</span>
+<span id="cb1-40"><a href="#cb1-40"></a>plt.xlabel(<span class="st">"Zaman (s)"</span>)</span>
+<span id="cb1-41"><a href="#cb1-41"></a>plt.title(<span class="ss">f"Sinyal, Örnekleme Sayısı: </span><span class="sc">{</span>N<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-42"><a href="#cb1-42"></a>plt.legend()</span>
+<span id="cb1-43"><a href="#cb1-43"></a>plt.show()</span>
+<span id="cb1-44"><a href="#cb1-44"></a>plt.close()</span>
+<span id="cb1-45"><a href="#cb1-45"></a><span class="co"># -------------------------</span></span>
+<span id="cb1-46"><a href="#cb1-46"></a><span class="co"># Hızlı Fourier Dönüşümü</span></span>
+<span id="cb1-47"><a href="#cb1-47"></a>X<span class="op">=</span>bym.fourier_hfd(x)</span>
+<span id="cb1-48"><a href="#cb1-48"></a><span class="co"># Frekans</span></span>
+<span id="cb1-49"><a href="#cb1-49"></a><span class="cf">if</span> N<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-50"><a href="#cb1-50"></a>    maksFrek<span class="op">=</span> N<span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb1-51"><a href="#cb1-51"></a>    XPoz<span class="op">=</span> X[:<span class="bu">int</span>(N<span class="op">/</span><span class="dv">2</span>)]</span>
+<span id="cb1-52"><a href="#cb1-52"></a>    XNeg<span class="op">=</span> X[<span class="bu">int</span>(N<span class="op">/</span><span class="dv">2</span>):]</span>
+<span id="cb1-53"><a href="#cb1-53"></a>    frekCoz<span class="op">=</span>maksFrek<span class="op">/</span> (N<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-54"><a href="#cb1-54"></a><span class="cf">else</span>:</span>
+<span id="cb1-55"><a href="#cb1-55"></a>    maksFrek<span class="op">=</span> (N<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb1-56"><a href="#cb1-56"></a>    XPoz<span class="op">=</span> X[:<span class="bu">int</span>((N<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>)]</span>
+<span id="cb1-57"><a href="#cb1-57"></a>    XNeg<span class="op">=</span> X[<span class="bu">int</span>((N<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>):]</span>
+<span id="cb1-58"><a href="#cb1-58"></a>    frekCoz<span class="op">=</span>maksFrek<span class="op">/</span> ((N<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-59"><a href="#cb1-59"></a>frekPoz<span class="op">=</span> np.arange(<span class="dv">0</span>, maksFrek, frekCoz)</span>
+<span id="cb1-60"><a href="#cb1-60"></a>frekNeg<span class="op">=</span> np.arange(<span class="op">-</span>maksFrek, <span class="dv">0</span>, frekCoz)</span>
+<span id="cb1-61"><a href="#cb1-61"></a><span class="co"># Çiz</span></span>
+<span id="cb1-62"><a href="#cb1-62"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb1-63"><a href="#cb1-63"></a><span class="co"># Re(X) Değeri</span></span>
+<span id="cb1-64"><a href="#cb1-64"></a>axs[<span class="dv">0</span>].stem(frekPoz, np.real(XPoz)<span class="op">/</span>(N<span class="op">/</span><span class="dv">2</span>), <span class="st">'b'</span>, label<span class="op">=</span> <span class="st">'Pozitif Genlik'</span>, markerfmt<span class="op">=</span><span class="st">" "</span>, basefmt<span class="op">=</span><span class="st">"-b"</span>)</span>
+<span id="cb1-65"><a href="#cb1-65"></a>axs[<span class="dv">0</span>].stem(frekNeg, np.real(XNeg)<span class="op">/</span>(N<span class="op">/</span><span class="dv">2</span>), <span class="st">'r'</span>, label<span class="op">=</span> <span class="st">'Negatif Genlik'</span>, markerfmt<span class="op">=</span><span class="st">" "</span>, basefmt<span class="op">=</span><span class="st">"-r"</span>)</span>
+<span id="cb1-66"><a href="#cb1-66"></a><span class="co"># Imag(X) Değeri</span></span>
+<span id="cb1-67"><a href="#cb1-67"></a>axs[<span class="dv">1</span>].stem(frekPoz, np.imag(XPoz)<span class="op">/</span>(N<span class="op">/</span><span class="dv">2</span>), <span class="st">'b'</span>, label<span class="op">=</span> <span class="st">'Pozitif Genlik'</span>, markerfmt<span class="op">=</span><span class="st">" "</span>, basefmt<span class="op">=</span><span class="st">"-b"</span>)</span>
+<span id="cb1-68"><a href="#cb1-68"></a>axs[<span class="dv">1</span>].stem(frekNeg, np.imag(XNeg)<span class="op">/</span>(N<span class="op">/</span><span class="dv">2</span>), <span class="st">'r'</span>, label<span class="op">=</span> <span class="st">'Negatif Genlik'</span>, markerfmt<span class="op">=</span><span class="st">" "</span>, basefmt<span class="op">=</span><span class="st">"-r"</span>)</span>
+<span id="cb1-69"><a href="#cb1-69"></a><span class="co"># |X| Değeri</span></span>
+<span id="cb1-70"><a href="#cb1-70"></a>axs[<span class="dv">2</span>].stem(frekPoz, np.<span class="bu">abs</span>(XPoz)<span class="op">/</span>(N<span class="op">/</span><span class="dv">2</span>), <span class="st">'b'</span>, label<span class="op">=</span> <span class="st">'Pozitif Genlik'</span>, markerfmt<span class="op">=</span><span class="st">" "</span>, basefmt<span class="op">=</span><span class="st">"-b"</span>)</span>
+<span id="cb1-71"><a href="#cb1-71"></a>axs[<span class="dv">2</span>].stem(frekNeg, np.<span class="bu">abs</span>(XNeg)<span class="op">/</span>(N<span class="op">/</span><span class="dv">2</span>), <span class="st">'r'</span>, label<span class="op">=</span> <span class="st">'Negatif Genlik'</span>, markerfmt<span class="op">=</span><span class="st">" "</span>, basefmt<span class="op">=</span><span class="st">"-r"</span>)</span>
+<span id="cb1-72"><a href="#cb1-72"></a><span class="co"># Kozmetik</span></span>
+<span id="cb1-73"><a href="#cb1-73"></a>axs[<span class="dv">0</span>].set_ylabel(<span class="st">"Re($X_</span><span class="sc">{k}</span><span class="st">$) Değeri"</span>)</span>
+<span id="cb1-74"><a href="#cb1-74"></a>axs[<span class="dv">0</span>].set_title(<span class="st">"Hızlı Fourier Dönüşümü"</span>)</span>
+<span id="cb1-75"><a href="#cb1-75"></a>axs[<span class="dv">1</span>].set_ylabel(<span class="st">"Im($X_</span><span class="sc">{k}</span><span class="st">$) Değeri"</span>)</span>
+<span id="cb1-76"><a href="#cb1-76"></a>axs[<span class="dv">1</span>].set_yticklabels([])</span>
+<span id="cb1-77"><a href="#cb1-77"></a>axs[<span class="dv">2</span>].set_ylabel(<span class="st">"|$X_</span><span class="sc">{k}</span><span class="st">$| Değeri"</span>)</span>
+<span id="cb1-78"><a href="#cb1-78"></a>axs[<span class="dv">2</span>].set_xlabel(<span class="st">"Frekans (Hz)"</span>)</span>
+<span id="cb1-79"><a href="#cb1-79"></a>plt.legend()</span>
+<span id="cb1-80"><a href="#cb1-80"></a>plt.show()</span>
+<span id="cb1-81"><a href="#cb1-81"></a>plt.close()</span>
+<span id="cb1-82"><a href="#cb1-82"></a><span class="co"># Tek bir tarafı çizdir (Pozitif Frekanslar)</span></span>
+<span id="cb1-83"><a href="#cb1-83"></a>plt.stem(frekPoz, np.<span class="bu">abs</span>(XPoz)<span class="op">/</span>(N<span class="op">/</span><span class="dv">2</span>), <span class="st">'r'</span>, markerfmt<span class="op">=</span><span class="st">" "</span>, basefmt<span class="op">=</span><span class="st">"-r"</span>)</span>
+<span id="cb1-84"><a href="#cb1-84"></a>plt.xlabel(<span class="st">"Frekans (Hz)"</span>)</span>
+<span id="cb1-85"><a href="#cb1-85"></a>plt.ylabel(<span class="st">"Normalize, Tek Taraflı |$X_</span><span class="sc">{k}</span><span class="st">$|$_</span><span class="sc">{norm}</span><span class="st">$ Değeri"</span>)</span>
+<span id="cb1-86"><a href="#cb1-86"></a><span class="co"># X Eksenindeki Sayıları Belirle</span></span>
+<span id="cb1-87"><a href="#cb1-87"></a>plt.xticks([<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>])</span>
+<span id="cb1-88"><a href="#cb1-88"></a>plt.tight_layout()</span>
+<span id="cb1-89"><a href="#cb1-89"></a>plt.show()</span>
+<span id="cb1-90"><a href="#cb1-90"></a>plt.close()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="hizli-fourier-donusumu_files/figure-html/cell-2-output-1.png" width="662" height="485" class="figure-img"></p>
+<p><img src="hizli-fourier-donusumu_files/figure-html/cell-2-output-1.png" width="587" height="452" class="figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="hizli-fourier-donusumu_files/figure-html/cell-2-output-2.png" width="1143" height="566" class="figure-img"></p>
+<p><img src="hizli-fourier-donusumu_files/figure-html/cell-2-output-2.png" width="590" height="449" class="figure-img"></p>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>19.6 ms ± 63.7 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hizli-fourier-donusumu_files/figure-html/cell-2-output-3.png" width="661" height="470" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -507,9 +562,14 @@ X_{k} =&amp; \sum_{m=0}^{N/2-1} x_{2m} e^{-i 2 \pi k m / (N/2)} + \sum_{m=0}^{N/
 </ol>
 
 
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-web2024Mar-1" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><em><a href="https://www.w3schools.com/python/gloss_python_function_recursion.asp"><span>Python Function Recursion</span></a></em>, (2024).</div>
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1072,8 +1132,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html" class="pagination-link" aria-label="Fourier Dönüşümü">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Fourier Dönüşümü</span>
+      <a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html" class="pagination-link" aria-label="FD - Fourier Dönüşümü">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">FD - Fourier Dönüşümü</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

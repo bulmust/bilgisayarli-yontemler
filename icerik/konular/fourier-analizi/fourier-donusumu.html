@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>Bilgisayarlı Yöntemler - Fourier Dönüşümü</title>
+<title>Bilgisayarlı Yöntemler - FD - Fourier Dönüşümü</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -169,7 +169,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html">Fourier Dönüşümü</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html">FD - Fourier Dönüşümü</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -313,13 +313,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Fourier Dönüşümü</span></a>
+ <span class="menu-text">FD - Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Hızlı Fourier Dönüşümü</span></a>
+ <span class="menu-text">HFD - Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
       </ul>
@@ -336,9 +336,18 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#kesikli-fourier-dönüşümü-discrete-fourier-transform-ddt-kfd" id="toc-kesikli-fourier-dönüşümü-discrete-fourier-transform-ddt-kfd" class="nav-link active" data-scroll-target="#kesikli-fourier-dönüşümü-discrete-fourier-transform-ddt-kfd">Kesikli Fourier Dönüşümü (Discrete Fourier Transform, DDT), KFD</a></li>
-  <li><a href="#ters-kesikli-fourier-dönüşümü-inverse-discrete-fourier-transform-idft-tkfd" id="toc-ters-kesikli-fourier-dönüşümü-inverse-discrete-fourier-transform-idft-tkfd" class="nav-link" data-scroll-target="#ters-kesikli-fourier-dönüşümü-inverse-discrete-fourier-transform-idft-tkfd">Ters Kesikli Fourier Dönüşümü, (Inverse Discrete Fourier Transform, IDFT), TKFD</a></li>
+  <li><a href="#kfd---kesikli-fourier-dönüşümü-ddt---discrete-fourier-transform" id="toc-kfd---kesikli-fourier-dönüşümü-ddt---discrete-fourier-transform" class="nav-link active" data-scroll-target="#kfd---kesikli-fourier-dönüşümü-ddt---discrete-fourier-transform">KFD - Kesikli Fourier Dönüşümü (DDT - Discrete Fourier Transform)</a></li>
+  <li><a href="#tkfd---ters-kesikli-fourier-dönüşümü-idft---inverse-discrete-fourier-transform" id="toc-tkfd---ters-kesikli-fourier-dönüşümü-idft---inverse-discrete-fourier-transform" class="nav-link" data-scroll-target="#tkfd---ters-kesikli-fourier-dönüşümü-idft---inverse-discrete-fourier-transform">TKFD - Ters Kesikli Fourier Dönüşümü, (IDFT - Inverse Discrete Fourier Transform),</a></li>
   <li><a href="#kfdnin-limitleri" id="toc-kfdnin-limitleri" class="nav-link" data-scroll-target="#kfdnin-limitleri">KFD’nin Limitleri</a></li>
+  <li><a href="#kod" id="toc-kod" class="nav-link" data-scroll-target="#kod">Kod</a></li>
+  <li><a href="#tanımlar" id="toc-tanımlar" class="nav-link" data-scroll-target="#tanımlar">Tanımlar</a></li>
+  <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a></li>
+  <li><a href="#alıştırma-2" id="toc-alıştırma-2" class="nav-link" data-scroll-target="#alıştırma-2">Alıştırma 2</a>
+  <ul class="collapse">
+  <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
+  </ul></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/fourier-analizi/fourier-donusumu.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
@@ -346,9 +355,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html">Fourier Dönüşümü</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html">FD - Fourier Dönüşümü</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Fourier Dönüşümü</h1>
+<h1 class="title">FD - Fourier Dönüşümü</h1>
 </div>
 
 
@@ -365,7 +374,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">9 Mart 2024</p>
+      <p class="date">11 Mart 2024</p>
     </div>
   </div>
   
@@ -377,29 +386,31 @@ window.Quarto = {
 </header>
 
 
-<section id="kesikli-fourier-dönüşümü-discrete-fourier-transform-ddt-kfd" class="level2">
-<h2 class="anchored" data-anchor-id="kesikli-fourier-dönüşümü-discrete-fourier-transform-ddt-kfd">Kesikli Fourier Dönüşümü (Discrete Fourier Transform, DDT), KFD</h2>
-<p>Basit bir dalgada periyot/frekans, genlik faz gibi kavramları anladık. Peki daha karışık dalgaları nasıl analiz edeceğiz?</p>
+<section id="kfd---kesikli-fourier-dönüşümü-ddt---discrete-fourier-transform" class="level2">
+<h2 class="anchored" data-anchor-id="kfd---kesikli-fourier-dönüşümü-ddt---discrete-fourier-transform">KFD - Kesikli Fourier Dönüşümü (DDT - Discrete Fourier Transform)</h2>
+<p>Basit bir dalgada periyot/frekans, genlik faz gibi kavramları anladık. Peki daha üst üste binen dalgaları nasıl analiz edeceğiz? Örneğin aşağıdaki gibi bir dalgayı analiz etmek istediğimizi düşünelim.</p>
 <p><span class="math display">\[
 y(t) = \sin(\omega t + \phi) + \cos(2* \omega t + \phi)
 \]</span></p>
-<div id="4722caea" class="cell" data-execution_count="1">
+<p>Çizdirelim.</p>
+<div id="b25438ce" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Örneklem frekansı (rate)</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>sr <span class="op">=</span> <span class="fl">100.0</span> <span class="co"># Kaç adet nokta olsun?</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Örneklem aralığı</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>ts <span class="op">=</span> <span class="fl">1.0</span><span class="op">/</span>sr <span class="co"># Noktaların aralığı ne olsun?</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>t<span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">4</span><span class="op">*</span>np.pi, ts)</span>
-<span id="cb1-8"><a href="#cb1-8"></a>omega<span class="op">=</span> <span class="dv">2</span><span class="op">*</span> np.pi<span class="op">*</span> <span class="fl">0.2</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a>plt.plot(t, np.cos(omega<span class="op">*</span>t)<span class="op">+</span> np.sin(<span class="dv">2</span><span class="op">*</span>omega<span class="op">*</span>t), <span class="st">'b'</span>, label<span class="op">=</span> <span class="st">'$\sin(\omega*t)+ \cos(\omega*t)$'</span>)</span>
-<span id="cb1-11"><a href="#cb1-11"></a>plt.ylabel(<span class="st">"Genlik"</span>)</span>
-<span id="cb1-12"><a href="#cb1-12"></a>plt.xlabel(<span class="st">"Zaman (s)"</span>)</span>
-<span id="cb1-13"><a href="#cb1-13"></a>plt.xticks([<span class="dv">0</span>, np.pi<span class="op">/</span><span class="dv">2</span>, np.pi, <span class="dv">3</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">5</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">3</span><span class="op">*</span>np.pi, <span class="dv">7</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">4</span><span class="op">*</span>np.pi],</span>
-<span id="cb1-14"><a href="#cb1-14"></a>           [<span class="st">"0"</span>, <span class="st">"$\pi$/2"</span>, <span class="st">"$\pi$"</span>, <span class="st">"3$\pi$/2"</span>, <span class="st">"2$\pi$"</span>, <span class="st">"5$\pi$/2"</span>, <span class="st">"3$\pi$"</span>, <span class="st">"7$\pi$/2"</span>, <span class="st">"4$\pi$"</span>])</span>
-<span id="cb1-15"><a href="#cb1-15"></a>plt.legend()</span>
-<span id="cb1-16"><a href="#cb1-16"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Zaman</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>t<span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">4</span><span class="op">*</span>np.pi, <span class="fl">0.01</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Dalganın acısal frekansı</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>omega<span class="op">=</span> <span class="dv">2</span><span class="op">*</span> np.pi<span class="op">*</span> <span class="fl">0.2</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># Çiz</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>plt.plot(t, np.cos(omega<span class="op">*</span>t)<span class="op">+</span> np.sin(<span class="dv">2</span><span class="op">*</span>omega<span class="op">*</span>t), </span>
+<span id="cb1-9"><a href="#cb1-9"></a>    <span class="st">'b'</span>, label<span class="op">=</span> <span class="st">'$\sin(0.4\omega t)+ \cos(0.4\omega t)$'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10"></a>plt.ylabel(<span class="st">"Genlik"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11"></a>plt.xlabel(<span class="st">"Zaman (s)"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12"></a>plt.xticks([<span class="dv">0</span>, np.pi<span class="op">/</span><span class="dv">2</span>, np.pi, <span class="dv">3</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">2</span><span class="op">*</span>np.pi,</span>
+<span id="cb1-13"><a href="#cb1-13"></a>    <span class="dv">5</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">3</span><span class="op">*</span>np.pi, <span class="dv">7</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">4</span><span class="op">*</span>np.pi],</span>
+<span id="cb1-14"><a href="#cb1-14"></a>    [<span class="st">"0"</span>, <span class="st">"$\pi$/2"</span>, <span class="st">"$\pi$"</span>, <span class="st">"3$\pi$/2"</span>, <span class="st">"2$\pi$"</span>,</span>
+<span id="cb1-15"><a href="#cb1-15"></a>     <span class="st">"5$\pi$/2"</span>, <span class="st">"3$\pi$"</span>, <span class="st">"7$\pi$/2"</span>, <span class="st">"4$\pi$"</span>])</span>
+<span id="cb1-16"><a href="#cb1-16"></a>plt.legend()</span>
+<span id="cb1-17"><a href="#cb1-17"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -408,8 +419,9 @@ y(t) = \sin(\omega t + \phi) + \cos(2* \omega t + \phi)
 </div>
 </div>
 </div>
-<p>Bu şekilde tek bir frekans değeri değeri belirleyemeyiz. Benzer şekilde genlik de gözükmemektedir.</p>
-<p>Bu ve bunun gibi dalgaları analiz etmek için Fourier dönüşümü kullanılır. Fourier dönüşümü, bir dalgayı frekans bileşenlerine ayırır. Kesikli Fourier dönüşümünün formülü aşağıdaki gibidir.</p>
+<p>Bu şekilde bir dalganın frekansı nedir sorusunu cevaplayamayız. Benzer şekilde üst üste binen dalgaların genlik bilgileri de açıkça gözükmemektedir.</p>
+<p>Bu ve bunun gibi dalgaları analiz etmek için <strong>Fourier dönüşümü</strong> kullanılır. Fourier dönüşümü, bir dalgayı frekans bileşenlerine ayırır. Fourier dönüşümünü kesikli (bizim inceleyeceğimiz durum) ve sürekli olmak üzere iki farklı şekilde yapabiliriz.</p>
+<p>Elimizde bir dalgayı temsil eden veri seti olsun. Bu veri setinin elemanlarına <span class="math inline">\(N\)</span> adet örnek sayısı olup <span class="math inline">\(x_{n}\)</span> değerlerinde bulunsunlar. Kesikli Fourier dönüşümünün formülü aşağıdaki gibidir. Her noktayı (örneklemi - sample) bir frekans bileşenine, <span class="math inline">\(k\)</span>, dönüştürür.</p>
 <p><span class="math display">\[
 X_{k} = \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N}
 \]</span></p>
@@ -419,21 +431,34 @@ X_{k}= \sum_{n=0}^{N-1} x_{n} \left[ \cos \left( \frac{2 \pi k n}{N} \right) - i
 <p>Burada</p>
 <ul>
 <li>N: Örnek sayısı</li>
-<li>n: Örnek numarası</li>
+<li>n: Örneklem numarası</li>
 <li>k: Frekans numarası (0, 1, 2, …, N-1)</li>
 <li><span class="math inline">\(x_{n}\)</span>: n.&nbsp;örneğin değeri</li>
-<li>X_{k}: k. frekansın değeri</li>
+<li><span class="math inline">\(X_{k}\)</span>: k. frekansın değeri</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Not
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Python’da ilk indeks değeri 0 olduğu için formül 0’dan başladı ve <span class="math inline">\(N-1\)</span>’e kadar gitti.</p>
+</div>
+</div>
+<p>Formül bize kabaca şunu söylemektedir. Eğer <span class="math inline">\(N\)</span> adet örnek sayımız varsa, bunu <span class="math inline">\(k=0,\cdot,N-1\)</span> adet frekansa sahip dalgaların toplamı şeklinde düşünebiliriz. <span class="math inline">\(k\)</span> frekansına sahip olan dalganın değeri <span class="math inline">\(X_{k}\)</span>, faz değeri ise <span class="math inline">\(\phi_{k}\)</span> olacaktır.</p>
 <p>Aşağıdaki şekilde birbirinden farklı genliğe ve frekansa sahip 3 dalganın üst üste binmesi ile açığa çıkan şekli görebilirsiniz <span class="citation" data-cites="web2024Feb-7">&nbsp;[<a href="#ref-web2024Feb-7" role="doc-biblioref">1</a>]</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://blog.dta.com.tr/wp-content/uploads/2020/03/fourier_donusumu.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-<hr>
-<p>Örneğin elimizde 3 örnekli bir dalga olsun. Yani örneğin sinüs dalgasını 3 adet nokta ile örneklenmiş olsun. Bu noktalardan oluşan dalganın frekans bileşenlerini bulmak için Fourier dönüşümünü kullanabiliriz.</p>
+<p>Elimizde 3 adet örnekleme sahip (3 nokta) bir dalga olsun. Yani sinüs dalgasını 3 adet nokta ile temsil edelim. Bu noktalardan oluşan dalganın frekans bileşenlerini bulmak için Fourier dönüşümünü adım adım yapalım.</p>
 <p><span class="math display">\[
-X_{k} = \sum_{n=0}^{3} x_{n} e^{-i 2 \pi k n / 10}
+X_{k} = \sum_{n=0}^{3} x_{n} e^{-i 2 \pi k n / 3}
 \]</span></p>
 <p><span class="math display">\[
 \begin{align*}
@@ -443,31 +468,16 @@ X_{k} = \sum_{n=0}^{3} x_{n} e^{-i 2 \pi k n / 10}
     X_{1}= &amp; x_{0} e^{-i (2 \pi 1\times0) / 3} + x_{1} e^{-i (2 \pi 1\times1) / 3} + x_{2} e^{-i (2 \pi 1\times2) / 3}\\
     =&amp; x_{0} e^{0} + x_{1} e^{-i 2 \pi / 3} + x_{2} e^{-i 4 \pi / 3}\\
     =&amp; x_{0} + x_{1} (\cos(2 \pi / 3) - i \sin(2 \pi / 3)) + x_{2} (\cos(4 \pi / 3) - i \sin(4 \pi / 3))\\
-    =&amp; x_{0} + x_{1} (-0.5 - i 0.866) + x_{2} (-0.5 + i 0.866)\\
+    =&amp; x_{0} + x_{1} (-0.5 - i 0.9) + x_{2} (-0.5 + i 0.9)\\
     X_{2}= &amp; x_{0} e^{-i (2 \pi 2\times0) / 3} + x_{1} e^{-i (2 \pi 2\times1) / 3} + x_{2} e^{-i (2 \pi 2\times2) / 3}\\
     =&amp; x_{0} + x_{1} e^{-i 4 \pi / 3} + x_{2} e^{-i 8 \pi / 3}\\
     =&amp; x_{0} + x_{1} (\cos(4 \pi / 3) - i \sin(4 \pi / 3)) + x_{2} (\cos(8 \pi / 3) - i \sin(8 \pi / 3))\\
-    =&amp; x_{0} + x_{1} (-0.5 + i 0.866) + x_{2} (-0.5 - i 0.866)
+    =&amp; x_{0} + x_{1} (-0.5 + i 0.9) + x_{2} (-0.5 - i 0.9)
 \end{align*}
 \]</span></p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Önemli
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Her zaman <span class="math inline">\(X_{0}= \sum_{n=0}^{N-1} x_{n}\)</span> şeklinde olacaktır.</li>
-<li><span class="math inline">\(X_{n}\)</span> karmaşık bir sayıdır.</li>
-</ol>
-</div>
-</div>
-<p>Bir dalganın frekanslarını belirlemek için Fourier dönüşümü kullanacağımızı söylemiştik ancak elde ettiğimiz frekanslar <span class="math inline">\(X_{k}\)</span> karmaşık sayı olarak karşımıza çıktı. Gerçek frekans değerleri için <span class="math inline">\(X_{k}\)</span> değerlerinin modülünü, <span class="math inline">\(|X_{k}|\)</span>, alacağız.</p>
-<p>Sinyalin genliği (<span class="math inline">\(A_{k}\)</span>) ve fazı (<span class="math inline">\(\phi_{k}\)</span>) ise aşağıdaki şekilde hesaplanır.</p>
+<p>Yukarıdaki denklemde <span class="math inline">\(x_{0}=1\)</span>, <span class="math inline">\(x_{1}=2\)</span>, <span class="math inline">\(x_{2}=3\)</span> olarak alırsak <span class="math inline">\(X_{0}=6\)</span>, <span class="math inline">\(X_{1}=-1.5 - i 0.9\)</span>, <span class="math inline">\(X_{2}=-1.5 + i 0.9\)</span> değerlerini buluruz. ::: {.callout-important} 1. Her zaman 0. değer <span class="math inline">\(X_{0}= \sum_{n=0}^{N-1} x_{n}\)</span> şeklinde olacaktır. 2. <span class="math inline">\(X_{n}\)</span> karmaşık bir sayıdır. :::</p>
+<p>Bir dalganın frekanslarını belirlemek için Fourier dönüşümü kullanacağımızı söylemiştik ancak elde ettiğimiz frekanslar <span class="math inline">\(X_{k}\)</span> karmaşık sayı olarak karşımıza çıktı. Gerçel (reel) frekans değerleri için <span class="math inline">\(X_{k}\)</span> değerlerinin modülünü, <span class="math inline">\(|X_{k}|\)</span>, alacağız.</p>
+<p>Sinyalin genliği <span class="math inline">\(A_{k}\)</span> ve fazı <span class="math inline">\(\phi_{k}\)</span> ise aşağıdaki şekilde hesaplanır.</p>
 <p><span class="math display">\[
 A_{k} = \frac{|X_{k}|}{N}
 \]</span></p>
@@ -484,65 +494,250 @@ Uyarı
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li>Eğer tek sayıda örnek varsa, yani <span class="math inline">\(N\)</span> tek ise, k tane <span class="math inline">\(X\)</span> değerlerinin 1’den <span class="math inline">\((N-1)/2\)</span> kadar olanlar pozitif frekanslı <span class="math inline">\((N+1)/2\)</span>’den <span class="math inline">\(N-1\)</span> kadar olanlar negatif frekanslıdır.</li>
-<li>Eğer çift sayıda örnek varsa, yani <span class="math inline">\(N\)</span> çift ise, k tane <span class="math inline">\(X\)</span> değerlerinin 1’den <span class="math inline">\((N/2)-1\)</span> kadar olanlar pozitif frekanslı <span class="math inline">\((N/2)\)</span>’den <span class="math inline">\(N-1\)</span> kadar olanlar negatif frekanslıdır.</li>
-<li><span class="math inline">\(X_{k}\)</span> değerlerini hesaplarken modülünü aldığımızdan dolayı negatif frekanslı değerlerin modülü pozitif frekanslı değerlerin modülüne eşittir. Bundan dolayı negatif frekanslı değerleri hesaplamaya gerek yoktur. Bu yüzden <span class="math inline">\(X_{k}\)</span> değerlerini hesaplarken sadece pozitif frekanslı değerleri hesaplamak yeterlidir.</li>
-</ul>
+<ol type="1">
+<li>Eğer tek sayıda örnek varsa, yani <span class="math inline">\(N\)</span> tek ise, k tane <span class="math inline">\(X\)</span> değerlerinin 0’dan <span class="math inline">\((N-1)/2\)</span> kadar olanlar pozitif frekanslı <span class="math inline">\((N+1)/2\)</span>’den <span class="math inline">\(N-1\)</span> kadar olanlar negatif frekanslı olarak tanımlanır.</li>
+<li>Eğer çift sayıda örnek varsa, yani <span class="math inline">\(N\)</span> çift ise, k tane <span class="math inline">\(X\)</span> değerlerinin 0’dan <span class="math inline">\((N/2)-1\)</span> kadar olanlar pozitif frekanslı <span class="math inline">\((N/2)\)</span>’den <span class="math inline">\(N-1\)</span> kadar olanlar negatif frekanslı olarak tanımlanır.</li>
+<li><span class="math inline">\(X_{k}\)</span> değerlerini hesaplarken modülünü aldığımızdan dolayı negatif frekanslı değerlerin modülü pozitif frekanslı değerlerin modülüne eşittir. Bu yüzden <span class="math inline">\(X_{k}\)</span> değerlerini hesaplarken sadece pozitif frekanslı değerleri hesaplamak yeterlidir.</li>
+</ol>
 </div>
 </div>
-<p>Yukarıdaki gibi örnek oranının yarısına <strong>Nyquist frekansı</strong> denir. Yani <span class="math inline">\(N-1\)</span> üzerinden toplam almak yerine <span class="math inline">\(N/2\)</span> üzerinden toplam alırsak Nyquist frekansına ulaşırız.</p>
+<p>Yukarıdaki gibi örnek oranının yarısına <strong>Nyquist frekansı</strong> denir. Yani <span class="math inline">\(N-1\)</span> üzerinden toplam almak yerine <span class="math inline">\(N/2\)</span> üzerinden toplam alırsak Nyquist frekansına ulaşırız. İlerleyen konularda dalgaların frekanslarını bulurken bu konu daha ayrıntılı açıklanacaktır.</p>
 </section>
-<section id="ters-kesikli-fourier-dönüşümü-inverse-discrete-fourier-transform-idft-tkfd" class="level2">
-<h2 class="anchored" data-anchor-id="ters-kesikli-fourier-dönüşümü-inverse-discrete-fourier-transform-idft-tkfd">Ters Kesikli Fourier Dönüşümü, (Inverse Discrete Fourier Transform, IDFT), TKFD</h2>
-<p>DFT’nin tersi de yapılabilir. Yani <span class="math inline">\(X_{k}\)</span> değerlerinden <span class="math inline">\(x_{n}\)</span> değerlerini bulabiliriz. Ters DFT formülü aşağıdaki gibidir.</p>
+<section id="tkfd---ters-kesikli-fourier-dönüşümü-idft---inverse-discrete-fourier-transform" class="level2">
+<h2 class="anchored" data-anchor-id="tkfd---ters-kesikli-fourier-dönüşümü-idft---inverse-discrete-fourier-transform">TKFD - Ters Kesikli Fourier Dönüşümü, (IDFT - Inverse Discrete Fourier Transform),</h2>
+<p>KFD’nin tersi de yapılabilir. Yani <span class="math inline">\(X_{k}\)</span> değerlerinden <span class="math inline">\(x_{n}\)</span> değerlerini bulabiliriz. Ters DFT formülü aşağıdaki gibidir. Ters Fourier dönüşümü, frekans bileşenlerini zaman bileşenlerine dönüştürerek orjinal sinyali elde etmemize yarar. Formülü aşağıdaki gibidir.</p>
 <p><span class="math display">\[
 x_{n} = \frac{1}{N} \sum_{k=0}^{N-1} X_{k} e^{i 2 \pi k n / N}
 \]</span></p>
+<p>TKFD ile yapılan işlemler, KFD ile yapılan işlemlerin neredeyse aynısıdır. Sadece eksponansiyel terim negatif değil pozitif olacaktır.</p>
 </section>
 <section id="kfdnin-limitleri" class="level2">
 <h2 class="anchored" data-anchor-id="kfdnin-limitleri">KFD’nin Limitleri</h2>
-<p>DFT metodu ile bir sinyalin frekanslarını bulabiliriz ancak büyük bir sinyalde bu işlemi yapmak çok uzun sürebilir.</p>
-<div id="0af2c35f" class="cell" data-execution_count="2">
+<p>DFT metodu ile bir sinyalin frekanslarını bulabiliriz ancak büyük bir sinyalde bu işlemi yapmak çok uzun sürecektir.</p>
+</section>
+<section id="kod" class="level2">
+<h2 class="anchored" data-anchor-id="kod">Kod</h2>
+<p><code>fourier_kfd</code> fonksiyonu <a href="../../../moduller/bilYonMod.py">bilYonMod.py</a> dosyasına tanımlıdır. Aşağıdaki kodu inceleyelim ve örneklem sayısını kfd fonksyionunun gerçekleşme zamanını karşılaştıralım.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Not
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>fourier_kfd</code> fonksiyonunu inceleyiniz.</p>
+</div>
+</div>
+<div id="3e4b19b9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">def</span> DFT(y):</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    N <span class="op">=</span> <span class="bu">len</span>(y)</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    c <span class="op">=</span> np.zeros(N, <span class="bu">complex</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(N):</span>
-<span id="cb2-7"><a href="#cb2-7"></a>        <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(N):</span>
-<span id="cb2-8"><a href="#cb2-8"></a>            c[k] <span class="op">+=</span> y[n]<span class="op">*</span>np.exp(<span class="op">-</span><span class="ot">2j</span><span class="op">*</span>np.pi<span class="op">*</span>k<span class="op">*</span>n<span class="op">/</span>N)</span>
-<span id="cb2-9"><a href="#cb2-9"></a>    <span class="cf">return</span> c</span>
-<span id="cb2-10"><a href="#cb2-10"></a></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="kw">def</span> gen_sig(sr):</span>
-<span id="cb2-12"><a href="#cb2-12"></a>    <span class="co">"""</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="co">    function to generate</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="co">    a simple 1D signal with</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="co">    different sampling rate</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="co">    """</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a>    ts <span class="op">=</span> <span class="fl">1.0</span><span class="op">/</span>sr</span>
-<span id="cb2-18"><a href="#cb2-18"></a>    t <span class="op">=</span> np.arange(<span class="dv">0</span>,<span class="dv">1</span>,ts)</span>
-<span id="cb2-19"><a href="#cb2-19"></a>    freq <span class="op">=</span> <span class="fl">1.</span></span>
-<span id="cb2-20"><a href="#cb2-20"></a>    x <span class="op">=</span> <span class="dv">3</span><span class="op">*</span>np.sin(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>freq<span class="op">*</span>t)</span>
-<span id="cb2-21"><a href="#cb2-21"></a>    <span class="cf">return</span> x</span>
-<span id="cb2-22"><a href="#cb2-22"></a></span>
-<span id="cb2-23"><a href="#cb2-23"></a>samplingRate <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb2-24"><a href="#cb2-24"></a><span class="co"># Toplam zamanı hesapla</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>samplingRate<span class="sc">}</span><span class="ss"> örneklem sayısı için geçen süre"</span>)</span>
-<span id="cb2-26"><a href="#cb2-26"></a><span class="op">%</span>timeit DFT(gen_sig(samplingRate))</span>
-<span id="cb2-27"><a href="#cb2-27"></a></span>
-<span id="cb2-28"><a href="#cb2-28"></a>samplingRate <span class="op">=</span> <span class="dv">200</span></span>
-<span id="cb2-29"><a href="#cb2-29"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>samplingRate<span class="sc">}</span><span class="ss"> örneklem sayısı için geçen süre"</span>)</span>
-<span id="cb2-30"><a href="#cb2-30"></a><span class="co"># Toplam zamanı hesapla</span></span>
-<span id="cb2-31"><a href="#cb2-31"></a><span class="op">%</span>timeit DFT(gen_sig(sr))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co"># Kesikli Fourier Dönüşümü Fonksiyonu</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">def</span> fourier_kfd(sinyalNoktalari):</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="co"># Örneklem Sayısı</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>    N <span class="op">=</span> <span class="bu">len</span>(sinyalNoktalari)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="co"># Frekans Değerleri</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>    X <span class="op">=</span> np.zeros(N, <span class="bu">complex</span>)</span>
+<span id="cb2-8"><a href="#cb2-8"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb2-9"><a href="#cb2-9"></a>        <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb2-10"><a href="#cb2-10"></a>            X[k] <span class="op">+=</span> sinyalNoktalari[n]<span class="op">*</span>np.exp(<span class="op">-</span><span class="ot">2j</span><span class="op">*</span> np.pi<span class="op">*</span> k<span class="op">*</span> n<span class="op">/</span> N)</span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="cf">return</span> X</span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co"># 1 Boyutlu sinyal oluşturan fonksiyon</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="kw">def</span> olus_sin(orneklemOrani):</span>
+<span id="cb2-14"><a href="#cb2-14"></a>    <span class="co"># Örneklem frekansı (rate)</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>    ts <span class="op">=</span> <span class="fl">1.0</span><span class="op">/</span>orneklemOrani</span>
+<span id="cb2-16"><a href="#cb2-16"></a>    <span class="co"># Örneklem aralığı</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>    t <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">1</span>, ts)</span>
+<span id="cb2-18"><a href="#cb2-18"></a>    <span class="co"># Dalganın frekansı</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a>    frekans <span class="op">=</span> <span class="fl">1.</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>    <span class="co"># Genlik</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a>    genlik <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a>    <span class="cf">return</span> genlik<span class="op">*</span> np.sin(<span class="dv">2</span><span class="op">*</span> np.pi<span class="op">*</span> frekans<span class="op">*</span> t)</span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="co"># Orneklem Orani 1</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a>orneklemOrani1 <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="co"># Toplam zamanı hesapla</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>orneklemOrani1<span class="sc">}</span><span class="ss"> örneklem sayısına sahip bir dalganın"</span>)</span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="bu">print</span>(<span class="st">"Fouirer dönüşümü yapması için geçen süre"</span>)</span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="co"># FD Fonksiyonunu çağır ve %temit ile süreyi ölç</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="op">%</span>timeit fourier_kfd(olus_sin(orneklemOrani1))</span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb2-31"><a href="#cb2-31"></a><span class="co"># Orneklem Orani 2</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a>orneklemOrani2 <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="co"># Toplam zamanı hesapla</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>orneklemOrani2<span class="sc">}</span><span class="ss"> örneklem sayısına sahip bir dalganın"</span>)</span>
+<span id="cb2-35"><a href="#cb2-35"></a><span class="bu">print</span>(<span class="st">" Fouirer dönüşümü yapması için geçen süre"</span>)</span>
+<span id="cb2-36"><a href="#cb2-36"></a><span class="co"># FD Fonksiyonunu çağır ve %temit ile süreyi ölç</span></span>
+<span id="cb2-37"><a href="#cb2-37"></a><span class="op">%</span>timeit fourier_kfd(olus_sin(orneklemOrani2))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>20 örneklem sayısı için geçen süre
-562 µs ± 5 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
-200 örneklem sayısı için geçen süre
-13.6 ms ± 44.4 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
+<pre><code>20 örneklem sayısına sahip bir dalganın
+Fouirer dönüşümü yapması için geçen süre
+576 µs ± 2.85 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+
+
+200 örneklem sayısına sahip bir dalganın
+ Fouirer dönüşümü yapması için geçen süre
+56.2 ms ± 504 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)</code></pre>
 </div>
 </div>
-<p>Zaman sorunu aşmak için 1965’te Cooley ve Tukey bir algoritma geliştirdiler. Bu algoritma FFT (Fast Fourier Transform) olarak bilinir. FFT algoritması DFT’ye göre daha hızlı çalışır. FFT algoritmasının karmaşıklığı <span class="math inline">\(O(n \log n)\)</span> iken DFT’nin karmaşıklığı <span class="math inline">\(O(n^2)\)</span>’dir.</p>
+<p>Zaman sorunu aşmak için 1965’te Cooley ve Tukey, Fourier dönüşümü algoritmasını geliştirdiler. Bu algoritma HFD, Hızlı Fourier Dönüşümü (FFT, Fast Fourier Transform) olarak bilinir - kesikli ifadesini kullanmacağız. HFD algoritması KFD’ye göre çok daha hızlı çalışır. HFD algoritmasının karmaşıklığı <span class="math inline">\(\mathcal{O}(n \log n)\)</span> iken KFD’nin karmaşıklığı <span class="math inline">\(\mathcal{O}(n^2)\)</span>’dir.</p>
+</section>
+<section id="tanımlar" class="level2">
+<h2 class="anchored" data-anchor-id="tanımlar">Tanımlar</h2>
+<p>Alıştırmalara geçmeden önce bazı tanımlar yapalım ve kullanacağımız tanımları hatırlayalım.</p>
+<p>Öncelikle bir dalgadan bahsediyorsak bir tekrardan bahsedebiliriz. Bundan dolayı belli bir <strong>pencere</strong> seçip o penceredeki sinyali analiz edeceğiz.</p>
+<ol type="1">
+<li>Zaman Uzayı</li>
+</ol>
+<ul>
+<li><strong>Örneklem sayısı, blok boyutu (# of samples, block size)</strong>: Bir sinyali kaç adet örnek ile betimliyoruz [adet], <code>N</code>.</li>
+<li><strong>Örneklem oranı, örnekleme frekansı (sampling rate, sampling frequency)</strong>: Bir saniye içerisinde kaç örneklem olduğunu veren ifade [1/saniye] <code>orneklemOrani</code>.</li>
+<li><strong>Örnekleme aralığı (sampling interval)</strong>: İki örneklem arasının kaç saniye olduğunu veren ifade [saniye], <code>ts</code>.</li>
+<li><strong>Zaman, pencere boyutu (time, frame size)</strong>: Bir sinyalin kaç saniye içerisinde olduğunu veren ifade [saniye], <code>t</code>.</li>
+</ul>
+<ol type="1">
+<li>Frekans Uzayı</li>
+</ol>
+<ul>
+<li><strong>Maksimum Frekans, Nyquist Frekansı, bant aralığı (maximum frequency, Nyquist frequency, bandwith)</strong>: Bir sinyalin içerisindeki en yüksek frekans [Hz], <code>maxFrek</code>. Maksimum frekans değeri, örneklem oranının yarısına eşittir, <code>maxFrek=orneklemOrani/2</code>.</li>
+<li><strong>Frekans sayısı, Spektral Çizgiler (# of frequency, spectral lines)</strong>: Bir sinyalin içerisindeki frekanslar [Hz], <code>frekSayisi</code>. Frekans sayısı, örnek sayısının yarısına eşittir, <code>frekSayisi=N/2</code>, çünkü hem pozitif hem negatif frekanslar bulunur.</li>
+<li><strong>Frekans Çözünürlülüğü</strong>: Frekans uzayindaki iki frekans arasındaki fark [Hz], <code>frekCoz</code>.</li>
+<li><strong>Frekans (frequency)</strong>: Tüm frekanslar, <code>frek</code></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Not
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Daha önceden belirttiğimiz gibi frekansların ilk yarısı pozitif, ikinci yarıs ise negatif olarak tanımlanır.</p>
+</div>
+</div>
+</section>
+<section id="alıştırma-1" class="level2">
+<h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h2>
+<p>Bir sinüs sinyali, <span class="math inline">\(\sin(2\pi f t)\)</span> düşünelim ve bunu <span class="math inline">\([-2,2]\)</span> zaman aralığında çizelim.</p>
+<ul>
+<li>Bu dalganın genlik-zaman grafiğini çizdirebilmek için frekans <span class="math inline">\(f\)</span> değerini bilmem lazım. <span class="math inline">\(f=4\)</span> [Hz] olsun <code>frek=4</code>.</li>
+<li>Bu dalganın <span class="math inline">\([-2,2]\)</span> arasında kaç nokta ile betimlediğimi belirtmem lazım. Örneklem sayısı <span class="math inline">\(N=100\)</span> olsun, <code>N=100</code>.</li>
+<li>Bu dalgan <span class="math inline">\(N=100\)</span> ve toplam zaman <span class="math inline">\(t=4\)</span> s için örneklem oranı <span class="math inline">\(100/4\)</span> olur<code>orneklemOrani=25</code>. Bu değer, bir saniyede içerisinde <span class="math inline">\(25\)</span> adet nokta olduğu anlamına gelir.</li>
+<li>Bu dalganın örnekleme aralığı <span class="math inline">\(1/25=0.04\)</span>, <code>orneklemAraligi=1/orneklemOrani</code>. Bu değer, iki örneklem arasında <span class="math inline">\(0.04\)</span> saniye olduğu anlamına gelir.</li>
+<li>Zamanı oluşturabilirim. <span class="math inline">\(t=-2\)</span>’den başlayıp <span class="math inline">\(t=2\)</span>’ye kadar <code>orneklemAraligi</code> aralıklarla bir array oluşturum, <code>t=np.arange(-2, 2, orneklemAraligi)</code>.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Uyarı
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>t=np.arange(-2, 2, orneklemAraligi)</code> kodunda <span class="math inline">\(N=100\)</span> adet nokta vardır ancak <span class="math inline">\(2\)</span> noktası alınmamıştır.</p>
+</div>
+</div>
+<ul>
+<li>Maksimum frekans değeri <span class="math inline">\(25/2=12.5\)</span> [Hz] olur, <code>maksFrek=N/2</code>.</li>
+<li>Frekans çözünürlülüğü <span class="math inline">\(0.5\)</span> [Hz] olur, <code>frekCoz=maksFrek/N</code>.</li>
+<li>Tüm frekanslar <code>frek= np.arange(-maksFrek, maksFrek, frekCoz)</code> olur.</li>
+</ul>
+</section>
+<section id="alıştırma-2" class="level2">
+<h2 class="anchored" data-anchor-id="alıştırma-2">Alıştırma 2</h2>
+<ol type="1">
+<li>Aşağıdaki formülü verilen sinyali, 100 örneklem oranı kullanarak <span class="math inline">\(-2\pi,2\pi\)</span> arasında çizdirin.</li>
+</ol>
+<p><span class="math display">\[
+y(t) = 7 \sin(2\pi t)
+\]</span></p>
+<p>Bu sinyalin KFD’sini alın ve genlik ve faz değerlerini bulun.</p>
+<section id="çözüm" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
+<div id="f933e095" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">################################################</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> os</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="im">import</span> sys</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co"># 3 üst dizine çık</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>module_dir <span class="op">=</span> os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), <span class="st">'moduller'</span>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co"># moduller dizinini yol olarak ekle</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>sys.path.append(module_dir)</span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co"># bilYonMod.py modülünü içe aktar</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="im">import</span> bilYonMod <span class="im">as</span> bym</span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">################################################</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="co"># Örneklem orani</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>orneklemOrani <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="co"># Örneklem aralığı</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a>orneklemAraligi <span class="op">=</span> <span class="fl">1.0</span><span class="op">/</span>orneklemOrani</span>
+<span id="cb4-20"><a href="#cb4-20"></a>t<span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">6</span>, orneklemAraligi)</span>
+<span id="cb4-21"><a href="#cb4-21"></a><span class="co"># Toplam örneklem sayısı</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a>N<span class="op">=</span> t.size</span>
+<span id="cb4-23"><a href="#cb4-23"></a><span class="co"># Dalganın frekansı</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a>acisalFrekans<span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a>genlik<span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a><span class="co"># Çiz</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a>sinyal<span class="op">=</span> genlik<span class="op">*</span> np.sin(acisalFrekans<span class="op">*</span> t)</span>
+<span id="cb4-28"><a href="#cb4-28"></a>plt.plot(t, sinyal, <span class="st">'b'</span>, label<span class="op">=</span> <span class="ss">f'$</span><span class="sc">{</span>genlik<span class="sc">}</span><span class="ss"> \sin(</span><span class="sc">{</span>acisalFrekans<span class="sc">}</span><span class="ss"> t)$'</span>)</span>
+<span id="cb4-29"><a href="#cb4-29"></a>plt.ylabel(<span class="st">"Genlik"</span>)</span>
+<span id="cb4-30"><a href="#cb4-30"></a>plt.xlabel(<span class="st">"Zaman (s)"</span>)</span>
+<span id="cb4-31"><a href="#cb4-31"></a>plt.legend()</span>
+<span id="cb4-32"><a href="#cb4-32"></a>plt.show()</span>
+<span id="cb4-33"><a href="#cb4-33"></a>plt.close()</span>
+<span id="cb4-34"><a href="#cb4-34"></a><span class="co"># Kesikli Fourier Dönüşümü</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a>X <span class="op">=</span> bym.fourier_kfd(sinyal)</span>
+<span id="cb4-36"><a href="#cb4-36"></a><span class="co"># Frekans</span></span>
+<span id="cb4-37"><a href="#cb4-37"></a><span class="cf">if</span> N<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb4-38"><a href="#cb4-38"></a>    maksFrek<span class="op">=</span> N<span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb4-39"><a href="#cb4-39"></a>    XPoz<span class="op">=</span> X[:<span class="bu">int</span>(N<span class="op">/</span><span class="dv">2</span>)]</span>
+<span id="cb4-40"><a href="#cb4-40"></a>    XNeg<span class="op">=</span> X[<span class="bu">int</span>(N<span class="op">/</span><span class="dv">2</span>):]</span>
+<span id="cb4-41"><a href="#cb4-41"></a>    frekCoz<span class="op">=</span>maksFrek<span class="op">/</span> (N<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb4-42"><a href="#cb4-42"></a><span class="cf">else</span>:</span>
+<span id="cb4-43"><a href="#cb4-43"></a>    maksFrek<span class="op">=</span> (N<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb4-44"><a href="#cb4-44"></a>    XPoz<span class="op">=</span> X[:<span class="bu">int</span>((N<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>)]</span>
+<span id="cb4-45"><a href="#cb4-45"></a>    XNeg<span class="op">=</span> X[<span class="bu">int</span>((N<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>):]</span>
+<span id="cb4-46"><a href="#cb4-46"></a>    frekCoz<span class="op">=</span>maksFrek<span class="op">/</span> ((N<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb4-47"><a href="#cb4-47"></a>frekPoz<span class="op">=</span> np.arange(<span class="dv">0</span>, maksFrek, frekCoz)</span>
+<span id="cb4-48"><a href="#cb4-48"></a>frekNeg<span class="op">=</span> np.arange(<span class="op">-</span>maksFrek, <span class="dv">0</span>, frekCoz)</span>
+<span id="cb4-49"><a href="#cb4-49"></a><span class="co"># Genlik ve Faz Değerlerini Çiz</span></span>
+<span id="cb4-50"><a href="#cb4-50"></a>plt.stem(frekPoz, np.<span class="bu">abs</span>(XPoz)<span class="op">/</span>(N<span class="op">/</span><span class="dv">2</span>), <span class="st">'b'</span>, label<span class="op">=</span> <span class="st">'Pozitif Genlik'</span>, markerfmt<span class="op">=</span><span class="st">" "</span>, basefmt<span class="op">=</span><span class="st">"-b"</span>)</span>
+<span id="cb4-51"><a href="#cb4-51"></a>plt.stem(frekNeg, np.<span class="bu">abs</span>(XNeg)<span class="op">/</span>(N<span class="op">/</span><span class="dv">2</span>), <span class="st">'r'</span>, label<span class="op">=</span> <span class="st">'Negatif Genlik'</span>, markerfmt<span class="op">=</span><span class="st">" "</span>, basefmt<span class="op">=</span><span class="st">"-r"</span>)</span>
+<span id="cb4-52"><a href="#cb4-52"></a>plt.ylabel(<span class="st">"Genlik"</span>)</span>
+<span id="cb4-53"><a href="#cb4-53"></a>plt.xlabel(<span class="st">"Frekans (Hz)"</span>)</span>
+<span id="cb4-54"><a href="#cb4-54"></a>plt.xlim(<span class="op">-</span>acisalFrekans<span class="op">-</span><span class="dv">10</span>, acisalFrekans<span class="op">+</span><span class="dv">10</span>)</span>
+<span id="cb4-55"><a href="#cb4-55"></a>plt.legend()</span>
+<span id="cb4-56"><a href="#cb4-56"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="fourier-donusumu_files/figure-html/cell-4-output-1.png" width="587" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="fourier-donusumu_files/figure-html/cell-4-output-2.png" width="597" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="problemler" class="level2">
+<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
+</section>
+<section id="problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<p>Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali çizdirin. Sinyalin KFD’sini alın ve genlik ve faz değerlerini bulun.</p>
 </section>
 <section id="kaynaklar" class="level2">
 <h2 class="anchored" data-anchor-id="kaynaklar">Kaynaklar</h2>
@@ -1127,8 +1322,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html" class="pagination-link" aria-label="Hızlı Fourier Dönüşümü">
-        <span class="nav-page-text">Hızlı Fourier Dönüşümü</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html" class="pagination-link" aria-label="HFD - Hızlı Fourier Dönüşümü">
+        <span class="nav-page-text">HFD - Hızlı Fourier Dönüşümü</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
