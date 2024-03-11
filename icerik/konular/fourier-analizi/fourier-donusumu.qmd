@@ -1,37 +1,42 @@
 ---
-title: "Fourier Dönüşümü"
+title: "FD - Fourier Dönüşümü"
 ---
 
-## Kesikli Fourier Dönüşümü (Discrete Fourier Transform, DDT), KFD
+## KFD - Kesikli Fourier Dönüşümü (DDT - Discrete Fourier Transform)
 
-Basit bir dalgada periyot/frekans, genlik faz gibi kavramları anladık. Peki daha karışık dalgaları nasıl analiz edeceğiz? 
+Basit bir dalgada periyot/frekans, genlik faz gibi kavramları anladık. Peki daha üst üste binen dalgaları nasıl analiz edeceğiz? Örneğin aşağıdaki gibi bir dalgayı analiz etmek istediğimizi düşünelim.
 
 $$
 y(t) = \sin(\omega t + \phi) + \cos(2* \omega t + \phi)
 $$
 
+Çizdirelim.
+
 ```{python}
 import numpy as np
 import matplotlib.pyplot as plt
-# Örneklem frekansı (rate)
-sr = 100.0 # Kaç adet nokta olsun?
-# Örneklem aralığı
-ts = 1.0/sr # Noktaların aralığı ne olsun?
-t= np.arange(0, 4*np.pi, ts)
+# Zaman
+t= np.arange(0, 4*np.pi, 0.01)
+# Dalganın acısal frekansı
 omega= 2* np.pi* 0.2
-
-plt.plot(t, np.cos(omega*t)+ np.sin(2*omega*t), 'b', label= '$\sin(\omega*t)+ \cos(\omega*t)$')
+# Çiz
+plt.plot(t, np.cos(omega*t)+ np.sin(2*omega*t), 
+    'b', label= '$\sin(0.4\omega t)+ \cos(0.4\omega t)$')
 plt.ylabel("Genlik")
 plt.xlabel("Zaman (s)")
-plt.xticks([0, np.pi/2, np.pi, 3*np.pi/2, 2*np.pi, 5*np.pi/2, 3*np.pi, 7*np.pi/2, 4*np.pi],
-           ["0", "$\pi$/2", "$\pi$", "3$\pi$/2", "2$\pi$", "5$\pi$/2", "3$\pi$", "7$\pi$/2", "4$\pi$"])
+plt.xticks([0, np.pi/2, np.pi, 3*np.pi/2, 2*np.pi,
+    5*np.pi/2, 3*np.pi, 7*np.pi/2, 4*np.pi],
+    ["0", "$\pi$/2", "$\pi$", "3$\pi$/2", "2$\pi$",
+     "5$\pi$/2", "3$\pi$", "7$\pi$/2", "4$\pi$"])
 plt.legend()
 plt.show()
 ```
 
-Bu şekilde tek bir frekans değeri değeri belirleyemeyiz. Benzer şekilde genlik de gözükmemektedir.
+Bu şekilde bir dalganın frekansı nedir sorusunu cevaplayamayız. Benzer şekilde üst üste binen dalgaların genlik bilgileri de açıkça gözükmemektedir.
 
-Bu ve bunun gibi dalgaları analiz etmek için Fourier dönüşümü kullanılır. Fourier dönüşümü, bir dalgayı frekans bileşenlerine ayırır. Kesikli Fourier dönüşümünün formülü aşağıdaki gibidir.
+Bu ve bunun gibi dalgaları analiz etmek için **Fourier dönüşümü** kullanılır. Fourier dönüşümü, bir dalgayı frekans bileşenlerine ayırır. Fourier dönüşümünü kesikli (bizim inceleyeceğimiz durum) ve sürekli olmak üzere iki farklı şekilde yapabiliriz. 
+
+Elimizde bir dalgayı temsil eden veri seti olsun. Bu veri setinin elemanlarına $N$ adet örnek sayısı olup $x_{n}$ değerlerinde bulunsunlar. Kesikli Fourier dönüşümünün formülü aşağıdaki gibidir. Her noktayı (örneklemi - sample) bir frekans bileşenine, $k$, dönüştürür.
 
 $$
 X_{k} = \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N}
@@ -44,21 +49,25 @@ $$
 Burada
 
 - N: Örnek sayısı
-- n: Örnek numarası
+- n: Örneklem numarası
 - k: Frekans numarası (0, 1, 2, ..., N-1)
 - $x_{n}$: n. örneğin değeri
-- X_{k}: k. frekansın değeri
+- $X_{k}$: k. frekansın değeri
+
+::: {.callout-note}
+Python'da ilk indeks değeri 0 olduğu için formül 0'dan başladı ve $N-1$'e kadar gitti.
+:::
+
+Formül bize kabaca şunu söylemektedir. Eğer $N$ adet örnek sayımız varsa, bunu $k=0,\cdot,N-1$ adet frekansa sahip dalgaların toplamı şeklinde düşünebiliriz. $k$ frekansına sahip olan dalganın değeri $X_{k}$, faz değeri ise $\phi_{k}$ olacaktır.
 
 Aşağıdaki şekilde birbirinden farklı genliğe ve frekansa sahip 3 dalganın üst üste binmesi ile açığa çıkan şekli görebilirsiniz [@web2024Feb-7].
 
 ![](https://blog.dta.com.tr/wp-content/uploads/2020/03/fourier_donusumu.jpg){fig-align="center"}
 
----
-
-Örneğin elimizde 3 örnekli bir dalga olsun. Yani örneğin sinüs dalgasını 3 adet nokta ile örneklenmiş olsun. Bu noktalardan oluşan dalganın frekans bileşenlerini bulmak için Fourier dönüşümünü kullanabiliriz.
+Elimizde 3 adet örnekleme sahip (3 nokta) bir dalga olsun. Yani sinüs dalgasını 3 adet nokta ile temsil edelim. Bu noktalardan oluşan dalganın frekans bileşenlerini bulmak için Fourier dönüşümünü adım adım yapalım.
 
 $$
-X_{k} = \sum_{n=0}^{3} x_{n} e^{-i 2 \pi k n / 10}
+X_{k} = \sum_{n=0}^{3} x_{n} e^{-i 2 \pi k n / 3}
 $$
 
 $$
@@ -69,23 +78,23 @@ $$
     X_{1}= & x_{0} e^{-i (2 \pi 1\times0) / 3} + x_{1} e^{-i (2 \pi 1\times1) / 3} + x_{2} e^{-i (2 \pi 1\times2) / 3}\\
     =& x_{0} e^{0} + x_{1} e^{-i 2 \pi / 3} + x_{2} e^{-i 4 \pi / 3}\\
     =& x_{0} + x_{1} (\cos(2 \pi / 3) - i \sin(2 \pi / 3)) + x_{2} (\cos(4 \pi / 3) - i \sin(4 \pi / 3))\\
-    =& x_{0} + x_{1} (-0.5 - i 0.866) + x_{2} (-0.5 + i 0.866)\\
+    =& x_{0} + x_{1} (-0.5 - i 0.9) + x_{2} (-0.5 + i 0.9)\\
     X_{2}= & x_{0} e^{-i (2 \pi 2\times0) / 3} + x_{1} e^{-i (2 \pi 2\times1) / 3} + x_{2} e^{-i (2 \pi 2\times2) / 3}\\
     =& x_{0} + x_{1} e^{-i 4 \pi / 3} + x_{2} e^{-i 8 \pi / 3}\\
     =& x_{0} + x_{1} (\cos(4 \pi / 3) - i \sin(4 \pi / 3)) + x_{2} (\cos(8 \pi / 3) - i \sin(8 \pi / 3))\\
-    =& x_{0} + x_{1} (-0.5 + i 0.866) + x_{2} (-0.5 - i 0.866)
+    =& x_{0} + x_{1} (-0.5 + i 0.9) + x_{2} (-0.5 - i 0.9)
 \end{align*}
 $$
 
-
+Yukarıdaki denklemde $x_{0}=1$, $x_{1}=2$, $x_{2}=3$ olarak alırsak $X_{0}=6$, $X_{1}=-1.5 - i 0.9$, $X_{2}=-1.5 + i 0.9$ değerlerini buluruz.
 ::: {.callout-important}
-1. Her zaman $X_{0}= \sum_{n=0}^{N-1} x_{n}$ şeklinde olacaktır.
+1. Her zaman 0. değer $X_{0}= \sum_{n=0}^{N-1} x_{n}$ şeklinde olacaktır.
 2. $X_{n}$ karmaşık bir sayıdır.
 :::
 
-Bir dalganın frekanslarını belirlemek için Fourier dönüşümü kullanacağımızı söylemiştik ancak elde ettiğimiz frekanslar $X_{k}$ karmaşık sayı olarak karşımıza çıktı. Gerçek frekans değerleri için $X_{k}$ değerlerinin modülünü, $|X_{k}|$, alacağız.
+Bir dalganın frekanslarını belirlemek için Fourier dönüşümü kullanacağımızı söylemiştik ancak elde ettiğimiz frekanslar $X_{k}$ karmaşık sayı olarak karşımıza çıktı. Gerçel (reel) frekans değerleri için $X_{k}$ değerlerinin modülünü, $|X_{k}|$, alacağız.
 
-Sinyalin genliği ($A_{k}$) ve fazı ($\phi_{k}$) ise aşağıdaki şekilde hesaplanır.
+Sinyalin genliği $A_{k}$ ve fazı $\phi_{k}$ ise aşağıdaki şekilde hesaplanır.
 
 $$
 A_{k} = \frac{|X_{k}|}{N}
@@ -96,60 +105,192 @@ $$
 $$
 
 ::: {.callout-warning}
-- Eğer tek sayıda örnek varsa, yani $N$ tek ise, k tane $X$ değerlerinin 1'den $(N-1)/2$ kadar olanlar pozitif frekanslı $(N+1)/2$'den $N-1$ kadar olanlar negatif frekanslıdır.
-- Eğer çift sayıda örnek varsa, yani $N$ çift ise, k tane $X$ değerlerinin 1'den $(N/2)-1$ kadar olanlar pozitif frekanslı $(N/2)$'den $N-1$ kadar olanlar negatif frekanslıdır.
-- $X_{k}$ değerlerini hesaplarken modülünü aldığımızdan dolayı negatif frekanslı değerlerin modülü pozitif frekanslı değerlerin modülüne eşittir. Bundan dolayı negatif frekanslı değerleri hesaplamaya gerek yoktur. Bu yüzden $X_{k}$ değerlerini hesaplarken sadece pozitif frekanslı değerleri hesaplamak yeterlidir.
+1. Eğer tek sayıda örnek varsa, yani $N$ tek ise, k tane $X$ değerlerinin 0'dan $(N-1)/2$ kadar olanlar pozitif frekanslı $(N+1)/2$'den $N-1$ kadar olanlar negatif frekanslı olarak tanımlanır.
+2. Eğer çift sayıda örnek varsa, yani $N$ çift ise, k tane $X$ değerlerinin 0'dan $(N/2)-1$ kadar olanlar pozitif frekanslı $(N/2)$'den $N-1$ kadar olanlar negatif frekanslı olarak tanımlanır.
+3. $X_{k}$ değerlerini hesaplarken modülünü aldığımızdan dolayı negatif frekanslı değerlerin modülü pozitif frekanslı değerlerin modülüne eşittir. Bu yüzden $X_{k}$ değerlerini hesaplarken sadece pozitif frekanslı değerleri hesaplamak yeterlidir.
 :::
 
-Yukarıdaki gibi örnek oranının yarısına **Nyquist frekansı** denir. Yani $N-1$ üzerinden toplam almak yerine $N/2$ üzerinden toplam alırsak Nyquist frekansına ulaşırız.
+Yukarıdaki gibi örnek oranının yarısına **Nyquist frekansı** denir. Yani $N-1$ üzerinden toplam almak yerine $N/2$ üzerinden toplam alırsak Nyquist frekansına ulaşırız. İlerleyen konularda dalgaların frekanslarını bulurken bu konu daha ayrıntılı açıklanacaktır.
 
-## Ters Kesikli Fourier Dönüşümü, (Inverse Discrete Fourier Transform, IDFT), TKFD
+## TKFD - Ters Kesikli Fourier Dönüşümü, (IDFT - Inverse Discrete Fourier Transform), 
 
-DFT'nin tersi de yapılabilir. Yani $X_{k}$ değerlerinden $x_{n}$ değerlerini bulabiliriz. Ters DFT formülü aşağıdaki gibidir.
+KFD'nin tersi de yapılabilir. Yani $X_{k}$ değerlerinden $x_{n}$ değerlerini bulabiliriz. Ters DFT formülü aşağıdaki gibidir. Ters Fourier dönüşümü, frekans bileşenlerini zaman bileşenlerine dönüştürerek orjinal sinyali elde etmemize yarar. Formülü aşağıdaki gibidir.
 
 $$
 x_{n} = \frac{1}{N} \sum_{k=0}^{N-1} X_{k} e^{i 2 \pi k n / N}
 $$
 
+TKFD ile yapılan işlemler, KFD ile yapılan işlemlerin neredeyse aynısıdır. Sadece eksponansiyel terim negatif değil pozitif olacaktır.
+
 ## KFD'nin Limitleri
 
-DFT metodu ile bir sinyalin frekanslarını bulabiliriz ancak büyük bir sinyalde bu işlemi yapmak çok uzun sürebilir.
+DFT metodu ile bir sinyalin frekanslarını bulabiliriz ancak büyük bir sinyalde bu işlemi yapmak çok uzun sürecektir.
+
+## Kod
+
+`fourier_kfd` fonksiyonu [bilYonMod.py](/moduller/bilYonMod.py) dosyasına tanımlıdır. Aşağıdaki kodu inceleyelim ve örneklem sayısını kfd fonksyionunun gerçekleşme zamanını karşılaştıralım.
+
+::: {.callout-note}
+`fourier_kfd` fonksiyonunu inceleyiniz.
+:::
 
 ```{python}
 import numpy as np
-
-def DFT(y):
-    N = len(y)
-    c = np.zeros(N, complex)
+# Kesikli Fourier Dönüşümü Fonksiyonu
+def fourier_kfd(sinyalNoktalari):
+    # Örneklem Sayısı
+    N = len(sinyalNoktalari)
+    # Frekans Değerleri
+    X = np.zeros(N, complex)
     for k in range(N):
         for n in range(N):
-            c[k] += y[n]*np.exp(-2j*np.pi*k*n/N)
-    return c
-
-def gen_sig(sr):
-    """
-    function to generate
-    a simple 1D signal with
-    different sampling rate
-    """
-    ts = 1.0/sr
-    t = np.arange(0,1,ts)
-    freq = 1.
-    x = 3*np.sin(2*np.pi*freq*t)
-    return x
-
-samplingRate = 20
+            X[k] += sinyalNoktalari[n]*np.exp(-2j* np.pi* k* n/ N)
+    return X
+# 1 Boyutlu sinyal oluşturan fonksiyon
+def olus_sin(orneklemOrani):
+    # Örneklem frekansı (rate)
+    ts = 1.0/orneklemOrani
+    # Örneklem aralığı
+    t = np.arange(0, 1, ts)
+    # Dalganın frekansı
+    frekans = 1.
+    # Genlik
+    genlik = 3
+    return genlik* np.sin(2* np.pi* frekans* t)
+# Orneklem Orani 1
+orneklemOrani1 = 20
 # Toplam zamanı hesapla
-print(f"{samplingRate} örneklem sayısı için geçen süre")
-%timeit DFT(gen_sig(samplingRate))
-
-samplingRate = 200
-print(f"{samplingRate} örneklem sayısı için geçen süre")
+print(f"{orneklemOrani1} örneklem sayısına sahip bir dalganın")
+print("Fouirer dönüşümü yapması için geçen süre")
+# FD Fonksiyonunu çağır ve %temit ile süreyi ölç
+%timeit fourier_kfd(olus_sin(orneklemOrani1))
+print("\n")
+# Orneklem Orani 2
+orneklemOrani2 = 200
 # Toplam zamanı hesapla
-%timeit DFT(gen_sig(sr))
+print(f"{orneklemOrani2} örneklem sayısına sahip bir dalganın")
+print(" Fouirer dönüşümü yapması için geçen süre")
+# FD Fonksiyonunu çağır ve %temit ile süreyi ölç
+%timeit fourier_kfd(olus_sin(orneklemOrani2))
 ```
 
-Zaman sorunu aşmak için 1965'te Cooley ve Tukey bir algoritma geliştirdiler. Bu algoritma FFT (Fast Fourier Transform) olarak bilinir. FFT algoritması DFT'ye göre daha hızlı çalışır. FFT algoritmasının karmaşıklığı $O(n \log n)$ iken DFT'nin karmaşıklığı $O(n^2)$'dir.
+Zaman sorunu aşmak için 1965'te Cooley ve Tukey, Fourier dönüşümü algoritmasını geliştirdiler. Bu algoritma HFD, Hızlı Fourier Dönüşümü (FFT, Fast Fourier Transform) olarak bilinir - kesikli ifadesini kullanmacağız. HFD algoritması KFD'ye göre çok daha hızlı çalışır. HFD algoritmasının karmaşıklığı $\mathcal{O}(n \log n)$ iken KFD'nin karmaşıklığı $\mathcal{O}(n^2)$'dir.
+
+## Tanımlar
+
+Alıştırmalara geçmeden önce bazı tanımlar yapalım ve kullanacağımız tanımları hatırlayalım.
+
+Öncelikle bir dalgadan bahsediyorsak bir tekrardan bahsedebiliriz. Bundan dolayı belli bir **pencere** seçip o penceredeki sinyali analiz edeceğiz.
+
+1. Zaman Uzayı
+  - **Örneklem sayısı, blok boyutu (# of samples, block size)**: Bir sinyali kaç adet örnek ile betimliyoruz [adet], `N`.
+  - **Örneklem oranı, örnekleme frekansı (sampling rate, sampling frequency)**: Bir saniye içerisinde kaç örneklem olduğunu veren ifade [1/saniye] `orneklemOrani`.
+  - **Örnekleme aralığı (sampling interval)**: İki örneklem arasının kaç saniye olduğunu veren ifade [saniye], `ts`.
+  - **Zaman, pencere boyutu (time, frame size)**: Bir sinyalin kaç saniye içerisinde olduğunu veren ifade [saniye], `t`.
+1. Frekans Uzayı
+  - **Maksimum Frekans, Nyquist Frekansı, bant aralığı (maximum frequency, Nyquist frequency, bandwith)**: Bir sinyalin içerisindeki en yüksek frekans [Hz], `maxFrek`. Maksimum frekans değeri, örneklem oranının yarısına eşittir, `maxFrek=orneklemOrani/2`.
+  - **Frekans sayısı, Spektral Çizgiler (# of frequency, spectral lines)**: Bir sinyalin içerisindeki frekanslar [Hz], `frekSayisi`. Frekans sayısı, örnek sayısının yarısına eşittir, `frekSayisi=N/2`, çünkü hem pozitif hem negatif frekanslar bulunur.
+  - **Frekans Çözünürlülüğü**: Frekans uzayindaki iki frekans arasındaki fark [Hz], `frekCoz`.
+  - **Frekans (frequency)**: Tüm frekanslar, `frek`
+
+::: {.callout-note}
+Daha önceden belirttiğimiz gibi frekansların ilk yarısı pozitif, ikinci yarıs ise negatif olarak tanımlanır.
+:::
+
+## Alıştırma 1
+
+Bir sinüs sinyali, $\sin(2\pi f t)$ düşünelim ve bunu $[-2,2]$ zaman aralığında çizelim.
+
+- Bu dalganın genlik-zaman grafiğini çizdirebilmek için frekans $f$ değerini bilmem lazım. $f=4$ [Hz] olsun `frek=4`.
+- Bu dalganın $[-2,2]$ arasında kaç nokta ile betimlediğimi belirtmem lazım. Örneklem sayısı $N=100$ olsun, `N=100`.
+- Bu dalgan $N=100$ ve toplam zaman $t=4$ s için örneklem oranı $100/4$ olur`orneklemOrani=25`. Bu değer, bir saniyede içerisinde $25$ adet nokta olduğu anlamına gelir.
+- Bu dalganın örnekleme aralığı $1/25=0.04$, `orneklemAraligi=1/orneklemOrani`. Bu değer, iki örneklem arasında $0.04$ saniye olduğu anlamına gelir.
+- Zamanı oluşturabilirim. $t=-2$'den başlayıp $t=2$'ye kadar `orneklemAraligi` aralıklarla bir array oluşturum, `t=np.arange(-2, 2, orneklemAraligi)`.
+
+::: {.callout-warning}
+`t=np.arange(-2, 2, orneklemAraligi)` kodunda $N=100$ adet nokta vardır ancak $2$ noktası alınmamıştır.
+:::
+
+- Maksimum frekans değeri $25/2=12.5$ [Hz] olur, `maksFrek=N/2`.
+- Frekans çözünürlülüğü $0.5$ [Hz] olur, `frekCoz=maksFrek/N`.
+- Tüm frekanslar `frek= np.arange(-maksFrek, maksFrek, frekCoz)` olur.
+
+## Alıştırma 2
+
+1. Aşağıdaki formülü verilen sinyali, 100 örneklem oranı kullanarak $-2\pi,2\pi$ arasında çizdirin.
+
+$$
+y(t) = 7 \sin(2\pi t)
+$$
+
+Bu sinyalin KFD'sini alın ve genlik ve faz değerlerini bulun.
+
+### Çözüm
+
+```{python}
+################################################
+import os
+import sys
+# Bu dosyanın bulunduğu dizini al
+current_dir = os.path.abspath('')
+# 3 üst dizine çık
+module_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')
+# moduller dizinini yol olarak ekle
+sys.path.append(module_dir)
+# bilYonMod.py modülünü içe aktar
+import bilYonMod as bym
+################################################
+
+import numpy as np
+import matplotlib.pyplot as plt
+# Örneklem orani
+orneklemOrani = 100
+# Örneklem aralığı
+orneklemAraligi = 1.0/orneklemOrani
+t= np.arange(0, 6, orneklemAraligi)
+# Toplam örneklem sayısı
+N= t.size
+# Dalganın frekansı
+acisalFrekans= 10
+genlik= 5
+# Çiz
+sinyal= genlik* np.sin(acisalFrekans* t)
+plt.plot(t, sinyal, 'b', label= f'${genlik} \sin({acisalFrekans} t)$')
+plt.ylabel("Genlik")
+plt.xlabel("Zaman (s)")
+plt.legend()
+plt.show()
+plt.close()
+# Kesikli Fourier Dönüşümü
+X = bym.fourier_kfd(sinyal)
+# Frekans
+if N%2 == 0:
+    maksFrek= N/ 2
+    XPoz= X[:int(N/2)]
+    XNeg= X[int(N/2):]
+    frekCoz=maksFrek/ (N/2)
+else:
+    maksFrek= (N-1)/ 2
+    XPoz= X[:int((N-1)/2)]
+    XNeg= X[int((N+1)/2):]
+    frekCoz=maksFrek/ ((N-1)/2)
+frekPoz= np.arange(0, maksFrek, frekCoz)
+frekNeg= np.arange(-maksFrek, 0, frekCoz)
+# Genlik ve Faz Değerlerini Çiz
+plt.stem(frekPoz, np.abs(XPoz)/(N/2), 'b', label= 'Pozitif Genlik', markerfmt=" ", basefmt="-b")
+plt.stem(frekNeg, np.abs(XNeg)/(N/2), 'r', label= 'Negatif Genlik', markerfmt=" ", basefmt="-r")
+plt.ylabel("Genlik")
+plt.xlabel("Frekans (Hz)")
+plt.xlim(-acisalFrekans-10, acisalFrekans+10)
+plt.legend()
+plt.show()
+```
+
+## Problemler
+
+## Problem 1
+
+Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali çizdirin. Sinyalin KFD'sini alın ve genlik ve faz değerlerini bulun.
 
 ## Kaynaklar
 

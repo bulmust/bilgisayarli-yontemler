@@ -4,6 +4,39 @@ Bilgisayarlı Yöntemler reposunda bulunan fonksiyonların kütüphanesi.
 import numpy as np
 
 #! ===========================================
+#! Fourier Analizi
+#! ===========================================
+# Kesikli Fourier Dönüşümü (DFT)
+def fourier_kfd(sinyalNoktalari):
+    # Örneklem Sayısı
+    N = len(sinyalNoktalari)
+    # Frekans Değerleri
+    X = np.zeros(N, complex)
+    for k in range(N):
+        for n in range(N):
+            X[k] += sinyalNoktalari[n]*np.exp(-2j* np.pi* k* n/ N)
+    return X
+# Hızlı Fourier Dönüşümü (FFT)
+def fourier_hfd(sinyalNoktalari):
+    # Orneklem sayısı
+    N= len(sinyalNoktalari)
+    # Eğer orneklem sayısı 1 ise çalışmaz
+    if N == 1:
+        return sinyalNoktalari
+    else:
+        # Çift ve tek orneklem sayıları için ayrı ayrı hesapla
+        # Bunun için fonksyion tekrarlanmasını kullan
+        # ::2: indeks elemanlarını ikişer ikişer ilerleyerek tut.
+        X_cift= fourier_hfd(sinyalNoktalari[::2])
+        X_tek = fourier_hfd(sinyalNoktalari[1::2])
+        # Eksponansiyel terim
+        ekspTerim = np.exp(-2j* np.pi* np.arange(N)/ N)
+        # X_cift ve X_tek'leri birleştir
+        X = np.concatenate(\
+            [X_cift+ ekspTerim[:int(N/2)]*X_tek,
+             X_cift+ ekspTerim[int(N/2):]*X_tek])
+        return X
+#! ===========================================
 #! Adi Diferansiyel Denklem (ADD) Çözme
 #! ===========================================
 # Euler Yöntemi ile ADD Çözme (Tek Denklem)

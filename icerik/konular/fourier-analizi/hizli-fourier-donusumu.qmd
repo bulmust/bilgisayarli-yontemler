@@ -1,12 +1,12 @@
 ---
-title: "Hızlı Fourier Dönüşümü"
+title: "HFD - Hızlı Fourier Dönüşümü"
 ---
 
-## Hızlı Fourier Dönüşümü (Fast Fourier Transform, FFT), HFD
+## HFD - Hızlı Fourier Dönüşümü (FFT - Fast Fourier Transform)
 
-HFD, Gauss'un yayınlanmamış 1805 yılındaki çalışmalarına dayanır. Temel olarak DFT algoritmasını daha küçük parçalara bölerek hesaplar. Bu küçük parçaları hesaplamak için ise rekürsif bir algoritma kullanır.
+HFD, Gauss'un yayınlanmamış 1805 yılındaki çalışmalarına dayanır. Temel olarak KFD algoritmasını daha küçük parçalara bölerek hesaplar. Bu küçük parçaları hesaplamak için ise tekrarlanan (rekürsif, recursive) bir algoritma kullanır.
 
-### KFD'deki Simetriler
+### KFD Formülündeki Simetri
 
 KFD denklemini hatırlayalım.
 
@@ -24,119 +24,141 @@ $e^{-i2\pi n}=1$ özelliğini kullanalım.
 
 $$
 \begin{align*}
-X_{k+N} =& \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N} e^{-i 2 \pi N n / N}\\
-=& \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N}\\
-=& X_{k}
+    X_{k+N} =& \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N} e^{-i 2 \pi N n / N}\\
+    =& \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N}\\
+    =& X_{k}
 \end{align*}
 $$
 
-Yani $X_{k+N}=X_{k}$'dır. Bu da $X_{k}$'nın $N$'inci frekansın değerine eşit olduğunu gösterir. Bu da $X_{k+i\times N}=X_{k}$ şeklinde genelleştirilebilir. Burada $i$ bir tam sayıdır.
+Formülde bir simetri elde ettik $X_{k+N}=X_{k}$.
 
-## HFD'deki Numaralar
+Bu simetrinin anlamı şudur: $X_{k}$'nın değeri, $X_{k+N}$ değerine eşit olması demek, aynı değeri veren bazı $X_{k}$ değerleri olduğunu gösterir. Ayrıca gösterilebiliriz ki bu simetri $k+N$, $x+2N$, $\cdots$ için de geçerlidir. O halde simetriyi $X_{k+i\times N}=X_{k}$ şeklinde genelleştirebiliriz. Burada $i$ bir tam sayıdır.
+
+## Hızlanmak İçin Yapılan Numaralar
 
 KFD algoritmasının simetri özelliğini kullanarak N sayısını 2'ye bölelim. Böldüğümüz kısımlar $n$'in tek ve çift olduğu durumlar olsun.
 
 $$
 \begin{align*}
 X_{k} =& \sum_{n=0}^{N-1} x_{n} e^{-i 2 \pi k n / N}\\
-=& \sum_{m=0}^{N/2-1} x_{2m} e^{-i 2 \pi k (2m) / N} + \sum_{m=0}^{N/2-1} x_{2m+1} e^{-i 2 \pi k (2m+1) / N}\\
+      =& \sum_{m=0}^{N/2-1} x_{2m} e^{-i 2 \pi k (2m) / N} + \sum_{m=0}^{N/2-1} x_{2m+1} e^{-i 2 \pi k (2m+1) / N}\\
 \end{align*}
 $$
 
-Bu toplamdaki ilk terim $n$'in çift terimlerinden oluşuyor, ikinci terim ise tek terimlerden oluşuyor. Hesaplamaya devam edelim ($2m/N$ yerine $m/(N/2)$ yaz.)
+Bu toplamdaki ilk terim $n$'in çift terimlerinden oluşuyor, ikinci terim ise tek terimlerden oluşuyor. Hesaplamaya devam edelim ve $2m/N$ yerine $m/(N/2)$ yazalım.
 
 $$
 \begin{align*}
 X_{k} =& \sum_{m=0}^{N/2-1} x_{2m} e^{-i 2 \pi k m / (N/2)} + \sum_{m=0}^{N/2-1} x_{2m+1} e^{-i 2 \pi k (2m+1) / N}\\
-=& \sum_{m=0}^{N/2-1} x_{2m} e^{-i 2 \pi k m / (N/2)} + e^{-i 2 \pi k / N} \sum_{m=0}^{N/2-1} x_{2m+1} e^{-i 2 \pi k m / (N/2)}\\
+      =& \sum_{m=0}^{N/2-1} x_{2m} e^{-i 2 \pi k m / (N/2)} + e^{-i 2 \pi k / N} \sum_{m=0}^{N/2-1} x_{2m+1} e^{-i 2 \pi k m / (N/2)}\\
 \end{align*}
 $$
 
-DFT'deki simetri bize şunu söyler. $X_{k}$'yı hesaplarken $N/2$'ye kadar olan kısmı hesaplayabiliriz. Yani yukarıdaki toplamın sadece birisini hesapladığımızda diğerini de hesaplamış oluruz. Bu da hesaplama zamanını yarı yarıya azaltır.
+KFT'daki simetri bize şunu söyler. $X_{k}$'yı hesaplarken $N/2$'ye kadar olan kısmı hesaplıdır. Yani yukarıdaki toplamın sadece birisini hesapladığımızda diğerini de hesaplamış oluruz. Bu da bilgisayara yaptıracağımız işi yarıya indirir.
 
-Yarıya bölme işlemini tekrar ederek en küçük parçaya gidilir.
+Yukarıda yaptığımız yarıya bölme işlemini tekrar tekrar yaparak en küçük parçaya gidilir. HFD algoritmasının tekrarlanan yapısı da buradan gelir. Bunun için algoritmada kendi kendine çağıran bir yapı kullanacağız. Bu yapıya fonksyion tekrarlanması (function recursion) adı verilir [@web2024Mar-1].
 
-FFT algoritması bu şekilde çalışarak hesaplama zamanını oldukça azaltır.
+HFD algoritması bu şekilde çalışarak hesaplama zamanını oldukça azaltır.
+
+## Kod
+
+`fourier_hfd` fonksiyonu [bilYonMod.py](/moduller/bilYonMod.py) dosyasına tanımlıdır. Aşağıdaki kodu inceleyelim.
+
+::: {.callout-note}
+`fourier_hfd` fonksiyonunu inceleyiniz.
+:::
 
 ```{python}
+################################################
+## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma
+import os
+import sys
+# Bu dosyanın bulunduğu dizini al
+current_dir = os.path.abspath('')
+# 3 üst dizine çık
+module_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')
+# moduller dizinini yol olarak ekle
+sys.path.append(module_dir)
+# bilYonMod.py modülünü içe aktar
+import bilYonMod as bym
+################################################
+
 import matplotlib.pyplot as plt
 import numpy as np
-
-def FFT(x):
-    """
-    A recursive implementation of
-    the 1D Cooley-Tukey FFT, the
-    input should have a length of
-    power of 2.
-    """
-    N= len(x)
-    if N == 1:
-        return x
-    else:
-        X_even= FFT(x[::2])
-        X_odd= FFT(x[1::2])
-        
-        factor = np.exp(-2j* np.pi* np.arange(N)/ N)
-        
-        X = np.concatenate(\
-            [X_even+ factor[:int(N/2)]*X_odd,
-             X_even+ factor[int(N/2):]*X_odd])
-        return X
-    
-# sampling rate
-sr = 128
-# sampling interval
-ts = 1.0/sr
-t = np.arange(0,1,ts)
-freq = 1.
-x = 3*np.sin(2*np.pi*freq*t)
-freq = 4
-x += np.sin(2*np.pi*freq*t)
-freq = 7
-x += 0.5* np.sin(2*np.pi*freq*t)
-plt.figure(figsize = (8, 6))
-plt.plot(t, x, "r")
-plt.ylabel("Amplitude")
+# Örnelem sayısı
+orneklemOrani = 128
+# Zaman
+orneklemAraligi = 1.0/orneklemOrani
+t = np.arange(0, 1, orneklemAraligi)
+# Toplam Örnekleme Sayısı
+N= len(t)
+# Birinci dalgayı olustur
+# Frekans
+frek = 1.
+# Birinci dalgayı oluştur
+x = 3*np.sin(2* np.pi* frek* t)
+# İkinci dalganın frekansı
+frek = 4
+# İkinci dalgayı oluştur
+x += np.sin(2* np.pi* frek* t)
+# Üçüncü dalganın frekansı
+frek = 7
+# Üçüncü dalgayı oluştur
+x += 0.5* np.sin(2* np.pi* frek* t)
+# Sinyali Çiz
+plt.plot(t, x, "r", label= "$3\\sin(2\\pi 1 t)+ 2\\sin(2\\pi 4 t)+ 0.5sin(2\\pi 7 t)$")
+plt.ylabel("Genlik")
+plt.xlabel("Zaman (s)")
+plt.title(f"Sinyal, Örnekleme Sayısı: {N}")
+plt.legend()
 plt.show()
-
-X=FFT(x)
-# calculate the frequency
-N = len(X)
-n = np.arange(N)
-T = N/sr
-freq = n/T
-plt.figure(figsize = (12, 6))
-plt.subplot(121)
-plt.stem(freq, abs(X), "b", markerfmt=" ", basefmt="-b")
-plt.xlabel("Freq (Hz)")
-plt.ylabel("FFT Amplitude |X(freq)|")
-# Get the one-sided spectrum
-n_oneside = N//2
-# get the one side frequency
-f_oneside = freq[:n_oneside]
-# normalize the amplitude
-X_oneside =X[:n_oneside]/n_oneside
-plt.subplot(122)
-plt.stem(f_oneside, abs(X_oneside), "b", markerfmt=" ", basefmt="-b")
-plt.xlabel("Freq (Hz)")
-plt.ylabel("Normalized FFT Amplitude |X(freq)|")
+plt.close()
+# -------------------------
+# Hızlı Fourier Dönüşümü
+X=bym.fourier_hfd(x)
+# Frekans
+if N%2 == 0:
+    maksFrek= N/ 2
+    XPoz= X[:int(N/2)]
+    XNeg= X[int(N/2):]
+    frekCoz=maksFrek/ (N/2)
+else:
+    maksFrek= (N-1)/ 2
+    XPoz= X[:int((N-1)/2)]
+    XNeg= X[int((N+1)/2):]
+    frekCoz=maksFrek/ ((N-1)/2)
+frekPoz= np.arange(0, maksFrek, frekCoz)
+frekNeg= np.arange(-maksFrek, 0, frekCoz)
+# Çiz
+fig, axs = plt.subplots(3, 1)
+# Re(X) Değeri
+axs[0].stem(frekPoz, np.real(XPoz)/(N/2), 'b', label= 'Pozitif Genlik', markerfmt=" ", basefmt="-b")
+axs[0].stem(frekNeg, np.real(XNeg)/(N/2), 'r', label= 'Negatif Genlik', markerfmt=" ", basefmt="-r")
+# Imag(X) Değeri
+axs[1].stem(frekPoz, np.imag(XPoz)/(N/2), 'b', label= 'Pozitif Genlik', markerfmt=" ", basefmt="-b")
+axs[1].stem(frekNeg, np.imag(XNeg)/(N/2), 'r', label= 'Negatif Genlik', markerfmt=" ", basefmt="-r")
+# |X| Değeri
+axs[2].stem(frekPoz, np.abs(XPoz)/(N/2), 'b', label= 'Pozitif Genlik', markerfmt=" ", basefmt="-b")
+axs[2].stem(frekNeg, np.abs(XNeg)/(N/2), 'r', label= 'Negatif Genlik', markerfmt=" ", basefmt="-r")
+# Kozmetik
+axs[0].set_ylabel("Re($X_{k}$) Değeri")
+axs[0].set_title("Hızlı Fourier Dönüşümü")
+axs[1].set_ylabel("Im($X_{k}$) Değeri")
+axs[1].set_yticklabels([])
+axs[2].set_ylabel("|$X_{k}$| Değeri")
+axs[2].set_xlabel("Frekans (Hz)")
+plt.legend()
+plt.show()
+plt.close()
+# Tek bir tarafı çizdir (Pozitif Frekanslar)
+plt.stem(frekPoz, np.abs(XPoz)/(N/2), 'r', markerfmt=" ", basefmt="-r")
+plt.xlabel("Frekans (Hz)")
+plt.ylabel("Normalize, Tek Taraflı |$X_{k}$|$_{norm}$ Değeri")
+# X Eksenindeki Sayıları Belirle
+plt.xticks([1, 4, 7, 10, 20, 30, 40, 50, 60])
 plt.tight_layout()
 plt.show()
-
-def gen_sig(sr):
-    """
-    function to generate
-    a simple 1D signal with
-    different sampling rate
-    """
-    ts = 1.0/sr
-    t = np.arange(0,1,ts)
-    freq = 1.
-    x = 3*np.sin(2*np.pi*freq*t)
-    return x
-# sampling rate =2048
-sr = 2048
-%timeit FFT(gen_sig(sr))
+plt.close()
 ```
 
 ## Kaynaklar
