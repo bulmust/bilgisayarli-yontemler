@@ -36,6 +36,7 @@ def fourier_hfd(sinyalNoktalari):
             [X_cift+ ekspTerim[:int(N/2)]*X_tek,
              X_cift+ ekspTerim[int(N/2):]*X_tek])
         return X
+
 #! ===========================================
 #! Adi Diferansiyel Denklem (ADD) Çözme
 #! ===========================================
@@ -83,9 +84,74 @@ def add_coz_rk4_sistem(fonk_yVek_x, xBaslangic, xBitis, yBaslangic_vek, adimSayi
         k4= h* fonk_yVek_x(yTum_vek[:,i]+ k3, xTum[i]+ h)
         yTum_vek[:,i+1]= yTum_vek[:,i]+ (k1+ 2*k2+ 2*k3+ k4)/6
     return xTum, yTum_vek
+# Runge-Kutta-Fehlberg Yöntemi (Değişken Adım Aralığı)
+def add_coz_rk45_sistem(fonk_x_yVek: object\
+    , x0: float, y0\
+    , xStop:float\
+    , baslangicAdimAraligi: float=1.0e-2\
+    , relHata: float=1.0e-6) -> tuple:
+    # Başlangıç Değerleri
+    # Denklem sistemi değilse, y0'ı diziye çevir
+    if isinstance(y0, float):
+        y0 = np.array([y0])
+    yTum = np.zeros((len(y0)))
+    yTum[0] = y0
+    xTum = np.array([x0])
+    # Runge-Kutta-Fehlberg yöntemi
+    while x0 < xStop:
+        # Runge-Kutta-Fehlberg yöntemi katsayıları
+        k0 = baslangicAdimAraligi* fonk_x_yVek(x0, y0)
+        k1 = baslangicAdimAraligi* fonk_x_yVek(x0+ baslangicAdimAraligi/4.0\
+            , y0+ k0/ 4.0)
+        k2 = baslangicAdimAraligi* fonk_x_yVek(x0+ 3.0 *baslangicAdimAraligi/8.0\
+            , y0+ 3.0* k0/32.0\
+                + 9.0* k1/32.0)
+        k3 = baslangicAdimAraligi* fonk_x_yVek(x0+ 12.0* baslangicAdimAraligi/13.0\
+            , y0+ (1932.0* k0\
+                -  7200.0* k1\
+                +  7296.0* k2)/2197.0)
+        k4 = baslangicAdimAraligi* fonk_x_yVek(x0+ baslangicAdimAraligi\
+            , y0+ 439.0 * k0/ 216.0\
+                - 8.0   * k1       \
+                + 3680.0* k2/ 513.0\
+                - 845.0 * k3/ 4104.0)
+        k5 = baslangicAdimAraligi* fonk_x_yVek(x0+ baslangicAdimAraligi/ 2.0\
+            , y0- 8.0* k0/ 27.0     \
+                + 2.0* k1           \
+                - 3544.0* k2/ 2565.0\
+                + 1859.0* k3/ 4104.0\
+                - 11.0* k4/ 40.0)
+        # Kesme hata miktarı
+        truncErr= np.abs((\
+               1.0   / 360.0  )* k0\
+            - (128.0 / 4275.0 )* k2\
+            - (2197.0/ 75240.0)* k3\
+            + (1.0   / 50.0   )* k4\
+            + (2.0   / 55.0   )* k5)
+        # Yeni Adım
+        baslangicAdimAraligi=baslangicAdimAraligi\
+            * (0.84* (relHata/ np.max(truncErr))**(0.25))
+        # Rölatif hata ile kesme hata karşılaştırması. 
+        # Eğer rölatif hata büyükse, bir sonraki adıma geç. 
+        # Yoksa işlemi baştan yap.
+        if relHata > np.max(truncErr):
+            # Runge Kutta 4. mertebe değeri kulan.
+            # Bir sonraki adıma geç.
+            y0 = y0\
+                + 25.0  * k0/ 216.0  \
+                + 1408.0* k2/ 2565.0 \
+                + 2197.0* k3/ 4104.0 \
+                -         k4/ 5.0
+            x0 = x0 + baslangicAdimAraligi
+            # Tüm Adımları Tut
+            xTum= np.append(xTum, x0)
+            yTum= np.vstack((yTum,y0))
+    return xTum, yTum.T
 ## ADD Çözme (odeint)
 # import scipy.integrate as spInt
-# yHep= spInt.odeint(fonk_y_x, np.array([y0, v0]), xHep)
+# cozum= spInt.odeint(fonk_yVek_x, np.array([y0, v0]), xHep)
+# cozum= spInt.solve_ivp(fonk_x_yVek, [x0, xBitis]\
+    # , np.array([y0, v0]), method='RK45') #! fonk sırasına dikkat ediniz.
  
 #! ===========================================
 #! Sayısal İntegral Alma

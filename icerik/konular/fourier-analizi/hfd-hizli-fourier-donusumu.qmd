@@ -161,6 +161,17 @@ plt.show()
 plt.close()
 ```
 
+## Problemler
+
+### Problem 1
+
+Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali çizdirin Örneklem oranı $100$, $t=[0,6)$ aralığında olsun. Sinyalin HFD'sini alın ve bu değerleri pozitif/negatif frekanslara göre çizdirin.
+
+### Problem 2
+
+Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali ve açısal frekansı 10, genliği 5 olan bir cosinüs sinyalinin toplamını çizdirin çizdirin Örneklem oranı $100$, $t=[0,6)$ aralığında olsun. Sinyalin HFD'sini alın ve bu değerleri pozitif/negatif frekanslara göre çizdirin.
+
+
 ## Kaynaklar
 
 1. Python Programming and Numerical Methods, Qingkai Kong, 2018
