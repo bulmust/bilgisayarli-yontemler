@@ -85,7 +85,7 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html" rel="prev">
+<link href="../../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -168,7 +168,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html">HFD - Hızlı Fourier Dönüşümü</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html">HFD - Hızlı Fourier Dönüşümü</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -311,13 +311,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FD - Fourier Dönüşümü</span></a>
+  <a href="../../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">KFD - Kesikli Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">HFD - Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
@@ -341,14 +341,19 @@ window.Quarto = {
   </ul></li>
   <li><a href="#hızlanmak-için-yapılan-numaralar" id="toc-hızlanmak-için-yapılan-numaralar" class="nav-link" data-scroll-target="#hızlanmak-için-yapılan-numaralar">Hızlanmak İçin Yapılan Numaralar</a></li>
   <li><a href="#kod" id="toc-kod" class="nav-link" data-scroll-target="#kod">Kod</a></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
+  <ul class="collapse">
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  </ul></li>
   <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/fourier-analizi/hizli-fourier-donusumu.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/hizli-fourier-donusumu.html">HFD - Hızlı Fourier Dönüşümü</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html">HFD - Hızlı Fourier Dönüşümü</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">HFD - Hızlı Fourier Dönüşümü</h1>
 </div>
@@ -367,7 +372,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">11 Mart 2024</p>
+      <p class="date">12 Mart 2024</p>
     </div>
   </div>
   
@@ -440,7 +445,7 @@ Not
 <p><code>fourier_hfd</code> fonksiyonunu inceleyiniz.</p>
 </div>
 </div>
-<div id="c532d7b6" class="cell" data-execution_count="1">
+<div id="a5e62fa8" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -534,25 +539,36 @@ Not
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="hizli-fourier-donusumu_files/figure-html/cell-2-output-1.png" width="587" height="452" class="figure-img"></p>
+<p><img src="hfd-hizli-fourier-donusumu_files/figure-html/cell-2-output-1.png" width="587" height="452" class="figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="hizli-fourier-donusumu_files/figure-html/cell-2-output-2.png" width="590" height="449" class="figure-img"></p>
+<p><img src="hfd-hizli-fourier-donusumu_files/figure-html/cell-2-output-2.png" width="590" height="449" class="figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="hizli-fourier-donusumu_files/figure-html/cell-2-output-3.png" width="661" height="470" class="figure-img"></p>
+<p><img src="hfd-hizli-fourier-donusumu_files/figure-html/cell-2-output-3.png" width="661" height="470" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
+<section id="problemler" class="level2">
+<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
+<section id="problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
+<p>Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali çizdirin Örneklem oranı <span class="math inline">\(100\)</span>, <span class="math inline">\(t=[0,6)\)</span> aralığında olsun. Sinyalin HFD’sini alın ve bu değerleri pozitif/negatif frekanslara göre çizdirin.</p>
+</section>
+<section id="problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
+<p>Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali ve açısal frekansı 10, genliği 5 olan bir cosinüs sinyalinin toplamını çizdirin çizdirin Örneklem oranı <span class="math inline">\(100\)</span>, <span class="math inline">\(t=[0,6)\)</span> aralığında olsun. Sinyalin HFD’sini alın ve bu değerleri pozitif/negatif frekanslara göre çizdirin.</p>
+</section>
 </section>
 <section id="kaynaklar" class="level2">
 <h2 class="anchored" data-anchor-id="kaynaklar">Kaynaklar</h2>
@@ -1132,8 +1148,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/fourier-analizi/fourier-donusumu.html" class="pagination-link" aria-label="FD - Fourier Dönüşümü">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">FD - Fourier Dönüşümü</span>
+      <a href="../../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" class="pagination-link" aria-label="KFD - Kesikli Fourier Dönüşümü">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">KFD - Kesikli Fourier Dönüşümü</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -1147,7 +1163,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/fourier-analizi/hizli-fourier-donusumu.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>
