@@ -1,0 +1,50 @@
+---
+title: "THFD - Ters Hızlı Fourier Dönüşümü"
+---
+
+## THFD - Ters Hızlı Fourier Dönüşümü (IFFT - Inverse Fast Fourier Transform)
+
+Ters Hızlı Fourier Dönüşümü (IFFT), Hızlı Fourier Dönüşümü (FFT) sonucu elde edilen frekans bileşenlerini zaman alanına dönüştürmek için kullanılır.
+
+Frekans uzayındaki verilerden zaman uzayındaki sinyali elde etmek için kullanılır.
+
+## Örnek
+
+Frekans uzayında, kendimiz belirlediğimiz bir frekansın en yakın noktalara 1 değeri atanmış bir sinyal oluşturalım. Bu sinyali THFD ile zaman uzayına dönüştürelim.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+# Frekansı 5 Hz olan sinyal
+frekans = 5
+# Maksimum Frekans
+maxFrekans = 20
+# Toplam Orneklem
+N= maxFrekans*2
+# Frekans Çözünürlüğü
+fCoz = maxFrekans/N
+# Tum Frekanslar
+frek = np.arange(-maxFrekans, maxFrekans, fCoz)
+# HFD değerleri
+hfdDegerleri= np.zeros(len(frek), dtype=np.complex128)
+# frek'in 5 Hz ve -5 Hz en yakın noktalara 1 değeri atanır
+hfdDegerleri[np.abs(frek - frekans).argmin()] = 1
+hfdDegerleri[np.abs(frek + frekans).argmin()] = 1
+# Çiz
+plt.stem(frek, np.abs(hfdDegerleri))
+plt.title("HFT")
+plt.xlabel("Frekans (Hz)")
+plt.ylabel("$|X(f)|$")
+plt.show()
+# THFD
+sinyal = np.fft.ifft(hfdDegerleri)
+# Zaman
+t= np.arange(0, N)
+# Çiz
+plt.plot(sinyal.real)
+plt.title("THFD")
+plt.xlabel("Zaman (s)")
+plt.ylabel("Genlik")
+plt.xlim(0, 40)
+plt.show()
+```

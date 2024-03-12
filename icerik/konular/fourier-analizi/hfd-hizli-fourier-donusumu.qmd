@@ -161,16 +161,103 @@ plt.show()
 plt.close()
 ```
 
+## Hız Testi
+
+```{python}
+################################################
+## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma
+import os
+import sys
+# Bu dosyanın bulunduğu dizini al
+current_dir = os.path.abspath('')
+# 3 üst dizine çık
+module_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')
+# moduller dizinini yol olarak ekle
+sys.path.append(module_dir)
+# bilYonMod.py modülünü içe aktar
+import bilYonMod as bym
+################################################
+
+import numpy as np
+import time
+# Örnekleme sayısı
+orneklemOrani = 2**11
+# Zaman
+orneklemAraligi = 1.0/orneklemOrani
+t = np.arange(0, 1, orneklemAraligi)
+# Toplam Örnekleme Sayısı
+N= len(t)
+# Birinci dalgayı olustur
+# Frekans
+frek = 1.
+# Birinci dalgayı oluştur
+x = 3*np.sin(2* np.pi* frek* t)
+# İkinci dalganın frekansı
+frek = 4
+# İkinci dalgayı oluştur
+x += np.sin(2* np.pi* frek* t)
+# Üçüncü dalganın frekansı
+frek = 7
+# Üçüncü dalgayı oluştur
+x += 0.5* np.sin(2* np.pi* frek* t)
+print(f"Örnekleme Sayısı: {N}")
+# Kesikli Fourier Dönüşümü
+start = time.time()
+X=bym.fourier_kfd(x)
+end = time.time()
+print(f"Kesikli Fourier Dönüşümü: {end-start:.2f} saniye")
+# Hızlı Fourier Dönüşümü
+start = time.time()
+X=bym.fourier_hfd(x)
+end = time.time()
+print(f"Hızlı Fourier Dönüşümü  : {end-start:.2f} saniye")
+```
+
+## Hazır Fonksiyonlar
+
+Daha detaylı bilgi için [`numpy.fft`](https://numpy.org/doc/stable/reference/routines.fft.html) ve [`scipy.fft`](https://docs.scipy.org/doc/scipy/reference/fft.html) modüllerinin dökümantasyonunu inceleyebilirsiniz.
+
+```{python}
+import numpy as np
+#import scipy.fft as spfft
+import matplotlib.pyplot as plt
+# Örnekleme sayısı
+orneklemOrani = 2**13
+# Zaman
+orneklemAraligi = 1.0/orneklemOrani
+t = np.arange(0, 6, orneklemAraligi)
+#toplamSure= 1
+#t= np.linspace(0, toplamSure, orneklemOrani* toplamSure)
+N= len(t)
+# Açısal Frekans
+frekans= 5
+frekans2= 7
+# Sinyal
+sinyal= np.sin((2 * np.pi) *frekans* t)\
+    + 2*np.sin((2 * np.pi) *frekans2* t)
+# Hızlı Fourier Dönüşümü
+X= np.fft.fft(sinyal)
+# X= spfft.fft(sinyal)
+# Frekans
+frek= np.fft.fftfreq(N, 1/orneklemOrani)
+#frek= spfft.fftfreq(N, 1/orneklemOrani)
+# Çiz
+plt.stem(frek, np.abs(X)/orneklemOrani, 'b', markerfmt=" ", basefmt="-b")
+plt.xlim(-15, 15)
+plt.show()
+```
+
+Grafikteki y ekseni, dalga içerisindeki frekansların büyüklüğünü gösterir. Yani 5 Hz'e sahip olan dalganın genliği, 10 Hz'e sahip olan dalganın genliğinin yarısıdır.
+
+::: {.callout-note}
+Hızlı Fourier dönüşümünde scipy, numpy'dan daha hazlıdır [@web2024Mar-2].
+:::
+
 ## Problemler
 
 ### Problem 1
 
-Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali çizdirin Örneklem oranı $100$, $t=[0,6)$ aralığında olsun. Sinyalin HFD'sini alın ve bu değerleri pozitif/negatif frekanslara göre çizdirin.
-
-### Problem 2
-
-Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali ve açısal frekansı 10, genliği 5 olan bir cosinüs sinyalinin toplamını çizdirin çizdirin Örneklem oranı $100$, $t=[0,6)$ aralığında olsun. Sinyalin HFD'sini alın ve bu değerleri pozitif/negatif frekanslara göre çizdirin.
-
+Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali ve açısal frekansı 10, genliği 5 olan bir sinüs sinyalinin toplamını çizdirin. Örneklem oranı $100$, $t=[0,6)$ aralığında olsun. Sinyalin HFD'sini hesaplayın ve doğru frekanslar için çizdirin.
 
 ## Kaynaklar
 

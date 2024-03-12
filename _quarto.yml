@@ -54,6 +54,7 @@ website:
               - icerik/konular/fourier-analizi/giris.qmd
               - icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.qmd
               - icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.qmd
+              - icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.qmd
 
 format:
   html:
