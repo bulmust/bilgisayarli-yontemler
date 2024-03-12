@@ -2,6 +2,7 @@
 Bilgisayarlı Yöntemler reposunda bulunan fonksiyonların kütüphanesi.
 '''
 import numpy as np
+from sys import exit
 
 #! ===========================================
 #! Fourier Analizi
@@ -16,17 +17,20 @@ def fourier_kfd(sinyalNoktalari):
         for n in range(N):
             X[k] += sinyalNoktalari[n]*np.exp(-2j* np.pi* k* n/ N)
     return X
-# Hızlı Fourier Dönüşümü (FFT)
+# Hızlı Fourier Dönüşümü (HFD)
 def fourier_hfd(sinyalNoktalari):
     # Orneklem sayısı
     N= len(sinyalNoktalari)
     # Eğer orneklem sayısı 1 ise çalışmaz
     if N == 1:
         return sinyalNoktalari
+    elif N%2 > 0:
+        print("Örneklem sayısı çift olmalıdır.")
+        exit()
     else:
         # Çift ve tek orneklem sayıları için ayrı ayrı hesapla
         # Bunun için fonksyion tekrarlanmasını kullan
-        # ::2: indeks elemanlarını ikişer ikişer ilerleyerek tut.
+        # ::2 indeks elemanlarını ikişer ikişer ilerleyerek tut.
         X_cift= fourier_hfd(sinyalNoktalari[::2])
         X_tek = fourier_hfd(sinyalNoktalari[1::2])
         # Eksponansiyel terim
@@ -36,6 +40,23 @@ def fourier_hfd(sinyalNoktalari):
             [X_cift+ ekspTerim[:int(N/2)]*X_tek,
              X_cift+ ekspTerim[int(N/2):]*X_tek])
         return X
+# Hızlı Fourier Dönüşümü (HFD)
+## Scipy
+# import scipy.fft as spfft
+# X = spfft.fft(sinyalNoktalari)
+# frek= spfft.fftfreq(N, 1/orneklemOrani)
+## Numpy
+# import numpy as np
+# X = np.fft.fft(sinyalNoktalari)
+# frek= np.fft.fftfreq(N, 1/orneklemOrani)
+# -------------------------------------------
+# Ters Hızlı Fourier Dönüşümü (THFD)
+## Numpy
+# import numpy as np
+# sinyal = np.fft.ifft(X)
+## Scipy
+# import scipy.fft as spfft
+# sinyal = spfft.ifft(X)
 
 #! ===========================================
 #! Adi Diferansiyel Denklem (ADD) Çözme

@@ -85,6 +85,7 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" rel="next">
 <link href="../../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
@@ -321,6 +322,12 @@ window.Quarto = {
  <span class="menu-text">HFD - Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">THFD - Ters Hızlı Fourier Dönüşümü</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -341,10 +348,11 @@ window.Quarto = {
   </ul></li>
   <li><a href="#hızlanmak-için-yapılan-numaralar" id="toc-hızlanmak-için-yapılan-numaralar" class="nav-link" data-scroll-target="#hızlanmak-için-yapılan-numaralar">Hızlanmak İçin Yapılan Numaralar</a></li>
   <li><a href="#kod" id="toc-kod" class="nav-link" data-scroll-target="#kod">Kod</a></li>
+  <li><a href="#hız-testi" id="toc-hız-testi" class="nav-link" data-scroll-target="#hız-testi">Hız Testi</a></li>
+  <li><a href="#hazır-fonksiyonlar" id="toc-hazır-fonksiyonlar" class="nav-link" data-scroll-target="#hazır-fonksiyonlar">Hazır Fonksiyonlar</a></li>
   <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
   <ul class="collapse">
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
   </ul></li>
   <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
@@ -445,7 +453,7 @@ Not
 <p><code>fourier_hfd</code> fonksiyonunu inceleyiniz.</p>
 </div>
 </div>
-<div id="a5e62fa8" class="cell" data-execution_count="1">
+<div id="8b46655e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -559,15 +567,122 @@ Not
 </div>
 </div>
 </section>
+<section id="hız-testi" class="level2">
+<h2 class="anchored" data-anchor-id="hız-testi">Hız Testi</h2>
+<div id="be2c0e3f" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="im">import</span> sys</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># 3 üst dizine çık</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>module_dir <span class="op">=</span> os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), <span class="st">'moduller'</span>)</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co"># moduller dizinini yol olarak ekle</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>sys.path.append(module_dir)</span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># bilYonMod.py modülünü içe aktar</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="im">import</span> bilYonMod <span class="im">as</span> bym</span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co">################################################</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="im">import</span> time</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co"># Örnekleme sayısı</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>orneklemOrani <span class="op">=</span> <span class="dv">2</span><span class="op">**</span><span class="dv">11</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co"># Zaman</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>orneklemAraligi <span class="op">=</span> <span class="fl">1.0</span><span class="op">/</span>orneklemOrani</span>
+<span id="cb2-21"><a href="#cb2-21"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">1</span>, orneklemAraligi)</span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="co"># Toplam Örnekleme Sayısı</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>N<span class="op">=</span> <span class="bu">len</span>(t)</span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="co"># Birinci dalgayı olustur</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="co"># Frekans</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a>frek <span class="op">=</span> <span class="fl">1.</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="co"># Birinci dalgayı oluştur</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a>x <span class="op">=</span> <span class="dv">3</span><span class="op">*</span>np.sin(<span class="dv">2</span><span class="op">*</span> np.pi<span class="op">*</span> frek<span class="op">*</span> t)</span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="co"># İkinci dalganın frekansı</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a>frek <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a><span class="co"># İkinci dalgayı oluştur</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a>x <span class="op">+=</span> np.sin(<span class="dv">2</span><span class="op">*</span> np.pi<span class="op">*</span> frek<span class="op">*</span> t)</span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="co"># Üçüncü dalganın frekansı</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a>frek <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb2-35"><a href="#cb2-35"></a><span class="co"># Üçüncü dalgayı oluştur</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a>x <span class="op">+=</span> <span class="fl">0.5</span><span class="op">*</span> np.sin(<span class="dv">2</span><span class="op">*</span> np.pi<span class="op">*</span> frek<span class="op">*</span> t)</span>
+<span id="cb2-37"><a href="#cb2-37"></a><span class="bu">print</span>(<span class="ss">f"Örnekleme Sayısı: </span><span class="sc">{</span>N<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-38"><a href="#cb2-38"></a><span class="co"># Kesikli Fourier Dönüşümü</span></span>
+<span id="cb2-39"><a href="#cb2-39"></a>start <span class="op">=</span> time.time()</span>
+<span id="cb2-40"><a href="#cb2-40"></a>X<span class="op">=</span>bym.fourier_kfd(x)</span>
+<span id="cb2-41"><a href="#cb2-41"></a>end <span class="op">=</span> time.time()</span>
+<span id="cb2-42"><a href="#cb2-42"></a><span class="bu">print</span>(<span class="ss">f"Kesikli Fourier Dönüşümü: </span><span class="sc">{</span>end<span class="op">-</span>start<span class="sc">:.2f}</span><span class="ss"> saniye"</span>)</span>
+<span id="cb2-43"><a href="#cb2-43"></a><span class="co"># Hızlı Fourier Dönüşümü</span></span>
+<span id="cb2-44"><a href="#cb2-44"></a>start <span class="op">=</span> time.time()</span>
+<span id="cb2-45"><a href="#cb2-45"></a>X<span class="op">=</span>bym.fourier_hfd(x)</span>
+<span id="cb2-46"><a href="#cb2-46"></a>end <span class="op">=</span> time.time()</span>
+<span id="cb2-47"><a href="#cb2-47"></a><span class="bu">print</span>(<span class="ss">f"Hızlı Fourier Dönüşümü  : </span><span class="sc">{</span>end<span class="op">-</span>start<span class="sc">:.2f}</span><span class="ss"> saniye"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Örnekleme Sayısı: 2048
+Kesikli Fourier Dönüşümü: 5.81 saniye
+Hızlı Fourier Dönüşümü  : 0.02 saniye</code></pre>
+</div>
+</div>
+</section>
+<section id="hazır-fonksiyonlar" class="level2">
+<h2 class="anchored" data-anchor-id="hazır-fonksiyonlar">Hazır Fonksiyonlar</h2>
+<p>Daha detaylı bilgi için <a href="https://numpy.org/doc/stable/reference/routines.fft.html"><code>numpy.fft</code></a> ve <a href="https://docs.scipy.org/doc/scipy/reference/fft.html"><code>scipy.fft</code></a> modüllerinin dökümantasyonunu inceleyebilirsiniz.</p>
+<div id="9465cd61" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co">#import scipy.fft as spfft</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Örnekleme sayısı</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>orneklemOrani <span class="op">=</span> <span class="dv">2</span><span class="op">**</span><span class="dv">13</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co"># Zaman</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>orneklemAraligi <span class="op">=</span> <span class="fl">1.0</span><span class="op">/</span>orneklemOrani</span>
+<span id="cb4-8"><a href="#cb4-8"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">6</span>, orneklemAraligi)</span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#toplamSure= 1</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#t= np.linspace(0, toplamSure, orneklemOrani* toplamSure)</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>N<span class="op">=</span> <span class="bu">len</span>(t)</span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co"># Açısal Frekans</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>frekans<span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>frekans2<span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="co"># Sinyal</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a>sinyal<span class="op">=</span> np.sin((<span class="dv">2</span> <span class="op">*</span> np.pi) <span class="op">*</span>frekans<span class="op">*</span> t)<span class="op">\</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>    <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>np.sin((<span class="dv">2</span> <span class="op">*</span> np.pi) <span class="op">*</span>frekans2<span class="op">*</span> t)</span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="co"># Hızlı Fourier Dönüşümü</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a>X<span class="op">=</span> np.fft.fft(sinyal)</span>
+<span id="cb4-20"><a href="#cb4-20"></a><span class="co"># X= spfft.fft(sinyal)</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a><span class="co"># Frekans</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a>frek<span class="op">=</span> np.fft.fftfreq(N, <span class="dv">1</span><span class="op">/</span>orneklemOrani)</span>
+<span id="cb4-23"><a href="#cb4-23"></a><span class="co">#frek= spfft.fftfreq(N, 1/orneklemOrani)</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a><span class="co"># Çiz</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a>plt.stem(frek, np.<span class="bu">abs</span>(X)<span class="op">/</span>orneklemOrani, <span class="st">'b'</span>, markerfmt<span class="op">=</span><span class="st">" "</span>, basefmt<span class="op">=</span><span class="st">"-b"</span>)</span>
+<span id="cb4-26"><a href="#cb4-26"></a>plt.xlim(<span class="op">-</span><span class="dv">15</span>, <span class="dv">15</span>)</span>
+<span id="cb4-27"><a href="#cb4-27"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hfd-hizli-fourier-donusumu_files/figure-html/cell-4-output-1.png" width="566" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Grafikteki y ekseni, dalga içerisindeki frekansların büyüklüğünü gösterir. Yani 5 Hz’e sahip olan dalganın genliği, 10 Hz’e sahip olan dalganın genliğinin yarısıdır.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Not
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Hızlı Fourier dönüşümünde scipy, numpy’dan daha hazlıdır <span class="citation" data-cites="web2024Mar-2">&nbsp;[<a href="#ref-web2024Mar-2" role="doc-biblioref">2</a>]</span>.</p>
+</div>
+</div>
+</section>
 <section id="problemler" class="level2">
 <h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
 <section id="problem-1" class="level3">
 <h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
-<p>Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali çizdirin Örneklem oranı <span class="math inline">\(100\)</span>, <span class="math inline">\(t=[0,6)\)</span> aralığında olsun. Sinyalin HFD’sini alın ve bu değerleri pozitif/negatif frekanslara göre çizdirin.</p>
-</section>
-<section id="problem-2" class="level3">
-<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
-<p>Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali ve açısal frekansı 10, genliği 5 olan bir cosinüs sinyalinin toplamını çizdirin çizdirin Örneklem oranı <span class="math inline">\(100\)</span>, <span class="math inline">\(t=[0,6)\)</span> aralığında olsun. Sinyalin HFD’sini alın ve bu değerleri pozitif/negatif frekanslara göre çizdirin.</p>
+<p>Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali ve açısal frekansı 10, genliği 5 olan bir sinüs sinyalinin toplamını çizdirin. Örneklem oranı <span class="math inline">\(100\)</span>, <span class="math inline">\(t=[0,6)\)</span> aralığında olsun. Sinyalin HFD’sini hesaplayın ve doğru frekanslar için çizdirin.</p>
 </section>
 </section>
 <section id="kaynaklar" class="level2">
@@ -584,6 +699,9 @@ Not
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-web2024Mar-1" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline"><em><a href="https://www.w3schools.com/python/gloss_python_function_recursion.asp"><span>Python Function Recursion</span></a></em>, (2024).</div>
+</div>
+<div id="ref-web2024Mar-2" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline"><em><a href="https://stackoverflow.com/questions/6363154/what-is-the-difference-between-numpy-fft-and-scipy-fftpack"><span>What is the difference between numpy.fft and scipy.fftpack?</span></a></em>, Stack Overflow (2024).</div>
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1153,6 +1271,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" class="pagination-link" aria-label="THFD - Ters Hızlı Fourier Dönüşümü">
+        <span class="nav-page-text">THFD - Ters Hızlı Fourier Dönüşümü</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
