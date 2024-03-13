@@ -339,6 +339,7 @@ window.Quarto = {
   <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
   <ul class="collapse">
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
   </ul></li>
   <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
@@ -449,7 +450,7 @@ y(t)=-\frac{gt^2}{2} + 40t
 \theta(u) - 50 = 0\text{.}
 \]</span></p>
 <p>O halde <span class="math inline">\(\theta(u)\)</span> fonksiyonu başlangıç değer probleminin çözümüne bağlı. Bunu bir fonksiyon gibi tanımlayıp kökünü bulalım. Bu fonksiyon kodda şöyle tanımlanacak. <code>u</code> değeri girdi olacak. Bu <code>u</code> değerine göre başlangıç değer problemini çözecek. Çözümün son değeri <span class="math inline">\(y(5)\)</span> değeri olacak. Bu değer ile <span class="math inline">\(50\)</span> değeri arasındaki farkı döndürecek. Bu farkın kökünü bulmak için <code>scipy.optimize.ridder(fonksiyon, kok_araligi_baslangic, kok_araligi_bitis)</code> fonksiyonunu kullanacağız.</p>
-<div id="c88f3c1d" class="cell" data-execution_count="1">
+<div id="4670a17a" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> scipy.integrate <span class="im">as</span> scInteg</span>
@@ -528,6 +529,13 @@ y''(t)=t, \quad y(0)=1, \quad y(3)=9
 <li>Elde ettiğiniz çözümü yani <span class="math inline">\(y(t)\)</span> fonksiyonunu çizdirin.</li>
 <li>Bu denklemi analitik olarak çözün ve çözümü de çizdirin.</li>
 </ol>
+</section>
+<section id="problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
+<p>Aşağıdaki diferansiyel denklemi atış yöntemini kullanarak çözün. Adım aralığını <span class="math inline">\(h=0.05\)</span> alın. Analitik sonuçla karşılaştırın.</p>
+<p><span class="math display">\[
+y''(t) = t^{3}+t+5, \quad y(0)=1, \quad y(6)=548.8
+\]</span></p>
 </section>
 </section>
 <section id="kaynaklar" class="level2">

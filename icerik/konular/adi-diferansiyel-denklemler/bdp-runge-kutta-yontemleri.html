@@ -368,6 +368,7 @@ window.Quarto = {
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
   <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
@@ -620,7 +621,7 @@ y(x)= \frac{x^{3}}{6} + 1 \quad \text{ve} \quad v(x) = \frac{x^{2}}{2}
 \]</span></p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="99acd2e3" class="cell" data-execution_count="1">
+<div id="b92435f2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -716,7 +717,7 @@ m_{2}\ddot{x}_{2}+b_{2}\dot{x}_{2}+ k_{2}(x_{2}- x_{1}-L_{2})=0
 </ul>
 <section id="çözüm-1" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm-1">Çözüm</h3>
-<div id="82e911bc" class="cell" data-execution_count="2">
+<div id="fca9c4d0" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
@@ -873,6 +874,13 @@ L(x,v) = \frac{1}{2}mv^{2} - \frac{1}{2}kx^2
 <li><span class="math inline">\(x(t=0)=1\)</span> m</li>
 <li><span class="math inline">\(v(t=0)=0\)</span> m/s</li>
 </ul>
+</section>
+<section id="problem-4" class="level3">
+<h3 class="anchored" data-anchor-id="problem-4">Problem 4</h3>
+<p>Aşağıdaki diferansiyel denklemi Runge Kutta 4(5) yöntemini kullanarak <span class="math inline">\(N=100\)</span> adımda çözün. Analitik sonuçla karşılaştırın.</p>
+<p><span class="math display">\[
+y''(t) = t^{3}+t+5, \quad y(0)=1, \quad y'(0)=5
+\]</span></p>
 
 
 
