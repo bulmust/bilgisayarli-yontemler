@@ -658,24 +658,6 @@ def matris_tersi_al_gauss(matris):
 #! ===========================================
 #! Python Alıştırma Fonksiyonları
 #! ===========================================
-# Faktöriyel Alma
-def faktoriyel(sayi):
-    if not isinstance(sayi, int):
-        return False
-    sonuc = 1
-    for i in range(1, sayi + 1):
-        sonuc *= i
-    return sonuc
-
-# 1'den n'e kadar olan sayıların toplamı
-def topla(sayi):
-    if not isinstance(sayi, int):
-        return False
-    sonuc = 0
-    for i in range(1, sayi + 1):
-        sonuc += i
-    return sonuc
-
 # En büyük ortak bölen
 def obeb(sayi1, sayi2):
     if not isinstance(sayi1, int) or not isinstance(sayi2, int):
@@ -686,22 +668,11 @@ def obeb(sayi1, sayi2):
         if sayi1 % it == 0 and sayi2 % it == 0:
             sonuc = it
     return sonuc
-
 # En büyük ortak kat
 def okek(sayi1, sayi2):
     if not isinstance(sayi1, int) or not isinstance(sayi2, int):
         return False
     return (sayi1/ obeb(sayi1, sayi2)) * (sayi2)
-
-# Verilen sayilardan dik üçgen oluşturulabilir mi?
-def dik_mi(sayi1, sayi2, sayi3):
-    if not isinstance(sayi1, int) or not isinstance(sayi2, int) or not isinstance(sayi3, int):
-        return False
-    sirali_array= np.sort([sayi1, sayi2, sayi3])
-    if sirali_array[0] ** 2 + sirali_array[1] ** 2 == sirali_array[2] ** 2:
-        return True
-    return False
-
 # Matrislerin çarpımı
 def mat_carp(mat1, mat2):
     boy1= np.shape(mat1)
@@ -732,14 +703,3 @@ def mat_carp(mat1, mat2):
         for it2 in range(boy2[1]):
             sonuc[it1,it2]= np.sum(mat1[it1,:] * mat2[:,it2])
     return sonuc
-
-# Dalga fonkiyonunun normalizasyonu
-def normalize_et_dalgaFonk(arr1):
-    if np.ndim(arr1) != 1:
-        print("Bu fonksiyon sadece arrayler için çalışmaktadır.")
-        return None
-    sonuc= 0
-    for it in arr1:
-        sonuc += np.conj(it)* it
-    normalizasyonKatsayisi= 1/np.sqrt(sonuc)
-    return arr1* normalizasyonKatsayisi

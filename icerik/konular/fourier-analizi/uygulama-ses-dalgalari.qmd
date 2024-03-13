@@ -52,7 +52,7 @@ veri1_440Hz= np.sin(2*np.pi*440*t)
 veri2_880Hz= np.sin(2*np.pi*880*t)
 veri3= veri1_440Hz + veri2_880Hz
 # Çiz
-fig, axs= plt.subplots(3,1, figsize=(15,10))
+fig, axs= plt.subplots(3,1)
 axs[0].plot(t, veri1_440Hz)
 axs[0].set_title("440Hz")
 axs[0].set_xlim([0, 0.01])
@@ -226,7 +226,7 @@ veri4_170Hz= np.sin(2*np.pi*170*t)
 veri5_Gurultu= np.random.rand(len(t))
 veri6_topla= veri4_170Hz+ veri5_Gurultu
 # Çiz
-fig, axs= plt.subplots(3,1, figsize=(15,10))
+fig, axs= plt.subplots(3,1)
 axs[0].plot(t, veri4_170Hz)
 axs[0].set_title("170Hz")
 axs[0].set_xlim([0, 0.01])
@@ -278,7 +278,7 @@ axs[1].set_xlim([-1000, 1000])
 plt.tight_layout()
 plt.show()
 plt.close()
-# Ters FFT
+# Ters HFD
 veri7_topla_filtre= fft.ifft(hfd_veri7_topla_filtre)
 # Çiz
 fig, axs= plt.subplots(2,1)
@@ -302,16 +302,23 @@ wavfile.write(sesler_dir+ "sin4_170Hz_gurultulu_filtreli.wav", orneklemeOrani, n
 **Kara Delik Birleşmesi (GW150914)**
 
 1. <https://gwosc.org/events/GW150914/> sitesine gidin. Bu sitede 2015 yılında tespit edilen kara delik birleşmesi verileri bulunmaktadır.
-2. _Observation of Gravitational Waves from a Binary Black Hole Merger_ başlığına tıklayınız. Burada hem Hanford hem de Livingston merkezlerinden alınan veriler bulunmaktadır. Aşağıdaki linklerden verileri indirin.
+2. _Observation of Gravitational Waves from a Binary Black Hole Merger_ başlığına tıklayınız. Burada hem Hanford hem de Livingston merkezlerinden alınan veriler bulunmaktadır.
    1. <https://gwosc.org/GW150914data/P150914/fig1-observed-H.txt>
    2. <https://gwosc.org/GW150914data/P150914/fig1-observed-L.txt>
-3. Verilerin grafiğini üst üste çizdirin.
-4. Verileri wav dosyası olarak kaydedin. (https://www.youtube.com/watch?v=TWqhUANNFXw)
-5. Verilerin Fourier dönüşümünü yapın ve grafiklerini çizdirin.
+3. Bu dosyaları `pandas` kütüphanesini kullanarak okuyun, `pandas.read_csv("<LINK>, skiprows=1, sep=" ", header=None")` .
+4. Verilerin grafiğini üst üste çizdirin.
+5. Verileri wav dosyası olarak kaydedin. (https://www.youtube.com/watch?v=TWqhUANNFXw)
+6. Verilerin Fourier dönüşümünü yapın ve grafiklerini çizdirin.
 
 ### Problem 2
 
 **Gürültü Silme**
 
-1. Gürültü filtreleme işlemini ve mi notasını (329.63 Hz) çıkarma işlemini `problem2-gurultulu-sinyal.wav` dosyası için yapın. Bu dosyaya [bu linkten](../../../sesler/problem2-gurultulu-sinyal.wav.wav) ulaşabilirsiniz. Bu ses dosyası C akoru ve G akoru ardı ardına eklenerek oluşturulmuştur.
-2. Bu ses dosyasındaki G akorundaki sol notasını (392 Hz) çıkarın.
+1. Gürültü filtreleme işlemini `problem2-gurultulu-sinyal.wav` dosyası için yapın. Dosyaya [bu linkten](../../../sesler/problem2-gurultulu-sinyal.wav.wav) ulaşabilirsiniz. Bu dosya C akoru ve G akorunu ardı ardına eklenerek oluşturulmuştur.
+2. Ses dosyasını tam ortadan ikiye ayırın. 
+3. İlk yarısına hfd yapın. Bu frekansların 261.63 Hz, 329.63 Hz ve 392.0 Hz olduğunu göreceksiniz.
+4. Bu frekanslar dışındaki tüm frekansları sıfırlayın.
+5. İkinci yarısına hfd yapın. Bu frekansların 392.0 Hz, 493.88 Hz ve 293.66 Hz olduğunu göreceksiniz.
+6. Bu frekanslar dışındaki tüm frekansları sıfırlayın.
+7. Ardından bu iki dosyanın ters hfd'sini alın ve birleştirin.
+8. Filtrelenmiş ses dosyasını `problem2-gurultusuz-sinyal.wav.wav` olarak kaydedin.

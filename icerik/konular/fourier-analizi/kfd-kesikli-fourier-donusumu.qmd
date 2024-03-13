@@ -310,6 +310,24 @@ Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali çizdirin Örneklem 
 
 Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali ve açısal frekansı 10, genliği 5 olan bir cosinüs sinyalinin toplamını çizdirin çizdirin Örneklem oranı $100$, $t=[0,6)$ aralığında olsun. Sinyalin KFD'sini alın ve bu değerleri pozitif/negatif frekanslara göre çizdirin.
 
+### Problem 3
+
+Zamandan bağımsız Schrödinger denklemini boşluk için çözdüğümüzde Gaussian dalga paketini elde ederiz. Konum uzayındaki dalga fonksiyonu aşağıdaki gibidir [@web2024Mar-4, @web2024Mar-5].
+
+$$ \psi(x, t=0) = <x | \psi(0)>= e^{-\frac{(x^{2}- \mu)}{4\sigma_{x}^{2}}+i k_{0} x}$$
+
+Burada $\mu$ paketin merkezini yani ortalama (mean) değeridir. $\sigma_{x}$ ise $x$ uzayındaki standart sapmayı yani belirsizliği verir. $k_{0}= p/\hbar$ ise paketin momentumunu verir.
+
+1. Yukarıda verilen dalga paketini konum uzayında olasılık yoğunluğunu çizdirin. Formülde $\mu = 0$, $\sigma_{x} = 0.1$ ve $k_{0} = 10$ olarak alın.
+2. Elde ettiğiniz dalga paketinin Fourier dönüşümünü hesaplayın. 
+   1. HFD sonucunu `np.fft.fftshift` fonksiyonu ile kaydırın. Bu işlem $k$ uzayının $-k_{max}$ ile $k_{max}$ arasında yapın. Bunun için `np.fft.fftshift(np.fft.fft(veri))` kullanabilirsiniz.
+   2. Fourier dönüşümünü $\frac{2\pi}{L}$ ile normalize edin.
+   3. Fourier dönüşümünün frekansını belirleyin. Bunun için `np.fft.fftshift(np.fft.fftfreq(L, dx))` formülünü kullanabilirsiniz.
+3. Fourier dönüşümünden elde ettiğiniz Gaussian dalga paketinin momentum uzayındaki olasılık yoğunluğunu çizdirin.
+4. Tüm işlemi $\sigma_x=0.01$ için tekrar edin. Konum uzayındaki olasılık fonksiyonu ve momentum uzayındaki olasılık fonksiyonunu nasıl değişti?
+5. Aynı işlemi $\sigma_x=0.001$ için tekrar edin. Konum uzayındaki olasılık fonksiyonu ve momentum uzayındaki olasılık fonksiyonunu nasıl değişti?
+6. Yukarıdaki işlem ile Heisenberg belirsizlik ilkesi arasında nasıl bir bağlantı var mıdır?
+
 ## Kaynaklar
 
 1. Python Programming and Numerical Methods, Qingkai Kong, 2018
