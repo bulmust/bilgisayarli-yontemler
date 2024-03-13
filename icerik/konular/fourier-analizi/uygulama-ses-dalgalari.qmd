@@ -14,7 +14,7 @@ title: "Uygulama - Ses Dalgaları"
 6. Tüm sinyalleri alt alta çizdirin.
 7. Tüm sinyalleri 0.01 saniyeye kadar olan kısmını alt alta çizdirin.
 8. Tüm değişkenleri oranlayın wav dosyası kaydetmek üzere değişkene atayın (scaling).
-9. Tüm değişkenleri `write("<dosya_adi>.wav", örnekleme_oranı, <degisken>)` ile kaydedin.
+9. Tüm değişkenleri `write("<dosya_adi>.wav", örneklemeOranı, <degisken>)` ile kaydedin.
 
 Şimdi bu adımları kodlayalım.
 
@@ -181,7 +181,7 @@ Yukarıda yapılan örnekte 500'den küçük frekansları sıfırlayın ve tüm 
 3. 5 saniyelik rastgele bir sinyal gürültüsü oluşturun. `np.rand.randn(arrayBoyutu)` kullanabilirsiniz.
 4. 5 saniyelik bir sinüs sinyali oluşturun. Frekansı 170 Hz olsun.
 5. Gürültü ve sinüs sinyalini toplayın ve yeni bir değişkene atayın.
-6. Tüm değişkenleri oranlayın (scaling) ve `write("<dosya_adi>.wav", örnekleme_oranı, <oranli-degisken>)` ile kaydedin.
+6. Tüm değişkenleri oranlayın (scaling) ve `write("<dosya_adi>.wav", örneklemeOranı, <oranli-degisken>)` ile kaydedin.
 7. Sinüs, gürültü ve toplam sinyallerinin ilk 0.1 saniyesini aynı grafikte alt alta çizdirin.
 8. 3 adet sinyalin hızlı Fourier dönüşümünü (`scipy.fft.fft()`) yapın.
 9. 3 adet sinyalin frekanslarını (`scipy.fft.fftfreq(len(veri), 1/orneklem_orani)`) hesaplayın. Frekans miktarı verinizden bağımsız olacaktır. Sadece verinizin örnekleme oranı (verinin büyüklüğü) ve saniyede kaç örnekleme yaptığınız önemlidir.
