@@ -431,3 +431,11 @@ Başlangıç koşulları ve sabitler aşağıdaki gibidir.
 - $b=0.1$ Ns/m
 - $x(t=0)=1$ m
 - $v(t=0)=0$ m/s
+
+### Problem 4
+
+Aşağıdaki diferansiyel denklemi Runge Kutta 4(5) yöntemini kullanarak $N=100$ adımda çözün. Analitik sonuçla karşılaştırın.
+
+$$
+y''(t) = t^{3}+t+5, \quad y(0)=1, \quad y'(0)=5
+$$

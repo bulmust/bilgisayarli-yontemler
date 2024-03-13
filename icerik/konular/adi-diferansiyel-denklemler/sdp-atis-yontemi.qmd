@@ -169,6 +169,14 @@ $$
 1. Elde ettiğiniz çözümü yani $y(t)$ fonksiyonunu çizdirin.
 2. Bu denklemi analitik olarak çözün ve çözümü de çizdirin.
 
+### Problem 2
+
+Aşağıdaki diferansiyel denklemi atış yöntemini kullanarak çözün. Adım aralığını $h=0.05$ alın. Analitik sonuçla karşılaştırın.
+
+$$
+y''(t) = t^{3}+t+5, \quad y(0)=1, \quad y(6)=548.8
+$$
+
 ## Kaynaklar
 
 1. Numerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013, **Syf:293**

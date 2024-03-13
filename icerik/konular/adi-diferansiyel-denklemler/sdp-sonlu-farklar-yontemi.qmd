@@ -290,15 +290,7 @@ $y_{1}y_{2}$ gibi terimlerin varlığından dolayı bu denklem doğrusal olmayan
 
 ### Problem 1
 
-Aşağıdaki diferansiyel denklemi sonlu farklar yöntemini kullanarak $h=0.1$ için adım adım çözün.
-
-$$
-y''(t) + t y'(t) + y = 2t^{2}, \quad y(0)=1, \quad y(0.8)=1
-$$
-
-### Problem 2
-
-Aşağıdaki diferansiyel çözebilir misinz?
+Aşağıdaki diferansiyel denklemi sonlu farklar yöntemi kullanarak çözebilir misinz?
 
 $$
 \frac{\hbar^{2}}{2 m}\frac{d^{2}}{dx^{2}}\psi(x) = E\psi(x), \qquad \psi(x=0)=0, \qquad \psi(x=L)=0 \text{.}
@@ -325,6 +317,14 @@ $$
 ::: {.callout-tip}
 Bu problem bir özdeğer problemidir. Diferansiyel operatörü $\left(\frac{d^{2}}{dx^{2}}\right)$ doğrusal operatörü matris şeklinde yazmalısınız. Bu matrisi sonlu farklar yönteminde yazdık.
 :::
+
+### Problem 2
+
+Aşağıdaki diferansiyel denklemi sonlu farklar yöntemini kullanarak çözün. Adım aralığını $h=0.05$ alın. Analitik sonuçla karşılaştırın.
+
+$$
+y''(t) = t^{3}+t+5, \quad y(0)=1, \quad y(6)=548.8
+$$
 
 ## Kaynaklar
 
