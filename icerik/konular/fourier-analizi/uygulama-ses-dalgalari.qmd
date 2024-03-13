@@ -1,0 +1,317 @@
+---
+title: "Uygulama - Ses Dalgaları"
+---
+
+## Ses Dosyası Oluşturma
+
+Örnek olarak aşağıdaki adımları takip edelim.
+
+1. `scipy.io.wavfile` modülünü çağırın.
+2. Örnekleme oranı $44100$ Hz olsun. Yani oluşturacağınız sinyallerin bir saniyesindeki veri sayısı bu olsun. Ses bilgi için [@web2024Mar-3] numaralı kaynağa bakabilirsiniz.
+3. Bir sinüs sinyali oluşturun. Frekansı 440 Hz, süresi 5 saniye olsun.
+4. Bir sinüs sinyali oluşturun. Frekansı 880 Hz, süresi 5 saniye olsun.
+5. Bu iki sinyali başka bir değişkende toplayın.
+6. Tüm sinyalleri alt alta çizdirin.
+7. Tüm sinyalleri 0.01 saniyeye kadar olan kısmını alt alta çizdirin.
+8. Tüm değişkenleri oranlayın wav dosyası kaydetmek üzere değişkene atayın (scaling).
+9. Tüm değişkenleri `write("<dosya_adi>.wav", örnekleme_oranı, <degisken>)` ile kaydedin.
+
+Şimdi bu adımları kodlayalım.
+
+```{python}
+################################################
+import os
+import sys
+# Bu dosyanın bulunduğu dizini al
+current_dir = os.path.abspath('')
+# 3 üst dizine çık + sesler klasörü
+sesler_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'sesler')
+# Bu klasör var mı? Yoksa oluştur
+if not os.path.exists(sesler_dir):
+    # Oluştur
+    os.makedirs(sesler_dir)
+# Linux/MacOS için
+# Eğer OS Linux/Unix ise
+if sys.platform == "linux" or sys.platform == "linux2" or sys.platform == "darwin":
+    sesler_dir = sesler_dir + "/"
+# Eğer OS, Windows ise
+elif sys.platform == "win32":
+    sesler_dir = sesler_dir + "\\"
+################################################
+
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.io.wavfile as wavfile
+# Veriyi oluştur
+orneklemeOrani= 44100 # 1 saniyede kaç tane veri var?
+sure= 5 # s
+# Zaman
+t= np.linspace(0, sure, orneklemeOrani* sure)
+# Sinüs dalgaları
+veri1_440Hz= np.sin(2*np.pi*440*t)
+veri2_880Hz= np.sin(2*np.pi*880*t)
+veri3= veri1_440Hz + veri2_880Hz
+# Çiz
+fig, axs= plt.subplots(3,1, figsize=(15,10))
+axs[0].plot(t, veri1_440Hz)
+axs[0].set_title("440Hz")
+axs[0].set_xlim([0, 0.01])
+axs[1].plot(t, veri2_880Hz)
+axs[1].set_title("880Hz")
+axs[1].set_xlim([0, 0.01])
+axs[2].plot(t, veri3)
+axs[2].set_title("440Hz + 880Hz")
+axs[2].set_xlim([0, 0.01])
+plt.tight_layout()
+plt.show()
+# Normalizasyon için [-32767, 32767] kullacağız.
+# Çünkü 16 bitlik ses dosyaları bu aralıkta değer alır.
+veri1_440Hz = np.int16((veri1_440Hz/ np.max(np.abs(veri1_440Hz)))* 32767)
+veri2_880Hz = np.int16((veri2_880Hz/ np.max(np.abs(veri2_880Hz)))* 32767)
+veri3 = np.int16((veri3/ np.max(np.abs(veri3)))* 32767)
+# Dosyları wav formatında, ../../../sesler klasörüne kaydet
+wavfile.write(sesler_dir+ "sin1_440Hz.wav", orneklemeOrani, veri1_440Hz)
+wavfile.write(sesler_dir+ "sin2_880Hz.wav", orneklemeOrani, veri2_880Hz)
+wavfile.write(sesler_dir+ "sin3_440Hz880Hz.wav", orneklemeOrani, veri3)
+```
+
+## Nota Silme
+
+1. `scipy.io.wavfile` modülünü çağırın.
+2. Bir önceki bölümde kaydettiğiniz toplam sinüs dalgası ses dosyasını `wavfile.read()` ile okuyun.
+3. Ses dosyasının ilk 0.01 saniyesinin grafiğini çizdirin.
+4. Ses dosyasının Fourier analizini yapın.
+5. `scipy.fft.fftfreq(len(veri), 1/orneklemOrani)` ile frekansları bulun.
+6. Ses dosyasındaki frekansları (HFD) çizdirin.
+7. 500 Hz'den büyük tüm frekansları sıfırlayın.
+8. Ters Fourier dönüşümü yapın.
+9. Ses dosyasının ilk 0.01 saniyesini gösterin.
+10. Ters dönüşüm ile elde ettiğiniz ses dosyasını kaydedin.
+
+Şimdi bu adımları kodlayalım.
+
+```{python}
+################################################
+import os
+import sys
+# Bu dosyanın bulunduğu dizini al
+current_dir = os.path.abspath('')
+# 3 üst dizine çık + sesler klasörü
+sesler_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'sesler')
+# Bu klasör var mı? Yoksa oluştur
+if not os.path.exists(sesler_dir):
+    # Oluştur
+    os.makedirs(sesler_dir)
+# Linux/MacOS için
+# Eğer OS Linux/Unix ise
+if sys.platform == "linux" or sys.platform == "linux2" or sys.platform == "darwin":
+    sesler_dir = sesler_dir + "/"
+# Eğer OS, Windows ise
+elif sys.platform == "win32":
+    sesler_dir = sesler_dir + "\\"
+################################################
+
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.io.wavfile as wavfile
+import scipy.fft as fft
+# sin3_440Hz880Hz.wav dosyasını oku
+orneklemOrani, veri = wavfile.read(sesler_dir+ "sin3_440Hz880Hz.wav")
+# Süre
+sure= len(veri)/ orneklemOrani
+# Zaman dizisi
+t= np.linspace(0, sure, len(veri))
+plt.plot(t, veri)
+plt.xlim([0,0.01])
+plt.ylabel("Genlik")
+plt.xlabel("Zaman (s)")
+plt.show()
+plt.close()
+# HFD
+veriHFD= fft.fft(veri)
+# Frekanslar
+veriHFDFrek= fft.fftfreq(len(veri), 1/orneklemOrani)
+# Çiz
+plt.plot(veriHFDFrek, np.abs(veriHFD))
+plt.xlim([-1000,1000])
+plt.ylabel("|X(f)|")
+plt.xlabel("Frekans (Hz)")
+plt.show()
+plt.close()
+# 500 Hz'den büyük tüm frekansları sıfırla
+# (Low Pass Filter)
+veriHFD[veriHFDFrek > 500] = 0 
+#veriHFD[veriHFDFrek > 500] = veriHFD[veriHFDFrek > 500]* 0.5
+veriHFD[veriHFDFrek < -500] = 0
+#veriHFD[veriHFDFrek < -500] = veriHFD[veriHFDFrek < -500]* 0.5 
+# Çiz
+plt.plot(veriHFDFrek, np.abs(veriHFD))
+plt.xlim([-1000,1000])
+plt.ylabel("|X(f)| (Filtreli)")
+plt.xlabel("Frekans (Hz)")
+plt.show()
+plt.close()
+# THFD
+veriTHFD_filtreli= fft.ifft(veriHFD)
+# Zaman
+tTHFD_filtreli=\
+    np.linspace(0, sure, len(veriTHFD_filtreli))
+# Çiz
+plt.plot(tTHFD_filtreli, np.real(veriTHFD_filtreli))
+plt.xlim([0,0.01])
+plt.ylabel("Genlik")
+plt.xlabel("Zaman (s)")
+plt.show()
+plt.close()
+# Normalizasyon
+# Gerek yok ama yine de yapalım
+veriTHFD_filtreli = np.int16((np.real(veriTHFD_filtreli)/ np.max(np.abs(veriTHFD_filtreli)))* 32767)
+# Dosyları wav formatında kaydet
+wavfile.write(sesler_dir+"sin3_440Hz880Hz_filtreliLowPass500.wav", orneklemOrani, veriTHFD_filtreli)
+```
+
+## Alıştırma 1
+
+Yukarıda yapılan örnekte 500'den küçük frekansları sıfırlayın ve tüm adımları tekrarlayın.
+
+## Gürültü ve Ses Dosyası Analizi
+
+1. Örnekleme oranını 44100 Hz olarak belirleyin.
+2. Toplam 5 saniye olacak şekilde bir zaman dizisi oluşturun.
+3. 5 saniyelik rastgele bir sinyal gürültüsü oluşturun. `np.rand.randn(arrayBoyutu)` kullanabilirsiniz.
+4. 5 saniyelik bir sinüs sinyali oluşturun. Frekansı 170 Hz olsun.
+5. Gürültü ve sinüs sinyalini toplayın ve yeni bir değişkene atayın.
+6. Tüm değişkenleri oranlayın (scaling) ve `write("<dosya_adi>.wav", örnekleme_oranı, <oranli-degisken>)` ile kaydedin.
+7. Sinüs, gürültü ve toplam sinyallerinin ilk 0.1 saniyesini aynı grafikte alt alta çizdirin.
+8. 3 adet sinyalin hızlı Fourier dönüşümünü (`scipy.fft.fft()`) yapın.
+9. 3 adet sinyalin frekanslarını (`scipy.fft.fftfreq(len(veri), 1/orneklem_orani)`) hesaplayın. Frekans miktarı verinizden bağımsız olacaktır. Sadece verinizin örnekleme oranı (verinin büyüklüğü) ve saniyede kaç örnekleme yaptığınız önemlidir.
+10. Frekans uzayını, 3 adet alt alta grafik olacak şekilde çizdirin.
+11. Toplam sinyalden gürültü frekansını silin.
+12. Filtrelenmiş sinyalin Fourier dönüşümünü, karşılaştırmalı olarak çizdirin.
+13. Ters Fourier dönüşümü yapın ve filtrelenmiş sinyalin ilk 0.1 saniyesi ile filtrelenmemiş sinyalin ilk 0.1 saniyesini grafik üzerinde karşılaştırın.
+14. Filtrelenmiş sinyali wav dosyası olarak kaydedin.
+
+```{python}
+################################################
+import os
+import sys
+# Bu dosyanın bulunduğu dizini al
+current_dir = os.path.abspath('')
+# 3 üst dizine çık + sesler klasörü
+sesler_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'sesler')
+# Bu klasör var mı? Yoksa oluştur
+if not os.path.exists(sesler_dir):
+    # Oluştur
+    os.makedirs(sesler_dir)
+# Linux/MacOS için
+# Eğer OS Linux/Unix ise
+if sys.platform == "linux" or sys.platform == "linux2" or sys.platform == "darwin":
+    sesler_dir = sesler_dir + "/"
+# Eğer OS, Windows ise
+elif sys.platform == "win32":
+    sesler_dir = sesler_dir + "\\"
+################################################
+
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.io.wavfile as wavfile
+import scipy.fft as fft
+# Veriyi oluştur
+orneklemeOrani= 44100
+sure= 5 # s
+# Zaman
+t= np.linspace(0, sure, orneklemeOrani* sure)
+# Sinüs dalgaları
+veri4_170Hz= np.sin(2*np.pi*170*t)
+veri5_Gurultu= np.random.rand(len(t))
+veri6_topla= veri4_170Hz+ veri5_Gurultu
+# Çiz
+fig, axs= plt.subplots(3,1, figsize=(15,10))
+axs[0].plot(t, veri4_170Hz)
+axs[0].set_title("170Hz")
+axs[0].set_xlim([0, 0.01])
+axs[1].plot(t, veri5_Gurultu)
+axs[1].set_title("Gürültü")
+axs[1].set_xlim([0, 0.01])
+axs[2].plot(t, veri6_topla)
+axs[2].set_title("Gürültü+170Hz")
+axs[2].set_xlim([0, 0.01])
+plt.tight_layout()
+plt.show()
+plt.close()
+# Wav dosyası olarak kaydet
+wavfile.write(sesler_dir+ "sin4_170Hz.wav", orneklemeOrani, np.int16((np.real(veri4_170Hz)/ np.max(np.abs(veri4_170Hz)))* 32767))
+wavfile.write(sesler_dir+ "gurultu.wav", orneklemeOrani, np.int16((np.real(veri5_Gurultu)/ np.max(np.abs(veri5_Gurultu)))* 32767))
+wavfile.write(sesler_dir+ "sin4_170Hz_gurultulu.wav", orneklemeOrani, np.int16((np.real(veri6_topla)/ np.max(np.abs(veri6_topla)))* 32767))
+# HFD
+hfd_veri4_170Hz= fft.fft(veri4_170Hz)
+hfd_veri5_Gurultu= fft.fft(veri5_Gurultu)
+hfd_veri6_topla= fft.fft(veri6_topla)
+# Frekanslar
+hfd_veri4_170HZ_frek= fft.fftfreq(len(veri4_170Hz), 1/orneklemeOrani)
+hfd_veri5_Gurultu_frek= fft.fftfreq(len(veri5_Gurultu), 1/orneklemeOrani)
+hfd_veri6_topla_frek= fft.fftfreq(len(veri6_topla), 1/orneklemeOrani)
+# Çiz
+fig, axs= plt.subplots(3,1)
+axs[0].plot(hfd_veri4_170HZ_frek, np.abs(hfd_veri4_170Hz))
+axs[0].set_title("HFD-170Hz")
+axs[0].set_xlim([-1000, 1000])
+axs[1].plot(hfd_veri5_Gurultu_frek, np.abs(hfd_veri5_Gurultu))
+axs[1].set_title("HFD-Gürültü")
+axs[1].set_xlim([-1000, 1000])
+axs[2].plot(hfd_veri6_topla_frek, np.abs(hfd_veri6_topla))
+axs[2].set_title("HFD-Toplam")
+axs[2].set_xlim([-1000, 1000])
+plt.tight_layout()
+plt.show()
+plt.close()
+# Toplam sinyalden gürültüyü çıkar
+hfd_veri7_topla_filtre= hfd_veri6_topla - hfd_veri5_Gurultu
+# Çiz
+fig, axs= plt.subplots(2,1)
+axs[0].plot(hfd_veri6_topla_frek, np.abs(hfd_veri6_topla))
+axs[0].set_title("HFD-Toplam")
+axs[0].set_xlim([-1000, 1000])
+axs[1].plot(hfd_veri6_topla_frek, np.abs(hfd_veri7_topla_filtre))
+axs[1].set_title("HFD-Toplam-Gürültüsüz")
+axs[1].set_xlim([-1000, 1000])
+plt.tight_layout()
+plt.show()
+plt.close()
+# Ters FFT
+veri7_topla_filtre= fft.ifft(hfd_veri7_topla_filtre)
+# Çiz
+fig, axs= plt.subplots(2,1)
+axs[0].plot(t, np.abs(veri6_topla))
+axs[0].set_title("Toplam-Veri")
+axs[0].set_xlim([0, 0.01])
+axs[1].plot(t, np.real(veri7_topla_filtre))
+axs[1].set_title("Toplam-Veri-Gürültüsüz")
+axs[1].set_xlim([0, 0.01])
+plt.tight_layout()
+plt.show()
+plt.close()
+# Wav dosyası olarak kaydet
+wavfile.write(sesler_dir+ "sin4_170Hz_gurultulu_filtreli.wav", orneklemeOrani, np.int16((np.real(veri7_topla_filtre)/ np.max(np.abs(veri7_topla_filtre)))* 32767))
+```
+
+## Problemler
+
+### Problem 1
+
+**Kara Delik Birleşmesi (GW150914)**
+
+1. <https://gwosc.org/events/GW150914/> sitesine gidin. Bu sitede 2015 yılında tespit edilen kara delik birleşmesi verileri bulunmaktadır.
+2. _Observation of Gravitational Waves from a Binary Black Hole Merger_ başlığına tıklayınız. Burada hem Hanford hem de Livingston merkezlerinden alınan veriler bulunmaktadır. Aşağıdaki linklerden verileri indirin.
+   1. <https://gwosc.org/GW150914data/P150914/fig1-observed-H.txt>
+   2. <https://gwosc.org/GW150914data/P150914/fig1-observed-L.txt>
+3. Verilerin grafiğini üst üste çizdirin.
+4. Verileri wav dosyası olarak kaydedin. (https://www.youtube.com/watch?v=TWqhUANNFXw)
+5. Verilerin Fourier dönüşümünü yapın ve grafiklerini çizdirin.
+
+### Problem 2
+
+**Gürültü Silme**
+
+1. Gürültü filtreleme işlemini ve mi notasını (329.63 Hz) çıkarma işlemini `problem2-gurultulu-sinyal.wav` dosyası için yapın. Bu dosyaya [bu linkten](../../../sesler/problem2-gurultulu-sinyal.wav.wav) ulaşabilirsiniz. Bu ses dosyası C akoru ve G akoru ardı ardına eklenerek oluşturulmuştur.
+2. Bu ses dosyasındaki G akorundaki sol notasını (392 Hz) çıkarın.
