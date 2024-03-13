@@ -363,6 +363,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   </ul></li>
   <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
@@ -409,7 +410,7 @@ window.Quarto = {
 y(t) = \sin(\omega t + \phi) + \cos(2 \omega t + \phi)
 \]</span></p>
 <p>Çizdirelim.</p>
-<div id="bff1cc55" class="cell" data-execution_count="1">
+<div id="00bd3426" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Zaman</span></span>
@@ -550,7 +551,7 @@ Not
 <p><code>fourier_kfd</code> fonksiyonunu inceleyiniz.</p>
 </div>
 </div>
-<div id="b149126d" class="cell" data-execution_count="2">
+<div id="c171824e" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
@@ -595,12 +596,12 @@ Not
 <div class="cell-output cell-output-stdout">
 <pre><code>20 örneklem sayısına sahip bir dalganın
 Fouirer dönüşümü yapması için geçen süre
-566 µs ± 15.9 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+563 µs ± 4.74 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 
 
 200 örneklem sayısına sahip bir dalganın
  Fouirer dönüşümü yapması için geçen süre
-54.5 ms ± 411 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)</code></pre>
+54.8 ms ± 552 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)</code></pre>
 </div>
 </div>
 <p>Zaman sorunu aşmak için 1965’te Cooley ve Tukey, Fourier dönüşümü algoritmasını geliştirdiler. Bu algoritma HFD, Hızlı Fourier Dönüşümü (FFT, Fast Fourier Transform) olarak bilinir - kesikli ifadesini kullanmacağız. HFD algoritması KFD’ye göre çok daha hızlı çalışır. HFD algoritmasının karmaşıklığı <span class="math inline">\(\mathcal{O}(n \log n)\)</span> iken KFD’nin karmaşıklığı <span class="math inline">\(\mathcal{O}(n^2)\)</span>’dir.</p>
@@ -695,7 +696,7 @@ y(t) = 7 \sin(2\pi t)
 <p>Bu sinyalin KFD’sini alın ve genlik ve faz değerlerini bulun.</p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="0423138b" class="cell" data-execution_count="3">
+<div id="89309d68" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">################################################</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> os</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="im">import</span> sys</span>
@@ -779,6 +780,25 @@ y(t) = 7 \sin(2\pi t)
 <h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
 <p>Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali ve açısal frekansı 10, genliği 5 olan bir cosinüs sinyalinin toplamını çizdirin çizdirin Örneklem oranı <span class="math inline">\(100\)</span>, <span class="math inline">\(t=[0,6)\)</span> aralığında olsun. Sinyalin KFD’sini alın ve bu değerleri pozitif/negatif frekanslara göre çizdirin.</p>
 </section>
+<section id="problem-3" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3">Problem 3</h3>
+<p>Zamandan bağımsız Schrödinger denklemini boşluk için çözdüğümüzde Gaussian dalga paketini elde ederiz. Konum uzayındaki dalga fonksiyonu aşağıdaki gibidir <span class="citation" data-cites="web2024Mar-4">&nbsp;[<a href="#ref-web2024Mar-5" role="doc-biblioref">3</a>]</span>.</p>
+<p><span class="math display">\[ \psi(x, t=0) = &lt;x | \psi(0)&gt;= e^{-\frac{(x^{2}- \mu)}{4\sigma_{x}^{2}}+i k_{0} x}\]</span></p>
+<p>Burada <span class="math inline">\(\mu\)</span> paketin merkezini yani ortalama (mean) değeridir. <span class="math inline">\(\sigma_{x}\)</span> ise <span class="math inline">\(x\)</span> uzayındaki standart sapmayı yani belirsizliği verir. <span class="math inline">\(k_{0}= p/\hbar\)</span> ise paketin momentumunu verir.</p>
+<ol type="1">
+<li>Yukarıda verilen dalga paketini konum uzayında olasılık yoğunluğunu çizdirin. Formülde <span class="math inline">\(\mu = 0\)</span>, <span class="math inline">\(\sigma_{x} = 0.1\)</span> ve <span class="math inline">\(k_{0} = 10\)</span> olarak alın.</li>
+<li>Elde ettiğiniz dalga paketinin Fourier dönüşümünü hesaplayın.
+<ol type="1">
+<li>HFD sonucunu <code>np.fft.fftshift</code> fonksiyonu ile kaydırın. Bu işlem <span class="math inline">\(k\)</span> uzayının <span class="math inline">\(-k_{max}\)</span> ile <span class="math inline">\(k_{max}\)</span> arasında yapın. Bunun için <code>np.fft.fftshift(np.fft.fft(veri))</code> kullanabilirsiniz.</li>
+<li>Fourier dönüşümünü <span class="math inline">\(\frac{2\pi}{L}\)</span> ile normalize edin.</li>
+<li>Fourier dönüşümünün frekansını belirleyin. Bunun için <code>np.fft.fftshift(np.fft.fftfreq(L, dx))</code> formülünü kullanabilirsiniz.</li>
+</ol></li>
+<li>Fourier dönüşümünden elde ettiğiniz Gaussian dalga paketinin momentum uzayındaki olasılık yoğunluğunu çizdirin.</li>
+<li>Tüm işlemi <span class="math inline">\(\sigma_x=0.01\)</span> için tekrar edin. Konum uzayındaki olasılık fonksiyonu ve momentum uzayındaki olasılık fonksiyonunu nasıl değişti?</li>
+<li>Aynı işlemi <span class="math inline">\(\sigma_x=0.001\)</span> için tekrar edin. Konum uzayındaki olasılık fonksiyonu ve momentum uzayındaki olasılık fonksiyonunu nasıl değişti?</li>
+<li>Yukarıdaki işlem ile Heisenberg belirsizlik ilkesi arasında nasıl bir bağlantı var mıdır?</li>
+</ol>
+</section>
 </section>
 <section id="kaynaklar" class="level2">
 <h2 class="anchored" data-anchor-id="kaynaklar">Kaynaklar</h2>
@@ -794,6 +814,12 @@ y(t) = 7 \sin(2\pi t)
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-web2024Feb-7" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline"><em><a href="https://blog.dta.com.tr/fourier-donusumu-nedir"><span>Fourier D<span>ö</span>n<span>ü</span><span>ş</span><span>ü</span>m<span>ü</span> Nedir? - Blog - DTA M<span>ü</span>hendislik</span></a></em>, Blog - DTA M<span>ü</span>hendislik (2022).</div>
+</div>
+<div id="ref-web2024Mar-4" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline"><em><a href="https://www.cond-mat.de/teaching/QM/JSim/wpack.html"><span>Gaussian wave packets</span></a></em>, (2021).</div>
+</div>
+<div id="ref-web2024Mar-5" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline"><em><a href="https://sites.astro.caltech.edu/~golwala/ph125ab"><span>Ph125ab – Fall 2008/Winter 2009 – Sunil Golwala</span></a></em>, (2009).</div>
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

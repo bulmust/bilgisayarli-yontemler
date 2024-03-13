@@ -408,7 +408,7 @@ window.Quarto = {
 <li>Tüm değişkenleri <code>write("&lt;dosya_adi&gt;.wav", örneklemeOranı, &lt;degisken&gt;)</code> ile kaydedin.</li>
 </ol>
 <p>Şimdi bu adımları kodlayalım.</p>
-<div id="b037c87d" class="cell" data-execution_count="1">
+<div id="8e261c54" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> os</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> sys</span>
@@ -442,7 +442,7 @@ window.Quarto = {
 <span id="cb1-31"><a href="#cb1-31"></a>veri2_880Hz<span class="op">=</span> np.sin(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="dv">880</span><span class="op">*</span>t)</span>
 <span id="cb1-32"><a href="#cb1-32"></a>veri3<span class="op">=</span> veri1_440Hz <span class="op">+</span> veri2_880Hz</span>
 <span id="cb1-33"><a href="#cb1-33"></a><span class="co"># Çiz</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a>fig, axs<span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">10</span>))</span>
+<span id="cb1-34"><a href="#cb1-34"></a>fig, axs<span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">1</span>)</span>
 <span id="cb1-35"><a href="#cb1-35"></a>axs[<span class="dv">0</span>].plot(t, veri1_440Hz)</span>
 <span id="cb1-36"><a href="#cb1-36"></a>axs[<span class="dv">0</span>].set_title(<span class="st">"440Hz"</span>)</span>
 <span id="cb1-37"><a href="#cb1-37"></a>axs[<span class="dv">0</span>].set_xlim([<span class="dv">0</span>, <span class="fl">0.01</span>])</span>
@@ -466,7 +466,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="uygulama-ses-dalgalari_files/figure-html/cell-2-output-1.png" width="1439" height="950" class="figure-img"></p>
+<p><img src="uygulama-ses-dalgalari_files/figure-html/cell-2-output-1.png" width="662" height="470" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -487,7 +487,7 @@ window.Quarto = {
 <li>Ters dönüşüm ile elde ettiğiniz ses dosyasını kaydedin.</li>
 </ol>
 <p>Şimdi bu adımları kodlayalım.</p>
-<div id="2bb70598" class="cell" data-execution_count="2">
+<div id="477622fa" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> os</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> sys</span>
@@ -617,7 +617,7 @@ window.Quarto = {
 <li>Ters Fourier dönüşümü yapın ve filtrelenmiş sinyalin ilk 0.1 saniyesi ile filtrelenmemiş sinyalin ilk 0.1 saniyesini grafik üzerinde karşılaştırın.</li>
 <li>Filtrelenmiş sinyali wav dosyası olarak kaydedin.</li>
 </ol>
-<div id="d80471b1" class="cell" data-execution_count="3">
+<div id="8cfed8ba" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">################################################</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> os</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> sys</span>
@@ -652,7 +652,7 @@ window.Quarto = {
 <span id="cb3-32"><a href="#cb3-32"></a>veri5_Gurultu<span class="op">=</span> np.random.rand(<span class="bu">len</span>(t))</span>
 <span id="cb3-33"><a href="#cb3-33"></a>veri6_topla<span class="op">=</span> veri4_170Hz<span class="op">+</span> veri5_Gurultu</span>
 <span id="cb3-34"><a href="#cb3-34"></a><span class="co"># Çiz</span></span>
-<span id="cb3-35"><a href="#cb3-35"></a>fig, axs<span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">10</span>))</span>
+<span id="cb3-35"><a href="#cb3-35"></a>fig, axs<span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">1</span>)</span>
 <span id="cb3-36"><a href="#cb3-36"></a>axs[<span class="dv">0</span>].plot(t, veri4_170Hz)</span>
 <span id="cb3-37"><a href="#cb3-37"></a>axs[<span class="dv">0</span>].set_title(<span class="st">"170Hz"</span>)</span>
 <span id="cb3-38"><a href="#cb3-38"></a>axs[<span class="dv">0</span>].set_xlim([<span class="dv">0</span>, <span class="fl">0.01</span>])</span>
@@ -704,7 +704,7 @@ window.Quarto = {
 <span id="cb3-84"><a href="#cb3-84"></a>plt.tight_layout()</span>
 <span id="cb3-85"><a href="#cb3-85"></a>plt.show()</span>
 <span id="cb3-86"><a href="#cb3-86"></a>plt.close()</span>
-<span id="cb3-87"><a href="#cb3-87"></a><span class="co"># Ters FFT</span></span>
+<span id="cb3-87"><a href="#cb3-87"></a><span class="co"># Ters HFD</span></span>
 <span id="cb3-88"><a href="#cb3-88"></a>veri7_topla_filtre<span class="op">=</span> fft.ifft(hfd_veri7_topla_filtre)</span>
 <span id="cb3-89"><a href="#cb3-89"></a><span class="co"># Çiz</span></span>
 <span id="cb3-90"><a href="#cb3-90"></a>fig, axs<span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">1</span>)</span>
@@ -722,7 +722,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="uygulama-ses-dalgalari_files/figure-html/cell-4-output-1.png" width="1439" height="950" class="figure-img"></p>
+<p><img src="uygulama-ses-dalgalari_files/figure-html/cell-4-output-1.png" width="662" height="470" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -756,11 +756,12 @@ window.Quarto = {
 <p><strong>Kara Delik Birleşmesi (GW150914)</strong></p>
 <ol type="1">
 <li><a href="https://gwosc.org/events/GW150914/" class="uri">https://gwosc.org/events/GW150914/</a> sitesine gidin. Bu sitede 2015 yılında tespit edilen kara delik birleşmesi verileri bulunmaktadır.</li>
-<li><em>Observation of Gravitational Waves from a Binary Black Hole Merger</em> başlığına tıklayınız. Burada hem Hanford hem de Livingston merkezlerinden alınan veriler bulunmaktadır. Aşağıdaki linklerden verileri indirin.
+<li><em>Observation of Gravitational Waves from a Binary Black Hole Merger</em> başlığına tıklayınız. Burada hem Hanford hem de Livingston merkezlerinden alınan veriler bulunmaktadır.
 <ol type="1">
 <li><a href="https://gwosc.org/GW150914data/P150914/fig1-observed-H.txt" class="uri">https://gwosc.org/GW150914data/P150914/fig1-observed-H.txt</a></li>
 <li><a href="https://gwosc.org/GW150914data/P150914/fig1-observed-L.txt" class="uri">https://gwosc.org/GW150914data/P150914/fig1-observed-L.txt</a></li>
 </ol></li>
+<li>Bu dosyaları <code>pandas</code> kütüphanesini kullanarak okuyun, <code>pandas.read_csv("&lt;LINK&gt;, skiprows=1, sep=" ", header=None")</code> .</li>
 <li>Verilerin grafiğini üst üste çizdirin.</li>
 <li>Verileri wav dosyası olarak kaydedin. (https://www.youtube.com/watch?v=TWqhUANNFXw)</li>
 <li>Verilerin Fourier dönüşümünü yapın ve grafiklerini çizdirin.</li>
@@ -770,8 +771,14 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
 <p><strong>Gürültü Silme</strong></p>
 <ol type="1">
-<li>Gürültü filtreleme işlemini ve mi notasını (329.63 Hz) çıkarma işlemini <code>problem2-gurultulu-sinyal.wav</code> dosyası için yapın. Bu dosyaya <a href="../../../sesler/problem2-gurultulu-sinyal.wav.wav">bu linkten</a> ulaşabilirsiniz. Bu ses dosyası C akoru ve G akoru ardı ardına eklenerek oluşturulmuştur.</li>
-<li>Bu ses dosyasındaki G akorundaki sol notasını (392 Hz) çıkarın.</li>
+<li>Gürültü filtreleme işlemini <code>problem2-gurultulu-sinyal.wav</code> dosyası için yapın. Dosyaya <a href="../../../sesler/problem2-gurultulu-sinyal.wav.wav">bu linkten</a> ulaşabilirsiniz. Bu dosya C akoru ve G akorunu ardı ardına eklenerek oluşturulmuştur.</li>
+<li>Ses dosyasını tam ortadan ikiye ayırın.</li>
+<li>İlk yarısına hfd yapın. Bu frekansların 261.63 Hz, 329.63 Hz ve 392.0 Hz olduğunu göreceksiniz.</li>
+<li>Bu frekanslar dışındaki tüm frekansları sıfırlayın.</li>
+<li>İkinci yarısına hfd yapın. Bu frekansların 392.0 Hz, 493.88 Hz ve 293.66 Hz olduğunu göreceksiniz.</li>
+<li>Bu frekanslar dışındaki tüm frekansları sıfırlayın.</li>
+<li>Ardından bu iki dosyanın ters hfd’sini alın ve birleştirin.</li>
+<li>Filtrelenmiş ses dosyasını <code>problem2-gurultusuz-sinyal.wav.wav</code> olarak kaydedin.</li>
 </ol>
 
 
