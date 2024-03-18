@@ -316,6 +316,23 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../icerik/konular/veri-analizi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Veri Analizi</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/veri-analizi/pandas-giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pandas - Giris</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -367,7 +384,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">13 Mart 2024</p>
+      <p class="date">18 Mart 2024</p>
     </div>
   </div>
   
@@ -450,7 +467,7 @@ y(t)=-\frac{gt^2}{2} + 40t
 \theta(u) - 50 = 0\text{.}
 \]</span></p>
 <p>O halde <span class="math inline">\(\theta(u)\)</span> fonksiyonu başlangıç değer probleminin çözümüne bağlı. Bunu bir fonksiyon gibi tanımlayıp kökünü bulalım. Bu fonksiyon kodda şöyle tanımlanacak. <code>u</code> değeri girdi olacak. Bu <code>u</code> değerine göre başlangıç değer problemini çözecek. Çözümün son değeri <span class="math inline">\(y(5)\)</span> değeri olacak. Bu değer ile <span class="math inline">\(50\)</span> değeri arasındaki farkı döndürecek. Bu farkın kökünü bulmak için <code>scipy.optimize.ridder(fonksiyon, kok_araligi_baslangic, kok_araligi_bitis)</code> fonksiyonunu kullanacağız.</p>
-<div id="4670a17a" class="cell" data-execution_count="1">
+<div id="c811be2c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> scipy.integrate <span class="im">as</span> scInteg</span>
