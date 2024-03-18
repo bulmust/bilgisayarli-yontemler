@@ -56,6 +56,10 @@ website:
               - icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.qmd
               - icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.qmd
               - icerik/konular/fourier-analizi/uygulama-ses-dalgalari.qmd
+          - section: Veri Analizi
+            href: icerik/konular/veri-analizi.qmd
+            contents:
+              - icerik/konular/veri-analizi/pandas-giris.qmd
 
 format:
   html:

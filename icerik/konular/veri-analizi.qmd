@@ -1,0 +1,9 @@
+---
+title: "Veri Analizi"
+---
+
+## Veri Analizi
+
+Fizikte ve diğer branşlarda çok büyük veri kümeleriyle çalışmak gerekebilir. Bu veri istatistiksel bir anlam çıkarmak için kullanılabilir veya bir analiz sonucunda ortaya çıkmış olabilir.
+
+Bu bölümde veri analizi için kullanılan temel yöntemlerden bazılarına değineceğiz.

@@ -1,0 +1,426 @@
+---
+title: "pandas - Giris"
+---
+
+## `pandas` Modülüne Giriş
+
+Pandas, Python programlama dilini kullanarak veri manüpilasyonu ve analizi için kullanılan bir kütüphanedir. Tıpkı `numpy` paketi gibi veri işleme konulardı önemli bir yer teşkil ederi.
+
+**Web sitesi:** [pandas.pydata.org](http://pandas.pydata.org/)
+
+**Dökümantasyon:** [pandas.pydata.org](http://pandas.pydata.org/docs/)
+
+Pandas, tıpkı numpy arrayleri gibi veri yapılarını kullanarak veri analizi yapmamızı sağlayan bir Python modülüdür. Arka planda `numpy`, `matplotlib` ve `scipy` gibi modülleri kullanır.
+
+Pandas modülünü kullanabilmek için öncelikle modülü içe aktarmamız gerekiyor. Bu modülün yanında genellikle numpy ve matplotlib modüllerini de içe aktarıyoruz.
+
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+## Seriler
+
+Tıpkı `numpy` paketindeki bir boyutlu diziler gibi `pandas` paketinde de bir boyutlu seriler vardır. Bu seriler aşağıdaki gibi oluşturulur.
+
+```{python}
+import pandas as pd
+## Numpy Array
+#arr1= np.array([1,2,3,4])
+#print(arr1)
+# Pandas Serisi
+s=pd.Series([909976, 8615246, 2872086, 2273305])
+print(s)
+```
+
+`numpy` paketindeki dizilerdeki gibi serilerde de `dtype` parametresi ile veri tipi belirtilir. `dtype` parametresi belirtilmezse veri tipi otomatik olarak belirlenir. Yukarıdaki örnekte `dtype` parametresi belirtilmediği için veri tipi otomatik olarak `int64` olarak belirlenmiştir.
+
+`numpy` dizileri ile `pandas` serileri arasındaki en büyük fark indekslemedir. `s` değişkenini ekrana yazdırdığımızda değerlerin sol tarafında sıfırdan başlayan etiketler (index) görüyoruz. Bu etiketler serilerdeki değerlerin sırasını gösterir.
+
+Etiketlerin ne olduğunda erişmek için `.index` komutu kullanılır.
+
+```{python}
+import pandas as pd
+s=pd.Series([909976, 8615246, 2872086, 2273305])
+print(f"s.index       => {s.index}")
+print(f"list(s.index) => {list(s.index)}")
+# Python listelerinde de benzer durum vardır.
+print(f"range(4)       => {range(4)}")
+print(f"list(range(4)) => {list(range(4))}")
+```
+
+Serilerin etiketsiz, yani ham değerlerine de `.values` komutu ile erişilir.
+
+```{python}
+import pandas as pd
+s=pd.Series([909976, 8615246, 2872086, 2273305])
+# Değerleri
+print(s.values)
+# Değişkene ata
+liste=s.values
+print(liste[2])
+# Kısa versiyonu
+print(s.values[2])
+```
+
+Etiketleme yöntemi ile veriye erişmek faydalıdır. Örneğin `s` ile tanımladığımız değerler Stockholm, Londra, Roma ve Paris'in nüfusları olsun. Bu durumda etiketleri de şehir isimlerine değiştirebiliriz. Aynı zamanda serinin ismini de belirleyebiliriz.
+
+```{python}
+import pandas as pd
+s=pd.Series([909976, 8615246, 2872086, 2273305])
+# Etiketleri değiştirme
+s.index=['Stockholm', 'Londra', 'Roma', 'Paris']
+print(s)
+print("---o---o---")
+s.name='Nüfus'
+print(s)
+```
+
+Tüm bu işlemleri tek tek yapmaktansa seriyi tanımlarken de yapabiliriz.
+
+```{python}
+import pandas as pd
+s=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')
+print(s)
+```
+
+## Veriye Erişmek
+
+Tıpkı `numpy` dizilerinde veya matrislerinde olduğu gibi `pandas` serilerinde de bazı verilere erişmek gerekecektir. Bunun için çeşitli yöntemler vardır.
+
+Önce yukarıda tanımladığımız `s` serisinin "Londra" etiketine sahip değerine erişelim.
+
+```{python}
+import pandas as pd
+s=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')
+# İki çeşit erişim
+print(f"s['Londra'] => {s['Londra']}")
+print(f"s.Londra    => {s.Londra}")
+```
+
+Görüldüğü üzere etiketler üzerinden iki farklı şekilde veriye erişebiliyoruz. Benzer şekilde hem "Londra" hem de "Roma" etiketlerine sahip değerlere erişmek için aşağıdaki gibi bir kod yazabiliriz. Sonucun yeni bir seri olduğuna dikkat edin.
+
+```{python}
+import pandas as pd
+s=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')
+# Londra, Roma etiketlerine sahip değerler
+# Sonuç yeni bir SERİ olacaktır.
+print(f"s[['Londra', 'Roma']] => \n{s[['Londra', 'Roma']]}")
+print("---o---o---")
+```
+
+`pandas` paketi temel olarak istatistiksel işlemler yapmaya uygun olduğu için tanımlanan serilerde bazı istatistiksel işlemler yapılabilir.
+
+```{python}
+import pandas as pd
+s=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')
+# Medyan (Ortanca)
+print(f"Medyan: {s.median()}")
+# Ortalama
+print(f"Ortalama: {s.mean()}") 
+# Standart Sapma
+print(f"Standart Sapma: {s.std()}") 
+# Min-Max
+print(f"Min: {s.min()}")
+print(f"Max: {s.max()}")
+print("---o---o---")
+# Tanımlı istatistiksel değerler
+print(s.describe())
+```
+
+Serileri çizdimrk için `plot` fonksiyonu kullanılır. Plot fonksiyonunu eskiden yaptığımız gibi `plt.plot()` şeklinde de kullanabiliriz veya `s.plot()` şeklinde de kullanabiliriz. `s.plot()` şeklinde kullanılması, `pandas` paketinin içerisinde `matplotlib` paketinin bulunduğu anlamına gelir.
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+mpl.style.use('ggplot') # İstatistiksel grafikleri daha estektik hale getirir.
+s=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')
+# Çiz
+# # 1 satır 4 sütunluk bir grafik
+# fig, axes= plt.subplots(1,4)
+# # s verisini çizdir
+# s.plot(ax=axes[0], kind='line', title='Çizgi Grafiği')
+# s.plot(ax=axes[1], kind='bar', title='Çubuk Grafiği')
+# s.plot(ax=axes[2], kind='barh', title='Yatay Çubuk Grafiği')
+# s.plot(ax=axes[3], kind='pie', title='Pasta Grafiği')
+s.plot(kind='line', title='Çizgi Grafiği')
+plt.show()
+plt.close()
+s.plot(kind='bar', title='Çubuk Grafiği')
+plt.show()
+plt.close()
+s.plot(kind='barh', title='Yatay Çubuk Grafiği')
+plt.show()
+plt.close()
+s.plot(kind='pie', title='Pasta Grafiği')
+plt.show()
+plt.close()
+```
+
+## Alıştırma 1
+
+1. Aşağıdaki verileri içeren bir `pandas` serisi oluşturun.
+
+| İsim | Yaş |
+| --- | --- |
+| Ali | 25 |
+| Ayşe | 30 |
+| Mehmet | 40 |
+| Fatma | 35 |
+| Hasan | 20 |
+| Hüseyin | 50 |
+| Zeynep | 45 |
+| Merve | 30 |
+| Özlem | 35 |
+
+2. Bu serinin ismini "Yaşlar" olarak ayarlayın.
+3. Bu serideki Fatma'nın yaşını ekrana yazdırın.
+4. Bu serideki Fatma'nın, Hasan'ın ve Zeynep'in yaşlarını ekrana yazdırın.
+5. Bu serideki Fatma'nın yaşını 18 yapın.
+6. Bu seri'deki en yaşlı kişinin yaşını ekrana yazdırın.
+7. Bu seri'deki en genç kişinin yaşını ekrana yazdırın.
+8. Yaşların ortalamasını ekrana yazdırın.
+9. Bu seriyi dikey bar ve pasta grafiği olarak çizdirin.
+
+### Çözüm
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+mpl.style.use('ggplot')
+# 1. Soru
+s=pd.Series([25, 30, 40, 35, 20, 50, 45, 30, 35], index=['Ali', 'Ayşe', 'Mehmet', 'Fatma', 'Hasan', 'Hüseyin', 'Zeynep', 'Merve', 'Özlem'], name='Yaşlar')
+# s=pd.Series([25, 30, 40, 35, 20, 50, 45, 30, 35])
+# s.index=['Ali', 'Ayşe', 'Mehmet', 'Fatma', 'Hasan', 'Hüseyin', 'Zeynep', 'Merve', 'Özlem']
+# 2. Soru
+s.name='Yaşlar'
+# 3. Soru
+print(f"Fatma'nın yaşı: {s['Fatma']}")
+# print(f"Fatma'nın yaşı: {s.Fatma}")
+# 4. Soru
+print(f"Fatma, Hasan ve Zeynep'in yaşları: \n{s[['Fatma', 'Hasan', 'Zeynep']]}")
+# 5. Soru
+s['Fatma']=18
+# s.Fatma=18
+# 6. Soru
+print(f"En yaşlı kişi: {s.max()}")
+# 7. Soru
+print(f"En genç kişi: {s.min()}")
+# 8. Soru
+print(f"Ortalama: {s.mean()}")
+# 9. Soru
+s.plot(kind='bar', title='Yaşlar')
+plt.show()
+plt.close()
+s.plot(kind='pie', title='Yaşlar')
+plt.show()
+plt.close()
+```
+
+#<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+## Veri Çerçevesi (DataFrame)
+
+Serileri tek boyutlu diziler olarak düşünebiliriz. Yukarıda verdiğimiz örnekte, `s` serisi sadece şehirlerin nüfus bilgisini içeriyordu. `pandas` paketinde verileri iki boyutlu bir yapıda tutan veri çerçeveleri (dataframe) vardır.Veri çerçevelerini aşağıdaki gibi oluşturabiliriz.
+
+```{python}
+import pandas as pd
+# Data Frame
+df= pd.DataFrame([\
+      [909976, "İsveç"]\
+    , [8615246, "Birleşik Krallık"]\
+    , [2872086, "İtalya"]\
+    , [2273305, "Fransa"]]
+        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])
+print(df)
+```
+
+Serideki nüfus bilgisine ek olarak ülke verisini de kaydettik. Yatayda (satır) eklenen veri etiket, `index` bazında ilerlerken düşeyde (sütun) eklenen veri sütun bazında ilerlemektedir. Sütunlar `columns-` olarak isimlendirilmektedir. Eğer herhangi bir adlandırma yapılmazsa, tıpkı etiketlerde olduğu gibi otomatik olarak sıfırdan başlayan sıralı sayılar atanır.
+
+Sütunlara erişmek için aşağıdaki gibi bir kod yazılır.
+
+```{python}
+import pandas as pd
+# Data Frame
+df= pd.DataFrame([\
+      [909976, "İsveç"]\
+    , [8615246, "Birleşik Krallık"]\
+    , [2872086, "İtalya"]\
+    , [2273305, "Fransa"]]
+        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])
+print(df.columns)
+# Sütunlardaki sadece nüfus elemanına erişmek için
+print(df.columns[0])
+```
+
+Dataframe'leri python sözlük (dictionary) şeklinde de tanımlayabiliriz.
+
+```{python}
+import pandas as pd
+# Alternatif Tanımlama
+df2= pd.DataFrame({
+    "Nüfus": [909976, 8615246, 2872086, 2273305],
+    "Ülke": ["İsveç", "Birleşik Krallık", "İtalya", "Fransa"]},
+    index=['Stockholm', 'Londra', 'Roma', 'Paris'])
+print(df2)
+```
+
+## Veriye Erişim
+
+Serilerde olduğu gibi dataframe'lerde de verilere erişmek gerekecektir. Bunun için çeşitli yöntemler vardır.
+
+::: {.callout-caution}
+DataFrame'lerde veriye ulaşmak için kullanılan köşeli parantez yöntemi sadece sütunlar için geçerlidir.
+:::
+
+::: {.callout-warning}
+Türkçe karakter kullanarak tanımlanan sütunlarda nokta kullanarak erişim sağlayamayabilirsiniz. Bunun için köşeli parantez ve tırnak kullanmanız gerekir.
+:::
+
+```{python}
+import pandas as pd
+# Data Frame
+df= pd.DataFrame([\
+      [909976, "İsveç"]\
+    , [8615246, "Birleşik Krallık"]\
+    , [2872086, "İtalya"]\
+    , [2273305, "Fransa"]]
+        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])
+# Nüfus sütununa erişim
+print(df["Nüfus"])
+print("----------------")
+#! Türkçe karakter kullandığımızda hata vermedi !?
+print(df.Nüfus)
+print("----------------")
+#print(df["Roma"]) #! Hata verir
+```
+
+::: {.callout-warning}
+Serilerde `["Satır"]` şeklinde erişim yaparken dataframe'lerde `["Sütun"]` şeklinde erişim yapılır.
+:::
+
+```{python}
+import pandas as pd
+# Seri
+s=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')
+# Data Frame
+df= pd.DataFrame([\
+      [909976, "İsveç"]\
+    , [8615246, "Birleşik Krallık"]\
+    , [2872086, "İtalya"]\
+    , [2273305, "Fransa"]]
+        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])
+# Seride "Londra" etiketine sahip değer
+print(f"s['Londra'] => {s['Londra']}")
+print("---o---o---o---")
+# Dataframe'de "Nüfus" sütununa sahip sütun
+print(f"df['Nüfus'] => \n{df['Nüfus']}")
+```
+
+Sütunlara köşeli parantez veya nokta kullanarak erişebildik. Satırlara dar `.loc[]` yöntemi ile erişebiliriz. `loc` yöntemi ile erişmek istediğimizde belirlediğimiz satır(lar)daki tüm sütun değerlerini alırız.
+
+Eğer belirlediğimiz bir satırın tüm sütun değerlerini almak istemiyorsak, sütunları da belirtmemiz gerekir. Bunun için `loc[Satır(lar), Sütun(lar)]` şeklinde bir kullanım yaparız.
+
+```{python}
+import pandas as pd
+# Data Frame
+df= pd.DataFrame([\
+      [909976, "İsveç"]\
+    , [8615246, "Birleşik Krallık"]\
+    , [2872086, "İtalya"]\
+    , [2273305, "Fransa"]]
+        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])
+# Data Frame Yazdır
+print(f"df => \n{df}")
+print("---o---o---o---")
+print(f"df.loc['Roma'] => \n{df.loc['Roma']}")
+print("---o---o---o---")
+print(f"df.loc[['Roma', 'Paris']] => \n{df.loc[['Roma', 'Paris']]}")
+print("---o---o---o---")
+print(f"df.loc[['Roma', 'Paris'], 'Nüfus'] => \n{df.loc[['Roma', 'Paris'], 'Nüfus']}")
+```
+
+## Alıştırma 2
+
+1. Aşağıdaki verileri içeren bir `pandas` dataframe (veri çerçevesi) oluşturun.
+
+| İsim | Yaş | Meslek | Maaş | Cinsiyet |
+| --- | --- | --- | --- | --- |
+| Ali | 25 | Öğrenci | 1000 | Erkek |
+| Ayşe | 30 | Öğretmen | 5000 | Kadın |
+| Mehmet | 40 | Mühendis | 8000 | Erkek |
+| Fatma | 35 | Doktor | 10000 | Kadın |
+| Hasan | 20 | Öğrenci | 1000 | Erkek |
+| Hüseyin | 50 | Mühendis | 8000 | Erkek |
+| Zeynep | 45 | Doktor | 10000 | Kadın |
+| Merve | 30 | Öğretmen | 5000 | Kadın |
+
+2. Bu veri çerçevesinin ismini "Personel" olarak ayarlayın.
+3. Bu veri çerçevesindeki "Meslek" sütununu ekrana yazdırın.
+4. Bu veri çerçevesindeki "Meslek" ve "Maaş" sütunlarını ekrana yazdırın.
+5. Bu veri çerçevesindeki "Meslek" ve "Maaş" sütunlarını "Meslekler" ve "Maaşlar" olarak ayarlayın.
+   - CEVAP: 
+```{python}
+df=df.rename(columns= {'Meslek' : 'Meslekler'})
+df=df.rename(columns= {'Maaş' : 'Maaşlar'})
+```
+6. Bu veri çerçevesindeki "Ali"'nin tüm bilgilerini ekrana yazdırın.
+7. Bu veri çerçevesindeki "Ali", "Ayşe" ve "Mehmet"'in tüm bilgilerini ekrana yazdırın.
+8. Bu veri çerçevesindeki "Ali"'nin "Meslek" ve "Maaş" bilgilerini ekrana yazdırın.
+9.  Bu veri çerçevesindeki "Ali", "Ayşe" ve "Mehmet"'in "Yaş" ve "Cinsiyet" bilgilerini ekrana yazdırın. 
+
+### Çözüm
+
+```{python}
+import pandas as pd
+# 1. Soru
+df= pd.DataFrame({
+    "Yaş": [25, 30, 40, 35, 20, 50, 45, 30],
+    "Meslek": ["Öğrenci", "Öğretmen", "Mühendis", "Doktor", "Öğrenci", "Mühendis", "Doktor", "Öğretmen"],
+    "Maaş": [1000, 5000, 8000, 10000, 1000, 8000, 10000, 5000],
+    "Cinsiyet": ["Erkek", "Kadın", "Erkek", "Kadın", "Erkek", "Erkek", "Kadın", "Kadın"]
+    },
+    index=['Ali', 'Ayşe', 'Mehmet', 'Fatma', 'Hasan', 'Hüseyin', 'Zeynep', 'Merve'])
+# 2. Soru
+df.name='Personel'
+print(f"df.name => {df.name}")
+print("---o---o---o---")
+# 3. Soru
+print(f"df['Meslek'] => \n{df['Meslek']}")
+print("---o---o---o---")
+# 4. Soru
+print(f"df[['Meslek', 'Maaş']] => \n{df[['Meslek', 'Maaş']]}")
+print("---o---o---o---")
+# 5. Soru
+df=df.rename(columns= {'Meslek' : 'Meslekler'})
+df=df.rename(columns= {'Maaş' : 'Maaşlar'})
+print(f"df.columns => {df.columns}")
+print("---o---o---o---")
+# 6. Soru
+print(f"df.loc['Ali'] => \n{df.loc['Ali']}")
+print("---o---o---o---")
+# 7. Soru
+print(f"df.loc[['Ali', 'Ayşe', 'Mehmet']] => \n{df.loc[['Ali', 'Ayşe', 'Mehmet']]}")
+print("---o---o---o---")
+# 8. Soru
+print(f"df.loc['Ali', ['Meslekler', 'Maaşlar']] => \n{df.loc['Ali', ['Meslekler', 'Maaşlar']]}")
+print("---o---o---o---")
+# 9. Soru
+print(f"df.loc[['Ali', 'Ayşe', 'Mehmet'], ['Yaş', 'Cinsiyet']] => \n{df.loc[['Ali', 'Ayşe', 'Mehmet'], ['Yaş', 'Cinsiyet']]}")
+print("---o---o---o---")
+```
+
+## Problemler
+
+### Problem 1
+
+1. Ekte bulunan `european_cities.csv` dosyasını okuyarak bir `pandas` dataframe (veri çerçevesi) oluşturun. Bu datayı okumak için `pd.read_csv('european_cities.csv')` fonksiyonunu kullanabilirsiniz.
+2. [@web2024Feb-6] referansındaki `european_cities.csv` dosyasını okuyarak farklı isimde bir `pandas` dataframe (veri çerçevesi) oluşturun.
+3. `.info()` fonksiyonunu kullanarak içeriği hakkında bilgi edinin.
+
+## Referanslar
+
+1. Numerical Python: Scientific Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019, **syf 406**
+2. VS Code ile csv dosyası görüntüleme: [Excel Viewer](https://marketplace.visualstudio.com/items?itemName=GrapeCity.gc-excelviewer)
