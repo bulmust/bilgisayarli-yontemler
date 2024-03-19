@@ -380,8 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="pandas-modülü-tekrar" class="level2">
 <h2 class="anchored" data-anchor-id="pandas-modülü-tekrar"><code>pandas</code> Modülü Tekrar</h2>
 <p>Şuana kadar öğrendiğimiz komutların bir listesinini yazalım.</p>
-<div id="1c17934f" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co"># Seriler</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>s<span class="op">=</span> pd.Series([<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>, <span class="dv">500</span>]<span class="op">\</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a>    ,index<span class="op">=</span> [<span class="st">"Londra"</span>, <span class="st">"Paris"</span>, <span class="st">"Roma"</span>, <span class="st">"Berlin"</span>, <span class="st">"Oslo"</span>])</span>
@@ -414,44 +413,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-31"><a href="#cb1-31"></a>df.loc[[<span class="dv">0</span>, <span class="dv">1</span>]] <span class="co"># Satır ismi (etiket, index) olmadığı için 0,1</span></span>
 <span id="cb1-32"><a href="#cb1-32"></a>df.rename(columns<span class="op">=</span> {<span class="st">"Nüfus"</span> : <span class="st">"Nüfuslar"</span>})</span>
 <span id="cb1-33"><a href="#cb1-33"></a>df.info()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'pandas.core.series.Series'&gt;
-Index: 5 entries, Londra to Oslo
-Series name: None
-Non-Null Count  Dtype
---------------  -----
-5 non-null      int64
-dtypes: int64(1)
-memory usage: 252.0+ bytes
----o---o---o---
-&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 5 entries, 0 to 4
-Data columns (total 3 columns):
- #   Column  Non-Null Count  Dtype 
----  ------  --------------  ----- 
- 0   Şehir   5 non-null      object
- 1   Nüfus   5 non-null      int64 
- 2   Alan    5 non-null      int64 
-dtypes: int64(2), object(1)
-memory usage: 248.0+ bytes</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="pandas-veri-manipülasyonu_files/figure-html/cell-2-output-2.png" width="575" height="411" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 </section>
 <section id="veri-çekme" class="level2">
 <h2 class="anchored" data-anchor-id="veri-çekme">Veri Çekme</h2>
 <p><code>pandas</code> modülü ile bir dosyadaki veriyi okuyabildiğimiz gibi bir internet sitesinden de veriyi çekebiliriz.</p>
-<div id="57f59465" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="bu">print</span>(df)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c5dee3ac" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="bu">print</span>(df)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Rank        City            State Population Date of census/estimate
 0       1   London[2]   United Kingdom  8,615,246             1 June 2014
@@ -473,27 +443,27 @@ memory usage: 248.0+ bytes</code></pre>
 <section id="başlık-değiştirme" class="level2">
 <h2 class="anchored" data-anchor-id="başlık-değiştirme">Başlık Değiştirme</h2>
 <p>Şimdi <code>df</code> veri çerçevesinin “Rank” başlığını “Ranks” yapalım.</p>
-<div id="2cbcf627" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Sütunlar</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="bu">print</span>(df.columns)</span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># Sütun ismi değiştirme</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a>df<span class="op">=</span> df.rename(columns<span class="op">=</span>{<span class="st">'Rank'</span>:<span class="st">'Ranks'</span>})</span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="bu">print</span>(df.columns)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2b055f48" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Sütunlar</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="bu">print</span>(df.columns)</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co"># Sütun ismi değiştirme</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>df<span class="op">=</span> df.rename(columns<span class="op">=</span>{<span class="st">'Rank'</span>:<span class="st">'Ranks'</span>})</span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="bu">print</span>(df.columns)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Index(['Rank', 'City', 'State', 'Population', 'Date of census/estimate'], dtype='object')
 Index(['Ranks', 'City', 'State', 'Population', 'Date of census/estimate'], dtype='object')</code></pre>
 </div>
 </div>
 <p>Aynı işlemi <code>inplace=True</code> ile de yapabiliriz.</p>
-<div id="35f4a832" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>df.rename(columns<span class="op">=</span>{<span class="st">'Ranks'</span>:<span class="st">'Rank'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="bu">print</span>(df.columns)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="928d1828" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>df.rename(columns<span class="op">=</span>{<span class="st">'Ranks'</span>:<span class="st">'Rank'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="bu">print</span>(df.columns)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Index(['Rank', 'City', 'State', 'Population', 'Date of census/estimate'], dtype='object')</code></pre>
 </div>
@@ -503,18 +473,18 @@ Index(['Ranks', 'City', 'State', 'Population', 'Date of census/estimate'], dtype
 <section id="başını-ve-sonunu-gösterme" class="level2">
 <h2 class="anchored" data-anchor-id="başını-ve-sonunu-gösterme">Başını ve Sonunu Gösterme</h2>
 <p>Çok büyük veriye sahip veri çerçevesinin içeriğine göz atmak için <code>head</code> ve <code>tail</code> komutlarını kullanırız.</p>
-<div id="590173cf" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># ilk 5 satırı göster</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="bu">print</span>(df.head())</span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb9-7"><a href="#cb9-7"></a><span class="co"># son 5 satırı göster</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="bu">print</span>(df.tail())</span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="co"># ilk 7 satırı göster</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a>df.head(<span class="dv">7</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8add0fb2" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co"># ilk 5 satırı göster</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="co"># son 5 satırı göster</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="bu">print</span>(df.tail())</span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="co"># ilk 7 satırı göster</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a>df.head(<span class="dv">7</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Rank       City            State Population Date of census/estimate
 0     1  London[2]   United Kingdom  8,615,246             1 June 2014
@@ -531,7 +501,7 @@ Index(['Ranks', 'City', 'State', 'Population', 'Date of census/estimate'], dtype
 104   105      Kaunas        Lithuania    306,888          1 January 2013
 ---o---o---o---</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <div>
 
@@ -615,18 +585,18 @@ Index(['Ranks', 'City', 'State', 'Population', 'Date of census/estimate'], dtype
 <section id="satır-sütunlara-numpy-arrayi-gibi-erişim" class="level2">
 <h2 class="anchored" data-anchor-id="satır-sütunlara-numpy-arrayi-gibi-erişim">Satır Sütunlara <code>numpy</code> array’i gibi Erişim</h2>
 <p><code>pandas</code> veri çerçevesine numpy array’i gibi erişmek de mümkün. Bunun için <code>iloc</code> komutunu kullanırız.,</p>
-<div id="75bb85ff" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># ilk 5 satırı göster</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="bu">print</span>(df.head())</span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb11-7"><a href="#cb11-7"></a><span class="co"># mat1= np.array([[1,2],[3,4]])</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="co"># mat1[1,0] -&gt; 3</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a><span class="bu">print</span>(df.iloc[<span class="dv">2</span>,<span class="dv">3</span>])</span>
-<span id="cb11-10"><a href="#cb11-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="bu">print</span>(df.iloc[<span class="dv">0</span>:<span class="dv">2</span>,<span class="dv">1</span>:<span class="dv">3</span>])</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d76da07f" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># ilk 5 satırı göster</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="co"># mat1= np.array([[1,2],[3,4]])</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="co"># mat1[1,0] -&gt; 3</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="bu">print</span>(df.iloc[<span class="dv">2</span>,<span class="dv">3</span>])</span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="bu">print</span>(df.iloc[<span class="dv">0</span>:<span class="dv">2</span>,<span class="dv">1</span>:<span class="dv">3</span>])</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Rank       City            State Population Date of census/estimate
 0     1  London[2]   United Kingdom  8,615,246             1 June 2014
@@ -646,13 +616,13 @@ Index(['Ranks', 'City', 'State', 'Population', 'Date of census/estimate'], dtype
 <section id="boyut-öğrenme" class="level2">
 <h2 class="anchored" data-anchor-id="boyut-öğrenme">Boyut Öğrenme</h2>
 <p>Tıpkı <code>numpy</code>’da olduğu gibi burada da <code>shape</code> komutu ile veri çerçevesinin boyutunu öğrenebiliriz.</p>
-<div id="66bbf103" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="co"># Boyut göster</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a>df.shape</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="ac8bc316" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co"># Boyut göster</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>df.shape</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>(105, 5)</code></pre>
 </div>
 </div>
@@ -660,13 +630,13 @@ Index(['Ranks', 'City', 'State', 'Population', 'Date of census/estimate'], dtype
 <section id="yeni-sütun-ekleme-ve-silme" class="level2">
 <h2 class="anchored" data-anchor-id="yeni-sütun-ekleme-ve-silme">Yeni Sütun Ekleme ve Silme</h2>
 <p>Veri çerçevesinde yeni bir sütun eklemek için <code>df["Yeni Sütun"]</code> şeklinde bir komut kullanırız.</p>
-<div id="a531f051" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="co"># NumericPopulation sütunu ekleyelim. İçerisine Population sütununu kopyalayalım.</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>df[<span class="st">"NumericPopulation"</span>]<span class="op">=</span> df[<span class="st">"Population"</span>]</span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="bu">print</span>(df.head())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d05f07ff" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co"># NumericPopulation sütunu ekleyelim. İçerisine Population sütununu kopyalayalım.</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>df[<span class="st">"NumericPopulation"</span>]<span class="op">=</span> df[<span class="st">"Population"</span>]</span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="bu">print</span>(df.head())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Rank       City            State Population Date of census/estimate  \
 0     1  London[2]   United Kingdom  8,615,246             1 June 2014   
@@ -688,23 +658,23 @@ Index(['Ranks', 'City', 'State', 'Population', 'Date of census/estimate'], dtype
 <li><code>df.pop</code> komutu veri çerçevesini değiştirirken <code>df.drop</code> komutu veri çerçevesini değiştirmez, değişikliği görmek için <code>inplace=True</code> eklememiz gerekir.</li>
 <li><code>axis=0</code> varsayılan değerdir. Bu yüzden <code>axis=0</code> yazmamıza gerek yoktur.</li>
 </ul>
-<div id="bcb1c07d" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="co"># Sütun isimlerini göster</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a><span class="bu">print</span>(df.columns)</span>
-<span id="cb17-6"><a href="#cb17-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb17-7"><a href="#cb17-7"></a><span class="co"># Population sütununu sil</span></span>
-<span id="cb17-8"><a href="#cb17-8"></a>df.drop(<span class="st">"Population"</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb17-9"><a href="#cb17-9"></a><span class="co">#df.pop("Population") # &lt;----- bu da aynı işi yapar</span></span>
-<span id="cb17-10"><a href="#cb17-10"></a><span class="bu">print</span>(df.columns)</span>
-<span id="cb17-11"><a href="#cb17-11"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb17-12"><a href="#cb17-12"></a><span class="bu">print</span>(df.head())</span>
-<span id="cb17-13"><a href="#cb17-13"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb17-14"><a href="#cb17-14"></a><span class="bu">print</span>(df.drop(<span class="dv">0</span>, axis<span class="op">=</span><span class="dv">0</span>).head(<span class="dv">3</span>))</span>
-<span id="cb17-15"><a href="#cb17-15"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb17-16"><a href="#cb17-16"></a><span class="bu">print</span>(df.head())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1e19f37b" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="co"># Sütun isimlerini göster</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="bu">print</span>(df.columns)</span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="co"># Population sütununu sil</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>df.drop(<span class="st">"Population"</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="co">#df.pop("Population") # &lt;----- bu da aynı işi yapar</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="bu">print</span>(df.columns)</span>
+<span id="cb16-11"><a href="#cb16-11"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb16-12"><a href="#cb16-12"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb16-13"><a href="#cb16-13"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb16-14"><a href="#cb16-14"></a><span class="bu">print</span>(df.drop(<span class="dv">0</span>, axis<span class="op">=</span><span class="dv">0</span>).head(<span class="dv">3</span>))</span>
+<span id="cb16-15"><a href="#cb16-15"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb16-16"><a href="#cb16-16"></a><span class="bu">print</span>(df.head())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Index(['Rank', 'City', 'State', 'Population', 'Date of census/estimate'], dtype='object')
 ---o---o---o---
@@ -734,15 +704,15 @@ Index(['Rank', 'City', 'State', 'Date of census/estimate'], dtype='object')
 <section id="biricik-unique-değerler" class="level2">
 <h2 class="anchored" data-anchor-id="biricik-unique-değerler">Biricik (Unique) Değerler</h2>
 <p><code>unique</code> komutu ile bir sütunun içindeki değerlerin biricik (unique) değerlerini görebiliriz.</p>
-<div id="e1a12cab" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="co"># State sütunundaki değerler</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].values)</span>
-<span id="cb19-6"><a href="#cb19-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb19-7"><a href="#cb19-7"></a><span class="co"># State sütunundaki biricik değerler</span></span>
-<span id="cb19-8"><a href="#cb19-8"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].unique())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1b74d11e" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="co"># State sütunundaki değerler</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].values)</span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="co"># State sütunundaki biricik değerler</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].unique())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[' United Kingdom' ' Germany' ' Spain' ' Italy' ' France' ' Romania'
  ' Austria' ' Germany' ' Hungary' ' Poland' ' Spain' ' Germany' ' Italy'
@@ -775,12 +745,12 @@ Index(['Rank', 'City', 'State', 'Date of census/estimate'], dtype='object')
 <section id="biricik-değerlerin-sayısı" class="level2">
 <h2 class="anchored" data-anchor-id="biricik-değerlerin-sayısı">Biricik Değerlerin Sayısı</h2>
 <p><code>value_counts()</code> komutu ile bir sütunun içindeki değerlerin biricik (unique) değerlerinin sayısını görebiliriz.</p>
-<div id="cd0927ee" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb21-4"><a href="#cb21-4"></a><span class="co"># State sütunundaki biricik değerlerin sayısı</span></span>
-<span id="cb21-5"><a href="#cb21-5"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].value_counts())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8aa35d28" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="co"># State sütunundaki biricik değerlerin sayısı</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].value_counts())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>State
  Germany                    19
@@ -814,15 +784,15 @@ Name: count, dtype: int64</code></pre>
 <section id="tekrar-eden-değerler" class="level2">
 <h2 class="anchored" data-anchor-id="tekrar-eden-değerler">Tekrar Eden Değerler</h2>
 <p><code>duplicated</code> komutu ile bir sütunun içindeki değerlerin tekrarlanan değerlerini görebiliriz. Bu komutun sonucunda <code>True</code> ve <code>False</code> değerleri döner.</p>
-<div id="ead123a6" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb23-4"><a href="#cb23-4"></a><span class="co"># State sütunundaki tekrar eden değerler</span></span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].duplicated().head(<span class="dv">8</span>))</span>
-<span id="cb23-6"><a href="#cb23-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb23-7"><a href="#cb23-7"></a><span class="co"># State sütunundaki ilk 8 değer</span></span>
-<span id="cb23-8"><a href="#cb23-8"></a><span class="bu">print</span>(df.State.head(<span class="dv">8</span>))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fc967785" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="co"># State sütunundaki tekrar eden değerler</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].duplicated().head(<span class="dv">8</span>))</span>
+<span id="cb22-6"><a href="#cb22-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb22-7"><a href="#cb22-7"></a><span class="co"># State sütunundaki ilk 8 değer</span></span>
+<span id="cb22-8"><a href="#cb22-8"></a><span class="bu">print</span>(df.State.head(<span class="dv">8</span>))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0    False
 1    False
@@ -850,18 +820,18 @@ Name: State, dtype: object</code></pre>
 <h2 class="anchored" data-anchor-id="veri-manipülasyonu-ve-veri-temizleme">Veri Manipülasyonu ve Veri Temizleme</h2>
 <p>Elimize geçen veride sistematik olarak değiştirmemiz gereken bazı durumlar olabilir. Bu tip veriye ham veri adı verilir. Ham veri içerisinde istenmeyen veya yanlış satırlar, yanlış yazılmış sütunlar olabilir. Bunun gibi kusurları temizlemek ve üzerine çalışılabilir bir hale getirmek için manipüle (oynama) yapmamız gerekir.</p>
 <p>Bunun için <code>df</code> değişkenine tekrar bakalım.</p>
-<div id="1a39ae8c" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb25-4"><a href="#cb25-4"></a><span class="co"># İlk 3 satırı göster</span></span>
-<span id="cb25-5"><a href="#cb25-5"></a><span class="bu">print</span>(df.head(<span class="dv">3</span>))</span>
-<span id="cb25-6"><a href="#cb25-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb25-7"><a href="#cb25-7"></a><span class="co"># Veri hakkında bilgi</span></span>
-<span id="cb25-8"><a href="#cb25-8"></a><span class="bu">print</span>(df.info())</span>
-<span id="cb25-9"><a href="#cb25-9"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb25-10"><a href="#cb25-10"></a><span class="co"># State sütunundaki ilk 3 değer</span></span>
-<span id="cb25-11"><a href="#cb25-11"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].head(<span class="dv">3</span>).values)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a33a7ca8" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="co"># İlk 3 satırı göster</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a><span class="bu">print</span>(df.head(<span class="dv">3</span>))</span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="co"># Veri hakkında bilgi</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a><span class="bu">print</span>(df.info())</span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb24-10"><a href="#cb24-10"></a><span class="co"># State sütunundaki ilk 3 değer</span></span>
+<span id="cb24-11"><a href="#cb24-11"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].head(<span class="dv">3</span>).values)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Rank       City            State Population Date of census/estimate
 0     1  London[2]   United Kingdom  8,615,246             1 June 2014
@@ -892,32 +862,32 @@ None
 <li><code>State</code> sütunundaki verilerin başında bir adet fazladan boşluk var.</li>
 </ol>
 <p>Bu sorunları sırasıyla çözelim.</p>
-<div id="9825c4aa" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb27-2"><a href="#cb27-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb27-3"><a href="#cb27-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb27-4"><a href="#cb27-4"></a><span class="co">## 1.</span></span>
-<span id="cb27-5"><a href="#cb27-5"></a>df.iloc[<span class="dv">0</span>,<span class="dv">1</span>]<span class="op">=</span> <span class="st">"London"</span></span>
-<span id="cb27-6"><a href="#cb27-6"></a><span class="bu">print</span>(df.loc[<span class="dv">0</span>])</span>
-<span id="cb27-7"><a href="#cb27-7"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb27-8"><a href="#cb27-8"></a><span class="co">## 2.</span></span>
-<span id="cb27-9"><a href="#cb27-9"></a><span class="co">## Aşağıdaki komut çalışmıyor çünkü python virgüllü sayıları noktaya çeviremiyor.</span></span>
-<span id="cb27-10"><a href="#cb27-10"></a><span class="co">#df["Population"]= df["Population"].astype(float)</span></span>
-<span id="cb27-11"><a href="#cb27-11"></a><span class="co"># Tüm virgülleri kaldıralım ve float tipine çevirelim.</span></span>
-<span id="cb27-12"><a href="#cb27-12"></a>df[<span class="st">"Population"</span>]<span class="op">=</span>df.Population.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">int</span>(x.replace(<span class="st">','</span>,<span class="st">''</span>)))</span>
-<span id="cb27-13"><a href="#cb27-13"></a><span class="co"># str1='Naber Gizem'</span></span>
-<span id="cb27-14"><a href="#cb27-14"></a><span class="co"># print(str1.replace('G',''))</span></span>
-<span id="cb27-15"><a href="#cb27-15"></a><span class="bu">print</span>(df.info())</span>
-<span id="cb27-16"><a href="#cb27-16"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb27-17"><a href="#cb27-17"></a><span class="bu">print</span>(df.head())</span>
-<span id="cb27-18"><a href="#cb27-18"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb27-19"><a href="#cb27-19"></a><span class="co">## 3.</span></span>
-<span id="cb27-20"><a href="#cb27-20"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].head(<span class="dv">3</span>).values)</span>
-<span id="cb27-21"><a href="#cb27-21"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb27-22"><a href="#cb27-22"></a><span class="co"># strip() fonksiyonu stringin başındaki ve sonundaki boşlukları siler.</span></span>
-<span id="cb27-23"><a href="#cb27-23"></a>df.State<span class="op">=</span> df.State.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.strip())</span>
-<span id="cb27-24"><a href="#cb27-24"></a><span class="co"># Göster</span></span>
-<span id="cb27-25"><a href="#cb27-25"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].head(<span class="dv">3</span>).values)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="caa69365" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="co">## 1.</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>df.iloc[<span class="dv">0</span>,<span class="dv">1</span>]<span class="op">=</span> <span class="st">"London"</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="bu">print</span>(df.loc[<span class="dv">0</span>])</span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="co">## 2.</span></span>
+<span id="cb26-9"><a href="#cb26-9"></a><span class="co">## Aşağıdaki komut çalışmıyor çünkü python virgüllü sayıları noktaya çeviremiyor.</span></span>
+<span id="cb26-10"><a href="#cb26-10"></a><span class="co">#df["Population"]= df["Population"].astype(float)</span></span>
+<span id="cb26-11"><a href="#cb26-11"></a><span class="co"># Tüm virgülleri kaldıralım ve float tipine çevirelim.</span></span>
+<span id="cb26-12"><a href="#cb26-12"></a>df[<span class="st">"Population"</span>]<span class="op">=</span>df.Population.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">int</span>(x.replace(<span class="st">','</span>,<span class="st">''</span>)))</span>
+<span id="cb26-13"><a href="#cb26-13"></a><span class="co"># str1='Naber Gizem'</span></span>
+<span id="cb26-14"><a href="#cb26-14"></a><span class="co"># print(str1.replace('G',''))</span></span>
+<span id="cb26-15"><a href="#cb26-15"></a><span class="bu">print</span>(df.info())</span>
+<span id="cb26-16"><a href="#cb26-16"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb26-17"><a href="#cb26-17"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb26-18"><a href="#cb26-18"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb26-19"><a href="#cb26-19"></a><span class="co">## 3.</span></span>
+<span id="cb26-20"><a href="#cb26-20"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].head(<span class="dv">3</span>).values)</span>
+<span id="cb26-21"><a href="#cb26-21"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb26-22"><a href="#cb26-22"></a><span class="co"># strip() fonksiyonu stringin başındaki ve sonundaki boşlukları siler.</span></span>
+<span id="cb26-23"><a href="#cb26-23"></a>df.State<span class="op">=</span> df.State.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.strip())</span>
+<span id="cb26-24"><a href="#cb26-24"></a><span class="co"># Göster</span></span>
+<span id="cb26-25"><a href="#cb26-25"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].head(<span class="dv">3</span>).values)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rank                                     1
 City                                London
@@ -957,15 +927,15 @@ None
 <section id="etiket-index-işlemleri" class="level2">
 <h2 class="anchored" data-anchor-id="etiket-index-işlemleri">Etiket (Index) İşlemleri</h2>
 <p>Kullandığımız veri çerçevesinde etiket bulunmuyor. Tüm veri şehirler üzerine kurulu olduğu için şehirleri etiket olarak alabiliriz.</p>
-<div id="ee6b1fc4" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb29-2"><a href="#cb29-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb29-4"><a href="#cb29-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
-<span id="cb29-5"><a href="#cb29-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
-<span id="cb29-6"><a href="#cb29-6"></a><span class="co"># Göster</span></span>
-<span id="cb29-7"><a href="#cb29-7"></a>df.head()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div id="0e7ca75b" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="co"># Göster</span></span>
+<span id="cb28-7"><a href="#cb28-7"></a>df.head()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 <div>
 
@@ -1039,17 +1009,17 @@ None
 </div>
 <p>Başlıklara bakarsak etiket isminin de <code>City</code> olduğunu görebiliriz. Etiket ismi ile sütun ismi ayrışması adına etiket ismi alt satıra yazılmıştır.</p>
 <p>Etiketleri <code>df.index</code> ile de görebildiğimizi hatırlatalım.</p>
-<div id="9b44f2b5" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb30-3"><a href="#cb30-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb30-4"><a href="#cb30-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
-<span id="cb30-5"><a href="#cb30-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
-<span id="cb30-6"><a href="#cb30-6"></a><span class="co"># Rank sütununu göster. Etiketler de gözükecek.</span></span>
-<span id="cb30-7"><a href="#cb30-7"></a><span class="bu">print</span>(df.Rank.head())</span>
-<span id="cb30-8"><a href="#cb30-8"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb30-9"><a href="#cb30-9"></a><span class="co"># Etiketleri göster ve listeye çevir</span></span>
-<span id="cb30-10"><a href="#cb30-10"></a><span class="bu">print</span>(<span class="bu">list</span>(df.head().index))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="16203ce6" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="co"># Rank sütununu göster. Etiketler de gözükecek.</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a><span class="bu">print</span>(df.Rank.head())</span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb29-9"><a href="#cb29-9"></a><span class="co"># Etiketleri göster ve listeye çevir</span></span>
+<span id="cb29-10"><a href="#cb29-10"></a><span class="bu">print</span>(<span class="bu">list</span>(df.head().index))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>City
 London[2]    1
@@ -1063,39 +1033,39 @@ Name: Rank, dtype: int64
 </div>
 </div>
 <p>Etiket grubunun ismini yani başlığını <code>df.index.name</code> ile görebiliriz/değiştirebiliriz.</p>
-<div id="1c8c06af" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb32-3"><a href="#cb32-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb32-4"><a href="#cb32-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
-<span id="cb32-5"><a href="#cb32-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
-<span id="cb32-6"><a href="#cb32-6"></a><span class="co"># Etiket isimlerini None yap</span></span>
-<span id="cb32-7"><a href="#cb32-7"></a>df.index.name<span class="op">=</span> <span class="st">'EtiketIsmi'</span></span>
-<span id="cb32-8"><a href="#cb32-8"></a><span class="co">#$ Etiket ismini sıfırla</span></span>
-<span id="cb32-9"><a href="#cb32-9"></a><span class="co">#df.index.name= None</span></span>
-<span id="cb32-10"><a href="#cb32-10"></a><span class="co"># Göster</span></span>
-<span id="cb32-11"><a href="#cb32-11"></a>df.head()</span>
-<span id="cb32-12"><a href="#cb32-12"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb32-13"><a href="#cb32-13"></a><span class="co"># Tüm etiketleri göster</span></span>
-<span id="cb32-14"><a href="#cb32-14"></a><span class="bu">print</span>(df.head().index)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ba8ffb84" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
+<span id="cb31-6"><a href="#cb31-6"></a><span class="co"># Etiket isimlerini None yap</span></span>
+<span id="cb31-7"><a href="#cb31-7"></a>df.index.name<span class="op">=</span> <span class="st">'EtiketIsmi'</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a><span class="co">#$ Etiket ismini sıfırla</span></span>
+<span id="cb31-9"><a href="#cb31-9"></a><span class="co">#df.index.name= None</span></span>
+<span id="cb31-10"><a href="#cb31-10"></a><span class="co"># Göster</span></span>
+<span id="cb31-11"><a href="#cb31-11"></a>df.head()</span>
+<span id="cb31-12"><a href="#cb31-12"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb31-13"><a href="#cb31-13"></a><span class="co"># Tüm etiketleri göster</span></span>
+<span id="cb31-14"><a href="#cb31-14"></a><span class="bu">print</span>(df.head().index)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>---o---o---o---
 Index(['London[2]', 'Berlin', 'Madrid', 'Rome', 'Paris'], dtype='object', name='EtiketIsmi')</code></pre>
 </div>
 </div>
 <p><code>reset_index()</code> komutu ile etiketleri varsayılan numaralara geri döndürebiliriz. Bu komut etiketleri numaraya döndürürken, kayıtlı olan etiketleri de yeni bir sütun olarak ekler.</p>
-<div id="9aad66d5" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb34-2"><a href="#cb34-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb34-3"><a href="#cb34-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb34-4"><a href="#cb34-4"></a><span class="co"># Etiket ismini City State sütunlarının değerlerinin toplamı olarak ata</span></span>
-<span id="cb34-5"><a href="#cb34-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]<span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> df[<span class="st">"State"</span>]</span>
-<span id="cb34-6"><a href="#cb34-6"></a><span class="co"># Göstpd.Int16Dtype(er)</span></span>
-<span id="cb34-7"><a href="#cb34-7"></a><span class="bu">print</span>(df.head())</span>
-<span id="cb34-8"><a href="#cb34-8"></a><span class="co"># Etiketleri sıfırla</span></span>
-<span id="cb34-9"><a href="#cb34-9"></a>df<span class="op">=</span>df.reset_index()</span>
-<span id="cb34-10"><a href="#cb34-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb34-11"><a href="#cb34-11"></a><span class="bu">print</span>(df.head())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="eeba57c6" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb33-4"><a href="#cb33-4"></a><span class="co"># Etiket ismini City State sütunlarının değerlerinin toplamı olarak ata</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]<span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> df[<span class="st">"State"</span>]</span>
+<span id="cb33-6"><a href="#cb33-6"></a><span class="co"># Göstpd.Int16Dtype(er)</span></span>
+<span id="cb33-7"><a href="#cb33-7"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb33-8"><a href="#cb33-8"></a><span class="co"># Etiketleri sıfırla</span></span>
+<span id="cb33-9"><a href="#cb33-9"></a>df<span class="op">=</span>df.reset_index()</span>
+<span id="cb33-10"><a href="#cb33-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb33-11"><a href="#cb33-11"></a><span class="bu">print</span>(df.head())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                           Rank       City            State Population  \
 London[2]  United Kingdom     1  London[2]   United Kingdom  8,615,246   
@@ -1130,23 +1100,23 @@ Paris  France                      1 January 2013
 <section id="sıralama" class="level2">
 <h2 class="anchored" data-anchor-id="sıralama">Sıralama</h2>
 <p><strong>Tüm veriyi</strong> etiket isimlerine göre sıralayabiliriz.</p>
-<div id="041a7d7b" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb36-3"><a href="#cb36-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb36-4"><a href="#cb36-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
-<span id="cb36-5"><a href="#cb36-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
-<span id="cb36-6"><a href="#cb36-6"></a><span class="co"># Göster</span></span>
-<span id="cb36-7"><a href="#cb36-7"></a>df.head()</span>
-<span id="cb36-8"><a href="#cb36-8"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb36-9"><a href="#cb36-9"></a><span class="co"># Tüm veriyi etiket isimlerine göre sırala</span></span>
-<span id="cb36-10"><a href="#cb36-10"></a>df<span class="op">=</span> df.sort_index()</span>
-<span id="cb36-11"><a href="#cb36-11"></a><span class="co"># Göster</span></span>
-<span id="cb36-12"><a href="#cb36-12"></a>df.head()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c9e63cf9" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
+<span id="cb35-6"><a href="#cb35-6"></a><span class="co"># Göster</span></span>
+<span id="cb35-7"><a href="#cb35-7"></a>df.head()</span>
+<span id="cb35-8"><a href="#cb35-8"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb35-9"><a href="#cb35-9"></a><span class="co"># Tüm veriyi etiket isimlerine göre sırala</span></span>
+<span id="cb35-10"><a href="#cb35-10"></a>df<span class="op">=</span> df.sort_index()</span>
+<span id="cb35-11"><a href="#cb35-11"></a><span class="co"># Göster</span></span>
+<span id="cb35-12"><a href="#cb35-12"></a>df.head()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>---o---o---o---</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <div>
 <div>
 
@@ -1219,23 +1189,23 @@ Paris  France                      1 January 2013
 </div>
 </div>
 <p>Tüm veriyi belirlediğimiz sütuna göre sıralayabiliriz.</p>
-<div id="bc617f13" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb38-2"><a href="#cb38-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb38-3"><a href="#cb38-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb38-4"><a href="#cb38-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
-<span id="cb38-5"><a href="#cb38-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
-<span id="cb38-6"><a href="#cb38-6"></a><span class="co"># Göster</span></span>
-<span id="cb38-7"><a href="#cb38-7"></a>df.head()</span>
-<span id="cb38-8"><a href="#cb38-8"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb38-9"><a href="#cb38-9"></a><span class="co"># Tüm veriyi belirlediğimiz sütuna, Rank süttununa göre sırala</span></span>
-<span id="cb38-10"><a href="#cb38-10"></a>df.sort_values(by<span class="op">=</span><span class="st">"Rank"</span>, ascending<span class="op">=</span><span class="va">False</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb38-11"><a href="#cb38-11"></a><span class="co"># Göster</span></span>
-<span id="cb38-12"><a href="#cb38-12"></a>df.head()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f77e7944" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb37-4"><a href="#cb37-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
+<span id="cb37-5"><a href="#cb37-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
+<span id="cb37-6"><a href="#cb37-6"></a><span class="co"># Göster</span></span>
+<span id="cb37-7"><a href="#cb37-7"></a>df.head()</span>
+<span id="cb37-8"><a href="#cb37-8"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb37-9"><a href="#cb37-9"></a><span class="co"># Tüm veriyi belirlediğimiz sütuna, Rank süttununa göre sırala</span></span>
+<span id="cb37-10"><a href="#cb37-10"></a>df.sort_values(by<span class="op">=</span><span class="st">"Rank"</span>, ascending<span class="op">=</span><span class="va">False</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb37-11"><a href="#cb37-11"></a><span class="co"># Göster</span></span>
+<span id="cb37-12"><a href="#cb37-12"></a>df.head()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>---o---o---o---</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 <div>
 
@@ -1311,26 +1281,26 @@ Paris  France                      1 January 2013
 <section id="multi-index" class="level2">
 <h2 class="anchored" data-anchor-id="multi-index">Multi-Index</h2>
 <p>Veri çerçevesindeki veriyi gruplayabiliriz. Örneğin etiketlerde hem ülkeler, hem de o ülkelere ait olan şehirler olsun. Yani iki adet etiket olsun. <code>set_index</code> komutu ile etiketleri belirlerken iki sütun olarak girelim.</p>
-<div id="249c517e" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb40-2"><a href="#cb40-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb40-3"><a href="#cb40-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb40-4"><a href="#cb40-4"></a><span class="co"># 2 adet etiket kullan.</span></span>
-<span id="cb40-5"><a href="#cb40-5"></a><span class="co"># 1. City'nin değerleri</span></span>
-<span id="cb40-6"><a href="#cb40-6"></a><span class="co"># 2. State'nin değerleri</span></span>
-<span id="cb40-7"><a href="#cb40-7"></a>df.set_index([<span class="st">"State"</span>, <span class="st">"City"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb40-8"><a href="#cb40-8"></a><span class="bu">print</span>(<span class="st">"2 adet etiketli veri çerçevesi"</span>)</span>
-<span id="cb40-9"><a href="#cb40-9"></a><span class="bu">print</span>(df.head())</span>
-<span id="cb40-10"><a href="#cb40-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb40-11"><a href="#cb40-11"></a><span class="co"># 2 etiketli dataframi 0. etikete göre sırala</span></span>
-<span id="cb40-12"><a href="#cb40-12"></a><span class="bu">print</span>(<span class="st">"2 adet etiketli veri çerçevesi, 0. etikete göre sırala"</span>)</span>
-<span id="cb40-13"><a href="#cb40-13"></a><span class="bu">print</span>(df.sort_index(level<span class="op">=</span><span class="dv">0</span>).head())</span>
-<span id="cb40-14"><a href="#cb40-14"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb40-15"><a href="#cb40-15"></a><span class="co"># 2 etiketli dataframi 1. etikete göre sırala</span></span>
-<span id="cb40-16"><a href="#cb40-16"></a><span class="bu">print</span>(<span class="st">"2 adet etiketli veri çerçevesi, 1. etikete göre sırala"</span>)</span>
-<span id="cb40-17"><a href="#cb40-17"></a><span class="bu">print</span>(df.sort_index(level<span class="op">=</span><span class="dv">1</span>).head())</span>
-<span id="cb40-18"><a href="#cb40-18"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb40-19"><a href="#cb40-19"></a><span class="co"># 2 etiketli dataframi 0. etikete göre sırala ve Sweden olanları göster</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2fc9255c" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb39-3"><a href="#cb39-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb39-4"><a href="#cb39-4"></a><span class="co"># 2 adet etiket kullan.</span></span>
+<span id="cb39-5"><a href="#cb39-5"></a><span class="co"># 1. City'nin değerleri</span></span>
+<span id="cb39-6"><a href="#cb39-6"></a><span class="co"># 2. State'nin değerleri</span></span>
+<span id="cb39-7"><a href="#cb39-7"></a>df.set_index([<span class="st">"State"</span>, <span class="st">"City"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb39-8"><a href="#cb39-8"></a><span class="bu">print</span>(<span class="st">"2 adet etiketli veri çerçevesi"</span>)</span>
+<span id="cb39-9"><a href="#cb39-9"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb39-10"><a href="#cb39-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb39-11"><a href="#cb39-11"></a><span class="co"># 2 etiketli dataframi 0. etikete göre sırala</span></span>
+<span id="cb39-12"><a href="#cb39-12"></a><span class="bu">print</span>(<span class="st">"2 adet etiketli veri çerçevesi, 0. etikete göre sırala"</span>)</span>
+<span id="cb39-13"><a href="#cb39-13"></a><span class="bu">print</span>(df.sort_index(level<span class="op">=</span><span class="dv">0</span>).head())</span>
+<span id="cb39-14"><a href="#cb39-14"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb39-15"><a href="#cb39-15"></a><span class="co"># 2 etiketli dataframi 1. etikete göre sırala</span></span>
+<span id="cb39-16"><a href="#cb39-16"></a><span class="bu">print</span>(<span class="st">"2 adet etiketli veri çerçevesi, 1. etikete göre sırala"</span>)</span>
+<span id="cb39-17"><a href="#cb39-17"></a><span class="bu">print</span>(df.sort_index(level<span class="op">=</span><span class="dv">1</span>).head())</span>
+<span id="cb39-18"><a href="#cb39-18"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb39-19"><a href="#cb39-19"></a><span class="co"># 2 etiketli dataframi 0. etikete göre sırala ve Sweden olanları göster</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2 adet etiketli veri çerçevesi
                           Rank Population Date of census/estimate
@@ -1362,26 +1332,26 @@ Greece      Athens       34    664,046             24 May 2011
 </div>
 </div>
 <p>İki adet etikete sahip veri çerçevesine erişmek için <code>df.loc["Etiket1", "Etiket2"]</code> komutunu kullanırız.</p>
-<div id="8672f609" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb42-2"><a href="#cb42-2"></a><span class="co"># Veri çekme</span></span>
-<span id="cb42-3"><a href="#cb42-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb42-4"><a href="#cb42-4"></a><span class="co"># 2 adet etiket kullan.</span></span>
-<span id="cb42-5"><a href="#cb42-5"></a><span class="co"># 1. City'nin değerleri</span></span>
-<span id="cb42-6"><a href="#cb42-6"></a><span class="co"># 2. State'nin değerleri</span></span>
-<span id="cb42-7"><a href="#cb42-7"></a>df.set_index([<span class="st">"State"</span>, <span class="st">"City"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb42-8"><a href="#cb42-8"></a><span class="bu">print</span>(<span class="st">"2 adet etiketli veri çerçevesi"</span>)</span>
-<span id="cb42-9"><a href="#cb42-9"></a><span class="bu">print</span>(df.head())</span>
-<span id="cb42-10"><a href="#cb42-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb42-11"><a href="#cb42-11"></a><span class="co"># Germany olanı göster</span></span>
-<span id="cb42-12"><a href="#cb42-12"></a><span class="bu">print</span>(<span class="st">"Etiketi Germany olanı göster"</span>)</span>
-<span id="cb42-13"><a href="#cb42-13"></a><span class="co"># Çalışmayan örnek:</span></span>
-<span id="cb42-14"><a href="#cb42-14"></a><span class="co">#print(df.loc[('Germany')])</span></span>
-<span id="cb42-15"><a href="#cb42-15"></a><span class="bu">print</span>(df.loc[(<span class="st">' Germany'</span>)].head())</span>
-<span id="cb42-16"><a href="#cb42-16"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb42-17"><a href="#cb42-17"></a><span class="co"># Germany, Berlin olanı göster</span></span>
-<span id="cb42-18"><a href="#cb42-18"></a><span class="bu">print</span>(<span class="st">"Etiketi Germany, Berlin olanları göster"</span>)</span>
-<span id="cb42-19"><a href="#cb42-19"></a><span class="bu">print</span>(df.loc[(<span class="st">' Germany'</span>, <span class="st">'Berlin'</span>)])</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="119f894d" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb41-2"><a href="#cb41-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb41-3"><a href="#cb41-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb41-4"><a href="#cb41-4"></a><span class="co"># 2 adet etiket kullan.</span></span>
+<span id="cb41-5"><a href="#cb41-5"></a><span class="co"># 1. City'nin değerleri</span></span>
+<span id="cb41-6"><a href="#cb41-6"></a><span class="co"># 2. State'nin değerleri</span></span>
+<span id="cb41-7"><a href="#cb41-7"></a>df.set_index([<span class="st">"State"</span>, <span class="st">"City"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb41-8"><a href="#cb41-8"></a><span class="bu">print</span>(<span class="st">"2 adet etiketli veri çerçevesi"</span>)</span>
+<span id="cb41-9"><a href="#cb41-9"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb41-10"><a href="#cb41-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb41-11"><a href="#cb41-11"></a><span class="co"># Germany olanı göster</span></span>
+<span id="cb41-12"><a href="#cb41-12"></a><span class="bu">print</span>(<span class="st">"Etiketi Germany olanı göster"</span>)</span>
+<span id="cb41-13"><a href="#cb41-13"></a><span class="co"># Çalışmayan örnek:</span></span>
+<span id="cb41-14"><a href="#cb41-14"></a><span class="co">#print(df.loc[('Germany')])</span></span>
+<span id="cb41-15"><a href="#cb41-15"></a><span class="bu">print</span>(df.loc[(<span class="st">' Germany'</span>)].head())</span>
+<span id="cb41-16"><a href="#cb41-16"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb41-17"><a href="#cb41-17"></a><span class="co"># Germany, Berlin olanı göster</span></span>
+<span id="cb41-18"><a href="#cb41-18"></a><span class="bu">print</span>(<span class="st">"Etiketi Germany, Berlin olanları göster"</span>)</span>
+<span id="cb41-19"><a href="#cb41-19"></a><span class="bu">print</span>(df.loc[(<span class="st">' Germany'</span>, <span class="st">'Berlin'</span>)])</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2 adet etiketli veri çerçevesi
                           Rank Population Date of census/estimate
@@ -1412,22 +1382,22 @@ Name: ( Germany, Berlin), dtype: object</code></pre>
 <section id="toplama-işlemi" class="level2">
 <h2 class="anchored" data-anchor-id="toplama-işlemi">Toplama İşlemi</h2>
 <p>Veri çerçevesindeki verileri <code>df.sum()</code> ile toplayabiliriz.</p>
-<div id="2f16f880" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb44-2"><a href="#cb44-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb44-3"><a href="#cb44-3"></a><span class="co"># Veri çekme</span></span>
-<span id="cb44-4"><a href="#cb44-4"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
-<span id="cb44-5"><a href="#cb44-5"></a><span class="co"># Population sütununu göster</span></span>
-<span id="cb44-6"><a href="#cb44-6"></a><span class="bu">print</span>(df.Population.head())</span>
-<span id="cb44-7"><a href="#cb44-7"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb44-8"><a href="#cb44-8"></a><span class="co"># Dtype göster</span></span>
-<span id="cb44-9"><a href="#cb44-9"></a><span class="bu">print</span>(<span class="ss">f"Data tipi : </span><span class="sc">{</span>df<span class="sc">.</span>Population<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb44-10"><a href="#cb44-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb44-11"><a href="#cb44-11"></a><span class="co"># Population sütununu topla</span></span>
-<span id="cb44-12"><a href="#cb44-12"></a><span class="bu">print</span>(df.Population.<span class="bu">sum</span>())</span>
-<span id="cb44-13"><a href="#cb44-13"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
-<span id="cb44-14"><a href="#cb44-14"></a><span class="co"># Tüm sütunları numpy ile topla</span></span>
-<span id="cb44-15"><a href="#cb44-15"></a><span class="bu">print</span>(np.<span class="bu">sum</span>(df.Population.values))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="279ccdf9" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb43-3"><a href="#cb43-3"></a><span class="co"># Veri çekme</span></span>
+<span id="cb43-4"><a href="#cb43-4"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb43-5"><a href="#cb43-5"></a><span class="co"># Population sütununu göster</span></span>
+<span id="cb43-6"><a href="#cb43-6"></a><span class="bu">print</span>(df.Population.head())</span>
+<span id="cb43-7"><a href="#cb43-7"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb43-8"><a href="#cb43-8"></a><span class="co"># Dtype göster</span></span>
+<span id="cb43-9"><a href="#cb43-9"></a><span class="bu">print</span>(<span class="ss">f"Data tipi : </span><span class="sc">{</span>df<span class="sc">.</span>Population<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb43-10"><a href="#cb43-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb43-11"><a href="#cb43-11"></a><span class="co"># Population sütununu topla</span></span>
+<span id="cb43-12"><a href="#cb43-12"></a><span class="bu">print</span>(df.Population.<span class="bu">sum</span>())</span>
+<span id="cb43-13"><a href="#cb43-13"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb43-14"><a href="#cb43-14"></a><span class="co"># Tüm sütunları numpy ile topla</span></span>
+<span id="cb43-15"><a href="#cb43-15"></a><span class="bu">print</span>(np.<span class="bu">sum</span>(df.Population.values))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0    8,615,246
 1    3,437,916
@@ -1446,55 +1416,55 @@ Data tipi : object
 </section>
 <section id="neler-öğrendik" class="level1">
 <h1>Neler Öğrendik?</h1>
-<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="co"># Seriler</span></span>
-<span id="cb46-2"><a href="#cb46-2"></a>s<span class="op">=</span> pd.Series()</span>
-<span id="cb46-3"><a href="#cb46-3"></a>s.index</span>
-<span id="cb46-4"><a href="#cb46-4"></a>s.values</span>
-<span id="cb46-5"><a href="#cb46-5"></a>s.name</span>
-<span id="cb46-6"><a href="#cb46-6"></a>s[<span class="st">"Londra"</span>]</span>
-<span id="cb46-7"><a href="#cb46-7"></a>s.Londra</span>
-<span id="cb46-8"><a href="#cb46-8"></a>s.describe()</span>
-<span id="cb46-9"><a href="#cb46-9"></a>s.<span class="bu">max</span>()</span>
-<span id="cb46-10"><a href="#cb46-10"></a>s.<span class="bu">min</span>()</span>
-<span id="cb46-11"><a href="#cb46-11"></a>s.std()</span>
-<span id="cb46-12"><a href="#cb46-12"></a>s.mean()</span>
-<span id="cb46-13"><a href="#cb46-13"></a>s.median()</span>
-<span id="cb46-14"><a href="#cb46-14"></a>s.plot(kind<span class="op">=</span> <span class="st">'line'</span>)</span>
-<span id="cb46-15"><a href="#cb46-15"></a>s.plot(kind<span class="op">=</span> <span class="st">'bar'</span>)</span>
-<span id="cb46-16"><a href="#cb46-16"></a>s.plot(kind<span class="op">=</span> <span class="st">'barh'</span>)</span>
-<span id="cb46-17"><a href="#cb46-17"></a>s.plot(kind<span class="op">=</span> <span class="st">'pie'</span>)</span>
-<span id="cb46-18"><a href="#cb46-18"></a><span class="co"># ----------------</span></span>
-<span id="cb46-19"><a href="#cb46-19"></a>df<span class="op">=</span> pd.DataFrame()</span>
-<span id="cb46-20"><a href="#cb46-20"></a>df.columns</span>
-<span id="cb46-21"><a href="#cb46-21"></a>df[<span class="st">"Nüfus"</span>] <span class="co">#! Sütunun İsmi</span></span>
-<span id="cb46-22"><a href="#cb46-22"></a>df.Nüfus <span class="co">#! Türkçe karakter kullanma, Sütunun ismi</span></span>
-<span id="cb46-23"><a href="#cb46-23"></a>df.loc[<span class="st">"Londra"</span>] <span class="co"># Satır ismi</span></span>
-<span id="cb46-24"><a href="#cb46-24"></a>df.loc[[<span class="st">"Londra"</span>, <span class="st">"Roma"</span>]]</span>
-<span id="cb46-25"><a href="#cb46-25"></a>df.rename(columns<span class="op">=</span> {<span class="st">"Nüfus"</span> : <span class="st">"Nüfuslar"</span>})</span>
-<span id="cb46-26"><a href="#cb46-26"></a>df.info()</span>
-<span id="cb46-27"><a href="#cb46-27"></a><span class="co"># ----------------</span></span>
-<span id="cb46-28"><a href="#cb46-28"></a>df<span class="op">=</span> pd.read_csv()</span>
-<span id="cb46-29"><a href="#cb46-29"></a>df.head()</span>
-<span id="cb46-30"><a href="#cb46-30"></a>df.tail()</span>
-<span id="cb46-31"><a href="#cb46-31"></a>df.loc[<span class="st">"Etiket İsmi"</span>]</span>
-<span id="cb46-32"><a href="#cb46-32"></a>df.iloc[<span class="dv">0</span>]</span>
-<span id="cb46-33"><a href="#cb46-33"></a>df.iloc[<span class="dv">1</span>, <span class="dv">2</span>]</span>
-<span id="cb46-34"><a href="#cb46-34"></a>df.shape</span>
-<span id="cb46-35"><a href="#cb46-35"></a>df[<span class="st">"Yeni Sütun"</span>]</span>
-<span id="cb46-36"><a href="#cb46-36"></a>df[<span class="st">"Sütun İsmi"</span>].unique()</span>
-<span id="cb46-37"><a href="#cb46-37"></a>df[<span class="st">"Sütun İsmi"</span>].value_counts()</span>
-<span id="cb46-38"><a href="#cb46-38"></a>df[<span class="st">"Sütun İsmi"</span>].duplicated()</span>
-<span id="cb46-39"><a href="#cb46-39"></a>df.drop(<span class="st">"Sütun İsmi"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb46-40"><a href="#cb46-40"></a>df.pop(<span class="st">"Sütun İsmi"</span>)</span>
-<span id="cb46-41"><a href="#cb46-41"></a>df.drop(<span class="st">"Etiket İsmi"</span>, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb46-42"><a href="#cb46-42"></a>df.Population.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">int</span>(x.replace(<span class="st">','</span>,<span class="st">''</span>)))</span>
-<span id="cb46-43"><a href="#cb46-43"></a>df.State.<span class="bu">str</span>.capitalize()</span>
-<span id="cb46-44"><a href="#cb46-44"></a>df.index.name</span>
-<span id="cb46-45"><a href="#cb46-45"></a>df.sort_index()</span>
-<span id="cb46-46"><a href="#cb46-46"></a>df.sort_values(by<span class="op">=</span><span class="st">"Sütun İsmi"</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb46-47"><a href="#cb46-47"></a>df.set_index([<span class="st">"State"</span>, <span class="st">"City"</span>]).sort_index(level<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb46-48"><a href="#cb46-48"></a>df.set_index([<span class="st">"State"</span>, <span class="st">"City"</span>]).sort_index(level<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb46-49"><a href="#cb46-49"></a>df.<span class="bu">sum</span>()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Seriler</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a>s<span class="op">=</span> pd.Series()</span>
+<span id="cb45-3"><a href="#cb45-3"></a>s.index</span>
+<span id="cb45-4"><a href="#cb45-4"></a>s.values</span>
+<span id="cb45-5"><a href="#cb45-5"></a>s.name</span>
+<span id="cb45-6"><a href="#cb45-6"></a>s[<span class="st">"Londra"</span>]</span>
+<span id="cb45-7"><a href="#cb45-7"></a>s.Londra</span>
+<span id="cb45-8"><a href="#cb45-8"></a>s.describe()</span>
+<span id="cb45-9"><a href="#cb45-9"></a>s.<span class="bu">max</span>()</span>
+<span id="cb45-10"><a href="#cb45-10"></a>s.<span class="bu">min</span>()</span>
+<span id="cb45-11"><a href="#cb45-11"></a>s.std()</span>
+<span id="cb45-12"><a href="#cb45-12"></a>s.mean()</span>
+<span id="cb45-13"><a href="#cb45-13"></a>s.median()</span>
+<span id="cb45-14"><a href="#cb45-14"></a>s.plot(kind<span class="op">=</span> <span class="st">'line'</span>)</span>
+<span id="cb45-15"><a href="#cb45-15"></a>s.plot(kind<span class="op">=</span> <span class="st">'bar'</span>)</span>
+<span id="cb45-16"><a href="#cb45-16"></a>s.plot(kind<span class="op">=</span> <span class="st">'barh'</span>)</span>
+<span id="cb45-17"><a href="#cb45-17"></a>s.plot(kind<span class="op">=</span> <span class="st">'pie'</span>)</span>
+<span id="cb45-18"><a href="#cb45-18"></a><span class="co"># ----------------</span></span>
+<span id="cb45-19"><a href="#cb45-19"></a>df<span class="op">=</span> pd.DataFrame()</span>
+<span id="cb45-20"><a href="#cb45-20"></a>df.columns</span>
+<span id="cb45-21"><a href="#cb45-21"></a>df[<span class="st">"Nüfus"</span>] <span class="co">#! Sütunun İsmi</span></span>
+<span id="cb45-22"><a href="#cb45-22"></a>df.Nüfus <span class="co">#! Türkçe karakter kullanma, Sütunun ismi</span></span>
+<span id="cb45-23"><a href="#cb45-23"></a>df.loc[<span class="st">"Londra"</span>] <span class="co"># Satır ismi</span></span>
+<span id="cb45-24"><a href="#cb45-24"></a>df.loc[[<span class="st">"Londra"</span>, <span class="st">"Roma"</span>]]</span>
+<span id="cb45-25"><a href="#cb45-25"></a>df.rename(columns<span class="op">=</span> {<span class="st">"Nüfus"</span> : <span class="st">"Nüfuslar"</span>})</span>
+<span id="cb45-26"><a href="#cb45-26"></a>df.info()</span>
+<span id="cb45-27"><a href="#cb45-27"></a><span class="co"># ----------------</span></span>
+<span id="cb45-28"><a href="#cb45-28"></a>df<span class="op">=</span> pd.read_csv()</span>
+<span id="cb45-29"><a href="#cb45-29"></a>df.head()</span>
+<span id="cb45-30"><a href="#cb45-30"></a>df.tail()</span>
+<span id="cb45-31"><a href="#cb45-31"></a>df.loc[<span class="st">"Etiket İsmi"</span>]</span>
+<span id="cb45-32"><a href="#cb45-32"></a>df.iloc[<span class="dv">0</span>]</span>
+<span id="cb45-33"><a href="#cb45-33"></a>df.iloc[<span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb45-34"><a href="#cb45-34"></a>df.shape</span>
+<span id="cb45-35"><a href="#cb45-35"></a>df[<span class="st">"Yeni Sütun"</span>]</span>
+<span id="cb45-36"><a href="#cb45-36"></a>df[<span class="st">"Sütun İsmi"</span>].unique()</span>
+<span id="cb45-37"><a href="#cb45-37"></a>df[<span class="st">"Sütun İsmi"</span>].value_counts()</span>
+<span id="cb45-38"><a href="#cb45-38"></a>df[<span class="st">"Sütun İsmi"</span>].duplicated()</span>
+<span id="cb45-39"><a href="#cb45-39"></a>df.drop(<span class="st">"Sütun İsmi"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb45-40"><a href="#cb45-40"></a>df.pop(<span class="st">"Sütun İsmi"</span>)</span>
+<span id="cb45-41"><a href="#cb45-41"></a>df.drop(<span class="st">"Etiket İsmi"</span>, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb45-42"><a href="#cb45-42"></a>df.Population.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">int</span>(x.replace(<span class="st">','</span>,<span class="st">''</span>)))</span>
+<span id="cb45-43"><a href="#cb45-43"></a>df.State.<span class="bu">str</span>.capitalize()</span>
+<span id="cb45-44"><a href="#cb45-44"></a>df.index.name</span>
+<span id="cb45-45"><a href="#cb45-45"></a>df.sort_index()</span>
+<span id="cb45-46"><a href="#cb45-46"></a>df.sort_values(by<span class="op">=</span><span class="st">"Sütun İsmi"</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb45-47"><a href="#cb45-47"></a>df.set_index([<span class="st">"State"</span>, <span class="st">"City"</span>]).sort_index(level<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb45-48"><a href="#cb45-48"></a>df.set_index([<span class="st">"State"</span>, <span class="st">"City"</span>]).sort_index(level<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb45-49"><a href="#cb45-49"></a>df.<span class="bu">sum</span>()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
