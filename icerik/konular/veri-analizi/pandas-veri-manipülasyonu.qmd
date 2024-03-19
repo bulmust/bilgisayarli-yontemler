@@ -9,7 +9,8 @@ title: "pandas - Veri Manipülasyonu"
 ```{python}
 import pandas as pd
 # Seriler
-s= pd.Series([100, 200, 300, 400, 500], index= ["Londra", "Paris", "Roma", "Berlin", "Oslo"])
+s= pd.Series([100, 200, 300, 400, 500]\
+    ,index= ["Londra", "Paris", "Roma", "Berlin", "Oslo"])
 s.index
 s.values
 s.name
@@ -24,7 +25,7 @@ s.mean()
 s.median()
 s.info()
 s.plot(kind= 'line'), # bar, barh, pie
-
+print("---o---o---o---")
 # DataFrame'ler
 df= pd.DataFrame({
     "Şehir": ["Londra", "Paris", "Roma", "Berlin", "Oslo"],
@@ -35,8 +36,8 @@ df.columns
 df["Nüfus"] #! Sütun İsmi
 df[["Nüfus","Şehir"]]
 df.Nüfus #! Türkçe karakter kullanma, Sütun ismi
-df.loc["Londra"] # Satır ismi
-df.loc[["Londra", "Roma"]]
+df.loc[0] # Satır ismi (etiket, index) olmadığı için 0
+df.loc[[0, 1]] # Satır ismi (etiket, index) olmadığı için 0,1
 df.rename(columns= {"Nüfus" : "Nüfuslar"})
 df.info()
 ```
@@ -262,3 +263,231 @@ print(df["State"].head(3).values)
 ```
 
 Veri çerçevesindeki verilerin ilk harflerini `df.State.str.capitalize()` ile büyük yapabiliriz.
+
+## Etiket (Index) İşlemleri
+
+Kullandığımız veri çerçevesinde etiket bulunmuyor. Tüm veri şehirler üzerine kurulu olduğu için şehirleri etiket olarak alabiliriz.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# Etiket ismini City'nin değerleri olarak ata
+df.index= df["City"]
+# Göster
+df.head()
+```
+
+Başlıklara bakarsak etiket isminin de `City` olduğunu görebiliriz. Etiket ismi ile sütun ismi ayrışması adına etiket ismi alt satıra yazılmıştır.
+
+Etiketleri `df.index` ile de görebildiğimizi hatırlatalım.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# Etiket ismini City'nin değerleri olarak ata
+df.index= df["City"]
+# Rank sütununu göster. Etiketler de gözükecek.
+print(df.Rank.head())
+print("---o---o---o---")
+# Etiketleri göster ve listeye çevir
+print(list(df.head().index))
+```
+
+Etiket grubunun ismini yani başlığını `df.index.name` ile görebiliriz/değiştirebiliriz.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# Etiket ismini City'nin değerleri olarak ata
+df.index= df["City"]
+# Etiket isimlerini None yap
+df.index.name= 'EtiketIsmi'
+#$ Etiket ismini sıfırla
+#df.index.name= None
+# Göster
+df.head()
+print("---o---o---o---")
+# Tüm etiketleri göster
+print(df.head().index)
+```
+
+`reset_index()` komutu ile etiketleri varsayılan numaralara geri döndürebiliriz. Bu komut etiketleri numaraya döndürürken, kayıtlı olan etiketleri de yeni bir sütun olarak ekler.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# Etiket ismini City State sütunlarının değerlerinin toplamı olarak ata
+df.index= df["City"]+ " " + df["State"]
+# Göstpd.Int16Dtype(er)
+print(df.head())
+# Etiketleri sıfırla
+df=df.reset_index()
+print("---o---o---o---")
+print(df.head())
+```
+
+## Sıralama
+
+**Tüm veriyi** etiket isimlerine göre sıralayabiliriz.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# Etiket ismini City'nin değerleri olarak ata
+df.index= df["City"]
+# Göster
+df.head()
+print("---o---o---o---")
+# Tüm veriyi etiket isimlerine göre sırala
+df= df.sort_index()
+# Göster
+df.head()
+```
+
+Tüm veriyi belirlediğimiz sütuna göre sıralayabiliriz.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# Etiket ismini City'nin değerleri olarak ata
+df.index= df["City"]
+# Göster
+df.head()
+print("---o---o---o---")
+# Tüm veriyi belirlediğimiz sütuna, Rank süttununa göre sırala
+df.sort_values(by="Rank", ascending=False, inplace=True)
+# Göster
+df.head()
+```
+
+## Multi-Index
+
+Veri çerçevesindeki veriyi gruplayabiliriz. Örneğin etiketlerde hem ülkeler, hem de o ülkelere ait olan şehirler olsun. Yani iki adet etiket olsun. `set_index` komutu ile etiketleri belirlerken iki sütun olarak girelim.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# 2 adet etiket kullan.
+# 1. City'nin değerleri
+# 2. State'nin değerleri
+df.set_index(["State", "City"], inplace=True)
+print("2 adet etiketli veri çerçevesi")
+print(df.head())
+print("---o---o---o---")
+# 2 etiketli dataframi 0. etikete göre sırala
+print("2 adet etiketli veri çerçevesi, 0. etikete göre sırala")
+print(df.sort_index(level=0).head())
+print("---o---o---o---")
+# 2 etiketli dataframi 1. etikete göre sırala
+print("2 adet etiketli veri çerçevesi, 1. etikete göre sırala")
+print(df.sort_index(level=1).head())
+print("---o---o---o---")
+# 2 etiketli dataframi 0. etikete göre sırala ve Sweden olanları göster
+```
+
+İki adet etikete sahip veri çerçevesine erişmek için `df.loc["Etiket1", "Etiket2"]` komutunu kullanırız.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# 2 adet etiket kullan.
+# 1. City'nin değerleri
+# 2. State'nin değerleri
+df.set_index(["State", "City"], inplace=True)
+print("2 adet etiketli veri çerçevesi")
+print(df.head())
+print("---o---o---o---")
+# Germany olanı göster
+print("Etiketi Germany olanı göster")
+# Çalışmayan örnek:
+#print(df.loc[('Germany')])
+print(df.loc[(' Germany')].head())
+print("---o---o---o---")
+# Germany, Berlin olanı göster
+print("Etiketi Germany, Berlin olanları göster")
+print(df.loc[(' Germany', 'Berlin')])
+```
+
+## Toplama İşlemi
+
+Veri çerçevesindeki verileri `df.sum()` ile toplayabiliriz.
+
+```{python}
+import pandas as pd
+import numpy as np
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# Population sütununu göster
+print(df.Population.head())
+print("---o---o---o---")
+# Dtype göster
+print(f"Data tipi : {df.Population.dtype}")
+print("---o---o---o---")
+# Population sütununu topla
+print(df.Population.sum())
+print("---o---o---o---")
+# Tüm sütunları numpy ile topla
+print(np.sum(df.Population.values))
+```
+
+# Neler Öğrendik?
+
+```python
+# Seriler
+s= pd.Series()
+s.index
+s.values
+s.name
+s["Londra"]
+s.Londra
+s.describe()
+s.max()
+s.min()
+s.std()
+s.mean()
+s.median()
+s.plot(kind= 'line')
+s.plot(kind= 'bar')
+s.plot(kind= 'barh')
+s.plot(kind= 'pie')
+# ----------------
+df= pd.DataFrame()
+df.columns
+df["Nüfus"] #! Sütunun İsmi
+df.Nüfus #! Türkçe karakter kullanma, Sütunun ismi
+df.loc["Londra"] # Satır ismi
+df.loc[["Londra", "Roma"]]
+df.rename(columns= {"Nüfus" : "Nüfuslar"})
+df.info()
+# ----------------
+df= pd.read_csv()
+df.head()
+df.tail()
+df.loc["Etiket İsmi"]
+df.iloc[0]
+df.iloc[1, 2]
+df.shape
+df["Yeni Sütun"]
+df["Sütun İsmi"].unique()
+df["Sütun İsmi"].value_counts()
+df["Sütun İsmi"].duplicated()
+df.drop("Sütun İsmi", axis=1)
+df.pop("Sütun İsmi")
+df.drop("Etiket İsmi", axis=0)
+df.Population.apply(lambda x: int(x.replace(',','')))
+df.State.str.capitalize()
+df.index.name
+df.sort_index()
+df.sort_values(by="Sütun İsmi", ascending=True)
+df.set_index(["State", "City"]).sort_index(level=0)
+df.set_index(["State", "City"]).sort_index(level=1)
+df.sum()
+```

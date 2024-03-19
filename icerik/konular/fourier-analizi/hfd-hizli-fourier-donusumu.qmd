@@ -68,6 +68,10 @@ HFD algoritması bu şekilde çalışarak hesaplama zamanını oldukça azaltır
 `fourier_hfd` fonksiyonunu inceleyiniz.
 :::
 
+::: {.callout-caution}
+`fourier_hfd` fonksiyonu, sadece $N$ sayısının 2'nin üssü olduğu durumlar için çalışır. **Yani `fourier_hfd` fonksiyonu verdiğiniz her sinyal için çalışmaz.**
+:::
+
 ```{python}
 ################################################
 ## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma

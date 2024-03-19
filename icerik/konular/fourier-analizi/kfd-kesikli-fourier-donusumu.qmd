@@ -69,7 +69,7 @@ Aşağıdaki şekilde birbirinden farklı genliğe ve frekansa sahip 3 dalganın
 Elimizde 3 adet örnekleme sahip (3 nokta) bir dalga olsun. Yani sinüs dalgasını 3 adet nokta ile temsil edelim. Bu noktalardan oluşan dalganın frekans bileşenlerini bulmak için Fourier dönüşümünü adım adım yapalım.
 
 $$
-X_{k} = \sum_{n=0}^{3} x_{n} e^{-i 2 \pi k n / 3}
+X_{k} = \sum_{n=0}^{2} x_{n} e^{-i 2 \pi k n / 3}
 $$
 
 $$
@@ -89,6 +89,7 @@ $$
 $$
 
 Yukarıdaki denklemde $x_{0}=1$, $x_{1}=2$, $x_{2}=3$ olarak alırsak $X_{0}=6$, $X_{1}=-1.5 - i 0.9$, $X_{2}=-1.5 + i 0.9$ değerlerini buluruz.
+
 ::: {.callout-important}
 1. Her zaman 0. değer $X_{0}= \sum_{n=0}^{N-1} x_{n}$ şeklinde olacaktır.
 2. $X_{n}$ karmaşık bir sayıdır.
