@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Taygun Bulmus">
+
+<title>Bilgisayarlı Yöntemler - pandas - Veri Manipülasyonu</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../icerik/konular/veri-analizi/pandas-giris.html" rel="prev">
+<link href="../../../resimler/favicon.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sonuç yok",
+    "search-matching-documents-text": "eşleşen belgeler",
+    "search-copy-link-title": "Aramak için bağlantıyı kopyalayın",
+    "search-hide-matches-text": "Ek eşleşmeleri gizle",
+    "search-more-match-text": "bu belgede daha fazla eşleşme",
+    "search-more-matches-text": "bu belgede daha fazla eşleşmeler",
+    "search-clear-button-title": "Temizle",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "İptal et",
+    "search-submit-button-title": "Göndermek",
+    "search-label": "Aramak"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/veri-analizi.html">Veri Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/veri-analizi/pandas-veri-manipülasyonu.html">pandas - Veri Manipülasyonu</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../resimler/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/bulmust/bilgisayarli-yontemler" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://bulmust.github.io/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-file-person"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Karanlık modu değiştir"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Okuyucu modunu değiştir">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Aramak"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text"><strong>İçerik</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/izlence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">İzlence</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/bilYonMod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Modülü</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text"><strong>Konular</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../icerik/konular/adi-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Adi Diferansiyel Denklemler</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Giriş</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Euler Yöntemi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Denklem Sistemleri</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - İkinci Dereceden Diferansiyel Denklemler</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Runge-Kutta Yöntemleri</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SDP - Giriş</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SDP - Atış Yöntemi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SDP - Sonlu Farklar Yöntemi</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../icerik/konular/fourier-analizi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier Analizi</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Giriş</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">KFD - Kesikli Fourier Dönüşümü</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HFD - Hızlı Fourier Dönüşümü</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">THFD - Ters Hızlı Fourier Dönüşümü</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Uygulama - Ses Dalgaları</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../icerik/konular/veri-analizi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Veri Analizi</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/veri-analizi/pandas-giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pandas - Giris</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipülasyonu.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">pandas - Veri Manipülasyonu</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
+   
+  <ul>
+  <li><a href="#pandas-modülü-tekrar" id="toc-pandas-modülü-tekrar" class="nav-link active" data-scroll-target="#pandas-modülü-tekrar"><code>pandas</code> Modülü Tekrar</a></li>
+  <li><a href="#veri-çekme" id="toc-veri-çekme" class="nav-link" data-scroll-target="#veri-çekme">Veri Çekme</a></li>
+  <li><a href="#başlık-değiştirme" id="toc-başlık-değiştirme" class="nav-link" data-scroll-target="#başlık-değiştirme">Başlık Değiştirme</a></li>
+  <li><a href="#başını-ve-sonunu-gösterme" id="toc-başını-ve-sonunu-gösterme" class="nav-link" data-scroll-target="#başını-ve-sonunu-gösterme">Başını ve Sonunu Gösterme</a></li>
+  <li><a href="#satır-sütunlara-numpy-arrayi-gibi-erişim" id="toc-satır-sütunlara-numpy-arrayi-gibi-erişim" class="nav-link" data-scroll-target="#satır-sütunlara-numpy-arrayi-gibi-erişim">Satır Sütunlara <code>numpy</code> array’i gibi Erişim</a></li>
+  <li><a href="#boyut-öğrenme" id="toc-boyut-öğrenme" class="nav-link" data-scroll-target="#boyut-öğrenme">Boyut Öğrenme</a></li>
+  <li><a href="#yeni-sütun-ekleme-ve-silme" id="toc-yeni-sütun-ekleme-ve-silme" class="nav-link" data-scroll-target="#yeni-sütun-ekleme-ve-silme">Yeni Sütun Ekleme ve Silme</a></li>
+  <li><a href="#biricik-unique-değerler" id="toc-biricik-unique-değerler" class="nav-link" data-scroll-target="#biricik-unique-değerler">Biricik (Unique) Değerler</a></li>
+  <li><a href="#biricik-değerlerin-sayısı" id="toc-biricik-değerlerin-sayısı" class="nav-link" data-scroll-target="#biricik-değerlerin-sayısı">Biricik Değerlerin Sayısı</a></li>
+  <li><a href="#tekrar-eden-değerler" id="toc-tekrar-eden-değerler" class="nav-link" data-scroll-target="#tekrar-eden-değerler">Tekrar Eden Değerler</a></li>
+  <li><a href="#veri-manipülasyonu-ve-veri-temizleme" id="toc-veri-manipülasyonu-ve-veri-temizleme" class="nav-link" data-scroll-target="#veri-manipülasyonu-ve-veri-temizleme">Veri Manipülasyonu ve Veri Temizleme</a></li>
+  <li><a href="#etiket-index-işlemleri" id="toc-etiket-index-işlemleri" class="nav-link" data-scroll-target="#etiket-index-işlemleri">Etiket (Index) İşlemleri</a></li>
+  <li><a href="#sıralama" id="toc-sıralama" class="nav-link" data-scroll-target="#sıralama">Sıralama</a></li>
+  <li><a href="#multi-index" id="toc-multi-index" class="nav-link" data-scroll-target="#multi-index">Multi-Index</a></li>
+  <li><a href="#toplama-işlemi" id="toc-toplama-işlemi" class="nav-link" data-scroll-target="#toplama-işlemi">Toplama İşlemi</a></li>
+  <li><a href="#neler-öğrendik" id="toc-neler-öğrendik" class="nav-link" data-scroll-target="#neler-öğrendik">Neler Öğrendik?</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/veri-analizi/pandas-veri-manipülasyonu.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/veri-analizi.html">Veri Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/veri-analizi/pandas-veri-manipülasyonu.html">pandas - Veri Manipülasyonu</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">pandas - Veri Manipülasyonu</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Yazar</div>
+    <div class="quarto-title-meta-contents">
+             <p>Taygun Bulmus </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">19 Mart 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="pandas-modülü-tekrar" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-modülü-tekrar"><code>pandas</code> Modülü Tekrar</h2>
+<p>Şuana kadar öğrendiğimiz komutların bir listesinini yazalım.</p>
+<div id="1c17934f" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># Seriler</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>s<span class="op">=</span> pd.Series([<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>, <span class="dv">500</span>]<span class="op">\</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>    ,index<span class="op">=</span> [<span class="st">"Londra"</span>, <span class="st">"Paris"</span>, <span class="st">"Roma"</span>, <span class="st">"Berlin"</span>, <span class="st">"Oslo"</span>])</span>
+<span id="cb1-5"><a href="#cb1-5"></a>s.index</span>
+<span id="cb1-6"><a href="#cb1-6"></a>s.values</span>
+<span id="cb1-7"><a href="#cb1-7"></a>s.name</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co"># Seri Satırı (index)</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>s[<span class="st">"Londra"</span>]</span>
+<span id="cb1-10"><a href="#cb1-10"></a>s.Londra</span>
+<span id="cb1-11"><a href="#cb1-11"></a>s.describe()</span>
+<span id="cb1-12"><a href="#cb1-12"></a>s.<span class="bu">max</span>()</span>
+<span id="cb1-13"><a href="#cb1-13"></a>s.<span class="bu">min</span>()</span>
+<span id="cb1-14"><a href="#cb1-14"></a>s.std()</span>
+<span id="cb1-15"><a href="#cb1-15"></a>s.mean()</span>
+<span id="cb1-16"><a href="#cb1-16"></a>s.median()</span>
+<span id="cb1-17"><a href="#cb1-17"></a>s.info()</span>
+<span id="cb1-18"><a href="#cb1-18"></a>s.plot(kind<span class="op">=</span> <span class="st">'line'</span>), <span class="co"># bar, barh, pie</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co"># DataFrame'ler</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>df<span class="op">=</span> pd.DataFrame({</span>
+<span id="cb1-22"><a href="#cb1-22"></a>    <span class="st">"Şehir"</span>: [<span class="st">"Londra"</span>, <span class="st">"Paris"</span>, <span class="st">"Roma"</span>, <span class="st">"Berlin"</span>, <span class="st">"Oslo"</span>],</span>
+<span id="cb1-23"><a href="#cb1-23"></a>    <span class="st">"Nüfus"</span>: [<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">400</span>, <span class="dv">500</span>],</span>
+<span id="cb1-24"><a href="#cb1-24"></a>    <span class="st">"Alan"</span>: [<span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">3000</span>, <span class="dv">4000</span>, <span class="dv">5000</span>]</span>
+<span id="cb1-25"><a href="#cb1-25"></a>})</span>
+<span id="cb1-26"><a href="#cb1-26"></a>df.columns</span>
+<span id="cb1-27"><a href="#cb1-27"></a>df[<span class="st">"Nüfus"</span>] <span class="co">#! Sütun İsmi</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>df[[<span class="st">"Nüfus"</span>,<span class="st">"Şehir"</span>]]</span>
+<span id="cb1-29"><a href="#cb1-29"></a>df.Nüfus <span class="co">#! Türkçe karakter kullanma, Sütun ismi</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>df.loc[<span class="dv">0</span>] <span class="co"># Satır ismi (etiket, index) olmadığı için 0</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>df.loc[[<span class="dv">0</span>, <span class="dv">1</span>]] <span class="co"># Satır ismi (etiket, index) olmadığı için 0,1</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a>df.rename(columns<span class="op">=</span> {<span class="st">"Nüfus"</span> : <span class="st">"Nüfuslar"</span>})</span>
+<span id="cb1-33"><a href="#cb1-33"></a>df.info()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.series.Series'&gt;
+Index: 5 entries, Londra to Oslo
+Series name: None
+Non-Null Count  Dtype
+--------------  -----
+5 non-null      int64
+dtypes: int64(1)
+memory usage: 252.0+ bytes
+---o---o---o---
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 5 entries, 0 to 4
+Data columns (total 3 columns):
+ #   Column  Non-Null Count  Dtype 
+---  ------  --------------  ----- 
+ 0   Şehir   5 non-null      object
+ 1   Nüfus   5 non-null      int64 
+ 2   Alan    5 non-null      int64 
+dtypes: int64(2), object(1)
+memory usage: 248.0+ bytes</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="pandas-veri-manipülasyonu_files/figure-html/cell-2-output-2.png" width="575" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="veri-çekme" class="level2">
+<h2 class="anchored" data-anchor-id="veri-çekme">Veri Çekme</h2>
+<p><code>pandas</code> modülü ile bir dosyadaki veriyi okuyabildiğimiz gibi bir internet sitesinden de veriyi çekebiliriz.</p>
+<div id="57f59465" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="bu">print</span>(df)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Rank        City            State Population Date of census/estimate
+0       1   London[2]   United Kingdom  8,615,246             1 June 2014
+1       2      Berlin          Germany  3,437,916             31 May 2014
+2       3      Madrid            Spain  3,165,235          1 January 2014
+3       4        Rome            Italy  2,872,086       30 September 2014
+4       5       Paris           France  2,273,305          1 January 2013
+..    ...         ...              ...        ...                     ...
+100   101        Bonn          Germany    309,869        31 December 2012
+101   102       Malmö           Sweden    309,105           31 March 2013
+102   103  Nottingham   United Kingdom    308,735            30 June 2012
+103   104    Katowice           Poland    308,269            30 June 2012
+104   105      Kaunas        Lithuania    306,888          1 January 2013
+
+[105 rows x 5 columns]</code></pre>
+</div>
+</div>
+</section>
+<section id="başlık-değiştirme" class="level2">
+<h2 class="anchored" data-anchor-id="başlık-değiştirme">Başlık Değiştirme</h2>
+<p>Şimdi <code>df</code> veri çerçevesinin “Rank” başlığını “Ranks” yapalım.</p>
+<div id="2cbcf627" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Sütunlar</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="bu">print</span>(df.columns)</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># Sütun ismi değiştirme</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>df<span class="op">=</span> df.rename(columns<span class="op">=</span>{<span class="st">'Rank'</span>:<span class="st">'Ranks'</span>})</span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="bu">print</span>(df.columns)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Index(['Rank', 'City', 'State', 'Population', 'Date of census/estimate'], dtype='object')
+Index(['Ranks', 'City', 'State', 'Population', 'Date of census/estimate'], dtype='object')</code></pre>
+</div>
+</div>
+<p>Aynı işlemi <code>inplace=True</code> ile de yapabiliriz.</p>
+<div id="35f4a832" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a>df.rename(columns<span class="op">=</span>{<span class="st">'Ranks'</span>:<span class="st">'Rank'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="bu">print</span>(df.columns)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Index(['Rank', 'City', 'State', 'Population', 'Date of census/estimate'], dtype='object')</code></pre>
+</div>
+</div>
+<p>Inplace işlemi veri çerçevesi ile yapılan işlemlerin çoğunda bulunur. Her seferinde <code>df=df. ...</code> şeklinde yazmak yerine <code>inplace=True</code> yazabiliriz.</p>
+</section>
+<section id="başını-ve-sonunu-gösterme" class="level2">
+<h2 class="anchored" data-anchor-id="başını-ve-sonunu-gösterme">Başını ve Sonunu Gösterme</h2>
+<p>Çok büyük veriye sahip veri çerçevesinin içeriğine göz atmak için <code>head</code> ve <code>tail</code> komutlarını kullanırız.</p>
+<div id="590173cf" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># ilk 5 satırı göster</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co"># son 5 satırı göster</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="bu">print</span>(df.tail())</span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="co"># ilk 7 satırı göster</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a>df.head(<span class="dv">7</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Rank       City            State Population Date of census/estimate
+0     1  London[2]   United Kingdom  8,615,246             1 June 2014
+1     2     Berlin          Germany  3,437,916             31 May 2014
+2     3     Madrid            Spain  3,165,235          1 January 2014
+3     4       Rome            Italy  2,872,086       30 September 2014
+4     5      Paris           France  2,273,305          1 January 2013
+---o---o---o---
+     Rank        City            State Population Date of census/estimate
+100   101        Bonn          Germany    309,869        31 December 2012
+101   102       Malmö           Sweden    309,105           31 March 2013
+102   103  Nottingham   United Kingdom    308,735            30 June 2012
+103   104    Katowice           Poland    308,269            30 June 2012
+104   105      Kaunas        Lithuania    306,888          1 January 2013
+---o---o---o---</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Rank</th>
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th">State</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Date of census/estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>London[2]</td>
+<td>United Kingdom</td>
+<td>8,615,246</td>
+<td>1 June 2014</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>Berlin</td>
+<td>Germany</td>
+<td>3,437,916</td>
+<td>31 May 2014</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>Madrid</td>
+<td>Spain</td>
+<td>3,165,235</td>
+<td>1 January 2014</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>Rome</td>
+<td>Italy</td>
+<td>2,872,086</td>
+<td>30 September 2014</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>Paris</td>
+<td>France</td>
+<td>2,273,305</td>
+<td>1 January 2013</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>6</td>
+<td>Bucharest</td>
+<td>Romania</td>
+<td>1,883,425</td>
+<td>20 October 2011</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>7</td>
+<td>Vienna</td>
+<td>Austria</td>
+<td>1,794,770</td>
+<td>1 January 2015</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="satır-sütunlara-numpy-arrayi-gibi-erişim" class="level2">
+<h2 class="anchored" data-anchor-id="satır-sütunlara-numpy-arrayi-gibi-erişim">Satır Sütunlara <code>numpy</code> array’i gibi Erişim</h2>
+<p><code>pandas</code> veri çerçevesine numpy array’i gibi erişmek de mümkün. Bunun için <code>iloc</code> komutunu kullanırız.,</p>
+<div id="75bb85ff" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># ilk 5 satırı göster</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="co"># mat1= np.array([[1,2],[3,4]])</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="co"># mat1[1,0] -&gt; 3</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="bu">print</span>(df.iloc[<span class="dv">2</span>,<span class="dv">3</span>])</span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="bu">print</span>(df.iloc[<span class="dv">0</span>:<span class="dv">2</span>,<span class="dv">1</span>:<span class="dv">3</span>])</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Rank       City            State Population Date of census/estimate
+0     1  London[2]   United Kingdom  8,615,246             1 June 2014
+1     2     Berlin          Germany  3,437,916             31 May 2014
+2     3     Madrid            Spain  3,165,235          1 January 2014
+3     4       Rome            Italy  2,872,086       30 September 2014
+4     5      Paris           France  2,273,305          1 January 2013
+---o---o---o---
+3,165,235
+---o---o---o---
+        City            State
+0  London[2]   United Kingdom
+1     Berlin          Germany</code></pre>
+</div>
+</div>
+</section>
+<section id="boyut-öğrenme" class="level2">
+<h2 class="anchored" data-anchor-id="boyut-öğrenme">Boyut Öğrenme</h2>
+<p>Tıpkı <code>numpy</code>’da olduğu gibi burada da <code>shape</code> komutu ile veri çerçevesinin boyutunu öğrenebiliriz.</p>
+<div id="66bbf103" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="co"># Boyut göster</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>df.shape</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>(105, 5)</code></pre>
+</div>
+</div>
+</section>
+<section id="yeni-sütun-ekleme-ve-silme" class="level2">
+<h2 class="anchored" data-anchor-id="yeni-sütun-ekleme-ve-silme">Yeni Sütun Ekleme ve Silme</h2>
+<p>Veri çerçevesinde yeni bir sütun eklemek için <code>df["Yeni Sütun"]</code> şeklinde bir komut kullanırız.</p>
+<div id="a531f051" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co"># NumericPopulation sütunu ekleyelim. İçerisine Population sütununu kopyalayalım.</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>df[<span class="st">"NumericPopulation"</span>]<span class="op">=</span> df[<span class="st">"Population"</span>]</span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="bu">print</span>(df.head())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Rank       City            State Population Date of census/estimate  \
+0     1  London[2]   United Kingdom  8,615,246             1 June 2014   
+1     2     Berlin          Germany  3,437,916             31 May 2014   
+2     3     Madrid            Spain  3,165,235          1 January 2014   
+3     4       Rome            Italy  2,872,086       30 September 2014   
+4     5      Paris           France  2,273,305          1 January 2013   
+
+  NumericPopulation  
+0         8,615,246  
+1         3,437,916  
+2         3,165,235  
+3         2,872,086  
+4         2,273,305  </code></pre>
+</div>
+</div>
+<p>Veri çerçevesinden bir sütunuu silmek için <code>df.drop("Sütun İsmi", axis=1)</code> komutunu veya <code>df.pop("Sütun İsmi")</code>, bir satırı silmek için <code>df.drop("İndex İsmi", axis=0)</code> komutunu kullanırız.</p>
+<ul>
+<li><code>df.pop</code> komutu veri çerçevesini değiştirirken <code>df.drop</code> komutu veri çerçevesini değiştirmez, değişikliği görmek için <code>inplace=True</code> eklememiz gerekir.</li>
+<li><code>axis=0</code> varsayılan değerdir. Bu yüzden <code>axis=0</code> yazmamıza gerek yoktur.</li>
+</ul>
+<div id="bcb1c07d" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co"># Sütun isimlerini göster</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="bu">print</span>(df.columns)</span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="co"># Population sütununu sil</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a>df.drop(<span class="st">"Population"</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb17-9"><a href="#cb17-9"></a><span class="co">#df.pop("Population") # &lt;----- bu da aynı işi yapar</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a><span class="bu">print</span>(df.columns)</span>
+<span id="cb17-11"><a href="#cb17-11"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb17-12"><a href="#cb17-12"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb17-13"><a href="#cb17-13"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb17-14"><a href="#cb17-14"></a><span class="bu">print</span>(df.drop(<span class="dv">0</span>, axis<span class="op">=</span><span class="dv">0</span>).head(<span class="dv">3</span>))</span>
+<span id="cb17-15"><a href="#cb17-15"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb17-16"><a href="#cb17-16"></a><span class="bu">print</span>(df.head())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Index(['Rank', 'City', 'State', 'Population', 'Date of census/estimate'], dtype='object')
+---o---o---o---
+Index(['Rank', 'City', 'State', 'Date of census/estimate'], dtype='object')
+---o---o---o---
+   Rank       City            State Date of census/estimate
+0     1  London[2]   United Kingdom             1 June 2014
+1     2     Berlin          Germany             31 May 2014
+2     3     Madrid            Spain          1 January 2014
+3     4       Rome            Italy       30 September 2014
+4     5      Paris           France          1 January 2013
+---o---o---o---
+   Rank    City     State Date of census/estimate
+1     2  Berlin   Germany             31 May 2014
+2     3  Madrid     Spain          1 January 2014
+3     4    Rome     Italy       30 September 2014
+---o---o---o---
+   Rank       City            State Date of census/estimate
+0     1  London[2]   United Kingdom             1 June 2014
+1     2     Berlin          Germany             31 May 2014
+2     3     Madrid            Spain          1 January 2014
+3     4       Rome            Italy       30 September 2014
+4     5      Paris           France          1 January 2013</code></pre>
+</div>
+</div>
+</section>
+<section id="biricik-unique-değerler" class="level2">
+<h2 class="anchored" data-anchor-id="biricik-unique-değerler">Biricik (Unique) Değerler</h2>
+<p><code>unique</code> komutu ile bir sütunun içindeki değerlerin biricik (unique) değerlerini görebiliriz.</p>
+<div id="e1a12cab" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="co"># State sütunundaki değerler</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].values)</span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb19-7"><a href="#cb19-7"></a><span class="co"># State sütunundaki biricik değerler</span></span>
+<span id="cb19-8"><a href="#cb19-8"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].unique())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[' United Kingdom' ' Germany' ' Spain' ' Italy' ' France' ' Romania'
+ ' Austria' ' Germany' ' Hungary' ' Poland' ' Spain' ' Germany' ' Italy'
+ ' Bulgaria' ' Czech Republic' ' Belgium' ' United Kingdom' ' Germany'
+ ' Italy' ' Sweden' ' Italy' ' France' ' Netherlands' ' Croatia' ' Spain'
+ ' Poland' ' United Kingdom' ' Poland' ' Germany' ' Latvia' ' Spain'
+ ' Italy' ' Spain' ' Greece' ' Poland' ' Netherlands' ' Finland'
+ ' Germany' ' United Kingdom' ' Italy' ' Germany' ' Germany' ' Germany'
+ ' Spain' ' Denmark' ' United Kingdom' ' Portugal' ' Poland' ' Germany'
+ ' Lithuania' ' Germany' ' Germany' ' Sweden' ' Ireland' ' United Kingdom'
+ ' Germany' ' Netherlands' ' United Kingdom' ' Belgium' ' United Kingdom'
+ ' Germany' ' Germany' ' France' ' United Kingdom' ' Poland' ' France'
+ ' Spain' ' Estonia' ' United Kingdom' 'Slovakia Slovak Republic'
+ ' Poland' ' Spain' ' Italy' ' Spain' ' Italy' ' Czech Republic' ' Poland'
+ ' Germany' ' Spain' ' United Kingdom' ' Poland' ' France' ' Germany'
+ ' Bulgaria' ' Bulgaria' ' Spain' ' United Kingdom' ' Netherlands'
+ ' Spain' ' Germany' ' United Kingdom' ' Denmark' ' Romania'
+ ' United Kingdom' ' Italy' ' Greece' ' United Kingdom' ' Romania'
+ ' Italy' ' Spain' ' Germany' ' Sweden' ' United Kingdom' ' Poland'
+ ' Lithuania']
+---o---o---o---
+[' United Kingdom' ' Germany' ' Spain' ' Italy' ' France' ' Romania'
+ ' Austria' ' Hungary' ' Poland' ' Bulgaria' ' Czech Republic' ' Belgium'
+ ' Sweden' ' Netherlands' ' Croatia' ' Latvia' ' Greece' ' Finland'
+ ' Denmark' ' Portugal' ' Lithuania' ' Ireland' ' Estonia'
+ 'Slovakia Slovak Republic']</code></pre>
+</div>
+</div>
+</section>
+<section id="biricik-değerlerin-sayısı" class="level2">
+<h2 class="anchored" data-anchor-id="biricik-değerlerin-sayısı">Biricik Değerlerin Sayısı</h2>
+<p><code>value_counts()</code> komutu ile bir sütunun içindeki değerlerin biricik (unique) değerlerinin sayısını görebiliriz.</p>
+<div id="cd0927ee" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="co"># State sütunundaki biricik değerlerin sayısı</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].value_counts())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>State
+ Germany                    19
+ United Kingdom             16
+ Spain                      13
+ Poland                     10
+ Italy                      10
+ France                      5
+ Netherlands                 4
+ Bulgaria                    3
+ Sweden                      3
+ Romania                     3
+ Czech Republic              2
+ Belgium                     2
+ Greece                      2
+ Denmark                     2
+ Lithuania                   2
+ Hungary                     1
+ Austria                     1
+ Croatia                     1
+ Latvia                      1
+ Finland                     1
+ Portugal                    1
+ Ireland                     1
+ Estonia                     1
+Slovakia Slovak Republic     1
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="tekrar-eden-değerler" class="level2">
+<h2 class="anchored" data-anchor-id="tekrar-eden-değerler">Tekrar Eden Değerler</h2>
+<p><code>duplicated</code> komutu ile bir sütunun içindeki değerlerin tekrarlanan değerlerini görebiliriz. Bu komutun sonucunda <code>True</code> ve <code>False</code> değerleri döner.</p>
+<div id="ead123a6" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="co"># State sütunundaki tekrar eden değerler</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].duplicated().head(<span class="dv">8</span>))</span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb23-7"><a href="#cb23-7"></a><span class="co"># State sütunundaki ilk 8 değer</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a><span class="bu">print</span>(df.State.head(<span class="dv">8</span>))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    False
+1    False
+2    False
+3    False
+4    False
+5    False
+6    False
+7     True
+Name: State, dtype: bool
+---o---o---o---
+0     United Kingdom
+1            Germany
+2              Spain
+3              Italy
+4             France
+5            Romania
+6            Austria
+7            Germany
+Name: State, dtype: object</code></pre>
+</div>
+</div>
+</section>
+<section id="veri-manipülasyonu-ve-veri-temizleme" class="level2">
+<h2 class="anchored" data-anchor-id="veri-manipülasyonu-ve-veri-temizleme">Veri Manipülasyonu ve Veri Temizleme</h2>
+<p>Elimize geçen veride sistematik olarak değiştirmemiz gereken bazı durumlar olabilir. Bu tip veriye ham veri adı verilir. Ham veri içerisinde istenmeyen veya yanlış satırlar, yanlış yazılmış sütunlar olabilir. Bunun gibi kusurları temizlemek ve üzerine çalışılabilir bir hale getirmek için manipüle (oynama) yapmamız gerekir.</p>
+<p>Bunun için <code>df</code> değişkenine tekrar bakalım.</p>
+<div id="1a39ae8c" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="co"># İlk 3 satırı göster</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="bu">print</span>(df.head(<span class="dv">3</span>))</span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="co"># Veri hakkında bilgi</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="bu">print</span>(df.info())</span>
+<span id="cb25-9"><a href="#cb25-9"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb25-10"><a href="#cb25-10"></a><span class="co"># State sütunundaki ilk 3 değer</span></span>
+<span id="cb25-11"><a href="#cb25-11"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].head(<span class="dv">3</span>).values)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Rank       City            State Population Date of census/estimate
+0     1  London[2]   United Kingdom  8,615,246             1 June 2014
+1     2     Berlin          Germany  3,437,916             31 May 2014
+2     3     Madrid            Spain  3,165,235          1 January 2014
+---o---o---o---
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 105 entries, 0 to 104
+Data columns (total 5 columns):
+ #   Column                   Non-Null Count  Dtype 
+---  ------                   --------------  ----- 
+ 0   Rank                     105 non-null    int64 
+ 1   City                     105 non-null    object
+ 2   State                    105 non-null    object
+ 3   Population               105 non-null    object
+ 4   Date of census/estimate  105 non-null    object
+dtypes: int64(1), object(4)
+memory usage: 4.2+ KB
+None
+---o---o---o---
+[' United Kingdom' ' Germany' ' Spain']</code></pre>
+</div>
+</div>
+<p>İlk bakışta görülen kusurlar şunlardır:</p>
+<ol type="1">
+<li><code>0</code>. indexe sahip olan satırda <code>London [2]</code> yazılmış.</li>
+<li><code>Population</code> sütunu sayı olması gerekirken <code>object</code> olarak kaydedilmiş. Yani <code>string</code> olarak kaydedilmiş.</li>
+<li><code>State</code> sütunundaki verilerin başında bir adet fazladan boşluk var.</li>
+</ol>
+<p>Bu sorunları sırasıyla çözelim.</p>
+<div id="9825c4aa" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="co">## 1.</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a>df.iloc[<span class="dv">0</span>,<span class="dv">1</span>]<span class="op">=</span> <span class="st">"London"</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="bu">print</span>(df.loc[<span class="dv">0</span>])</span>
+<span id="cb27-7"><a href="#cb27-7"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="co">## 2.</span></span>
+<span id="cb27-9"><a href="#cb27-9"></a><span class="co">## Aşağıdaki komut çalışmıyor çünkü python virgüllü sayıları noktaya çeviremiyor.</span></span>
+<span id="cb27-10"><a href="#cb27-10"></a><span class="co">#df["Population"]= df["Population"].astype(float)</span></span>
+<span id="cb27-11"><a href="#cb27-11"></a><span class="co"># Tüm virgülleri kaldıralım ve float tipine çevirelim.</span></span>
+<span id="cb27-12"><a href="#cb27-12"></a>df[<span class="st">"Population"</span>]<span class="op">=</span>df.Population.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">int</span>(x.replace(<span class="st">','</span>,<span class="st">''</span>)))</span>
+<span id="cb27-13"><a href="#cb27-13"></a><span class="co"># str1='Naber Gizem'</span></span>
+<span id="cb27-14"><a href="#cb27-14"></a><span class="co"># print(str1.replace('G',''))</span></span>
+<span id="cb27-15"><a href="#cb27-15"></a><span class="bu">print</span>(df.info())</span>
+<span id="cb27-16"><a href="#cb27-16"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb27-17"><a href="#cb27-17"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb27-18"><a href="#cb27-18"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb27-19"><a href="#cb27-19"></a><span class="co">## 3.</span></span>
+<span id="cb27-20"><a href="#cb27-20"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].head(<span class="dv">3</span>).values)</span>
+<span id="cb27-21"><a href="#cb27-21"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb27-22"><a href="#cb27-22"></a><span class="co"># strip() fonksiyonu stringin başındaki ve sonundaki boşlukları siler.</span></span>
+<span id="cb27-23"><a href="#cb27-23"></a>df.State<span class="op">=</span> df.State.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.strip())</span>
+<span id="cb27-24"><a href="#cb27-24"></a><span class="co"># Göster</span></span>
+<span id="cb27-25"><a href="#cb27-25"></a><span class="bu">print</span>(df[<span class="st">"State"</span>].head(<span class="dv">3</span>).values)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rank                                     1
+City                                London
+State                       United Kingdom
+Population                       8,615,246
+Date of census/estimate        1 June 2014
+Name: 0, dtype: object
+---o---o---o---
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 105 entries, 0 to 104
+Data columns (total 5 columns):
+ #   Column                   Non-Null Count  Dtype 
+---  ------                   --------------  ----- 
+ 0   Rank                     105 non-null    int64 
+ 1   City                     105 non-null    object
+ 2   State                    105 non-null    object
+ 3   Population               105 non-null    int64 
+ 4   Date of census/estimate  105 non-null    object
+dtypes: int64(2), object(3)
+memory usage: 4.2+ KB
+None
+---o---o---o---
+   Rank    City            State  Population Date of census/estimate
+0     1  London   United Kingdom     8615246             1 June 2014
+1     2  Berlin          Germany     3437916             31 May 2014
+2     3  Madrid            Spain     3165235          1 January 2014
+3     4    Rome            Italy     2872086       30 September 2014
+4     5   Paris           France     2273305          1 January 2013
+---o---o---o---
+[' United Kingdom' ' Germany' ' Spain']
+---o---o---o---
+['United Kingdom' 'Germany' 'Spain']</code></pre>
+</div>
+</div>
+<p>Veri çerçevesindeki verilerin ilk harflerini <code>df.State.str.capitalize()</code> ile büyük yapabiliriz.</p>
+</section>
+<section id="etiket-index-işlemleri" class="level2">
+<h2 class="anchored" data-anchor-id="etiket-index-işlemleri">Etiket (Index) İşlemleri</h2>
+<p>Kullandığımız veri çerçevesinde etiket bulunmuyor. Tüm veri şehirler üzerine kurulu olduğu için şehirleri etiket olarak alabiliriz.</p>
+<div id="ee6b1fc4" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="co"># Göster</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a>df.head()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Rank</th>
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th">State</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Date of census/estimate</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">London[2]</td>
+<td>1</td>
+<td>London[2]</td>
+<td>United Kingdom</td>
+<td>8,615,246</td>
+<td>1 June 2014</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Berlin</td>
+<td>2</td>
+<td>Berlin</td>
+<td>Germany</td>
+<td>3,437,916</td>
+<td>31 May 2014</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Madrid</td>
+<td>3</td>
+<td>Madrid</td>
+<td>Spain</td>
+<td>3,165,235</td>
+<td>1 January 2014</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Rome</td>
+<td>4</td>
+<td>Rome</td>
+<td>Italy</td>
+<td>2,872,086</td>
+<td>30 September 2014</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Paris</td>
+<td>5</td>
+<td>Paris</td>
+<td>France</td>
+<td>2,273,305</td>
+<td>1 January 2013</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>Başlıklara bakarsak etiket isminin de <code>City</code> olduğunu görebiliriz. Etiket ismi ile sütun ismi ayrışması adına etiket ismi alt satıra yazılmıştır.</p>
+<p>Etiketleri <code>df.index</code> ile de görebildiğimizi hatırlatalım.</p>
+<div id="9b44f2b5" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
+<span id="cb30-6"><a href="#cb30-6"></a><span class="co"># Rank sütununu göster. Etiketler de gözükecek.</span></span>
+<span id="cb30-7"><a href="#cb30-7"></a><span class="bu">print</span>(df.Rank.head())</span>
+<span id="cb30-8"><a href="#cb30-8"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb30-9"><a href="#cb30-9"></a><span class="co"># Etiketleri göster ve listeye çevir</span></span>
+<span id="cb30-10"><a href="#cb30-10"></a><span class="bu">print</span>(<span class="bu">list</span>(df.head().index))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>City
+London[2]    1
+Berlin       2
+Madrid       3
+Rome         4
+Paris        5
+Name: Rank, dtype: int64
+---o---o---o---
+['London[2]', 'Berlin', 'Madrid', 'Rome', 'Paris']</code></pre>
+</div>
+</div>
+<p>Etiket grubunun ismini yani başlığını <code>df.index.name</code> ile görebiliriz/değiştirebiliriz.</p>
+<div id="1c8c06af" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
+<span id="cb32-6"><a href="#cb32-6"></a><span class="co"># Etiket isimlerini None yap</span></span>
+<span id="cb32-7"><a href="#cb32-7"></a>df.index.name<span class="op">=</span> <span class="st">'EtiketIsmi'</span></span>
+<span id="cb32-8"><a href="#cb32-8"></a><span class="co">#$ Etiket ismini sıfırla</span></span>
+<span id="cb32-9"><a href="#cb32-9"></a><span class="co">#df.index.name= None</span></span>
+<span id="cb32-10"><a href="#cb32-10"></a><span class="co"># Göster</span></span>
+<span id="cb32-11"><a href="#cb32-11"></a>df.head()</span>
+<span id="cb32-12"><a href="#cb32-12"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb32-13"><a href="#cb32-13"></a><span class="co"># Tüm etiketleri göster</span></span>
+<span id="cb32-14"><a href="#cb32-14"></a><span class="bu">print</span>(df.head().index)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>---o---o---o---
+Index(['London[2]', 'Berlin', 'Madrid', 'Rome', 'Paris'], dtype='object', name='EtiketIsmi')</code></pre>
+</div>
+</div>
+<p><code>reset_index()</code> komutu ile etiketleri varsayılan numaralara geri döndürebiliriz. Bu komut etiketleri numaraya döndürürken, kayıtlı olan etiketleri de yeni bir sütun olarak ekler.</p>
+<div id="9aad66d5" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb34-4"><a href="#cb34-4"></a><span class="co"># Etiket ismini City State sütunlarının değerlerinin toplamı olarak ata</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]<span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> df[<span class="st">"State"</span>]</span>
+<span id="cb34-6"><a href="#cb34-6"></a><span class="co"># Göstpd.Int16Dtype(er)</span></span>
+<span id="cb34-7"><a href="#cb34-7"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb34-8"><a href="#cb34-8"></a><span class="co"># Etiketleri sıfırla</span></span>
+<span id="cb34-9"><a href="#cb34-9"></a>df<span class="op">=</span>df.reset_index()</span>
+<span id="cb34-10"><a href="#cb34-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb34-11"><a href="#cb34-11"></a><span class="bu">print</span>(df.head())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                           Rank       City            State Population  \
+London[2]  United Kingdom     1  London[2]   United Kingdom  8,615,246   
+Berlin  Germany               2     Berlin          Germany  3,437,916   
+Madrid  Spain                 3     Madrid            Spain  3,165,235   
+Rome  Italy                   4       Rome            Italy  2,872,086   
+Paris  France                 5      Paris           France  2,273,305   
+
+                          Date of census/estimate  
+London[2]  United Kingdom             1 June 2014  
+Berlin  Germany                       31 May 2014  
+Madrid  Spain                      1 January 2014  
+Rome  Italy                     30 September 2014  
+Paris  France                      1 January 2013  
+---o---o---o---
+                       index  Rank       City            State Population  \
+0  London[2]  United Kingdom     1  London[2]   United Kingdom  8,615,246   
+1            Berlin  Germany     2     Berlin          Germany  3,437,916   
+2              Madrid  Spain     3     Madrid            Spain  3,165,235   
+3                Rome  Italy     4       Rome            Italy  2,872,086   
+4              Paris  France     5      Paris           France  2,273,305   
+
+  Date of census/estimate  
+0             1 June 2014  
+1             31 May 2014  
+2          1 January 2014  
+3       30 September 2014  
+4          1 January 2013  </code></pre>
+</div>
+</div>
+</section>
+<section id="sıralama" class="level2">
+<h2 class="anchored" data-anchor-id="sıralama">Sıralama</h2>
+<p><strong>Tüm veriyi</strong> etiket isimlerine göre sıralayabiliriz.</p>
+<div id="041a7d7b" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb36-3"><a href="#cb36-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb36-4"><a href="#cb36-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
+<span id="cb36-5"><a href="#cb36-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
+<span id="cb36-6"><a href="#cb36-6"></a><span class="co"># Göster</span></span>
+<span id="cb36-7"><a href="#cb36-7"></a>df.head()</span>
+<span id="cb36-8"><a href="#cb36-8"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb36-9"><a href="#cb36-9"></a><span class="co"># Tüm veriyi etiket isimlerine göre sırala</span></span>
+<span id="cb36-10"><a href="#cb36-10"></a>df<span class="op">=</span> df.sort_index()</span>
+<span id="cb36-11"><a href="#cb36-11"></a><span class="co"># Göster</span></span>
+<span id="cb36-12"><a href="#cb36-12"></a>df.head()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>---o---o---o---</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Rank</th>
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th">State</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Date of census/estimate</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Aarhus</td>
+<td>92</td>
+<td>Aarhus</td>
+<td>Denmark</td>
+<td>326,676</td>
+<td>1 October 2014</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Alicante</td>
+<td>86</td>
+<td>Alicante</td>
+<td>Spain</td>
+<td>334,678</td>
+<td>1 January 2012</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Amsterdam</td>
+<td>23</td>
+<td>Amsterdam</td>
+<td>Netherlands</td>
+<td>813,562</td>
+<td>31 May 2014</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Antwerp</td>
+<td>59</td>
+<td>Antwerp</td>
+<td>Belgium</td>
+<td>510,610</td>
+<td>1 January 2014</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Athens</td>
+<td>34</td>
+<td>Athens</td>
+<td>Greece</td>
+<td>664,046</td>
+<td>24 May 2011</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>Tüm veriyi belirlediğimiz sütuna göre sıralayabiliriz.</p>
+<div id="bc617f13" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb38-4"><a href="#cb38-4"></a><span class="co"># Etiket ismini City'nin değerleri olarak ata</span></span>
+<span id="cb38-5"><a href="#cb38-5"></a>df.index<span class="op">=</span> df[<span class="st">"City"</span>]</span>
+<span id="cb38-6"><a href="#cb38-6"></a><span class="co"># Göster</span></span>
+<span id="cb38-7"><a href="#cb38-7"></a>df.head()</span>
+<span id="cb38-8"><a href="#cb38-8"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb38-9"><a href="#cb38-9"></a><span class="co"># Tüm veriyi belirlediğimiz sütuna, Rank süttununa göre sırala</span></span>
+<span id="cb38-10"><a href="#cb38-10"></a>df.sort_values(by<span class="op">=</span><span class="st">"Rank"</span>, ascending<span class="op">=</span><span class="va">False</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb38-11"><a href="#cb38-11"></a><span class="co"># Göster</span></span>
+<span id="cb38-12"><a href="#cb38-12"></a>df.head()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>---o---o---o---</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Rank</th>
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th">State</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">Date of census/estimate</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">City</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Kaunas</td>
+<td>105</td>
+<td>Kaunas</td>
+<td>Lithuania</td>
+<td>306,888</td>
+<td>1 January 2013</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Katowice</td>
+<td>104</td>
+<td>Katowice</td>
+<td>Poland</td>
+<td>308,269</td>
+<td>30 June 2012</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Nottingham</td>
+<td>103</td>
+<td>Nottingham</td>
+<td>United Kingdom</td>
+<td>308,735</td>
+<td>30 June 2012</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Malmö</td>
+<td>102</td>
+<td>Malmö</td>
+<td>Sweden</td>
+<td>309,105</td>
+<td>31 March 2013</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Bonn</td>
+<td>101</td>
+<td>Bonn</td>
+<td>Germany</td>
+<td>309,869</td>
+<td>31 December 2012</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="multi-index" class="level2">
+<h2 class="anchored" data-anchor-id="multi-index">Multi-Index</h2>
+<p>Veri çerçevesindeki veriyi gruplayabiliriz. Örneğin etiketlerde hem ülkeler, hem de o ülkelere ait olan şehirler olsun. Yani iki adet etiket olsun. <code>set_index</code> komutu ile etiketleri belirlerken iki sütun olarak girelim.</p>
+<div id="249c517e" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb40-3"><a href="#cb40-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb40-4"><a href="#cb40-4"></a><span class="co"># 2 adet etiket kullan.</span></span>
+<span id="cb40-5"><a href="#cb40-5"></a><span class="co"># 1. City'nin değerleri</span></span>
+<span id="cb40-6"><a href="#cb40-6"></a><span class="co"># 2. State'nin değerleri</span></span>
+<span id="cb40-7"><a href="#cb40-7"></a>df.set_index([<span class="st">"State"</span>, <span class="st">"City"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb40-8"><a href="#cb40-8"></a><span class="bu">print</span>(<span class="st">"2 adet etiketli veri çerçevesi"</span>)</span>
+<span id="cb40-9"><a href="#cb40-9"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb40-10"><a href="#cb40-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb40-11"><a href="#cb40-11"></a><span class="co"># 2 etiketli dataframi 0. etikete göre sırala</span></span>
+<span id="cb40-12"><a href="#cb40-12"></a><span class="bu">print</span>(<span class="st">"2 adet etiketli veri çerçevesi, 0. etikete göre sırala"</span>)</span>
+<span id="cb40-13"><a href="#cb40-13"></a><span class="bu">print</span>(df.sort_index(level<span class="op">=</span><span class="dv">0</span>).head())</span>
+<span id="cb40-14"><a href="#cb40-14"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb40-15"><a href="#cb40-15"></a><span class="co"># 2 etiketli dataframi 1. etikete göre sırala</span></span>
+<span id="cb40-16"><a href="#cb40-16"></a><span class="bu">print</span>(<span class="st">"2 adet etiketli veri çerçevesi, 1. etikete göre sırala"</span>)</span>
+<span id="cb40-17"><a href="#cb40-17"></a><span class="bu">print</span>(df.sort_index(level<span class="op">=</span><span class="dv">1</span>).head())</span>
+<span id="cb40-18"><a href="#cb40-18"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb40-19"><a href="#cb40-19"></a><span class="co"># 2 etiketli dataframi 0. etikete göre sırala ve Sweden olanları göster</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2 adet etiketli veri çerçevesi
+                          Rank Population Date of census/estimate
+State          City                                              
+United Kingdom London[2]     1  8,615,246             1 June 2014
+Germany        Berlin        2  3,437,916             31 May 2014
+Spain          Madrid        3  3,165,235          1 January 2014
+Italy          Rome          4  2,872,086       30 September 2014
+France         Paris         5  2,273,305          1 January 2013
+---o---o---o---
+2 adet etiketli veri çerçevesi, 0. etikete göre sırala
+                       Rank Population Date of census/estimate
+State    City                                                 
+Austria  Vienna           7  1,794,770          1 January 2015
+Belgium  Antwerp         59    510,610          1 January 2014
+         Brussels[17]    16  1,175,831          1 January 2014
+Bulgaria Plovdiv         84    341,041        31 December 2013
+         Sofia           14  1,291,895        14 December 2014
+---o---o---o---
+2 adet etiketli veri çerçevesi, 1. etikete göre sırala
+                       Rank Population Date of census/estimate
+State       City                                              
+Denmark     Aarhus       92    326,676          1 October 2014
+Spain       Alicante     86    334,678          1 January 2012
+Netherlands Amsterdam    23    813,562             31 May 2014
+Belgium     Antwerp      59    510,610          1 January 2014
+Greece      Athens       34    664,046             24 May 2011
+---o---o---o---</code></pre>
+</div>
+</div>
+<p>İki adet etikete sahip veri çerçevesine erişmek için <code>df.loc["Etiket1", "Etiket2"]</code> komutunu kullanırız.</p>
+<div id="8672f609" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb42-2"><a href="#cb42-2"></a><span class="co"># Veri çekme</span></span>
+<span id="cb42-3"><a href="#cb42-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb42-4"><a href="#cb42-4"></a><span class="co"># 2 adet etiket kullan.</span></span>
+<span id="cb42-5"><a href="#cb42-5"></a><span class="co"># 1. City'nin değerleri</span></span>
+<span id="cb42-6"><a href="#cb42-6"></a><span class="co"># 2. State'nin değerleri</span></span>
+<span id="cb42-7"><a href="#cb42-7"></a>df.set_index([<span class="st">"State"</span>, <span class="st">"City"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb42-8"><a href="#cb42-8"></a><span class="bu">print</span>(<span class="st">"2 adet etiketli veri çerçevesi"</span>)</span>
+<span id="cb42-9"><a href="#cb42-9"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb42-10"><a href="#cb42-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb42-11"><a href="#cb42-11"></a><span class="co"># Germany olanı göster</span></span>
+<span id="cb42-12"><a href="#cb42-12"></a><span class="bu">print</span>(<span class="st">"Etiketi Germany olanı göster"</span>)</span>
+<span id="cb42-13"><a href="#cb42-13"></a><span class="co"># Çalışmayan örnek:</span></span>
+<span id="cb42-14"><a href="#cb42-14"></a><span class="co">#print(df.loc[('Germany')])</span></span>
+<span id="cb42-15"><a href="#cb42-15"></a><span class="bu">print</span>(df.loc[(<span class="st">' Germany'</span>)].head())</span>
+<span id="cb42-16"><a href="#cb42-16"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb42-17"><a href="#cb42-17"></a><span class="co"># Germany, Berlin olanı göster</span></span>
+<span id="cb42-18"><a href="#cb42-18"></a><span class="bu">print</span>(<span class="st">"Etiketi Germany, Berlin olanları göster"</span>)</span>
+<span id="cb42-19"><a href="#cb42-19"></a><span class="bu">print</span>(df.loc[(<span class="st">' Germany'</span>, <span class="st">'Berlin'</span>)])</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2 adet etiketli veri çerçevesi
+                          Rank Population Date of census/estimate
+State          City                                              
+United Kingdom London[2]     1  8,615,246             1 June 2014
+Germany        Berlin        2  3,437,916             31 May 2014
+Spain          Madrid        3  3,165,235          1 January 2014
+Italy          Rome          4  2,872,086       30 September 2014
+France         Paris         5  2,273,305          1 January 2013
+---o---o---o---
+Etiketi Germany olanı göster
+             Rank Population Date of census/estimate
+City                                                
+Berlin          2  3,437,916             31 May 2014
+Hamburg[10]     8  1,746,342        30 December 2013
+Munich         12  1,407,836        31 December 2013
+Cologne        18  1,034,175        31 December 2013
+Frankfurt      29    701,350        31 December 2013
+---o---o---o---
+Etiketi Germany, Berlin olanları göster
+Rank                                 2
+Population                   3,437,916
+Date of census/estimate    31 May 2014
+Name: ( Germany, Berlin), dtype: object</code></pre>
+</div>
+</div>
+</section>
+<section id="toplama-işlemi" class="level2">
+<h2 class="anchored" data-anchor-id="toplama-işlemi">Toplama İşlemi</h2>
+<p>Veri çerçevesindeki verileri <code>df.sum()</code> ile toplayabiliriz.</p>
+<div id="2f16f880" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb44-3"><a href="#cb44-3"></a><span class="co"># Veri çekme</span></span>
+<span id="cb44-4"><a href="#cb44-4"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
+<span id="cb44-5"><a href="#cb44-5"></a><span class="co"># Population sütununu göster</span></span>
+<span id="cb44-6"><a href="#cb44-6"></a><span class="bu">print</span>(df.Population.head())</span>
+<span id="cb44-7"><a href="#cb44-7"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb44-8"><a href="#cb44-8"></a><span class="co"># Dtype göster</span></span>
+<span id="cb44-9"><a href="#cb44-9"></a><span class="bu">print</span>(<span class="ss">f"Data tipi : </span><span class="sc">{</span>df<span class="sc">.</span>Population<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb44-10"><a href="#cb44-10"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb44-11"><a href="#cb44-11"></a><span class="co"># Population sütununu topla</span></span>
+<span id="cb44-12"><a href="#cb44-12"></a><span class="bu">print</span>(df.Population.<span class="bu">sum</span>())</span>
+<span id="cb44-13"><a href="#cb44-13"></a><span class="bu">print</span>(<span class="st">"---o---o---o---"</span>)</span>
+<span id="cb44-14"><a href="#cb44-14"></a><span class="co"># Tüm sütunları numpy ile topla</span></span>
+<span id="cb44-15"><a href="#cb44-15"></a><span class="bu">print</span>(np.<span class="bu">sum</span>(df.Population.values))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0    8,615,246
+1    3,437,916
+2    3,165,235
+3    2,872,086
+4    2,273,305
+Name: Population, dtype: object
+---o---o---o---
+Data tipi : object
+---o---o---o---
+8,615,2463,437,9163,165,2352,872,0862,273,3051,883,4251,794,7701,746,3421,744,6651,729,1191,602,3861,407,8361,332,5161,291,8951,246,7801,175,8311,092,3301,034,175989,845909,976898,095852,516813,562790,017786,424760,700757,655709,757701,350701,185696,676677,015666,058664,046632,432616,528605,523604,297596,550594,774593,682575,944569,884566,913559,440557,382547,631547,161546,451537,152531,562530,754528,014527,612524,619514,137510,909510,772510,610495,360495,121486,816484,344469,690460,354441,802441,354434,810432,451417,389409,211407,648384,202382,296377,207378,327362,286362,213351,629348,493348,120343,304342,885341,041335,819334,678331,606330,772328,841328,314327,627326,676324,576323,132322,751322,240320,229319,279315,576311,501309,869309,105308,735308,269306,888
+---o---o---o---
+8,615,2463,437,9163,165,2352,872,0862,273,3051,883,4251,794,7701,746,3421,744,6651,729,1191,602,3861,407,8361,332,5161,291,8951,246,7801,175,8311,092,3301,034,175989,845909,976898,095852,516813,562790,017786,424760,700757,655709,757701,350701,185696,676677,015666,058664,046632,432616,528605,523604,297596,550594,774593,682575,944569,884566,913559,440557,382547,631547,161546,451537,152531,562530,754528,014527,612524,619514,137510,909510,772510,610495,360495,121486,816484,344469,690460,354441,802441,354434,810432,451417,389409,211407,648384,202382,296377,207378,327362,286362,213351,629348,493348,120343,304342,885341,041335,819334,678331,606330,772328,841328,314327,627326,676324,576323,132322,751322,240320,229319,279315,576311,501309,869309,105308,735308,269306,888</code></pre>
+</div>
+</div>
+</section>
+<section id="neler-öğrendik" class="level1">
+<h1>Neler Öğrendik?</h1>
+<div class="sourceCode" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="co"># Seriler</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a>s<span class="op">=</span> pd.Series()</span>
+<span id="cb46-3"><a href="#cb46-3"></a>s.index</span>
+<span id="cb46-4"><a href="#cb46-4"></a>s.values</span>
+<span id="cb46-5"><a href="#cb46-5"></a>s.name</span>
+<span id="cb46-6"><a href="#cb46-6"></a>s[<span class="st">"Londra"</span>]</span>
+<span id="cb46-7"><a href="#cb46-7"></a>s.Londra</span>
+<span id="cb46-8"><a href="#cb46-8"></a>s.describe()</span>
+<span id="cb46-9"><a href="#cb46-9"></a>s.<span class="bu">max</span>()</span>
+<span id="cb46-10"><a href="#cb46-10"></a>s.<span class="bu">min</span>()</span>
+<span id="cb46-11"><a href="#cb46-11"></a>s.std()</span>
+<span id="cb46-12"><a href="#cb46-12"></a>s.mean()</span>
+<span id="cb46-13"><a href="#cb46-13"></a>s.median()</span>
+<span id="cb46-14"><a href="#cb46-14"></a>s.plot(kind<span class="op">=</span> <span class="st">'line'</span>)</span>
+<span id="cb46-15"><a href="#cb46-15"></a>s.plot(kind<span class="op">=</span> <span class="st">'bar'</span>)</span>
+<span id="cb46-16"><a href="#cb46-16"></a>s.plot(kind<span class="op">=</span> <span class="st">'barh'</span>)</span>
+<span id="cb46-17"><a href="#cb46-17"></a>s.plot(kind<span class="op">=</span> <span class="st">'pie'</span>)</span>
+<span id="cb46-18"><a href="#cb46-18"></a><span class="co"># ----------------</span></span>
+<span id="cb46-19"><a href="#cb46-19"></a>df<span class="op">=</span> pd.DataFrame()</span>
+<span id="cb46-20"><a href="#cb46-20"></a>df.columns</span>
+<span id="cb46-21"><a href="#cb46-21"></a>df[<span class="st">"Nüfus"</span>] <span class="co">#! Sütunun İsmi</span></span>
+<span id="cb46-22"><a href="#cb46-22"></a>df.Nüfus <span class="co">#! Türkçe karakter kullanma, Sütunun ismi</span></span>
+<span id="cb46-23"><a href="#cb46-23"></a>df.loc[<span class="st">"Londra"</span>] <span class="co"># Satır ismi</span></span>
+<span id="cb46-24"><a href="#cb46-24"></a>df.loc[[<span class="st">"Londra"</span>, <span class="st">"Roma"</span>]]</span>
+<span id="cb46-25"><a href="#cb46-25"></a>df.rename(columns<span class="op">=</span> {<span class="st">"Nüfus"</span> : <span class="st">"Nüfuslar"</span>})</span>
+<span id="cb46-26"><a href="#cb46-26"></a>df.info()</span>
+<span id="cb46-27"><a href="#cb46-27"></a><span class="co"># ----------------</span></span>
+<span id="cb46-28"><a href="#cb46-28"></a>df<span class="op">=</span> pd.read_csv()</span>
+<span id="cb46-29"><a href="#cb46-29"></a>df.head()</span>
+<span id="cb46-30"><a href="#cb46-30"></a>df.tail()</span>
+<span id="cb46-31"><a href="#cb46-31"></a>df.loc[<span class="st">"Etiket İsmi"</span>]</span>
+<span id="cb46-32"><a href="#cb46-32"></a>df.iloc[<span class="dv">0</span>]</span>
+<span id="cb46-33"><a href="#cb46-33"></a>df.iloc[<span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb46-34"><a href="#cb46-34"></a>df.shape</span>
+<span id="cb46-35"><a href="#cb46-35"></a>df[<span class="st">"Yeni Sütun"</span>]</span>
+<span id="cb46-36"><a href="#cb46-36"></a>df[<span class="st">"Sütun İsmi"</span>].unique()</span>
+<span id="cb46-37"><a href="#cb46-37"></a>df[<span class="st">"Sütun İsmi"</span>].value_counts()</span>
+<span id="cb46-38"><a href="#cb46-38"></a>df[<span class="st">"Sütun İsmi"</span>].duplicated()</span>
+<span id="cb46-39"><a href="#cb46-39"></a>df.drop(<span class="st">"Sütun İsmi"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb46-40"><a href="#cb46-40"></a>df.pop(<span class="st">"Sütun İsmi"</span>)</span>
+<span id="cb46-41"><a href="#cb46-41"></a>df.drop(<span class="st">"Etiket İsmi"</span>, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb46-42"><a href="#cb46-42"></a>df.Population.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">int</span>(x.replace(<span class="st">','</span>,<span class="st">''</span>)))</span>
+<span id="cb46-43"><a href="#cb46-43"></a>df.State.<span class="bu">str</span>.capitalize()</span>
+<span id="cb46-44"><a href="#cb46-44"></a>df.index.name</span>
+<span id="cb46-45"><a href="#cb46-45"></a>df.sort_index()</span>
+<span id="cb46-46"><a href="#cb46-46"></a>df.sort_values(by<span class="op">=</span><span class="st">"Sütun İsmi"</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb46-47"><a href="#cb46-47"></a>df.set_index([<span class="st">"State"</span>, <span class="st">"City"</span>]).sort_index(level<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb46-48"><a href="#cb46-48"></a>df.set_index([<span class="st">"State"</span>, <span class="st">"City"</span>]).sort_index(level<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb46-49"><a href="#cb46-49"></a>df.<span class="bu">sum</span>()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopyalandı");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopyalandı");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/bulmust\.github\.io\/bilgisayarli-yontemler");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../icerik/konular/veri-analizi/pandas-giris.html" class="pagination-link" aria-label="pandas - Giris">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">pandas - Giris</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>This website is built with <a href="https://quarto.org/"><img src="https://quarto.org/quarto.png" class="img-fluid" alt="Quarto" width="80"></a>.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/veri-analizi/pandas-veri-manipülasyonu.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>© Copyright 2024, Taygun Bulmus</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
