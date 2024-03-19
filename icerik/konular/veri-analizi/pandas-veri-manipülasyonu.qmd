@@ -1,0 +1,263 @@
+---
+title: "pandas - Veri Manipülasyonu"
+---
+
+## `pandas` Modülü Tekrar
+
+Şuana kadar öğrendiğimiz komutların bir listesinini yazalım.
+
+```{python}
+# Seriler
+s= pd.Series([100, 200, 300, 400, 500], index= ["Londra", "Paris", "Roma", "Berlin", "Oslo"])
+s.index
+s.values
+s.name
+# Seri Satırı (index)
+s["Londra"]
+s.Londra
+s.describe()
+s.max()
+s.min()
+s.std()
+s.mean()
+s.median()
+s.info()
+s.plot(kind= 'line'), # bar, barh, pie
+
+# DataFrame'ler
+df= pd.DataFrame({
+    "Şehir": ["Londra", "Paris", "Roma", "Berlin", "Oslo"],
+    "Nüfus": [100, 200, 300, 400, 500],
+    "Alan": [1000, 2000, 3000, 4000, 5000]
+})
+df.columns
+df["Nüfus"] #! Sütun İsmi
+df[["Nüfus","Şehir"]]
+df.Nüfus #! Türkçe karakter kullanma, Sütun ismi
+df.loc["Londra"] # Satır ismi
+df.loc[["Londra", "Roma"]]
+df.rename(columns= {"Nüfus" : "Nüfuslar"})
+df.info()
+```
+
+## Veri Çekme
+
+`pandas` modülü ile bir dosyadaki veriyi okuyabildiğimiz gibi bir internet sitesinden de veriyi çekebiliriz.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+print(df)
+```
+
+## Başlık Değiştirme
+
+Şimdi `df` veri çerçevesinin "Rank" başlığını "Ranks" yapalım.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# Sütunlar
+print(df.columns)
+# Sütun ismi değiştirme
+df= df.rename(columns={'Rank':'Ranks'})
+print(df.columns)
+```
+
+Aynı işlemi `inplace=True` ile de yapabiliriz.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+df.rename(columns={'Ranks':'Rank'}, inplace=True)
+print(df.columns)
+```
+
+Inplace işlemi veri çerçevesi ile yapılan işlemlerin çoğunda bulunur. Her seferinde `df=df. ...` şeklinde yazmak yerine `inplace=True` yazabiliriz.
+
+## Başını ve Sonunu Gösterme
+
+Çok büyük veriye sahip veri çerçevesinin içeriğine göz atmak için `head` ve `tail` komutlarını kullanırız.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# ilk 5 satırı göster
+print(df.head())
+print("---o---o---o---")
+# son 5 satırı göster
+print(df.tail())
+print("---o---o---o---")
+# ilk 7 satırı göster
+df.head(7)
+```
+
+## Satır Sütunlara `numpy` array'i gibi Erişim
+
+`pandas` veri çerçevesine numpy array'i gibi erişmek de mümkün. Bunun için `iloc` komutunu kullanırız.,
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# ilk 5 satırı göster
+print(df.head())
+print("---o---o---o---")
+# mat1= np.array([[1,2],[3,4]])
+# mat1[1,0] -> 3
+print(df.iloc[2,3])
+print("---o---o---o---")
+print(df.iloc[0:2,1:3])
+```
+
+## Boyut Öğrenme
+
+Tıpkı `numpy`'da olduğu gibi burada da `shape` komutu ile veri çerçevesinin boyutunu öğrenebiliriz.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# Boyut göster
+df.shape
+```
+
+## Yeni Sütun Ekleme ve Silme
+
+Veri çerçevesinde yeni bir sütun eklemek için `df["Yeni Sütun"]` şeklinde bir komut kullanırız.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# NumericPopulation sütunu ekleyelim. İçerisine Population sütununu kopyalayalım.
+df["NumericPopulation"]= df["Population"]
+print(df.head())
+```
+
+Veri çerçevesinden bir sütunuu silmek için `df.drop("Sütun İsmi", axis=1)` komutunu veya `df.pop("Sütun İsmi")`, bir satırı silmek için `df.drop("İndex İsmi", axis=0)` komutunu kullanırız.
+
+- `df.pop` komutu veri çerçevesini değiştirirken `df.drop` komutu veri çerçevesini değiştirmez, değişikliği görmek için `inplace=True` eklememiz gerekir.
+- `axis=0` varsayılan değerdir. Bu yüzden `axis=0` yazmamıza gerek yoktur.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# Sütun isimlerini göster
+print(df.columns)
+print("---o---o---o---")
+# Population sütununu sil
+df.drop("Population", axis=1, inplace=True)
+#df.pop("Population") # <----- bu da aynı işi yapar
+print(df.columns)
+print("---o---o---o---")
+print(df.head())
+print("---o---o---o---")
+print(df.drop(0, axis=0).head(3))
+print("---o---o---o---")
+print(df.head())
+```
+
+## Biricik (Unique) Değerler
+
+`unique` komutu ile bir sütunun içindeki değerlerin biricik (unique) değerlerini görebiliriz.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# State sütunundaki değerler
+print(df["State"].values)
+print("---o---o---o---")
+# State sütunundaki biricik değerler
+print(df["State"].unique())
+```
+
+## Biricik Değerlerin Sayısı
+
+`value_counts()` komutu ile bir sütunun içindeki değerlerin biricik (unique) değerlerinin sayısını görebiliriz.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# State sütunundaki biricik değerlerin sayısı
+print(df["State"].value_counts())
+```
+
+## Tekrar Eden Değerler
+
+`duplicated` komutu ile bir sütunun içindeki değerlerin tekrarlanan değerlerini görebiliriz. Bu komutun sonucunda `True` ve `False` değerleri döner.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# State sütunundaki tekrar eden değerler
+print(df["State"].duplicated().head(8))
+print("---o---o---o---")
+# State sütunundaki ilk 8 değer
+print(df.State.head(8))
+```
+
+## Veri Manipülasyonu ve Veri Temizleme
+
+Elimize geçen veride sistematik olarak değiştirmemiz gereken bazı durumlar olabilir. Bu tip veriye ham veri adı verilir. Ham veri içerisinde istenmeyen veya yanlış satırlar, yanlış yazılmış sütunlar olabilir. Bunun gibi kusurları temizlemek ve üzerine çalışılabilir bir hale getirmek için manipüle (oynama) yapmamız gerekir.
+
+Bunun için `df` değişkenine tekrar bakalım.
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+# İlk 3 satırı göster
+print(df.head(3))
+print("---o---o---o---")
+# Veri hakkında bilgi
+print(df.info())
+print("---o---o---o---")
+# State sütunundaki ilk 3 değer
+print(df["State"].head(3).values)
+```
+
+İlk bakışta görülen kusurlar şunlardır:
+
+1. `0`. indexe sahip olan satırda `London [2]` yazılmış.
+2.  `Population` sütunu sayı olması gerekirken `object` olarak kaydedilmiş. Yani `string` olarak kaydedilmiş.
+3.  `State` sütunundaki verilerin başında bir adet fazladan boşluk var.
+
+Bu sorunları sırasıyla çözelim.
+
+```{python}
+import pandas as pd
+# Veri çekme
+df= pd.read_csv('https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv')
+## 1.
+df.iloc[0,1]= "London"
+print(df.loc[0])
+print("---o---o---o---")
+## 2.
+## Aşağıdaki komut çalışmıyor çünkü python virgüllü sayıları noktaya çeviremiyor.
+#df["Population"]= df["Population"].astype(float)
+# Tüm virgülleri kaldıralım ve float tipine çevirelim.
+df["Population"]=df.Population.apply(lambda x: int(x.replace(',','')))
+# str1='Naber Gizem'
+# print(str1.replace('G',''))
+print(df.info())
+print("---o---o---o---")
+print(df.head())
+print("---o---o---o---")
+## 3.
+print(df["State"].head(3).values)
+print("---o---o---o---")
+# strip() fonksiyonu stringin başındaki ve sonundaki boşlukları siler.
+df.State= df.State.apply(lambda x: x.strip())
+# Göster
+print(df["State"].head(3).values)
+```
+
+Veri çerçevesindeki verilerin ilk harflerini `df.State.str.capitalize()` ile büyük yapabiliriz.
