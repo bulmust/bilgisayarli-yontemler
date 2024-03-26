@@ -7,7 +7,6 @@ title: "pandas - Veri Manipülasyonu"
 Şuana kadar öğrendiğimiz komutların bir listesinini yazalım.
 
 ```python
-import pandas as pd
 # Seriler
 s= pd.Series([100, 200, 300, 400, 500]\
     ,index= ["Londra", "Paris", "Roma", "Berlin", "Oslo"])

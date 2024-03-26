@@ -220,10 +220,9 @@ plt.show()
 plt.close()
 ```
 
-#<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ## Veri Çerçevesi (DataFrame)
 
-Serileri tek boyutlu diziler olarak düşünebiliriz. Yukarıda verdiğimiz örnekte, `s` serisi sadece şehirlerin nüfus bilgisini içeriyordu. `pandas` paketinde verileri iki boyutlu bir yapıda tutan veri çerçeveleri (dataframe) vardır.Veri çerçevelerini aşağıdaki gibi oluşturabiliriz.
+Serileri tek boyutlu diziler olarak düşünebiliriz. Yukarıda verdiğimiz örnekte, `s` serisi sadece şehirlerin nüfus bilgisini içeriyordu. `pandas` paketinde verileri iki boyutlu bir yapıda tutan veri çerçeveleri (data frame) vardır.Veri çerçevelerini aşağıdaki gibi oluşturabiliriz.
 
 ```{python}
 import pandas as pd
@@ -361,11 +360,6 @@ print(f"df.loc[['Roma', 'Paris'], 'Nüfus'] => \n{df.loc[['Roma', 'Paris'], 'Nü
 3. Bu veri çerçevesindeki "Meslek" sütununu ekrana yazdırın.
 4. Bu veri çerçevesindeki "Meslek" ve "Maaş" sütunlarını ekrana yazdırın.
 5. Bu veri çerçevesindeki "Meslek" ve "Maaş" sütunlarını "Meslekler" ve "Maaşlar" olarak ayarlayın.
-   - CEVAP: 
-```{python}
-df=df.rename(columns= {'Meslek' : 'Meslekler'})
-df=df.rename(columns= {'Maaş' : 'Maaşlar'})
-```
 6. Bu veri çerçevesindeki "Ali"'nin tüm bilgilerini ekrana yazdırın.
 7. Bu veri çerçevesindeki "Ali", "Ayşe" ve "Mehmet"'in tüm bilgilerini ekrana yazdırın.
 8. Bu veri çerçevesindeki "Ali"'nin "Meslek" ve "Maaş" bilgilerini ekrana yazdırın.
