@@ -323,7 +323,7 @@ Bu problem bir özdeğer problemidir. Diferansiyel operatörü $\left(\frac{d^{2
 Aşağıdaki diferansiyel denklemi sonlu farklar yöntemini kullanarak çözün. Adım aralığını $h=0.05$ alın. Analitik sonuçla karşılaştırın.
 
 $$
-y''(t) = t^{3}+t+5, \quad y(0)=1, \quad y(6)=548.8
+y''(t) = t^{3}+t+5, \quad y(0)=1, \quad y(6)=545.8
 $$
 
 ## Kaynaklar
