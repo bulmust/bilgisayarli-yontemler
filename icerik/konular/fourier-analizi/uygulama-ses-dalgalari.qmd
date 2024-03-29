@@ -321,4 +321,4 @@ wavfile.write(sesler_dir+ "sin4_170Hz_gurultulu_filtreli.wav", orneklemeOrani, n
 5. İkinci yarısına hfd yapın. Bu frekansların 392.0 Hz, 493.88 Hz ve 293.66 Hz olduğunu göreceksiniz.
 6. Bu frekanslar dışındaki tüm frekansları sıfırlayın.
 7. Ardından bu iki dosyanın ters hfd'sini alın ve birleştirin.
-8. Filtrelenmiş ses dosyasını `problem2-gurultusuz-sinyal.wav.wav` olarak kaydedin.
+8. Filtrelenmiş ses dosyasını `problem2-gurultusuz-sinyal.wav` olarak kaydedin.
