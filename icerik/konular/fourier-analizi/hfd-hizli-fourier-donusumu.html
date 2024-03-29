@@ -409,7 +409,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">26 Mart 2024</p>
+      <p class="date">29 Mart 2024</p>
     </div>
   </div>
   
@@ -495,7 +495,7 @@ Dikkat
 <p><code>fourier_hfd</code> fonksiyonu, sadece <span class="math inline">\(N\)</span> sayısının 2’nin üssü olduğu durumlar için çalışır. <strong>Yani <code>fourier_hfd</code> fonksiyonu verdiğiniz her sinyal için çalışmaz.</strong></p>
 </div>
 </div>
-<div id="5fbf29d8" class="cell" data-execution_count="1">
+<div id="6713df17" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -611,7 +611,7 @@ Dikkat
 </section>
 <section id="hız-testi" class="level2">
 <h2 class="anchored" data-anchor-id="hız-testi">Hız Testi</h2>
-<div id="b0641c3d" class="cell" data-execution_count="2">
+<div id="8b0baeb3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
@@ -661,7 +661,7 @@ Dikkat
 <span id="cb2-47"><a href="#cb2-47"></a><span class="bu">print</span>(<span class="ss">f"Hızlı Fourier Dönüşümü  : </span><span class="sc">{</span>end<span class="op">-</span>start<span class="sc">:.2f}</span><span class="ss"> saniye"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Örnekleme Sayısı: 2048
-Kesikli Fourier Dönüşümü: 5.95 saniye
+Kesikli Fourier Dönüşümü: 5.85 saniye
 Hızlı Fourier Dönüşümü  : 0.02 saniye</code></pre>
 </div>
 </div>
@@ -669,7 +669,7 @@ Hızlı Fourier Dönüşümü  : 0.02 saniye</code></pre>
 <section id="hazır-fonksiyonlar" class="level2">
 <h2 class="anchored" data-anchor-id="hazır-fonksiyonlar">Hazır Fonksiyonlar</h2>
 <p>Daha detaylı bilgi için <a href="https://numpy.org/doc/stable/reference/routines.fft.html"><code>numpy.fft</code></a> ve <a href="https://docs.scipy.org/doc/scipy/reference/fft.html"><code>scipy.fft</code></a> modüllerinin dökümantasyonunu inceleyebilirsiniz.</p>
-<div id="7cb57a8d" class="cell" data-execution_count="3">
+<div id="74ec4f72" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co">#import scipy.fft as spfft</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
