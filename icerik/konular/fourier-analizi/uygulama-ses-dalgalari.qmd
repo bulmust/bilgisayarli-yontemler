@@ -314,7 +314,7 @@ wavfile.write(sesler_dir+ "sin4_170Hz_gurultulu_filtreli.wav", orneklemeOrani, n
 
 **Gürültü Silme**
 
-1. Gürültü filtreleme işlemini `problem2-gurultulu-sinyal.wav` dosyası için yapın. Dosyaya [bu linkten](../../../sesler/problem2-gurultulu-sinyal.wav.wav) ulaşabilirsiniz. Bu dosya C akoru ve G akorunu ardı ardına eklenerek oluşturulmuştur.
+1. Gürültü filtreleme işlemini `problem2-gurultulu-sinyal.wav` dosyası için yapın. Dosyaya [bu linkten](../../../sesler/problem2-gurultulu-sinyal.wav) ulaşabilirsiniz. Bu dosya C akoru ve G akorunu ardı ardına eklenerek oluşturulmuştur.
 2. Ses dosyasını tam ortadan ikiye ayırın. 
 3. İlk yarısına hfd yapın. Bu frekansların 261.63 Hz, 329.63 Hz ve 392.0 Hz olduğunu göreceksiniz.
 4. Bu frekanslar dışındaki tüm frekansları sıfırlayın.
