@@ -439,3 +439,19 @@ Aşağıdaki diferansiyel denklemi Runge Kutta 4(5) yöntemini kullanarak $N=100
 $$
 y''(t) = t^{3}+t+5, \quad y(0)=1, \quad y'(0)=5
 $$
+
+### Problem 5
+
+Düşey düzlemde $l=1$ m uzunluğunda bir ipin ucunda birim kütleli bir cisim salınsın. Bu cisim denge noktasından $\theta(t=0s)=\pi/9$ rad açı ile harekete başlıyor. $g=9.81$ m/$s^{2}$. Cisim bırakıldığı anda açısal hızı $\omega(t=0s)=0$ rad/s. Bu cismin hareket denklemini $t=(0,10)$ arasında 
+
+1. Euler yöntemiyle çözün.
+2. RK4 (veya RK45 veya LSODA) yöntemiyle çözün.
+3. Analitik çözümü de dikkate alın ve tüm çözümleri üst üste bindirerek çizdirin.
+ 
+*Euler metodunda adım sayısını $n=10000$ alın.*
+
+$$
+\frac{d^{2}\theta}{dt^{2}}=-\frac{g}{l}\sin \theta
+$$
+
+Analitik çözüm: $\theta(t) = A\cos(t\sqrt{g/l})+B\sin(t\sqrt{g/l})$

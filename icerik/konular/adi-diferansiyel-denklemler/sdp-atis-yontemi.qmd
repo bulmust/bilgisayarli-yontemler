@@ -177,6 +177,25 @@ $$
 y''(t) = t^{3}+t+5, \quad y(0)=1, \quad y(6)=545.8
 $$
 
+### Problem 3
+
+1. Aşağıdaki diferansiyel denklemi atış (shooting) yöntemini kullanarak çözün. 
+2. Çözümün grafiğini çizdirin. Sayısal çözüm noktalarını kırmızı nokta olarak belirleyin. 
+
+$$
+\frac{d^{2}y(x)}{dx^{2}}+ \frac{dy(x)}{dx} = -4 \text{ ,}
+$$
+
+Sınır koşulları: $y(0)=0$, $y(3)=9$. 
+
+*Bu soruyu çözerken kökü $-30$ ile $30$ arasında arayın.*
+
+3. Aşağıda verilen analitik çözümü de aynı grafikte çizdirin.
+
+$$
+y(x) = \frac{\left(-4x + 21e^{3 - x} + e^{3}(4x - 21)\right)}{1 - e^3} \text{ .}
+$$
+
 ## Kaynaklar
 
 1. Numerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013, **Syf:293**
