@@ -1,0 +1,219 @@
+---
+title: "pandas - Uygulama"
+---
+
+## Neler Öğrendik?
+
+```python
+# Seriler
+s= pd.Series()
+s.index
+s.values
+s.name
+s["Londra"]
+s.Londra
+s.describe()
+s.max()
+s.min()
+s.std()
+s.mean()
+s.median()
+s.plot(kind= 'line')
+s.plot(kind= 'bar')
+s.plot(kind= 'barh')
+s.plot(kind= 'pie')
+# ----------------
+df= pd.DataFrame()
+df.columns
+df["Nüfus"] #! Sütunun İsmi
+df.Nüfus #! Türkçe karakter kullanma, Sütunun ismi
+df.loc["Londra"] # Satır ismi
+df.loc[["Londra", "Roma"]]
+df.rename(columns= {"Nüfus" : "Nüfuslar"})
+df.info()
+# ----------------
+df= pd.read_csv()
+df.head()
+df.tail()
+df.loc["Etiket İsmi"]
+df.iloc[0]
+df.iloc[1, 2]
+df.shape
+df["Yeni Sütun"]
+df["Sütun İsmi"].unique()
+df["Sütun İsmi"].value_counts()
+df["Sütun İsmi"].duplicated()
+df.drop("Sütun İsmi", axis=1)
+df.pop("Sütun İsmi")
+df.drop("Etiket İsmi", axis=0)
+df.Population.apply(lambda x: int(x.replace(',','')))
+df.State.str.capitalize()
+df.index.name
+df.sort_index()
+df.sort_values(by="Sütun İsmi", ascending=True)
+df.set_index(["State", "City"]).sort_index(level=0)
+df.set_index(["State", "City"]).sort_index(level=1)
+df.sum()
+```
+
+## Alıştırma 1
+
+1. Amerika'daki Kalifornya eyaletinin elektrik tüketimini veren [bu veriyi](../../../veri/veri-930-data-export.csv) okuyun [@web2024Apr-1]. Okuma tarihi 25.05.2023.
+2. İlk ve son 5 satırını yazdırın.
+3. `Timestamp (Hour Ending)` sütun ismini `Tarih Bilgisi` yapın.
+4. `Demand (MWh)` sütun ismini `Talep (MWh)` yapın.
+5. `Talep (MWh)` sütununundaki `NaN` olan satırlarını silin.
+6. Yatayda `Tarih Bilgisi`, düşeyde `Talep (MWh)` olacak şekilde bir grafik çizin.
+
+### Çözüm
+
+```{python}
+################################################
+import os
+# Bu dosyanın bulunduğu dizini al
+current_dir = os.path.abspath('')
+# 3 üst dizine çık
+veri_dir = os.path.join(\
+    os.path.abspath(\
+        os.path.join(\
+    current_dir, os.pardir, os.pardir, os.pardir))\
+        , 'veri')
+################################################
+
+import numpy as np
+import pandas as pd
+from scipy.fftpack import fft
+import matplotlib.pyplot as plt
+# Oku
+df = pd.read_csv(veri_dir+"/veri-930-data-export.csv",
+    delimiter=",")
+# İlk ve son 5 satır
+print(df.head())
+print(df.tail())
+# Sütun isimlerini değiştir
+df.rename(columns={"Timestamp (Hour Ending)":"Tarih Bilgisi"},
+    inplace=True)
+df.rename(columns={"Demand (MWh)":"Talep (MWh)"}\
+    , inplace=True)
+# NaN satırlarını "Talep (MWh)" sütunundan sil
+df.dropna(subset=["Talep (MWh)"], inplace=True)
+# Çiz
+plt.plot(df["Tarih Bilgisi"], df["Talep (MWh)"])
+plt.xlabel("Tarh Bilgisi")
+plt.ylabel("Kalifornya Elektrik Talebi (MWh)")
+plt.xticks(rotation=25)
+plt.xticks(np.arange(0, len(df), step=20))
+plt.show()
+plt.close()
+```
+
+## Alıştırma 2
+
+[Bu linkte](https://www.kaggle.com/datasets/unsdsn/world-happiness), ülkelerin mutluluk skorları ve bunlar ile ilintili bilgilerin olduğu *csv* dosyaları bulunmaktadır. Her yıl için, [2015](../../../veri/veri_mutluluk_2015.csv), [2016](../../../veri/veri_mutluluk_2016.csv), [2017](../../../veri/veri_mutluluk_2017.csv), [2018](../../../veri/veri_mutluluk_2018.csv), [2019](../../../veri/veri_mutluluk_2019.csv), indirin ve aşağıdaki soruları cevaplayın.
+
+1. 5 veri setindeki ortak sütunlar nelerdir?
+2. Beş yıllık veri setini tek bir veri setinde birleştirin.
+3. Türkiye'nin mutluluk skorunu yıllara göre nasıl değiştiğini grafik gösterin.
+4. Türkiye'nin gayri safi milli hasılası (GSMH, sütunlarda `GDP per capita` isminde) yıllara göre nasıl değiştiğini grafik üzerinde gösterin.
+
+### Çözüm
+
+```{python}
+################################################
+import os
+# Bu dosyanın bulunduğu dizini al
+current_dir = os.path.abspath('')
+# 3 üst dizine çık
+veri_dir = os.path.join(\
+    os.path.abspath(\
+        os.path.join(\
+    current_dir, os.pardir, os.pardir, os.pardir))\
+        , 'veri')
+################################################
+
+import pandas as pd
+import matplotlib.pyplot as plt
+# 2015
+happiness2015 = pd.read_csv(veri_dir+'/veri_mutluluk_2015.csv')
+happiness2015['Year'] = 2015
+happiness2015.rename(columns={'Happiness Score':  'Score', 'Economy (GDP per Capita)': 'GDP per capita'}, inplace=True)
+# 2016
+happiness2016 = pd.read_csv(veri_dir+'/veri_mutluluk_2016.csv')
+happiness2016['Year'] = 2016
+happiness2016.rename(columns={'Happiness Score':  'Score', 'Economy (GDP per Capita)': 'GDP per capita'}, inplace=True)
+# 2017
+happiness2017 = pd.read_csv(veri_dir+'/veri_mutluluk_2017.csv')
+happiness2017['Year'] = 2017
+happiness2017.rename(columns={'Happiness.Score':  'Score', 'Economy..GDP.per.Capita.': 'GDP per capita'}, inplace=True)
+# 2018
+happiness2018 = pd.read_csv(veri_dir+'/veri_mutluluk_2018.csv')
+happiness2018['Year'] = 2018
+happiness2018.rename(columns={'Country or region':  'Country'}, inplace=True)
+# 2019
+happiness2019 = pd.read_csv(veri_dir+'/veri_mutluluk_2019.csv')
+happiness2019['Year'] = 2019
+happiness2019.rename(columns={'Country or region':  'Country'}, inplace=True)
+# Ortak sütunlar
+happiness = pd.concat([happiness2015, happiness2016, happiness2017, happiness2018, happiness2019], ignore_index=True)
+# Türkiye
+turkiye = happiness[happiness['Country'] == 'Turkey']
+print(turkiye.head())
+# Çiz
+plt.plot(turkiye['Year'], turkiye['Score'], marker='.')
+plt.xlabel('Yıllar')
+plt.ylabel('Mutluluk Skoru (Happiness Score)')
+plt.title('Türkiye Mutluluk Skoru (Happiness Score) Değişimi')
+plt.show()
+plt.close()
+# Gayri Safi Milli Hasıla
+# Çiz
+plt.plot(turkiye['Year'], turkiye['GDP per capita'], marker='.')
+plt.xlabel('Yıllar')
+plt.ylabel('Gayri Safi Milli Hasıla (GDP per capita)')
+plt.title('Gayri Safi Milli Hasıla (GDP per capita) Değişimi')
+plt.show()
+plt.show()
+```
+
+## Problemler
+
+### Problem 1
+
+Ekte bulunan `veri_imdb_1e5rows.tsv` dosyasındaki [verinin metadatasına](https://www.imdb.com/interfaces/) bakın. Bu veri, `title.akas.tsv.gz` adlı dosyanın ilk $10^{5}$ satırıdır. Bu veriyi `pd.read_table()` fonksiyonu ile okuyun. 
+
+Eğer tüm veri ile çalışmak istiyorsanız (1.8 gb) [şu linkteki](https://datasets.imdbws.com/title.akas.tsv.gz) dosyayı indirin. Bu dosya sıkıştırılmış dosyadır. Bu dosyayı dışa aktarın.
+
+Bu veri hakkında aşağıdaki soruları cevaplayın.
+
+1. Bu verinin sütunları nelerdir?
+2. Bu verinin kaç sütunu var?
+3. Bu verinin kaç satırı var?
+4. Bu verinin ilk 2 satırını gösterin.
+5. Bu verinin son 2 satırını gösterin.
+6. Bu veri setindeki tüm biricik dilleri (`language`) gösterin.
+7. Bu veri setindeki tüm biricik bölgeleri (`region`) gösterin.
+8. Bu veri setindeki her bir biricik dilde kaç adet film vardır?
+9. Bu veri setindeki her bir biricik bölgede kaç adet film vardır?
+10. Bu veri setindeki `attributes` sütununu çıkarın (değişkene atayın).
+11. Bu verideki sütunların veri tiplerini ekrana yazdırın.
+12. Bu verinin `ordering` sütununu tam sayı haline getirin (değişkene atayın).
+13. Bu verinin `isOriginalTitle` sütununu `bool` haline getirin (değişkene atayın).
+14. Bu verinin etiketlerini `titleId` olacak şekilde gösterin (değişkene atayın).
+15. Bu verinin etiketini `titleId` ve `title` olarak değiştirin (değişkene atayın).
+16. Bu veriyi `titleId` sütununa göre sıralayın (değişkene atayın).
+17. Bu verideki tüm `\N` değerlerini `pd.NA` değerleri ile değiştirin (değişkene atamayın).
+18. Bu verinin `titleId` ve `title` etiketlerini tekrar sütun haline getirin (değişkene atayın).
+19. Bu verideki `types` sütunu içerisinde olan `original` verisine sahip satırları gösterin ve sonucu `df2` değişkenine atayın.
+20. Bu veride `isOriginalTitle` sütunu `True` olan satırları gösterin ve sonucu `df2` ile karşılaştırın. Yani elde ettiğiniz veri ile `df2` verisi aynı mı? Değilse hangi satırlar farklı?
+
+### Problem 2
+
+TÜİK'in veri merkezinde bulunan "[Hava Alanlarında Toplam Yolcu ve Yük Trafiği](../../../veri/veri_HavaalanlarindaToplamYolcuVeYukTrafigi.xls)" verisini indirin. Bu veri dosyasında herhangi bir değişiklik yapmayın!
+
+Aşağıdaki soruları cevaplayın.
+
+1. Bu excel dosyasını okuyun ve `df` değişkenine atayın. (Not: `read_excel` fonksiyonu ile okumak için xlrd kütüphanesini kurmanız gerekebilir. `pip install xlrd` komutu ile kurabilirsiniz.)
+2. Veri çerçevesini gösterin.
+3. Veri çerçevesi temizleyin. Bu temizlemeyi excel dosyasını açıp değil pandas ile yapın. Bu temizlemeyi aşağıdaki grafikleri çizebilmek için yapın:
+   1. Toplam Yolcu - Yıl grafiğini çizdirin. Aynı grafik üzeride iç hat yolcusu ve dış hat yolcusunun yıllara göre grafiği de olsun.
+   2. Toplam Yükün (Ton), iç hat yükünün (Ton) ve dış hat yükünün (Ton) yıllara göre grafiğini çizdirin.

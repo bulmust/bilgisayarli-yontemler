@@ -61,6 +61,7 @@ website:
             contents:
               - icerik/konular/veri-analizi/pandas-giris.qmd
               - icerik/konular/veri-analizi/pandas-veri-manipülasyonu.qmd
+              - icerik/konular/veri-analizi/pandas-uygulama.qmd
 
 format:
   html:

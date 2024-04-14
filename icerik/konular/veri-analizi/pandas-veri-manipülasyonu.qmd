@@ -437,7 +437,7 @@ print("---o---o---o---")
 print(np.sum(df.Population.values))
 ```
 
-# Neler Öğrendik?
+## Neler Öğrendik?
 
 ```python
 # Seriler

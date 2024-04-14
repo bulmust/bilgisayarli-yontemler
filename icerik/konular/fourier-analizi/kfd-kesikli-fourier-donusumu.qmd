@@ -329,6 +329,17 @@ Burada $\mu$ paketin merkezini yani ortalama (mean) değeridir. $\sigma_{x}$ ise
 5. Aynı işlemi $\sigma_x=0.001$ için tekrar edin. Konum uzayındaki olasılık fonksiyonu ve momentum uzayındaki olasılık fonksiyonunu nasıl değişti?
 6. Yukarıdaki işlem ile Heisenberg belirsizlik ilkesi arasında nasıl bir bağlantı var mıdır?
 
+## Problem 4
+
+1. `/veri/` klasöründe bulunan `veri-hft-dalga.csv` dosyasını okuyunuz. Dosyaya [bu linkten erişebilirsiniz](../../../veri/veri-hft-dalga.csv). `pd.read_csv` fonksiyonunu kullanabilirsiniz.
+2. Bu dosyanın ilk sütuunu `x`, ikinci sütunu `y` olarak atayınız.
+3. `x` sütununu x eksenine `y` sütununu y eksenine yerleştirerek bir grafik çizin. Grafikte noktalar kırmızı ve yıldız şeklinde olsun.
+4. Aynı grafiği siyah renkli ve çizgi şeklinde tekrar çizin.
+5. Bu grafiği kapatın.
+6. `scipy.fft.fft` fonksiyonunu kullanarak DFT genliğini çizdirin.
+7. Sadece Nyquist frekansına kadar olan genliği çizdirin.
+8. DFT verisini `dalga_dft.csv` dosyasına kaydedin.
+
 ## Kaynaklar
 
 1. Python Programming and Numerical Methods, Qingkai Kong, 2018
