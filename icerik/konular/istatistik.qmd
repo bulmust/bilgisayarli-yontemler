@@ -1,0 +1,37 @@
+---
+title: "İstatistik"
+---
+
+## İstatistik: Fizikte Verileri Anlamak ve Yorumlamak
+
+Bu bölümde, fizikte veri analizinin temel aracı olan istatistiksel kavramları inceleyeceğiz. İstatistik, verileri toplayıp düzenlemeyi, analiz etmeyi ve yorumlamayı içeren bir bilim dalıdır. Deneylerden, gözlemlerden veya simülasyonlardan elde edilen verileri kullanarak, fiziksel sistemlerin davranışları hakkında bilgi edinmek ve tahminlerde bulunmak için kullanılır.
+
+### İstatistik Nedir? Temel Kavramlar
+
+İstatistik, verileri sayısal olarak özetler ve grafikler ile sunarak, kalıpları ve eğilimleri ortaya çıkarmayı amaçlar. Ortalama, standart sapma, frekans dağılımları gibi kavramlar, verilerin genel özelliklerini anlamamıza yardımcı olur. Korelasyon ve regresyon gibi istatistiksel yöntemler ise, iki veya daha fazla değişken arasındaki ilişkileri incelememizi sağlar.
+
+### Fizikte İstatistik Kullanımı
+
+İstatistik, fizikte birçok farklı alanda kullanılır. Örneğin, deneysel verilerin analizinde, hataların hesaplanmasında, teorik modellerin doğrulanmasında, yeni materyallerin geliştirilmesinde ve fiziksel sistemlerin davranışlarının tahmin edilmesinde kullanılır. Fizikte istatistik kullanımıyla ilgili bazı örnekler şunlardır:
+
+- **Parçacık Fiziği:** Deneysel verilerden temel parçacıkların özelliklerini ve etkileşimlerini anlamak için istatistiksel yöntemler kullanılır.
+- **Kozmoloji:** Evrenin genişlemesini ve oluşumunu incelemek için büyük miktarda gökbilim verisi istatistiksel olarak analiz edilir.
+- **Yoğun Madde Fiziği:** Malzemelerin iletkenlik, manyetizma ve süperiletkenlik gibi özelliklerini incelemek için istatistiksel mekanik kullanılır.
+- **İstatistiksel Termodinamik:** Sistemlerin termal dengedeki davranışlarını istatistiksel yöntemler kullanarak incelemek için kullanılır.
+- **Sinyal İşleme:** Deneysel verilerden gürültüyü ayıklamak ve sinyallerin özelliklerini belirlemek için istatistiksel yöntemler kullanılır.
+
+Bazı kaynaklar aşağıda listelenmiştir.
+
+- [arxiv.org, Statistical Mechanics hakkında yazılan tüm makaleler](https://arxiv.org/list/cond-mat.stat-mech/recent)
+- [Brief Review of Statistical Mechanics](https://web.pdx.edu/~mcclured/Stat%20Mech/Statistical%20Mechanics%20Lectures/Brief_Review_of_Stat_Mech.pdf)
+- [Statistical Mechanics by Konstantin K. Likharev](https://archive.org/details/SMMerged/mode/2up)
+
+
+## Programlama Dilleri ve İstatistiksel Analizler
+
+Python ve [R](https://www.r-project.org/) programlama dilleri, istatistiksel analizler için yaygın olarak kullanılan iki programlama dilidir. Bu diller, veri okumanıza ve temizlemenize, istatistiksel testler yapmanıza, grafikler oluşturmanıza ve karmaşık modeller kurmanıza olanak tanır. Python ve R'de istatistiksel analizler için kullanılan birçok paket mevcuttur. Bunlardan en popülerleri şunlardır.
+
+- **Python:** NumPy, SciPy, Pandas, Matplotlib, Seaborn
+- **R:** base, ggplot2, dplyr, tidyverse
+
+*Bu içerik [Google Gemini 1.0 Pro model](https://gemini.google.com/) kullanılarak üretilmiştir*[@gemini].
