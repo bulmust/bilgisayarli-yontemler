@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>Bilgisayarlı Yöntemler - SDP - Giriş</title>
+<title>Bilgisayarlı Yöntemler - pandas - Uygulama</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,7 +21,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -31,8 +85,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" rel="next">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" rel="prev">
+<link href="../../../icerik/konular/veri-analizi/pandas-veri-manipülasyonu.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -115,7 +168,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html">SDP - Giriş</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/veri-analizi.html">Veri Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/veri-analizi/pandas-uygulama.html">pandas - Uygulama</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -223,7 +276,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Giriş</span></a>
   </div>
 </li>
@@ -305,7 +358,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/veri-analizi/pandas-uygulama.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-uygulama.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">pandas - Uygulama</span></a>
   </div>
 </li>
@@ -323,16 +376,29 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#sınır-değer-problemi" id="toc-sınır-değer-problemi" class="nav-link active" data-scroll-target="#sınır-değer-problemi">Sınır Değer Problemi</a></li>
+  <li><a href="#neler-öğrendik" id="toc-neler-öğrendik" class="nav-link active" data-scroll-target="#neler-öğrendik">Neler Öğrendik?</a></li>
+  <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a>
+  <ul class="collapse">
+  <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
+  </ul></li>
+  <li><a href="#alıştırma-2" id="toc-alıştırma-2" class="nav-link" data-scroll-target="#alıştırma-2">Alıştırma 2</a>
+  <ul class="collapse">
+  <li><a href="#çözüm-1" id="toc-çözüm-1" class="nav-link" data-scroll-target="#çözüm-1">Çözüm</a></li>
+  </ul></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
+  <ul class="collapse">
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/sdp-giris.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/veri-analizi/pandas-uygulama.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html">SDP - Giriş</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/veri-analizi.html">Veri Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/veri-analizi/pandas-uygulama.html">pandas - Uygulama</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">SDP - Giriş</h1>
+<h1 class="title">pandas - Uygulama</h1>
 </div>
 
 
@@ -361,41 +427,332 @@ window.Quarto = {
 </header>
 
 
-<section id="sınır-değer-problemi" class="level2">
-<h2 class="anchored" data-anchor-id="sınır-değer-problemi">Sınır Değer Problemi</h2>
-<p>Farz edelim ki aşağıdaki gibi ikinci dereceden diferansiyel denklemimiz olsun.</p>
-<p><span class="math display">\[
-y''(x) = f(x,y(x),y'(x))
-\]</span></p>
-<p>Bu denklemdeki <span class="math inline">\(y(x)\)</span> ve <span class="math inline">\(y'(x)\)</span> fonksiyonunun aynı <span class="math inline">\(x\)</span> (ör. <span class="math inline">\(x=0\)</span>) noktasındaki değerini biliyorsak bu denklem başlangıç değer problemidir. Bu denklemin <span class="math inline">\(y(x=a)\)</span> ve <span class="math inline">\(y(x=b)\)</span> noktalarındaki değerlerini biliyorsak bu denklem kabaca <strong>sınır değer problemidir.</strong> Yukarıda verdiğimiz örneğe iki-noktalı sınır değer problemi de denir (2-point boundary value problem). Birinci dereceden diferansiyel denklem için sınır değer problemi ile başlangıç değer problemi aynıdır, çünkü denklem bir adet koşula sahiptir.</p>
-<p><strong>Örneğin</strong> Kuyudaki bir parçacığın kuantum mekaniksel hareket denklemi aşağıdaki gibi yazılır.</p>
-<p><span class="math display">\[
-\frac{-h}{4\pi m}\frac{d^{2}}{dx^{2}}\psi(x) = E\psi(x), \qquad \psi(x=-L/2)=0, \qquad \psi(x=L/2)=0 \text{.}
-\]</span></p>
-<p>Birinci türeve ait bir koşul bilmiyoruz. Sadece bulmak istediğimiz fonksiyonun sınır değerlerini biliyoruz.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Uyarı
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Başlangıç değer probleminde n.&nbsp;dereceden diferansiyel denklemi çözebilmek için n adet başlangıç koşuluna ihtiyaç vardır. Bu başlangıç koşulları da (n-1). dereceden türeve kadar olmak zorundadır.</p>
-</div>
-</div>
-<p>Sınır değer problemlerini çözmek için birinci türeve ait olan denklemdeki başlangıç koşuluna ihtiyaç vardır. Bu sorunu:</p>
+<section id="neler-öğrendik" class="level2">
+<h2 class="anchored" data-anchor-id="neler-öğrendik">Neler Öğrendik?</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Seriler</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>s<span class="op">=</span> pd.Series()</span>
+<span id="cb1-3"><a href="#cb1-3"></a>s.index</span>
+<span id="cb1-4"><a href="#cb1-4"></a>s.values</span>
+<span id="cb1-5"><a href="#cb1-5"></a>s.name</span>
+<span id="cb1-6"><a href="#cb1-6"></a>s[<span class="st">"Londra"</span>]</span>
+<span id="cb1-7"><a href="#cb1-7"></a>s.Londra</span>
+<span id="cb1-8"><a href="#cb1-8"></a>s.describe()</span>
+<span id="cb1-9"><a href="#cb1-9"></a>s.<span class="bu">max</span>()</span>
+<span id="cb1-10"><a href="#cb1-10"></a>s.<span class="bu">min</span>()</span>
+<span id="cb1-11"><a href="#cb1-11"></a>s.std()</span>
+<span id="cb1-12"><a href="#cb1-12"></a>s.mean()</span>
+<span id="cb1-13"><a href="#cb1-13"></a>s.median()</span>
+<span id="cb1-14"><a href="#cb1-14"></a>s.plot(kind<span class="op">=</span> <span class="st">'line'</span>)</span>
+<span id="cb1-15"><a href="#cb1-15"></a>s.plot(kind<span class="op">=</span> <span class="st">'bar'</span>)</span>
+<span id="cb1-16"><a href="#cb1-16"></a>s.plot(kind<span class="op">=</span> <span class="st">'barh'</span>)</span>
+<span id="cb1-17"><a href="#cb1-17"></a>s.plot(kind<span class="op">=</span> <span class="st">'pie'</span>)</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co"># ----------------</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>df<span class="op">=</span> pd.DataFrame()</span>
+<span id="cb1-20"><a href="#cb1-20"></a>df.columns</span>
+<span id="cb1-21"><a href="#cb1-21"></a>df[<span class="st">"Nüfus"</span>] <span class="co">#! Sütunun İsmi</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>df.Nüfus <span class="co">#! Türkçe karakter kullanma, Sütunun ismi</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>df.loc[<span class="st">"Londra"</span>] <span class="co"># Satır ismi</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>df.loc[[<span class="st">"Londra"</span>, <span class="st">"Roma"</span>]]</span>
+<span id="cb1-25"><a href="#cb1-25"></a>df.rename(columns<span class="op">=</span> {<span class="st">"Nüfus"</span> : <span class="st">"Nüfuslar"</span>})</span>
+<span id="cb1-26"><a href="#cb1-26"></a>df.info()</span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># ----------------</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>df<span class="op">=</span> pd.read_csv()</span>
+<span id="cb1-29"><a href="#cb1-29"></a>df.head()</span>
+<span id="cb1-30"><a href="#cb1-30"></a>df.tail()</span>
+<span id="cb1-31"><a href="#cb1-31"></a>df.loc[<span class="st">"Etiket İsmi"</span>]</span>
+<span id="cb1-32"><a href="#cb1-32"></a>df.iloc[<span class="dv">0</span>]</span>
+<span id="cb1-33"><a href="#cb1-33"></a>df.iloc[<span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb1-34"><a href="#cb1-34"></a>df.shape</span>
+<span id="cb1-35"><a href="#cb1-35"></a>df[<span class="st">"Yeni Sütun"</span>]</span>
+<span id="cb1-36"><a href="#cb1-36"></a>df[<span class="st">"Sütun İsmi"</span>].unique()</span>
+<span id="cb1-37"><a href="#cb1-37"></a>df[<span class="st">"Sütun İsmi"</span>].value_counts()</span>
+<span id="cb1-38"><a href="#cb1-38"></a>df[<span class="st">"Sütun İsmi"</span>].duplicated()</span>
+<span id="cb1-39"><a href="#cb1-39"></a>df.drop(<span class="st">"Sütun İsmi"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-40"><a href="#cb1-40"></a>df.pop(<span class="st">"Sütun İsmi"</span>)</span>
+<span id="cb1-41"><a href="#cb1-41"></a>df.drop(<span class="st">"Etiket İsmi"</span>, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb1-42"><a href="#cb1-42"></a>df.Population.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">int</span>(x.replace(<span class="st">','</span>,<span class="st">''</span>)))</span>
+<span id="cb1-43"><a href="#cb1-43"></a>df.State.<span class="bu">str</span>.capitalize()</span>
+<span id="cb1-44"><a href="#cb1-44"></a>df.index.name</span>
+<span id="cb1-45"><a href="#cb1-45"></a>df.sort_index()</span>
+<span id="cb1-46"><a href="#cb1-46"></a>df.sort_values(by<span class="op">=</span><span class="st">"Sütun İsmi"</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-47"><a href="#cb1-47"></a>df.set_index([<span class="st">"State"</span>, <span class="st">"City"</span>]).sort_index(level<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb1-48"><a href="#cb1-48"></a>df.set_index([<span class="st">"State"</span>, <span class="st">"City"</span>]).sort_index(level<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-49"><a href="#cb1-49"></a>df.<span class="bu">sum</span>()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="alıştırma-1" class="level2">
+<h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h2>
 <ol type="1">
-<li>Başlangıç koşulunu <span style="color:red"> tahmin ederek </span> aşabiliriz. Bu yönteme <em>atış yöntemi</em> (shooting method) denir.</li>
-<li>Diferansiyel denklemi <span style="color:red"> örgü noktalarına </span> (mesh points) bölerek çözebiliriz. Bu yönteme <em>sonlu farklar yöntemi</em> (finite difference method) denir.</li>
+<li>Amerika’daki Kalifornya eyaletinin elektrik tüketimini veren <a href="../../../veri/veri-930-data-export.csv">bu veriyi</a> okuyun <span class="citation" data-cites="web2024Apr-1">&nbsp;[<a href="#ref-web2024Apr-1" role="doc-biblioref">1</a>]</span>. Okuma tarihi 25.05.2023.</li>
+<li>İlk ve son 5 satırını yazdırın.</li>
+<li><code>Timestamp (Hour Ending)</code> sütun ismini <code>Tarih Bilgisi</code> yapın.</li>
+<li><code>Demand (MWh)</code> sütun ismini <code>Talep (MWh)</code> yapın.</li>
+<li><code>Talep (MWh)</code> sütununundaki <code>NaN</code> olan satırlarını silin.</li>
+<li>Yatayda <code>Tarih Bilgisi</code>, düşeyde <code>Talep (MWh)</code> olacak şekilde bir grafik çizin.</li>
+</ol>
+<section id="çözüm" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
+<div id="14bd2ebb" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> os</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co"># 3 üst dizine çık</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>veri_dir <span class="op">=</span> os.path.join(<span class="op">\</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>    os.path.abspath(<span class="op">\</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>        os.path.join(<span class="op">\</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>    current_dir, os.pardir, os.pardir, os.pardir))<span class="op">\</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>        , <span class="st">'veri'</span>)</span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co">################################################</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="im">from</span> scipy.fftpack <span class="im">import</span> fft</span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co"># Oku</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>df <span class="op">=</span> pd.read_csv(veri_dir<span class="op">+</span><span class="st">"/veri-930-data-export.csv"</span>,</span>
+<span id="cb2-19"><a href="#cb2-19"></a>    delimiter<span class="op">=</span><span class="st">","</span>)</span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="co"># İlk ve son 5 satır</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="bu">print</span>(df.tail())</span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="co"># Sütun isimlerini değiştir</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a>df.rename(columns<span class="op">=</span>{<span class="st">"Timestamp (Hour Ending)"</span>:<span class="st">"Tarih Bilgisi"</span>},</span>
+<span id="cb2-25"><a href="#cb2-25"></a>    inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-26"><a href="#cb2-26"></a>df.rename(columns<span class="op">=</span>{<span class="st">"Demand (MWh)"</span>:<span class="st">"Talep (MWh)"</span>}<span class="op">\</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a>    , inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="co"># NaN satırlarını "Talep (MWh)" sütunundan sil</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a>df.dropna(subset<span class="op">=</span>[<span class="st">"Talep (MWh)"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="co"># Çiz</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a>plt.plot(df[<span class="st">"Tarih Bilgisi"</span>], df[<span class="st">"Talep (MWh)"</span>])</span>
+<span id="cb2-32"><a href="#cb2-32"></a>plt.xlabel(<span class="st">"Tarh Bilgisi"</span>)</span>
+<span id="cb2-33"><a href="#cb2-33"></a>plt.ylabel(<span class="st">"Kalifornya Elektrik Talebi (MWh)"</span>)</span>
+<span id="cb2-34"><a href="#cb2-34"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb2-35"><a href="#cb2-35"></a>plt.xticks(np.arange(<span class="dv">0</span>, <span class="bu">len</span>(df), step<span class="op">=</span><span class="dv">20</span>))</span>
+<span id="cb2-36"><a href="#cb2-36"></a>plt.show()</span>
+<span id="cb2-37"><a href="#cb2-37"></a>plt.close()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Region Code Timestamp (Hour Ending)  Demand (MWh)  Demand Forecast (MWh)  \
+0        US48   5/17/2023 12 a.m. EDT      446173.0                 438971   
+1        US48    5/17/2023 1 a.m. EDT      418994.0                 412814   
+2        US48    5/17/2023 2 a.m. EDT      399252.0                 389905   
+3        US48    5/17/2023 3 a.m. EDT      381525.0                 373869   
+4        US48    5/17/2023 4 a.m. EDT      370696.0                 363882   
+
+   Net Generation (MWh)  Total Interchange (MWh)  
+0              438045.0                  -5573.0  
+1              410208.0                  -5438.0  
+2              389248.0                  -5768.0  
+3              372178.0                  -4785.0  
+4              363001.0                  -4675.0  
+    Region Code Timestamp (Hour Ending)  Demand (MWh)  Demand Forecast (MWh)  \
+188        US48    5/24/2023 8 p.m. EDT           NaN                 504300   
+189        US48    5/24/2023 9 p.m. EDT           NaN                 494357   
+190        US48   5/24/2023 10 p.m. EDT           NaN                 479733   
+191        US48   5/24/2023 11 p.m. EDT           NaN                 457902   
+192        US48   5/25/2023 12 a.m. EDT           NaN                 431842   
+
+     Net Generation (MWh)  Total Interchange (MWh)  
+188                   NaN                      NaN  
+189                   NaN                      NaN  
+190                   NaN                      NaN  
+191                   NaN                      NaN  
+192                   NaN                      NaN  </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/dateutil/parser/_parser.py:1207: UnknownTimezoneWarning: tzname EDT identified but not understood.  Pass `tzinfos` argument in order to correctly return a timezone-aware datetime.  In a future version, this will raise an exception.
+  warnings.warn("tzname {tzname} identified but not understood.  "</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="pandas-uygulama_files/figure-html/cell-2-output-3.png" width="655" height="494" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="alıştırma-2" class="level2">
+<h2 class="anchored" data-anchor-id="alıştırma-2">Alıştırma 2</h2>
+<p><a href="https://www.kaggle.com/datasets/unsdsn/world-happiness">Bu linkte</a>, ülkelerin mutluluk skorları ve bunlar ile ilintili bilgilerin olduğu <em>csv</em> dosyaları bulunmaktadır. Her yıl için, <a href="../../../veri/veri_mutluluk_2015.csv">2015</a>, <a href="../../../veri/veri_mutluluk_2016.csv">2016</a>, <a href="../../../veri/veri_mutluluk_2017.csv">2017</a>, <a href="../../../veri/veri_mutluluk_2018.csv">2018</a>, <a href="../../../veri/veri_mutluluk_2019.csv">2019</a>, indirin ve aşağıdaki soruları cevaplayın.</p>
+<ol type="1">
+<li>5 veri setindeki ortak sütunlar nelerdir?</li>
+<li>Beş yıllık veri setini tek bir veri setinde birleştirin.</li>
+<li>Türkiye’nin mutluluk skorunu yıllara göre nasıl değiştiğini grafik gösterin.</li>
+<li>Türkiye’nin gayri safi milli hasılası (GSMH, sütunlarda <code>GDP per capita</code> isminde) yıllara göre nasıl değiştiğini grafik üzerinde gösterin.</li>
+</ol>
+<section id="çözüm-1" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm-1">Çözüm</h3>
+<div id="19caa886" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">################################################</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> os</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># 3 üst dizine çık</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>veri_dir <span class="op">=</span> os.path.join(<span class="op">\</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>    os.path.abspath(<span class="op">\</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>        os.path.join(<span class="op">\</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>    current_dir, os.pardir, os.pardir, os.pardir))<span class="op">\</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>        , <span class="st">'veri'</span>)</span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">################################################</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co"># 2015</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a>happiness2015 <span class="op">=</span> pd.read_csv(veri_dir<span class="op">+</span><span class="st">'/veri_mutluluk_2015.csv'</span>)</span>
+<span id="cb5-17"><a href="#cb5-17"></a>happiness2015[<span class="st">'Year'</span>] <span class="op">=</span> <span class="dv">2015</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>happiness2015.rename(columns<span class="op">=</span>{<span class="st">'Happiness Score'</span>:  <span class="st">'Score'</span>, <span class="st">'Economy (GDP per Capita)'</span>: <span class="st">'GDP per capita'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="co"># 2016</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a>happiness2016 <span class="op">=</span> pd.read_csv(veri_dir<span class="op">+</span><span class="st">'/veri_mutluluk_2016.csv'</span>)</span>
+<span id="cb5-21"><a href="#cb5-21"></a>happiness2016[<span class="st">'Year'</span>] <span class="op">=</span> <span class="dv">2016</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a>happiness2016.rename(columns<span class="op">=</span>{<span class="st">'Happiness Score'</span>:  <span class="st">'Score'</span>, <span class="st">'Economy (GDP per Capita)'</span>: <span class="st">'GDP per capita'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-23"><a href="#cb5-23"></a><span class="co"># 2017</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a>happiness2017 <span class="op">=</span> pd.read_csv(veri_dir<span class="op">+</span><span class="st">'/veri_mutluluk_2017.csv'</span>)</span>
+<span id="cb5-25"><a href="#cb5-25"></a>happiness2017[<span class="st">'Year'</span>] <span class="op">=</span> <span class="dv">2017</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a>happiness2017.rename(columns<span class="op">=</span>{<span class="st">'Happiness.Score'</span>:  <span class="st">'Score'</span>, <span class="st">'Economy..GDP.per.Capita.'</span>: <span class="st">'GDP per capita'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-27"><a href="#cb5-27"></a><span class="co"># 2018</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a>happiness2018 <span class="op">=</span> pd.read_csv(veri_dir<span class="op">+</span><span class="st">'/veri_mutluluk_2018.csv'</span>)</span>
+<span id="cb5-29"><a href="#cb5-29"></a>happiness2018[<span class="st">'Year'</span>] <span class="op">=</span> <span class="dv">2018</span></span>
+<span id="cb5-30"><a href="#cb5-30"></a>happiness2018.rename(columns<span class="op">=</span>{<span class="st">'Country or region'</span>:  <span class="st">'Country'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="co"># 2019</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a>happiness2019 <span class="op">=</span> pd.read_csv(veri_dir<span class="op">+</span><span class="st">'/veri_mutluluk_2019.csv'</span>)</span>
+<span id="cb5-33"><a href="#cb5-33"></a>happiness2019[<span class="st">'Year'</span>] <span class="op">=</span> <span class="dv">2019</span></span>
+<span id="cb5-34"><a href="#cb5-34"></a>happiness2019.rename(columns<span class="op">=</span>{<span class="st">'Country or region'</span>:  <span class="st">'Country'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-35"><a href="#cb5-35"></a><span class="co"># Ortak sütunlar</span></span>
+<span id="cb5-36"><a href="#cb5-36"></a>happiness <span class="op">=</span> pd.concat([happiness2015, happiness2016, happiness2017, happiness2018, happiness2019], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-37"><a href="#cb5-37"></a><span class="co"># Türkiye</span></span>
+<span id="cb5-38"><a href="#cb5-38"></a>turkiye <span class="op">=</span> happiness[happiness[<span class="st">'Country'</span>] <span class="op">==</span> <span class="st">'Turkey'</span>]</span>
+<span id="cb5-39"><a href="#cb5-39"></a><span class="bu">print</span>(turkiye.head())</span>
+<span id="cb5-40"><a href="#cb5-40"></a><span class="co"># Çiz</span></span>
+<span id="cb5-41"><a href="#cb5-41"></a>plt.plot(turkiye[<span class="st">'Year'</span>], turkiye[<span class="st">'Score'</span>], marker<span class="op">=</span><span class="st">'.'</span>)</span>
+<span id="cb5-42"><a href="#cb5-42"></a>plt.xlabel(<span class="st">'Yıllar'</span>)</span>
+<span id="cb5-43"><a href="#cb5-43"></a>plt.ylabel(<span class="st">'Mutluluk Skoru (Happiness Score)'</span>)</span>
+<span id="cb5-44"><a href="#cb5-44"></a>plt.title(<span class="st">'Türkiye Mutluluk Skoru (Happiness Score) Değişimi'</span>)</span>
+<span id="cb5-45"><a href="#cb5-45"></a>plt.show()</span>
+<span id="cb5-46"><a href="#cb5-46"></a>plt.close()</span>
+<span id="cb5-47"><a href="#cb5-47"></a><span class="co"># Gayri Safi Milli Hasıla</span></span>
+<span id="cb5-48"><a href="#cb5-48"></a><span class="co"># Çiz</span></span>
+<span id="cb5-49"><a href="#cb5-49"></a>plt.plot(turkiye[<span class="st">'Year'</span>], turkiye[<span class="st">'GDP per capita'</span>], marker<span class="op">=</span><span class="st">'.'</span>)</span>
+<span id="cb5-50"><a href="#cb5-50"></a>plt.xlabel(<span class="st">'Yıllar'</span>)</span>
+<span id="cb5-51"><a href="#cb5-51"></a>plt.ylabel(<span class="st">'Gayri Safi Milli Hasıla (GDP per capita)'</span>)</span>
+<span id="cb5-52"><a href="#cb5-52"></a>plt.title(<span class="st">'Gayri Safi Milli Hasıla (GDP per capita) Değişimi'</span>)</span>
+<span id="cb5-53"><a href="#cb5-53"></a>plt.show()</span>
+<span id="cb5-54"><a href="#cb5-54"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Country                           Region  Happiness Rank  Score  \
+75   Turkey  Middle East and Northern Africa            76.0  5.332   
+235  Turkey  Middle East and Northern Africa            78.0  5.389   
+383  Turkey                              NaN             NaN  5.500   
+543  Turkey                              NaN             NaN  5.483   
+704  Turkey                              NaN             NaN  5.373   
+
+     Standard Error  GDP per capita    Family  Health (Life Expectancy)  \
+75          0.03864        1.060980  0.946320                   0.73172   
+235             NaN        1.164920  0.877170                   0.64718   
+383             NaN        1.198274  1.337753                       NaN   
+543             NaN        1.148000       NaN                       NaN   
+704             NaN        1.183000       NaN                       NaN   
+
+      Freedom  Trust (Government Corruption)  ...  Whisker.high  Whisker.low  \
+75   0.228150                        0.15746  ...           NaN          NaN   
+235  0.238890                        0.12348  ...           NaN          NaN   
+383  0.300741                            NaN  ...      5.594865     5.405135   
+543       NaN                            NaN  ...           NaN          NaN   
+704       NaN                            NaN  ...           NaN          NaN   
+
+     Health..Life.Expectancy.  Trust..Government.Corruption.  \
+75                        NaN                            NaN   
+235                       NaN                            NaN   
+383                  0.637606                       0.099672   
+543                       NaN                            NaN   
+704                       NaN                            NaN   
+
+     Dystopia.Residual  Overall rank  Social support  Healthy life expectancy  \
+75                 NaN           NaN             NaN                      NaN   
+235                NaN           NaN             NaN                      NaN   
+383           1.879278           NaN             NaN                      NaN   
+543                NaN          74.0            1.38                    0.686   
+704                NaN          79.0            1.36                    0.808   
+
+     Freedom to make life choices  Perceptions of corruption  
+75                            NaN                        NaN  
+235                           NaN                        NaN  
+383                           NaN                        NaN  
+543                         0.324                      0.109  
+704                         0.195                      0.106  
+
+[5 rows x 26 columns]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="pandas-uygulama_files/figure-html/cell-3-output-2.png" width="606" height="450" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="pandas-uygulama_files/figure-html/cell-3-output-3.png" width="597" height="450" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="problemler" class="level2">
+<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
+<section id="problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
+<p>Ekte bulunan <code>veri_imdb_1e5rows.tsv</code> dosyasındaki <a href="https://www.imdb.com/interfaces/">verinin metadatasına</a> bakın. Bu veri, <code>title.akas.tsv.gz</code> adlı dosyanın ilk <span class="math inline">\(10^{5}\)</span> satırıdır. Bu veriyi <code>pd.read_table()</code> fonksiyonu ile okuyun.</p>
+<p>Eğer tüm veri ile çalışmak istiyorsanız (1.8 gb) <a href="https://datasets.imdbws.com/title.akas.tsv.gz">şu linkteki</a> dosyayı indirin. Bu dosya sıkıştırılmış dosyadır. Bu dosyayı dışa aktarın.</p>
+<p>Bu veri hakkında aşağıdaki soruları cevaplayın.</p>
+<ol type="1">
+<li>Bu verinin sütunları nelerdir?</li>
+<li>Bu verinin kaç sütunu var?</li>
+<li>Bu verinin kaç satırı var?</li>
+<li>Bu verinin ilk 2 satırını gösterin.</li>
+<li>Bu verinin son 2 satırını gösterin.</li>
+<li>Bu veri setindeki tüm biricik dilleri (<code>language</code>) gösterin.</li>
+<li>Bu veri setindeki tüm biricik bölgeleri (<code>region</code>) gösterin.</li>
+<li>Bu veri setindeki her bir biricik dilde kaç adet film vardır?</li>
+<li>Bu veri setindeki her bir biricik bölgede kaç adet film vardır?</li>
+<li>Bu veri setindeki <code>attributes</code> sütununu çıkarın (değişkene atayın).</li>
+<li>Bu verideki sütunların veri tiplerini ekrana yazdırın.</li>
+<li>Bu verinin <code>ordering</code> sütununu tam sayı haline getirin (değişkene atayın).</li>
+<li>Bu verinin <code>isOriginalTitle</code> sütununu <code>bool</code> haline getirin (değişkene atayın).</li>
+<li>Bu verinin etiketlerini <code>titleId</code> olacak şekilde gösterin (değişkene atayın).</li>
+<li>Bu verinin etiketini <code>titleId</code> ve <code>title</code> olarak değiştirin (değişkene atayın).</li>
+<li>Bu veriyi <code>titleId</code> sütununa göre sıralayın (değişkene atayın).</li>
+<li>Bu verideki tüm <code>\N</code> değerlerini <code>pd.NA</code> değerleri ile değiştirin (değişkene atamayın).</li>
+<li>Bu verinin <code>titleId</code> ve <code>title</code> etiketlerini tekrar sütun haline getirin (değişkene atayın).</li>
+<li>Bu verideki <code>types</code> sütunu içerisinde olan <code>original</code> verisine sahip satırları gösterin ve sonucu <code>df2</code> değişkenine atayın.</li>
+<li>Bu veride <code>isOriginalTitle</code> sütunu <code>True</code> olan satırları gösterin ve sonucu <code>df2</code> ile karşılaştırın. Yani elde ettiğiniz veri ile <code>df2</code> verisi aynı mı? Değilse hangi satırlar farklı?</li>
+</ol>
+</section>
+<section id="problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
+<p>TÜİK’in veri merkezinde bulunan “<a href="../../../veri/veri_HavaalanlarindaToplamYolcuVeYukTrafigi.xls">Hava Alanlarında Toplam Yolcu ve Yük Trafiği</a>” verisini indirin. Bu veri dosyasında herhangi bir değişiklik yapmayın!</p>
+<p>Aşağıdaki soruları cevaplayın.</p>
+<ol type="1">
+<li>Bu excel dosyasını okuyun ve <code>df</code> değişkenine atayın. (Not: <code>read_excel</code> fonksiyonu ile okumak için xlrd kütüphanesini kurmanız gerekebilir. <code>pip install xlrd</code> komutu ile kurabilirsiniz.)</li>
+<li>Veri çerçevesini gösterin.</li>
+<li>Veri çerçevesi temizleyin. Bu temizlemeyi excel dosyasını açıp değil pandas ile yapın. Bu temizlemeyi aşağıdaki grafikleri çizebilmek için yapın:
+<ol type="1">
+<li>Toplam Yolcu - Yıl grafiğini çizdirin. Aynı grafik üzeride iç hat yolcusu ve dış hat yolcusunun yıllara göre grafiği de olsun.</li>
+<li>Toplam Yükün (Ton), iç hat yükünün (Ton) ve dış hat yükünün (Ton) yıllara göre grafiğini çizdirin.</li>
+</ol></li>
 </ol>
 
 
+
+</section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-web2024Apr-1" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><em><a href="https://www.eia.gov/electricity/gridmonitor/dashboard/electric_overview/US48/US48"><span>Real-time Operating Grid - U.S. Energy Information Administration (EIA)</span></a></em>, (2024).</div>
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -958,14 +1315,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="pagination-link" aria-label="BDP - Runge-Kutta Yöntemleri">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">BDP - Runge-Kutta Yöntemleri</span>
+      <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipülasyonu.html" class="pagination-link" aria-label="pandas - Veri Manipülasyonu">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">pandas - Veri Manipülasyonu</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="pagination-link" aria-label="SDP - Atış Yöntemi">
-        <span class="nav-page-text">SDP - Atış Yöntemi</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -976,7 +1330,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/sdp-giris.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/veri-analizi/pandas-uygulama.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>

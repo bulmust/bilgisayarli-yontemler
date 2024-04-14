@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.552">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../icerik/konular/veri-analizi/pandas-uygulama.html" rel="next">
 <link href="../../../icerik/konular/veri-analizi/pandas-giris.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
@@ -310,6 +311,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">pandas - Veri Manipülasyonu</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/veri-analizi/pandas-uygulama.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pandas - Uygulama</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -365,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">29 Mart 2024</p>
+      <p class="date">14 Nisan 2024</p>
     </div>
   </div>
   
@@ -416,7 +423,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="veri-çekme" class="level2">
 <h2 class="anchored" data-anchor-id="veri-çekme">Veri Çekme</h2>
 <p><code>pandas</code> modülü ile bir dosyadaki veriyi okuyabildiğimiz gibi bir internet sitesinden de veriyi çekebiliriz.</p>
-<div id="9f660a26" class="cell" data-execution_count="1">
+<div id="93904049" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -442,7 +449,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="başlık-değiştirme" class="level2">
 <h2 class="anchored" data-anchor-id="başlık-değiştirme">Başlık Değiştirme</h2>
 <p>Şimdi <code>df</code> veri çerçevesinin “Rank” başlığını “Ranks” yapalım.</p>
-<div id="728113c9" class="cell" data-execution_count="2">
+<div id="7807b842" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -457,7 +464,7 @@ Index(['Ranks', 'City', 'State', 'Population', 'Date of census/estimate'], dtype
 </div>
 </div>
 <p>Aynı işlemi <code>inplace=True</code> ile de yapabiliriz.</p>
-<div id="a4235747" class="cell" data-execution_count="3">
+<div id="40557547" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -472,7 +479,7 @@ Index(['Ranks', 'City', 'State', 'Population', 'Date of census/estimate'], dtype
 <section id="başını-ve-sonunu-gösterme" class="level2">
 <h2 class="anchored" data-anchor-id="başını-ve-sonunu-gösterme">Başını ve Sonunu Gösterme</h2>
 <p>Çok büyük veriye sahip veri çerçevesinin içeriğine göz atmak için <code>head</code> ve <code>tail</code> komutlarını kullanırız.</p>
-<div id="5899302d" class="cell" data-execution_count="4">
+<div id="21e430eb" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -584,7 +591,7 @@ Index(['Ranks', 'City', 'State', 'Population', 'Date of census/estimate'], dtype
 <section id="satır-sütunlara-numpy-arrayi-gibi-erişim" class="level2">
 <h2 class="anchored" data-anchor-id="satır-sütunlara-numpy-arrayi-gibi-erişim">Satır Sütunlara <code>numpy</code> array’i gibi Erişim</h2>
 <p><code>pandas</code> veri çerçevesine numpy array’i gibi erişmek de mümkün. Bunun için <code>iloc</code> komutunu kullanırız.,</p>
-<div id="275de8cd" class="cell" data-execution_count="5">
+<div id="341278df" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -615,7 +622,7 @@ Index(['Ranks', 'City', 'State', 'Population', 'Date of census/estimate'], dtype
 <section id="boyut-öğrenme" class="level2">
 <h2 class="anchored" data-anchor-id="boyut-öğrenme">Boyut Öğrenme</h2>
 <p>Tıpkı <code>numpy</code>’da olduğu gibi burada da <code>shape</code> komutu ile veri çerçevesinin boyutunu öğrenebiliriz.</p>
-<div id="428e6461" class="cell" data-execution_count="6">
+<div id="a3107ecd" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb12-3"><a href="#cb12-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -629,7 +636,7 @@ Index(['Ranks', 'City', 'State', 'Population', 'Date of census/estimate'], dtype
 <section id="yeni-sütun-ekleme-ve-silme" class="level2">
 <h2 class="anchored" data-anchor-id="yeni-sütun-ekleme-ve-silme">Yeni Sütun Ekleme ve Silme</h2>
 <p>Veri çerçevesinde yeni bir sütun eklemek için <code>df["Yeni Sütun"]</code> şeklinde bir komut kullanırız.</p>
-<div id="bbc7e7cf" class="cell" data-execution_count="7">
+<div id="4d9975c5" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -657,7 +664,7 @@ Index(['Ranks', 'City', 'State', 'Population', 'Date of census/estimate'], dtype
 <li><code>df.pop</code> komutu veri çerçevesini değiştirirken <code>df.drop</code> komutu veri çerçevesini değiştirmez, değişikliği görmek için <code>inplace=True</code> eklememiz gerekir.</li>
 <li><code>axis=0</code> varsayılan değerdir. Bu yüzden <code>axis=0</code> yazmamıza gerek yoktur.</li>
 </ul>
-<div id="a2d93a55" class="cell" data-execution_count="8">
+<div id="50247fa0" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb16-3"><a href="#cb16-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -703,7 +710,7 @@ Index(['Rank', 'City', 'State', 'Date of census/estimate'], dtype='object')
 <section id="biricik-unique-değerler" class="level2">
 <h2 class="anchored" data-anchor-id="biricik-unique-değerler">Biricik (Unique) Değerler</h2>
 <p><code>unique</code> komutu ile bir sütunun içindeki değerlerin biricik (unique) değerlerini görebiliriz.</p>
-<div id="81c16591" class="cell" data-execution_count="9">
+<div id="7c7dd279" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb18-3"><a href="#cb18-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -744,7 +751,7 @@ Index(['Rank', 'City', 'State', 'Date of census/estimate'], dtype='object')
 <section id="biricik-değerlerin-sayısı" class="level2">
 <h2 class="anchored" data-anchor-id="biricik-değerlerin-sayısı">Biricik Değerlerin Sayısı</h2>
 <p><code>value_counts()</code> komutu ile bir sütunun içindeki değerlerin biricik (unique) değerlerinin sayısını görebiliriz.</p>
-<div id="18017b42" class="cell" data-execution_count="10">
+<div id="25f47153" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb20-2"><a href="#cb20-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb20-3"><a href="#cb20-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -783,7 +790,7 @@ Name: count, dtype: int64</code></pre>
 <section id="tekrar-eden-değerler" class="level2">
 <h2 class="anchored" data-anchor-id="tekrar-eden-değerler">Tekrar Eden Değerler</h2>
 <p><code>duplicated</code> komutu ile bir sütunun içindeki değerlerin tekrarlanan değerlerini görebiliriz. Bu komutun sonucunda <code>True</code> ve <code>False</code> değerleri döner.</p>
-<div id="00a5529b" class="cell" data-execution_count="11">
+<div id="dd9ff372" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb22-2"><a href="#cb22-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb22-3"><a href="#cb22-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -819,7 +826,7 @@ Name: State, dtype: object</code></pre>
 <h2 class="anchored" data-anchor-id="veri-manipülasyonu-ve-veri-temizleme">Veri Manipülasyonu ve Veri Temizleme</h2>
 <p>Elimize geçen veride sistematik olarak değiştirmemiz gereken bazı durumlar olabilir. Bu tip veriye ham veri adı verilir. Ham veri içerisinde istenmeyen veya yanlış satırlar, yanlış yazılmış sütunlar olabilir. Bunun gibi kusurları temizlemek ve üzerine çalışılabilir bir hale getirmek için manipüle (oynama) yapmamız gerekir.</p>
 <p>Bunun için <code>df</code> değişkenine tekrar bakalım.</p>
-<div id="b40e95e0" class="cell" data-execution_count="12">
+<div id="6f065eca" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb24-3"><a href="#cb24-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -861,7 +868,7 @@ None
 <li><code>State</code> sütunundaki verilerin başında bir adet fazladan boşluk var.</li>
 </ol>
 <p>Bu sorunları sırasıyla çözelim.</p>
-<div id="b3711d35" class="cell" data-execution_count="13">
+<div id="708beb0a" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb26-2"><a href="#cb26-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb26-3"><a href="#cb26-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -926,7 +933,7 @@ None
 <section id="etiket-index-işlemleri" class="level2">
 <h2 class="anchored" data-anchor-id="etiket-index-işlemleri">Etiket (Index) İşlemleri</h2>
 <p>Kullandığımız veri çerçevesinde etiket bulunmuyor. Tüm veri şehirler üzerine kurulu olduğu için şehirleri etiket olarak alabiliriz.</p>
-<div id="a75450aa" class="cell" data-execution_count="14">
+<div id="a00c4c40" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb28-2"><a href="#cb28-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb28-3"><a href="#cb28-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -1008,7 +1015,7 @@ None
 </div>
 <p>Başlıklara bakarsak etiket isminin de <code>City</code> olduğunu görebiliriz. Etiket ismi ile sütun ismi ayrışması adına etiket ismi alt satıra yazılmıştır.</p>
 <p>Etiketleri <code>df.index</code> ile de görebildiğimizi hatırlatalım.</p>
-<div id="0c29d1cc" class="cell" data-execution_count="15">
+<div id="9a066616" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb29-2"><a href="#cb29-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb29-3"><a href="#cb29-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -1032,7 +1039,7 @@ Name: Rank, dtype: int64
 </div>
 </div>
 <p>Etiket grubunun ismini yani başlığını <code>df.index.name</code> ile görebiliriz/değiştirebiliriz.</p>
-<div id="a082b4e6" class="cell" data-execution_count="16">
+<div id="a813bacc" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb31-2"><a href="#cb31-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb31-3"><a href="#cb31-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -1053,7 +1060,7 @@ Index(['London[2]', 'Berlin', 'Madrid', 'Rome', 'Paris'], dtype='object', name='
 </div>
 </div>
 <p><code>reset_index()</code> komutu ile etiketleri varsayılan numaralara geri döndürebiliriz. Bu komut etiketleri numaraya döndürürken, kayıtlı olan etiketleri de yeni bir sütun olarak ekler.</p>
-<div id="e68c31d3" class="cell" data-execution_count="17">
+<div id="c6fc28f7" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb33-2"><a href="#cb33-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb33-3"><a href="#cb33-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -1099,7 +1106,7 @@ Paris  France                      1 January 2013
 <section id="sıralama" class="level2">
 <h2 class="anchored" data-anchor-id="sıralama">Sıralama</h2>
 <p><strong>Tüm veriyi</strong> etiket isimlerine göre sıralayabiliriz.</p>
-<div id="d9e2256d" class="cell" data-execution_count="18">
+<div id="2392e68a" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb35-2"><a href="#cb35-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb35-3"><a href="#cb35-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -1188,7 +1195,7 @@ Paris  France                      1 January 2013
 </div>
 </div>
 <p>Tüm veriyi belirlediğimiz sütuna göre sıralayabiliriz.</p>
-<div id="de0106bc" class="cell" data-execution_count="19">
+<div id="19739807" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb37-2"><a href="#cb37-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb37-3"><a href="#cb37-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -1280,7 +1287,7 @@ Paris  France                      1 January 2013
 <section id="multi-index" class="level2">
 <h2 class="anchored" data-anchor-id="multi-index">Multi-Index</h2>
 <p>Veri çerçevesindeki veriyi gruplayabiliriz. Örneğin etiketlerde hem ülkeler, hem de o ülkelere ait olan şehirler olsun. Yani iki adet etiket olsun. <code>set_index</code> komutu ile etiketleri belirlerken iki sütun olarak girelim.</p>
-<div id="11b3e5bc" class="cell" data-execution_count="20">
+<div id="5c25dcca" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb39-2"><a href="#cb39-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb39-3"><a href="#cb39-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -1331,7 +1338,7 @@ Greece      Athens       34    664,046             24 May 2011
 </div>
 </div>
 <p>İki adet etikete sahip veri çerçevesine erişmek için <code>df.loc["Etiket1", "Etiket2"]</code> komutunu kullanırız.</p>
-<div id="bc2793cd" class="cell" data-execution_count="21">
+<div id="b22a7166" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb41-2"><a href="#cb41-2"></a><span class="co"># Veri çekme</span></span>
 <span id="cb41-3"><a href="#cb41-3"></a>df<span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/jrjohansson/numerical-python-book-code/master/european_cities.csv'</span>)</span>
@@ -1381,7 +1388,7 @@ Name: ( Germany, Berlin), dtype: object</code></pre>
 <section id="toplama-işlemi" class="level2">
 <h2 class="anchored" data-anchor-id="toplama-işlemi">Toplama İşlemi</h2>
 <p>Veri çerçevesindeki verileri <code>df.sum()</code> ile toplayabiliriz.</p>
-<div id="3ee5cdef" class="cell" data-execution_count="22">
+<div id="546668bb" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb43-2"><a href="#cb43-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb43-3"><a href="#cb43-3"></a><span class="co"># Veri çekme</span></span>
@@ -1413,8 +1420,8 @@ Data tipi : object
 </div>
 </div>
 </section>
-<section id="neler-öğrendik" class="level1">
-<h1>Neler Öğrendik?</h1>
+<section id="neler-öğrendik" class="level2">
+<h2 class="anchored" data-anchor-id="neler-öğrendik">Neler Öğrendik?</h2>
 <div class="sourceCode" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Seriler</span></span>
 <span id="cb45-2"><a href="#cb45-2"></a>s<span class="op">=</span> pd.Series()</span>
 <span id="cb45-3"><a href="#cb45-3"></a>s.index</span>
@@ -2036,6 +2043,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../../icerik/konular/veri-analizi/pandas-uygulama.html" class="pagination-link" aria-label="pandas - Uygulama">
+        <span class="nav-page-text">pandas - Uygulama</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
