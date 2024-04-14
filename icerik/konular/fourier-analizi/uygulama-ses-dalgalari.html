@@ -385,6 +385,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/fourier-analizi/uygulama-ses-dalgalari.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
@@ -438,7 +439,7 @@ window.Quarto = {
 <li>Tüm değişkenleri <code>write("&lt;dosya_adi&gt;.wav", örneklemeOranı, &lt;degisken&gt;)</code> ile kaydedin.</li>
 </ol>
 <p>Şimdi bu adımları kodlayalım.</p>
-<div id="674e62cf" class="cell" data-execution_count="1">
+<div id="c10d1374" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> os</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> sys</span>
@@ -517,7 +518,7 @@ window.Quarto = {
 <li>Ters dönüşüm ile elde ettiğiniz ses dosyasını kaydedin.</li>
 </ol>
 <p>Şimdi bu adımları kodlayalım.</p>
-<div id="018c76e5" class="cell" data-execution_count="2">
+<div id="86ee14d1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> os</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> sys</span>
@@ -647,7 +648,7 @@ window.Quarto = {
 <li>Ters Fourier dönüşümü yapın ve filtrelenmiş sinyalin ilk 0.1 saniyesi ile filtrelenmemiş sinyalin ilk 0.1 saniyesini grafik üzerinde karşılaştırın.</li>
 <li>Filtrelenmiş sinyali wav dosyası olarak kaydedin.</li>
 </ol>
-<div id="7a31cdd0" class="cell" data-execution_count="3">
+<div id="75e429ca" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">################################################</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> os</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> sys</span>
@@ -810,6 +811,42 @@ window.Quarto = {
 <li>Ardından bu iki dosyanın ters hfd’sini alın ve birleştirin.</li>
 <li>Filtrelenmiş ses dosyasını <code>problem2-gurultusuz-sinyal.wav</code> olarak kaydedin.</li>
 </ol>
+</section>
+<section id="problem-3" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3">Problem 3</h3>
+<ol type="1">
+<li><code>/sesler/</code> klasörünün içerisinde bulunan <a href="../../../sesler/DeepPurple_SmokeOnTheWaterIntro.wav">DeepPurple_SmokeOnTheWaterIntro.wav</a> dosyasını <code>orneklemOrani, data = wavfile.read()</code> olacak şekilde okuyun. Bu kayıt stereo bir dosyadır ve <code>data</code> değişkeninin ilk sütununu almanız yeterlidir. <em>Bu işlem ile stereo ses kaydının sadece bir tarafını alıyorsunuz.</em></li>
+<li>Sinyali 4’e ayırın. Bunun için aşağıda verilen tablodaki süreleri kullanın. <em>Yardım: <code>t</code> zaman arrayiniz olsun. <span class="math inline">\(t=2\)</span> saniyeye karşılık gelen argümanı bulmak için <code>arg1=np.argmin(np.abs(t- 2))</code> komutunu kullanabilirsiniz. Yani <code>arg1</code> değişkeni <code>100</code> gibi bir değer olursa <code>t[arg1]</code> değeri <span class="math inline">\(2\)</span> saniye olacaktır.</em></li>
+<li>Ayrılan riffleri zamana göre <code>fig, axs= plt.subplots(4, 1)</code> komutunu kullanarak 4 ayrı grafikte çizdirin. <code>axs[0].plot()</code> komutunu kullanın. Güzel gözükmesini istiyorsanız grafiği göstermeden önce <code>fig.tight_layout()</code> komutunu kullanabilirsiniz.</li>
+<li>Ayırdığınız riffleri ayrı ayrı <code>wav</code> dosyası olarak kaydedin.</li>
+<li>Tüm rifflerin Fourier dönüşümlerini alın ve frekanslarını belirleyin.</li>
+<li>Tüm rifflerin pozitif frekans uzaylarını alt alta çizdirin. <code>axs[0].set_xlim(0, 1000)</code> komutunu kullanarak x-eksenini <span class="math inline">\(0\)</span> ile <span class="math inline">\(1000\)</span> arasında limitleyebilirsiniz.</li>
+<li>ilk riff verisinin pozitif frekans uzayında gördüğünüz tepe (peak) değerleri hangi frekansa denk geliyor, bulun, ekrana yazdırın ve Fourier dönüşümü grafiğinde gösterin (<code>plt.axvline(x= hfdfrek_riff1_tepeler_pozitif[0], color= "red", lw= 0.5, ls= "--")</code>). <em>Yardım: “<code>fft</code> verisinde hangi değerler <code>fft &gt; 9e6</code> koşulunu sağlanıyor?” sorusuna cevap olacak şekilde bir komut yazabilirsiniz.</em></li>
+</ol>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Riff-1</th>
+<th style="text-align: center;">Riff-2</th>
+<th style="text-align: center;">Riff-3</th>
+<th style="text-align: center;">Riff-4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0 s - 2.0 s</td>
+<td style="text-align: center;">2.0 s - 4.25 s</td>
+<td style="text-align: center;">4.25 s - 6.35 s</td>
+<td style="text-align: center;">6.35 s - Sonuna kadar</td>
+</tr>
+</tbody>
+</table>
 
 
 
