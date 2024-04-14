@@ -1,0 +1,308 @@
+---
+title: "İstatistik - Giris"
+---
+
+## Kullanılacak Modüller
+
+İstatistiksel analizler için gerekli modüller: `scipy.stats`, `scipy.optimize`, `numpy`. Yardımcı modüller ise `matplotlib.pyplot`, `pandas`, `seaborn`.
+
+## İstatistikteki Temel Tanımlar
+
+- **Popülasyon (Population):** Bir nesnenin tüm özelliklerini belirlemek için seçilen örneklerdir.
+- **Örneklem (Sample):** Bir nesnenin özelliklerini belirlemek için seçilen örneklerdir.
+- **Belirsizlik (Uncertainty):** Örneklem veya popülasyonun özelliklerini belirlemek için kullanılan örneklerin sayısının yetersiz olmasıdır.
+- **Veri (Data):** Bir araştırma veya analiz için toplanan sayısal veya kategorik bilgilerdir.
+- **Ortalama (Mean) :** Veri setinin tüm değerlerinin toplamının, veri setindeki eleman sayısına bölünmesiyle elde edilir.
+- **Medyan veya Ortanca Değer (Median):** Veri setindeki değerlerin ortalamasına göre sıralandıktan sonra ortadaki değerdir.
+- **Mod veya Tepe Değer (Mod):** Veri setindeki en sık tekrar eden değerdir.
+- **Varyans (Variance) :** Veri setindeki değerlerin ortalama değere ne kadar dağıldığını ölçen bir istatistiksel ölçüdür.
+- **Standart Sapma (Standard Deviation):**  Veri setindeki değerlerin ortalama değerden ne kadar sapma gösterdiğini gösteren bir ölçüdür.
+- **Çeyrekler (Quartiles):** Veri setindeki değerlerin sıralanmasından sonra ortadaki değer orta çeyreklik, orta çeyreklik ile en küçük değerin ortasındaki değer alt çeyreklik (\%25), orta çeyreklik ile en büyük değerin ortasındaki değer üst çeyreklik (\%75) olarak tanımlanır.
+- **Minimum ve maksimum değer (Minimum and Maximum):** Veri setindeki en küçük ve en büyük değerlerdir.
+
+## Alıştırma 1
+
+Bir araştırmada seçimlerdeki oy dağılımı tahmin edilmek istenmektedir. Toplamda 1000 kişi oy vereceğini düşünelim. Anket şirketi de 100 kişiye sormuş. Bu 100 kişinin oy dağılımı şu şekilde:
+
+| A Partisi | B Partisi | C Partisi | D Partisi | Kararsız |
+|-----------|-----------|-----------|-----------|----------|
+| 30        | 15        | 40        | 10        | 5        |
+
+### Çözüm
+
+```{python}
+import pandas as pd
+import numpy as np
+# Veri seti
+df= pd.Series({'A Parisi':30,
+               'B Partisi':15,
+               'C Partisi':40,
+               'D Partisi':10,
+               'Kararsız':5})
+# Çiz
+df.plot(kind='bar', title='Parti Seçimlerine Göre Oy Dağılımı', ylabel='Oy Sayısı')
+# Pandas açıklama
+print(df.describe())
+```
+
+Yukarıdaki tanımları uygulayalım.
+
+- Popülasyon: 1000
+- Örneklem: 100
+- Örneklem Adeti: 1
+- Belirsizlik: 900
+- Veri: 100
+  - 30 A Partisi, 15 B Partisi, 40 C Partisi, 10 D Partisi, 5 Kararsız
+- Ortalama: 20
+  - 30 + 15 + 40 + 10 + 5 = 100 / 5 = 20 
+- Medyan (Ortanca Değer): 15 (B Partisi)
+  - 40, 30, 15, 10, 5 sıralandığında ortanca değer 15
+- Mod (Tepe Değer): En sık tekrar eden değer yok.
+- Varyans $\sigma^{2}$: 170.0
+  - $(|30-20|^{2} + |15-20|^{2} + |40-20|^{2} + |10-20|^{2} + |5-20|^{2})/5 = 170.0$  
+- Standart Sapma: 13.0
+  - $\sqrt{170.0}$
+  - $\sqrt{(|30-20|^{2} + |15-20|^{2} + |40-20|^{2} + |10-20|^{2} + |5-20|^{2})/5} = 13.0$
+- Çeyrekler: 10, 15, 30
+  - 40, 30, 15, 10, 5 sıralandığında
+    - Alt Çeyreklik: 10 (\%25)
+    - Ortanca çeyreklik: 15 (\%50)
+    - Üst Çeyreklik: 30 (\%75)
+- Minimum ve Maksimum değer: 5 ve 40
+
+Eğer veriler ortalama değerden farkları az olursa standart sapma ve varyanas değerleri küçük olur.
+
+```{python}
+import numpy as np
+
+# Veri: 21,22,20,18,19
+print(f"Varyans (Veri-Ortalamaya-Yakın): {(1**2 + 2**2 +2**2 +1**2)/5}")
+print(f"Standart Sapma (Veri-Ortalamaya-Yakın): {np.sqrt((1**2 + 2**2 +2**2 +1**2)/5)}")
+
+# Veri: 30,15,40,10,5  
+#print(f"Varyans: {(10**2 + 5**2 +20**2 +10**2+ 15**2)/5}")
+#print(f"Standart Sapma: {np.sqrt((10**2 + 5**2 +20**2 +10**2+ 15**2)/5)}")
+```
+
+`pandas` içerisinde `describe()` fonksiyonu ile belirlenen değerleri `numpy` paketi ile de belirleyebiliriz.
+
+```{python}
+import numpy as np
+veri= np.array([30., 15., 40., 10., 5.])
+print(f"Ortalama: {veri.mean()}")
+print(f"Varyans: {veri.var()}")
+print(f"Standart Sapma: {veri.std()}")
+print(f"Medyan: {np.median(veri)}")
+print(f"Minimum ve Maksimum: {veri.min()} ve {veri.max()}")
+print(f"Çeyrekler: {np.percentile(veri, [25, 50, 75])}")
+```
+
+Burada `pandas` ile `numpy` modüllerinin standart sapma (varyans) değerleri aynı değil. Bunun sebebi istatistikte "yanlı/yansız (biased/unbiased)" olarak bilinen iki farklı yaklaşım vardır. Bu iki yaklaşımın farklılıkları için aşağıdaki linkleri inceleyebilirsiniz.
+
+- [what-is-the-difference-between-bias-and-variance](https://stackoverflow.com/questions/2480650/)
+- [orneklemin-standart-sapmasinin-hesaplanmasi](assets/nedenOrnekleminVaryansiFarkli.pdf)
+- [Neden standart sapma hesaplanırken n-1 yapılır?](https://tr.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/more-on-standard-deviation/v/review-and-intuition-why-we-divide-by-n-1-for-the-unbiased-sample-variance)
+
+`numpy` yanlı yaklaşımı ($n$'e bölme) kullanırken `pandas` yansız yaklaşımı ($n-1$'e bölme) kullanmaktadır. 
+
+*TL;DR*
+- Popülasyon üzerinden hesap yapmak istiyorsanız yanlı yaklaşımı, `df.std(ddof=0)` veya `np.std()` kullanın.
+- Örneklem üzerinden hesap yapmak istiyorsanız yansız yaklaşımı `df.std()` veya `np.std(ddof=1)` kullanın.
+
+## Rastgele Sayılar
+
+Önce `numpy` modülü içerisindeki `random` paketi ile rastgele sayılar üretelim. 
+
+- `np.random.rand(N)`: $[0,1)$ arasında <span style="color:red">düzgün olarak </span> (uniformly) `N` boyutlu rastgele sayı üretir.
+- `np.random.randn()`: $N(0,1)$ arasında <span style="color:red">standart normal dağılımlı </span> olarak (standard normal distribution) rastgele sayı üretir.
+- `np.random.randint(a,b)`: $[a,b)$ arasında <span style="color:red">düzgün olarak </span> (uniformly) rastgele sayı üretir.
+
+```{python}
+import numpy as np
+print(f"5 Boyutlu düzgün dağılımlı rastgele sayılar: {np.random.rand(5)}")
+print(f"5 Boyutlu normal dağılımlı rastgele sayılar: {np.random.randn(5)}")
+print(f"5 boyutlu 0 ile 10 arasında rastgele tam sayılar: {np.random.randint(0, 10, 5)}")
+```
+
+Standart normal dağılımı rastgele sayı üreteci 0'ın ortasında ve 1'in standart sapması olan bir dağılım oluşturur. Bu dağılımın özelliklerini görmek için aşağıdaki kodu çalıştırın.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 1000 tane rastgele sayı üret
+#x = np.random.randn(1000)
+x = np.random.randn(1_000_000)
+
+# Histogram çiz
+plt.hist(x, bins=40)
+plt.show()
+plt.close()
+```
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+# Rastgele sayı üret [0,1)
+print(np.random.rand())
+# Rastgele 5 tane sayı üret [0,1)
+print(np.random.rand(5))
+# Rastgele 2x4 matris üret [0,1)
+print(np.random.rand(2, 4))
+
+print("-"*20)
+# Rastgele Normal dağılımlı sayı üret
+print(np.random.randn(10))
+print("-"*20)
+
+# Rastgele tam sayı üret [0,10)
+print(np.random.randint(0, 10))
+# Rastgele 5 tane tam sayı üret
+print(np.random.randint(0, 10, 5))
+# print(np.random.randint(low=0, high=10, size=5))
+
+# Rastgele 2x4 matris üret [0,10)
+print(np.random.randint(0, 10, (2, 4) ))
+#print(np.random.randint(low=0, high=10, size=(2,4)))
+
+# Çiz
+fig, axes = plt.subplots(3,1)
+axes[0].hist(np.random.rand(10_000))
+axes[0].set_title("rand")
+axes[1].hist(np.random.randn(10_000))
+axes[1].set_title("randn")
+axes[2].hist(np.random.randint(low=1, high=10, size=10_000), bins=9, align='left')
+axes[2].set_title("randint(low=1, high=10)")
+plt.tight_layout()
+```
+
+İlerleyen bölümlerde belli bir array'den rastgele bir eleman seçmek isteyeceğiz. Bunun için `np.random.choice()` özelliğini kullanacağız. Eğer `replace=False` özelliği ile kullanırsak seçilen eleman tekrar seçilemez. Varsayılan özellik `replace=True`'dur.
+
+```{python}
+import numpy as np
+print(np.random.choice(5, 3))
+# Eşittir np.random.randint(0,5,3)
+print("--"*20+"1")
+print(np.random.choice(5, 3, p=[0.1, 0, 0.3, 0.6, 0]))
+print("--"*20+"2")
+print(np.random.choice(5, 3, replace=False))
+# Eşittir np.random.permutation(np.arange(5))[:3]
+print("--"*20+"3")
+print(np.random.choice(5, 3, replace=False))
+print("--"*20+"4")
+aa_milne_arr = ['Gizem', 'Furkan', 'Alperen']
+print(np.random.choice(aa_milne_arr, 2))
+print(np.random.choice(aa_milne_arr, 2, replace=False))
+```
+
+Rastgele sayı seçiminde çekirdek (seed) seçimi de önemli bir faktördür çünkü rastgelelik bir çekirdek üzerinden oluşur. Aynı çekirdek ile "aynı rastgelelik" oluşur. 
+
+Bizim çalışacağımız problemlerde çekirdek seçimi önemli olmayacaktır ancak oyun, simülasyon gibi problemlerde çekirdek seçimi önemli olabilir.
+
+Çekirdek seçimi için `np.random.seed()` fonksiyonunu kullanılır.
+
+Belirlenen bir çekirdek üzerine seçimler yapmak için aşağıdaki gibi bir rastgele durum belirlenir.
+
+```{python}
+import numpy as np
+oyunHaritasi= np.random.RandomState(42)
+print(oyunHaritasi.randint(0, 10, 4))
+print("-"*20+"1")
+print(oyunHaritasi.rand(5))
+```
+
+## Rastgele Değişkenler ve Dağılımlar
+
+Popülasyondan rastgele seçilen örneklem üzerinden yapılan istatistiksel incelemelerde, örneklem dağılımının popülasyon dağılımına yakın olması istenir. Bu ve benzeri konular için matematikte *olasılık teorisi* bulunmaktadır.
+
+- **Örnek Uzayı (Sample Space)**: Bir deneyin tüm olası sonuçlarının bir kümesidir.
+  - Örnek uzaydaki tüm elemanlar için bir olasılık değeri vardır.
+- **Olasılık Dağılımı (Probability Distribution)**: Bir deneyin tüm olası sonuçlarının olasılıklarının bir dağılımıdır.
+- **Rastgele Değişken (Random Variables)**: Bir deneyin sonucu olarak elde edilen değerlerdir.
+  - Rastgele değişkenlerin birbirinden bağımsız olması gerekir.
+
+Örneğin
+
+- Bir paranın örnek uzayı $\{Yazı,Tura\}$'dır.
+- Rastgele değerleri $\{0,1\}$'dir.
+
+İstatistiksel işlemler kullanmak için rastgele değişkenlerin olasılık dağılımlarına ihtiyacımız vardır. 
+
+Rastgele değişkenler alacağı olası değerler ile karakterize edilir ve bu değerler de olasılık dağılımına göre belirlenir.
+
+En temelde iki çeşit dağılım vardır.
+1. Kesikli Dağılımlar, Tam Sayılar (Discrete Distributions)
+2. Sürekli Dağılımlar, Gerçel Sayılar (Continuous Distributions)
+
+`scipy.stats` modülü içerisindeki `rv_discrete` ve `rv_continuous` sınıfları ile dağılımların özelliklerine ulaşabiliriz. Bu paketteki metotlar ve açıklamaları için [dokümantasyon](https://docs.scipy.org/doc/scipy/reference/stats.html) sayfasına veya **Numerical Python** kitabında tablo 13-1'e bakabilirsiniz.
+
+Bazı dağılımlar:
+
+- **Uniform Dağılım (Uniform Distribution)**: $U(a,b)$
+- **Standart Normal Dağılımı (Standard Normal Distribution)**: $N(0,1)$
+- **Normal Dağılım (Normal Distribution)**: $N(\mu,\sigma^2)$
+- **Üstel Dağılım (Exponential Distribution)**: $Exp(\lambda)$
+- **Fermi-Dirac Dağılımı (Fermi-Dirac Distribution)**: $FD(\mu,\beta)$
+- **Bose-Einstein Dağılımı (Bose-Einstein Distribution)**: $BE(\mu,\beta)$
+- **Binom Dağılımı (Binomial Distribution)**: $B(n,p)$
+- **Poisson Dağılımı (Poisson Distribution)**: $P(\lambda)$
+- **Gamma Dağılımı (Gamma Distribution)**: $Gamma(\alpha,\beta)$
+- **Beta Dağılımı (Beta Distribution)**: $Beta(\alpha,\beta)$
+- **Chi-Square Dağılımı (Chi-Square Distribution)**: $\chi^2(n)$
+
+## Alıştırma 2
+
+Ortalama değeri 1 olan ve standart sapması 0.5 olan bir normal dağılım üretelim.
+
+### Çözüm
+
+```{python}
+import scipy.stats as stats
+
+X= stats.norm(1, 0.5)
+print(f"Ortalama: {X.mean()}")
+print(f"Median: {X.median()}")
+print(f"Standart Sapma: {X.std()}")
+print(f"Varyans: {X.var()}")
+```
+
+## Problemler
+
+### Problem 1
+
+100 adet parayı 1000 kere atan ve `np.random.rand()` fonksiyonu kullanan bir betik dosyası yazın. Her atıldığında 100 tane paranın kaç tanesi tura geldiğini kaydedin ve sonucu histogram grafiği olarak çizdirin. 
+
+### Problem 2
+
+Uygulama 1 ile verilen betik dosyasını `np.random.choice()` fonksiyonu kullanarak yapın.
+
+### Problem 3
+
+100 adet zarı 1000 kere atan ve `np.random.choice()` fonksiyonunu kullanan bir betik dosyası yazın. Her atıldığında 100 tane zarın kaç tanesinin 6 geldiğini, kaç tanesinin 5 geldiğini vs. kaydedin ve sonucu histogram grafiği olarak çizdirin.
+
+### Problem 4
+
+Aşağıdaki linkte bulunan excel dosyasını indirin. 
+
+[Standart Solar Spectrumu Linki](https://www.pveducation.org/sites/default/files/PVCDROM/Appendices/AM0AM1_5.xls)
+
+- Bu excel dosyasındaki verileri temizleyin.
+  - Başlıkları sadece `Wavelength (nm)`, `Extraterrestrial W*m-2*nm-1`, `Global tilt  W*m-2*nm-1`, `Direct+circumsolar W*m-2*nm-1` kalsın.
+  - Tüm diğer verileri silin.
+  - Tüm tablar (sheets) silin.
+  - Tüm veriyi `float` tipine çevirin.
+- Temizlediğiniz veriyi okuyun ve `Wavelength (nm)` sütununu x ekseni olacak şekilde tüm kolonların grafiklerini aynı figürde çizdirin.
+- `Extraterrestrial W*m-2*nm-1` en yüksek değerini bulun.
+- En yüksek değerin kaç Kelvin olduğunu bulun. (Stefan-Boltzmann Kanunu)
+- En yüksek değerin kaç Celsius olduğunu bulun.
+- Görünür ışığın spektrumunu yukarıda çizdiğiniz grafikte gösterin.
+
+Kaynak: [Solar Spectrum](https://www.pveducation.org/pvcdrom/appendices/standard-solar-spectra)
+
+## Kaynaklar
+
+1. Numerical Python: Scientific Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019, **syf 443**
+2. [https://www.mathsisfun.com/data/](https://www.mathsisfun.com/data/)
+3. [Think Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014](https://greenteapress.com/thinkstats2/thinkstats2.pdf)
+4. [Think Stats: Github](https://github.com/AllenDowney/ThinkStats2)
+ 
