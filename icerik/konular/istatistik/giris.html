@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>Bilgisayarlı Yöntemler - Giriş</title>
+<title>Bilgisayarlı Yöntemler - İstatistik - Giris</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -55,27 +55,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -85,8 +65,7 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" rel="next">
-<link href="../../../icerik/konular/fourier-analizi.html" rel="prev">
+<link href="../../../icerik/konular/istatistik.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -169,7 +148,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/giris.html">Giriş</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/istatistik.html">İstatistik</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/istatistik/giris.html">İstatistik - Giris</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -306,7 +285,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Giriş</span></a>
   </div>
 </li>
@@ -376,7 +355,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/istatistik/giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/giris.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">İstatistik - Giris</span></a>
   </div>
 </li>
@@ -394,25 +373,35 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#fourier-analizi" id="toc-fourier-analizi" class="nav-link active" data-scroll-target="#fourier-analizi">Fourier Analizi</a>
+  <li><a href="#kullanılacak-modüller" id="toc-kullanılacak-modüller" class="nav-link active" data-scroll-target="#kullanılacak-modüller">Kullanılacak Modüller</a></li>
+  <li><a href="#istatistikteki-temel-tanımlar" id="toc-istatistikteki-temel-tanımlar" class="nav-link" data-scroll-target="#istatistikteki-temel-tanımlar">İstatistikteki Temel Tanımlar</a></li>
+  <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a>
   <ul class="collapse">
-  <li><a href="#dalgalar" id="toc-dalgalar" class="nav-link" data-scroll-target="#dalgalar">Dalgalar</a></li>
+  <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
   </ul></li>
-  <li><a href="#dalgaların-karakteristikleri" id="toc-dalgaların-karakteristikleri" class="nav-link" data-scroll-target="#dalgaların-karakteristikleri">Dalgaların Karakteristikleri</a></li>
+  <li><a href="#rastgele-sayılar" id="toc-rastgele-sayılar" class="nav-link" data-scroll-target="#rastgele-sayılar">Rastgele Sayılar</a></li>
+  <li><a href="#rastgele-değişkenler-ve-dağılımlar" id="toc-rastgele-değişkenler-ve-dağılımlar" class="nav-link" data-scroll-target="#rastgele-değişkenler-ve-dağılımlar">Rastgele Değişkenler ve Dağılımlar</a></li>
+  <li><a href="#alıştırma-2" id="toc-alıştırma-2" class="nav-link" data-scroll-target="#alıştırma-2">Alıştırma 2</a>
+  <ul class="collapse">
+  <li><a href="#çözüm-1" id="toc-çözüm-1" class="nav-link" data-scroll-target="#çözüm-1">Çözüm</a></li>
+  </ul></li>
   <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
   <ul class="collapse">
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
   </ul></li>
+  <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/fourier-analizi/giris.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/istatistik/giris.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/giris.html">Giriş</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/istatistik.html">İstatistik</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/istatistik/giris.html">İstatistik - Giris</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Giriş</h1>
+<h1 class="title">İstatistik - Giris</h1>
 </div>
 
 
@@ -441,209 +430,418 @@ window.Quarto = {
 </header>
 
 
-<section id="fourier-analizi" class="level2">
-<h2 class="anchored" data-anchor-id="fourier-analizi">Fourier Analizi</h2>
-<section id="dalgalar" class="level3">
-<h3 class="anchored" data-anchor-id="dalgalar">Dalgalar</h3>
-<p>Basit bir sinüs dalgası oluşturalım.</p>
-<div id="c23448de" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># x-y noktaları</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>x<span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">8</span><span class="op">*</span>np.pi,<span class="dv">1000</span>)</span>
-<span id="cb1-5"><a href="#cb1-5"></a>y<span class="op">=</span> np.sin(x)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># Çiz</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>plt.plot(x,y)</span>
-<span id="cb1-8"><a href="#cb1-8"></a>plt.ylabel(<span class="st">'Genlik'</span>)</span>
-<span id="cb1-9"><a href="#cb1-9"></a>plt.xlabel(<span class="st">'x'</span>)</span>
-<span id="cb1-10"><a href="#cb1-10"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="kullanılacak-modüller" class="level2">
+<h2 class="anchored" data-anchor-id="kullanılacak-modüller">Kullanılacak Modüller</h2>
+<p>İstatistiksel analizler için gerekli modüller: <code>scipy.stats</code>, <code>scipy.optimize</code>, <code>numpy</code>. Yardımcı modüller ise <code>matplotlib.pyplot</code>, <code>pandas</code>, <code>seaborn</code>.</p>
+</section>
+<section id="istatistikteki-temel-tanımlar" class="level2">
+<h2 class="anchored" data-anchor-id="istatistikteki-temel-tanımlar">İstatistikteki Temel Tanımlar</h2>
+<ul>
+<li><strong>Popülasyon (Population):</strong> Bir nesnenin tüm özelliklerini belirlemek için seçilen örneklerdir.</li>
+<li><strong>Örneklem (Sample):</strong> Bir nesnenin özelliklerini belirlemek için seçilen örneklerdir.</li>
+<li><strong>Belirsizlik (Uncertainty):</strong> Örneklem veya popülasyonun özelliklerini belirlemek için kullanılan örneklerin sayısının yetersiz olmasıdır.</li>
+<li><strong>Veri (Data):</strong> Bir araştırma veya analiz için toplanan sayısal veya kategorik bilgilerdir.</li>
+<li><strong>Ortalama (Mean) :</strong> Veri setinin tüm değerlerinin toplamının, veri setindeki eleman sayısına bölünmesiyle elde edilir.</li>
+<li><strong>Medyan veya Ortanca Değer (Median):</strong> Veri setindeki değerlerin ortalamasına göre sıralandıktan sonra ortadaki değerdir.</li>
+<li><strong>Mod veya Tepe Değer (Mod):</strong> Veri setindeki en sık tekrar eden değerdir.</li>
+<li><strong>Varyans (Variance) :</strong> Veri setindeki değerlerin ortalama değere ne kadar dağıldığını ölçen bir istatistiksel ölçüdür.</li>
+<li><strong>Standart Sapma (Standard Deviation):</strong> Veri setindeki değerlerin ortalama değerden ne kadar sapma gösterdiğini gösteren bir ölçüdür.</li>
+<li><strong>Çeyrekler (Quartiles):</strong> Veri setindeki değerlerin sıralanmasından sonra ortadaki değer orta çeyreklik, orta çeyreklik ile en küçük değerin ortasındaki değer alt çeyreklik (%25), orta çeyreklik ile en büyük değerin ortasındaki değer üst çeyreklik (%75) olarak tanımlanır.</li>
+<li><strong>Minimum ve maksimum değer (Minimum and Maximum):</strong> Veri setindeki en küçük ve en büyük değerlerdir.</li>
+</ul>
+</section>
+<section id="alıştırma-1" class="level2">
+<h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h2>
+<p>Bir araştırmada seçimlerdeki oy dağılımı tahmin edilmek istenmektedir. Toplamda 1000 kişi oy vereceğini düşünelim. Anket şirketi de 100 kişiye sormuş. Bu 100 kişinin oy dağılımı şu şekilde:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>A Partisi</th>
+<th>B Partisi</th>
+<th>C Partisi</th>
+<th>D Partisi</th>
+<th>Kararsız</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>30</td>
+<td>15</td>
+<td>40</td>
+<td>10</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<section id="çözüm" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
+<div id="62b832d3" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Veri seti</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>df<span class="op">=</span> pd.Series({<span class="st">'A Parisi'</span>:<span class="dv">30</span>,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>               <span class="st">'B Partisi'</span>:<span class="dv">15</span>,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>               <span class="st">'C Partisi'</span>:<span class="dv">40</span>,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>               <span class="st">'D Partisi'</span>:<span class="dv">10</span>,</span>
+<span id="cb1-8"><a href="#cb1-8"></a>               <span class="st">'Kararsız'</span>:<span class="dv">5</span>})</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># Çiz</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>df.plot(kind<span class="op">=</span><span class="st">'bar'</span>, title<span class="op">=</span><span class="st">'Parti Seçimlerine Göre Oy Dağılımı'</span>, ylabel<span class="op">=</span><span class="st">'Oy Sayısı'</span>)</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># Pandas açıklama</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="bu">print</span>(df.describe())</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>count     5.00000
+mean     20.00000
+std      14.57738
+min       5.00000
+25%      10.00000
+50%      15.00000
+75%      30.00000
+max      40.00000
+dtype: float64</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="giris_files/figure-html/cell-2-output-1.png" width="608" height="429" class="figure-img"></p>
+<p><img src="giris_files/figure-html/cell-2-output-2.png" width="585" height="474" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Sinüs dalgası hem zamanda hem de uzayda değişebilir. Yukarıda çizilen dalga zaman içerisinde değişmemektedir yani durağan bir dalgadır. Durağan olmayan dalgalara örnek bir kod yazalım.</p>
-<div id="efd018a7" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Zaman</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>zaman<span class="op">=</span> np.arange(<span class="dv">5</span>)</span>
-<span id="cb2-5"><a href="#cb2-5"></a>x<span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">8</span><span class="op">*</span>np.pi,<span class="dv">1000</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a>n<span class="op">=</span> <span class="bu">len</span>(zaman)</span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#Çiz</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="cf">for</span> t <span class="kw">in</span> zaman:</span>
-<span id="cb2-9"><a href="#cb2-9"></a>    plt.subplot(n,<span class="dv">1</span>,t<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb2-10"><a href="#cb2-10"></a>    y<span class="op">=</span> np.sin(x<span class="op">+</span>t)</span>
-<span id="cb2-11"><a href="#cb2-11"></a>    plt.plot(x,y, <span class="st">'b'</span>)</span>
-<span id="cb2-12"><a href="#cb2-12"></a>    plt.plot(x[<span class="dv">25</span>], y[<span class="dv">25</span>], <span class="st">'ro'</span>)</span>
-<span id="cb2-13"><a href="#cb2-13"></a>    plt.ylim(<span class="op">-</span><span class="fl">1.1</span>,<span class="fl">1.1</span>)</span>
-<span id="cb2-14"><a href="#cb2-14"></a>    plt.ylabel(<span class="st">'y'</span>)</span>
-<span id="cb2-15"><a href="#cb2-15"></a>    plt.title(<span class="ss">f"t=</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-16"><a href="#cb2-16"></a>plt.xlabel(<span class="st">'x'</span>)</span>
-<span id="cb2-17"><a href="#cb2-17"></a>plt.tight_layout()</span>
-<span id="cb2-18"><a href="#cb2-18"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="giris_files/figure-html/cell-3-output-1.png" width="662" height="470" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Yukarıdaki grafikte kırmızı nokta durağan olmayan bir dalganın konumunu göstermektedir. Bu davranış, tıpkı bir su dalgası üzerinde bulunan bir odun parçasının yukarı aşağıya gitmesi gibidir. Dalga x doğrultusunda ilerlerken, odun parçası yukarı aşağıya hareket eder.</p>
-</section>
-</section>
-<section id="dalgaların-karakteristikleri" class="level2">
-<h2 class="anchored" data-anchor-id="dalgaların-karakteristikleri">Dalgaların Karakteristikleri</h2>
-<p>Dalgaların karakteristik özelliklerini tanımlayan bazı ifadeler aşağıda maddelenmiştir.</p>
-<ol type="1">
-<li><strong>Frekans</strong>: Dalganın birim zamanda kaç kez tekrarlandığını gösterir. Birimi Hz (Hertz)’dir. 1 Hz = 1 s<span class="math inline">\(^{-1}\)</span></li>
-<li><strong>Periyot</strong>: Dalganın bir tam periyotu tamamlaması için geçen süredir. Birimi s (saniye)’dir. Periyod ile frekans ters orantılıdır. Yani frekans = 1 / periyot.</li>
-<li><strong>Genlik</strong>: Dalganın alabileceği maksimum değeridir.</li>
-<li><strong>Dalgaboyu</strong>: Dalganın bir tam periyotu boyunca. Birimi uzunlukdur.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Not
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Dalgalar/sinyaller sürekli tekrar eder. Analiz yaparken dalgaların belirli bir aralıktaki değerini çizdiririz. Bu aralığa pencere aralığı denir. Örneğin bir ses dalgasının ekolayzorını yapmak isteyelim. Basların ve tizlerin yoğunluğunu belirli bir pencere aralığında gösteririz ve bu bas/tizler şarkının her pencere aralığında farklı değerler olacaktır.</p>
-</div>
-</div>
-<p>Bu nicelikleri grafik üzerinde gösteren python kodunu yazalım <span class="citation" data-cites="chatGPT">&nbsp;[<a href="#ref-chatGPT" role="doc-biblioref">1</a>]</span>.</p>
-<div id="ac8455d4" class="cell" data-execution_count="3">
+<p>Yukarıdaki tanımları uygulayalım.</p>
+<ul>
+<li>Popülasyon: 1000</li>
+<li>Örneklem: 100</li>
+<li>Örneklem Adeti: 1</li>
+<li>Belirsizlik: 900</li>
+<li>Veri: 100
+<ul>
+<li>30 A Partisi, 15 B Partisi, 40 C Partisi, 10 D Partisi, 5 Kararsız</li>
+</ul></li>
+<li>Ortalama: 20
+<ul>
+<li>30 + 15 + 40 + 10 + 5 = 100 / 5 = 20</li>
+</ul></li>
+<li>Medyan (Ortanca Değer): 15 (B Partisi)
+<ul>
+<li>40, 30, 15, 10, 5 sıralandığında ortanca değer 15</li>
+</ul></li>
+<li>Mod (Tepe Değer): En sık tekrar eden değer yok.</li>
+<li>Varyans <span class="math inline">\(\sigma^{2}\)</span>: 170.0
+<ul>
+<li><span class="math inline">\((|30-20|^{2} + |15-20|^{2} + |40-20|^{2} + |10-20|^{2} + |5-20|^{2})/5 = 170.0\)</span><br>
+</li>
+</ul></li>
+<li>Standart Sapma: 13.0
+<ul>
+<li><span class="math inline">\(\sqrt{170.0}\)</span></li>
+<li><span class="math inline">\(\sqrt{(|30-20|^{2} + |15-20|^{2} + |40-20|^{2} + |10-20|^{2} + |5-20|^{2})/5} = 13.0\)</span></li>
+</ul></li>
+<li>Çeyrekler: 10, 15, 30
+<ul>
+<li>40, 30, 15, 10, 5 sıralandığında
+<ul>
+<li>Alt Çeyreklik: 10 (%25)</li>
+<li>Ortanca çeyreklik: 15 (%50)</li>
+<li>Üst Çeyreklik: 30 (%75)</li>
+</ul></li>
+</ul></li>
+<li>Minimum ve Maksimum değer: 5 ve 40</li>
+</ul>
+<p>Eğer veriler ortalama değerden farkları az olursa standart sapma ve varyanas değerleri küçük olur.</p>
+<div id="31189db1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># Dalganın karakteristikleri</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>frekans <span class="op">=</span> <span class="dv">2</span>  <span class="co"># Hz</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>periyot <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> frekans  <span class="co"># s</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>genlik <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>dalga_uzunlugu <span class="op">=</span> <span class="dv">2</span>  <span class="co"># metre</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co"># Zaman aralığı</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span> periyot, <span class="dv">50</span>)</span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co"># Dalganın formülü</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a>dalga <span class="op">=</span> genlik <span class="op">*</span> np.sin(<span class="dv">2</span><span class="op">*</span> np.pi<span class="op">*</span> frekans<span class="op">*</span> t)</span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co"># Çiz</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a>plt.plot(t, dalga, label<span class="op">=</span><span class="st">'Dalga'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb3-14"><a href="#cb3-14"></a>plt.plot(t, dalga, <span class="st">'o'</span>, label<span class="op">=</span><span class="st">'Örneklemler'</span>, color<span class="op">=</span><span class="st">'magenta'</span>)</span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="co"># Genlik oku</span></span>
-<span id="cb3-16"><a href="#cb3-16"></a>plt.annotate(<span class="st">''</span>, xy<span class="op">=</span>(<span class="fl">0.12</span>, genlik), xytext<span class="op">=</span>(<span class="fl">0.12</span>, <span class="dv">0</span>),</span>
-<span id="cb3-17"><a href="#cb3-17"></a>             arrowprops<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">'red'</span>))</span>
-<span id="cb3-18"><a href="#cb3-18"></a>plt.text(<span class="fl">0.08</span>, genlik <span class="op">/</span> <span class="fl">2.8</span>, <span class="st">'GENLİK'</span>, rotation<span class="op">=</span><span class="dv">90</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
-<span id="cb3-19"><a href="#cb3-19"></a><span class="co"># Periyot oku</span></span>
-<span id="cb3-20"><a href="#cb3-20"></a>plt.annotate(<span class="st">''</span>, xy<span class="op">=</span>(<span class="fl">0.6</span>, <span class="dv">1</span>), xytext<span class="op">=</span>(<span class="fl">0.15</span>, <span class="dv">1</span>),</span>
-<span id="cb3-21"><a href="#cb3-21"></a>             arrowprops<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">'green'</span>))</span>
-<span id="cb3-22"><a href="#cb3-22"></a>plt.text(<span class="fl">0.32</span>, <span class="fl">0.85</span>, <span class="st">'PERİYOT'</span>, rotation<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
-<span id="cb3-23"><a href="#cb3-23"></a>plt.title(<span class="st">'Dalganın Özellikleri'</span>)</span>
-<span id="cb3-24"><a href="#cb3-24"></a>plt.xlabel(<span class="st">'Zaman (s)'</span>)</span>
-<span id="cb3-25"><a href="#cb3-25"></a>plt.ylabel(<span class="st">'Genlik'</span>)</span>
-<span id="cb3-26"><a href="#cb3-26"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>periyot)</span>
-<span id="cb3-27"><a href="#cb3-27"></a>plt.ylim(<span class="op">-</span><span class="fl">1.3</span>, <span class="fl">1.3</span>)</span>
-<span id="cb3-28"><a href="#cb3-28"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb3-29"><a href="#cb3-29"></a>plt.legend()</span>
-<span id="cb3-30"><a href="#cb3-30"></a>plt.tight_layout()</span>
-<span id="cb3-31"><a href="#cb3-31"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># Veri: 21,22,20,18,19</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="bu">print</span>(<span class="ss">f"Varyans (Veri-Ortalamaya-Yakın): </span><span class="sc">{</span>(<span class="dv">1</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">2</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">1</span><span class="op">**</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">5</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="bu">print</span>(<span class="ss">f"Standart Sapma (Veri-Ortalamaya-Yakın): </span><span class="sc">{</span>np<span class="sc">.</span>sqrt((<span class="dv">1</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">2</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">1</span><span class="op">**</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># Veri: 30,15,40,10,5  </span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#print(f"Varyans: {(10**2 + 5**2 +20**2 +10**2+ 15**2)/5}")</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#print(f"Standart Sapma: {np.sqrt((10**2 + 5**2 +20**2 +10**2+ 15**2)/5)}")</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Varyans (Veri-Ortalamaya-Yakın): 2.0
+Standart Sapma (Veri-Ortalamaya-Yakın): 1.4142135623730951</code></pre>
+</div>
+</div>
+<p><code>pandas</code> içerisinde <code>describe()</code> fonksiyonu ile belirlenen değerleri <code>numpy</code> paketi ile de belirleyebiliriz.</p>
+<div id="40e98815" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href="#cb5-2"></a>veri<span class="op">=</span> np.array([<span class="fl">30.</span>, <span class="fl">15.</span>, <span class="fl">40.</span>, <span class="fl">10.</span>, <span class="fl">5.</span>])</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="bu">print</span>(<span class="ss">f"Ortalama: </span><span class="sc">{</span>veri<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="bu">print</span>(<span class="ss">f"Varyans: </span><span class="sc">{</span>veri<span class="sc">.</span>var()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="bu">print</span>(<span class="ss">f"Standart Sapma: </span><span class="sc">{</span>veri<span class="sc">.</span>std()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="bu">print</span>(<span class="ss">f"Medyan: </span><span class="sc">{</span>np<span class="sc">.</span>median(veri)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="bu">print</span>(<span class="ss">f"Minimum ve Maksimum: </span><span class="sc">{</span>veri<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> ve </span><span class="sc">{</span>veri<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="bu">print</span>(<span class="ss">f"Çeyrekler: </span><span class="sc">{</span>np<span class="sc">.</span>percentile(veri, [<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>])<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Ortalama: 20.0
+Varyans: 170.0
+Standart Sapma: 13.038404810405298
+Medyan: 15.0
+Minimum ve Maksimum: 5.0 ve 40.0
+Çeyrekler: [10. 15. 30.]</code></pre>
+</div>
+</div>
+<p>Burada <code>pandas</code> ile <code>numpy</code> modüllerinin standart sapma (varyans) değerleri aynı değil. Bunun sebebi istatistikte “yanlı/yansız (biased/unbiased)” olarak bilinen iki farklı yaklaşım vardır. Bu iki yaklaşımın farklılıkları için aşağıdaki linkleri inceleyebilirsiniz.</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/2480650/">what-is-the-difference-between-bias-and-variance</a></li>
+<li><a href="assets/nedenOrnekleminVaryansiFarkli.pdf">orneklemin-standart-sapmasinin-hesaplanmasi</a></li>
+<li><a href="https://tr.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/more-on-standard-deviation/v/review-and-intuition-why-we-divide-by-n-1-for-the-unbiased-sample-variance">Neden standart sapma hesaplanırken n-1 yapılır?</a></li>
+</ul>
+<p><code>numpy</code> yanlı yaklaşımı (<span class="math inline">\(n\)</span>’e bölme) kullanırken <code>pandas</code> yansız yaklaşımı (<span class="math inline">\(n-1\)</span>’e bölme) kullanmaktadır.</p>
+<p><em>TL;DR</em> - Popülasyon üzerinden hesap yapmak istiyorsanız yanlı yaklaşımı, <code>df.std(ddof=0)</code> veya <code>np.std()</code> kullanın. - Örneklem üzerinden hesap yapmak istiyorsanız yansız yaklaşımı <code>df.std()</code> veya <code>np.std(ddof=1)</code> kullanın.</p>
+</section>
+</section>
+<section id="rastgele-sayılar" class="level2">
+<h2 class="anchored" data-anchor-id="rastgele-sayılar">Rastgele Sayılar</h2>
+<p>Önce <code>numpy</code> modülü içerisindeki <code>random</code> paketi ile rastgele sayılar üretelim.</p>
+<ul>
+<li><code>np.random.rand(N)</code>: <span class="math inline">\([0,1)\)</span> arasında <span style="color:red">düzgün olarak </span> (uniformly) <code>N</code> boyutlu rastgele sayı üretir.</li>
+<li><code>np.random.randn()</code>: <span class="math inline">\(N(0,1)\)</span> arasında <span style="color:red">standart normal dağılımlı </span> olarak (standard normal distribution) rastgele sayı üretir.</li>
+<li><code>np.random.randint(a,b)</code>: <span class="math inline">\([a,b)\)</span> arasında <span style="color:red">düzgün olarak </span> (uniformly) rastgele sayı üretir.</li>
+</ul>
+<div id="4f4f17ee" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="bu">print</span>(<span class="ss">f"5 Boyutlu düzgün dağılımlı rastgele sayılar: </span><span class="sc">{</span>np<span class="sc">.</span>random<span class="sc">.</span>rand(<span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="bu">print</span>(<span class="ss">f"5 Boyutlu normal dağılımlı rastgele sayılar: </span><span class="sc">{</span>np<span class="sc">.</span>random<span class="sc">.</span>randn(<span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="bu">print</span>(<span class="ss">f"5 boyutlu 0 ile 10 arasında rastgele tam sayılar: </span><span class="sc">{</span>np<span class="sc">.</span>random<span class="sc">.</span>randint(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5 Boyutlu düzgün dağılımlı rastgele sayılar: [0.82087207 0.34266741 0.10990511 0.2315717  0.03972704]
+5 Boyutlu normal dağılımlı rastgele sayılar: [ 0.59914335  0.73342352  0.61441675 -1.0207175   1.10799039]
+5 boyutlu 0 ile 10 arasında rastgele tam sayılar: [1 5 4 1 7]</code></pre>
+</div>
+</div>
+<p>Standart normal dağılımı rastgele sayı üreteci 0’ın ortasında ve 1’in standart sapması olan bir dağılım oluşturur. Bu dağılımın özelliklerini görmek için aşağıdaki kodu çalıştırın.</p>
+<div id="77d96b11" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># 1000 tane rastgele sayı üret</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#x = np.random.randn(1000)</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>x <span class="op">=</span> np.random.randn(<span class="dv">1_000_000</span>)</span>
+<span id="cb9-7"><a href="#cb9-7"></a></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co"># Histogram çiz</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>plt.hist(x, bins<span class="op">=</span><span class="dv">40</span>)</span>
+<span id="cb9-10"><a href="#cb9-10"></a>plt.show()</span>
+<span id="cb9-11"><a href="#cb9-11"></a>plt.close()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="giris_files/figure-html/cell-4-output-1.png" width="662" height="470" class="figure-img"></p>
+<p><img src="giris_files/figure-html/cell-6-output-1.png" width="600" height="411" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Yukarıdaki şekilde fuşya (galibarda, magenta) noktalar ise örneklemdir (sampling).</p>
-<p>Örneklem oranı (sampling rate) ise örneklem sıklığını gösterir. Örneklem sıklığını yukarıdaki grafikte noktaların sıklığı olarak düşünebiliriz. Örneklem oranı arttıkça dalga daha iyi bir şekilde temsil edilir.</p>
-<p>Diğer karakteristikleri de anlamak için durağan olmayan bir sinüs dalgası ele alalım.</p>
-<p><span class="math display">\[
-y(t) = A \sin(\omega t + \phi)
-\]</span></p>
-<p>Burada <span class="math inline">\(A\)</span> genlik, <span class="math inline">\(\omega\)</span> açısal frekans, <span class="math inline">\(\phi\)</span> ise fazdır.</p>
-<p>Açısal frekans ise <span class="math inline">\(\omega = 2 \pi f\)</span> şeklinde hesaplanır. Burada <span class="math inline">\(f\)</span> frekansıdır.</p>
-<p>Faz, <span class="math inline">\(\phi\)</span> ise dalganın başlangıç noktasını belirler.</p>
-<div id="0ce4fa85" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># Zaman</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>,<span class="dv">2</span><span class="op">*</span> np.pi, <span class="fl">0.1</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co"># Çiz (farklı frekanslar)</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>plt.title(<span class="st">"Farklı Frekanslar"</span>)</span>
-<span id="cb4-7"><a href="#cb4-7"></a>plt.plot(t, np.cos(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="fl">0.2</span><span class="op">*</span>t), <span class="st">"b"</span>, label<span class="op">=</span><span class="st">"sin(2$\pi$0.2t)"</span>)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>plt.plot(t, np.cos(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="fl">0.4</span><span class="op">*</span>t), <span class="st">"r"</span>, label<span class="op">=</span><span class="st">"sin(2$\pi$0.4t)"</span>)</span>
-<span id="cb4-9"><a href="#cb4-9"></a>plt.ylabel(<span class="st">"Genlik"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10"></a>plt.xlabel(<span class="st">"Zaman (s)"</span>)</span>
-<span id="cb4-11"><a href="#cb4-11"></a>plt.xticks([<span class="dv">0</span>, np.pi<span class="op">/</span><span class="dv">2</span>, np.pi, <span class="dv">3</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">2</span><span class="op">*</span>np.pi],</span>
-<span id="cb4-12"><a href="#cb4-12"></a>    [<span class="st">"0"</span>, <span class="st">"$\pi$/2"</span>, <span class="st">"$\pi$"</span>, <span class="st">"3$\pi$/2"</span>, <span class="st">"2$\pi$"</span>])</span>
-<span id="cb4-13"><a href="#cb4-13"></a>plt.legend()</span>
-<span id="cb4-14"><a href="#cb4-14"></a>plt.show()</span>
-<span id="cb4-15"><a href="#cb4-15"></a>plt.close()</span>
-<span id="cb4-16"><a href="#cb4-16"></a><span class="co"># Çiz (farklı fazlar)</span></span>
-<span id="cb4-17"><a href="#cb4-17"></a>plt.title(<span class="st">"Faz Farkı"</span>)</span>
-<span id="cb4-18"><a href="#cb4-18"></a>plt.plot(t, np.cos(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="fl">0.2</span><span class="op">*</span>t), <span class="st">"g"</span>, label<span class="op">=</span><span class="st">"sin(2$\pi$0.2t)"</span>)</span>
-<span id="cb4-19"><a href="#cb4-19"></a>plt.plot(t, np.cos(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="fl">0.2</span><span class="op">*</span>t<span class="op">+</span> np.pi<span class="op">/</span><span class="dv">2</span>),</span>
-<span id="cb4-20"><a href="#cb4-20"></a>    <span class="st">"k"</span>, label<span class="op">=</span><span class="st">"sin(2$\pi$0.2t + $\pi$/2)"</span>)</span>
-<span id="cb4-21"><a href="#cb4-21"></a>plt.ylabel(<span class="st">"Genlik"</span>)</span>
-<span id="cb4-22"><a href="#cb4-22"></a>plt.xlabel(<span class="st">"Zaman (s)"</span>)</span>
-<span id="cb4-23"><a href="#cb4-23"></a><span class="co"># X label in terms of pi</span></span>
-<span id="cb4-24"><a href="#cb4-24"></a>plt.xticks([<span class="dv">0</span>, np.pi<span class="op">/</span><span class="dv">2</span>, np.pi, <span class="dv">3</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, <span class="dv">2</span><span class="op">*</span>np.pi],</span>
-<span id="cb4-25"><a href="#cb4-25"></a>              [<span class="st">"0"</span>, <span class="st">"$\pi$/2"</span>, <span class="st">"$\pi$"</span>, <span class="st">"3$\pi$/2"</span>, <span class="st">"2$\pi$"</span>])</span>
-<span id="cb4-26"><a href="#cb4-26"></a>plt.legend()</span>
-<span id="cb4-27"><a href="#cb4-27"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c9c72778" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co"># Rastgele sayı üret [0,1)</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="bu">print</span>(np.random.rand())</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="co"># Rastgele 5 tane sayı üret [0,1)</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="bu">print</span>(np.random.rand(<span class="dv">5</span>))</span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="co"># Rastgele 2x4 matris üret [0,1)</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="bu">print</span>(np.random.rand(<span class="dv">2</span>, <span class="dv">4</span>))</span>
+<span id="cb10-9"><a href="#cb10-9"></a></span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="co"># Rastgele Normal dağılımlı sayı üret</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a><span class="bu">print</span>(np.random.randn(<span class="dv">10</span>))</span>
+<span id="cb10-13"><a href="#cb10-13"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb10-14"><a href="#cb10-14"></a></span>
+<span id="cb10-15"><a href="#cb10-15"></a><span class="co"># Rastgele tam sayı üret [0,10)</span></span>
+<span id="cb10-16"><a href="#cb10-16"></a><span class="bu">print</span>(np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>))</span>
+<span id="cb10-17"><a href="#cb10-17"></a><span class="co"># Rastgele 5 tane tam sayı üret</span></span>
+<span id="cb10-18"><a href="#cb10-18"></a><span class="bu">print</span>(np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb10-19"><a href="#cb10-19"></a><span class="co"># print(np.random.randint(low=0, high=10, size=5))</span></span>
+<span id="cb10-20"><a href="#cb10-20"></a></span>
+<span id="cb10-21"><a href="#cb10-21"></a><span class="co"># Rastgele 2x4 matris üret [0,10)</span></span>
+<span id="cb10-22"><a href="#cb10-22"></a><span class="bu">print</span>(np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, (<span class="dv">2</span>, <span class="dv">4</span>) ))</span>
+<span id="cb10-23"><a href="#cb10-23"></a><span class="co">#print(np.random.randint(low=0, high=10, size=(2,4)))</span></span>
+<span id="cb10-24"><a href="#cb10-24"></a></span>
+<span id="cb10-25"><a href="#cb10-25"></a><span class="co"># Çiz</span></span>
+<span id="cb10-26"><a href="#cb10-26"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb10-27"><a href="#cb10-27"></a>axes[<span class="dv">0</span>].hist(np.random.rand(<span class="dv">10_000</span>))</span>
+<span id="cb10-28"><a href="#cb10-28"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"rand"</span>)</span>
+<span id="cb10-29"><a href="#cb10-29"></a>axes[<span class="dv">1</span>].hist(np.random.randn(<span class="dv">10_000</span>))</span>
+<span id="cb10-30"><a href="#cb10-30"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"randn"</span>)</span>
+<span id="cb10-31"><a href="#cb10-31"></a>axes[<span class="dv">2</span>].hist(np.random.randint(low<span class="op">=</span><span class="dv">1</span>, high<span class="op">=</span><span class="dv">10</span>, size<span class="op">=</span><span class="dv">10_000</span>), bins<span class="op">=</span><span class="dv">9</span>, align<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb10-32"><a href="#cb10-32"></a>axes[<span class="dv">2</span>].set_title(<span class="st">"randint(low=1, high=10)"</span>)</span>
+<span id="cb10-33"><a href="#cb10-33"></a>plt.tight_layout()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.3131042272524026
+[0.99934296 0.91209133 0.97036381 0.83132584 0.79112004]
+[[0.51727033 0.45565413 0.03928876 0.31260521]
+ [0.50822867 0.10428976 0.83691284 0.88858052]]
+--------------------
+[ 2.06167227  0.19379438 -0.50263944 -0.37436095 -0.02599458  1.03007387
+  1.408896    1.36714039  0.9223314  -0.74883044]
+--------------------
+5
+[6 8 4 8 6]
+[[3 5 1 4]
+ [2 7 0 0]]</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="giris_files/figure-html/cell-5-output-1.png" width="608" height="449" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="giris_files/figure-html/cell-5-output-2.png" width="608" height="449" class="figure-img"></p>
+<p><img src="giris_files/figure-html/cell-7-output-2.png" width="662" height="470" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Yukarıdaki grafikte farklı frekanslar ve farklı fazlar için dalgalar çizilmiştir. İki veya daha fazla dalganın üst üste binmesiyle oluşan dalgaların analizi için Fourier analizi kullanılır.</p>
+<p>İlerleyen bölümlerde belli bir array’den rastgele bir eleman seçmek isteyeceğiz. Bunun için <code>np.random.choice()</code> özelliğini kullanacağız. Eğer <code>replace=False</code> özelliği ile kullanırsak seçilen eleman tekrar seçilemez. Varsayılan özellik <code>replace=True</code>’dur.</p>
+<div id="14f51fe9" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="bu">print</span>(np.random.choice(<span class="dv">5</span>, <span class="dv">3</span>))</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="co"># Eşittir np.random.randint(0,5,3)</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="bu">print</span>(<span class="st">"--"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"1"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="bu">print</span>(np.random.choice(<span class="dv">5</span>, <span class="dv">3</span>, p<span class="op">=</span>[<span class="fl">0.1</span>, <span class="dv">0</span>, <span class="fl">0.3</span>, <span class="fl">0.6</span>, <span class="dv">0</span>]))</span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="bu">print</span>(<span class="st">"--"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"2"</span>)</span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="bu">print</span>(np.random.choice(<span class="dv">5</span>, <span class="dv">3</span>, replace<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="co"># Eşittir np.random.permutation(np.arange(5))[:3]</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="bu">print</span>(<span class="st">"--"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"3"</span>)</span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="bu">print</span>(np.random.choice(<span class="dv">5</span>, <span class="dv">3</span>, replace<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="bu">print</span>(<span class="st">"--"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"4"</span>)</span>
+<span id="cb12-12"><a href="#cb12-12"></a>aa_milne_arr <span class="op">=</span> [<span class="st">'Gizem'</span>, <span class="st">'Furkan'</span>, <span class="st">'Alperen'</span>]</span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="bu">print</span>(np.random.choice(aa_milne_arr, <span class="dv">2</span>))</span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="bu">print</span>(np.random.choice(aa_milne_arr, <span class="dv">2</span>, replace<span class="op">=</span><span class="va">False</span>))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0 4 3]
+----------------------------------------1
+[3 0 3]
+----------------------------------------2
+[1 3 0]
+----------------------------------------3
+[2 0 3]
+----------------------------------------4
+['Gizem' 'Alperen']
+['Furkan' 'Alperen']</code></pre>
+</div>
+</div>
+<p>Rastgele sayı seçiminde çekirdek (seed) seçimi de önemli bir faktördür çünkü rastgelelik bir çekirdek üzerinden oluşur. Aynı çekirdek ile “aynı rastgelelik” oluşur.</p>
+<p>Bizim çalışacağımız problemlerde çekirdek seçimi önemli olmayacaktır ancak oyun, simülasyon gibi problemlerde çekirdek seçimi önemli olabilir.</p>
+<p>Çekirdek seçimi için <code>np.random.seed()</code> fonksiyonunu kullanılır.</p>
+<p>Belirlenen bir çekirdek üzerine seçimler yapmak için aşağıdaki gibi bir rastgele durum belirlenir.</p>
+<div id="cdec8e1c" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-2"><a href="#cb14-2"></a>oyunHaritasi<span class="op">=</span> np.random.RandomState(<span class="dv">42</span>)</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="bu">print</span>(oyunHaritasi.randint(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"1"</span>)</span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="bu">print</span>(oyunHaritasi.rand(<span class="dv">5</span>))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[6 3 7 4]
+--------------------1
+[0.15601864 0.15599452 0.05808361 0.86617615 0.60111501]</code></pre>
+</div>
+</div>
+</section>
+<section id="rastgele-değişkenler-ve-dağılımlar" class="level2">
+<h2 class="anchored" data-anchor-id="rastgele-değişkenler-ve-dağılımlar">Rastgele Değişkenler ve Dağılımlar</h2>
+<p>Popülasyondan rastgele seçilen örneklem üzerinden yapılan istatistiksel incelemelerde, örneklem dağılımının popülasyon dağılımına yakın olması istenir. Bu ve benzeri konular için matematikte <em>olasılık teorisi</em> bulunmaktadır.</p>
+<ul>
+<li><strong>Örnek Uzayı (Sample Space)</strong>: Bir deneyin tüm olası sonuçlarının bir kümesidir.
+<ul>
+<li>Örnek uzaydaki tüm elemanlar için bir olasılık değeri vardır.</li>
+</ul></li>
+<li><strong>Olasılık Dağılımı (Probability Distribution)</strong>: Bir deneyin tüm olası sonuçlarının olasılıklarının bir dağılımıdır.</li>
+<li><strong>Rastgele Değişken (Random Variables)</strong>: Bir deneyin sonucu olarak elde edilen değerlerdir.
+<ul>
+<li>Rastgele değişkenlerin birbirinden bağımsız olması gerekir.</li>
+</ul></li>
+</ul>
+<p>Örneğin</p>
+<ul>
+<li>Bir paranın örnek uzayı <span class="math inline">\(\{Yazı,Tura\}\)</span>’dır.</li>
+<li>Rastgele değerleri <span class="math inline">\(\{0,1\}\)</span>’dir.</li>
+</ul>
+<p>İstatistiksel işlemler kullanmak için rastgele değişkenlerin olasılık dağılımlarına ihtiyacımız vardır.</p>
+<p>Rastgele değişkenler alacağı olası değerler ile karakterize edilir ve bu değerler de olasılık dağılımına göre belirlenir.</p>
+<p>En temelde iki çeşit dağılım vardır. 1. Kesikli Dağılımlar, Tam Sayılar (Discrete Distributions) 2. Sürekli Dağılımlar, Gerçel Sayılar (Continuous Distributions)</p>
+<p><code>scipy.stats</code> modülü içerisindeki <code>rv_discrete</code> ve <code>rv_continuous</code> sınıfları ile dağılımların özelliklerine ulaşabiliriz. Bu paketteki metotlar ve açıklamaları için <a href="https://docs.scipy.org/doc/scipy/reference/stats.html">dokümantasyon</a> sayfasına veya <strong>Numerical Python</strong> kitabında tablo 13-1’e bakabilirsiniz.</p>
+<p>Bazı dağılımlar:</p>
+<ul>
+<li><strong>Uniform Dağılım (Uniform Distribution)</strong>: <span class="math inline">\(U(a,b)\)</span></li>
+<li><strong>Standart Normal Dağılımı (Standard Normal Distribution)</strong>: <span class="math inline">\(N(0,1)\)</span></li>
+<li><strong>Normal Dağılım (Normal Distribution)</strong>: <span class="math inline">\(N(\mu,\sigma^2)\)</span></li>
+<li><strong>Üstel Dağılım (Exponential Distribution)</strong>: <span class="math inline">\(Exp(\lambda)\)</span></li>
+<li><strong>Fermi-Dirac Dağılımı (Fermi-Dirac Distribution)</strong>: <span class="math inline">\(FD(\mu,\beta)\)</span></li>
+<li><strong>Bose-Einstein Dağılımı (Bose-Einstein Distribution)</strong>: <span class="math inline">\(BE(\mu,\beta)\)</span></li>
+<li><strong>Binom Dağılımı (Binomial Distribution)</strong>: <span class="math inline">\(B(n,p)\)</span></li>
+<li><strong>Poisson Dağılımı (Poisson Distribution)</strong>: <span class="math inline">\(P(\lambda)\)</span></li>
+<li><strong>Gamma Dağılımı (Gamma Distribution)</strong>: <span class="math inline">\(Gamma(\alpha,\beta)\)</span></li>
+<li><strong>Beta Dağılımı (Beta Distribution)</strong>: <span class="math inline">\(Beta(\alpha,\beta)\)</span></li>
+<li><strong>Chi-Square Dağılımı (Chi-Square Distribution)</strong>: <span class="math inline">\(\chi^2(n)\)</span></li>
+</ul>
+</section>
+<section id="alıştırma-2" class="level2">
+<h2 class="anchored" data-anchor-id="alıştırma-2">Alıştırma 2</h2>
+<p>Ortalama değeri 1 olan ve standart sapması 0.5 olan bir normal dağılım üretelim.</p>
+<section id="çözüm-1" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm-1">Çözüm</h3>
+<div id="e8512941" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a>X<span class="op">=</span> stats.norm(<span class="dv">1</span>, <span class="fl">0.5</span>)</span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="bu">print</span>(<span class="ss">f"Ortalama: </span><span class="sc">{</span>X<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="bu">print</span>(<span class="ss">f"Median: </span><span class="sc">{</span>X<span class="sc">.</span>median()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="bu">print</span>(<span class="ss">f"Standart Sapma: </span><span class="sc">{</span>X<span class="sc">.</span>std()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="bu">print</span>(<span class="ss">f"Varyans: </span><span class="sc">{</span>X<span class="sc">.</span>var()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Ortalama: 1.0
+Median: 1.0
+Standart Sapma: 0.5
+Varyans: 0.25</code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="problemler" class="level2">
 <h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
 <section id="problem-1" class="level3">
 <h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
-<ol type="1">
-<li>Frekansı 2 Hz, genliği 1 ve fazı 0 olan bir cosinüs dalgasını çizdirin.</li>
-<li>Bu dalgayı ve yeni bir dalgayı daha kullanarak yapıcı ve yıkıcı girişimleri gösteren bir grafik çizdirin.</li>
-</ol>
+<p>100 adet parayı 1000 kere atan ve <code>np.random.rand()</code> fonksiyonu kullanan bir betik dosyası yazın. Her atıldığında 100 tane paranın kaç tanesi tura geldiğini kaydedin ve sonucu histogram grafiği olarak çizdirin.</p>
 </section>
 <section id="problem-2" class="level3">
 <h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
-<p><span class="math inline">\(0\)</span> ile <span class="math inline">\(L\)</span> arasında sonsuz kuyuda hapsedilmiş parçacığın <strong>durağan</strong> dalga fonksiyonu aşağıdaki gibi yazılır.</p>
-<p><span class="math display">\[
-\psi(x)=\sqrt{\frac{2}{L}}\sin\left(\frac{n\pi x}{L}\right)
-\]</span></p>
-<p>Burada <span class="math inline">\(L=2\)</span> [birimsiz] kuyunun uzunluğu, <span class="math inline">\(n\)</span> ise kuantum numarasıdır. Aşağıdaki soruları cevaplayın.</p>
+<p>Uygulama 1 ile verilen betik dosyasını <code>np.random.choice()</code> fonksiyonu kullanarak yapın.</p>
+</section>
+<section id="problem-3" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3">Problem 3</h3>
+<p>100 adet zarı 1000 kere atan ve <code>np.random.choice()</code> fonksiyonunu kullanan bir betik dosyası yazın. Her atıldığında 100 tane zarın kaç tanesinin 6 geldiğini, kaç tanesinin 5 geldiğini vs.&nbsp;kaydedin ve sonucu histogram grafiği olarak çizdirin.</p>
+</section>
+<section id="problem-4" class="level3">
+<h3 class="anchored" data-anchor-id="problem-4">Problem 4</h3>
+<p>Aşağıdaki linkte bulunan excel dosyasını indirin.</p>
+<p><a href="https://www.pveducation.org/sites/default/files/PVCDROM/Appendices/AM0AM1_5.xls">Standart Solar Spectrumu Linki</a></p>
+<ul>
+<li>Bu excel dosyasındaki verileri temizleyin.
+<ul>
+<li>Başlıkları sadece <code>Wavelength (nm)</code>, <code>Extraterrestrial W*m-2*nm-1</code>, <code>Global tilt  W*m-2*nm-1</code>, <code>Direct+circumsolar W*m-2*nm-1</code> kalsın.</li>
+<li>Tüm diğer verileri silin.</li>
+<li>Tüm tablar (sheets) silin.</li>
+<li>Tüm veriyi <code>float</code> tipine çevirin.</li>
+</ul></li>
+<li>Temizlediğiniz veriyi okuyun ve <code>Wavelength (nm)</code> sütununu x ekseni olacak şekilde tüm kolonların grafiklerini aynı figürde çizdirin.</li>
+<li><code>Extraterrestrial W*m-2*nm-1</code> en yüksek değerini bulun.</li>
+<li>En yüksek değerin kaç Kelvin olduğunu bulun. (Stefan-Boltzmann Kanunu)</li>
+<li>En yüksek değerin kaç Celsius olduğunu bulun.</li>
+<li>Görünür ışığın spektrumunu yukarıda çizdiğiniz grafikte gösterin.</li>
+</ul>
+<p>Kaynak: <a href="https://www.pveducation.org/pvcdrom/appendices/standard-solar-spectra">Solar Spectrum</a></p>
+</section>
+</section>
+<section id="kaynaklar" class="level2">
+<h2 class="anchored" data-anchor-id="kaynaklar">Kaynaklar</h2>
 <ol type="1">
-<li>Bu fonksiyonu <span class="math inline">\(N=1,2,3\)</span> için çizdirin. Grafiğin başlığına genliği, frekansı ve fazı yazın.</li>
-<li>Olasılık yoğunluğunu çizdirin. Olasılık yoğunluğu <span class="math inline">\(|&lt;\psi(x)|\psi(x)&gt;|^{2}\)</span> olarak hesaplanır.</li>
+<li>Numerical Python: Scientific Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019, <strong>syf 443</strong></li>
+<li><a href="https://www.mathsisfun.com/data/">https://www.mathsisfun.com/data/</a></li>
+<li><a href="https://greenteapress.com/thinkstats2/thinkstats2.pdf">Think Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014</a></li>
+<li><a href="https://github.com/AllenDowney/ThinkStats2">Think Stats: Github</a></li>
 </ol>
 
 
-
-</section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
-<div id="ref-chatGPT" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><em><a href="https://chat.openai.com"><span>ChatGPT</span></a></em>, (2024).</div>
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1206,14 +1404,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/fourier-analizi.html" class="pagination-link" aria-label="Fourier Analizi">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Fourier Analizi</span>
+      <a href="../../../icerik/konular/istatistik.html" class="pagination-link" aria-label="İstatistik">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">İstatistik</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" class="pagination-link" aria-label="KFD - Kesikli Fourier Dönüşümü">
-        <span class="nav-page-text">KFD - Kesikli Fourier Dönüşümü</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -1224,7 +1419,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/fourier-analizi/giris.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/istatistik/giris.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>

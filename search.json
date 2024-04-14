@@ -64,7 +64,7 @@
     "href": "icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html#kod",
     "title": "KFD - Kesikli Fourier Dönüşümü",
     "section": "Kod",
-    "text": "Kod\nfourier_kfd fonksiyonu bilYonMod.py dosyasına tanımlıdır. Aşağıdaki kodu inceleyelim ve örneklem sayısını kfd fonksyionunun gerçekleşme zamanını karşılaştıralım.\n\n\n\n\n\n\nNot\n\n\n\nfourier_kfd fonksiyonunu inceleyiniz.\n\n\n\n################################################\n## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma\nimport os\nimport sys\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nmodule_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')\n# moduller dizinini yol olarak ekle\nsys.path.append(module_dir)\n# bilYonMod.py modülünü içe aktar\nimport bilYonMod as bym\n################################################\n\nimport numpy as np\n# 1 Boyutlu sinyal oluşturan fonksiyon\ndef olus_sin(orneklemOrani):\n    # Örneklem frekansı (rate)\n    ts = 1.0/orneklemOrani\n    # Örneklem aralığı\n    t = np.arange(0, 1, ts)\n    # Dalganın frekansı\n    frekans = 1.\n    # Genlik\n    genlik = 3\n    return genlik* np.sin(2* np.pi* frekans* t)\n# Orneklem Orani 1\norneklemOrani1 = 20\n# Toplam zamanı hesapla\nprint(f\"{orneklemOrani1} örneklem sayısına sahip bir dalganın\")\nprint(\"Fouirer dönüşümü yapması için geçen süre\")\n# FD Fonksiyonunu çağır ve %temit ile süreyi ölç\n%timeit bym.fourier_kfd(olus_sin(orneklemOrani1))\nprint(\"\\n\")\n# Orneklem Orani 2\norneklemOrani2 = 200\n# Toplam zamanı hesapla\nprint(f\"{orneklemOrani2} örneklem sayısına sahip bir dalganın\")\nprint(\" Fouirer dönüşümü yapması için geçen süre\")\n# FD Fonksiyonunu çağır ve %temit ile süreyi ölç\n%timeit bym.fourier_kfd(olus_sin(orneklemOrani2))\n\n20 örneklem sayısına sahip bir dalganın\nFouirer dönüşümü yapması için geçen süre\n577 µs ± 4.55 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)\n\n\n200 örneklem sayısına sahip bir dalganın\n Fouirer dönüşümü yapması için geçen süre\n56.1 ms ± 50.1 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)\n\n\nZaman sorunu aşmak için 1965’te Cooley ve Tukey, Fourier dönüşümü algoritmasını geliştirdiler. Bu algoritma HFD, Hızlı Fourier Dönüşümü (FFT, Fast Fourier Transform) olarak bilinir - kesikli ifadesini kullanmacağız. HFD algoritması KFD’ye göre çok daha hızlı çalışır. HFD algoritmasının karmaşıklığı \\(\\mathcal{O}(n \\log n)\\) iken KFD’nin karmaşıklığı \\(\\mathcal{O}(n^2)\\)’dir.",
+    "text": "Kod\nfourier_kfd fonksiyonu bilYonMod.py dosyasına tanımlıdır. Aşağıdaki kodu inceleyelim ve örneklem sayısını kfd fonksyionunun gerçekleşme zamanını karşılaştıralım.\n\n\n\n\n\n\nNot\n\n\n\nfourier_kfd fonksiyonunu inceleyiniz.\n\n\n\n################################################\n## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma\nimport os\nimport sys\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nmodule_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')\n# moduller dizinini yol olarak ekle\nsys.path.append(module_dir)\n# bilYonMod.py modülünü içe aktar\nimport bilYonMod as bym\n################################################\n\nimport numpy as np\n# 1 Boyutlu sinyal oluşturan fonksiyon\ndef olus_sin(orneklemOrani):\n    # Örneklem frekansı (rate)\n    ts = 1.0/orneklemOrani\n    # Örneklem aralığı\n    t = np.arange(0, 1, ts)\n    # Dalganın frekansı\n    frekans = 1.\n    # Genlik\n    genlik = 3\n    return genlik* np.sin(2* np.pi* frekans* t)\n# Orneklem Orani 1\norneklemOrani1 = 20\n# Toplam zamanı hesapla\nprint(f\"{orneklemOrani1} örneklem sayısına sahip bir dalganın\")\nprint(\"Fouirer dönüşümü yapması için geçen süre\")\n# FD Fonksiyonunu çağır ve %temit ile süreyi ölç\n%timeit bym.fourier_kfd(olus_sin(orneklemOrani1))\nprint(\"\\n\")\n# Orneklem Orani 2\norneklemOrani2 = 200\n# Toplam zamanı hesapla\nprint(f\"{orneklemOrani2} örneklem sayısına sahip bir dalganın\")\nprint(\" Fouirer dönüşümü yapması için geçen süre\")\n# FD Fonksiyonunu çağır ve %temit ile süreyi ölç\n%timeit bym.fourier_kfd(olus_sin(orneklemOrani2))\n\n20 örneklem sayısına sahip bir dalganın\nFouirer dönüşümü yapması için geçen süre\n563 µs ± 2.46 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)\n\n\n200 örneklem sayısına sahip bir dalganın\n Fouirer dönüşümü yapması için geçen süre\n55 ms ± 111 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)\n\n\nZaman sorunu aşmak için 1965’te Cooley ve Tukey, Fourier dönüşümü algoritmasını geliştirdiler. Bu algoritma HFD, Hızlı Fourier Dönüşümü (FFT, Fast Fourier Transform) olarak bilinir - kesikli ifadesini kullanmacağız. HFD algoritması KFD’ye göre çok daha hızlı çalışır. HFD algoritmasının karmaşıklığı \\(\\mathcal{O}(n \\log n)\\) iken KFD’nin karmaşıklığı \\(\\mathcal{O}(n^2)\\)’dir.",
     "crumbs": [
       "**Konular**",
       "Fourier Analizi",
@@ -468,25 +468,397 @@
     ]
   },
   {
-    "objectID": "icerik/konular/veri-analizi.html",
-    "href": "icerik/konular/veri-analizi.html",
-    "title": "Veri Analizi",
+    "objectID": "icerik/konular/istatistik.html",
+    "href": "icerik/konular/istatistik.html",
+    "title": "İstatistik",
     "section": "",
-    "text": "Fizikte ve diğer branşlarda çok büyük veri kümeleriyle çalışmak gerekebilir. Bu veri istatistiksel bir anlam çıkarmak için kullanılabilir veya bir analiz sonucunda ortaya çıkmış olabilir.\nBu bölümde veri analizi için kullanılan temel yöntemlerden bazılarına değineceğiz.",
+    "text": "Bu bölümde, fizikte veri analizinin temel aracı olan istatistiksel kavramları inceleyeceğiz. İstatistik, verileri toplayıp düzenlemeyi, analiz etmeyi ve yorumlamayı içeren bir bilim dalıdır. Deneylerden, gözlemlerden veya simülasyonlardan elde edilen verileri kullanarak, fiziksel sistemlerin davranışları hakkında bilgi edinmek ve tahminlerde bulunmak için kullanılır.\n\n\nİstatistik, verileri sayısal olarak özetler ve grafikler ile sunarak, kalıpları ve eğilimleri ortaya çıkarmayı amaçlar. Ortalama, standart sapma, frekans dağılımları gibi kavramlar, verilerin genel özelliklerini anlamamıza yardımcı olur. Korelasyon ve regresyon gibi istatistiksel yöntemler ise, iki veya daha fazla değişken arasındaki ilişkileri incelememizi sağlar.\n\n\n\nİstatistik, fizikte birçok farklı alanda kullanılır. Örneğin, deneysel verilerin analizinde, hataların hesaplanmasında, teorik modellerin doğrulanmasında, yeni materyallerin geliştirilmesinde ve fiziksel sistemlerin davranışlarının tahmin edilmesinde kullanılır. Fizikte istatistik kullanımıyla ilgili bazı örnekler şunlardır:\n\nParçacık Fiziği: Deneysel verilerden temel parçacıkların özelliklerini ve etkileşimlerini anlamak için istatistiksel yöntemler kullanılır.\nKozmoloji: Evrenin genişlemesini ve oluşumunu incelemek için büyük miktarda gökbilim verisi istatistiksel olarak analiz edilir.\nYoğun Madde Fiziği: Malzemelerin iletkenlik, manyetizma ve süperiletkenlik gibi özelliklerini incelemek için istatistiksel mekanik kullanılır.\nİstatistiksel Termodinamik: Sistemlerin termal dengedeki davranışlarını istatistiksel yöntemler kullanarak incelemek için kullanılır.\nSinyal İşleme: Deneysel verilerden gürültüyü ayıklamak ve sinyallerin özelliklerini belirlemek için istatistiksel yöntemler kullanılır.\n\nBazı kaynaklar aşağıda listelenmiştir.\n\narxiv.org, Statistical Mechanics hakkında yazılan tüm makaleler\nBrief Review of Statistical Mechanics\nStatistical Mechanics by Konstantin K. Likharev",
     "crumbs": [
       "**Konular**",
-      "Veri Analizi"
+      "İstatistik"
     ]
   },
   {
-    "objectID": "icerik/konular/veri-analizi.html#veri-analizi",
-    "href": "icerik/konular/veri-analizi.html#veri-analizi",
-    "title": "Veri Analizi",
+    "objectID": "icerik/konular/istatistik.html#istatistik-fizikte-verileri-anlamak-ve-yorumlamak",
+    "href": "icerik/konular/istatistik.html#istatistik-fizikte-verileri-anlamak-ve-yorumlamak",
+    "title": "İstatistik",
     "section": "",
-    "text": "Fizikte ve diğer branşlarda çok büyük veri kümeleriyle çalışmak gerekebilir. Bu veri istatistiksel bir anlam çıkarmak için kullanılabilir veya bir analiz sonucunda ortaya çıkmış olabilir.\nBu bölümde veri analizi için kullanılan temel yöntemlerden bazılarına değineceğiz.",
+    "text": "Bu bölümde, fizikte veri analizinin temel aracı olan istatistiksel kavramları inceleyeceğiz. İstatistik, verileri toplayıp düzenlemeyi, analiz etmeyi ve yorumlamayı içeren bir bilim dalıdır. Deneylerden, gözlemlerden veya simülasyonlardan elde edilen verileri kullanarak, fiziksel sistemlerin davranışları hakkında bilgi edinmek ve tahminlerde bulunmak için kullanılır.\n\n\nİstatistik, verileri sayısal olarak özetler ve grafikler ile sunarak, kalıpları ve eğilimleri ortaya çıkarmayı amaçlar. Ortalama, standart sapma, frekans dağılımları gibi kavramlar, verilerin genel özelliklerini anlamamıza yardımcı olur. Korelasyon ve regresyon gibi istatistiksel yöntemler ise, iki veya daha fazla değişken arasındaki ilişkileri incelememizi sağlar.\n\n\n\nİstatistik, fizikte birçok farklı alanda kullanılır. Örneğin, deneysel verilerin analizinde, hataların hesaplanmasında, teorik modellerin doğrulanmasında, yeni materyallerin geliştirilmesinde ve fiziksel sistemlerin davranışlarının tahmin edilmesinde kullanılır. Fizikte istatistik kullanımıyla ilgili bazı örnekler şunlardır:\n\nParçacık Fiziği: Deneysel verilerden temel parçacıkların özelliklerini ve etkileşimlerini anlamak için istatistiksel yöntemler kullanılır.\nKozmoloji: Evrenin genişlemesini ve oluşumunu incelemek için büyük miktarda gökbilim verisi istatistiksel olarak analiz edilir.\nYoğun Madde Fiziği: Malzemelerin iletkenlik, manyetizma ve süperiletkenlik gibi özelliklerini incelemek için istatistiksel mekanik kullanılır.\nİstatistiksel Termodinamik: Sistemlerin termal dengedeki davranışlarını istatistiksel yöntemler kullanarak incelemek için kullanılır.\nSinyal İşleme: Deneysel verilerden gürültüyü ayıklamak ve sinyallerin özelliklerini belirlemek için istatistiksel yöntemler kullanılır.\n\nBazı kaynaklar aşağıda listelenmiştir.\n\narxiv.org, Statistical Mechanics hakkında yazılan tüm makaleler\nBrief Review of Statistical Mechanics\nStatistical Mechanics by Konstantin K. Likharev",
     "crumbs": [
       "**Konular**",
-      "Veri Analizi"
+      "İstatistik"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/istatistik.html#programlama-dilleri-ve-istatistiksel-analizler",
+    "href": "icerik/konular/istatistik.html#programlama-dilleri-ve-istatistiksel-analizler",
+    "title": "İstatistik",
+    "section": "Programlama Dilleri ve İstatistiksel Analizler",
+    "text": "Programlama Dilleri ve İstatistiksel Analizler\nPython ve R programlama dilleri, istatistiksel analizler için yaygın olarak kullanılan iki programlama dilidir. Bu diller, veri okumanıza ve temizlemenize, istatistiksel testler yapmanıza, grafikler oluşturmanıza ve karmaşık modeller kurmanıza olanak tanır. Python ve R’de istatistiksel analizler için kullanılan birçok paket mevcuttur. Bunlardan en popülerleri şunlardır.\n\nPython: NumPy, SciPy, Pandas, Matplotlib, Seaborn\nR: base, ggplot2, dplyr, tidyverse\n\nBu içerik Google Gemini 1.0 Pro model kullanılarak üretilmiştir [1].",
+    "crumbs": [
+      "**Konular**",
+      "İstatistik"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler.html",
+    "href": "icerik/konular/adi-diferansiyel-denklemler.html",
+    "title": "Adi Diferansiyel Denklemler",
+    "section": "",
+    "text": "Aşağıdaki gibi bir adet diferansiyel denklem veya denklem sistemimiz olsun.\n\\[\n\\begin{equation}\n    \\frac{d}{dx}y(x) = F(x,y)\n\\end{equation}\n\\]\n\nBu denklemi çözmek demek sağ ve sol tarafın integralini almak demektir.\nBu denklemi çözmek demek sayısal olarak \\(y(x)\\) fonksiyonunu bulmak demektir. Yani istenilen bir x değeri için \\(y(x)\\) fonksiyonunun değerini elde ederiz.\n\\(y(x)\\) ve \\(F(x,y)\\) birer vektör olabilir. Örneğin \\(\\vec{y}(x) = (y_{1}(x), y_{2}(x))\\).\nİkinci dereceden diferansiyel denklemleri çözmek için denklemi iki adet birinci dereceden diferansiyel denkleme indirgeme yapmamız gerekmektedir.\n\n\\[\n\\begin{align*}\n    \\frac{d^{2}}{dx^{2}}y(x) =& F(x,y)\\\\\n    \\frac{d}{dx}y(x) =& v(x,y) \\qquad \\text{ve} \\qquad \\frac{d}{dx}v(x) = F(x,y)\n\\end{align*}\n\\]\n\nÇözüme başlamak için fonksiyonun başlangıçtaki değerine ihtiyacınız vardır; Başlangıç Değer Problemi, BDP (IVP)\nÇözümün sınırlarında hangi değerler aldığını bilerek de fonksiyonu elde edebiliriz; Sınır Değer Problemi, SDP (BVP)\n\n\n\n\nBaşlangıç değer problemi:\n\n\\[\ny''(x)= -y, \\qquad y(0)=1, \\qquad y'(0)=0 \\text{.}\n\\]\n\nSınır değer problemi:\n\n\\[\ny''(x)= -y, \\qquad y(0)=1, \\qquad y'(\\pi)=0 \\text{.}\n\\]",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/adi-diferansiyel-denklemler.html#adi-diferansiyel-denklemler",
+    "href": "icerik/konular/adi-diferansiyel-denklemler.html#adi-diferansiyel-denklemler",
+    "title": "Adi Diferansiyel Denklemler",
+    "section": "",
+    "text": "Aşağıdaki gibi bir adet diferansiyel denklem veya denklem sistemimiz olsun.\n\\[\n\\begin{equation}\n    \\frac{d}{dx}y(x) = F(x,y)\n\\end{equation}\n\\]\n\nBu denklemi çözmek demek sağ ve sol tarafın integralini almak demektir.\nBu denklemi çözmek demek sayısal olarak \\(y(x)\\) fonksiyonunu bulmak demektir. Yani istenilen bir x değeri için \\(y(x)\\) fonksiyonunun değerini elde ederiz.\n\\(y(x)\\) ve \\(F(x,y)\\) birer vektör olabilir. Örneğin \\(\\vec{y}(x) = (y_{1}(x), y_{2}(x))\\).\nİkinci dereceden diferansiyel denklemleri çözmek için denklemi iki adet birinci dereceden diferansiyel denkleme indirgeme yapmamız gerekmektedir.\n\n\\[\n\\begin{align*}\n    \\frac{d^{2}}{dx^{2}}y(x) =& F(x,y)\\\\\n    \\frac{d}{dx}y(x) =& v(x,y) \\qquad \\text{ve} \\qquad \\frac{d}{dx}v(x) = F(x,y)\n\\end{align*}\n\\]\n\nÇözüme başlamak için fonksiyonun başlangıçtaki değerine ihtiyacınız vardır; Başlangıç Değer Problemi, BDP (IVP)\nÇözümün sınırlarında hangi değerler aldığını bilerek de fonksiyonu elde edebiliriz; Sınır Değer Problemi, SDP (BVP)\n\n\n\n\nBaşlangıç değer problemi:\n\n\\[\ny''(x)= -y, \\qquad y(0)=1, \\qquad y'(0)=0 \\text{.}\n\\]\n\nSınır değer problemi:\n\n\\[\ny''(x)= -y, \\qquad y(0)=1, \\qquad y'(\\pi)=0 \\text{.}\n\\]",
+    "crumbs": [
+      "**Konular**",
+      "Adi Diferansiyel Denklemler"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-uygulama.html",
+    "href": "icerik/konular/veri-analizi/pandas-uygulama.html",
+    "title": "pandas - Uygulama",
+    "section": "",
+    "text": "# Seriler\ns= pd.Series()\ns.index\ns.values\ns.name\ns[\"Londra\"]\ns.Londra\ns.describe()\ns.max()\ns.min()\ns.std()\ns.mean()\ns.median()\ns.plot(kind= 'line')\ns.plot(kind= 'bar')\ns.plot(kind= 'barh')\ns.plot(kind= 'pie')\n# ----------------\ndf= pd.DataFrame()\ndf.columns\ndf[\"Nüfus\"] #! Sütunun İsmi\ndf.Nüfus #! Türkçe karakter kullanma, Sütunun ismi\ndf.loc[\"Londra\"] # Satır ismi\ndf.loc[[\"Londra\", \"Roma\"]]\ndf.rename(columns= {\"Nüfus\" : \"Nüfuslar\"})\ndf.info()\n# ----------------\ndf= pd.read_csv()\ndf.head()\ndf.tail()\ndf.loc[\"Etiket İsmi\"]\ndf.iloc[0]\ndf.iloc[1, 2]\ndf.shape\ndf[\"Yeni Sütun\"]\ndf[\"Sütun İsmi\"].unique()\ndf[\"Sütun İsmi\"].value_counts()\ndf[\"Sütun İsmi\"].duplicated()\ndf.drop(\"Sütun İsmi\", axis=1)\ndf.pop(\"Sütun İsmi\")\ndf.drop(\"Etiket İsmi\", axis=0)\ndf.Population.apply(lambda x: int(x.replace(',','')))\ndf.State.str.capitalize()\ndf.index.name\ndf.sort_index()\ndf.sort_values(by=\"Sütun İsmi\", ascending=True)\ndf.set_index([\"State\", \"City\"]).sort_index(level=0)\ndf.set_index([\"State\", \"City\"]).sort_index(level=1)\ndf.sum()",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Uygulama"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-uygulama.html#neler-öğrendik",
+    "href": "icerik/konular/veri-analizi/pandas-uygulama.html#neler-öğrendik",
+    "title": "pandas - Uygulama",
+    "section": "",
+    "text": "# Seriler\ns= pd.Series()\ns.index\ns.values\ns.name\ns[\"Londra\"]\ns.Londra\ns.describe()\ns.max()\ns.min()\ns.std()\ns.mean()\ns.median()\ns.plot(kind= 'line')\ns.plot(kind= 'bar')\ns.plot(kind= 'barh')\ns.plot(kind= 'pie')\n# ----------------\ndf= pd.DataFrame()\ndf.columns\ndf[\"Nüfus\"] #! Sütunun İsmi\ndf.Nüfus #! Türkçe karakter kullanma, Sütunun ismi\ndf.loc[\"Londra\"] # Satır ismi\ndf.loc[[\"Londra\", \"Roma\"]]\ndf.rename(columns= {\"Nüfus\" : \"Nüfuslar\"})\ndf.info()\n# ----------------\ndf= pd.read_csv()\ndf.head()\ndf.tail()\ndf.loc[\"Etiket İsmi\"]\ndf.iloc[0]\ndf.iloc[1, 2]\ndf.shape\ndf[\"Yeni Sütun\"]\ndf[\"Sütun İsmi\"].unique()\ndf[\"Sütun İsmi\"].value_counts()\ndf[\"Sütun İsmi\"].duplicated()\ndf.drop(\"Sütun İsmi\", axis=1)\ndf.pop(\"Sütun İsmi\")\ndf.drop(\"Etiket İsmi\", axis=0)\ndf.Population.apply(lambda x: int(x.replace(',','')))\ndf.State.str.capitalize()\ndf.index.name\ndf.sort_index()\ndf.sort_values(by=\"Sütun İsmi\", ascending=True)\ndf.set_index([\"State\", \"City\"]).sort_index(level=0)\ndf.set_index([\"State\", \"City\"]).sort_index(level=1)\ndf.sum()",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Uygulama"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-uygulama.html#alıştırma-1",
+    "href": "icerik/konular/veri-analizi/pandas-uygulama.html#alıştırma-1",
+    "title": "pandas - Uygulama",
+    "section": "Alıştırma 1",
+    "text": "Alıştırma 1\n\nAmerika’daki Kalifornya eyaletinin elektrik tüketimini veren bu veriyi okuyun  [1]. Okuma tarihi 25.05.2023.\nİlk ve son 5 satırını yazdırın.\nTimestamp (Hour Ending) sütun ismini Tarih Bilgisi yapın.\nDemand (MWh) sütun ismini Talep (MWh) yapın.\nTalep (MWh) sütununundaki NaN olan satırlarını silin.\nYatayda Tarih Bilgisi, düşeyde Talep (MWh) olacak şekilde bir grafik çizin.\n\n\nÇözüm\n\n################################################\nimport os\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nveri_dir = os.path.join(\\\n    os.path.abspath(\\\n        os.path.join(\\\n    current_dir, os.pardir, os.pardir, os.pardir))\\\n        , 'veri')\n################################################\n\nimport numpy as np\nimport pandas as pd\nfrom scipy.fftpack import fft\nimport matplotlib.pyplot as plt\n# Oku\ndf = pd.read_csv(veri_dir+\"/veri-930-data-export.csv\",\n    delimiter=\",\")\n# İlk ve son 5 satır\nprint(df.head())\nprint(df.tail())\n# Sütun isimlerini değiştir\ndf.rename(columns={\"Timestamp (Hour Ending)\":\"Tarih Bilgisi\"},\n    inplace=True)\ndf.rename(columns={\"Demand (MWh)\":\"Talep (MWh)\"}\\\n    , inplace=True)\n# NaN satırlarını \"Talep (MWh)\" sütunundan sil\ndf.dropna(subset=[\"Talep (MWh)\"], inplace=True)\n# Çiz\nplt.plot(df[\"Tarih Bilgisi\"], df[\"Talep (MWh)\"])\nplt.xlabel(\"Tarh Bilgisi\")\nplt.ylabel(\"Kalifornya Elektrik Talebi (MWh)\")\nplt.xticks(rotation=25)\nplt.xticks(np.arange(0, len(df), step=20))\nplt.show()\nplt.close()\n\n  Region Code Timestamp (Hour Ending)  Demand (MWh)  Demand Forecast (MWh)  \\\n0        US48   5/17/2023 12 a.m. EDT      446173.0                 438971   \n1        US48    5/17/2023 1 a.m. EDT      418994.0                 412814   \n2        US48    5/17/2023 2 a.m. EDT      399252.0                 389905   \n3        US48    5/17/2023 3 a.m. EDT      381525.0                 373869   \n4        US48    5/17/2023 4 a.m. EDT      370696.0                 363882   \n\n   Net Generation (MWh)  Total Interchange (MWh)  \n0              438045.0                  -5573.0  \n1              410208.0                  -5438.0  \n2              389248.0                  -5768.0  \n3              372178.0                  -4785.0  \n4              363001.0                  -4675.0  \n    Region Code Timestamp (Hour Ending)  Demand (MWh)  Demand Forecast (MWh)  \\\n188        US48    5/24/2023 8 p.m. EDT           NaN                 504300   \n189        US48    5/24/2023 9 p.m. EDT           NaN                 494357   \n190        US48   5/24/2023 10 p.m. EDT           NaN                 479733   \n191        US48   5/24/2023 11 p.m. EDT           NaN                 457902   \n192        US48   5/25/2023 12 a.m. EDT           NaN                 431842   \n\n     Net Generation (MWh)  Total Interchange (MWh)  \n188                   NaN                      NaN  \n189                   NaN                      NaN  \n190                   NaN                      NaN  \n191                   NaN                      NaN  \n192                   NaN                      NaN  \n\n\n/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/dateutil/parser/_parser.py:1207: UnknownTimezoneWarning: tzname EDT identified but not understood.  Pass `tzinfos` argument in order to correctly return a timezone-aware datetime.  In a future version, this will raise an exception.\n  warnings.warn(\"tzname {tzname} identified but not understood.  \"",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Uygulama"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-uygulama.html#alıştırma-2",
+    "href": "icerik/konular/veri-analizi/pandas-uygulama.html#alıştırma-2",
+    "title": "pandas - Uygulama",
+    "section": "Alıştırma 2",
+    "text": "Alıştırma 2\nBu linkte, ülkelerin mutluluk skorları ve bunlar ile ilintili bilgilerin olduğu csv dosyaları bulunmaktadır. Her yıl için, 2015, 2016, 2017, 2018, 2019, indirin ve aşağıdaki soruları cevaplayın.\n\n5 veri setindeki ortak sütunlar nelerdir?\nBeş yıllık veri setini tek bir veri setinde birleştirin.\nTürkiye’nin mutluluk skorunu yıllara göre nasıl değiştiğini grafik gösterin.\nTürkiye’nin gayri safi milli hasılası (GSMH, sütunlarda GDP per capita isminde) yıllara göre nasıl değiştiğini grafik üzerinde gösterin.\n\n\nÇözüm\n\n################################################\nimport os\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nveri_dir = os.path.join(\\\n    os.path.abspath(\\\n        os.path.join(\\\n    current_dir, os.pardir, os.pardir, os.pardir))\\\n        , 'veri')\n################################################\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n# 2015\nhappiness2015 = pd.read_csv(veri_dir+'/veri_mutluluk_2015.csv')\nhappiness2015['Year'] = 2015\nhappiness2015.rename(columns={'Happiness Score':  'Score', 'Economy (GDP per Capita)': 'GDP per capita'}, inplace=True)\n# 2016\nhappiness2016 = pd.read_csv(veri_dir+'/veri_mutluluk_2016.csv')\nhappiness2016['Year'] = 2016\nhappiness2016.rename(columns={'Happiness Score':  'Score', 'Economy (GDP per Capita)': 'GDP per capita'}, inplace=True)\n# 2017\nhappiness2017 = pd.read_csv(veri_dir+'/veri_mutluluk_2017.csv')\nhappiness2017['Year'] = 2017\nhappiness2017.rename(columns={'Happiness.Score':  'Score', 'Economy..GDP.per.Capita.': 'GDP per capita'}, inplace=True)\n# 2018\nhappiness2018 = pd.read_csv(veri_dir+'/veri_mutluluk_2018.csv')\nhappiness2018['Year'] = 2018\nhappiness2018.rename(columns={'Country or region':  'Country'}, inplace=True)\n# 2019\nhappiness2019 = pd.read_csv(veri_dir+'/veri_mutluluk_2019.csv')\nhappiness2019['Year'] = 2019\nhappiness2019.rename(columns={'Country or region':  'Country'}, inplace=True)\n# Ortak sütunlar\nhappiness = pd.concat([happiness2015, happiness2016, happiness2017, happiness2018, happiness2019], ignore_index=True)\n# Türkiye\nturkiye = happiness[happiness['Country'] == 'Turkey']\nprint(turkiye.head())\n# Çiz\nplt.plot(turkiye['Year'], turkiye['Score'], marker='.')\nplt.xlabel('Yıllar')\nplt.ylabel('Mutluluk Skoru (Happiness Score)')\nplt.title('Türkiye Mutluluk Skoru (Happiness Score) Değişimi')\nplt.show()\nplt.close()\n# Gayri Safi Milli Hasıla\n# Çiz\nplt.plot(turkiye['Year'], turkiye['GDP per capita'], marker='.')\nplt.xlabel('Yıllar')\nplt.ylabel('Gayri Safi Milli Hasıla (GDP per capita)')\nplt.title('Gayri Safi Milli Hasıla (GDP per capita) Değişimi')\nplt.show()\nplt.show()\n\n    Country                           Region  Happiness Rank  Score  \\\n75   Turkey  Middle East and Northern Africa            76.0  5.332   \n235  Turkey  Middle East and Northern Africa            78.0  5.389   \n383  Turkey                              NaN             NaN  5.500   \n543  Turkey                              NaN             NaN  5.483   \n704  Turkey                              NaN             NaN  5.373   \n\n     Standard Error  GDP per capita    Family  Health (Life Expectancy)  \\\n75          0.03864        1.060980  0.946320                   0.73172   \n235             NaN        1.164920  0.877170                   0.64718   \n383             NaN        1.198274  1.337753                       NaN   \n543             NaN        1.148000       NaN                       NaN   \n704             NaN        1.183000       NaN                       NaN   \n\n      Freedom  Trust (Government Corruption)  ...  Whisker.high  Whisker.low  \\\n75   0.228150                        0.15746  ...           NaN          NaN   \n235  0.238890                        0.12348  ...           NaN          NaN   \n383  0.300741                            NaN  ...      5.594865     5.405135   \n543       NaN                            NaN  ...           NaN          NaN   \n704       NaN                            NaN  ...           NaN          NaN   \n\n     Health..Life.Expectancy.  Trust..Government.Corruption.  \\\n75                        NaN                            NaN   \n235                       NaN                            NaN   \n383                  0.637606                       0.099672   \n543                       NaN                            NaN   \n704                       NaN                            NaN   \n\n     Dystopia.Residual  Overall rank  Social support  Healthy life expectancy  \\\n75                 NaN           NaN             NaN                      NaN   \n235                NaN           NaN             NaN                      NaN   \n383           1.879278           NaN             NaN                      NaN   \n543                NaN          74.0            1.38                    0.686   \n704                NaN          79.0            1.36                    0.808   \n\n     Freedom to make life choices  Perceptions of corruption  \n75                            NaN                        NaN  \n235                           NaN                        NaN  \n383                           NaN                        NaN  \n543                         0.324                      0.109  \n704                         0.195                      0.106  \n\n[5 rows x 26 columns]",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Uygulama"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-uygulama.html#problemler",
+    "href": "icerik/konular/veri-analizi/pandas-uygulama.html#problemler",
+    "title": "pandas - Uygulama",
+    "section": "Problemler",
+    "text": "Problemler\n\nProblem 1\nGithub sitesinde bulunan veri_imdb_1e5rows.tsv dosyasındaki verinin metadatasına inceleyin. Bu veri, title.akas.tsv.gz adlı dosyanın ilk \\(10^{5}\\) satırıdır. Bu veriyi pd.read_table() fonksiyonu ile okuyun.\nEğer tüm veri ile çalışmak istiyorsanız (1.8 gb) şu linkteki dosyayı indirin. Bu dosya sıkıştırılmış dosyadır. Bu dosyayı indirdikten sonra dışarı aktarın.\nBu veri hakkında aşağıdaki soruları cevaplayın.\n\nBu verinin sütunları nelerdir?\nBu verinin kaç sütunu var?\nBu verinin kaç satırı var?\nBu verinin ilk 2 satırını gösterin.\nBu verinin son 2 satırını gösterin.\nBu veri setindeki tüm biricik dilleri (language) gösterin.\nBu veri setindeki tüm biricik bölgeleri (region) gösterin.\nBu veri setindeki her bir biricik dilde kaç adet film vardır?\nBu veri setindeki her bir biricik bölgede kaç adet film vardır?\nBu veri setindeki attributes sütununu çıkarın (değişkene atayın).\nBu verideki sütunların veri tiplerini ekrana yazdırın.\nBu verinin ordering sütununu tam sayı haline getirin (değişkene atayın).\nBu verinin isOriginalTitle sütununu bool haline getirin (değişkene atayın).\nBu verinin etiketlerini titleId olacak şekilde gösterin (değişkene atayın).\nBu verinin etiketini titleId ve title olarak değiştirin (değişkene atayın).\nBu veriyi titleId sütununa göre sıralayın (değişkene atayın).\nBu verideki tüm \\N değerlerini pd.NA değerleri ile değiştirin (değişkene atamayın).\nBu verinin titleId ve title etiketlerini tekrar sütun haline getirin (değişkene atayın).\nBu verideki types sütunu içerisinde olan original verisine sahip satırları gösterin ve sonucu df2 değişkenine atayın.\nBu veride isOriginalTitle sütunu True olan satırları gösterin ve sonucu df2 ile karşılaştırın. Yani elde ettiğiniz veri ile df2 verisi aynı mı? Değilse hangi satırlar farklı?\n\n\n\nProblem 2\nTÜİK’in veri merkezinde bulunan “Hava Alanlarında Toplam Yolcu ve Yük Trafiği” verisini indirin. Bu veri dosyasında yani dosyayı bir office programında açıp herhangi bir değişiklik yapmayın!\nAşağıdaki soruları cevaplayın.\n\nBu excel dosyasını okuyun ve df değişkenine atayın. (Not: read_excel fonksiyonu ile okumak için xlrd kütüphanesini kurmanız gerekebilir. pip install xlrd komutu ile kurabilirsiniz.)\nVeri çerçevesini gösterin.\nVeri çerçevesi temizleyin. Bu temizlemeyi excel dosyasını açıp değil pandas ile yapın. Bu temizlemeyi aşağıdaki grafikleri çizebilmek için yapın:\n\nToplam Yolcu - Yıl grafiğini çizdirin. Aynı grafik üzeride iç hat yolcusu ve dış hat yolcusunun yıllara göre grafiği de olsun.\nToplam Yükün (Ton), iç hat yükünün (Ton) ve dış hat yükünün (Ton) yıllara göre grafiğini çizdirin.",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Uygulama"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/istatistik/giris.html",
+    "href": "icerik/konular/istatistik/giris.html",
+    "title": "İstatistik - Giris",
+    "section": "",
+    "text": "İstatistiksel analizler için gerekli modüller: scipy.stats, scipy.optimize, numpy. Yardımcı modüller ise matplotlib.pyplot, pandas, seaborn.",
+    "crumbs": [
+      "**Konular**",
+      "İstatistik",
+      "İstatistik - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/istatistik/giris.html#kullanılacak-modüller",
+    "href": "icerik/konular/istatistik/giris.html#kullanılacak-modüller",
+    "title": "İstatistik - Giris",
+    "section": "",
+    "text": "İstatistiksel analizler için gerekli modüller: scipy.stats, scipy.optimize, numpy. Yardımcı modüller ise matplotlib.pyplot, pandas, seaborn.",
+    "crumbs": [
+      "**Konular**",
+      "İstatistik",
+      "İstatistik - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/istatistik/giris.html#istatistikteki-temel-tanımlar",
+    "href": "icerik/konular/istatistik/giris.html#istatistikteki-temel-tanımlar",
+    "title": "İstatistik - Giris",
+    "section": "İstatistikteki Temel Tanımlar",
+    "text": "İstatistikteki Temel Tanımlar\n\nPopülasyon (Population): Bir nesnenin tüm özelliklerini belirlemek için seçilen örneklerdir.\nÖrneklem (Sample): Bir nesnenin özelliklerini belirlemek için seçilen örneklerdir.\nBelirsizlik (Uncertainty): Örneklem veya popülasyonun özelliklerini belirlemek için kullanılan örneklerin sayısının yetersiz olmasıdır.\nVeri (Data): Bir araştırma veya analiz için toplanan sayısal veya kategorik bilgilerdir.\nOrtalama (Mean) : Veri setinin tüm değerlerinin toplamının, veri setindeki eleman sayısına bölünmesiyle elde edilir.\nMedyan veya Ortanca Değer (Median): Veri setindeki değerlerin ortalamasına göre sıralandıktan sonra ortadaki değerdir.\nMod veya Tepe Değer (Mod): Veri setindeki en sık tekrar eden değerdir.\nVaryans (Variance) : Veri setindeki değerlerin ortalama değere ne kadar dağıldığını ölçen bir istatistiksel ölçüdür.\nStandart Sapma (Standard Deviation): Veri setindeki değerlerin ortalama değerden ne kadar sapma gösterdiğini gösteren bir ölçüdür.\nÇeyrekler (Quartiles): Veri setindeki değerlerin sıralanmasından sonra ortadaki değer orta çeyreklik, orta çeyreklik ile en küçük değerin ortasındaki değer alt çeyreklik (%25), orta çeyreklik ile en büyük değerin ortasındaki değer üst çeyreklik (%75) olarak tanımlanır.\nMinimum ve maksimum değer (Minimum and Maximum): Veri setindeki en küçük ve en büyük değerlerdir.",
+    "crumbs": [
+      "**Konular**",
+      "İstatistik",
+      "İstatistik - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/istatistik/giris.html#alıştırma-1",
+    "href": "icerik/konular/istatistik/giris.html#alıştırma-1",
+    "title": "İstatistik - Giris",
+    "section": "Alıştırma 1",
+    "text": "Alıştırma 1\nBir araştırmada seçimlerdeki oy dağılımı tahmin edilmek istenmektedir. Toplamda 1000 kişi oy vereceğini düşünelim. Anket şirketi de 100 kişiye sormuş. Bu 100 kişinin oy dağılımı şu şekilde:\n\n\n\nA Partisi\nB Partisi\nC Partisi\nD Partisi\nKararsız\n\n\n\n\n30\n15\n40\n10\n5\n\n\n\n\nÇözüm\n\nimport pandas as pd\nimport numpy as np\n# Veri seti\ndf= pd.Series({'A Parisi':30,\n               'B Partisi':15,\n               'C Partisi':40,\n               'D Partisi':10,\n               'Kararsız':5})\n# Çiz\ndf.plot(kind='bar', title='Parti Seçimlerine Göre Oy Dağılımı', ylabel='Oy Sayısı')\n# Pandas açıklama\nprint(df.describe())\n\ncount     5.00000\nmean     20.00000\nstd      14.57738\nmin       5.00000\n25%      10.00000\n50%      15.00000\n75%      30.00000\nmax      40.00000\ndtype: float64\n\n\n\n\n\n\n\n\n\nYukarıdaki tanımları uygulayalım.\n\nPopülasyon: 1000\nÖrneklem: 100\nÖrneklem Adeti: 1\nBelirsizlik: 900\nVeri: 100\n\n30 A Partisi, 15 B Partisi, 40 C Partisi, 10 D Partisi, 5 Kararsız\n\nOrtalama: 20\n\n30 + 15 + 40 + 10 + 5 = 100 / 5 = 20\n\nMedyan (Ortanca Değer): 15 (B Partisi)\n\n40, 30, 15, 10, 5 sıralandığında ortanca değer 15\n\nMod (Tepe Değer): En sık tekrar eden değer yok.\nVaryans \\(\\sigma^{2}\\): 170.0\n\n\\((|30-20|^{2} + |15-20|^{2} + |40-20|^{2} + |10-20|^{2} + |5-20|^{2})/5 = 170.0\\)\n\n\nStandart Sapma: 13.0\n\n\\(\\sqrt{170.0}\\)\n\\(\\sqrt{(|30-20|^{2} + |15-20|^{2} + |40-20|^{2} + |10-20|^{2} + |5-20|^{2})/5} = 13.0\\)\n\nÇeyrekler: 10, 15, 30\n\n40, 30, 15, 10, 5 sıralandığında\n\nAlt Çeyreklik: 10 (%25)\nOrtanca çeyreklik: 15 (%50)\nÜst Çeyreklik: 30 (%75)\n\n\nMinimum ve Maksimum değer: 5 ve 40\n\nEğer veriler ortalama değerden farkları az olursa standart sapma ve varyanas değerleri küçük olur.\n\nimport numpy as np\n\n# Veri: 21,22,20,18,19\nprint(f\"Varyans (Veri-Ortalamaya-Yakın): {(1**2 + 2**2 +2**2 +1**2)/5}\")\nprint(f\"Standart Sapma (Veri-Ortalamaya-Yakın): {np.sqrt((1**2 + 2**2 +2**2 +1**2)/5)}\")\n\n# Veri: 30,15,40,10,5  \n#print(f\"Varyans: {(10**2 + 5**2 +20**2 +10**2+ 15**2)/5}\")\n#print(f\"Standart Sapma: {np.sqrt((10**2 + 5**2 +20**2 +10**2+ 15**2)/5)}\")\n\nVaryans (Veri-Ortalamaya-Yakın): 2.0\nStandart Sapma (Veri-Ortalamaya-Yakın): 1.4142135623730951\n\n\npandas içerisinde describe() fonksiyonu ile belirlenen değerleri numpy paketi ile de belirleyebiliriz.\n\nimport numpy as np\nveri= np.array([30., 15., 40., 10., 5.])\nprint(f\"Ortalama: {veri.mean()}\")\nprint(f\"Varyans: {veri.var()}\")\nprint(f\"Standart Sapma: {veri.std()}\")\nprint(f\"Medyan: {np.median(veri)}\")\nprint(f\"Minimum ve Maksimum: {veri.min()} ve {veri.max()}\")\nprint(f\"Çeyrekler: {np.percentile(veri, [25, 50, 75])}\")\n\nOrtalama: 20.0\nVaryans: 170.0\nStandart Sapma: 13.038404810405298\nMedyan: 15.0\nMinimum ve Maksimum: 5.0 ve 40.0\nÇeyrekler: [10. 15. 30.]\n\n\nBurada pandas ile numpy modüllerinin standart sapma (varyans) değerleri aynı değil. Bunun sebebi istatistikte “yanlı/yansız (biased/unbiased)” olarak bilinen iki farklı yaklaşım vardır. Bu iki yaklaşımın farklılıkları için aşağıdaki linkleri inceleyebilirsiniz.\n\nwhat-is-the-difference-between-bias-and-variance\norneklemin-standart-sapmasinin-hesaplanmasi\nNeden standart sapma hesaplanırken n-1 yapılır?\n\nnumpy yanlı yaklaşımı (\\(n\\)’e bölme) kullanırken pandas yansız yaklaşımı (\\(n-1\\)’e bölme) kullanmaktadır.\nTL;DR - Popülasyon üzerinden hesap yapmak istiyorsanız yanlı yaklaşımı, df.std(ddof=0) veya np.std() kullanın. - Örneklem üzerinden hesap yapmak istiyorsanız yansız yaklaşımı df.std() veya np.std(ddof=1) kullanın.",
+    "crumbs": [
+      "**Konular**",
+      "İstatistik",
+      "İstatistik - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/istatistik/giris.html#rastgele-sayılar",
+    "href": "icerik/konular/istatistik/giris.html#rastgele-sayılar",
+    "title": "İstatistik - Giris",
+    "section": "Rastgele Sayılar",
+    "text": "Rastgele Sayılar\nÖnce numpy modülü içerisindeki random paketi ile rastgele sayılar üretelim.\n\nnp.random.rand(N): \\([0,1)\\) arasında düzgün olarak  (uniformly) N boyutlu rastgele sayı üretir.\nnp.random.randn(): \\(N(0,1)\\) arasında standart normal dağılımlı  olarak (standard normal distribution) rastgele sayı üretir.\nnp.random.randint(a,b): \\([a,b)\\) arasında düzgün olarak  (uniformly) rastgele sayı üretir.\n\n\nimport numpy as np\nprint(f\"5 Boyutlu düzgün dağılımlı rastgele sayılar: {np.random.rand(5)}\")\nprint(f\"5 Boyutlu normal dağılımlı rastgele sayılar: {np.random.randn(5)}\")\nprint(f\"5 boyutlu 0 ile 10 arasında rastgele tam sayılar: {np.random.randint(0, 10, 5)}\")\n\n5 Boyutlu düzgün dağılımlı rastgele sayılar: [0.82087207 0.34266741 0.10990511 0.2315717  0.03972704]\n5 Boyutlu normal dağılımlı rastgele sayılar: [ 0.59914335  0.73342352  0.61441675 -1.0207175   1.10799039]\n5 boyutlu 0 ile 10 arasında rastgele tam sayılar: [1 5 4 1 7]\n\n\nStandart normal dağılımı rastgele sayı üreteci 0’ın ortasında ve 1’in standart sapması olan bir dağılım oluşturur. Bu dağılımın özelliklerini görmek için aşağıdaki kodu çalıştırın.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# 1000 tane rastgele sayı üret\n#x = np.random.randn(1000)\nx = np.random.randn(1_000_000)\n\n# Histogram çiz\nplt.hist(x, bins=40)\nplt.show()\nplt.close()\n\n\n\n\n\n\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n# Rastgele sayı üret [0,1)\nprint(np.random.rand())\n# Rastgele 5 tane sayı üret [0,1)\nprint(np.random.rand(5))\n# Rastgele 2x4 matris üret [0,1)\nprint(np.random.rand(2, 4))\n\nprint(\"-\"*20)\n# Rastgele Normal dağılımlı sayı üret\nprint(np.random.randn(10))\nprint(\"-\"*20)\n\n# Rastgele tam sayı üret [0,10)\nprint(np.random.randint(0, 10))\n# Rastgele 5 tane tam sayı üret\nprint(np.random.randint(0, 10, 5))\n# print(np.random.randint(low=0, high=10, size=5))\n\n# Rastgele 2x4 matris üret [0,10)\nprint(np.random.randint(0, 10, (2, 4) ))\n#print(np.random.randint(low=0, high=10, size=(2,4)))\n\n# Çiz\nfig, axes = plt.subplots(3,1)\naxes[0].hist(np.random.rand(10_000))\naxes[0].set_title(\"rand\")\naxes[1].hist(np.random.randn(10_000))\naxes[1].set_title(\"randn\")\naxes[2].hist(np.random.randint(low=1, high=10, size=10_000), bins=9, align='left')\naxes[2].set_title(\"randint(low=1, high=10)\")\nplt.tight_layout()\n\n0.3131042272524026\n[0.99934296 0.91209133 0.97036381 0.83132584 0.79112004]\n[[0.51727033 0.45565413 0.03928876 0.31260521]\n [0.50822867 0.10428976 0.83691284 0.88858052]]\n--------------------\n[ 2.06167227  0.19379438 -0.50263944 -0.37436095 -0.02599458  1.03007387\n  1.408896    1.36714039  0.9223314  -0.74883044]\n--------------------\n5\n[6 8 4 8 6]\n[[3 5 1 4]\n [2 7 0 0]]\n\n\n\n\n\n\n\n\n\nİlerleyen bölümlerde belli bir array’den rastgele bir eleman seçmek isteyeceğiz. Bunun için np.random.choice() özelliğini kullanacağız. Eğer replace=False özelliği ile kullanırsak seçilen eleman tekrar seçilemez. Varsayılan özellik replace=True’dur.\n\nimport numpy as np\nprint(np.random.choice(5, 3))\n# Eşittir np.random.randint(0,5,3)\nprint(\"--\"*20+\"1\")\nprint(np.random.choice(5, 3, p=[0.1, 0, 0.3, 0.6, 0]))\nprint(\"--\"*20+\"2\")\nprint(np.random.choice(5, 3, replace=False))\n# Eşittir np.random.permutation(np.arange(5))[:3]\nprint(\"--\"*20+\"3\")\nprint(np.random.choice(5, 3, replace=False))\nprint(\"--\"*20+\"4\")\naa_milne_arr = ['Gizem', 'Furkan', 'Alperen']\nprint(np.random.choice(aa_milne_arr, 2))\nprint(np.random.choice(aa_milne_arr, 2, replace=False))\n\n[0 4 3]\n----------------------------------------1\n[3 0 3]\n----------------------------------------2\n[1 3 0]\n----------------------------------------3\n[2 0 3]\n----------------------------------------4\n['Gizem' 'Alperen']\n['Furkan' 'Alperen']\n\n\nRastgele sayı seçiminde çekirdek (seed) seçimi de önemli bir faktördür çünkü rastgelelik bir çekirdek üzerinden oluşur. Aynı çekirdek ile “aynı rastgelelik” oluşur.\nBizim çalışacağımız problemlerde çekirdek seçimi önemli olmayacaktır ancak oyun, simülasyon gibi problemlerde çekirdek seçimi önemli olabilir.\nÇekirdek seçimi için np.random.seed() fonksiyonunu kullanılır.\nBelirlenen bir çekirdek üzerine seçimler yapmak için aşağıdaki gibi bir rastgele durum belirlenir.\n\nimport numpy as np\noyunHaritasi= np.random.RandomState(42)\nprint(oyunHaritasi.randint(0, 10, 4))\nprint(\"-\"*20+\"1\")\nprint(oyunHaritasi.rand(5))\n\n[6 3 7 4]\n--------------------1\n[0.15601864 0.15599452 0.05808361 0.86617615 0.60111501]",
+    "crumbs": [
+      "**Konular**",
+      "İstatistik",
+      "İstatistik - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/istatistik/giris.html#rastgele-değişkenler-ve-dağılımlar",
+    "href": "icerik/konular/istatistik/giris.html#rastgele-değişkenler-ve-dağılımlar",
+    "title": "İstatistik - Giris",
+    "section": "Rastgele Değişkenler ve Dağılımlar",
+    "text": "Rastgele Değişkenler ve Dağılımlar\nPopülasyondan rastgele seçilen örneklem üzerinden yapılan istatistiksel incelemelerde, örneklem dağılımının popülasyon dağılımına yakın olması istenir. Bu ve benzeri konular için matematikte olasılık teorisi bulunmaktadır.\n\nÖrnek Uzayı (Sample Space): Bir deneyin tüm olası sonuçlarının bir kümesidir.\n\nÖrnek uzaydaki tüm elemanlar için bir olasılık değeri vardır.\n\nOlasılık Dağılımı (Probability Distribution): Bir deneyin tüm olası sonuçlarının olasılıklarının bir dağılımıdır.\nRastgele Değişken (Random Variables): Bir deneyin sonucu olarak elde edilen değerlerdir.\n\nRastgele değişkenlerin birbirinden bağımsız olması gerekir.\n\n\nÖrneğin\n\nBir paranın örnek uzayı \\(\\{Yazı,Tura\\}\\)’dır.\nRastgele değerleri \\(\\{0,1\\}\\)’dir.\n\nİstatistiksel işlemler kullanmak için rastgele değişkenlerin olasılık dağılımlarına ihtiyacımız vardır.\nRastgele değişkenler alacağı olası değerler ile karakterize edilir ve bu değerler de olasılık dağılımına göre belirlenir.\nEn temelde iki çeşit dağılım vardır. 1. Kesikli Dağılımlar, Tam Sayılar (Discrete Distributions) 2. Sürekli Dağılımlar, Gerçel Sayılar (Continuous Distributions)\nscipy.stats modülü içerisindeki rv_discrete ve rv_continuous sınıfları ile dağılımların özelliklerine ulaşabiliriz. Bu paketteki metotlar ve açıklamaları için dokümantasyon sayfasına veya Numerical Python kitabında tablo 13-1’e bakabilirsiniz.\nBazı dağılımlar:\n\nUniform Dağılım (Uniform Distribution): \\(U(a,b)\\)\nStandart Normal Dağılımı (Standard Normal Distribution): \\(N(0,1)\\)\nNormal Dağılım (Normal Distribution): \\(N(\\mu,\\sigma^2)\\)\nÜstel Dağılım (Exponential Distribution): \\(Exp(\\lambda)\\)\nFermi-Dirac Dağılımı (Fermi-Dirac Distribution): \\(FD(\\mu,\\beta)\\)\nBose-Einstein Dağılımı (Bose-Einstein Distribution): \\(BE(\\mu,\\beta)\\)\nBinom Dağılımı (Binomial Distribution): \\(B(n,p)\\)\nPoisson Dağılımı (Poisson Distribution): \\(P(\\lambda)\\)\nGamma Dağılımı (Gamma Distribution): \\(Gamma(\\alpha,\\beta)\\)\nBeta Dağılımı (Beta Distribution): \\(Beta(\\alpha,\\beta)\\)\nChi-Square Dağılımı (Chi-Square Distribution): \\(\\chi^2(n)\\)",
+    "crumbs": [
+      "**Konular**",
+      "İstatistik",
+      "İstatistik - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/istatistik/giris.html#alıştırma-2",
+    "href": "icerik/konular/istatistik/giris.html#alıştırma-2",
+    "title": "İstatistik - Giris",
+    "section": "Alıştırma 2",
+    "text": "Alıştırma 2\nOrtalama değeri 1 olan ve standart sapması 0.5 olan bir normal dağılım üretelim.\n\nÇözüm\n\nimport scipy.stats as stats\n\nX= stats.norm(1, 0.5)\nprint(f\"Ortalama: {X.mean()}\")\nprint(f\"Median: {X.median()}\")\nprint(f\"Standart Sapma: {X.std()}\")\nprint(f\"Varyans: {X.var()}\")\n\nOrtalama: 1.0\nMedian: 1.0\nStandart Sapma: 0.5\nVaryans: 0.25",
+    "crumbs": [
+      "**Konular**",
+      "İstatistik",
+      "İstatistik - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/istatistik/giris.html#problemler",
+    "href": "icerik/konular/istatistik/giris.html#problemler",
+    "title": "İstatistik - Giris",
+    "section": "Problemler",
+    "text": "Problemler\n\nProblem 1\n100 adet parayı 1000 kere atan ve np.random.rand() fonksiyonu kullanan bir betik dosyası yazın. Her atıldığında 100 tane paranın kaç tanesi tura geldiğini kaydedin ve sonucu histogram grafiği olarak çizdirin.\n\n\nProblem 2\nUygulama 1 ile verilen betik dosyasını np.random.choice() fonksiyonu kullanarak yapın.\n\n\nProblem 3\n100 adet zarı 1000 kere atan ve np.random.choice() fonksiyonunu kullanan bir betik dosyası yazın. Her atıldığında 100 tane zarın kaç tanesinin 6 geldiğini, kaç tanesinin 5 geldiğini vs. kaydedin ve sonucu histogram grafiği olarak çizdirin.\n\n\nProblem 4\nAşağıdaki linkte bulunan excel dosyasını indirin.\nStandart Solar Spectrumu Linki\n\nBu excel dosyasındaki verileri temizleyin.\n\nBaşlıkları sadece Wavelength (nm), Extraterrestrial W*m-2*nm-1, Global tilt  W*m-2*nm-1, Direct+circumsolar W*m-2*nm-1 kalsın.\nTüm diğer verileri silin.\nTüm tablar (sheets) silin.\nTüm veriyi float tipine çevirin.\n\nTemizlediğiniz veriyi okuyun ve Wavelength (nm) sütununu x ekseni olacak şekilde tüm kolonların grafiklerini aynı figürde çizdirin.\nExtraterrestrial W*m-2*nm-1 en yüksek değerini bulun.\nEn yüksek değerin kaç Kelvin olduğunu bulun. (Stefan-Boltzmann Kanunu)\nEn yüksek değerin kaç Celsius olduğunu bulun.\nGörünür ışığın spektrumunu yukarıda çizdiğiniz grafikte gösterin.\n\nKaynak: Solar Spectrum",
+    "crumbs": [
+      "**Konular**",
+      "İstatistik",
+      "İstatistik - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/istatistik/giris.html#kaynaklar",
+    "href": "icerik/konular/istatistik/giris.html#kaynaklar",
+    "title": "İstatistik - Giris",
+    "section": "Kaynaklar",
+    "text": "Kaynaklar\n\nNumerical Python: Scientific Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019, syf 443\nhttps://www.mathsisfun.com/data/\nThink Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014\nThink Stats: Github",
+    "crumbs": [
+      "**Konular**",
+      "İstatistik",
+      "İstatistik - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/bilYonMod.html",
+    "href": "icerik/bilYonMod.html",
+    "title": "Python Modülü",
+    "section": "",
+    "text": "Bilgisayarlı yöntemler notlarında kullanılan fonksiyonlardan oluşan modül bu linktedir: bilYonMod.py",
+    "crumbs": [
+      "**İçerik**",
+      "Python Modülü"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Bilgisayarlı Yöntemler",
+    "section": "",
+    "text": "Bu site, çeşitli kaynaklardan derlenerek hazırlanan sayısal yöntemler veya bilgisayarlı yöntemler notlarını içerir. Bu notlar, sayısal analiz, diferansiyel denklemler, optimizasyon, istatistik ve benzeri konularda kullanılan algoritmaları ve bu algoritmaların nasıl çalıştığını anlatır.\nEğer bu notlarla ilgili herhangi bir hata veya eksiklik bulursanız, lütfen GitHub Issue sayfasına yazınız. Bu link her sayfanın sağ tarafında bulunmaktadır.\nSol taraftaki menüden konulara ulaşabilirsiniz. Ayrıca, her sayfanın altında bulunan “Next” ve “Previous” butonları ile notları sırasıyla okuyabilirsiniz.\n\n\n\n\n\n\nUyarı\n\n\n\nBuradaki notlar ve kodlar açık kaynak kodudur. Kişisel kullanım ve eğitim amaçlıdır. Ticari amaçlar için kullanılmamalıdır."
+  },
+  {
+    "objectID": "icerik/izlence.html",
+    "href": "icerik/izlence.html",
+    "title": "İzlence",
+    "section": "",
+    "text": "Bu bölümde MSGSÜ Fizik Bölümü’nde verilen derslerin izlenceleri yer almaktadır.",
+    "crumbs": [
+      "**İçerik**",
+      "İzlence"
+    ]
+  },
+  {
+    "objectID": "icerik/izlence.html#fiz366---fizikte-bilgisayarlı-yöntemler-ii",
+    "href": "icerik/izlence.html#fiz366---fizikte-bilgisayarlı-yöntemler-ii",
+    "title": "İzlence",
+    "section": "FIZ366 - Fizikte Bilgisayarlı Yöntemler II",
+    "text": "FIZ366 - Fizikte Bilgisayarlı Yöntemler II\n\n2023-2024 Bahar Dönemi\n\nÖğretim Üyesi: Taygun Bulmuş\nE-posta: taygun.bulmus@msgsu.edu.tr\nDers Gün ve Saatleri: Salı 09:00-12:00\nUygulama Gün ve Saatleri: Cuma 15:00-17:00 (MS Teams)\nNotlandımra: İki Vize (%20 + %20), Quizler ve Ödevler (%20), Final (%40)\n\nDers İçeriği:\n\nAdi Diferansiyel Denklemler - Başlangıç Değer Problemleri\nAdi Diferansiyel Denklemler - Sınır Değer Problemleri\nFourier Analizi\nPandas Kütüphanesi\nVeri İşleme ve Analizi\nTemel İstatistik ve Olasılık\n\n\n\n\n\n\n\nUyarı\n\n\n\nKonuların işleyiş sırası değişebilir. Dönem içerisinde konu eklenebilir verya çıkarılabilir.\n\n\nKaynaklar:\n\nBilgisayarlı Yöntemler Github Sitesi, https://bulmust.github.io/bilgisayarli-yontemler/\n\n\n\n\n\n\n\nNot\n\n\n\nKullanılacak kaynaklar, notların altına eklenecektir.",
+    "crumbs": [
+      "**İçerik**",
+      "İzlence"
+    ]
+  },
+  {
+    "objectID": "icerik/izlence.html#fiz365---fizikte-bilgisayarlı-yöntemler-i",
+    "href": "icerik/izlence.html#fiz365---fizikte-bilgisayarlı-yöntemler-i",
+    "title": "İzlence",
+    "section": "FIZ365 - Fizikte Bilgisayarlı Yöntemler I",
+    "text": "FIZ365 - Fizikte Bilgisayarlı Yöntemler I\n\n2022-2023 Güz Dönemi\n\nÖğretim Üyesi: Taygun Bulmuş\nE-posta: taygun.bulmus@msgsu.edu.tr\nDers Gün ve Saatleri: Cuma 13:00-16:00\nUygulama Gün ve Saatleri: Cuma 16:00-18:00\nOfis Saatleri: Cuma 10:00-12:00\nNotlandımra: İki Vize (%20 + %20), Quizler (%10), Ödevler (%10), Final (%40)\n\nDers İçeriği:\n\nDersin Tanıtımı, Python ile Programlamaya Giriş\nTemel Python Programlama - I\nTemel Python Programlama - II\nNumpy-Scipy-Matplotlib\nArasınav - I\nDoğrusal Denklem Sistemleri - I\nDoğrusal Denklem Sistemleri - II\nİnterpolasyon\nEğri Uydurma\nArasınav - II\nKök Bulma\nSayısal Türev Alma\nSayısal İntegral Alma\nAdi Diferansiyel Denklemler\n\n\n\n\n\n\n\n\nUyarı\n\n\n\nKonuların işleyiş sırası değişebilir. Dönem içerisinde konu eklenebilir verya çıkarılabilir.\n\n\nKaynaklar:\n\nNumerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013,\nIntroduction to Engineering and Scientific Computing with Python, David E. Clough, Steven C. Chapra, 1. Baskı, 2022,\nSayısal Analiz ve Mühendislik Uygulamaları, İrfan Karagöz, 5. Baskı, 2019.",
+    "crumbs": [
+      "**İçerik**",
+      "İzlence"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-giris.html",
+    "href": "icerik/konular/veri-analizi/pandas-giris.html",
+    "title": "pandas - Giris",
+    "section": "",
+    "text": "Pandas, Python programlama dilini kullanarak veri manüpilasyonu ve analizi için kullanılan bir kütüphanedir. Tıpkı numpy paketi gibi veri işleme konulardı önemli bir yer teşkil ederi.\nWeb sitesi: pandas.pydata.org\nDökümantasyon: pandas.pydata.org\nPandas, tıpkı numpy arrayleri gibi veri yapılarını kullanarak veri analizi yapmamızı sağlayan bir Python modülüdür. Arka planda numpy, matplotlib ve scipy gibi modülleri kullanır.\nPandas modülünü kullanabilmek için öncelikle modülü içe aktarmamız gerekiyor. Bu modülün yanında genellikle numpy ve matplotlib modüllerini de içe aktarıyoruz.\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#pandas-modülüne-giriş",
+    "href": "icerik/konular/veri-analizi/pandas-giris.html#pandas-modülüne-giriş",
+    "title": "pandas - Giris",
+    "section": "",
+    "text": "Pandas, Python programlama dilini kullanarak veri manüpilasyonu ve analizi için kullanılan bir kütüphanedir. Tıpkı numpy paketi gibi veri işleme konulardı önemli bir yer teşkil ederi.\nWeb sitesi: pandas.pydata.org\nDökümantasyon: pandas.pydata.org\nPandas, tıpkı numpy arrayleri gibi veri yapılarını kullanarak veri analizi yapmamızı sağlayan bir Python modülüdür. Arka planda numpy, matplotlib ve scipy gibi modülleri kullanır.\nPandas modülünü kullanabilmek için öncelikle modülü içe aktarmamız gerekiyor. Bu modülün yanında genellikle numpy ve matplotlib modüllerini de içe aktarıyoruz.\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#seriler",
+    "href": "icerik/konular/veri-analizi/pandas-giris.html#seriler",
+    "title": "pandas - Giris",
+    "section": "Seriler",
+    "text": "Seriler\nTıpkı numpy paketindeki bir boyutlu diziler gibi pandas paketinde de bir boyutlu seriler vardır. Bu seriler aşağıdaki gibi oluşturulur.\n\nimport pandas as pd\n## Numpy Array\n#arr1= np.array([1,2,3,4])\n#print(arr1)\n# Pandas Serisi\ns=pd.Series([909976, 8615246, 2872086, 2273305])\nprint(s)\n\n0     909976\n1    8615246\n2    2872086\n3    2273305\ndtype: int64\n\n\nnumpy paketindeki dizilerdeki gibi serilerde de dtype parametresi ile veri tipi belirtilir. dtype parametresi belirtilmezse veri tipi otomatik olarak belirlenir. Yukarıdaki örnekte dtype parametresi belirtilmediği için veri tipi otomatik olarak int64 olarak belirlenmiştir.\nnumpy dizileri ile pandas serileri arasındaki en büyük fark indekslemedir. s değişkenini ekrana yazdırdığımızda değerlerin sol tarafında sıfırdan başlayan etiketler (index) görüyoruz. Bu etiketler serilerdeki değerlerin sırasını gösterir.\nEtiketlerin ne olduğunda erişmek için .index komutu kullanılır.\n\nimport pandas as pd\ns=pd.Series([909976, 8615246, 2872086, 2273305])\nprint(f\"s.index       =&gt; {s.index}\")\nprint(f\"list(s.index) =&gt; {list(s.index)}\")\n# Python listelerinde de benzer durum vardır.\nprint(f\"range(4)       =&gt; {range(4)}\")\nprint(f\"list(range(4)) =&gt; {list(range(4))}\")\n\ns.index       =&gt; RangeIndex(start=0, stop=4, step=1)\nlist(s.index) =&gt; [0, 1, 2, 3]\nrange(4)       =&gt; range(0, 4)\nlist(range(4)) =&gt; [0, 1, 2, 3]\n\n\nSerilerin etiketsiz, yani ham değerlerine de .values komutu ile erişilir.\n\nimport pandas as pd\ns=pd.Series([909976, 8615246, 2872086, 2273305])\n# Değerleri\nprint(s.values)\n# Değişkene ata\nliste=s.values\nprint(liste[2])\n# Kısa versiyonu\nprint(s.values[2])\n\n[ 909976 8615246 2872086 2273305]\n2872086\n2872086\n\n\nEtiketleme yöntemi ile veriye erişmek faydalıdır. Örneğin s ile tanımladığımız değerler Stockholm, Londra, Roma ve Paris’in nüfusları olsun. Bu durumda etiketleri de şehir isimlerine değiştirebiliriz. Aynı zamanda serinin ismini de belirleyebiliriz.\n\nimport pandas as pd\ns=pd.Series([909976, 8615246, 2872086, 2273305])\n# Etiketleri değiştirme\ns.index=['Stockholm', 'Londra', 'Roma', 'Paris']\nprint(s)\nprint(\"---o---o---\")\ns.name='Nüfus'\nprint(s)\n\nStockholm     909976\nLondra       8615246\nRoma         2872086\nParis        2273305\ndtype: int64\n---o---o---\nStockholm     909976\nLondra       8615246\nRoma         2872086\nParis        2273305\nName: Nüfus, dtype: int64\n\n\nTüm bu işlemleri tek tek yapmaktansa seriyi tanımlarken de yapabiliriz.\n\nimport pandas as pd\ns=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')\nprint(s)\n\nStockholm     909976\nLondra       8615246\nRoma         2872086\nParis        2273305\nName: Nüfus, dtype: int64",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#veriye-erişmek",
+    "href": "icerik/konular/veri-analizi/pandas-giris.html#veriye-erişmek",
+    "title": "pandas - Giris",
+    "section": "Veriye Erişmek",
+    "text": "Veriye Erişmek\nTıpkı numpy dizilerinde veya matrislerinde olduğu gibi pandas serilerinde de bazı verilere erişmek gerekecektir. Bunun için çeşitli yöntemler vardır.\nÖnce yukarıda tanımladığımız s serisinin “Londra” etiketine sahip değerine erişelim.\n\nimport pandas as pd\ns=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')\n# İki çeşit erişim\nprint(f\"s['Londra'] =&gt; {s['Londra']}\")\nprint(f\"s.Londra    =&gt; {s.Londra}\")\n\ns['Londra'] =&gt; 8615246\ns.Londra    =&gt; 8615246\n\n\nGörüldüğü üzere etiketler üzerinden iki farklı şekilde veriye erişebiliyoruz. Benzer şekilde hem “Londra” hem de “Roma” etiketlerine sahip değerlere erişmek için aşağıdaki gibi bir kod yazabiliriz. Sonucun yeni bir seri olduğuna dikkat edin.\n\nimport pandas as pd\ns=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')\n# Londra, Roma etiketlerine sahip değerler\n# Sonuç yeni bir SERİ olacaktır.\nprint(f\"s[['Londra', 'Roma']] =&gt; \\n{s[['Londra', 'Roma']]}\")\nprint(\"---o---o---\")\n\ns[['Londra', 'Roma']] =&gt; \nLondra    8615246\nRoma      2872086\nName: Nüfus, dtype: int64\n---o---o---\n\n\npandas paketi temel olarak istatistiksel işlemler yapmaya uygun olduğu için tanımlanan serilerde bazı istatistiksel işlemler yapılabilir.\n\nimport pandas as pd\ns=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')\n# Medyan (Ortanca)\nprint(f\"Medyan: {s.median()}\")\n# Ortalama\nprint(f\"Ortalama: {s.mean()}\") \n# Standart Sapma\nprint(f\"Standart Sapma: {s.std()}\") \n# Min-Max\nprint(f\"Min: {s.min()}\")\nprint(f\"Max: {s.max()}\")\nprint(\"---o---o---\")\n# Tanımlı istatistiksel değerler\nprint(s.describe())\n\nMedyan: 2572695.5\nOrtalama: 3667653.25\nStandart Sapma: 3399048.5005155364\nMin: 909976\nMax: 8615246\n---o---o---\ncount    4.000000e+00\nmean     3.667653e+06\nstd      3.399049e+06\nmin      9.099760e+05\n25%      1.932473e+06\n50%      2.572696e+06\n75%      4.307876e+06\nmax      8.615246e+06\nName: Nüfus, dtype: float64\n\n\nSerileri çizdimrk için plot fonksiyonu kullanılır. Plot fonksiyonunu eskiden yaptığımız gibi plt.plot() şeklinde de kullanabiliriz veya s.plot() şeklinde de kullanabiliriz. s.plot() şeklinde kullanılması, pandas paketinin içerisinde matplotlib paketinin bulunduğu anlamına gelir.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport matplotlib as mpl\nmpl.style.use('ggplot') # İstatistiksel grafikleri daha estektik hale getirir.\ns=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')\n# Çiz\n# # 1 satır 4 sütunluk bir grafik\n# fig, axes= plt.subplots(1,4)\n# # s verisini çizdir\n# s.plot(ax=axes[0], kind='line', title='Çizgi Grafiği')\n# s.plot(ax=axes[1], kind='bar', title='Çubuk Grafiği')\n# s.plot(ax=axes[2], kind='barh', title='Yatay Çubuk Grafiği')\n# s.plot(ax=axes[3], kind='pie', title='Pasta Grafiği')\ns.plot(kind='line', title='Çizgi Grafiği')\nplt.show()\nplt.close()\ns.plot(kind='bar', title='Çubuk Grafiği')\nplt.show()\nplt.close()\ns.plot(kind='barh', title='Yatay Çubuk Grafiği')\nplt.show()\nplt.close()\ns.plot(kind='pie', title='Pasta Grafiği')\nplt.show()\nplt.close()",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#alıştırma-1",
+    "href": "icerik/konular/veri-analizi/pandas-giris.html#alıştırma-1",
+    "title": "pandas - Giris",
+    "section": "Alıştırma 1",
+    "text": "Alıştırma 1\n\nAşağıdaki verileri içeren bir pandas serisi oluşturun.\n\n\n\n\nİsim\nYaş\n\n\n\n\nAli\n25\n\n\nAyşe\n30\n\n\nMehmet\n40\n\n\nFatma\n35\n\n\nHasan\n20\n\n\nHüseyin\n50\n\n\nZeynep\n45\n\n\nMerve\n30\n\n\nÖzlem\n35\n\n\n\n\nBu serinin ismini “Yaşlar” olarak ayarlayın.\nBu serideki Fatma’nın yaşını ekrana yazdırın.\nBu serideki Fatma’nın, Hasan’ın ve Zeynep’in yaşlarını ekrana yazdırın.\nBu serideki Fatma’nın yaşını 18 yapın.\nBu seri’deki en yaşlı kişinin yaşını ekrana yazdırın.\nBu seri’deki en genç kişinin yaşını ekrana yazdırın.\nYaşların ortalamasını ekrana yazdırın.\nBu seriyi dikey bar ve pasta grafiği olarak çizdirin.\n\n\nÇözüm\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport matplotlib as mpl\nmpl.style.use('ggplot')\n# 1. Soru\ns=pd.Series([25, 30, 40, 35, 20, 50, 45, 30, 35], index=['Ali', 'Ayşe', 'Mehmet', 'Fatma', 'Hasan', 'Hüseyin', 'Zeynep', 'Merve', 'Özlem'], name='Yaşlar')\n# s=pd.Series([25, 30, 40, 35, 20, 50, 45, 30, 35])\n# s.index=['Ali', 'Ayşe', 'Mehmet', 'Fatma', 'Hasan', 'Hüseyin', 'Zeynep', 'Merve', 'Özlem']\n# 2. Soru\ns.name='Yaşlar'\n# 3. Soru\nprint(f\"Fatma'nın yaşı: {s['Fatma']}\")\n# print(f\"Fatma'nın yaşı: {s.Fatma}\")\n# 4. Soru\nprint(f\"Fatma, Hasan ve Zeynep'in yaşları: \\n{s[['Fatma', 'Hasan', 'Zeynep']]}\")\n# 5. Soru\ns['Fatma']=18\n# s.Fatma=18\n# 6. Soru\nprint(f\"En yaşlı kişi: {s.max()}\")\n# 7. Soru\nprint(f\"En genç kişi: {s.min()}\")\n# 8. Soru\nprint(f\"Ortalama: {s.mean()}\")\n# 9. Soru\ns.plot(kind='bar', title='Yaşlar')\nplt.show()\nplt.close()\ns.plot(kind='pie', title='Yaşlar')\nplt.show()\nplt.close()\n\nFatma'nın yaşı: 35\nFatma, Hasan ve Zeynep'in yaşları: \nFatma     35\nHasan     20\nZeynep    45\nName: Yaşlar, dtype: int64\nEn yaşlı kişi: 50\nEn genç kişi: 18\nOrtalama: 32.55555555555556",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#veri-çerçevesi-dataframe",
+    "href": "icerik/konular/veri-analizi/pandas-giris.html#veri-çerçevesi-dataframe",
+    "title": "pandas - Giris",
+    "section": "Veri Çerçevesi (DataFrame)",
+    "text": "Veri Çerçevesi (DataFrame)\nSerileri tek boyutlu diziler olarak düşünebiliriz. Yukarıda verdiğimiz örnekte, s serisi sadece şehirlerin nüfus bilgisini içeriyordu. pandas paketinde verileri iki boyutlu bir yapıda tutan veri çerçeveleri (data frame) vardır.Veri çerçevelerini aşağıdaki gibi oluşturabiliriz.\n\nimport pandas as pd\n# Data Frame\ndf= pd.DataFrame([\\\n      [909976, \"İsveç\"]\\\n    , [8615246, \"Birleşik Krallık\"]\\\n    , [2872086, \"İtalya\"]\\\n    , [2273305, \"Fransa\"]]\n        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])\nprint(df)\n\n             Nüfus              Ülke\nStockholm   909976             İsveç\nLondra     8615246  Birleşik Krallık\nRoma       2872086            İtalya\nParis      2273305            Fransa\n\n\nSerideki nüfus bilgisine ek olarak ülke verisini de kaydettik. Yatayda (satır) eklenen veri etiket, index bazında ilerlerken düşeyde (sütun) eklenen veri sütun bazında ilerlemektedir. Sütunlar columns- olarak isimlendirilmektedir. Eğer herhangi bir adlandırma yapılmazsa, tıpkı etiketlerde olduğu gibi otomatik olarak sıfırdan başlayan sıralı sayılar atanır.\nSütunlara erişmek için aşağıdaki gibi bir kod yazılır.\n\nimport pandas as pd\n# Data Frame\ndf= pd.DataFrame([\\\n      [909976, \"İsveç\"]\\\n    , [8615246, \"Birleşik Krallık\"]\\\n    , [2872086, \"İtalya\"]\\\n    , [2273305, \"Fransa\"]]\n        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])\nprint(df.columns)\n# Sütunlardaki sadece nüfus elemanına erişmek için\nprint(df.columns[0])\n\nIndex(['Nüfus', 'Ülke'], dtype='object')\nNüfus\n\n\nDataframe’leri python sözlük (dictionary) şeklinde de tanımlayabiliriz.\n\nimport pandas as pd\n# Alternatif Tanımlama\ndf2= pd.DataFrame({\n    \"Nüfus\": [909976, 8615246, 2872086, 2273305],\n    \"Ülke\": [\"İsveç\", \"Birleşik Krallık\", \"İtalya\", \"Fransa\"]},\n    index=['Stockholm', 'Londra', 'Roma', 'Paris'])\nprint(df2)\n\n             Nüfus              Ülke\nStockholm   909976             İsveç\nLondra     8615246  Birleşik Krallık\nRoma       2872086            İtalya\nParis      2273305            Fransa",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#veriye-erişim",
+    "href": "icerik/konular/veri-analizi/pandas-giris.html#veriye-erişim",
+    "title": "pandas - Giris",
+    "section": "Veriye Erişim",
+    "text": "Veriye Erişim\nSerilerde olduğu gibi dataframe’lerde de verilere erişmek gerekecektir. Bunun için çeşitli yöntemler vardır.\n\n\n\n\n\n\nDikkat\n\n\n\nDataFrame’lerde veriye ulaşmak için kullanılan köşeli parantez yöntemi sadece sütunlar için geçerlidir.\n\n\n\n\n\n\n\n\nUyarı\n\n\n\nTürkçe karakter kullanarak tanımlanan sütunlarda nokta kullanarak erişim sağlayamayabilirsiniz. Bunun için köşeli parantez ve tırnak kullanmanız gerekir.\n\n\n\nimport pandas as pd\n# Data Frame\ndf= pd.DataFrame([\\\n      [909976, \"İsveç\"]\\\n    , [8615246, \"Birleşik Krallık\"]\\\n    , [2872086, \"İtalya\"]\\\n    , [2273305, \"Fransa\"]]\n        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])\n# Nüfus sütununa erişim\nprint(df[\"Nüfus\"])\nprint(\"----------------\")\n#! Türkçe karakter kullandığımızda hata vermedi !?\nprint(df.Nüfus)\nprint(\"----------------\")\n#print(df[\"Roma\"]) #! Hata verir\n\nStockholm     909976\nLondra       8615246\nRoma         2872086\nParis        2273305\nName: Nüfus, dtype: int64\n----------------\nStockholm     909976\nLondra       8615246\nRoma         2872086\nParis        2273305\nName: Nüfus, dtype: int64\n----------------\n\n\n\n\n\n\n\n\nUyarı\n\n\n\nSerilerde [\"Satır\"] şeklinde erişim yaparken dataframe’lerde [\"Sütun\"] şeklinde erişim yapılır.\n\n\n\nimport pandas as pd\n# Seri\ns=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')\n# Data Frame\ndf= pd.DataFrame([\\\n      [909976, \"İsveç\"]\\\n    , [8615246, \"Birleşik Krallık\"]\\\n    , [2872086, \"İtalya\"]\\\n    , [2273305, \"Fransa\"]]\n        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])\n# Seride \"Londra\" etiketine sahip değer\nprint(f\"s['Londra'] =&gt; {s['Londra']}\")\nprint(\"---o---o---o---\")\n# Dataframe'de \"Nüfus\" sütununa sahip sütun\nprint(f\"df['Nüfus'] =&gt; \\n{df['Nüfus']}\")\n\ns['Londra'] =&gt; 8615246\n---o---o---o---\ndf['Nüfus'] =&gt; \nStockholm     909976\nLondra       8615246\nRoma         2872086\nParis        2273305\nName: Nüfus, dtype: int64\n\n\nSütunlara köşeli parantez veya nokta kullanarak erişebildik. Satırlara dar .loc[] yöntemi ile erişebiliriz. loc yöntemi ile erişmek istediğimizde belirlediğimiz satır(lar)daki tüm sütun değerlerini alırız.\nEğer belirlediğimiz bir satırın tüm sütun değerlerini almak istemiyorsak, sütunları da belirtmemiz gerekir. Bunun için loc[Satır(lar), Sütun(lar)] şeklinde bir kullanım yaparız.\n\nimport pandas as pd\n# Data Frame\ndf= pd.DataFrame([\\\n      [909976, \"İsveç\"]\\\n    , [8615246, \"Birleşik Krallık\"]\\\n    , [2872086, \"İtalya\"]\\\n    , [2273305, \"Fransa\"]]\n        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])\n# Data Frame Yazdır\nprint(f\"df =&gt; \\n{df}\")\nprint(\"---o---o---o---\")\nprint(f\"df.loc['Roma'] =&gt; \\n{df.loc['Roma']}\")\nprint(\"---o---o---o---\")\nprint(f\"df.loc[['Roma', 'Paris']] =&gt; \\n{df.loc[['Roma', 'Paris']]}\")\nprint(\"---o---o---o---\")\nprint(f\"df.loc[['Roma', 'Paris'], 'Nüfus'] =&gt; \\n{df.loc[['Roma', 'Paris'], 'Nüfus']}\")\n\ndf =&gt; \n             Nüfus              Ülke\nStockholm   909976             İsveç\nLondra     8615246  Birleşik Krallık\nRoma       2872086            İtalya\nParis      2273305            Fransa\n---o---o---o---\ndf.loc['Roma'] =&gt; \nNüfus    2872086\nÜlke      İtalya\nName: Roma, dtype: object\n---o---o---o---\ndf.loc[['Roma', 'Paris']] =&gt; \n         Nüfus    Ülke\nRoma   2872086  İtalya\nParis  2273305  Fransa\n---o---o---o---\ndf.loc[['Roma', 'Paris'], 'Nüfus'] =&gt; \nRoma     2872086\nParis    2273305\nName: Nüfus, dtype: int64",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#alıştırma-2",
+    "href": "icerik/konular/veri-analizi/pandas-giris.html#alıştırma-2",
+    "title": "pandas - Giris",
+    "section": "Alıştırma 2",
+    "text": "Alıştırma 2\n\nAşağıdaki verileri içeren bir pandas dataframe (veri çerçevesi) oluşturun.\n\n\n\n\nİsim\nYaş\nMeslek\nMaaş\nCinsiyet\n\n\n\n\nAli\n25\nÖğrenci\n1000\nErkek\n\n\nAyşe\n30\nÖğretmen\n5000\nKadın\n\n\nMehmet\n40\nMühendis\n8000\nErkek\n\n\nFatma\n35\nDoktor\n10000\nKadın\n\n\nHasan\n20\nÖğrenci\n1000\nErkek\n\n\nHüseyin\n50\nMühendis\n8000\nErkek\n\n\nZeynep\n45\nDoktor\n10000\nKadın\n\n\nMerve\n30\nÖğretmen\n5000\nKadın\n\n\n\n\nBu veri çerçevesinin ismini “Personel” olarak ayarlayın.\nBu veri çerçevesindeki “Meslek” sütununu ekrana yazdırın.\nBu veri çerçevesindeki “Meslek” ve “Maaş” sütunlarını ekrana yazdırın.\nBu veri çerçevesindeki “Meslek” ve “Maaş” sütunlarını “Meslekler” ve “Maaşlar” olarak ayarlayın.\nBu veri çerçevesindeki “Ali”’nin tüm bilgilerini ekrana yazdırın.\nBu veri çerçevesindeki “Ali”, “Ayşe” ve “Mehmet”’in tüm bilgilerini ekrana yazdırın.\nBu veri çerçevesindeki “Ali”’nin “Meslek” ve “Maaş” bilgilerini ekrana yazdırın.\nBu veri çerçevesindeki “Ali”, “Ayşe” ve “Mehmet”’in “Yaş” ve “Cinsiyet” bilgilerini ekrana yazdırın.\n\n\nÇözüm\n\nimport pandas as pd\n# 1. Soru\ndf= pd.DataFrame({\n    \"Yaş\": [25, 30, 40, 35, 20, 50, 45, 30],\n    \"Meslek\": [\"Öğrenci\", \"Öğretmen\", \"Mühendis\", \"Doktor\", \"Öğrenci\", \"Mühendis\", \"Doktor\", \"Öğretmen\"],\n    \"Maaş\": [1000, 5000, 8000, 10000, 1000, 8000, 10000, 5000],\n    \"Cinsiyet\": [\"Erkek\", \"Kadın\", \"Erkek\", \"Kadın\", \"Erkek\", \"Erkek\", \"Kadın\", \"Kadın\"]\n    },\n    index=['Ali', 'Ayşe', 'Mehmet', 'Fatma', 'Hasan', 'Hüseyin', 'Zeynep', 'Merve'])\n# 2. Soru\ndf.name='Personel'\nprint(f\"df.name =&gt; {df.name}\")\nprint(\"---o---o---o---\")\n# 3. Soru\nprint(f\"df['Meslek'] =&gt; \\n{df['Meslek']}\")\nprint(\"---o---o---o---\")\n# 4. Soru\nprint(f\"df[['Meslek', 'Maaş']] =&gt; \\n{df[['Meslek', 'Maaş']]}\")\nprint(\"---o---o---o---\")\n# 5. Soru\ndf=df.rename(columns= {'Meslek' : 'Meslekler'})\ndf=df.rename(columns= {'Maaş' : 'Maaşlar'})\nprint(f\"df.columns =&gt; {df.columns}\")\nprint(\"---o---o---o---\")\n# 6. Soru\nprint(f\"df.loc['Ali'] =&gt; \\n{df.loc['Ali']}\")\nprint(\"---o---o---o---\")\n# 7. Soru\nprint(f\"df.loc[['Ali', 'Ayşe', 'Mehmet']] =&gt; \\n{df.loc[['Ali', 'Ayşe', 'Mehmet']]}\")\nprint(\"---o---o---o---\")\n# 8. Soru\nprint(f\"df.loc['Ali', ['Meslekler', 'Maaşlar']] =&gt; \\n{df.loc['Ali', ['Meslekler', 'Maaşlar']]}\")\nprint(\"---o---o---o---\")\n# 9. Soru\nprint(f\"df.loc[['Ali', 'Ayşe', 'Mehmet'], ['Yaş', 'Cinsiyet']] =&gt; \\n{df.loc[['Ali', 'Ayşe', 'Mehmet'], ['Yaş', 'Cinsiyet']]}\")\nprint(\"---o---o---o---\")\n\ndf.name =&gt; Personel\n---o---o---o---\ndf['Meslek'] =&gt; \nAli         Öğrenci\nAyşe       Öğretmen\nMehmet     Mühendis\nFatma        Doktor\nHasan       Öğrenci\nHüseyin    Mühendis\nZeynep       Doktor\nMerve      Öğretmen\nName: Meslek, dtype: object\n---o---o---o---\ndf[['Meslek', 'Maaş']] =&gt; \n           Meslek   Maaş\nAli       Öğrenci   1000\nAyşe     Öğretmen   5000\nMehmet   Mühendis   8000\nFatma      Doktor  10000\nHasan     Öğrenci   1000\nHüseyin  Mühendis   8000\nZeynep     Doktor  10000\nMerve    Öğretmen   5000\n---o---o---o---\ndf.columns =&gt; Index(['Yaş', 'Meslekler', 'Maaşlar', 'Cinsiyet'], dtype='object')\n---o---o---o---\ndf.loc['Ali'] =&gt; \nYaş               25\nMeslekler    Öğrenci\nMaaşlar         1000\nCinsiyet       Erkek\nName: Ali, dtype: object\n---o---o---o---\ndf.loc[['Ali', 'Ayşe', 'Mehmet']] =&gt; \n        Yaş Meslekler  Maaşlar Cinsiyet\nAli      25   Öğrenci     1000    Erkek\nAyşe     30  Öğretmen     5000    Kadın\nMehmet   40  Mühendis     8000    Erkek\n---o---o---o---\ndf.loc['Ali', ['Meslekler', 'Maaşlar']] =&gt; \nMeslekler    Öğrenci\nMaaşlar         1000\nName: Ali, dtype: object\n---o---o---o---\ndf.loc[['Ali', 'Ayşe', 'Mehmet'], ['Yaş', 'Cinsiyet']] =&gt; \n        Yaş Cinsiyet\nAli      25    Erkek\nAyşe     30    Kadın\nMehmet   40    Erkek\n---o---o---o---",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#problemler",
+    "href": "icerik/konular/veri-analizi/pandas-giris.html#problemler",
+    "title": "pandas - Giris",
+    "section": "Problemler",
+    "text": "Problemler\n\nProblem 1\n\nGithub reposunda bulunan veri-analizi-european_cities.csv dosyasınına bu linkten erişin. Bu dosyayı okuyarak bir pandas dataframe (veri çerçevesi) oluşturun. Bu datayı okumak için pd.read_csv('european_cities.csv') fonksiyonunu kullanabilirsiniz.\n [1] referansındaki european_cities.csv dosyasını okuyarak farklı isimde bir pandas dataframe (veri çerçevesi) oluşturun.\n.info() fonksiyonunu kullanarak içeriği hakkında bilgi edinin.",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Giris"
+    ]
+  },
+  {
+    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#kaynaklar",
+    "href": "icerik/konular/veri-analizi/pandas-giris.html#kaynaklar",
+    "title": "pandas - Giris",
+    "section": "Kaynaklar",
+    "text": "Kaynaklar\n\nNumerical Python: Scientific Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019, syf 406\nVS Code ile csv dosyası görüntüleme: Excel Viewer",
+    "crumbs": [
+      "**Konular**",
+      "Veri Analizi",
+      "pandas - Giris"
     ]
   },
   {
@@ -694,256 +1066,25 @@
     ]
   },
   {
-    "objectID": "icerik/konular/veri-analizi/pandas-giris.html",
-    "href": "icerik/konular/veri-analizi/pandas-giris.html",
-    "title": "pandas - Giris",
+    "objectID": "icerik/konular/veri-analizi.html",
+    "href": "icerik/konular/veri-analizi.html",
+    "title": "Veri Analizi",
     "section": "",
-    "text": "Pandas, Python programlama dilini kullanarak veri manüpilasyonu ve analizi için kullanılan bir kütüphanedir. Tıpkı numpy paketi gibi veri işleme konulardı önemli bir yer teşkil ederi.\nWeb sitesi: pandas.pydata.org\nDökümantasyon: pandas.pydata.org\nPandas, tıpkı numpy arrayleri gibi veri yapılarını kullanarak veri analizi yapmamızı sağlayan bir Python modülüdür. Arka planda numpy, matplotlib ve scipy gibi modülleri kullanır.\nPandas modülünü kullanabilmek için öncelikle modülü içe aktarmamız gerekiyor. Bu modülün yanında genellikle numpy ve matplotlib modüllerini de içe aktarıyoruz.\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt",
+    "text": "Fizikte ve diğer branşlarda çok büyük veri kümeleriyle çalışmak gerekebilir. Bu veri istatistiksel bir anlam çıkarmak için kullanılabilir veya bir analiz sonucunda ortaya çıkmış olabilir.\nBu bölümde veri analizi için kullanılan temel yöntemlerden bazılarına değineceğiz.",
     "crumbs": [
       "**Konular**",
-      "Veri Analizi",
-      "pandas - Giris"
+      "Veri Analizi"
     ]
   },
   {
-    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#pandas-modülüne-giriş",
-    "href": "icerik/konular/veri-analizi/pandas-giris.html#pandas-modülüne-giriş",
-    "title": "pandas - Giris",
+    "objectID": "icerik/konular/veri-analizi.html#veri-analizi",
+    "href": "icerik/konular/veri-analizi.html#veri-analizi",
+    "title": "Veri Analizi",
     "section": "",
-    "text": "Pandas, Python programlama dilini kullanarak veri manüpilasyonu ve analizi için kullanılan bir kütüphanedir. Tıpkı numpy paketi gibi veri işleme konulardı önemli bir yer teşkil ederi.\nWeb sitesi: pandas.pydata.org\nDökümantasyon: pandas.pydata.org\nPandas, tıpkı numpy arrayleri gibi veri yapılarını kullanarak veri analizi yapmamızı sağlayan bir Python modülüdür. Arka planda numpy, matplotlib ve scipy gibi modülleri kullanır.\nPandas modülünü kullanabilmek için öncelikle modülü içe aktarmamız gerekiyor. Bu modülün yanında genellikle numpy ve matplotlib modüllerini de içe aktarıyoruz.\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt",
+    "text": "Fizikte ve diğer branşlarda çok büyük veri kümeleriyle çalışmak gerekebilir. Bu veri istatistiksel bir anlam çıkarmak için kullanılabilir veya bir analiz sonucunda ortaya çıkmış olabilir.\nBu bölümde veri analizi için kullanılan temel yöntemlerden bazılarına değineceğiz.",
     "crumbs": [
       "**Konular**",
-      "Veri Analizi",
-      "pandas - Giris"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#seriler",
-    "href": "icerik/konular/veri-analizi/pandas-giris.html#seriler",
-    "title": "pandas - Giris",
-    "section": "Seriler",
-    "text": "Seriler\nTıpkı numpy paketindeki bir boyutlu diziler gibi pandas paketinde de bir boyutlu seriler vardır. Bu seriler aşağıdaki gibi oluşturulur.\n\nimport pandas as pd\n## Numpy Array\n#arr1= np.array([1,2,3,4])\n#print(arr1)\n# Pandas Serisi\ns=pd.Series([909976, 8615246, 2872086, 2273305])\nprint(s)\n\n0     909976\n1    8615246\n2    2872086\n3    2273305\ndtype: int64\n\n\nnumpy paketindeki dizilerdeki gibi serilerde de dtype parametresi ile veri tipi belirtilir. dtype parametresi belirtilmezse veri tipi otomatik olarak belirlenir. Yukarıdaki örnekte dtype parametresi belirtilmediği için veri tipi otomatik olarak int64 olarak belirlenmiştir.\nnumpy dizileri ile pandas serileri arasındaki en büyük fark indekslemedir. s değişkenini ekrana yazdırdığımızda değerlerin sol tarafında sıfırdan başlayan etiketler (index) görüyoruz. Bu etiketler serilerdeki değerlerin sırasını gösterir.\nEtiketlerin ne olduğunda erişmek için .index komutu kullanılır.\n\nimport pandas as pd\ns=pd.Series([909976, 8615246, 2872086, 2273305])\nprint(f\"s.index       =&gt; {s.index}\")\nprint(f\"list(s.index) =&gt; {list(s.index)}\")\n# Python listelerinde de benzer durum vardır.\nprint(f\"range(4)       =&gt; {range(4)}\")\nprint(f\"list(range(4)) =&gt; {list(range(4))}\")\n\ns.index       =&gt; RangeIndex(start=0, stop=4, step=1)\nlist(s.index) =&gt; [0, 1, 2, 3]\nrange(4)       =&gt; range(0, 4)\nlist(range(4)) =&gt; [0, 1, 2, 3]\n\n\nSerilerin etiketsiz, yani ham değerlerine de .values komutu ile erişilir.\n\nimport pandas as pd\ns=pd.Series([909976, 8615246, 2872086, 2273305])\n# Değerleri\nprint(s.values)\n# Değişkene ata\nliste=s.values\nprint(liste[2])\n# Kısa versiyonu\nprint(s.values[2])\n\n[ 909976 8615246 2872086 2273305]\n2872086\n2872086\n\n\nEtiketleme yöntemi ile veriye erişmek faydalıdır. Örneğin s ile tanımladığımız değerler Stockholm, Londra, Roma ve Paris’in nüfusları olsun. Bu durumda etiketleri de şehir isimlerine değiştirebiliriz. Aynı zamanda serinin ismini de belirleyebiliriz.\n\nimport pandas as pd\ns=pd.Series([909976, 8615246, 2872086, 2273305])\n# Etiketleri değiştirme\ns.index=['Stockholm', 'Londra', 'Roma', 'Paris']\nprint(s)\nprint(\"---o---o---\")\ns.name='Nüfus'\nprint(s)\n\nStockholm     909976\nLondra       8615246\nRoma         2872086\nParis        2273305\ndtype: int64\n---o---o---\nStockholm     909976\nLondra       8615246\nRoma         2872086\nParis        2273305\nName: Nüfus, dtype: int64\n\n\nTüm bu işlemleri tek tek yapmaktansa seriyi tanımlarken de yapabiliriz.\n\nimport pandas as pd\ns=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')\nprint(s)\n\nStockholm     909976\nLondra       8615246\nRoma         2872086\nParis        2273305\nName: Nüfus, dtype: int64",
-    "crumbs": [
-      "**Konular**",
-      "Veri Analizi",
-      "pandas - Giris"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#veriye-erişmek",
-    "href": "icerik/konular/veri-analizi/pandas-giris.html#veriye-erişmek",
-    "title": "pandas - Giris",
-    "section": "Veriye Erişmek",
-    "text": "Veriye Erişmek\nTıpkı numpy dizilerinde veya matrislerinde olduğu gibi pandas serilerinde de bazı verilere erişmek gerekecektir. Bunun için çeşitli yöntemler vardır.\nÖnce yukarıda tanımladığımız s serisinin “Londra” etiketine sahip değerine erişelim.\n\nimport pandas as pd\ns=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')\n# İki çeşit erişim\nprint(f\"s['Londra'] =&gt; {s['Londra']}\")\nprint(f\"s.Londra    =&gt; {s.Londra}\")\n\ns['Londra'] =&gt; 8615246\ns.Londra    =&gt; 8615246\n\n\nGörüldüğü üzere etiketler üzerinden iki farklı şekilde veriye erişebiliyoruz. Benzer şekilde hem “Londra” hem de “Roma” etiketlerine sahip değerlere erişmek için aşağıdaki gibi bir kod yazabiliriz. Sonucun yeni bir seri olduğuna dikkat edin.\n\nimport pandas as pd\ns=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')\n# Londra, Roma etiketlerine sahip değerler\n# Sonuç yeni bir SERİ olacaktır.\nprint(f\"s[['Londra', 'Roma']] =&gt; \\n{s[['Londra', 'Roma']]}\")\nprint(\"---o---o---\")\n\ns[['Londra', 'Roma']] =&gt; \nLondra    8615246\nRoma      2872086\nName: Nüfus, dtype: int64\n---o---o---\n\n\npandas paketi temel olarak istatistiksel işlemler yapmaya uygun olduğu için tanımlanan serilerde bazı istatistiksel işlemler yapılabilir.\n\nimport pandas as pd\ns=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')\n# Medyan (Ortanca)\nprint(f\"Medyan: {s.median()}\")\n# Ortalama\nprint(f\"Ortalama: {s.mean()}\") \n# Standart Sapma\nprint(f\"Standart Sapma: {s.std()}\") \n# Min-Max\nprint(f\"Min: {s.min()}\")\nprint(f\"Max: {s.max()}\")\nprint(\"---o---o---\")\n# Tanımlı istatistiksel değerler\nprint(s.describe())\n\nMedyan: 2572695.5\nOrtalama: 3667653.25\nStandart Sapma: 3399048.5005155364\nMin: 909976\nMax: 8615246\n---o---o---\ncount    4.000000e+00\nmean     3.667653e+06\nstd      3.399049e+06\nmin      9.099760e+05\n25%      1.932473e+06\n50%      2.572696e+06\n75%      4.307876e+06\nmax      8.615246e+06\nName: Nüfus, dtype: float64\n\n\nSerileri çizdimrk için plot fonksiyonu kullanılır. Plot fonksiyonunu eskiden yaptığımız gibi plt.plot() şeklinde de kullanabiliriz veya s.plot() şeklinde de kullanabiliriz. s.plot() şeklinde kullanılması, pandas paketinin içerisinde matplotlib paketinin bulunduğu anlamına gelir.\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport matplotlib as mpl\nmpl.style.use('ggplot') # İstatistiksel grafikleri daha estektik hale getirir.\ns=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')\n# Çiz\n# # 1 satır 4 sütunluk bir grafik\n# fig, axes= plt.subplots(1,4)\n# # s verisini çizdir\n# s.plot(ax=axes[0], kind='line', title='Çizgi Grafiği')\n# s.plot(ax=axes[1], kind='bar', title='Çubuk Grafiği')\n# s.plot(ax=axes[2], kind='barh', title='Yatay Çubuk Grafiği')\n# s.plot(ax=axes[3], kind='pie', title='Pasta Grafiği')\ns.plot(kind='line', title='Çizgi Grafiği')\nplt.show()\nplt.close()\ns.plot(kind='bar', title='Çubuk Grafiği')\nplt.show()\nplt.close()\ns.plot(kind='barh', title='Yatay Çubuk Grafiği')\nplt.show()\nplt.close()\ns.plot(kind='pie', title='Pasta Grafiği')\nplt.show()\nplt.close()",
-    "crumbs": [
-      "**Konular**",
-      "Veri Analizi",
-      "pandas - Giris"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#alıştırma-1",
-    "href": "icerik/konular/veri-analizi/pandas-giris.html#alıştırma-1",
-    "title": "pandas - Giris",
-    "section": "Alıştırma 1",
-    "text": "Alıştırma 1\n\nAşağıdaki verileri içeren bir pandas serisi oluşturun.\n\n\n\n\nİsim\nYaş\n\n\n\n\nAli\n25\n\n\nAyşe\n30\n\n\nMehmet\n40\n\n\nFatma\n35\n\n\nHasan\n20\n\n\nHüseyin\n50\n\n\nZeynep\n45\n\n\nMerve\n30\n\n\nÖzlem\n35\n\n\n\n\nBu serinin ismini “Yaşlar” olarak ayarlayın.\nBu serideki Fatma’nın yaşını ekrana yazdırın.\nBu serideki Fatma’nın, Hasan’ın ve Zeynep’in yaşlarını ekrana yazdırın.\nBu serideki Fatma’nın yaşını 18 yapın.\nBu seri’deki en yaşlı kişinin yaşını ekrana yazdırın.\nBu seri’deki en genç kişinin yaşını ekrana yazdırın.\nYaşların ortalamasını ekrana yazdırın.\nBu seriyi dikey bar ve pasta grafiği olarak çizdirin.\n\n\nÇözüm\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport matplotlib as mpl\nmpl.style.use('ggplot')\n# 1. Soru\ns=pd.Series([25, 30, 40, 35, 20, 50, 45, 30, 35], index=['Ali', 'Ayşe', 'Mehmet', 'Fatma', 'Hasan', 'Hüseyin', 'Zeynep', 'Merve', 'Özlem'], name='Yaşlar')\n# s=pd.Series([25, 30, 40, 35, 20, 50, 45, 30, 35])\n# s.index=['Ali', 'Ayşe', 'Mehmet', 'Fatma', 'Hasan', 'Hüseyin', 'Zeynep', 'Merve', 'Özlem']\n# 2. Soru\ns.name='Yaşlar'\n# 3. Soru\nprint(f\"Fatma'nın yaşı: {s['Fatma']}\")\n# print(f\"Fatma'nın yaşı: {s.Fatma}\")\n# 4. Soru\nprint(f\"Fatma, Hasan ve Zeynep'in yaşları: \\n{s[['Fatma', 'Hasan', 'Zeynep']]}\")\n# 5. Soru\ns['Fatma']=18\n# s.Fatma=18\n# 6. Soru\nprint(f\"En yaşlı kişi: {s.max()}\")\n# 7. Soru\nprint(f\"En genç kişi: {s.min()}\")\n# 8. Soru\nprint(f\"Ortalama: {s.mean()}\")\n# 9. Soru\ns.plot(kind='bar', title='Yaşlar')\nplt.show()\nplt.close()\ns.plot(kind='pie', title='Yaşlar')\nplt.show()\nplt.close()\n\nFatma'nın yaşı: 35\nFatma, Hasan ve Zeynep'in yaşları: \nFatma     35\nHasan     20\nZeynep    45\nName: Yaşlar, dtype: int64\nEn yaşlı kişi: 50\nEn genç kişi: 18\nOrtalama: 32.55555555555556",
-    "crumbs": [
-      "**Konular**",
-      "Veri Analizi",
-      "pandas - Giris"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#veri-çerçevesi-dataframe",
-    "href": "icerik/konular/veri-analizi/pandas-giris.html#veri-çerçevesi-dataframe",
-    "title": "pandas - Giris",
-    "section": "Veri Çerçevesi (DataFrame)",
-    "text": "Veri Çerçevesi (DataFrame)\nSerileri tek boyutlu diziler olarak düşünebiliriz. Yukarıda verdiğimiz örnekte, s serisi sadece şehirlerin nüfus bilgisini içeriyordu. pandas paketinde verileri iki boyutlu bir yapıda tutan veri çerçeveleri (data frame) vardır.Veri çerçevelerini aşağıdaki gibi oluşturabiliriz.\n\nimport pandas as pd\n# Data Frame\ndf= pd.DataFrame([\\\n      [909976, \"İsveç\"]\\\n    , [8615246, \"Birleşik Krallık\"]\\\n    , [2872086, \"İtalya\"]\\\n    , [2273305, \"Fransa\"]]\n        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])\nprint(df)\n\n             Nüfus              Ülke\nStockholm   909976             İsveç\nLondra     8615246  Birleşik Krallık\nRoma       2872086            İtalya\nParis      2273305            Fransa\n\n\nSerideki nüfus bilgisine ek olarak ülke verisini de kaydettik. Yatayda (satır) eklenen veri etiket, index bazında ilerlerken düşeyde (sütun) eklenen veri sütun bazında ilerlemektedir. Sütunlar columns- olarak isimlendirilmektedir. Eğer herhangi bir adlandırma yapılmazsa, tıpkı etiketlerde olduğu gibi otomatik olarak sıfırdan başlayan sıralı sayılar atanır.\nSütunlara erişmek için aşağıdaki gibi bir kod yazılır.\n\nimport pandas as pd\n# Data Frame\ndf= pd.DataFrame([\\\n      [909976, \"İsveç\"]\\\n    , [8615246, \"Birleşik Krallık\"]\\\n    , [2872086, \"İtalya\"]\\\n    , [2273305, \"Fransa\"]]\n        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])\nprint(df.columns)\n# Sütunlardaki sadece nüfus elemanına erişmek için\nprint(df.columns[0])\n\nIndex(['Nüfus', 'Ülke'], dtype='object')\nNüfus\n\n\nDataframe’leri python sözlük (dictionary) şeklinde de tanımlayabiliriz.\n\nimport pandas as pd\n# Alternatif Tanımlama\ndf2= pd.DataFrame({\n    \"Nüfus\": [909976, 8615246, 2872086, 2273305],\n    \"Ülke\": [\"İsveç\", \"Birleşik Krallık\", \"İtalya\", \"Fransa\"]},\n    index=['Stockholm', 'Londra', 'Roma', 'Paris'])\nprint(df2)\n\n             Nüfus              Ülke\nStockholm   909976             İsveç\nLondra     8615246  Birleşik Krallık\nRoma       2872086            İtalya\nParis      2273305            Fransa",
-    "crumbs": [
-      "**Konular**",
-      "Veri Analizi",
-      "pandas - Giris"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#veriye-erişim",
-    "href": "icerik/konular/veri-analizi/pandas-giris.html#veriye-erişim",
-    "title": "pandas - Giris",
-    "section": "Veriye Erişim",
-    "text": "Veriye Erişim\nSerilerde olduğu gibi dataframe’lerde de verilere erişmek gerekecektir. Bunun için çeşitli yöntemler vardır.\n\n\n\n\n\n\nDikkat\n\n\n\nDataFrame’lerde veriye ulaşmak için kullanılan köşeli parantez yöntemi sadece sütunlar için geçerlidir.\n\n\n\n\n\n\n\n\nUyarı\n\n\n\nTürkçe karakter kullanarak tanımlanan sütunlarda nokta kullanarak erişim sağlayamayabilirsiniz. Bunun için köşeli parantez ve tırnak kullanmanız gerekir.\n\n\n\nimport pandas as pd\n# Data Frame\ndf= pd.DataFrame([\\\n      [909976, \"İsveç\"]\\\n    , [8615246, \"Birleşik Krallık\"]\\\n    , [2872086, \"İtalya\"]\\\n    , [2273305, \"Fransa\"]]\n        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])\n# Nüfus sütununa erişim\nprint(df[\"Nüfus\"])\nprint(\"----------------\")\n#! Türkçe karakter kullandığımızda hata vermedi !?\nprint(df.Nüfus)\nprint(\"----------------\")\n#print(df[\"Roma\"]) #! Hata verir\n\nStockholm     909976\nLondra       8615246\nRoma         2872086\nParis        2273305\nName: Nüfus, dtype: int64\n----------------\nStockholm     909976\nLondra       8615246\nRoma         2872086\nParis        2273305\nName: Nüfus, dtype: int64\n----------------\n\n\n\n\n\n\n\n\nUyarı\n\n\n\nSerilerde [\"Satır\"] şeklinde erişim yaparken dataframe’lerde [\"Sütun\"] şeklinde erişim yapılır.\n\n\n\nimport pandas as pd\n# Seri\ns=pd.Series([909976, 8615246, 2872086, 2273305], index=['Stockholm', 'Londra', 'Roma', 'Paris'], name='Nüfus')\n# Data Frame\ndf= pd.DataFrame([\\\n      [909976, \"İsveç\"]\\\n    , [8615246, \"Birleşik Krallık\"]\\\n    , [2872086, \"İtalya\"]\\\n    , [2273305, \"Fransa\"]]\n        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])\n# Seride \"Londra\" etiketine sahip değer\nprint(f\"s['Londra'] =&gt; {s['Londra']}\")\nprint(\"---o---o---o---\")\n# Dataframe'de \"Nüfus\" sütununa sahip sütun\nprint(f\"df['Nüfus'] =&gt; \\n{df['Nüfus']}\")\n\ns['Londra'] =&gt; 8615246\n---o---o---o---\ndf['Nüfus'] =&gt; \nStockholm     909976\nLondra       8615246\nRoma         2872086\nParis        2273305\nName: Nüfus, dtype: int64\n\n\nSütunlara köşeli parantez veya nokta kullanarak erişebildik. Satırlara dar .loc[] yöntemi ile erişebiliriz. loc yöntemi ile erişmek istediğimizde belirlediğimiz satır(lar)daki tüm sütun değerlerini alırız.\nEğer belirlediğimiz bir satırın tüm sütun değerlerini almak istemiyorsak, sütunları da belirtmemiz gerekir. Bunun için loc[Satır(lar), Sütun(lar)] şeklinde bir kullanım yaparız.\n\nimport pandas as pd\n# Data Frame\ndf= pd.DataFrame([\\\n      [909976, \"İsveç\"]\\\n    , [8615246, \"Birleşik Krallık\"]\\\n    , [2872086, \"İtalya\"]\\\n    , [2273305, \"Fransa\"]]\n        , index=['Stockholm', 'Londra', 'Roma', 'Paris'], columns=['Nüfus', 'Ülke'])\n# Data Frame Yazdır\nprint(f\"df =&gt; \\n{df}\")\nprint(\"---o---o---o---\")\nprint(f\"df.loc['Roma'] =&gt; \\n{df.loc['Roma']}\")\nprint(\"---o---o---o---\")\nprint(f\"df.loc[['Roma', 'Paris']] =&gt; \\n{df.loc[['Roma', 'Paris']]}\")\nprint(\"---o---o---o---\")\nprint(f\"df.loc[['Roma', 'Paris'], 'Nüfus'] =&gt; \\n{df.loc[['Roma', 'Paris'], 'Nüfus']}\")\n\ndf =&gt; \n             Nüfus              Ülke\nStockholm   909976             İsveç\nLondra     8615246  Birleşik Krallık\nRoma       2872086            İtalya\nParis      2273305            Fransa\n---o---o---o---\ndf.loc['Roma'] =&gt; \nNüfus    2872086\nÜlke      İtalya\nName: Roma, dtype: object\n---o---o---o---\ndf.loc[['Roma', 'Paris']] =&gt; \n         Nüfus    Ülke\nRoma   2872086  İtalya\nParis  2273305  Fransa\n---o---o---o---\ndf.loc[['Roma', 'Paris'], 'Nüfus'] =&gt; \nRoma     2872086\nParis    2273305\nName: Nüfus, dtype: int64",
-    "crumbs": [
-      "**Konular**",
-      "Veri Analizi",
-      "pandas - Giris"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#alıştırma-2",
-    "href": "icerik/konular/veri-analizi/pandas-giris.html#alıştırma-2",
-    "title": "pandas - Giris",
-    "section": "Alıştırma 2",
-    "text": "Alıştırma 2\n\nAşağıdaki verileri içeren bir pandas dataframe (veri çerçevesi) oluşturun.\n\n\n\n\nİsim\nYaş\nMeslek\nMaaş\nCinsiyet\n\n\n\n\nAli\n25\nÖğrenci\n1000\nErkek\n\n\nAyşe\n30\nÖğretmen\n5000\nKadın\n\n\nMehmet\n40\nMühendis\n8000\nErkek\n\n\nFatma\n35\nDoktor\n10000\nKadın\n\n\nHasan\n20\nÖğrenci\n1000\nErkek\n\n\nHüseyin\n50\nMühendis\n8000\nErkek\n\n\nZeynep\n45\nDoktor\n10000\nKadın\n\n\nMerve\n30\nÖğretmen\n5000\nKadın\n\n\n\n\nBu veri çerçevesinin ismini “Personel” olarak ayarlayın.\nBu veri çerçevesindeki “Meslek” sütununu ekrana yazdırın.\nBu veri çerçevesindeki “Meslek” ve “Maaş” sütunlarını ekrana yazdırın.\nBu veri çerçevesindeki “Meslek” ve “Maaş” sütunlarını “Meslekler” ve “Maaşlar” olarak ayarlayın.\nBu veri çerçevesindeki “Ali”’nin tüm bilgilerini ekrana yazdırın.\nBu veri çerçevesindeki “Ali”, “Ayşe” ve “Mehmet”’in tüm bilgilerini ekrana yazdırın.\nBu veri çerçevesindeki “Ali”’nin “Meslek” ve “Maaş” bilgilerini ekrana yazdırın.\nBu veri çerçevesindeki “Ali”, “Ayşe” ve “Mehmet”’in “Yaş” ve “Cinsiyet” bilgilerini ekrana yazdırın.\n\n\nÇözüm\n\nimport pandas as pd\n# 1. Soru\ndf= pd.DataFrame({\n    \"Yaş\": [25, 30, 40, 35, 20, 50, 45, 30],\n    \"Meslek\": [\"Öğrenci\", \"Öğretmen\", \"Mühendis\", \"Doktor\", \"Öğrenci\", \"Mühendis\", \"Doktor\", \"Öğretmen\"],\n    \"Maaş\": [1000, 5000, 8000, 10000, 1000, 8000, 10000, 5000],\n    \"Cinsiyet\": [\"Erkek\", \"Kadın\", \"Erkek\", \"Kadın\", \"Erkek\", \"Erkek\", \"Kadın\", \"Kadın\"]\n    },\n    index=['Ali', 'Ayşe', 'Mehmet', 'Fatma', 'Hasan', 'Hüseyin', 'Zeynep', 'Merve'])\n# 2. Soru\ndf.name='Personel'\nprint(f\"df.name =&gt; {df.name}\")\nprint(\"---o---o---o---\")\n# 3. Soru\nprint(f\"df['Meslek'] =&gt; \\n{df['Meslek']}\")\nprint(\"---o---o---o---\")\n# 4. Soru\nprint(f\"df[['Meslek', 'Maaş']] =&gt; \\n{df[['Meslek', 'Maaş']]}\")\nprint(\"---o---o---o---\")\n# 5. Soru\ndf=df.rename(columns= {'Meslek' : 'Meslekler'})\ndf=df.rename(columns= {'Maaş' : 'Maaşlar'})\nprint(f\"df.columns =&gt; {df.columns}\")\nprint(\"---o---o---o---\")\n# 6. Soru\nprint(f\"df.loc['Ali'] =&gt; \\n{df.loc['Ali']}\")\nprint(\"---o---o---o---\")\n# 7. Soru\nprint(f\"df.loc[['Ali', 'Ayşe', 'Mehmet']] =&gt; \\n{df.loc[['Ali', 'Ayşe', 'Mehmet']]}\")\nprint(\"---o---o---o---\")\n# 8. Soru\nprint(f\"df.loc['Ali', ['Meslekler', 'Maaşlar']] =&gt; \\n{df.loc['Ali', ['Meslekler', 'Maaşlar']]}\")\nprint(\"---o---o---o---\")\n# 9. Soru\nprint(f\"df.loc[['Ali', 'Ayşe', 'Mehmet'], ['Yaş', 'Cinsiyet']] =&gt; \\n{df.loc[['Ali', 'Ayşe', 'Mehmet'], ['Yaş', 'Cinsiyet']]}\")\nprint(\"---o---o---o---\")\n\ndf.name =&gt; Personel\n---o---o---o---\ndf['Meslek'] =&gt; \nAli         Öğrenci\nAyşe       Öğretmen\nMehmet     Mühendis\nFatma        Doktor\nHasan       Öğrenci\nHüseyin    Mühendis\nZeynep       Doktor\nMerve      Öğretmen\nName: Meslek, dtype: object\n---o---o---o---\ndf[['Meslek', 'Maaş']] =&gt; \n           Meslek   Maaş\nAli       Öğrenci   1000\nAyşe     Öğretmen   5000\nMehmet   Mühendis   8000\nFatma      Doktor  10000\nHasan     Öğrenci   1000\nHüseyin  Mühendis   8000\nZeynep     Doktor  10000\nMerve    Öğretmen   5000\n---o---o---o---\ndf.columns =&gt; Index(['Yaş', 'Meslekler', 'Maaşlar', 'Cinsiyet'], dtype='object')\n---o---o---o---\ndf.loc['Ali'] =&gt; \nYaş               25\nMeslekler    Öğrenci\nMaaşlar         1000\nCinsiyet       Erkek\nName: Ali, dtype: object\n---o---o---o---\ndf.loc[['Ali', 'Ayşe', 'Mehmet']] =&gt; \n        Yaş Meslekler  Maaşlar Cinsiyet\nAli      25   Öğrenci     1000    Erkek\nAyşe     30  Öğretmen     5000    Kadın\nMehmet   40  Mühendis     8000    Erkek\n---o---o---o---\ndf.loc['Ali', ['Meslekler', 'Maaşlar']] =&gt; \nMeslekler    Öğrenci\nMaaşlar         1000\nName: Ali, dtype: object\n---o---o---o---\ndf.loc[['Ali', 'Ayşe', 'Mehmet'], ['Yaş', 'Cinsiyet']] =&gt; \n        Yaş Cinsiyet\nAli      25    Erkek\nAyşe     30    Kadın\nMehmet   40    Erkek\n---o---o---o---",
-    "crumbs": [
-      "**Konular**",
-      "Veri Analizi",
-      "pandas - Giris"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#problemler",
-    "href": "icerik/konular/veri-analizi/pandas-giris.html#problemler",
-    "title": "pandas - Giris",
-    "section": "Problemler",
-    "text": "Problemler\n\nProblem 1\n\nGithub reposunda bulunan veri-analizi-european_cities.csv dosyasınına bu linkten erişin. Bu dosyayı okuyarak bir pandas dataframe (veri çerçevesi) oluşturun. Bu datayı okumak için pd.read_csv('european_cities.csv') fonksiyonunu kullanabilirsiniz.\n [1] referansındaki european_cities.csv dosyasını okuyarak farklı isimde bir pandas dataframe (veri çerçevesi) oluşturun.\n.info() fonksiyonunu kullanarak içeriği hakkında bilgi edinin.",
-    "crumbs": [
-      "**Konular**",
-      "Veri Analizi",
-      "pandas - Giris"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/veri-analizi/pandas-giris.html#kaynaklar",
-    "href": "icerik/konular/veri-analizi/pandas-giris.html#kaynaklar",
-    "title": "pandas - Giris",
-    "section": "Kaynaklar",
-    "text": "Kaynaklar\n\nNumerical Python: Scientific Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019, syf 406\nVS Code ile csv dosyası görüntüleme: Excel Viewer",
-    "crumbs": [
-      "**Konular**",
-      "Veri Analizi",
-      "pandas - Giris"
-    ]
-  },
-  {
-    "objectID": "icerik/bilYonMod.html",
-    "href": "icerik/bilYonMod.html",
-    "title": "Python Modülü",
-    "section": "",
-    "text": "Bilgisayarlı yöntemler notlarında kullanılan fonksiyonlardan oluşan modül bu linktedir: bilYonMod.py",
-    "crumbs": [
-      "**İçerik**",
-      "Python Modülü"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Bilgisayarlı Yöntemler",
-    "section": "",
-    "text": "Bu site, çeşitli kaynaklardan derlenerek hazırlanan sayısal yöntemler veya bilgisayarlı yöntemler notlarını içerir. Bu notlar, sayısal analiz, diferansiyel denklemler, optimizasyon, istatistik ve benzeri konularda kullanılan algoritmaları ve bu algoritmaların nasıl çalıştığını anlatır.\nEğer bu notlarla ilgili herhangi bir hata veya eksiklik bulursanız, lütfen GitHub Issue sayfasına yazınız. Bu link her sayfanın sağ tarafında bulunmaktadır.\nSol taraftaki menüden konulara ulaşabilirsiniz. Ayrıca, her sayfanın altında bulunan “Next” ve “Previous” butonları ile notları sırasıyla okuyabilirsiniz.\n\n\n\n\n\n\nUyarı\n\n\n\nBuradaki notlar ve kodlar açık kaynak kodudur. Kişisel kullanım ve eğitim amaçlıdır. Ticari amaçlar için kullanılmamalıdır."
-  },
-  {
-    "objectID": "icerik/izlence.html",
-    "href": "icerik/izlence.html",
-    "title": "İzlence",
-    "section": "",
-    "text": "Bu bölümde MSGSÜ Fizik Bölümü’nde verilen derslerin izlenceleri yer almaktadır.",
-    "crumbs": [
-      "**İçerik**",
-      "İzlence"
-    ]
-  },
-  {
-    "objectID": "icerik/izlence.html#fiz366---fizikte-bilgisayarlı-yöntemler-ii",
-    "href": "icerik/izlence.html#fiz366---fizikte-bilgisayarlı-yöntemler-ii",
-    "title": "İzlence",
-    "section": "FIZ366 - Fizikte Bilgisayarlı Yöntemler II",
-    "text": "FIZ366 - Fizikte Bilgisayarlı Yöntemler II\n\n2023-2024 Bahar Dönemi\n\nÖğretim Üyesi: Taygun Bulmuş\nE-posta: taygun.bulmus@msgsu.edu.tr\nDers Gün ve Saatleri: Salı 09:00-12:00\nUygulama Gün ve Saatleri: Cuma 15:00-17:00 (MS Teams)\nNotlandımra: İki Vize (%20 + %20), Quizler ve Ödevler (%20), Final (%40)\n\nDers İçeriği:\n\nAdi Diferansiyel Denklemler - Başlangıç Değer Problemleri\nAdi Diferansiyel Denklemler - Sınır Değer Problemleri\nFourier Analizi\nPandas Kütüphanesi\nVeri İşleme ve Analizi\nTemel İstatistik ve Olasılık\n\n\n\n\n\n\n\nUyarı\n\n\n\nKonuların işleyiş sırası değişebilir. Dönem içerisinde konu eklenebilir verya çıkarılabilir.\n\n\nKaynaklar:\n\nBilgisayarlı Yöntemler Github Sitesi, https://bulmust.github.io/bilgisayarli-yontemler/\n\n\n\n\n\n\n\nNot\n\n\n\nKullanılacak kaynaklar, notların altına eklenecektir.",
-    "crumbs": [
-      "**İçerik**",
-      "İzlence"
-    ]
-  },
-  {
-    "objectID": "icerik/izlence.html#fiz365---fizikte-bilgisayarlı-yöntemler-i",
-    "href": "icerik/izlence.html#fiz365---fizikte-bilgisayarlı-yöntemler-i",
-    "title": "İzlence",
-    "section": "FIZ365 - Fizikte Bilgisayarlı Yöntemler I",
-    "text": "FIZ365 - Fizikte Bilgisayarlı Yöntemler I\n\n2022-2023 Güz Dönemi\n\nÖğretim Üyesi: Taygun Bulmuş\nE-posta: taygun.bulmus@msgsu.edu.tr\nDers Gün ve Saatleri: Cuma 13:00-16:00\nUygulama Gün ve Saatleri: Cuma 16:00-18:00\nOfis Saatleri: Cuma 10:00-12:00\nNotlandımra: İki Vize (%20 + %20), Quizler (%10), Ödevler (%10), Final (%40)\n\nDers İçeriği:\n\nDersin Tanıtımı, Python ile Programlamaya Giriş\nTemel Python Programlama - I\nTemel Python Programlama - II\nNumpy-Scipy-Matplotlib\nArasınav - I\nDoğrusal Denklem Sistemleri - I\nDoğrusal Denklem Sistemleri - II\nİnterpolasyon\nEğri Uydurma\nArasınav - II\nKök Bulma\nSayısal Türev Alma\nSayısal İntegral Alma\nAdi Diferansiyel Denklemler\n\n\n\n\n\n\n\n\nUyarı\n\n\n\nKonuların işleyiş sırası değişebilir. Dönem içerisinde konu eklenebilir verya çıkarılabilir.\n\n\nKaynaklar:\n\nNumerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013,\nIntroduction to Engineering and Scientific Computing with Python, David E. Clough, Steven C. Chapra, 1. Baskı, 2022,\nSayısal Analiz ve Mühendislik Uygulamaları, İrfan Karagöz, 5. Baskı, 2019.",
-    "crumbs": [
-      "**İçerik**",
-      "İzlence"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/veri-analizi/pandas-uygulama.html",
-    "href": "icerik/konular/veri-analizi/pandas-uygulama.html",
-    "title": "pandas - Uygulama",
-    "section": "",
-    "text": "# Seriler\ns= pd.Series()\ns.index\ns.values\ns.name\ns[\"Londra\"]\ns.Londra\ns.describe()\ns.max()\ns.min()\ns.std()\ns.mean()\ns.median()\ns.plot(kind= 'line')\ns.plot(kind= 'bar')\ns.plot(kind= 'barh')\ns.plot(kind= 'pie')\n# ----------------\ndf= pd.DataFrame()\ndf.columns\ndf[\"Nüfus\"] #! Sütunun İsmi\ndf.Nüfus #! Türkçe karakter kullanma, Sütunun ismi\ndf.loc[\"Londra\"] # Satır ismi\ndf.loc[[\"Londra\", \"Roma\"]]\ndf.rename(columns= {\"Nüfus\" : \"Nüfuslar\"})\ndf.info()\n# ----------------\ndf= pd.read_csv()\ndf.head()\ndf.tail()\ndf.loc[\"Etiket İsmi\"]\ndf.iloc[0]\ndf.iloc[1, 2]\ndf.shape\ndf[\"Yeni Sütun\"]\ndf[\"Sütun İsmi\"].unique()\ndf[\"Sütun İsmi\"].value_counts()\ndf[\"Sütun İsmi\"].duplicated()\ndf.drop(\"Sütun İsmi\", axis=1)\ndf.pop(\"Sütun İsmi\")\ndf.drop(\"Etiket İsmi\", axis=0)\ndf.Population.apply(lambda x: int(x.replace(',','')))\ndf.State.str.capitalize()\ndf.index.name\ndf.sort_index()\ndf.sort_values(by=\"Sütun İsmi\", ascending=True)\ndf.set_index([\"State\", \"City\"]).sort_index(level=0)\ndf.set_index([\"State\", \"City\"]).sort_index(level=1)\ndf.sum()",
-    "crumbs": [
-      "**Konular**",
-      "Veri Analizi",
-      "pandas - Uygulama"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/veri-analizi/pandas-uygulama.html#neler-öğrendik",
-    "href": "icerik/konular/veri-analizi/pandas-uygulama.html#neler-öğrendik",
-    "title": "pandas - Uygulama",
-    "section": "",
-    "text": "# Seriler\ns= pd.Series()\ns.index\ns.values\ns.name\ns[\"Londra\"]\ns.Londra\ns.describe()\ns.max()\ns.min()\ns.std()\ns.mean()\ns.median()\ns.plot(kind= 'line')\ns.plot(kind= 'bar')\ns.plot(kind= 'barh')\ns.plot(kind= 'pie')\n# ----------------\ndf= pd.DataFrame()\ndf.columns\ndf[\"Nüfus\"] #! Sütunun İsmi\ndf.Nüfus #! Türkçe karakter kullanma, Sütunun ismi\ndf.loc[\"Londra\"] # Satır ismi\ndf.loc[[\"Londra\", \"Roma\"]]\ndf.rename(columns= {\"Nüfus\" : \"Nüfuslar\"})\ndf.info()\n# ----------------\ndf= pd.read_csv()\ndf.head()\ndf.tail()\ndf.loc[\"Etiket İsmi\"]\ndf.iloc[0]\ndf.iloc[1, 2]\ndf.shape\ndf[\"Yeni Sütun\"]\ndf[\"Sütun İsmi\"].unique()\ndf[\"Sütun İsmi\"].value_counts()\ndf[\"Sütun İsmi\"].duplicated()\ndf.drop(\"Sütun İsmi\", axis=1)\ndf.pop(\"Sütun İsmi\")\ndf.drop(\"Etiket İsmi\", axis=0)\ndf.Population.apply(lambda x: int(x.replace(',','')))\ndf.State.str.capitalize()\ndf.index.name\ndf.sort_index()\ndf.sort_values(by=\"Sütun İsmi\", ascending=True)\ndf.set_index([\"State\", \"City\"]).sort_index(level=0)\ndf.set_index([\"State\", \"City\"]).sort_index(level=1)\ndf.sum()",
-    "crumbs": [
-      "**Konular**",
-      "Veri Analizi",
-      "pandas - Uygulama"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/veri-analizi/pandas-uygulama.html#alıştırma-1",
-    "href": "icerik/konular/veri-analizi/pandas-uygulama.html#alıştırma-1",
-    "title": "pandas - Uygulama",
-    "section": "Alıştırma 1",
-    "text": "Alıştırma 1\n\nAmerika’daki Kalifornya eyaletinin elektrik tüketimini veren bu veriyi okuyun  [1]. Okuma tarihi 25.05.2023.\nİlk ve son 5 satırını yazdırın.\nTimestamp (Hour Ending) sütun ismini Tarih Bilgisi yapın.\nDemand (MWh) sütun ismini Talep (MWh) yapın.\nTalep (MWh) sütununundaki NaN olan satırlarını silin.\nYatayda Tarih Bilgisi, düşeyde Talep (MWh) olacak şekilde bir grafik çizin.\n\n\nÇözüm\n\n################################################\nimport os\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nveri_dir = os.path.join(\\\n    os.path.abspath(\\\n        os.path.join(\\\n    current_dir, os.pardir, os.pardir, os.pardir))\\\n        , 'veri')\n################################################\n\nimport numpy as np\nimport pandas as pd\nfrom scipy.fftpack import fft\nimport matplotlib.pyplot as plt\n# Oku\ndf = pd.read_csv(veri_dir+\"/veri-930-data-export.csv\",\n    delimiter=\",\")\n# İlk ve son 5 satır\nprint(df.head())\nprint(df.tail())\n# Sütun isimlerini değiştir\ndf.rename(columns={\"Timestamp (Hour Ending)\":\"Tarih Bilgisi\"},\n    inplace=True)\ndf.rename(columns={\"Demand (MWh)\":\"Talep (MWh)\"}\\\n    , inplace=True)\n# NaN satırlarını \"Talep (MWh)\" sütunundan sil\ndf.dropna(subset=[\"Talep (MWh)\"], inplace=True)\n# Çiz\nplt.plot(df[\"Tarih Bilgisi\"], df[\"Talep (MWh)\"])\nplt.xlabel(\"Tarh Bilgisi\")\nplt.ylabel(\"Kalifornya Elektrik Talebi (MWh)\")\nplt.xticks(rotation=25)\nplt.xticks(np.arange(0, len(df), step=20))\nplt.show()\nplt.close()\n\n  Region Code Timestamp (Hour Ending)  Demand (MWh)  Demand Forecast (MWh)  \\\n0        US48   5/17/2023 12 a.m. EDT      446173.0                 438971   \n1        US48    5/17/2023 1 a.m. EDT      418994.0                 412814   \n2        US48    5/17/2023 2 a.m. EDT      399252.0                 389905   \n3        US48    5/17/2023 3 a.m. EDT      381525.0                 373869   \n4        US48    5/17/2023 4 a.m. EDT      370696.0                 363882   \n\n   Net Generation (MWh)  Total Interchange (MWh)  \n0              438045.0                  -5573.0  \n1              410208.0                  -5438.0  \n2              389248.0                  -5768.0  \n3              372178.0                  -4785.0  \n4              363001.0                  -4675.0  \n    Region Code Timestamp (Hour Ending)  Demand (MWh)  Demand Forecast (MWh)  \\\n188        US48    5/24/2023 8 p.m. EDT           NaN                 504300   \n189        US48    5/24/2023 9 p.m. EDT           NaN                 494357   \n190        US48   5/24/2023 10 p.m. EDT           NaN                 479733   \n191        US48   5/24/2023 11 p.m. EDT           NaN                 457902   \n192        US48   5/25/2023 12 a.m. EDT           NaN                 431842   \n\n     Net Generation (MWh)  Total Interchange (MWh)  \n188                   NaN                      NaN  \n189                   NaN                      NaN  \n190                   NaN                      NaN  \n191                   NaN                      NaN  \n192                   NaN                      NaN  \n\n\n/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/dateutil/parser/_parser.py:1207: UnknownTimezoneWarning: tzname EDT identified but not understood.  Pass `tzinfos` argument in order to correctly return a timezone-aware datetime.  In a future version, this will raise an exception.\n  warnings.warn(\"tzname {tzname} identified but not understood.  \"",
-    "crumbs": [
-      "**Konular**",
-      "Veri Analizi",
-      "pandas - Uygulama"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/veri-analizi/pandas-uygulama.html#alıştırma-2",
-    "href": "icerik/konular/veri-analizi/pandas-uygulama.html#alıştırma-2",
-    "title": "pandas - Uygulama",
-    "section": "Alıştırma 2",
-    "text": "Alıştırma 2\nBu linkte, ülkelerin mutluluk skorları ve bunlar ile ilintili bilgilerin olduğu csv dosyaları bulunmaktadır. Her yıl için, 2015, 2016, 2017, 2018, 2019, indirin ve aşağıdaki soruları cevaplayın.\n\n5 veri setindeki ortak sütunlar nelerdir?\nBeş yıllık veri setini tek bir veri setinde birleştirin.\nTürkiye’nin mutluluk skorunu yıllara göre nasıl değiştiğini grafik gösterin.\nTürkiye’nin gayri safi milli hasılası (GSMH, sütunlarda GDP per capita isminde) yıllara göre nasıl değiştiğini grafik üzerinde gösterin.\n\n\nÇözüm\n\n################################################\nimport os\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nveri_dir = os.path.join(\\\n    os.path.abspath(\\\n        os.path.join(\\\n    current_dir, os.pardir, os.pardir, os.pardir))\\\n        , 'veri')\n################################################\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n# 2015\nhappiness2015 = pd.read_csv(veri_dir+'/veri_mutluluk_2015.csv')\nhappiness2015['Year'] = 2015\nhappiness2015.rename(columns={'Happiness Score':  'Score', 'Economy (GDP per Capita)': 'GDP per capita'}, inplace=True)\n# 2016\nhappiness2016 = pd.read_csv(veri_dir+'/veri_mutluluk_2016.csv')\nhappiness2016['Year'] = 2016\nhappiness2016.rename(columns={'Happiness Score':  'Score', 'Economy (GDP per Capita)': 'GDP per capita'}, inplace=True)\n# 2017\nhappiness2017 = pd.read_csv(veri_dir+'/veri_mutluluk_2017.csv')\nhappiness2017['Year'] = 2017\nhappiness2017.rename(columns={'Happiness.Score':  'Score', 'Economy..GDP.per.Capita.': 'GDP per capita'}, inplace=True)\n# 2018\nhappiness2018 = pd.read_csv(veri_dir+'/veri_mutluluk_2018.csv')\nhappiness2018['Year'] = 2018\nhappiness2018.rename(columns={'Country or region':  'Country'}, inplace=True)\n# 2019\nhappiness2019 = pd.read_csv(veri_dir+'/veri_mutluluk_2019.csv')\nhappiness2019['Year'] = 2019\nhappiness2019.rename(columns={'Country or region':  'Country'}, inplace=True)\n# Ortak sütunlar\nhappiness = pd.concat([happiness2015, happiness2016, happiness2017, happiness2018, happiness2019], ignore_index=True)\n# Türkiye\nturkiye = happiness[happiness['Country'] == 'Turkey']\nprint(turkiye.head())\n# Çiz\nplt.plot(turkiye['Year'], turkiye['Score'], marker='.')\nplt.xlabel('Yıllar')\nplt.ylabel('Mutluluk Skoru (Happiness Score)')\nplt.title('Türkiye Mutluluk Skoru (Happiness Score) Değişimi')\nplt.show()\nplt.close()\n# Gayri Safi Milli Hasıla\n# Çiz\nplt.plot(turkiye['Year'], turkiye['GDP per capita'], marker='.')\nplt.xlabel('Yıllar')\nplt.ylabel('Gayri Safi Milli Hasıla (GDP per capita)')\nplt.title('Gayri Safi Milli Hasıla (GDP per capita) Değişimi')\nplt.show()\nplt.show()\n\n    Country                           Region  Happiness Rank  Score  \\\n75   Turkey  Middle East and Northern Africa            76.0  5.332   \n235  Turkey  Middle East and Northern Africa            78.0  5.389   \n383  Turkey                              NaN             NaN  5.500   \n543  Turkey                              NaN             NaN  5.483   \n704  Turkey                              NaN             NaN  5.373   \n\n     Standard Error  GDP per capita    Family  Health (Life Expectancy)  \\\n75          0.03864        1.060980  0.946320                   0.73172   \n235             NaN        1.164920  0.877170                   0.64718   \n383             NaN        1.198274  1.337753                       NaN   \n543             NaN        1.148000       NaN                       NaN   \n704             NaN        1.183000       NaN                       NaN   \n\n      Freedom  Trust (Government Corruption)  ...  Whisker.high  Whisker.low  \\\n75   0.228150                        0.15746  ...           NaN          NaN   \n235  0.238890                        0.12348  ...           NaN          NaN   \n383  0.300741                            NaN  ...      5.594865     5.405135   \n543       NaN                            NaN  ...           NaN          NaN   \n704       NaN                            NaN  ...           NaN          NaN   \n\n     Health..Life.Expectancy.  Trust..Government.Corruption.  \\\n75                        NaN                            NaN   \n235                       NaN                            NaN   \n383                  0.637606                       0.099672   \n543                       NaN                            NaN   \n704                       NaN                            NaN   \n\n     Dystopia.Residual  Overall rank  Social support  Healthy life expectancy  \\\n75                 NaN           NaN             NaN                      NaN   \n235                NaN           NaN             NaN                      NaN   \n383           1.879278           NaN             NaN                      NaN   \n543                NaN          74.0            1.38                    0.686   \n704                NaN          79.0            1.36                    0.808   \n\n     Freedom to make life choices  Perceptions of corruption  \n75                            NaN                        NaN  \n235                           NaN                        NaN  \n383                           NaN                        NaN  \n543                         0.324                      0.109  \n704                         0.195                      0.106  \n\n[5 rows x 26 columns]",
-    "crumbs": [
-      "**Konular**",
-      "Veri Analizi",
-      "pandas - Uygulama"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/veri-analizi/pandas-uygulama.html#problemler",
-    "href": "icerik/konular/veri-analizi/pandas-uygulama.html#problemler",
-    "title": "pandas - Uygulama",
-    "section": "Problemler",
-    "text": "Problemler\n\nProblem 1\nGithub sitesinde bulunan veri_imdb_1e5rows.tsv dosyasındaki verinin metadatasına inceleyin. Bu veri, title.akas.tsv.gz adlı dosyanın ilk \\(10^{5}\\) satırıdır. Bu veriyi pd.read_table() fonksiyonu ile okuyun.\nEğer tüm veri ile çalışmak istiyorsanız (1.8 gb) şu linkteki dosyayı indirin. Bu dosya sıkıştırılmış dosyadır. Bu dosyayı indirdikten sonra dışarı aktarın.\nBu veri hakkında aşağıdaki soruları cevaplayın.\n\nBu verinin sütunları nelerdir?\nBu verinin kaç sütunu var?\nBu verinin kaç satırı var?\nBu verinin ilk 2 satırını gösterin.\nBu verinin son 2 satırını gösterin.\nBu veri setindeki tüm biricik dilleri (language) gösterin.\nBu veri setindeki tüm biricik bölgeleri (region) gösterin.\nBu veri setindeki her bir biricik dilde kaç adet film vardır?\nBu veri setindeki her bir biricik bölgede kaç adet film vardır?\nBu veri setindeki attributes sütununu çıkarın (değişkene atayın).\nBu verideki sütunların veri tiplerini ekrana yazdırın.\nBu verinin ordering sütununu tam sayı haline getirin (değişkene atayın).\nBu verinin isOriginalTitle sütununu bool haline getirin (değişkene atayın).\nBu verinin etiketlerini titleId olacak şekilde gösterin (değişkene atayın).\nBu verinin etiketini titleId ve title olarak değiştirin (değişkene atayın).\nBu veriyi titleId sütununa göre sıralayın (değişkene atayın).\nBu verideki tüm \\N değerlerini pd.NA değerleri ile değiştirin (değişkene atamayın).\nBu verinin titleId ve title etiketlerini tekrar sütun haline getirin (değişkene atayın).\nBu verideki types sütunu içerisinde olan original verisine sahip satırları gösterin ve sonucu df2 değişkenine atayın.\nBu veride isOriginalTitle sütunu True olan satırları gösterin ve sonucu df2 ile karşılaştırın. Yani elde ettiğiniz veri ile df2 verisi aynı mı? Değilse hangi satırlar farklı?\n\n\n\nProblem 2\nTÜİK’in veri merkezinde bulunan “Hava Alanlarında Toplam Yolcu ve Yük Trafiği” verisini indirin. Bu veri dosyasında yani dosyayı bir office programında açıp herhangi bir değişiklik yapmayın!\nAşağıdaki soruları cevaplayın.\n\nBu excel dosyasını okuyun ve df değişkenine atayın. (Not: read_excel fonksiyonu ile okumak için xlrd kütüphanesini kurmanız gerekebilir. pip install xlrd komutu ile kurabilirsiniz.)\nVeri çerçevesini gösterin.\nVeri çerçevesi temizleyin. Bu temizlemeyi excel dosyasını açıp değil pandas ile yapın. Bu temizlemeyi aşağıdaki grafikleri çizebilmek için yapın:\n\nToplam Yolcu - Yıl grafiğini çizdirin. Aynı grafik üzeride iç hat yolcusu ve dış hat yolcusunun yıllara göre grafiği de olsun.\nToplam Yükün (Ton), iç hat yükünün (Ton) ve dış hat yükünün (Ton) yıllara göre grafiğini çizdirin.",
-    "crumbs": [
-      "**Konular**",
-      "Veri Analizi",
-      "pandas - Uygulama"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/adi-diferansiyel-denklemler.html",
-    "href": "icerik/konular/adi-diferansiyel-denklemler.html",
-    "title": "Adi Diferansiyel Denklemler",
-    "section": "",
-    "text": "Aşağıdaki gibi bir adet diferansiyel denklem veya denklem sistemimiz olsun.\n\\[\n\\begin{equation}\n    \\frac{d}{dx}y(x) = F(x,y)\n\\end{equation}\n\\]\n\nBu denklemi çözmek demek sağ ve sol tarafın integralini almak demektir.\nBu denklemi çözmek demek sayısal olarak \\(y(x)\\) fonksiyonunu bulmak demektir. Yani istenilen bir x değeri için \\(y(x)\\) fonksiyonunun değerini elde ederiz.\n\\(y(x)\\) ve \\(F(x,y)\\) birer vektör olabilir. Örneğin \\(\\vec{y}(x) = (y_{1}(x), y_{2}(x))\\).\nİkinci dereceden diferansiyel denklemleri çözmek için denklemi iki adet birinci dereceden diferansiyel denkleme indirgeme yapmamız gerekmektedir.\n\n\\[\n\\begin{align*}\n    \\frac{d^{2}}{dx^{2}}y(x) =& F(x,y)\\\\\n    \\frac{d}{dx}y(x) =& v(x,y) \\qquad \\text{ve} \\qquad \\frac{d}{dx}v(x) = F(x,y)\n\\end{align*}\n\\]\n\nÇözüme başlamak için fonksiyonun başlangıçtaki değerine ihtiyacınız vardır; Başlangıç Değer Problemi, BDP (IVP)\nÇözümün sınırlarında hangi değerler aldığını bilerek de fonksiyonu elde edebiliriz; Sınır Değer Problemi, SDP (BVP)\n\n\n\n\nBaşlangıç değer problemi:\n\n\\[\ny''(x)= -y, \\qquad y(0)=1, \\qquad y'(0)=0 \\text{.}\n\\]\n\nSınır değer problemi:\n\n\\[\ny''(x)= -y, \\qquad y(0)=1, \\qquad y'(\\pi)=0 \\text{.}\n\\]",
-    "crumbs": [
-      "**Konular**",
-      "Adi Diferansiyel Denklemler"
-    ]
-  },
-  {
-    "objectID": "icerik/konular/adi-diferansiyel-denklemler.html#adi-diferansiyel-denklemler",
-    "href": "icerik/konular/adi-diferansiyel-denklemler.html#adi-diferansiyel-denklemler",
-    "title": "Adi Diferansiyel Denklemler",
-    "section": "",
-    "text": "Aşağıdaki gibi bir adet diferansiyel denklem veya denklem sistemimiz olsun.\n\\[\n\\begin{equation}\n    \\frac{d}{dx}y(x) = F(x,y)\n\\end{equation}\n\\]\n\nBu denklemi çözmek demek sağ ve sol tarafın integralini almak demektir.\nBu denklemi çözmek demek sayısal olarak \\(y(x)\\) fonksiyonunu bulmak demektir. Yani istenilen bir x değeri için \\(y(x)\\) fonksiyonunun değerini elde ederiz.\n\\(y(x)\\) ve \\(F(x,y)\\) birer vektör olabilir. Örneğin \\(\\vec{y}(x) = (y_{1}(x), y_{2}(x))\\).\nİkinci dereceden diferansiyel denklemleri çözmek için denklemi iki adet birinci dereceden diferansiyel denkleme indirgeme yapmamız gerekmektedir.\n\n\\[\n\\begin{align*}\n    \\frac{d^{2}}{dx^{2}}y(x) =& F(x,y)\\\\\n    \\frac{d}{dx}y(x) =& v(x,y) \\qquad \\text{ve} \\qquad \\frac{d}{dx}v(x) = F(x,y)\n\\end{align*}\n\\]\n\nÇözüme başlamak için fonksiyonun başlangıçtaki değerine ihtiyacınız vardır; Başlangıç Değer Problemi, BDP (IVP)\nÇözümün sınırlarında hangi değerler aldığını bilerek de fonksiyonu elde edebiliriz; Sınır Değer Problemi, SDP (BVP)\n\n\n\n\nBaşlangıç değer problemi:\n\n\\[\ny''(x)= -y, \\qquad y(0)=1, \\qquad y'(0)=0 \\text{.}\n\\]\n\nSınır değer problemi:\n\n\\[\ny''(x)= -y, \\qquad y(0)=1, \\qquad y'(\\pi)=0 \\text{.}\n\\]",
-    "crumbs": [
-      "**Konular**",
-      "Adi Diferansiyel Denklemler"
+      "Veri Analizi"
     ]
   },
   {
@@ -1249,7 +1390,7 @@
     "href": "icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html#hız-testi",
     "title": "HFD - Hızlı Fourier Dönüşümü",
     "section": "Hız Testi",
-    "text": "Hız Testi\n\n################################################\n## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma\nimport os\nimport sys\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nmodule_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')\n# moduller dizinini yol olarak ekle\nsys.path.append(module_dir)\n# bilYonMod.py modülünü içe aktar\nimport bilYonMod as bym\n################################################\n\nimport numpy as np\nimport time\n# Örnekleme sayısı\norneklemOrani = 2**11\n# Zaman\norneklemAraligi = 1.0/orneklemOrani\nt = np.arange(0, 1, orneklemAraligi)\n# Toplam Örnekleme Sayısı\nN= len(t)\n# Birinci dalgayı olustur\n# Frekans\nfrek = 1.\n# Birinci dalgayı oluştur\nx = 3*np.sin(2* np.pi* frek* t)\n# İkinci dalganın frekansı\nfrek = 4\n# İkinci dalgayı oluştur\nx += np.sin(2* np.pi* frek* t)\n# Üçüncü dalganın frekansı\nfrek = 7\n# Üçüncü dalgayı oluştur\nx += 0.5* np.sin(2* np.pi* frek* t)\nprint(f\"Örnekleme Sayısı: {N}\")\n# Kesikli Fourier Dönüşümü\nstart = time.time()\nX=bym.fourier_kfd(x)\nend = time.time()\nprint(f\"Kesikli Fourier Dönüşümü: {end-start:.2f} saniye\")\n# Hızlı Fourier Dönüşümü\nstart = time.time()\nX=bym.fourier_hfd(x)\nend = time.time()\nprint(f\"Hızlı Fourier Dönüşümü  : {end-start:.2f} saniye\")\n\nÖrnekleme Sayısı: 2048\nKesikli Fourier Dönüşümü: 5.84 saniye\nHızlı Fourier Dönüşümü  : 0.02 saniye",
+    "text": "Hız Testi\n\n################################################\n## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma\nimport os\nimport sys\n# Bu dosyanın bulunduğu dizini al\ncurrent_dir = os.path.abspath('')\n# 3 üst dizine çık\nmodule_dir = os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), 'moduller')\n# moduller dizinini yol olarak ekle\nsys.path.append(module_dir)\n# bilYonMod.py modülünü içe aktar\nimport bilYonMod as bym\n################################################\n\nimport numpy as np\nimport time\n# Örnekleme sayısı\norneklemOrani = 2**11\n# Zaman\norneklemAraligi = 1.0/orneklemOrani\nt = np.arange(0, 1, orneklemAraligi)\n# Toplam Örnekleme Sayısı\nN= len(t)\n# Birinci dalgayı olustur\n# Frekans\nfrek = 1.\n# Birinci dalgayı oluştur\nx = 3*np.sin(2* np.pi* frek* t)\n# İkinci dalganın frekansı\nfrek = 4\n# İkinci dalgayı oluştur\nx += np.sin(2* np.pi* frek* t)\n# Üçüncü dalganın frekansı\nfrek = 7\n# Üçüncü dalgayı oluştur\nx += 0.5* np.sin(2* np.pi* frek* t)\nprint(f\"Örnekleme Sayısı: {N}\")\n# Kesikli Fourier Dönüşümü\nstart = time.time()\nX=bym.fourier_kfd(x)\nend = time.time()\nprint(f\"Kesikli Fourier Dönüşümü: {end-start:.2f} saniye\")\n# Hızlı Fourier Dönüşümü\nstart = time.time()\nX=bym.fourier_hfd(x)\nend = time.time()\nprint(f\"Hızlı Fourier Dönüşümü  : {end-start:.2f} saniye\")\n\nÖrnekleme Sayısı: 2048\nKesikli Fourier Dönüşümü: 5.83 saniye\nHızlı Fourier Dönüşümü  : 0.02 saniye",
     "crumbs": [
       "**Konular**",
       "Fourier Analizi",
