@@ -179,9 +179,9 @@ plt.show()
 
 ### Problem 1
 
-Ekte bulunan `veri_imdb_1e5rows.tsv` dosyasındaki [verinin metadatasına](https://www.imdb.com/interfaces/) bakın. Bu veri, `title.akas.tsv.gz` adlı dosyanın ilk $10^{5}$ satırıdır. Bu veriyi `pd.read_table()` fonksiyonu ile okuyun. 
+Github sitesinde bulunan [veri_imdb_1e5rows.tsv](../../../veri/veri_imdb_1e5rows.tsv) dosyasındaki [verinin metadatasına](https://www.imdb.com/interfaces/) inceleyin. Bu veri, `title.akas.tsv.gz` adlı dosyanın ilk $10^{5}$ satırıdır. Bu veriyi `pd.read_table()` fonksiyonu ile okuyun. 
 
-Eğer tüm veri ile çalışmak istiyorsanız (1.8 gb) [şu linkteki](https://datasets.imdbws.com/title.akas.tsv.gz) dosyayı indirin. Bu dosya sıkıştırılmış dosyadır. Bu dosyayı dışa aktarın.
+Eğer tüm veri ile çalışmak istiyorsanız (1.8 gb) [şu linkteki](https://datasets.imdbws.com/title.akas.tsv.gz) dosyayı indirin. Bu dosya sıkıştırılmış dosyadır. Bu dosyayı indirdikten sonra dışarı aktarın.
 
 Bu veri hakkında aşağıdaki soruları cevaplayın.
 
@@ -208,7 +208,7 @@ Bu veri hakkında aşağıdaki soruları cevaplayın.
 
 ### Problem 2
 
-TÜİK'in veri merkezinde bulunan "[Hava Alanlarında Toplam Yolcu ve Yük Trafiği](../../../veri/veri_HavaalanlarindaToplamYolcuVeYukTrafigi.xls)" verisini indirin. Bu veri dosyasında herhangi bir değişiklik yapmayın!
+TÜİK'in veri merkezinde bulunan "[Hava Alanlarında Toplam Yolcu ve Yük Trafiği](../../../veri/veri_HavaalanlarindaToplamYolcuVeYukTrafigi.xls)" verisini indirin. Bu veri dosyasında yani dosyayı bir office programında açıp herhangi bir değişiklik yapmayın!
 
 Aşağıdaki soruları cevaplayın.
 
