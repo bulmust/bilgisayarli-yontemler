@@ -65,8 +65,8 @@ website:
           - section: İstatistik
             href: icerik/konular/istatistik.qmd
             contents:
-              - icerik/konular/istatistik/giris.qmd
-              - icerik/konular/istatistik/istatistik-uygulama.qmd
+              - icerik/konular/istatistik/temel-kavramlar.qmd
+              - icerik/konular/istatistik/uygulama-thinkstat2.qmd
 
 format:
   html:

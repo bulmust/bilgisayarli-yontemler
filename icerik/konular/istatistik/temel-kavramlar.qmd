@@ -1,5 +1,5 @@
 ---
-title: "İstatistik - Giris"
+title: "Temel Kavramlar"
 ---
 
 ## Kullanılacak Modüller
@@ -19,6 +19,54 @@ title: "İstatistik - Giris"
 - **Standart Sapma (Standard Deviation):**  Veri setindeki değerlerin ortalama değerden ne kadar sapma gösterdiğini gösteren bir ölçüdür.
 - **Çeyrekler (Quartiles):** Veri setindeki değerlerin sıralanmasından sonra ortadaki değer orta çeyreklik, orta çeyreklik ile en küçük değerin ortasındaki değer alt çeyreklik (\%25), orta çeyreklik ile en büyük değerin ortasındaki değer üst çeyreklik (\%75) olarak tanımlanır.
 - **Minimum ve maksimum değer (Minimum and Maximum):** Veri setindeki en küçük ve en büyük değerlerdir.
+
+## Dağılmların Özeti
+
+Histogramlar, veri setlerinin dağılımlarını görselleştirmek için kullanılır. Histogram ile yapılan görsellerde, veri setlerinin merkezi eğillerini, modunu, yayılımını ve kuyruklarını görebiliriz. Ayrıca histogramlar, veri setlerindeki aykırı değerleri belirlemek için de kullanılır.
+
+- Dağılımları anlamak için aşağıdaki karakteristik özelliklere bakabiliriz:
+  - **Merkezi eğilim** (Central tendency): Dağılımın bir merkezi var mı? 
+  - **Modlar**: En sık tekrar eden değerler dağılımda nasıl gözüküyor?
+  - **Yayılım** (Spread): Dağılımın merkezden uzağa doğru nasıl yayılmış? Simetrik mi?
+  - **Kuyruklar** (Tails): Dağılımın kuyruklarında nasıl bir dağılım var?
+  - **Aykırılar** (Outliers): Dağılımın kuyruklarında "aykırı" değerler var mı? Veriyi nasıl etkiliyorlar?
+
+Ortalama değer aşağıdaki formül ile hesaplanır.
+
+$$
+\overline{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+$$
+
+### Varyans
+
+Varyansın formülü aşağıdaki gibidir.
+
+$$
+s^{2} = \frac{1}{n} \sum_{i=1}^{n} (x_i - \overline{x})^{2}
+$$
+
+- Varyansın karekökü ise **standart sapma**dır.
+- Örneklem uzayı için payda $n-1$, popülasyon için payda $n$ olmalıdır.
+
+Örneğin bir veri setinde ortalama hamilelik süresi $38.6$ olsun. Bu değerin standart sapması $2.7$ olarak elde edilsin. Bu da demek oluyor ki gebelik süresi $38.6 \mp 2.7$ şeklinde söyleyebiliriz.
+
+## Efektif Boyut
+
+Bir popülasyonda veya örneklemde, iki değişken arasındaki ilişkinin gücünü vermek için **Cohen'in d değeri** tanımlanır. Ayrıntılı bilgi için referanslara bakın.
+
+$$
+d = \frac{\overline{x}_1 - \overline{x}_2}{s_{havuz}}
+$$
+
+Burada $\overline{x}_1$ birinci grubun ortalaması, $\overline{x}_2$ ikinci grubun ortalaması ve $s_{havuz}$ ise grupların *ortak havuz standart sapmasıdır* (pooled standard deviation). $s_{havuz}$ aşağıdaki gibi tanımlanır.
+
+$$
+s_{havuz}= \sqrt{\frac{n_1s_1^2 + n_2s_2^2}{n_1 + n_2}}
+$$
+
+Burada $n1$ ve $n2$ grupların örneklem sayısı, $s1$ ve $s2$ grupların standart sapmasıdır.
+
+![Cohen'in d değeri](assets/cohen_d_degeri.png)
 
 ## Alıştırma 1
 
@@ -385,7 +433,7 @@ Uygulama 1 ile verilen betik dosyasını `np.random.choice()` fonksiyonu kullana
 
 Aşağıdaki linkte bulunan excel dosyasını indirin. 
 
-[Standart Solar Spectrumu Linki](https://www.pveducation.org/sites/default/files/PVCDROM/Appendices/AM0AM1_5.xls)
+[Standart Solar Spectrumu Linki](https://www.pveducation.org/sites/default/files/PVCDROM/Appendices/AM0AM1_5.xls). Eğer bu link çalışmazsa [github reposunda bulunan dosyayı](../../../veri/veri_AM0AM1_5.xls) da indirebilirsiniz.
 
 - Bu excel dosyasındaki verileri temizleyin.
   - Başlıkları sadece `Wavelength (nm)`, `Extraterrestrial W*m-2*nm-1`, `Global tilt  W*m-2*nm-1`, `Direct+circumsolar W*m-2*nm-1` kalsın.
@@ -404,3 +452,5 @@ Kaynak: [Solar Spectrum](https://www.pveducation.org/pvcdrom/appendices/standard
 
 1. Numerical Python: Scientific Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019, **syf 443**
 2. [https://www.mathsisfun.com/data/](https://www.mathsisfun.com/data/)
+3. [Wikipedia: Efektif Boyut, Cohen's d ](https://en.wikipedia.org/wiki/Effect_size)
+4. [Cohen D'nin tanımı ve grafik](https://www.statisticshowto.com/probability-and-statistics/statistics-definitions/cohens-d/)
