@@ -433,7 +433,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 Nisan 2024</p>
+      <p class="date">28 Nisan 2024</p>
     </div>
   </div>
   
@@ -509,7 +509,7 @@ window.Quarto = {
 </ol>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="00190db8" class="cell" data-execution_count="1">
+<div id="38c2c578" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> os</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
@@ -524,29 +524,28 @@ window.Quarto = {
 <span id="cb2-12"><a href="#cb2-12"></a></span>
 <span id="cb2-13"><a href="#cb2-13"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-14"><a href="#cb2-14"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="im">from</span> scipy.fftpack <span class="im">import</span> fft</span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="co"># Oku</span></span>
-<span id="cb2-18"><a href="#cb2-18"></a>df <span class="op">=</span> pd.read_csv(veri_dir<span class="op">+</span><span class="st">"/veri-930-data-export.csv"</span>,</span>
-<span id="cb2-19"><a href="#cb2-19"></a>    delimiter<span class="op">=</span><span class="st">","</span>)</span>
-<span id="cb2-20"><a href="#cb2-20"></a><span class="co"># İlk ve son 5 satır</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a><span class="bu">print</span>(df.head())</span>
-<span id="cb2-22"><a href="#cb2-22"></a><span class="bu">print</span>(df.tail())</span>
-<span id="cb2-23"><a href="#cb2-23"></a><span class="co"># Sütun isimlerini değiştir</span></span>
-<span id="cb2-24"><a href="#cb2-24"></a>df.rename(columns<span class="op">=</span>{<span class="st">"Timestamp (Hour Ending)"</span>:<span class="st">"Tarih Bilgisi"</span>},</span>
-<span id="cb2-25"><a href="#cb2-25"></a>    inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-26"><a href="#cb2-26"></a>df.rename(columns<span class="op">=</span>{<span class="st">"Demand (MWh)"</span>:<span class="st">"Talep (MWh)"</span>}<span class="op">\</span></span>
-<span id="cb2-27"><a href="#cb2-27"></a>    , inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-28"><a href="#cb2-28"></a><span class="co"># NaN satırlarını "Talep (MWh)" sütunundan sil</span></span>
-<span id="cb2-29"><a href="#cb2-29"></a>df.dropna(subset<span class="op">=</span>[<span class="st">"Talep (MWh)"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-30"><a href="#cb2-30"></a><span class="co"># Çiz</span></span>
-<span id="cb2-31"><a href="#cb2-31"></a>plt.plot(df[<span class="st">"Tarih Bilgisi"</span>], df[<span class="st">"Talep (MWh)"</span>])</span>
-<span id="cb2-32"><a href="#cb2-32"></a>plt.xlabel(<span class="st">"Tarh Bilgisi"</span>)</span>
-<span id="cb2-33"><a href="#cb2-33"></a>plt.ylabel(<span class="st">"Kalifornya Elektrik Talebi (MWh)"</span>)</span>
-<span id="cb2-34"><a href="#cb2-34"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">25</span>)</span>
-<span id="cb2-35"><a href="#cb2-35"></a>plt.xticks(np.arange(<span class="dv">0</span>, <span class="bu">len</span>(df), step<span class="op">=</span><span class="dv">20</span>))</span>
-<span id="cb2-36"><a href="#cb2-36"></a>plt.show()</span>
-<span id="cb2-37"><a href="#cb2-37"></a>plt.close()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="co"># Oku</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>df <span class="op">=</span> pd.read_csv(veri_dir<span class="op">+</span><span class="st">"/veri-930-data-export.csv"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18"></a>    delimiter<span class="op">=</span><span class="st">","</span>)</span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co"># İlk ve son 5 satır</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="bu">print</span>(df.tail())</span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="co"># Sütun isimlerini değiştir</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>df.rename(columns<span class="op">=</span>{<span class="st">"Timestamp (Hour Ending)"</span>:<span class="st">"Tarih Bilgisi"</span>},</span>
+<span id="cb2-24"><a href="#cb2-24"></a>    inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-25"><a href="#cb2-25"></a>df.rename(columns<span class="op">=</span>{<span class="st">"Demand (MWh)"</span>:<span class="st">"Talep (MWh)"</span>}<span class="op">\</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a>    , inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="co"># NaN satırlarını "Talep (MWh)" sütunundan sil</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a>df.dropna(subset<span class="op">=</span>[<span class="st">"Talep (MWh)"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="co"># Çiz</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a>plt.plot(df[<span class="st">"Tarih Bilgisi"</span>], df[<span class="st">"Talep (MWh)"</span>])</span>
+<span id="cb2-31"><a href="#cb2-31"></a>plt.xlabel(<span class="st">"Tarh Bilgisi"</span>)</span>
+<span id="cb2-32"><a href="#cb2-32"></a>plt.ylabel(<span class="st">"Kalifornya Elektrik Talebi (MWh)"</span>)</span>
+<span id="cb2-33"><a href="#cb2-33"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">25</span>)</span>
+<span id="cb2-34"><a href="#cb2-34"></a>plt.xticks(np.arange(<span class="dv">0</span>, <span class="bu">len</span>(df), step<span class="op">=</span><span class="dv">20</span>))</span>
+<span id="cb2-35"><a href="#cb2-35"></a>plt.show()</span>
+<span id="cb2-36"><a href="#cb2-36"></a>plt.close()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Region Code Timestamp (Hour Ending)  Demand (MWh)  Demand Forecast (MWh)  \
 0        US48   5/17/2023 12 a.m. EDT      446173.0                 438971   
@@ -593,14 +592,13 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="alıştırma-2">Alıştırma 2</h2>
 <p><a href="https://www.kaggle.com/datasets/unsdsn/world-happiness">Bu linkte</a>, ülkelerin mutluluk skorları ve bunlar ile ilintili bilgilerin olduğu <em>csv</em> dosyaları bulunmaktadır. Her yıl için, <a href="../../../veri/veri_mutluluk_2015.csv">2015</a>, <a href="../../../veri/veri_mutluluk_2016.csv">2016</a>, <a href="../../../veri/veri_mutluluk_2017.csv">2017</a>, <a href="../../../veri/veri_mutluluk_2018.csv">2018</a>, <a href="../../../veri/veri_mutluluk_2019.csv">2019</a>, indirin ve aşağıdaki soruları cevaplayın.</p>
 <ol type="1">
-<li>5 veri setindeki ortak sütunlar nelerdir?</li>
 <li>Beş yıllık veri setini tek bir veri setinde birleştirin.</li>
 <li>Türkiye’nin mutluluk skorunu yıllara göre nasıl değiştiğini grafik gösterin.</li>
 <li>Türkiye’nin gayri safi milli hasılası (GSMH, sütunlarda <code>GDP per capita</code> isminde) yıllara göre nasıl değiştiğini grafik üzerinde gösterin.</li>
 </ol>
 <section id="çözüm-1" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm-1">Çözüm</h3>
-<div id="77c6c8a9" class="cell" data-execution_count="2">
+<div id="0f800cd9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">################################################</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> os</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
@@ -653,8 +651,7 @@ window.Quarto = {
 <span id="cb5-50"><a href="#cb5-50"></a>plt.xlabel(<span class="st">'Yıllar'</span>)</span>
 <span id="cb5-51"><a href="#cb5-51"></a>plt.ylabel(<span class="st">'Gayri Safi Milli Hasıla (GDP per capita)'</span>)</span>
 <span id="cb5-52"><a href="#cb5-52"></a>plt.title(<span class="st">'Gayri Safi Milli Hasıla (GDP per capita) Değişimi'</span>)</span>
-<span id="cb5-53"><a href="#cb5-53"></a>plt.show()</span>
-<span id="cb5-54"><a href="#cb5-54"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-53"><a href="#cb5-53"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Country                           Region  Happiness Rank  Score  \
 75   Turkey  Middle East and Northern Africa            76.0  5.332   

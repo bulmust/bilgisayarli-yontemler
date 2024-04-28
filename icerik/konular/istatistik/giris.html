@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -374,7 +394,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#kullanılacak-modüller" id="toc-kullanılacak-modüller" class="nav-link active" data-scroll-target="#kullanılacak-modüller">Kullanılacak Modüller</a></li>
-  <li><a href="#istatistikteki-temel-tanımlar" id="toc-istatistikteki-temel-tanımlar" class="nav-link" data-scroll-target="#istatistikteki-temel-tanımlar">İstatistikteki Temel Tanımlar</a></li>
+  <li><a href="#istatistikteki-tanımlar" id="toc-istatistikteki-tanımlar" class="nav-link" data-scroll-target="#istatistikteki-tanımlar">İstatistikteki Tanımlar</a></li>
   <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a>
   <ul class="collapse">
   <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
@@ -385,6 +405,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#çözüm-1" id="toc-çözüm-1" class="nav-link" data-scroll-target="#çözüm-1">Çözüm</a></li>
   </ul></li>
+  <li><a href="#histogramlar" id="toc-histogramlar" class="nav-link" data-scroll-target="#histogramlar">Histogramlar</a></li>
   <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
   <ul class="collapse">
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
@@ -418,7 +439,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 Nisan 2024</p>
+      <p class="date">28 Nisan 2024</p>
     </div>
   </div>
   
@@ -434,8 +455,8 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="kullanılacak-modüller">Kullanılacak Modüller</h2>
 <p>İstatistiksel analizler için gerekli modüller: <code>scipy.stats</code>, <code>scipy.optimize</code>, <code>numpy</code>. Yardımcı modüller ise <code>matplotlib.pyplot</code>, <code>pandas</code>, <code>seaborn</code>.</p>
 </section>
-<section id="istatistikteki-temel-tanımlar" class="level2">
-<h2 class="anchored" data-anchor-id="istatistikteki-temel-tanımlar">İstatistikteki Temel Tanımlar</h2>
+<section id="istatistikteki-tanımlar" class="level2">
+<h2 class="anchored" data-anchor-id="istatistikteki-tanımlar">İstatistikteki Tanımlar</h2>
 <ul>
 <li><strong>Popülasyon (Population):</strong> Bir nesnenin tüm özelliklerini belirlemek için seçilen örneklerdir.</li>
 <li><strong>Örneklem (Sample):</strong> Bir nesnenin özelliklerini belirlemek için seçilen örneklerdir.</li>
@@ -475,7 +496,7 @@ window.Quarto = {
 </table>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="62b832d3" class="cell" data-execution_count="1">
+<div id="5d03bb80" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Veri seti</span></span>
@@ -507,36 +528,35 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<p>Yukarıdaki tanımları uygulayalım.</p>
+<p>Yukarıdaki tanımlara doğrultusunda alıştırmayı tekrar ele alalım.</p>
 <ul>
-<li>Popülasyon: 1000</li>
-<li>Örneklem: 100</li>
-<li>Örneklem Adeti: 1</li>
-<li>Belirsizlik: 900</li>
-<li>Veri: 100
+<li><strong>Popülasyon</strong>: 1000 (Tüm nüfus)</li>
+<li><strong>Örneklem</strong>: 100 (Anket yapılan kişi sayısı)</li>
+<li><strong>Örneklem</strong> Adeti: 1 (Kaç kere anket yapıldığı, 1 şirket)</li>
+<li><strong>Belirsizlik</strong>: 900 (Kime oy vereceği bilinmeyen kişi sayısı)</li>
+<li><strong>Veri</strong>: 100
 <ul>
 <li>30 A Partisi, 15 B Partisi, 40 C Partisi, 10 D Partisi, 5 Kararsız</li>
 </ul></li>
-<li>Ortalama: 20
+<li><strong>Ortalama</strong>: 20
 <ul>
 <li>30 + 15 + 40 + 10 + 5 = 100 / 5 = 20</li>
 </ul></li>
-<li>Medyan (Ortanca Değer): 15 (B Partisi)
+<li><strong>Medyan</strong> (Ortanca Değer): 15 (B Partisi)
 <ul>
 <li>40, 30, 15, 10, 5 sıralandığında ortanca değer 15</li>
 </ul></li>
-<li>Mod (Tepe Değer): En sık tekrar eden değer yok.</li>
-<li>Varyans <span class="math inline">\(\sigma^{2}\)</span>: 170.0
+<li><strong>Mod</strong> (Tepe Değer): En sık tekrar eden değer yok.</li>
+<li><strong>Varyans</strong> <span class="math inline">\(\sigma^{2}\)</span>: 170.0
 <ul>
 <li><span class="math inline">\((|30-20|^{2} + |15-20|^{2} + |40-20|^{2} + |10-20|^{2} + |5-20|^{2})/5 = 170.0\)</span><br>
 </li>
 </ul></li>
-<li>Standart Sapma: 13.0
+<li><strong>Standart Sapma</strong>: 13.0
 <ul>
-<li><span class="math inline">\(\sqrt{170.0}\)</span></li>
 <li><span class="math inline">\(\sqrt{(|30-20|^{2} + |15-20|^{2} + |40-20|^{2} + |10-20|^{2} + |5-20|^{2})/5} = 13.0\)</span></li>
 </ul></li>
-<li>Çeyrekler: 10, 15, 30
+<li><strong>Çeyrekler</strong>: 10, 15, 30
 <ul>
 <li>40, 30, 15, 10, 5 sıralandığında
 <ul>
@@ -545,36 +565,58 @@ dtype: float64</code></pre>
 <li>Üst Çeyreklik: 30 (%75)</li>
 </ul></li>
 </ul></li>
-<li>Minimum ve Maksimum değer: 5 ve 40</li>
+<li><strong>Minimum ve Maksimum değer</strong>: 5 ve 40</li>
 </ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Uyarı
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pandas’ın verdiği standart sapma ile tanımdan elde ettiğimiz standart sapma değerleri farklıdır. Bunun sebebi <code>pandas</code>’ın yansız (unbiased) yaklaşımı kullanmasıdır. Daha ayrıntılı bilgi için <span class="citation" data-cites="web2024Apr-2">&nbsp;[<a href="#ref-web2024Apr-2" role="doc-biblioref">1</a>]</span> numaralı kaynağa bakınız.</p>
+</div>
+</div>
 <p>Eğer veriler ortalama değerden farkları az olursa standart sapma ve varyanas değerleri küçük olur.</p>
-<div id="31189db1" class="cell" data-execution_count="2">
+<div id="cf327dcf" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co"># Veri: 21,22,20,18,19</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="bu">print</span>(<span class="ss">f"Varyans (Veri-Ortalamaya-Yakın): </span><span class="sc">{</span>(<span class="dv">1</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">2</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">1</span><span class="op">**</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">5</span><span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="bu">print</span>(<span class="ss">f"Standart Sapma (Veri-Ortalamaya-Yakın): </span><span class="sc">{</span>np<span class="sc">.</span>sqrt((<span class="dv">1</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">2</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">1</span><span class="op">**</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># Veri: 30,15,40,10,5  </span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#print(f"Varyans: {(10**2 + 5**2 +20**2 +10**2+ 15**2)/5}")</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#print(f"Standart Sapma: {np.sqrt((10**2 + 5**2 +20**2 +10**2+ 15**2)/5)}")</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="bu">print</span>(<span class="st">"Veri: 21,22,20,18,19"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="bu">print</span>(<span class="ss">f"Varyans (Veri-Ortalamaya-Yakın): </span><span class="sc">{</span>(<span class="dv">1</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">2</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">1</span><span class="op">**</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">5</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="bu">print</span>(<span class="ss">f"Standart Sapma (Veri-Ortalamaya-Yakın): </span><span class="sc">{</span>np<span class="sc">.</span>sqrt((<span class="dv">1</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">2</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">1</span><span class="op">**</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co"># Veri: 30,15,40,10,5  </span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="bu">print</span>(<span class="st">"Veri: 30,15,40,10,5"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="bu">print</span>(<span class="ss">f"Varyans: </span><span class="sc">{</span>(<span class="dv">10</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">5</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">20</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">10</span><span class="op">**</span><span class="dv">2</span><span class="op">+</span> <span class="dv">15</span><span class="op">**</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">5</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="bu">print</span>(<span class="ss">f"Standart Sapma: </span><span class="sc">{</span>np<span class="sc">.</span>sqrt((<span class="dv">10</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">5</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">20</span><span class="op">**</span><span class="dv">2</span> <span class="op">+</span><span class="dv">10</span><span class="op">**</span><span class="dv">2</span><span class="op">+</span> <span class="dv">15</span><span class="op">**</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Varyans (Veri-Ortalamaya-Yakın): 2.0
-Standart Sapma (Veri-Ortalamaya-Yakın): 1.4142135623730951</code></pre>
+<pre><code>Veri: 21,22,20,18,19
+Varyans (Veri-Ortalamaya-Yakın): 2.0
+Standart Sapma (Veri-Ortalamaya-Yakın): 1.4142135623730951
+--------------------
+Veri: 30,15,40,10,5
+Varyans: 170.0
+Standart Sapma: 13.038404810405298</code></pre>
 </div>
 </div>
 <p><code>pandas</code> içerisinde <code>describe()</code> fonksiyonu ile belirlenen değerleri <code>numpy</code> paketi ile de belirleyebiliriz.</p>
-<div id="40e98815" class="cell" data-execution_count="3">
+<div id="e0f778a1" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2"></a>veri<span class="op">=</span> np.array([<span class="fl">30.</span>, <span class="fl">15.</span>, <span class="fl">40.</span>, <span class="fl">10.</span>, <span class="fl">5.</span>])</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="bu">print</span>(<span class="ss">f"Ortalama: </span><span class="sc">{</span>veri<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="bu">print</span>(<span class="ss">f"Varyans: </span><span class="sc">{</span>veri<span class="sc">.</span>var()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="bu">print</span>(<span class="ss">f"Standart Sapma: </span><span class="sc">{</span>veri<span class="sc">.</span>std()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="bu">print</span>(<span class="ss">f"Medyan: </span><span class="sc">{</span>np<span class="sc">.</span>median(veri)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="bu">print</span>(<span class="ss">f"Minimum ve Maksimum: </span><span class="sc">{</span>veri<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> ve </span><span class="sc">{</span>veri<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="bu">print</span>(<span class="ss">f"Çeyrekler: </span><span class="sc">{</span>np<span class="sc">.</span>percentile(veri, [<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>])<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="bu">print</span>(<span class="st">"Veri: 30,15,40,10,5"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="bu">print</span>(<span class="ss">f"Ortalama: </span><span class="sc">{</span>veri<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="bu">print</span>(<span class="ss">f"Varyans: </span><span class="sc">{</span>veri<span class="sc">.</span>var()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="bu">print</span>(<span class="ss">f"Standart Sapma: </span><span class="sc">{</span>veri<span class="sc">.</span>std()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="bu">print</span>(<span class="ss">f"Medyan: </span><span class="sc">{</span>np<span class="sc">.</span>median(veri)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="bu">print</span>(<span class="ss">f"Minimum ve Maksimum: </span><span class="sc">{</span>veri<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> ve </span><span class="sc">{</span>veri<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="bu">print</span>(<span class="ss">f"Çeyrekler: </span><span class="sc">{</span>np<span class="sc">.</span>percentile(veri, [<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>])<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Ortalama: 20.0
+<pre><code>Veri: 30,15,40,10,5
+Ortalama: 20.0
 Varyans: 170.0
 Standart Sapma: 13.038404810405298
 Medyan: 15.0
@@ -582,14 +624,18 @@ Minimum ve Maksimum: 5.0 ve 40.0
 Çeyrekler: [10. 15. 30.]</code></pre>
 </div>
 </div>
-<p>Burada <code>pandas</code> ile <code>numpy</code> modüllerinin standart sapma (varyans) değerleri aynı değil. Bunun sebebi istatistikte “yanlı/yansız (biased/unbiased)” olarak bilinen iki farklı yaklaşım vardır. Bu iki yaklaşımın farklılıkları için aşağıdaki linkleri inceleyebilirsiniz.</p>
+<p>Burada <code>pandas</code> ile <code>numpy</code> modüllerinin standart sapma (varyans) değerleri aynı değil. Bunun sebebi istatistikte “yanlı/yansız (biased/unbiased)” olarak bilinen iki farklı yaklaşım olmasıdır. Bu iki yaklaşımın farklılıkları için aşağıdaki linkleri inceleyebilirsiniz.</p>
 <ul>
 <li><a href="https://stackoverflow.com/questions/2480650/">what-is-the-difference-between-bias-and-variance</a></li>
 <li><a href="assets/nedenOrnekleminVaryansiFarkli.pdf">orneklemin-standart-sapmasinin-hesaplanmasi</a></li>
 <li><a href="https://tr.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/more-on-standard-deviation/v/review-and-intuition-why-we-divide-by-n-1-for-the-unbiased-sample-variance">Neden standart sapma hesaplanırken n-1 yapılır?</a></li>
 </ul>
 <p><code>numpy</code> yanlı yaklaşımı (<span class="math inline">\(n\)</span>’e bölme) kullanırken <code>pandas</code> yansız yaklaşımı (<span class="math inline">\(n-1\)</span>’e bölme) kullanmaktadır.</p>
-<p><em>TL;DR</em> - Popülasyon üzerinden hesap yapmak istiyorsanız yanlı yaklaşımı, <code>df.std(ddof=0)</code> veya <code>np.std()</code> kullanın. - Örneklem üzerinden hesap yapmak istiyorsanız yansız yaklaşımı <code>df.std()</code> veya <code>np.std(ddof=1)</code> kullanın.</p>
+<p><em>TL;DR</em></p>
+<ul>
+<li><strong>Popülasyon üzerinden hesap yapmak istiyorsanız yanlı yaklaşımı</strong>, <code>df.std(ddof=0)</code> veya <code>np.std()</code> kullanın.</li>
+<li><strong>Örneklem üzerinden hesap yapmak istiyorsanız yansız yaklaşımı</strong> <code>df.std()</code> veya <code>np.std(ddof=1)</code> kullanın.</li>
+</ul>
 </section>
 </section>
 <section id="rastgele-sayılar" class="level2">
@@ -600,19 +646,19 @@ Minimum ve Maksimum: 5.0 ve 40.0
 <li><code>np.random.randn()</code>: <span class="math inline">\(N(0,1)\)</span> arasında <span style="color:red">standart normal dağılımlı </span> olarak (standard normal distribution) rastgele sayı üretir.</li>
 <li><code>np.random.randint(a,b)</code>: <span class="math inline">\([a,b)\)</span> arasında <span style="color:red">düzgün olarak </span> (uniformly) rastgele sayı üretir.</li>
 </ul>
-<div id="4f4f17ee" class="cell" data-execution_count="4">
+<div id="3d60bc4b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="bu">print</span>(<span class="ss">f"5 Boyutlu düzgün dağılımlı rastgele sayılar: </span><span class="sc">{</span>np<span class="sc">.</span>random<span class="sc">.</span>rand(<span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="bu">print</span>(<span class="ss">f"5 Boyutlu normal dağılımlı rastgele sayılar: </span><span class="sc">{</span>np<span class="sc">.</span>random<span class="sc">.</span>randn(<span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb7-4"><a href="#cb7-4"></a><span class="bu">print</span>(<span class="ss">f"5 boyutlu 0 ile 10 arasında rastgele tam sayılar: </span><span class="sc">{</span>np<span class="sc">.</span>random<span class="sc">.</span>randint(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>5 Boyutlu düzgün dağılımlı rastgele sayılar: [0.82087207 0.34266741 0.10990511 0.2315717  0.03972704]
-5 Boyutlu normal dağılımlı rastgele sayılar: [ 0.59914335  0.73342352  0.61441675 -1.0207175   1.10799039]
-5 boyutlu 0 ile 10 arasında rastgele tam sayılar: [1 5 4 1 7]</code></pre>
+<pre><code>5 Boyutlu düzgün dağılımlı rastgele sayılar: [0.10719109 0.07076554 0.81542756 0.08553246 0.7469122 ]
+5 Boyutlu normal dağılımlı rastgele sayılar: [-0.55729336 -0.12041564  1.15420037  0.57344669  2.11790239]
+5 boyutlu 0 ile 10 arasında rastgele tam sayılar: [0 9 2 4 4]</code></pre>
 </div>
 </div>
 <p>Standart normal dağılımı rastgele sayı üreteci 0’ın ortasında ve 1’in standart sapması olan bir dağılım oluşturur. Bu dağılımın özelliklerini görmek için aşağıdaki kodu çalıştırın.</p>
-<div id="77d96b11" class="cell" data-execution_count="5">
+<div id="d9c04564" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a href="#cb9-3"></a></span>
@@ -627,58 +673,63 @@ Minimum ve Maksimum: 5.0 ve 40.0
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="giris_files/figure-html/cell-6-output-1.png" width="600" height="411" class="figure-img"></p>
+<p><img src="giris_files/figure-html/cell-6-output-1.png" width="592" height="411" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="c9c72778" class="cell" data-execution_count="6">
+<div id="420d35a3" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="co"># Rastgele sayı üret [0,1)</span></span>
 <span id="cb10-4"><a href="#cb10-4"></a><span class="bu">print</span>(np.random.rand())</span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="co"># Rastgele 5 tane sayı üret [0,1)</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="bu">print</span>(np.random.rand(<span class="dv">5</span>))</span>
-<span id="cb10-7"><a href="#cb10-7"></a><span class="co"># Rastgele 2x4 matris üret [0,1)</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="bu">print</span>(np.random.rand(<span class="dv">2</span>, <span class="dv">4</span>))</span>
-<span id="cb10-9"><a href="#cb10-9"></a></span>
-<span id="cb10-10"><a href="#cb10-10"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
-<span id="cb10-11"><a href="#cb10-11"></a><span class="co"># Rastgele Normal dağılımlı sayı üret</span></span>
-<span id="cb10-12"><a href="#cb10-12"></a><span class="bu">print</span>(np.random.randn(<span class="dv">10</span>))</span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
-<span id="cb10-14"><a href="#cb10-14"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="co"># Rastgele 5 tane sayı üret [0,1)</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="bu">print</span>(np.random.rand(<span class="dv">5</span>))</span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="co"># Rastgele 2x4 matris üret [0,1)</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="bu">print</span>(np.random.rand(<span class="dv">2</span>, <span class="dv">4</span>))</span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb10-12"><a href="#cb10-12"></a><span class="co"># Rastgele Normal dağılımlı sayı üret</span></span>
+<span id="cb10-13"><a href="#cb10-13"></a><span class="bu">print</span>(np.random.randn(<span class="dv">10</span>))</span>
+<span id="cb10-14"><a href="#cb10-14"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
 <span id="cb10-15"><a href="#cb10-15"></a><span class="co"># Rastgele tam sayı üret [0,10)</span></span>
 <span id="cb10-16"><a href="#cb10-16"></a><span class="bu">print</span>(np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>))</span>
-<span id="cb10-17"><a href="#cb10-17"></a><span class="co"># Rastgele 5 tane tam sayı üret</span></span>
-<span id="cb10-18"><a href="#cb10-18"></a><span class="bu">print</span>(np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>))</span>
-<span id="cb10-19"><a href="#cb10-19"></a><span class="co"># print(np.random.randint(low=0, high=10, size=5))</span></span>
-<span id="cb10-20"><a href="#cb10-20"></a></span>
-<span id="cb10-21"><a href="#cb10-21"></a><span class="co"># Rastgele 2x4 matris üret [0,10)</span></span>
-<span id="cb10-22"><a href="#cb10-22"></a><span class="bu">print</span>(np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, (<span class="dv">2</span>, <span class="dv">4</span>) ))</span>
-<span id="cb10-23"><a href="#cb10-23"></a><span class="co">#print(np.random.randint(low=0, high=10, size=(2,4)))</span></span>
-<span id="cb10-24"><a href="#cb10-24"></a></span>
-<span id="cb10-25"><a href="#cb10-25"></a><span class="co"># Çiz</span></span>
-<span id="cb10-26"><a href="#cb10-26"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb10-27"><a href="#cb10-27"></a>axes[<span class="dv">0</span>].hist(np.random.rand(<span class="dv">10_000</span>))</span>
-<span id="cb10-28"><a href="#cb10-28"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"rand"</span>)</span>
-<span id="cb10-29"><a href="#cb10-29"></a>axes[<span class="dv">1</span>].hist(np.random.randn(<span class="dv">10_000</span>))</span>
-<span id="cb10-30"><a href="#cb10-30"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"randn"</span>)</span>
-<span id="cb10-31"><a href="#cb10-31"></a>axes[<span class="dv">2</span>].hist(np.random.randint(low<span class="op">=</span><span class="dv">1</span>, high<span class="op">=</span><span class="dv">10</span>, size<span class="op">=</span><span class="dv">10_000</span>), bins<span class="op">=</span><span class="dv">9</span>, align<span class="op">=</span><span class="st">'left'</span>)</span>
-<span id="cb10-32"><a href="#cb10-32"></a>axes[<span class="dv">2</span>].set_title(<span class="st">"randint(low=1, high=10)"</span>)</span>
-<span id="cb10-33"><a href="#cb10-33"></a>plt.tight_layout()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-17"><a href="#cb10-17"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb10-18"><a href="#cb10-18"></a><span class="co"># Rastgele 5 tane tam sayı üret</span></span>
+<span id="cb10-19"><a href="#cb10-19"></a><span class="bu">print</span>(np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb10-20"><a href="#cb10-20"></a><span class="co"># print(np.random.randint(low=0, high=10, size=5))</span></span>
+<span id="cb10-21"><a href="#cb10-21"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb10-22"><a href="#cb10-22"></a><span class="co"># Rastgele 2x4 matris üret [0,10)</span></span>
+<span id="cb10-23"><a href="#cb10-23"></a><span class="bu">print</span>(np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, (<span class="dv">2</span>, <span class="dv">4</span>) ))</span>
+<span id="cb10-24"><a href="#cb10-24"></a><span class="co">#print(np.random.randint(low=0, high=10, size=(2,4)))</span></span>
+<span id="cb10-25"><a href="#cb10-25"></a></span>
+<span id="cb10-26"><a href="#cb10-26"></a><span class="co"># Çiz</span></span>
+<span id="cb10-27"><a href="#cb10-27"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb10-28"><a href="#cb10-28"></a>axes[<span class="dv">0</span>].hist(np.random.rand(<span class="dv">10_000</span>))</span>
+<span id="cb10-29"><a href="#cb10-29"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"rand(10_000)"</span>)</span>
+<span id="cb10-30"><a href="#cb10-30"></a>axes[<span class="dv">1</span>].hist(np.random.randn(<span class="dv">10_000</span>))</span>
+<span id="cb10-31"><a href="#cb10-31"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"randn(10_000)"</span>)</span>
+<span id="cb10-32"><a href="#cb10-32"></a>axes[<span class="dv">2</span>].hist(np.random.randint(low<span class="op">=</span><span class="dv">1</span>, high<span class="op">=</span><span class="dv">10</span>, size<span class="op">=</span><span class="dv">10_000</span>), bins<span class="op">=</span><span class="dv">9</span>, align<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb10-33"><a href="#cb10-33"></a>axes[<span class="dv">2</span>].set_title(<span class="st">"randint(low=1, high=10, size=10_000)"</span>)</span>
+<span id="cb10-34"><a href="#cb10-34"></a>plt.tight_layout()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.3131042272524026
-[0.99934296 0.91209133 0.97036381 0.83132584 0.79112004]
-[[0.51727033 0.45565413 0.03928876 0.31260521]
- [0.50822867 0.10428976 0.83691284 0.88858052]]
+<pre><code>0.9979307047568126
 --------------------
-[ 2.06167227  0.19379438 -0.50263944 -0.37436095 -0.02599458  1.03007387
-  1.408896    1.36714039  0.9223314  -0.74883044]
+[0.41865199 0.52941979 0.50322401 0.29193198 0.17246487]
 --------------------
-5
-[6 8 4 8 6]
-[[3 5 1 4]
- [2 7 0 0]]</code></pre>
+[[0.06516023 0.50710506 0.62400245 0.1986753 ]
+ [0.84689177 0.12070711 0.04113729 0.4798023 ]]
+--------------------
+[-0.60449893 -0.01522747  0.79359379  0.84002266 -1.27812417  0.50950984
+  1.39307481 -0.72066293  0.24188606 -1.46476497]
+--------------------
+4
+--------------------
+[5 7 6 7 0]
+--------------------
+[[2 6 6 6]
+ [5 1 6 9]]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -689,48 +740,108 @@ Minimum ve Maksimum: 5.0 ve 40.0
 </div>
 </div>
 <p>İlerleyen bölümlerde belli bir array’den rastgele bir eleman seçmek isteyeceğiz. Bunun için <code>np.random.choice()</code> özelliğini kullanacağız. Eğer <code>replace=False</code> özelliği ile kullanırsak seçilen eleman tekrar seçilemez. Varsayılan özellik <code>replace=True</code>’dur.</p>
-<div id="14f51fe9" class="cell" data-execution_count="7">
+<div id="6aff7b5b" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="bu">print</span>(np.random.choice(<span class="dv">5</span>, <span class="dv">3</span>))</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="co"># Eşittir np.random.randint(0,5,3)</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="bu">print</span>(<span class="st">"--"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"1"</span>)</span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="bu">print</span>(np.random.choice(<span class="dv">5</span>, <span class="dv">3</span>, p<span class="op">=</span>[<span class="fl">0.1</span>, <span class="dv">0</span>, <span class="fl">0.3</span>, <span class="fl">0.6</span>, <span class="dv">0</span>]))</span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="bu">print</span>(<span class="st">"--"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"2"</span>)</span>
-<span id="cb12-7"><a href="#cb12-7"></a><span class="bu">print</span>(np.random.choice(<span class="dv">5</span>, <span class="dv">3</span>, replace<span class="op">=</span><span class="va">False</span>))</span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="co"># Eşittir np.random.permutation(np.arange(5))[:3]</span></span>
-<span id="cb12-9"><a href="#cb12-9"></a><span class="bu">print</span>(<span class="st">"--"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"3"</span>)</span>
-<span id="cb12-10"><a href="#cb12-10"></a><span class="bu">print</span>(np.random.choice(<span class="dv">5</span>, <span class="dv">3</span>, replace<span class="op">=</span><span class="va">False</span>))</span>
-<span id="cb12-11"><a href="#cb12-11"></a><span class="bu">print</span>(<span class="st">"--"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"4"</span>)</span>
-<span id="cb12-12"><a href="#cb12-12"></a>aa_milne_arr <span class="op">=</span> [<span class="st">'Gizem'</span>, <span class="st">'Furkan'</span>, <span class="st">'Alperen'</span>]</span>
-<span id="cb12-13"><a href="#cb12-13"></a><span class="bu">print</span>(np.random.choice(aa_milne_arr, <span class="dv">2</span>))</span>
-<span id="cb12-14"><a href="#cb12-14"></a><span class="bu">print</span>(np.random.choice(aa_milne_arr, <span class="dv">2</span>, replace<span class="op">=</span><span class="va">False</span>))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co"># 0 ile 4 arasında 3 tane rastgele sayı seç</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="bu">print</span>(np.random.choice(<span class="dv">5</span>, <span class="dv">3</span>))</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co"># Aynı işi np.random.randint(0,5,3) de yapar</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="bu">print</span>(<span class="st">"--"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"1"</span>)</span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="co"># 0.1, 0, 0.3, 0.6, 0 olasılıkları ile 3 tane rastgele sayı seç.</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="co"># Yani 0.1 olasılıkla 0, </span></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="co">#      0 olasılıkla 1, </span></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="co">#      0.3 olasılıkla 2, </span></span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="co">#      0.6 olasılıkla 3, </span></span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="co">#      0 olasılıkla 4</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="bu">print</span>(np.random.choice(<span class="dv">5</span>, <span class="dv">3</span>, p<span class="op">=</span>[<span class="fl">0.1</span>, <span class="dv">0</span>, <span class="fl">0.3</span>, <span class="fl">0.6</span>, <span class="dv">0</span>]))</span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="bu">print</span>(<span class="st">"--"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"2"</span>)</span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="co"># Tekrar seçim yapmadan 3 tane rastgele sayı seç</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a><span class="bu">print</span>(np.random.choice(<span class="dv">5</span>, <span class="dv">3</span>, replace<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb12-16"><a href="#cb12-16"></a><span class="co"># Aynı işi np.random.permutation(np.arange(5))[:3] de yapar</span></span>
+<span id="cb12-17"><a href="#cb12-17"></a><span class="bu">print</span>(<span class="st">"--"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"3"</span>)</span>
+<span id="cb12-18"><a href="#cb12-18"></a><span class="co"># Harfler arasından 2 tane rastgele isim seç</span></span>
+<span id="cb12-19"><a href="#cb12-19"></a>harfler <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'Ç'</span> ,<span class="st">'D'</span>, <span class="st">'E'</span>, <span class="st">'F'</span>, <span class="st">'G'</span>, <span class="st">'Ğ'</span> , <span class="st">'H'</span>]</span>
+<span id="cb12-20"><a href="#cb12-20"></a><span class="bu">print</span>(np.random.choice(harfler, <span class="dv">2</span>))</span>
+<span id="cb12-21"><a href="#cb12-21"></a><span class="bu">print</span>(np.random.choice(harfler, <span class="dv">2</span>, replace<span class="op">=</span><span class="va">False</span>))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[0 4 3]
+<pre><code>[1 3 0]
 ----------------------------------------1
-[3 0 3]
+[2 3 3]
 ----------------------------------------2
-[1 3 0]
+[4 0 1]
 ----------------------------------------3
-[2 0 3]
-----------------------------------------4
-['Gizem' 'Alperen']
-['Furkan' 'Alperen']</code></pre>
+['F' 'D']
+['Ç' 'A']</code></pre>
 </div>
 </div>
-<p>Rastgele sayı seçiminde çekirdek (seed) seçimi de önemli bir faktördür çünkü rastgelelik bir çekirdek üzerinden oluşur. Aynı çekirdek ile “aynı rastgelelik” oluşur.</p>
+<p>Rastgele sayı seçiminde çekirdek (seed) seçimi de önemli bir faktördür çünkü rastgelelik bir çekirdek üzerinden oluşur. Aynı çekirdek seçilir ise “<em>aynı rastgelelik</em>” kullanarak sayılar/seçimler oluşturulur.</p>
 <p>Bizim çalışacağımız problemlerde çekirdek seçimi önemli olmayacaktır ancak oyun, simülasyon gibi problemlerde çekirdek seçimi önemli olabilir.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/seed_terraria.png" class="img-fluid figure-img"></p>
+<figcaption>Terraria Seed</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/seed_minecraft.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Minecraft Seed</figcaption>
+</figure>
+</div>
 <p>Çekirdek seçimi için <code>np.random.seed()</code> fonksiyonunu kullanılır.</p>
 <p>Belirlenen bir çekirdek üzerine seçimler yapmak için aşağıdaki gibi bir rastgele durum belirlenir.</p>
-<div id="cdec8e1c" class="cell" data-execution_count="8">
+<div id="010801fc" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb14-2"><a href="#cb14-2"></a>oyunHaritasi<span class="op">=</span> np.random.RandomState(<span class="dv">42</span>)</span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="bu">print</span>(oyunHaritasi.randint(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">4</span>))</span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"1"</span>)</span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="bu">print</span>(oyunHaritasi.rand(<span class="dv">5</span>))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co"># Oyun Haritası 42 çekirdek kullan</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>cekirdekSayisi<span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>cekirdek<span class="op">=</span> np.random.RandomState(cekirdekSayisi)</span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="co"># 2 boyutlu bir harita olacak şekilde çizdir</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a>plt.imshow(cekirdek.rand(<span class="dv">8</span>,<span class="dv">8</span>), cmap<span class="op">=</span><span class="st">'gray'</span>, interpolation<span class="op">=</span><span class="st">'nearest'</span>)</span>
+<span id="cb14-9"><a href="#cb14-9"></a>plt.show()</span>
+<span id="cb14-10"><a href="#cb14-10"></a>plt.close()</span>
+<span id="cb14-11"><a href="#cb14-11"></a><span class="bu">print</span>(<span class="ss">f"4 adet rastgele sayı: </span><span class="sc">{</span>cekirdek<span class="sc">.</span>rand(<span class="dv">4</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-12"><a href="#cb14-12"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"1"</span>)</span>
+<span id="cb14-13"><a href="#cb14-13"></a><span class="bu">print</span>(<span class="ss">f"4 adet rastgele sayı: </span><span class="sc">{</span>cekirdek<span class="sc">.</span>rand(<span class="dv">4</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="giris_files/figure-html/cell-9-output-1.png" width="407" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[6 3 7 4]
+<pre><code>4 adet rastgele sayı: [0.28093451 0.54269608 0.14092422 0.80219698]
 --------------------1
-[0.15601864 0.15599452 0.05808361 0.86617615 0.60111501]</code></pre>
+4 adet rastgele sayı: [0.07455064 0.98688694 0.77224477 0.19871568]</code></pre>
+</div>
+</div>
+<p>Yukarıdaki programı tekrar çalıştırdığımızda aynı sonuçları alırız. Çünkü çekirdek aynıdır.</p>
+<div id="82aa66d5" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-3"><a href="#cb16-3"></a></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="co"># Oyun Haritası 42 çekirdek kullan</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>cekirdekSayisi<span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>cekirdek<span class="op">=</span> np.random.RandomState(cekirdekSayisi)</span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="co"># 2 boyutlu bir harita olacak şekilde çizdir</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>plt.imshow(cekirdek.rand(<span class="dv">8</span>,<span class="dv">8</span>), cmap<span class="op">=</span><span class="st">'gray'</span>, interpolation<span class="op">=</span><span class="st">'nearest'</span>)</span>
+<span id="cb16-9"><a href="#cb16-9"></a>plt.show()</span>
+<span id="cb16-10"><a href="#cb16-10"></a>plt.close()</span>
+<span id="cb16-11"><a href="#cb16-11"></a><span class="bu">print</span>(<span class="ss">f"4 adet rastgele sayı: </span><span class="sc">{</span>cekirdek<span class="sc">.</span>rand(<span class="dv">4</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-12"><a href="#cb16-12"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span><span class="op">+</span><span class="st">"1"</span>)</span>
+<span id="cb16-13"><a href="#cb16-13"></a><span class="bu">print</span>(<span class="ss">f"4 adet rastgele sayı: </span><span class="sc">{</span>cekirdek<span class="sc">.</span>rand(<span class="dv">4</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="giris_files/figure-html/cell-10-output-1.png" width="407" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4 adet rastgele sayı: [0.28093451 0.54269608 0.14092422 0.80219698]
+--------------------1
+4 adet rastgele sayı: [0.07455064 0.98688694 0.77224477 0.19871568]</code></pre>
 </div>
 </div>
 </section>
@@ -777,14 +888,14 @@ Minimum ve Maksimum: 5.0 ve 40.0
 <p>Ortalama değeri 1 olan ve standart sapması 0.5 olan bir normal dağılım üretelim.</p>
 <section id="çözüm-1" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm-1">Çözüm</h3>
-<div id="e8512941" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
-<span id="cb16-2"><a href="#cb16-2"></a></span>
-<span id="cb16-3"><a href="#cb16-3"></a>X<span class="op">=</span> stats.norm(<span class="dv">1</span>, <span class="fl">0.5</span>)</span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="bu">print</span>(<span class="ss">f"Ortalama: </span><span class="sc">{</span>X<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb16-5"><a href="#cb16-5"></a><span class="bu">print</span>(<span class="ss">f"Median: </span><span class="sc">{</span>X<span class="sc">.</span>median()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb16-6"><a href="#cb16-6"></a><span class="bu">print</span>(<span class="ss">f"Standart Sapma: </span><span class="sc">{</span>X<span class="sc">.</span>std()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb16-7"><a href="#cb16-7"></a><span class="bu">print</span>(<span class="ss">f"Varyans: </span><span class="sc">{</span>X<span class="sc">.</span>var()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="38273e28" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a>X<span class="op">=</span> stats.norm(<span class="dv">1</span>, <span class="fl">0.5</span>)</span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="bu">print</span>(<span class="ss">f"Ortalama: </span><span class="sc">{</span>X<span class="sc">.</span>mean()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="bu">print</span>(<span class="ss">f"Median: </span><span class="sc">{</span>X<span class="sc">.</span>median()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="bu">print</span>(<span class="ss">f"Standart Sapma: </span><span class="sc">{</span>X<span class="sc">.</span>std()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="bu">print</span>(<span class="ss">f"Varyans: </span><span class="sc">{</span>X<span class="sc">.</span>var()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ortalama: 1.0
 Median: 1.0
@@ -793,6 +904,97 @@ Varyans: 0.25</code></pre>
 </div>
 </div>
 </section>
+</section>
+<section id="histogramlar" class="level2">
+<h2 class="anchored" data-anchor-id="histogramlar">Histogramlar</h2>
+<p>Histogram denildiğinde verinin dağılımdan ve frekansından bahsetmemiz gerekir.</p>
+<p>Örneğin:</p>
+<ol type="1">
+<li><span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(3\)</span>, <span class="math inline">\(4\)</span>, <span class="math inline">\(5\)</span>, <span class="math inline">\(6\)</span> sayıları verimiz olsun. Bu verinin dağılımı tam sayılar arasında eşit olasılıkla dağılmıştır. Yani her sayının gelme olasılığı aynıdır. Bu verinin frekansı yani tekrarlanma sayısı da aynıdır. Çünkü her sayı birer kez tekrar edilmiştir.</li>
+<li><span class="math inline">\(1\)</span>, <span class="math inline">\(3\)</span>, <span class="math inline">\(3\)</span>, <span class="math inline">\(3\)</span>, <span class="math inline">\(4\)</span>, <span class="math inline">\(6\)</span> sayıları verimiz olsun. Bu verinin dağılımı tam sayılar arasında eşit olasılıkla dağılmamıştır. Yani her sayının gelme olasılığı aynı değildir. <span class="math inline">\(1\)</span>, <span class="math inline">\(4\)</span> ve <span class="math inline">\(6\)</span> sayılarının gelme olasılığı <span class="math inline">\(1/6\)</span>, <span class="math inline">\(3\)</span> sayısının gelme olasılığı <span class="math inline">\(3/6\)</span>’dır. Bu verinin frekansı yani tekrarlanma sayısı da aynı değildir. Çünkü <span class="math inline">\(3\)</span> sayısı 3 kez tekrar edilmiştir.</li>
+</ol>
+<p>Bu iki örneğin histogramlarını çizelim.</p>
+<div id="f65f9181" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="co"># Veri</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>seri1<span class="op">=</span> pd.Series([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>])</span>
+<span id="cb20-5"><a href="#cb20-5"></a>seri2<span class="op">=</span> pd.Series([<span class="dv">1</span>,<span class="fl">1.5</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>])</span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="co"># Çiz</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a>fig, axs<span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
+<span id="cb20-8"><a href="#cb20-8"></a>seri1.plot(kind<span class="op">=</span><span class="st">"hist"</span>, ax<span class="op">=</span>axs[<span class="dv">0</span>], title<span class="op">=</span><span class="st">"seri1"</span>, bins<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb20-9"><a href="#cb20-9"></a>seri2.plot(kind<span class="op">=</span><span class="st">"hist"</span>, ax<span class="op">=</span>axs[<span class="dv">1</span>], title<span class="op">=</span><span class="st">"seri2"</span>, bins<span class="op">=</span><span class="dv">11</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="giris_files/figure-html/cell-12-output-1.png" width="821" height="431" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Bins</strong>: Yatay eksendeki sütun sayısı.</p>
+<p>Örneğin: 1,2,3,4,5 verisi var ise bin=5 yapıldığında sütunların arası hiç gözükmez, çünkü yatay eksende 1 değerinin üstünde sütun olur, 2 değerinin üstünde sütun olur vs.&nbsp;bin=11 yapıldığında ise kabaca 0.5 üzerinde ve 1 üzerinde sütun çizilmeye çalışılır.</p>
+<p>Aşağıdaki linklerden bin sayısı en iyi nasıl seçilir hakkında bilgi alabilirsiniz.</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/33458566">Bin sayısı en iyi nasıl seçilir?</a></li>
+<li><a href="https://stackoverflow.com/questions/64198842/">Bin arası nasıl ayrılır?</a></li>
+</ul>
+<p>Python ile veri analizinde <code>collections</code> paketi de kullanılır.</p>
+<div id="6389e458" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="co"># Veri</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>df_p<span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="co"># Collections paketinde bulunan Counter fonksiyonu</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a>df_pCounter<span class="op">=</span> Counter(df_p)</span>
+<span id="cb21-7"><a href="#cb21-7"></a><span class="bu">print</span>(<span class="ss">f"Veri: </span><span class="sc">{</span>df_p<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-8"><a href="#cb21-8"></a><span class="bu">print</span>(<span class="ss">f"Counter :</span><span class="sc">{</span>df_pCounter<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-9"><a href="#cb21-9"></a><span class="bu">print</span>(<span class="ss">f"Counter tipi: </span><span class="sc">{</span><span class="bu">type</span>(df_pCounter)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-10"><a href="#cb21-10"></a><span class="bu">print</span>(<span class="ss">f"8'in frekansı </span><span class="sc">{</span>df_pCounter[<span class="dv">8</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-11"><a href="#cb21-11"></a><span class="bu">print</span>(<span class="ss">f"3'in frekansı </span><span class="sc">{</span>df_pCounter[<span class="dv">3</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-12"><a href="#cb21-12"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb21-13"><a href="#cb21-13"></a><span class="co"># Pandas</span></span>
+<span id="cb21-14"><a href="#cb21-14"></a>dS<span class="op">=</span> pd.Series(df_p)</span>
+<span id="cb21-15"><a href="#cb21-15"></a><span class="bu">print</span>(<span class="ss">f"Veri: </span><span class="sc">{</span>dS<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-16"><a href="#cb21-16"></a><span class="bu">print</span>(<span class="ss">f"Serinin tipi: </span><span class="sc">{</span><span class="bu">type</span>(dS)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-17"><a href="#cb21-17"></a><span class="bu">print</span>(<span class="ss">f"Tüm frekanslar</span><span class="ch">\n</span><span class="sc">{</span>dS<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-18"><a href="#cb21-18"></a><span class="bu">print</span>(<span class="ss">f"8'in frekansı </span><span class="sc">{</span>dS<span class="sc">.</span>value_counts()[<span class="dv">8</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Veri: [1, 2, 3, 4, 4, 5, 6, 7, 8, 8, 8, 8, 9]
+Counter :Counter({8: 4, 4: 2, 1: 1, 2: 1, 3: 1, 5: 1, 6: 1, 7: 1, 9: 1})
+Counter tipi: &lt;class 'collections.Counter'&gt;
+8'in frekansı 4
+3'in frekansı 1
+--------------------
+Veri: 0     1
+1     2
+2     3
+3     4
+4     4
+5     5
+6     6
+7     7
+8     8
+9     8
+10    8
+11    8
+12    9
+dtype: int64
+Serinin tipi: &lt;class 'pandas.core.series.Series'&gt;
+Tüm frekanslar
+8    4
+4    2
+1    1
+2    1
+3    1
+5    1
+6    1
+7    1
+9    1
+Name: count, dtype: int64
+8'in frekansı 4</code></pre>
+</div>
+</div>
 </section>
 <section id="problemler" class="level2">
 <h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
@@ -839,9 +1041,14 @@ Varyans: 0.25</code></pre>
 </ol>
 
 
+
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-web2024Apr-2" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">Contributors to Wikimedia projects, <em><a href="https://en.wikipedia.org/w/index.php?title=Unbiased_estimation_of_standard_deviation&amp;oldid=1169304541"><span>Unbiased estimation of standard deviation - Wikipedia</span></a></em>, (2023).</div>
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

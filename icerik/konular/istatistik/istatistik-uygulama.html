@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>Bilgisayarlı Yöntemler - Veri Analizi</title>
+<title>Bilgisayarlı Yöntemler - İstatistik - Uygulamalar</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,27 +24,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../icerik/konular/veri-analizi/pandas-giris.html" rel="next">
-<link href="../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html" rel="prev">
-<link href="../../resimler/favicon.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../resimler/favicon.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -74,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -86,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../icerik/konular/veri-analizi.html">Veri Analizi</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">İstatistik - Uygulamalar</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -100,8 +98,8 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../resimler/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../resimler/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/bulmust/bilgisayarli-yontemler" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
@@ -132,13 +130,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/izlence.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/izlence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İzlence</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/bilYonMod.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/bilYonMod.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python Modülü</span></a>
   </div>
 </li>
@@ -155,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/adi-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/adi-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Adi Diferansiyel Denklemler</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -164,49 +162,49 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Giriş</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Euler Yöntemi</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Denklem Sistemleri</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - İkinci Dereceden Diferansiyel Denklemler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Runge-Kutta Yöntemleri</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Giriş</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Atış Yöntemi</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Sonlu Farklar Yöntemi</span></a>
   </div>
 </li>
@@ -214,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/fourier-analizi.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/fourier-analizi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fourier Analizi</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -223,31 +221,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Giriş</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">KFD - Kesikli Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HFD - Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">THFD - Ters Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Uygulama - Ses Dalgaları</span></a>
   </div>
 </li>
@@ -255,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/veri-analizi.html" class="sidebar-item-text sidebar-link active">
+            <a href="../../../icerik/konular/veri-analizi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Veri Analizi</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -264,19 +262,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/veri-analizi/pandas-giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Giris</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/veri-analizi/pandas-veri-manipülasyonu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipülasyonu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Veri Manipülasyonu</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/veri-analizi/pandas-uygulama.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-uygulama.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Uygulama</span></a>
   </div>
 </li>
@@ -284,7 +282,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/istatistik.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/istatistik.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İstatistik</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -293,7 +291,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İstatistik - Giris</span></a>
   </div>
 </li>
@@ -311,16 +309,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#veri-analizi" id="toc-veri-analizi" class="nav-link active" data-scroll-target="#veri-analizi">Veri Analizi</a></li>
+  <li><a href="#istatistiksel-bakış-açısı" id="toc-istatistiksel-bakış-açısı" class="nav-link active" data-scroll-target="#istatistiksel-bakış-açısı">İstatistiksel Bakış Açısı</a></li>
+  <li><a href="#amerika-aile-büyüme-oranları" id="toc-amerika-aile-büyüme-oranları" class="nav-link" data-scroll-target="#amerika-aile-büyüme-oranları">Amerika Aile Büyüme Oranları</a></li>
+  <li><a href="#veriyi-içeri-aktarma" id="toc-veriyi-içeri-aktarma" class="nav-link" data-scroll-target="#veriyi-içeri-aktarma">Veriyi İçeri aktarma</a></li>
+  <li><a href="#data-çerçeveleri" id="toc-data-çerçeveleri" class="nav-link" data-scroll-target="#data-çerçeveleri">Data Çerçeveleri</a>
+  <ul class="collapse">
+  <li><a href="#değişkenler" id="toc-değişkenler" class="nav-link" data-scroll-target="#değişkenler">Değişkenler</a></li>
+  </ul></li>
+  <li><a href="#thinkstats2-modülü" id="toc-thinkstats2-modülü" class="nav-link" data-scroll-target="#thinkstats2-modülü"><code>thinkstats2</code> Modülü</a></li>
+  <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/veri-analizi.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/istatistik/istatistik-uygulama.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../icerik/konular/veri-analizi.html">Veri Analizi</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Veri Analizi</h1>
+<h1 class="title">İstatistik - Uygulamalar</h1>
 </div>
 
 
@@ -349,10 +355,84 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="veri-analizi" class="level2">
-<h2 class="anchored" data-anchor-id="veri-analizi">Veri Analizi</h2>
-<p>Fizikte ve diğer branşlarda çok büyük veri kümeleriyle çalışmak gerekebilir. Bu veri istatistiksel bir anlam çıkarmak için kullanılabilir veya bir analiz sonucunda ortaya çıkmış olabilir.</p>
-<p>Bu bölümde veri analizi için kullanılan temel yöntemlerden bazılarına değineceğiz.</p>
+<p>Bu bölümde thinkstats2 kitabındaki bazı alıştırmaları çözeceğiz.</p>
+<p>Thinkstats2 kitabına şu linkten ulaşabilirsiniz: <a href="https://greenteapress.com/thinkstats2/thinkstats2.pdf" class="uri">https://greenteapress.com/thinkstats2/thinkstats2.pdf</a></p>
+<p>Uygulamaları ise github sayfasından ulaşabilirsiniz. <a href="https://github.com/AllenDowney/ThinkStats2" class="uri">https://github.com/AllenDowney/ThinkStats2</a></p>
+<section id="istatistiksel-bakış-açısı" class="level2">
+<h2 class="anchored" data-anchor-id="istatistiksel-bakış-açısı">İstatistiksel Bakış Açısı</h2>
+<blockquote class="blockquote">
+<p>Anekdot: “İlk çocuklar için hamilelik süresi daha uzundur.”</p>
+</blockquote>
+<ul>
+<li><strong>Data Toplama (Data collection)</strong>: Amerikan toplumu için çocuk doğum yaş verisini toplayalım.</li>
+<li><strong>Açıklayıcı İstatistikler (Descriptive Statistics)</strong>: Veriyi temel olarak açıklayan istatistiksel kavramlara bakalım.</li>
+<li><strong>Veri Analizi Açıklama (Exploratory Data Analysis)</strong>: Veriyi daha iyi anlamak için tekrarlara, farklılıklara veya diğer özelliklere bakalım.</li>
+<li><strong>Tahmin (Estimation)</strong>: Veriye göre bir model kuralım ve genel nüfus hakkında tahminde bulunalım.</li>
+<li><strong>Hipotez Testi (Hypothesis Testing)</strong>: Açığa çıkan etkileri, örneğin iki grup arasındaki farkı test edelim. Bu etkilerin olma olasılıklarını hesaplayalım.</li>
+</ul>
+</section>
+<section id="amerika-aile-büyüme-oranları" class="level2">
+<h2 class="anchored" data-anchor-id="amerika-aile-büyüme-oranları">Amerika Aile Büyüme Oranları</h2>
+<ul>
+<li>Veri’nin alındığı site: <a href="http://cdc.gov/nchs/nsfg.htm">National Survey of Family Growth (NSFG)</a></li>
+<li>Kullanacağımız veri, bir örneklem alarak yani Amerika’daki nüfusun bir kısmını seçerek elde edilmiş veridir.</li>
+<li><em>Cycle 6</em> verisi kullanılacaktır. Burada cycle kelimesi sürekli alınan bir çalışmadaki her bir örneklem anlamına gelir. Bu çalışmadaki toplanan veri Ocak 2002- Mart 2003 yılları arasında alınmıştır.</li>
+<li><strong>Amacımız</strong>: Amerika’daki annelerin hamilelik sürelerine bakacağız. <strong>İlk kez doğum yapan annelerin hamilelik süreleri daha uzun mu daha kısa mı belirleyeceğiz.</strong></li>
+<li><strong>Kodkitabı</strong> (codebook): <a href="https://www.cdc.gov/nchs/nsfg/nsfg_cycle6.htm">NSFG6 Codebook</a></li>
+</ul>
+</section>
+<section id="veriyi-içeri-aktarma" class="level2">
+<h2 class="anchored" data-anchor-id="veriyi-içeri-aktarma">Veriyi İçeri aktarma</h2>
+<ul>
+<li><a href="../../../veri/veri_thinkStats2_2002FemPreg.dat.gz">veri/veri_thinkStats2_2002FemPreg.dat.gz</a> dosyası sıkıştırılmış, hamilelik veri dosyasıdır. <em>Her bir satıra kayıt (record) adı verilmektedir.</em></li>
+<li><a href="../../../veri/veri_thinkStats2_2002FemPreg.dct">veri/veri_thinkStats2_2002FemPreg.dct</a> dosyası da veri dosyasının “dictionary” formatındaki halidir. Kabaca söylemek gerekirse verinin açıklamalarını içermektedir. Bu ve bunun gibi dict dosyaları ileride kullanılacaktır.</li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dikkat
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Bu kitapta kullanılan fonksiyonlardan bir class oluşturulmuştur.** Ancak kod kısmı eski olduğu için bazı kısımlarını yenileyeceğiz ve kendimiz yazacağız.</p>
+</div>
+</div>
+</section>
+<section id="data-çerçeveleri" class="level2">
+<h2 class="anchored" data-anchor-id="data-çerçeveleri">Data Çerçeveleri</h2>
+<p>Bu kitapta <code>pandas</code> paketi ile hazır olarak yazılmış fonksiyonlar kullanılarak yeni fonksiyonlar/class’lar tanımlanmıştır.</p>
+<section id="değişkenler" class="level3">
+<h3 class="anchored" data-anchor-id="değişkenler">Değişkenler</h3>
+<p><a href="../../../veri/veri_thinkStats2_2002FemPreg.dct">veri/veri_thinkStats2_2002FemPreg.dct</a> dosyası içerisinde 244 adet değişken vardır. Kitapta kullanılacak olan bazıları şunlardır:</p>
+<ul>
+<li><code>caseid</code>: Her bir kayıt (respondent) için bir benzersiz numara.</li>
+<li><code>prglngth</code>: Hamilelik süresi (hafta)</li>
+<li><code>outcome</code>: Doğum sonucu (1= sağlıklı doğum)</li>
+<li><code>pregordr</code>: Hamilelik sırası veya seri numarası: İlk hamilelik için 1, ikinci hamilelik için 2, vb.</li>
+<li><code>birthord</code>: Sağlıklı doğan çocuğun seri numarası: İlk doğan için 1, ikinci doğan için 2, vb.</li>
+<li><code>birthwgt_lb</code> ve <code>birthwgt_oz</code>: Doğum ağırlığı (pound) ve ağırlığın ons kısmı.
+<ul>
+<li>1 oz = 28.34952 g (Ounce)</li>
+<li>1 lb = 0.45359237 kg (Pound)</li>
+</ul></li>
+<li><code>agepreg</code>: Hamilelikteki yaş (yıl)</li>
+<li><code>finalwgt</code>: Her bir kayıt için ağırlıklandırılmış (weighted) nüfus sayısı. Bu ağırlıklandırma, Amerika’daki nüfusun dağılımını yansıtmaktadır.</li>
+</ul>
+</section>
+</section>
+<section id="thinkstats2-modülü" class="level2">
+<h2 class="anchored" data-anchor-id="thinkstats2-modülü"><code>thinkstats2</code> Modülü</h2>
+<p>Bu bölümde <em>başkasının</em> yazdığı <code>thinkstats2</code> modülünü kullanacağız. Bu modülün içeriğine <a href="thinkStats2/">bu linkten</a> erişebilirsiniz.</p>
+</section>
+<section id="kaynaklar" class="level2">
+<h2 class="anchored" data-anchor-id="kaynaklar">Kaynaklar</h2>
+<ol type="1">
+<li><a href="https://greenteapress.com/thinkstats2/thinkstats2.pdf">Think Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014</a></li>
+<li><a href="https://github.com/AllenDowney/ThinkStats2">Think Stats: Github</a></li>
+</ol>
 
 
 </section>
@@ -918,18 +998,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html" class="pagination-link" aria-label="Uygulama - Ses Dalgaları">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Uygulama - Ses Dalgaları</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../icerik/konular/veri-analizi/pandas-giris.html" class="pagination-link" aria-label="pandas - Giris">
-        <span class="nav-page-text">pandas - Giris</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -938,7 +1006,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/veri-analizi.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/istatistik/istatistik-uygulama.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>
