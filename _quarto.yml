@@ -66,6 +66,7 @@ website:
             href: icerik/konular/istatistik.qmd
             contents:
               - icerik/konular/istatistik/giris.qmd
+              - icerik/konular/istatistik/istatistik-uygulama.qmd
 
 format:
   html:

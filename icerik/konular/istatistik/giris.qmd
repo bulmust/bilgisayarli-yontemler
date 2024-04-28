@@ -404,5 +404,3 @@ Kaynak: [Solar Spectrum](https://www.pveducation.org/pvcdrom/appendices/standard
 
 1. Numerical Python: Scientific Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019, **syf 443**
 2. [https://www.mathsisfun.com/data/](https://www.mathsisfun.com/data/)
-3. [Think Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014](https://greenteapress.com/thinkstats2/thinkstats2.pdf)
-4. [Think Stats: Github](https://github.com/AllenDowney/ThinkStats2)
