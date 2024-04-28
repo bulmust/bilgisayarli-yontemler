@@ -6,7 +6,7 @@ title: "İstatistik - Giris"
 
 İstatistiksel analizler için gerekli modüller: `scipy.stats`, `scipy.optimize`, `numpy`. Yardımcı modüller ise `matplotlib.pyplot`, `pandas`, `seaborn`.
 
-## İstatistikteki Temel Tanımlar
+## İstatistikteki Tanımlar
 
 - **Popülasyon (Population):** Bir nesnenin tüm özelliklerini belirlemek için seçilen örneklerdir.
 - **Örneklem (Sample):** Bir nesnenin özelliklerini belirlemek için seçilen örneklerdir.
@@ -45,30 +45,33 @@ df.plot(kind='bar', title='Parti Seçimlerine Göre Oy Dağılımı', ylabel='Oy
 print(df.describe())
 ```
 
-Yukarıdaki tanımları uygulayalım.
+Yukarıdaki tanımlara doğrultusunda alıştırmayı tekrar ele alalım.
 
-- Popülasyon: 1000
-- Örneklem: 100
-- Örneklem Adeti: 1
-- Belirsizlik: 900
-- Veri: 100
+- **Popülasyon**: 1000 (Tüm nüfus)
+- **Örneklem**: 100 (Anket yapılan kişi sayısı)
+- **Örneklem** Adeti: 1 (Kaç kere anket yapıldığı, 1 şirket)
+- **Belirsizlik**: 900 (Kime oy vereceği bilinmeyen kişi sayısı)
+- **Veri**: 100
   - 30 A Partisi, 15 B Partisi, 40 C Partisi, 10 D Partisi, 5 Kararsız
-- Ortalama: 20
+- **Ortalama**: 20
   - 30 + 15 + 40 + 10 + 5 = 100 / 5 = 20 
-- Medyan (Ortanca Değer): 15 (B Partisi)
+- **Medyan** (Ortanca Değer): 15 (B Partisi)
   - 40, 30, 15, 10, 5 sıralandığında ortanca değer 15
-- Mod (Tepe Değer): En sık tekrar eden değer yok.
-- Varyans $\sigma^{2}$: 170.0
+- **Mod** (Tepe Değer): En sık tekrar eden değer yok.
+- **Varyans** $\sigma^{2}$: 170.0
   - $(|30-20|^{2} + |15-20|^{2} + |40-20|^{2} + |10-20|^{2} + |5-20|^{2})/5 = 170.0$  
-- Standart Sapma: 13.0
-  - $\sqrt{170.0}$
+- **Standart Sapma**: 13.0
   - $\sqrt{(|30-20|^{2} + |15-20|^{2} + |40-20|^{2} + |10-20|^{2} + |5-20|^{2})/5} = 13.0$
-- Çeyrekler: 10, 15, 30
+- **Çeyrekler**: 10, 15, 30
   - 40, 30, 15, 10, 5 sıralandığında
     - Alt Çeyreklik: 10 (\%25)
     - Ortanca çeyreklik: 15 (\%50)
     - Üst Çeyreklik: 30 (\%75)
-- Minimum ve Maksimum değer: 5 ve 40
+- **Minimum ve Maksimum değer**: 5 ve 40
+
+::: {.callout-warning}
+Pandas'ın verdiği standart sapma ile tanımdan elde ettiğimiz standart sapma değerleri farklıdır. Bunun sebebi `pandas`'ın yansız (unbiased) yaklaşımı kullanmasıdır. Daha ayrıntılı bilgi için [@web2024Apr-2] numaralı kaynağa bakınız.
+:::
 
 Eğer veriler ortalama değerden farkları az olursa standart sapma ve varyanas değerleri küçük olur.
 
@@ -76,12 +79,14 @@ Eğer veriler ortalama değerden farkları az olursa standart sapma ve varyanas 
 import numpy as np
 
 # Veri: 21,22,20,18,19
+print("Veri: 21,22,20,18,19")
 print(f"Varyans (Veri-Ortalamaya-Yakın): {(1**2 + 2**2 +2**2 +1**2)/5}")
 print(f"Standart Sapma (Veri-Ortalamaya-Yakın): {np.sqrt((1**2 + 2**2 +2**2 +1**2)/5)}")
-
+print("-"*20)
 # Veri: 30,15,40,10,5  
-#print(f"Varyans: {(10**2 + 5**2 +20**2 +10**2+ 15**2)/5}")
-#print(f"Standart Sapma: {np.sqrt((10**2 + 5**2 +20**2 +10**2+ 15**2)/5)}")
+print("Veri: 30,15,40,10,5")
+print(f"Varyans: {(10**2 + 5**2 +20**2 +10**2+ 15**2)/5}")
+print(f"Standart Sapma: {np.sqrt((10**2 + 5**2 +20**2 +10**2+ 15**2)/5)}")
 ```
 
 `pandas` içerisinde `describe()` fonksiyonu ile belirlenen değerleri `numpy` paketi ile de belirleyebiliriz.
@@ -89,6 +94,7 @@ print(f"Standart Sapma (Veri-Ortalamaya-Yakın): {np.sqrt((1**2 + 2**2 +2**2 +1*
 ```{python}
 import numpy as np
 veri= np.array([30., 15., 40., 10., 5.])
+print("Veri: 30,15,40,10,5")
 print(f"Ortalama: {veri.mean()}")
 print(f"Varyans: {veri.var()}")
 print(f"Standart Sapma: {veri.std()}")
@@ -97,7 +103,7 @@ print(f"Minimum ve Maksimum: {veri.min()} ve {veri.max()}")
 print(f"Çeyrekler: {np.percentile(veri, [25, 50, 75])}")
 ```
 
-Burada `pandas` ile `numpy` modüllerinin standart sapma (varyans) değerleri aynı değil. Bunun sebebi istatistikte "yanlı/yansız (biased/unbiased)" olarak bilinen iki farklı yaklaşım vardır. Bu iki yaklaşımın farklılıkları için aşağıdaki linkleri inceleyebilirsiniz.
+Burada `pandas` ile `numpy` modüllerinin standart sapma (varyans) değerleri aynı değil. Bunun sebebi istatistikte "yanlı/yansız (biased/unbiased)" olarak bilinen iki farklı yaklaşım olmasıdır. Bu iki yaklaşımın farklılıkları için aşağıdaki linkleri inceleyebilirsiniz.
 
 - [what-is-the-difference-between-bias-and-variance](https://stackoverflow.com/questions/2480650/)
 - [orneklemin-standart-sapmasinin-hesaplanmasi](assets/nedenOrnekleminVaryansiFarkli.pdf)
@@ -106,8 +112,9 @@ Burada `pandas` ile `numpy` modüllerinin standart sapma (varyans) değerleri ay
 `numpy` yanlı yaklaşımı ($n$'e bölme) kullanırken `pandas` yansız yaklaşımı ($n-1$'e bölme) kullanmaktadır. 
 
 *TL;DR*
-- Popülasyon üzerinden hesap yapmak istiyorsanız yanlı yaklaşımı, `df.std(ddof=0)` veya `np.std()` kullanın.
-- Örneklem üzerinden hesap yapmak istiyorsanız yansız yaklaşımı `df.std()` veya `np.std(ddof=1)` kullanın.
+
+- **Popülasyon üzerinden hesap yapmak istiyorsanız yanlı yaklaşımı**, `df.std(ddof=0)` veya `np.std()` kullanın.
+- **Örneklem üzerinden hesap yapmak istiyorsanız yansız yaklaşımı** `df.std()` veya `np.std(ddof=1)` kullanın.
 
 ## Rastgele Sayılar
 
@@ -145,22 +152,23 @@ import numpy as np
 import matplotlib.pyplot as plt
 # Rastgele sayı üret [0,1)
 print(np.random.rand())
+print("-"*20)
 # Rastgele 5 tane sayı üret [0,1)
 print(np.random.rand(5))
+print("-"*20)
 # Rastgele 2x4 matris üret [0,1)
 print(np.random.rand(2, 4))
-
 print("-"*20)
 # Rastgele Normal dağılımlı sayı üret
 print(np.random.randn(10))
 print("-"*20)
-
 # Rastgele tam sayı üret [0,10)
 print(np.random.randint(0, 10))
+print("-"*20)
 # Rastgele 5 tane tam sayı üret
 print(np.random.randint(0, 10, 5))
 # print(np.random.randint(low=0, high=10, size=5))
-
+print("-"*20)
 # Rastgele 2x4 matris üret [0,10)
 print(np.random.randint(0, 10, (2, 4) ))
 #print(np.random.randint(low=0, high=10, size=(2,4)))
@@ -168,11 +176,11 @@ print(np.random.randint(0, 10, (2, 4) ))
 # Çiz
 fig, axes = plt.subplots(3,1)
 axes[0].hist(np.random.rand(10_000))
-axes[0].set_title("rand")
+axes[0].set_title("rand(10_000)")
 axes[1].hist(np.random.randn(10_000))
-axes[1].set_title("randn")
+axes[1].set_title("randn(10_000)")
 axes[2].hist(np.random.randint(low=1, high=10, size=10_000), bins=9, align='left')
-axes[2].set_title("randint(low=1, high=10)")
+axes[2].set_title("randint(low=1, high=10, size=10_000)")
 plt.tight_layout()
 ```
 
@@ -180,24 +188,35 @@ plt.tight_layout()
 
 ```{python}
 import numpy as np
+# 0 ile 4 arasında 3 tane rastgele sayı seç
 print(np.random.choice(5, 3))
-# Eşittir np.random.randint(0,5,3)
+# Aynı işi np.random.randint(0,5,3) de yapar
 print("--"*20+"1")
+# 0.1, 0, 0.3, 0.6, 0 olasılıkları ile 3 tane rastgele sayı seç.
+# Yani 0.1 olasılıkla 0, 
+#      0 olasılıkla 1, 
+#      0.3 olasılıkla 2, 
+#      0.6 olasılıkla 3, 
+#      0 olasılıkla 4
 print(np.random.choice(5, 3, p=[0.1, 0, 0.3, 0.6, 0]))
 print("--"*20+"2")
+# Tekrar seçim yapmadan 3 tane rastgele sayı seç
 print(np.random.choice(5, 3, replace=False))
-# Eşittir np.random.permutation(np.arange(5))[:3]
+# Aynı işi np.random.permutation(np.arange(5))[:3] de yapar
 print("--"*20+"3")
-print(np.random.choice(5, 3, replace=False))
-print("--"*20+"4")
-aa_milne_arr = ['Gizem', 'Furkan', 'Alperen']
-print(np.random.choice(aa_milne_arr, 2))
-print(np.random.choice(aa_milne_arr, 2, replace=False))
+# Harfler arasından 2 tane rastgele isim seç
+harfler = ['A', 'B', 'C', 'Ç' ,'D', 'E', 'F', 'G', 'Ğ' , 'H']
+print(np.random.choice(harfler, 2))
+print(np.random.choice(harfler, 2, replace=False))
 ```
 
-Rastgele sayı seçiminde çekirdek (seed) seçimi de önemli bir faktördür çünkü rastgelelik bir çekirdek üzerinden oluşur. Aynı çekirdek ile "aynı rastgelelik" oluşur. 
+Rastgele sayı seçiminde çekirdek (seed) seçimi de önemli bir faktördür çünkü rastgelelik bir çekirdek üzerinden oluşur. Aynı çekirdek seçilir ise "*aynı rastgelelik*" kullanarak sayılar/seçimler oluşturulur.
 
 Bizim çalışacağımız problemlerde çekirdek seçimi önemli olmayacaktır ancak oyun, simülasyon gibi problemlerde çekirdek seçimi önemli olabilir.
+
+![Terraria Seed](assets/seed_terraria.png)
+
+![Minecraft Seed](assets/seed_minecraft.jpeg)
 
 Çekirdek seçimi için `np.random.seed()` fonksiyonunu kullanılır.
 
@@ -205,10 +224,36 @@ Belirlenen bir çekirdek üzerine seçimler yapmak için aşağıdaki gibi bir r
 
 ```{python}
 import numpy as np
-oyunHaritasi= np.random.RandomState(42)
-print(oyunHaritasi.randint(0, 10, 4))
+import matplotlib.pyplot as plt
+
+# Oyun Haritası 42 çekirdek kullan
+cekirdekSayisi= 42
+cekirdek= np.random.RandomState(cekirdekSayisi)
+# 2 boyutlu bir harita olacak şekilde çizdir
+plt.imshow(cekirdek.rand(8,8), cmap='gray', interpolation='nearest')
+plt.show()
+plt.close()
+print(f"4 adet rastgele sayı: {cekirdek.rand(4)}")
 print("-"*20+"1")
-print(oyunHaritasi.rand(5))
+print(f"4 adet rastgele sayı: {cekirdek.rand(4)}")
+```
+
+Yukarıdaki programı tekrar çalıştırdığımızda aynı sonuçları alırız. Çünkü çekirdek aynıdır.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Oyun Haritası 42 çekirdek kullan
+cekirdekSayisi= 42
+cekirdek= np.random.RandomState(cekirdekSayisi)
+# 2 boyutlu bir harita olacak şekilde çizdir
+plt.imshow(cekirdek.rand(8,8), cmap='gray', interpolation='nearest')
+plt.show()
+plt.close()
+print(f"4 adet rastgele sayı: {cekirdek.rand(4)}")
+print("-"*20+"1")
+print(f"4 adet rastgele sayı: {cekirdek.rand(4)}")
 ```
 
 ## Rastgele Değişkenler ve Dağılımlar
@@ -266,6 +311,62 @@ print(f"Standart Sapma: {X.std()}")
 print(f"Varyans: {X.var()}")
 ```
 
+## Histogramlar
+
+Histogram denildiğinde verinin dağılımdan ve frekansından bahsetmemiz gerekir.
+
+Örneğin:
+
+1. $1$, $2$, $3$, $4$, $5$, $6$ sayıları verimiz olsun. Bu verinin dağılımı tam sayılar arasında eşit olasılıkla dağılmıştır. Yani her sayının gelme olasılığı aynıdır. Bu verinin frekansı yani tekrarlanma sayısı da aynıdır. Çünkü her sayı birer kez tekrar edilmiştir.
+2. $1$, $3$, $3$, $3$, $4$, $6$ sayıları verimiz olsun. Bu verinin dağılımı tam sayılar arasında eşit olasılıkla dağılmamıştır. Yani her sayının gelme olasılığı aynı değildir. $1$, $4$ ve $6$ sayılarının gelme olasılığı $1/6$, $3$ sayısının gelme olasılığı $3/6$'dır. Bu verinin frekansı yani tekrarlanma sayısı da aynı değildir. Çünkü $3$ sayısı 3 kez tekrar edilmiştir.
+
+Bu iki örneğin histogramlarını çizelim.
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+# Veri
+seri1= pd.Series([1,2,3,4,5,6,7,8,9,10])
+seri2= pd.Series([1,1.5,2,2,3,3,3,4,4,5,6,7,8,9,10])
+# Çiz
+fig, axs= plt.subplots(1,2, figsize=(10,5))
+seri1.plot(kind="hist", ax=axs[0], title="seri1", bins=5)
+seri2.plot(kind="hist", ax=axs[1], title="seri2", bins=11)
+```
+
+**Bins**: Yatay eksendeki sütun sayısı. 
+
+Örneğin: 1,2,3,4,5 verisi var ise bin=5 yapıldığında sütunların arası hiç gözükmez, çünkü yatay eksende 1 değerinin üstünde sütun olur, 2 değerinin üstünde sütun olur vs. bin=11 yapıldığında ise kabaca 0.5 üzerinde ve 1 üzerinde sütun çizilmeye
+çalışılır.
+
+Aşağıdaki linklerden bin sayısı en iyi nasıl seçilir hakkında bilgi alabilirsiniz.
+
+- [Bin sayısı en iyi nasıl seçilir?](https://stackoverflow.com/questions/33458566)
+- [Bin arası nasıl ayrılır?](https://stackoverflow.com/questions/64198842/)
+
+Python ile veri analizinde `collections` paketi de kullanılır.
+
+```{python}
+from collections import Counter
+import pandas as pd
+# Veri
+df_p= [1, 2, 3, 4, 4, 5, 6, 7, 8, 8, 8, 8, 9]
+# Collections paketinde bulunan Counter fonksiyonu
+df_pCounter= Counter(df_p)
+print(f"Veri: {df_p}")
+print(f"Counter :{df_pCounter}")
+print(f"Counter tipi: {type(df_pCounter)}")
+print(f"8'in frekansı {df_pCounter[8]}")
+print(f"3'in frekansı {df_pCounter[3]}")
+print("-"*20)
+# Pandas
+dS= pd.Series(df_p)
+print(f"Veri: {dS}")
+print(f"Serinin tipi: {type(dS)}")
+print(f"Tüm frekanslar\n{dS.value_counts()}")
+print(f"8'in frekansı {dS.value_counts()[8]}")
+```
+
 ## Problemler
 
 ### Problem 1
@@ -305,4 +406,3 @@ Kaynak: [Solar Spectrum](https://www.pveducation.org/pvcdrom/appendices/standard
 2. [https://www.mathsisfun.com/data/](https://www.mathsisfun.com/data/)
 3. [Think Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014](https://greenteapress.com/thinkstats2/thinkstats2.pdf)
 4. [Think Stats: Github](https://github.com/AllenDowney/ThinkStats2)
- 

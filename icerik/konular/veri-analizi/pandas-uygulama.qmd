@@ -82,7 +82,6 @@ veri_dir = os.path.join(\
 
 import numpy as np
 import pandas as pd
-from scipy.fftpack import fft
 import matplotlib.pyplot as plt
 # Oku
 df = pd.read_csv(veri_dir+"/veri-930-data-export.csv",
@@ -111,10 +110,9 @@ plt.close()
 
 [Bu linkte](https://www.kaggle.com/datasets/unsdsn/world-happiness), ülkelerin mutluluk skorları ve bunlar ile ilintili bilgilerin olduğu *csv* dosyaları bulunmaktadır. Her yıl için, [2015](../../../veri/veri_mutluluk_2015.csv), [2016](../../../veri/veri_mutluluk_2016.csv), [2017](../../../veri/veri_mutluluk_2017.csv), [2018](../../../veri/veri_mutluluk_2018.csv), [2019](../../../veri/veri_mutluluk_2019.csv), indirin ve aşağıdaki soruları cevaplayın.
 
-1. 5 veri setindeki ortak sütunlar nelerdir?
-2. Beş yıllık veri setini tek bir veri setinde birleştirin.
-3. Türkiye'nin mutluluk skorunu yıllara göre nasıl değiştiğini grafik gösterin.
-4. Türkiye'nin gayri safi milli hasılası (GSMH, sütunlarda `GDP per capita` isminde) yıllara göre nasıl değiştiğini grafik üzerinde gösterin.
+1. Beş yıllık veri setini tek bir veri setinde birleştirin.
+2. Türkiye'nin mutluluk skorunu yıllara göre nasıl değiştiğini grafik gösterin.
+3. Türkiye'nin gayri safi milli hasılası (GSMH, sütunlarda `GDP per capita` isminde) yıllara göre nasıl değiştiğini grafik üzerinde gösterin.
 
 ### Çözüm
 
@@ -171,7 +169,6 @@ plt.plot(turkiye['Year'], turkiye['GDP per capita'], marker='.')
 plt.xlabel('Yıllar')
 plt.ylabel('Gayri Safi Milli Hasıla (GDP per capita)')
 plt.title('Gayri Safi Milli Hasıla (GDP per capita) Değişimi')
-plt.show()
 plt.show()
 ```
 
