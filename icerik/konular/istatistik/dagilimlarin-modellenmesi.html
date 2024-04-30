@@ -31,6 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../icerik/konular/istatistik/scipy-stats.html" rel="next">
 <link href="../../../icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
@@ -349,6 +350,12 @@ window.Quarto = {
  <span class="menu-text">Dağılımlarin Modellenmesi</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/istatistik/scipy-stats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">scipy - stats</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -383,6 +390,8 @@ window.Quarto = {
   <li><a href="#uniform-dağılım" id="toc-uniform-dağılım" class="nav-link" data-scroll-target="#uniform-dağılım">Uniform Dağılım</a></li>
   <li><a href="#binom-dağılım" id="toc-binom-dağılım" class="nav-link" data-scroll-target="#binom-dağılım">Binom Dağılım</a></li>
   <li><a href="#gamma-dağılım" id="toc-gamma-dağılım" class="nav-link" data-scroll-target="#gamma-dağılım">Gamma Dağılım</a></li>
+  <li><a href="#öğrencinin-t-dağılımı-t-dağılımı-students-t-distribution" id="toc-öğrencinin-t-dağılımı-t-dağılımı-students-t-distribution" class="nav-link" data-scroll-target="#öğrencinin-t-dağılımı-t-dağılımı-students-t-distribution">Öğrencinin t Dağılımı (t-dağılımı) (Student’s t-distribution)</a></li>
+  <li><a href="#chi-kare-dağılımı-chi-square-distribution" id="toc-chi-kare-dağılımı-chi-square-distribution" class="nav-link" data-scroll-target="#chi-kare-dağılımı-chi-square-distribution">Chi-kare Dağılımı (Chi-square Distribution)</a></li>
   </ul></li>
   <li><a href="#teorik-dağılımları-modelleri-neden-kullanırız" id="toc-teorik-dağılımları-modelleri-neden-kullanırız" class="nav-link" data-scroll-target="#teorik-dağılımları-modelleri-neden-kullanırız">Teorik Dağılımları (Modelleri) Neden Kullanırız?</a>
   <ul class="collapse">
@@ -619,6 +628,25 @@ PDF(x) = \frac{d}{dx} CDF(x)
 </ul>
 <p>Gamma dağılımın PDF formülü aşağıdaki gibidir:</p>
 <p><span class="math display">\[PDF(x) |_{gamma} = \frac{\beta^{\alpha}}{\Gamma(\alpha)} x^{\alpha-1} e^{-\beta x}\]</span></p>
+</section>
+<section id="öğrencinin-t-dağılımı-t-dağılımı-students-t-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="öğrencinin-t-dağılımı-t-dağılımı-students-t-distribution">Öğrencinin t Dağılımı (t-dağılımı) (Student’s t-distribution)</h3>
+<ul>
+<li>Öğrencinin t fonksiyonu, normal dağılımın standart sapmasının bilinmediği durumlarda kullanılır.</li>
+<li>Örneklem büyüklüğü küçük olduğunda veya popülasyon normal dağılımdan sapma gösterdiği durumlarda kullanılır.</li>
+<li>t-distribution, hipotez testleri ve güven aralıklarının hesaplanmasında yaygın olarak kullanılır</li>
+<li>PDF fonksiyonu aşağıdaki gibidir:</li>
+</ul>
+<p><span class="math display">\[ f(x, \nu) = \frac{\Gamma(\frac{\nu+1}{2})}{\sqrt{\nu\pi}\Gamma(\frac{\nu}{2})} \left(1+\frac{x^2}{\nu}\right)^{-\frac{\nu+1}{2}} \]</span></p>
+</section>
+<section id="chi-kare-dağılımı-chi-square-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="chi-kare-dağılımı-chi-square-distribution">Chi-kare Dağılımı (Chi-square Distribution)</h3>
+<ul>
+<li>Hipotez testleri ve istatistiksel çıkarımlar için kullanılan bir olasılık dağılımıdır.</li>
+<li>Chi-kare dağılımı, normal dağılım verilerinin veya bir örneklemin varyansının test edilmesinde kullanılır.</li>
+<li>PDF fonksiyonu aşağıdaki gibidir:</li>
+</ul>
+<p><span class="math display">\[ f(x, k) = \frac{1}{2^{\frac{k}{2}}\Gamma(\frac{k}{2})} x^{\frac{k}{2}-1} e^{-\frac{x}{2}} \]</span></p>
 </section>
 </section>
 <section id="teorik-dağılımları-modelleri-neden-kullanırız" class="level2">
@@ -1274,6 +1302,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../../icerik/konular/istatistik/scipy-stats.html" class="pagination-link" aria-label="scipy - stats">
+        <span class="nav-page-text">scipy - stats</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

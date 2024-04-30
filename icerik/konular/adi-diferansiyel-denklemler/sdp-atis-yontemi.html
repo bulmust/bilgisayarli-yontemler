@@ -384,6 +384,12 @@ window.Quarto = {
  <span class="menu-text">Dağılımlarin Modellenmesi</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/istatistik/scipy-stats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">scipy - stats</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -521,7 +527,7 @@ y(t)=-\frac{gt^2}{2} + 40t
 \theta(u) - 50 = 0\text{.}
 \]</span></p>
 <p>O halde <span class="math inline">\(\theta(u)\)</span> fonksiyonu başlangıç değer probleminin çözümüne bağlı. Bunu bir fonksiyon gibi tanımlayıp kökünü bulalım. Bu fonksiyon kodda şöyle tanımlanacak. <code>u</code> değeri girdi olacak. Bu <code>u</code> değerine göre başlangıç değer problemini çözecek. Çözümün son değeri <span class="math inline">\(y(5)\)</span> değeri olacak. Bu değer ile <span class="math inline">\(50\)</span> değeri arasındaki farkı döndürecek. Bu farkın kökünü bulmak için <code>scipy.optimize.ridder(fonksiyon, kok_araligi_baslangic, kok_araligi_bitis)</code> fonksiyonunu kullanacağız.</p>
-<div id="a256cd79" class="cell" data-execution_count="1">
+<div id="6f7ec0be" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> scipy.integrate <span class="im">as</span> scInteg</span>
