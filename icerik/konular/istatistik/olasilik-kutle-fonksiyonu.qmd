@@ -1,0 +1,232 @@
+---
+title: "Olasılık Kütle Fonksiyonu"
+---
+
+## Olasılık Kütle Fonksiyonu
+
+Para atma örneğine tekrar dönelim. 100 tane parayı atalım ve tura gelenleri sayalım. Atışta gelen tura sayısını kaydedelim. Ardından aynı işlemi 500 kere daha yapalım.
+
+**Ne bekliyoruz?** İdeal koşullarda 100 tane paranın 50 tanesi tura gelecek. Bu işlemi 500 kere bile yapsak her seferinde tura gelmesini bekleriz.
+
+**Neden?** Tura gelme olasılığı $1/2$'dir. 
+
+**Olasılık Kütle Fonksiyonu** (Probability Mass Function) Tura gelme dağılımı ile olasılığı eşleştiren (mapping) fonksiyondur.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+# Değişkenler
+paraAtmaSayisi= 100
+tekrarlamaSayisi= 500
+
+# Tura sayısını tutacak dizi
+arr_toplamTura= np.zeros(tekrarlamaSayisi)
+
+# Tekrarlam Sayisi kadar döngü
+for it in range(tekrarlamaSayisi):
+    # 100 tane rastgele 0 veya 1 değeri üret
+    # 0: yazı, 1: tura
+    paraAtma= np.random.choice([0,1], size=paraAtmaSayisi)
+    
+    # Tüm Değerleri topla. 1'ler sanki tura gelmiş gibi düşünülebilir.
+    arr_toplamTura[it] = np.sum(paraAtma)
+
+# Çiz
+plt.hist(arr_toplamTura, bins=range(101))
+plt.xlabel("Tura Sayısı")
+plt.ylabel("Frekans")
+plt.show()
+```
+
+Yukarıdaki grafiği çizdirirken yatayda, tura gelme sayısını dikkate almıştık. Şimdi yataydaki değerlerin hepsini toplam sayıya yani $100$'e bölerek çizelim.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+# Değişkenler
+paraAtmaSayisi= 100
+tekrarlamaSayisi= 500
+
+# Tura sayısını tutacak dizi
+arr_toplamTura= np.zeros(tekrarlamaSayisi)
+
+# Tekrarlam Sayisi kadar döngü
+for it in range(tekrarlamaSayisi):
+    # 100 tane rastgele 0 veya 1 değeri üret
+    # 0: yazı, 1: tura
+    paraAtma= np.random.choice([0,1], size=paraAtmaSayisi)
+    
+    # Tüm Değerleri topla. 1'ler sanki tura gelmiş gibi düşünülebilir.
+    arr_toplamTura[it] = np.sum(paraAtma)
+
+# Çiz
+plt.hist(arr_toplamTura/100, bins=20)
+plt.xlabel("Olasılık")
+plt.ylabel("Frekans")
+plt.show()
+plt.close()
+```
+
+Görüldüğü üzere sıklıkları toplam sayıya böldüğümüzde olasılıklar elde edilmiş oldu. İşte bu tanıma **olasılık kütle fonksiyonu** (probability mass function) adı verilir. Kısaca `pmf` olarak adlandırılır.
+
+- Olasılık kütle fonksiyonu 0 ile 1 arasında değer alır.
+- Olasılık kütle fonksiyonu, dağılım değerlerinin süreksiz yani kesikli olması durumunda geçerlidir.
+
+## Alıştırma 1
+
+- Verimiz [1,1,2] olsun. Bu veri kümesinin frekansını ver olasılık kütle fonksiyonunu hesaplayalım ve çizelim.
+- Aynı işlemleri [1,1,2,2,3,3] için yapalım.
+
+### Çözüm
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Veri
+seri1= pd.Series([1,1,2])
+
+# Olasılık kütle fonksiyonu
+print(f"Tekrar eden sayılar\n{seri1.value_counts()}")
+print("-"*20)
+print(f"Kaç sayı var? {len(seri1)}")
+print("-"*20)
+pmf= seri1.value_counts()/len(seri1)
+print(f"pmf=\n{pmf}")
+print("-"*20)
+# pmf değişkenini dataframe'e çevir
+pmf.name= "Olasılık"
+# Çiz
+pmf.plot(kind="bar", title="Pmf [1,1,2]")
+plt.show()
+#---
+seri1= pd.Series([1,1,2,2,3,3])
+
+# Olasılık kütle fonksiyonu
+print(f"Tekrar eden sayılar\n{seri1.value_counts()}")
+print("-"*20)
+print(f"Kaç sayı var? {len(seri1)}")
+print("-"*20)
+pmf= seri1.value_counts()/len(seri1)
+print(f"pmf=\n{pmf}")
+print("-"*20)
+# pmf değişkenini dataframe'e çevir
+pmf.name= "Olasılık"
+# Çiz
+pmf.plot(kind="bar", title="Pmf [1,1,2,2,3,3]")
+```
+
+
+::: {.callout-caution}
+PMF fonksiyonu çizdirilirken histogram grafiği değil bar grafiği çizdiriyoruz.
+:::
+
+Pmf fonksiyonunu elde etmek için yapılan işleme **normalizasyon** (normalization) denir. Normalizasyon işlemi, olasılık kütle fonksiyonunun toplamı 1 olacak şekilde yapılır, çünkü olasılığın tanımı gereği toplamı 1 olmalıdır.
+
+Olasılık kütle fonksiyonunu veri üzerinden değil de ideal koşullarda gelmesi gereken tüm değerler üzerinden de tanımlayabiliriz. 
+
+## Alıştırma 2
+
+Bir para 3 kez atılıyor. Tura gelmelerinin sayısına ait olasılık kütle fonksiyonunu bulalım.
+
+### Çözüm
+
+Olası çözümlerimiz:
+
+1. TTT
+2. TTY, TYT, YTT
+3. TYY, YTY, YYT
+4. YYY
+
+Toplam 8 ihtimal vardır. Her bir ihtimali rastgele değişkenlere atayalım.
+
+- $X$: Tura gelme sayısı
+
+$$
+X= {0, 1, 2, 3}
+$$
+
+Burada 3 kez para atıldığında;
+
+1. Hiç tura gelmeyebilir $X=0$.
+2. Bir kere tura gelebilir $X=1$.
+3. İki kere tura gelebilir $X=2$.
+4. Üç kere tura gelebilir $X=3$.
+
+Bu rastgele değişkenleri kullanarak olasılık kütle fonksiyonunu bulalım.
+
+| x   | 0   | 1   | 2   | 3   |
+|:---:|:---:|:---:|:---:|:---:|
+|P(X=x) | 1/8 | 3/8 | 3/8 | 1/8 |
+
+Buradaki $P(x)$ olasılık kütle fonksiyonudur veya kesikli olasılık dağılımıdır.
+
+## Beklenen Değer
+
+- Beklenen değer, rastgele değişkenin olasılık kütle fonksiyonu ile çarpımından elde edilir.
+- Bir verinin **ortalaması** (mean) değerini hesaplamak demek, o verinin beklenen değerini hesaplamak demektir.
+
+$$
+E(X)\equiv \mu = \sum_{x} x P(X=x) \\
+<X> = \sum_{x} x P(X=x)
+$$
+
+Her bir rastgele değişken, $x_{i}$, ile o rastgele değişkenin olasılığı, $P(X=x_{i})$ çarpılır ve tüm bu çarpımlar toplanır.
+
+## Alıştırma 3
+
+Bir elektronun spininin $z$ bileşeni $\hbar/2$ veya $-\hbar/2$ değerlerini alabilir. Bu durumda bir elektronun spini $0.5$ olasılıkla $\hbar/2$, $0.5$ olasılıkla $-\hbar/2$ olur. Elektronun spini ile ilgili rastgele değişkeni $X$ ile gösterelim.
+
+### Çözüm
+
+$$
+X = \{-1/2, 1/2\}
+$$
+
+Elektronun spini ile ilgili olasılık kütle fonksiyonunu bulalım.
+
+|x    | $-\hbar/2$ | $\hbar/2$|
+|:---:|:---:|:---:|
+|P(X=x) | 0.5 | 0.5|
+
+Elektronun spinin $z$ bileşeninin beklenen değeri, $E(X)$ bulalım.
+
+$$
+E(X) = \sum_{i} x_{i} P(X=x_{i}) = \frac{\hbar}{2} \times 0.5 -\frac{\hbar}{2} \times 0.5 = 0
+$$
+
+Elektronun spinin $z$ bileşeninin beklenen değeri $0$'dır.
+
+Fiziksel notasyon ile karşılaştıralım. Bir elektronun spininin $z$ bileşeninin beklenen değeri, $S_{z}$, $\psi$ dalga fonksiyonu ile hesaplanır.
+
+$$
+\langle S_{z}\rangle \equiv \langle\psi | S_{z} | \psi\rangle
+$$
+
+Burada dalga fonksiyonunu aşağıdaki gibi yazabiliriz. Spin yukarıyı $|\uparrow\rangle$ ile gösterelim, spin aşağıyı $|\downarrow\rangle$ ile gösterelim. 
+
+$$
+|\psi\rangle = \frac{1}{\sqrt{2}} |\uparrow\rangle +\frac{1}{\sqrt{2}} |\downarrow\rangle
+$$
+
+Matris gösterimi ile de yazabiliriz. 
+
+$$
+|\psi\rangle = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 0 \end{bmatrix} + \frac{1}{\sqrt{2}}\begin{bmatrix} 0 \\ 1 \end{bmatrix} \\
+$$
+
+$$
+|\psi\rangle = \begin{bmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{bmatrix}
+$$
+
+Şimdi de $S_{z}$ operatörünü matris formda yazalım.
+
+$$
+S_{z} = \frac{\hbar}{2} \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}
+$$
+
+Beklenen değeri hesaplayalım.
+
+$$
+|S_{z}\rangle = \langle \psi | S_{z} | \psi \rangle = \begin{bmatrix} 1/\sqrt{2} & 1/\sqrt{2} \end{bmatrix} \frac{\hbar}{2} \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} \begin{bmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{bmatrix} = 0
+$$
