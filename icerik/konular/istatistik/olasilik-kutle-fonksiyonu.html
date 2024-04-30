@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
+<link href="../../../icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.html" rel="next">
 <link href="../../../icerik/konular/istatistik/uygulama-thinkstat2.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
@@ -371,6 +372,18 @@ window.Quarto = {
  <span class="menu-text">Olasılık Kütle Fonksiyonu</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kümülatif Dağılım Fonksiyonu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/istatistik/dagilimlarin-modellenmesi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dağılımlarin Modellenmesi</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -399,6 +412,13 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#çözüm-2" id="toc-çözüm-2" class="nav-link" data-scroll-target="#çözüm-2">Çözüm</a></li>
   </ul></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
+  <ul class="collapse">
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  </ul></li>
+  <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/istatistik/olasilik-kutle-fonksiyonu.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
@@ -442,7 +462,7 @@ window.Quarto = {
 <p><strong>Ne bekliyoruz?</strong> İdeal koşullarda 100 tane paranın 50 tanesi tura gelecek. Bu işlemi 500 kere bile yapsak her seferinde tura gelmesini bekleriz.</p>
 <p><strong>Neden?</strong> Tura gelme olasılığı <span class="math inline">\(1/2\)</span>’dir.</p>
 <p><strong>Olasılık Kütle Fonksiyonu</strong> (Probability Mass Function) Tura gelme dağılımı ile olasılığı eşleştiren (mapping) fonksiyondur.</p>
-<div id="42877d97" class="cell" data-execution_count="1">
+<div id="24297f7c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Değişkenler</span></span>
@@ -475,7 +495,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Yukarıdaki grafiği çizdirirken yatayda, tura gelme sayısını dikkate almıştık. Şimdi yataydaki değerlerin hepsini toplam sayıya yani <span class="math inline">\(100\)</span>’e bölerek çizelim.</p>
-<div id="b41e5b6b" class="cell" data-execution_count="2">
+<div id="bddb8d15" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Değişkenler</span></span>
@@ -522,7 +542,7 @@ window.Quarto = {
 </ul>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="24271576" class="cell" data-execution_count="3">
+<div id="35da21d1" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
@@ -674,7 +694,9 @@ X= {0, 1, 2, 3}
 <li>Bir verinin <strong>ortalaması</strong> (mean) değerini hesaplamak demek, o verinin beklenen değerini hesaplamak demektir.</li>
 </ul>
 <p><span class="math display">\[
-E(X)\equiv \mu = \sum_{x} x P(X=x) \\
+E(X)\equiv \mu = \sum_{x} x P(X=x)
+\]</span></p>
+<p><span class="math display">\[
 &lt;X&gt; = \sum_{x} x P(X=x)
 \]</span></p>
 <p>Her bir rastgele değişken, <span class="math inline">\(x_{i}\)</span>, ile o rastgele değişkenin olasılığı, <span class="math inline">\(P(X=x_{i})\)</span> çarpılır ve tüm bu çarpımlar toplanır.</p>
@@ -724,17 +746,53 @@ E(X) = \sum_{i} x_{i} P(X=x_{i}) = \frac{\hbar}{2} \times 0.5 -\frac{\hbar}{2} \
 <p><span class="math display">\[
 |\psi\rangle = \begin{bmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{bmatrix}
 \]</span></p>
-<p>Şimdi de <span class="math inline">\(S_{z}\)</span> operatörünü matris formda yazalım.</p>
+<p>Şimdi de <span class="math inline">\(S_{z}\)</span> operatörünü matris formda yazalım. <span class="math inline">\(S_{z}\)</span> operatörü, spinin <span class="math inline">\(z\)</span> bileşenini temsil eder yani Pauli spin matrislerinin <span class="math inline">\(z\)</span> bileşenidir.</p>
 <p><span class="math display">\[
 S_{z} = \frac{\hbar}{2} \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}
 \]</span></p>
 <p>Beklenen değeri hesaplayalım.</p>
 <p><span class="math display">\[
-|S_{z}\rangle = \langle \psi | S_{z} | \psi \rangle = \begin{bmatrix} 1/\sqrt{2} &amp; 1/\sqrt{2} \end{bmatrix} \frac{\hbar}{2} \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix} \begin{bmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{bmatrix} = 0
+\langle S_{z}\rangle = \langle \psi | S_{z} | \psi \rangle = \begin{bmatrix} 1/\sqrt{2} &amp; 1/\sqrt{2} \end{bmatrix} \frac{\hbar}{2} \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix} \begin{bmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{bmatrix} = 0
 \]</span></p>
-
-
 </section>
+</section>
+<section id="problemler" class="level2">
+<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
+<section id="problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
+<p>1 ile 10 arasında rastgele 100 sayı üretin.</p>
+<ol type="1">
+<li>Bu sayıların histogram grafiğini çizdirin.</li>
+<li>Bu sayıların frekanslarını ekrana yazdırın.</li>
+<li>Bu sayıları normalize edin ve ekrana yazdırın.</li>
+<li>Bu sayıların olasılık kütle grafiğini çizdirin.</li>
+</ol>
+</section>
+<section id="problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
+<p>Bir zar atıldığında beklenen değer ne olur? Matematiksel olarak hesaplayınız (Bilgisayarda değil).</p>
+</section>
+<section id="problem-3" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3">Problem 3</h3>
+<ol type="1">
+<li>2 zar atıldığında zarların toplamının beklenen değerini, varyansını ve standart sapmasını teorik olarak hesaplayan betik dosyası yazın.</li>
+<li>2 zarı atın ve zarların toplamını kaydedin. Bu işlemi 3600 kere yapın.
+<ol type="1">
+<li>Toplam kaç kere “2,3,4,5,6,7,8,9,10,11,12” geldiğini gösteren histogramı aynı grafikte çizdirin.</li>
+<li>Olasılık kütle fonksiyonunu çizdirin. (y eksenini 1’e normalize edin. Bunun için <code>np.array(np.unique(toplamGelme, return_counts=True))</code> fonksiyonunu kullanıp hangi sayıdan kaç adet geldiği bilgisini alabilirsiniz.) Bir önceki sorudan olması gereken olasılık kütle fonksiyonu değerlerini de bu grafikte gösteriniz. <em>Bonus: Bu işlemleri <code>pandas</code> paketini kullanarak yapınız.</em></li>
+<li>Beklenen değerini, varyansı ve standart sapmasını, üstte bulduğunuz deney sonuçlarını ile bulduğunuz olasılık kütle fonksiyonunu kullanarak hesaplayın. Bu değerler ile teorik değerler ile karşılaştırın.</li>
+</ol></li>
+</ol>
+</section>
+</section>
+<section id="kaynaklar" class="level2">
+<h2 class="anchored" data-anchor-id="kaynaklar">Kaynaklar</h2>
+<ol type="1">
+<li><a href="https://greenteapress.com/thinkstats2/thinkstats2.pdf">Think Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014, syf:31</a></li>
+<li><a href="https://www.youtube.com/watch?v=6HQV3zg4ExQ" class="uri">https://www.youtube.com/watch?v=6HQV3zg4ExQ</a></li>
+</ol>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -1305,6 +1363,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../../icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.html" class="pagination-link" aria-label="Kümülatif Dağılım Fonksiyonu">
+        <span class="nav-page-text">Kümülatif Dağılım Fonksiyonu</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

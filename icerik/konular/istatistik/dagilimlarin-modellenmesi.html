@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>Bilgisayarlı Yöntemler - BDP - İkinci Dereceden Diferansiyel Denklemler</title>
+<title>Bilgisayarlı Yöntemler - Dağılımlarin Modellenmesi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,61 +21,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -85,8 +31,7 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" rel="next">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" rel="prev">
+<link href="../../../icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -169,7 +114,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html">BDP - İkinci Dereceden Diferansiyel Denklemler</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/istatistik.html">İstatistik</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/istatistik/dagilimlarin-modellenmesi.html">Dağılımlarin Modellenmesi</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -265,7 +210,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - İkinci Dereceden Diferansiyel Denklemler</span></a>
   </div>
 </li>
@@ -400,7 +345,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/istatistik/dagilimlarin-modellenmesi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/dagilimlarin-modellenmesi.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Dağılımlarin Modellenmesi</span></a>
   </div>
 </li>
@@ -418,29 +363,50 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#bdp---ikinci-dereceden-diferansiyel-denklemler" id="toc-bdp---ikinci-dereceden-diferansiyel-denklemler" class="nav-link active" data-scroll-target="#bdp---ikinci-dereceden-diferansiyel-denklemler">BDP - İkinci Dereceden Diferansiyel Denklemler</a></li>
-  <li><a href="#sec-alistirma1" id="toc-sec-alistirma1" class="nav-link" data-scroll-target="#sec-alistirma1">Alıştırma 1</a>
+  <li><a href="#dağılımların-modellenmesi" id="toc-dağılımların-modellenmesi" class="nav-link active" data-scroll-target="#dağılımların-modellenmesi">Dağılımların Modellenmesi</a></li>
+  <li><a href="#olasılık-yoğunluk-fonksiyonu-pdf-probability-density-function" id="toc-olasılık-yoğunluk-fonksiyonu-pdf-probability-density-function" class="nav-link" data-scroll-target="#olasılık-yoğunluk-fonksiyonu-pdf-probability-density-function">Olasılık Yoğunluk Fonksiyonu, PDF (Probability Density Function)</a>
   <ul class="collapse">
-  <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
+  <li><a href="#pdfnin-özellikleri" id="toc-pdfnin-özellikleri" class="nav-link" data-scroll-target="#pdfnin-özellikleri">PDF’nin Özellikleri</a></li>
+  </ul></li>
+  <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a>
+  <ul class="collapse">
+  <li><a href="#varyans-üzerine-not" id="toc-varyans-üzerine-not" class="nav-link" data-scroll-target="#varyans-üzerine-not">Varyans Üzerine Not</a></li>
+  </ul></li>
+  <li><a href="#eksponansiyel-dağılım" id="toc-eksponansiyel-dağılım" class="nav-link" data-scroll-target="#eksponansiyel-dağılım">Eksponansiyel Dağılım</a></li>
+  <li><a href="#normal-dağılım" id="toc-normal-dağılım" class="nav-link" data-scroll-target="#normal-dağılım">Normal Dağılım</a></li>
+  <li><a href="#poisson-dağılımı" id="toc-poisson-dağılımı" class="nav-link" data-scroll-target="#poisson-dağılımı">Poisson Dağılımı</a></li>
+  <li><a href="#maxwell-boltzmann-dağılımı" id="toc-maxwell-boltzmann-dağılımı" class="nav-link" data-scroll-target="#maxwell-boltzmann-dağılımı">Maxwell-Boltzmann Dağılımı</a></li>
+  <li><a href="#bose-einstein-dağılımı" id="toc-bose-einstein-dağılımı" class="nav-link" data-scroll-target="#bose-einstein-dağılımı">Bose-Einstein Dağılımı</a></li>
+  <li><a href="#fermi-dirac-dağılımı" id="toc-fermi-dirac-dağılımı" class="nav-link" data-scroll-target="#fermi-dirac-dağılımı">Fermi-Dirac Dağılımı</a></li>
+  <li><a href="#diğer-dağılımlar" id="toc-diğer-dağılımlar" class="nav-link" data-scroll-target="#diğer-dağılımlar">Diğer Dağılımlar</a>
+  <ul class="collapse">
+  <li><a href="#uniform-dağılım" id="toc-uniform-dağılım" class="nav-link" data-scroll-target="#uniform-dağılım">Uniform Dağılım</a></li>
+  <li><a href="#binom-dağılım" id="toc-binom-dağılım" class="nav-link" data-scroll-target="#binom-dağılım">Binom Dağılım</a></li>
+  <li><a href="#gamma-dağılım" id="toc-gamma-dağılım" class="nav-link" data-scroll-target="#gamma-dağılım">Gamma Dağılım</a></li>
+  </ul></li>
+  <li><a href="#teorik-dağılımları-modelleri-neden-kullanırız" id="toc-teorik-dağılımları-modelleri-neden-kullanırız" class="nav-link" data-scroll-target="#teorik-dağılımları-modelleri-neden-kullanırız">Teorik Dağılımları (Modelleri) Neden Kullanırız?</a>
+  <ul class="collapse">
+  <li><a href="#parçacıkların-hız-dağılımı" id="toc-parçacıkların-hız-dağılımı" class="nav-link" data-scroll-target="#parçacıkların-hız-dağılımı">Parçacıkların Hız Dağılımı</a></li>
+  <li><a href="#nötrinonun-keşfi" id="toc-nötrinonun-keşfi" class="nav-link" data-scroll-target="#nötrinonun-keşfi">Nötrinonun Keşfi</a></li>
+  <li><a href="#bose-einstein-yoğunlaşması" id="toc-bose-einstein-yoğunlaşması" class="nav-link" data-scroll-target="#bose-einstein-yoğunlaşması">Bose-Einstein Yoğunlaşması</a></li>
   </ul></li>
   <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
   <ul class="collapse">
-  <li><a href="#sec-problem1" id="toc-sec-problem1" class="nav-link" data-scroll-target="#sec-problem1">Problem 1</a></li>
-  <li><a href="#sec-problem2" id="toc-sec-problem2" class="nav-link" data-scroll-target="#sec-problem2">Problem 2</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
   <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
-  <li><a href="#sec-problem4" id="toc-sec-problem4" class="nav-link" data-scroll-target="#sec-problem4">Problem 4</a></li>
-  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
-  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
   </ul></li>
+  <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/istatistik/dagilimlarin-modellenmesi.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html">BDP - İkinci Dereceden Diferansiyel Denklemler</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/istatistik.html">İstatistik</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/istatistik/dagilimlarin-modellenmesi.html">Dağılımlarin Modellenmesi</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">BDP - İkinci Dereceden Diferansiyel Denklemler</h1>
+<h1 class="title">Dağılımlarin Modellenmesi</h1>
 </div>
 
 
@@ -469,145 +435,278 @@ window.Quarto = {
 </header>
 
 
-<section id="bdp---ikinci-dereceden-diferansiyel-denklemler" class="level2">
-<h2 class="anchored" data-anchor-id="bdp---ikinci-dereceden-diferansiyel-denklemler">BDP - İkinci Dereceden Diferansiyel Denklemler</h2>
-<p>İkinci dereceden diferansiyel denklemleri çözmek için Euler yöntemini iki kere kullanmak gerekir. Örneğin,</p>
-<p><span class="math display">\[
-y''(x)+4y(x)=0
-\]</span></p>
-<p>İlk adımda <span class="math inline">\(y''\)</span> türevi yerine <span class="math inline">\(v(x) \equiv y'(x)\)</span> tanımlaması yapalım bu durumda denklem şu şekilde olur.</p>
-<p><span class="math display">\[
-v'(x)=-4y
-\]</span></p>
-<p>Yukarıdaki denklem birinci dereceden bir diferansiyel denklem olduğu için Euler yöntemi ile çözülebilir. Bu denklemi çözdükten sonra <span class="math inline">\(y(x)\)</span> fonksiyonunu bulmak için <span class="math inline">\(y'(x)\equiv v(x)\)</span> denklemini çözmemiz gerekir. Sonuç olarak ikinci dereceden diferansiyel denklemi 2 adet birbirine bağlı dif. denk. sistemi olarak düşünebiliriz.</p>
-<p>Dikkat edilmesi gereken husus başlangıç koşullarının <span class="math inline">\(y(x)\)</span> ve <span class="math inline">\(v(x)\)</span> fonksiyonları için yazmaktır. İkinci dereden bir diferansiyel denklemin çözümünü bulabilmek için hem <span class="math inline">\(y(x_{0})\)</span> hem de <span class="math inline">\(y'(x_{0})=v(x_{0})\)</span> koşullarına ihtiyaç vardır.</p>
-<p>İkinci dereceden diferansiyel denklemleri çözmek üst üste Euler çözücü fonksiyonu çağırmak yerine denklemi vektörel bir şekilde yazabiliriz.</p>
+<section id="dağılımların-modellenmesi" class="level2">
+<h2 class="anchored" data-anchor-id="dağılımların-modellenmesi">Dağılımların Modellenmesi</h2>
+<p>Bu zamana kadar elde ettiğimiz dağılımlar (normal ve düzgün (uniform)) empirik yani gözlem verilerine dayalıydı.</p>
+<p>Şimdi <strong>analitik dağılımlardan</strong> bahsedeceğiz. Analitik dağılımlar bir formül ile karakterize edildiği için kesikli değil <strong>sürekli</strong> olur.</p>
+<p>PMF (Olasılık kütle fonksiyonu) kesikli değerler üzerinde tanımlı olduğu için yeni bir tanım yani PDF (olasılık yoğunluk fonksiyonu) tanımı yapacağız.</p>
 </section>
-<section id="sec-alistirma1" class="level2">
-<h2 class="anchored" data-anchor-id="sec-alistirma1">Alıştırma 1</h2>
-<p>Sürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. <span class="math inline">\(g=9.81\)</span> m/s <span class="math inline">\(^{2}\)</span> sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları <span class="math inline">\(v(0)=0\)</span> ve <span class="math inline">\(y(0)=100\)</span> olsun. Çözümü <span class="math inline">\(n=100\)</span> s adımda yapın. Zaman aralığı <span class="math inline">\(t=0\)</span> s’den <span class="math inline">\(t=10\)</span> s’ye kadar olsun.</p>
-<section id="çözüm" class="level3">
-<h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="afb2fa15" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> sys</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># 3 üst dizine çık</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>module_dir <span class="op">=</span> os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), <span class="st">'moduller'</span>)</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># moduller dizinini yol olarak ekle</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>sys.path.append(module_dir)</span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># bilYonMod.py modülünü içe aktar</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="im">import</span> bilYonMod <span class="im">as</span> bym</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co">################################################</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co"># Global değişkenler</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a>g<span class="op">=</span><span class="fl">9.81</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="co"># Denklemin sağ tarafı</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="kw">def</span> F(yVek, x):</span>
-<span id="cb1-21"><a href="#cb1-21"></a>    <span class="co"># F=m*a</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a>    <span class="co"># F=m*y''(t)</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a>    <span class="co"># -g=y''(t)</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a>    <span class="co"># y'(t)=v(t)</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a>    <span class="co"># v'(t)=-g</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a>    <span class="cf">return</span> np.array([yVek[<span class="dv">1</span>], <span class="op">-</span>g])</span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># Başlangıç koşulları</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a>x0<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a>yVek<span class="op">=</span>np.array([<span class="dv">100</span>, <span class="dv">0</span>])</span>
-<span id="cb1-30"><a href="#cb1-30"></a>xStop<span class="op">=</span><span class="dv">5</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a>n<span class="op">=</span><span class="dv">100</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a><span class="co"># Çöz</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a>xTum, yVekTum <span class="op">=</span> bym.add_coz_euler_sistem(F, x0, xStop, yVek, n)</span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="co"># Analitik çözüm</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a><span class="co"># y(t) = y0 + v0*t - (1/2)*g*t^2</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a><span class="co"># v(t) = v0 - g*t</span></span>
-<span id="cb1-37"><a href="#cb1-37"></a>yAnalitik<span class="op">=</span> yVek[<span class="dv">0</span>] <span class="op">+</span> yVek[<span class="dv">1</span>]<span class="op">*</span>xTum <span class="op">-</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>g<span class="op">*</span>xTum<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb1-38"><a href="#cb1-38"></a>vAnalitik<span class="op">=</span> yVek[<span class="dv">1</span>] <span class="op">-</span> g<span class="op">*</span>xTum</span>
-<span id="cb1-39"><a href="#cb1-39"></a><span class="co"># Çiz</span></span>
-<span id="cb1-40"><a href="#cb1-40"></a>fig,axs<span class="op">=</span>plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb1-41"><a href="#cb1-41"></a><span class="co"># Soldaki grafik</span></span>
-<span id="cb1-42"><a href="#cb1-42"></a>axs[<span class="dv">0</span>].plot(xTum, yVekTum[<span class="dv">0</span>,:], <span class="st">'o-'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Euler $y(t)$'</span>)</span>
-<span id="cb1-43"><a href="#cb1-43"></a>axs[<span class="dv">0</span>].plot(xTum, yAnalitik, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Analitik $y(t)$'</span>)</span>
-<span id="cb1-44"><a href="#cb1-44"></a>axs[<span class="dv">0</span>].set_ylabel(<span class="st">'$y(t)$'</span>)</span>
-<span id="cb1-45"><a href="#cb1-45"></a>axs[<span class="dv">0</span>].legend()</span>
-<span id="cb1-46"><a href="#cb1-46"></a><span class="co"># Sağdaki grafik</span></span>
-<span id="cb1-47"><a href="#cb1-47"></a>axs[<span class="dv">1</span>].plot(xTum, yVekTum[<span class="dv">1</span>,:], <span class="st">'o-'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Euler $v(t)$'</span>)</span>
-<span id="cb1-48"><a href="#cb1-48"></a>axs[<span class="dv">1</span>].plot(xTum, vAnalitik, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Analitik $v(t)$'</span>)</span>
-<span id="cb1-49"><a href="#cb1-49"></a>axs[<span class="dv">1</span>].set_ylabel(<span class="st">'$v(t)$'</span>)</span>
-<span id="cb1-50"><a href="#cb1-50"></a>axs[<span class="dv">1</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
-<span id="cb1-51"><a href="#cb1-51"></a>axs[<span class="dv">1</span>].legend()</span>
-<span id="cb1-52"><a href="#cb1-52"></a><span class="co"># Sıkıştır</span></span>
-<span id="cb1-53"><a href="#cb1-53"></a>plt.tight_layout()</span>
-<span id="cb1-54"><a href="#cb1-54"></a><span class="co"># Göster</span></span>
-<span id="cb1-55"><a href="#cb1-55"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="bdp-ikinci-dereceden-diferansiyel-denklemler_files/figure-html/cell-2-output-1.png" width="660" height="470" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="olasılık-yoğunluk-fonksiyonu-pdf-probability-density-function" class="level2">
+<h2 class="anchored" data-anchor-id="olasılık-yoğunluk-fonksiyonu-pdf-probability-density-function">Olasılık Yoğunluk Fonksiyonu, PDF (Probability Density Function)</h2>
+<p>Tıpkı PMF gibi PDF de rastgele bir değişkeni (örnek uzayında) alıp olasılıklardan oluşan tanım kümesine götüren bir fonksiyondur.</p>
+<p>PDF, bir sürekli değişkenin değerlerinin olasılıklarını tanımlar.</p>
+<section id="pdfnin-özellikleri" class="level3">
+<h3 class="anchored" data-anchor-id="pdfnin-özellikleri">PDF’nin Özellikleri</h3>
+<ol type="1">
+<li>(<strong>normalizasyon</strong>) PDF’de tıpkı PMF gibi olasılık fonksiyonu olduğu için için değerlerinin toplamı 1 olmak zorundadır.</li>
+</ol>
+<p><span class="math display">\[
+\int_{-\infty}^{\infty} PDF(x) dx = 1
+\]</span></p>
+<ol start="2" type="1">
+<li>(<strong>pozitiflik.</strong>) PDF’nin değeri her zaman pozitif olmak zorundadır. <span class="math inline">\(PDF(x) \geq 0\)</span></li>
+<li>(<strong>Değerlerin Olasılık Yoğuluğu</strong>) PDF’in değeri 1’e ne kadar yakınsa o kadar yüksek olasılık değerine sahiptir.</li>
+</ol>
+</section>
+</section>
+<section id="alıştırma-1" class="level2">
+<h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h2>
+<p><span class="math inline">\(PDF(x=2) = 0.5\)</span> ise <span class="math inline">\(x\)</span> rastgele değişkeninin olasılığı <span class="math inline">\(0.5\)</span>’dir. <span class="math inline">\(PDF(x=3)=0.2\)</span> ise <span class="math inline">\(3\)</span> rastgele değişkeninin olasılığı <span class="math inline">\(0.2\)</span>’dir.</p>
+<ul>
+<li>(<strong>PDF ile PMF arasındaki ilişki</strong>) PDF ile PMF arasındaki matematiksel ilişki aşağıdaki gibidir.</li>
+</ul>
+<p><span class="math display">\[
+PDF(x) = \frac{PMF(x)}{\Delta x}
+\]</span></p>
+<p>Burada <span class="math inline">\(\Delta x\)</span> birim uzunlukta <span class="math inline">\(x\)</span>’in alabileceği değerlerin sayısıdır.</p>
+<ul>
+<li>(<strong>PDF ile CDF arasındaki ilişki</strong>) PDF ile CDF arasındaki türev/integral ilişkisi vardır.</li>
+</ul>
+<p><span class="math display">\[
+CDF(x) = \int_{-\infty}^{x} PDF(t) dt
+\]</span></p>
+<p>veya</p>
+<p><span class="math display">\[
+PDF(x) = \frac{d}{dx} CDF(x)
+\]</span></p>
+<p>CDF fonksiyonunun <span class="math inline">\(x\)</span> noktasındaki türevi ne kadar yüksek ise <span class="math inline">\(x\)</span>’in o bölgede olma olasılığı o kadar yüksektir ki bu da PMF(x)’in o bölgede yüksek değerde olması demektir.</p>
+<ul>
+<li>(<strong>Beklenen Değer</strong> veya <strong>PDF’in Ortalaması (Mean)</strong>) Bir dağılımın ortalama değeri veya beklenen değeri <span class="math inline">\(E[x]\)</span> veya <span class="math inline">\(&lt;x&gt;\)</span> aşağıdaki gibi hesaplanır.</li>
+</ul>
+<p><span class="math display">\[E[x] \equiv \mu \equiv &lt;x&gt; = \int_{-\infty}^{\infty} x ~ PDF(x) dx\]</span></p>
+<ul>
+<li>(<strong>Varyans</strong>) Bir dağılımın varyansı <span class="math inline">\(\sigma^2\)</span> aşağıdaki gibi hesaplanır.</li>
+</ul>
+<p><span class="math display">\[\sigma^2 = \int_{-\infty}^{\infty} (x - E[x])^2 PDF(x) dx\]</span></p>
+<section id="varyans-üzerine-not" class="level3">
+<h3 class="anchored" data-anchor-id="varyans-üzerine-not">Varyans Üzerine Not</h3>
+<p>Varyansı başka bir şekilde de hesaplayabiliriz.</p>
+<p><span class="math display">\[
+\sigma^2 = E[(x-E[x])^{2}] = \int_{-\infty}^{\infty} (x - E[x])^2 PDF(x) dx
+\]</span></p>
+<p><span class="math display">\[
+\begin{align}
+    E[(x-E[x])^{2}] =&amp; E[x^2 - 2 x E[x] + E[x]^2] \\
+    =&amp; E[x^2] - E[2 x E[x]] + E[E[x]^2] \\
+    =&amp; E[x^2] - 2 E[x] E[x] + E[x]^2 \\
+    =&amp; E[x^2] - E[x]^2
+\end{align}
+\]</span></p>
+<p>Burada kullandığımız özellikler</p>
+<ol type="1">
+<li><span class="math inline">\(E[x+y] = E[x] + E[y]\)</span></li>
+<li><span class="math inline">\(E[c x] = c E[x]\)</span></li>
+<li><span class="math inline">\(E[x E[x]] = E[x]E[x]\)</span> (<span class="math inline">\(E[x]\)</span> ’in bir sayı olduğunu unutmayın.)</li>
+<li><span class="math inline">\(E[E[x]^2] = E[x]^2\)</span> (<span class="math inline">\(E[c]= c\)</span>, <span class="math inline">\(c\)</span> sabit bir sayıdır.)</li>
+</ol>
+<p>Bu durumda varyans şu şekilde hesaplanabilir.</p>
+<p><span class="math display">\[
+\sigma^2 \equiv Var[x] = E[x^2] - E[x]^2
+\]</span></p>
+</section>
+</section>
+<section id="eksponansiyel-dağılım" class="level2">
+<h2 class="anchored" data-anchor-id="eksponansiyel-dağılım">Eksponansiyel Dağılım</h2>
+<p>Eksponansiyel dağılımı veren PDF formülü aşağıdaki gibidir:</p>
+<p><span class="math display">\[PDF(x) |_{exp} = \lambda e^{-\lambda x}\]</span></p>
+<p>Burada <span class="math inline">\(\lambda\)</span> parametresi pozitif bir reel sayıdır ve dağılımın karakteristiğini belirler. Bir diğer adı da <strong>ölçü (rate)</strong> parametresidir.</p>
+</section>
+<section id="normal-dağılım" class="level2">
+<h2 class="anchored" data-anchor-id="normal-dağılım">Normal Dağılım</h2>
+<ul>
+<li>Bir diğer ismi Gaussyen dağılımdır.</li>
+<li>Normal dağılım <span class="math inline">\(\mu\)</span> ve <span class="math inline">\(\sigma\)</span> parametreleri ile tanımlanır.
+<ul>
+<li><span class="math inline">\(\mu\)</span> ortalama değerdir.</li>
+<li><span class="math inline">\(\sigma\)</span> standart sapmadır.</li>
+<li><span class="math inline">\(\mu=0\)</span> ve <span class="math inline">\(\sigma=1\)</span> ise <strong>standart normal dağılım</strong> denir.</li>
+</ul></li>
+</ul>
+<p>Normal dağılımın PDF formülü aşağıdaki gibidir:</p>
+<p><span class="math display">\[PDF(x) |_{normal} = \frac{1}{\sigma\sqrt{2\pi}} \exp{\left[-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}\right]}\]</span></p>
+</section>
+<section id="poisson-dağılımı" class="level2">
+<h2 class="anchored" data-anchor-id="poisson-dağılımı">Poisson Dağılımı</h2>
+<p>Poisson dağılımı veren PDF formülü aşağıdaki gibidir:</p>
+<p><span class="math display">\[PDF(x) |_{poisson} = \frac{\lambda^{x} e^{-\lambda}}{x!}\]</span></p>
+<p>Burada <span class="math inline">\(\lambda\)</span> parametresi pozitif bir reel sayıdır ve dağılımın karakteristiğini belirler. Bir diğer adı da <strong>ölçü (rate)</strong> parametresidir.</p>
+<p>Burada <span class="math inline">\(x\)</span> bir tamsayıdır.</p>
+</section>
+<section id="maxwell-boltzmann-dağılımı" class="level2">
+<h2 class="anchored" data-anchor-id="maxwell-boltzmann-dağılımı">Maxwell-Boltzmann Dağılımı</h2>
+<p>Maxwell-Boltzmann dağılımı veren PDF formülü aşağıdaki gibidir:</p>
+<p><span class="math display">\[PDF(x) |_{maxwell} = \sqrt{\frac{2}{\pi}} \frac{x^{2}}{a^{3}} e^{-\frac{x^{2}}{2a^{2}}}\]</span></p>
+<p>Burada <span class="math inline">\(a\)</span> parametresi pozitif bir reel sayıdır ve dağılımın karakteristiğini belirler.</p>
+<p>Fizikten bildiğimiz Maxwell Boltzman dağılımı aşağıdaki gibidir:</p>
+<p><span class="math display">\[ n_{i}= \frac{1}{e^{\frac{E_{i}-\mu}{kT}}} \]</span></p>
+<ul>
+<li>Burada <span class="math inline">\(E\)</span> enerji, <span class="math inline">\(\mu\)</span> kimyasal potansiyel, <span class="math inline">\(k\)</span> Boltzman sabiti, <span class="math inline">\(n_{i}\)</span> <span class="math inline">\(E_{i}\)</span> enerjisine sahip parçacıkların sayısı ve <span class="math inline">\(T\)</span> sıcaklıktır.</li>
+<li>Bu dağılım normalize değildir.</li>
+</ul>
+<p>Bir diğer Maxwell Boltzman dağılımı ise ayırt edilemez parçacıkların hız dağılımıdır. 3 Boyutlu Maxwell Boltzman hız dağılımı aşağıdaki gibidir:</p>
+<p><span class="math display">\[ f(v) = \left(\frac{m}{2\pi k T}\right)^{3/2} 4\pi v^{2} e^{-\frac{mv^{2}}{2kT}} \]</span></p>
+<ul>
+<li>Burada <span class="math inline">\(m\)</span> parçacığın kütlesi, <span class="math inline">\(v\)</span> parçacığın hızı, <span class="math inline">\(k\)</span> Boltzman sabiti ve <span class="math inline">\(T\)</span> sıcaklıktır.</li>
+</ul>
+</section>
+<section id="bose-einstein-dağılımı" class="level2">
+<h2 class="anchored" data-anchor-id="bose-einstein-dağılımı">Bose-Einstein Dağılımı</h2>
+<p>Bose-Einstein dağılımı veren PDF formülü aşağıdaki gibidir:</p>
+<p><span class="math display">\[PDF(E) |_{bose-einstein} = \frac{1}{e^{\frac{E-\mu}{kT}}-1}\]</span></p>
+<ul>
+<li><span class="math inline">\(\mu\)</span> kimyasal potansiyeldir. Değeri <span class="math inline">\(0\)</span> ile <span class="math inline">\(1\)</span> arasında değişir.</li>
+<li>Burada <span class="math inline">\(k\)</span> Boltzmann sabitidir. Değeri <span class="math inline">\(8.617 \times 10^{-5}\)</span> eV/K’dır.</li>
+<li><span class="math inline">\(T\)</span> sıcaklıktır. Birimi Kelvin’dir.</li>
+<li><span class="math inline">\(E\)</span> enerji seviyesidir. Birimi eV’dir.</li>
+</ul>
+</section>
+<section id="fermi-dirac-dağılımı" class="level2">
+<h2 class="anchored" data-anchor-id="fermi-dirac-dağılımı">Fermi-Dirac Dağılımı</h2>
+<p>Fermi-Dirac dağılımı veren PDF formülü aşağıdaki gibidir:</p>
+<p><span class="math display">\[PDF(E) |_{fermi-dirac} = \frac{1}{e^{(E-\mu)/kT} + 1}\]</span></p>
+<ul>
+<li>Burada <span class="math inline">\(\mu\)</span> kimyasal potansiyeldir. Birimi Joule’dur.</li>
+<li><span class="math inline">\(k\)</span> Boltzmann sabitidir ve değeri <span class="math inline">\(1.380649 \times 10^{-23} J/K\)</span>’dır.</li>
+<li><span class="math inline">\(T\)</span> ise sıcaklıktır. Birimi Kelvin’dir.</li>
+<li><span class="math inline">\(E\)</span> enerji seviyesidir. Birimi eV’dir.</li>
+<li>Bu dağılım sadece <span class="math inline">\(T \geq 0\)</span> için tanımlıdır.</li>
+</ul>
+</section>
+<section id="diğer-dağılımlar" class="level2">
+<h2 class="anchored" data-anchor-id="diğer-dağılımlar">Diğer Dağılımlar</h2>
+<section id="uniform-dağılım" class="level3">
+<h3 class="anchored" data-anchor-id="uniform-dağılım">Uniform Dağılım</h3>
+<ul>
+<li>Uniform dağılım <span class="math inline">\(a\)</span> ve <span class="math inline">\(b\)</span> parametreleri ile tanımlanır.
+<ul>
+<li><span class="math inline">\(a\)</span> alt sınır değeridir.</li>
+<li><span class="math inline">\(b\)</span> üst sınır değeridir.</li>
+</ul></li>
+</ul>
+<p>Uniform dağılımın PDF formülü aşağıdaki gibidir:</p>
+<p><span class="math display">\[PDF(x) |_{uniform} = \frac{1}{b-a}\]</span></p>
+</section>
+<section id="binom-dağılım" class="level3">
+<h3 class="anchored" data-anchor-id="binom-dağılım">Binom Dağılım</h3>
+<ul>
+<li>Binom dağılımı <span class="math inline">\(n\)</span> ve <span class="math inline">\(p\)</span> parametreleri ile tanımlanır.
+<ul>
+<li><span class="math inline">\(n\)</span> deneme sayısıdır.</li>
+<li><span class="math inline">\(p\)</span> başarı olasılığıdır.</li>
+</ul></li>
+</ul>
+<p>Binom dağılımın PMF formülü aşağıdaki gibidir:</p>
+<p><span class="math display">\[PMF(x) |_{binom} = \binom{n}{x} p^{x} (1-p)^{n-x}\]</span></p>
+</section>
+<section id="gamma-dağılım" class="level3">
+<h3 class="anchored" data-anchor-id="gamma-dağılım">Gamma Dağılım</h3>
+<ul>
+<li>Gamma dağılımı <span class="math inline">\(\alpha\)</span> ve <span class="math inline">\(\beta\)</span> parametreleri ile tanımlanır.
+<ul>
+<li><span class="math inline">\(\alpha\)</span> şekil parametresidir.</li>
+<li><span class="math inline">\(\beta\)</span> ölçü (rate) parametresidir.</li>
+</ul></li>
+</ul>
+<p>Gamma dağılımın PDF formülü aşağıdaki gibidir:</p>
+<p><span class="math display">\[PDF(x) |_{gamma} = \frac{\beta^{\alpha}}{\Gamma(\alpha)} x^{\alpha-1} e^{-\beta x}\]</span></p>
+</section>
+</section>
+<section id="teorik-dağılımları-modelleri-neden-kullanırız" class="level2">
+<h2 class="anchored" data-anchor-id="teorik-dağılımları-modelleri-neden-kullanırız">Teorik Dağılımları (Modelleri) Neden Kullanırız?</h2>
+<p>Veri biliminde veri analizi yaparken veri setindeki verilerin dağılımının şeklinden birçok bilgi çıkarabiliriz. Bunun iki örneği aşağıdaki gibidir.</p>
+<section id="parçacıkların-hız-dağılımı" class="level3">
+<h3 class="anchored" data-anchor-id="parçacıkların-hız-dağılımı">Parçacıkların Hız Dağılımı</h3>
+<p>Klasik, ideal Gaz parçacıklarının hız dağılımının simülasyonunu aşağıdaki github reposunda bulabilirsiniz:</p>
+<p><a href="https://github.com/rafael-fuente/Ideal-Gas-Simulation-To-Verify-Maxwell-Boltzmann-distribution" class="uri">https://github.com/rafael-fuente/Ideal-Gas-Simulation-To-Verify-Maxwell-Boltzmann-distribution</a></p>
+</section>
+<section id="nötrinonun-keşfi" class="level3">
+<h3 class="anchored" data-anchor-id="nötrinonun-keşfi">Nötrinonun Keşfi</h3>
+<p>1900’lerin başında Curie, beta bozunumundan çıkan elektronların enerjisine baktı. Bu enerjinin bir dağılım değil belli bir enerjide olması gerekiyordu. Bunun sebebini aşağıdaki diyagramdan anlayabiliriz.</p>
+<p><span class="math display">\[
+(A,Z) \rightarrow (A,Z+1) + e^{-}
+\]</span></p>
+<p>Burada, çekirdek içerisinde bir adet nötron bir adet protona dönüşmektedir. Bu sırada açığa çıkan enerjiyi de sadece elektronun taşıması gerekir. Fakat yapılan spektrum (açığa çıkan elektronun hangi enerjide olduğunun grafiği) analizlerinde elektronun Fermi-Dirac dağılımında olduğu bulunuyordu. Bunun iki sebebi olabilirdi:</p>
+<ol type="1">
+<li>Enerji korunmuyordu.</li>
+<li>Başka bir parçacık daha vardı.</li>
+</ol>
+<p>Enrico Fermi 1934 yılında bu sorunu çözdü. Enerji korunuyordu. Fakat başka bir parçacık daha vardı ve bu parçacığa nötrino adını verdi. Nötrinolar yük korunumundan dolayı yüksüz ve açısal momentum korunumundan dolayı da spin 1/2 yani fermion olmalıydı.</p>
+<p><span class="math display">\[
+(A,Z) \rightarrow (A,Z+1) + e^{-} + \bar{\nu_{e}}
+\]</span></p>
+<p>1956 yılında Amerikan bir ekip (Clyde Cowan, Frederick Reines, Francis B. ve diğerleri) açığa çıkan nötrinoyu deneysel olarak buldu ve 1995 yılında Nobel Fizik Ödülü’nü kazandılar.</p>
+<p>Elektronun Fermi-Dirac dağılımına bakarak cismin kütle ve sıcaklığı hakkında tahminde bulunabiliriz.</p>
+</section>
+<section id="bose-einstein-yoğunlaşması" class="level3">
+<h3 class="anchored" data-anchor-id="bose-einstein-yoğunlaşması">Bose-Einstein Yoğunlaşması</h3>
+<p>Bose-Einstein dağılımının grafiğine tekrar bakalım. Bu grafikte üzerine yorum yapılacak iki nokta var.</p>
+<ol type="1">
+<li>Parçacıkların hepsi, sıcakları düştükçe belli bir enerjide bulunma olasılıkları artıyor. Bu duruma <strong>Bose-Einstein yoğuşması</strong> (Bose–Einstein condensate) adı verilir.</li>
+<li>Teorik olarak negatif sıcaklıklar da olabilir. Negatif sıcaklığa, pozitif enerjili parçacıkların gelebilmesi için sonsuz miktarda enerjiye ihtiyaç vardır.</li>
+</ol>
+<p>Bozonların (spin tam sayı) uyduğu Bose-Einstein dağılımına bakarak cismin kütle ve sıcaklığı hakkında tahminde bulunabiliriz.</p>
 </section>
 </section>
 <section id="problemler" class="level2">
 <h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
-<section id="sec-problem1" class="level3">
-<h3 class="anchored" data-anchor-id="sec-problem1">Problem 1</h3>
-<p><a href="#sec-alistirma1" class="quarto-xref">Bölüm&nbsp;2</a> verilen denklemi ilk hızı <span class="math inline">\(v(0)=10\)</span> m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.</p>
+<section id="problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
+<p>Heisenberg belirsizlik ilkesi aşağıdaki gibi verilir.</p>
+<p><span class="math display">\[\sigma_{x} \sigma_{p} \geq \frac{\hbar}{2}\]</span></p>
+<p>Burada <span class="math inline">\(\sigma_{x}\)</span>, x’teki belirsizliği yani standart sapmayı verir. Bu eşitliği beklenen değerler cinsinden matematiksel olarak yazın.</p>
 </section>
-<section id="sec-problem2" class="level3">
-<h3 class="anchored" data-anchor-id="sec-problem2">Problem 2</h3>
-<p>Yatay düzlemde <span class="math inline">\(k=100\)</span> N/m sabitine sahip <span class="math inline">\(m=1\)</span> kg kütleli yay olsun. Bu cisme denge noktasından <span class="math inline">\(x_{0}=0.1\)</span> m sıkıştırılarak harekete başlatılıyor. Cisim bırakıldığı anda hızı <span class="math inline">\(v_{0}=0\)</span> m/s. Bu cismin hareket denklemini <span class="math inline">\(t=0-5\)</span> aralığında Euler yöntemiyle çözünüz.</p>
-<p><span class="math display">\[
--kx=m\frac{d^{2}x}{dt^{2}}
-\]</span></p>
-<p>Analitik çözüm: <span class="math inline">\(x(t) = A\cos(\sqrt{k/m}x)+B\sin(\sqrt{k/m}x)\)</span></p>
+<section id="problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
+<p>Öğrendiğiniz tüm dağılımları bir fonksiyon olarak yazın.</p>
+<ul>
+<li>Eksponansiyel dağılım için <span class="math inline">\(\lambda=0.1,1,2\)</span> alın ve grafiğini çizdirin.</li>
+<li>Normal dağılım için <span class="math inline">\((\mu,\sigma)= (0,1),(0,2), (0,3)\)</span> alın ve grafiğini çizdirin. Aynı şekilde <span class="math inline">\((\mu,\sigma)= (-2,1),(0,1), (2,1)\)</span> alın ve grafiğini çizdirin.</li>
+<li>Poisson dağılımı için <span class="math inline">\(\lambda=0.1,1,2\)</span> alın ve grafiğini çizdirin.</li>
+<li>Maxwell-Boltzman dağılımı için <span class="math inline">\(a=1,2,5\)</span> alın ve grafiğini çizdirin. 3 Boyutlu Maxwell-Boltzman hız dağılımı formülünü kullanarak 1Mol He, Ne ve Ar atomlarının hız dağılımını çizdirin.</li>
+<li>Bose-Einstein dağılım için <span class="math inline">\((\mu [eV], T [K]) = (0,5), (0,100), (0,273)\)</span> alın ve grafiğini çizdirin. Ayrı bir grafikte <span class="math inline">\((\mu [eV], T [K]) = (0,273), (0.01,273), (0.05,273)\)</span> alın ve çizdirin.</li>
+<li>Fermi-Dirac dağılımı için <span class="math inline">\((\mu [eV], T [K]) = (0.5,5), (0.5,100), (0.5,273)\)</span> alın ve grafiğini çizdirin. Ayrı bir grafikte <span class="math inline">\((\mu [eV], T [K]) = (0.5,273), (0.55,273), (0.85,273)\)</span> alın ve çizdirin.</li>
+</ul>
 </section>
 <section id="problem-3" class="level3">
 <h3 class="anchored" data-anchor-id="problem-3">Problem 3</h3>
-<p><a href="#sec-problem2" class="quarto-xref">Bölüm&nbsp;3.2</a> bölümündeki soruyu <span class="math inline">\(F_{sürtünme}= -bv\)</span> sürtünme kuvveti varlığında çözünüz. Burada <span class="math inline">\(b=1\)</span> Ns/m sabit ve <span class="math inline">\(v\)</span> cismin hızıdır.</p>
-<p><span class="math display">\[
--b\frac{dx}{dt}-kx=m\frac{d^{2}x}{dt^{2}}
-\]</span></p>
-<p>Analitik çözüm: <span class="math inline">\(x(t) = Ae^{-\sigma t}e^{i\omega t}+ Be^{-\sigma t}e^{-i \omega t}\)</span>. Burada frekans <span class="math inline">\(\omega = \sqrt{(k/m)-(b^{2}/4m^{2})}\)</span> ve genliği belirleyen terim <span class="math inline">\(\sigma=b/2m\)</span> <span class="citation" data-cites="web2024Feb-2">&nbsp;[<a href="#ref-web2024Feb-2" role="doc-biblioref">1</a>]</span>.</p>
+<ul>
+<li>Aşağıdaki sorularda eksponansiyel dağılımı <span class="math inline">\(\lambda=2\)</span> için, normal dağılımı <span class="math inline">\((\mu,\sigma)= (0,1)\)</span> için hesaplayın.</li>
+<li>Dağılımların hem formülünü kullanarak hem de <code>scipy.stats</code> kütüphanesini kullanarak yaratın. <span class="math inline">\(x=1\)</span> ile <span class="math inline">\(x=100\)</span> arasında 1000 nokta için hesaplayın.</li>
+</ul>
+<ol type="1">
+<li>Normal dağılımların ortalama değerini, varyansını, standart sapmasını hesaplayın ve ekrana yazdırın.</li>
+<li>Normal ve eksponansiyel dağılımların CDF fonksiyonlarını teorik olarak hesaplayın. Normal dağılım için integral hali ile bırakın. İntegral almak için <code>scipy.integrate.quad</code> fonksiyonunu kullanabilirsiniz.</li>
+<li>Normal ve eksponansiyel dağılımların PDF fonksiyonunu ve aynı grafikte çizdirin.</li>
+<li>Normal dağılımda <span class="math inline">\(\mu=0\)</span> için <span class="math inline">\(\sigma=0.25,0.81,1,9\)</span> olan 4 farklı dağılımı aynı grafikte çizdirin.</li>
+<li>Normal dağılımda <span class="math inline">\(\sigma=3\)</span> için <span class="math inline">\(\sigma=−5,-2.5,0,3,6\)</span> olan 4 farklı dağılımı aynı grafikte çizdirin.</li>
+</ol>
 </section>
-<section id="sec-problem4" class="level3">
-<h3 class="anchored" data-anchor-id="sec-problem4">Problem 4</h3>
-<p>Düşey düzlemde <span class="math inline">\(m=1\)</span> kg kütleli bir cisim salınsın. Bu cisim denge noktasından <span class="math inline">\(\theta_{0}=\pi/9\)</span> rad açı ile harekete başlıyor. Cisim bırakıldığı anda açısal hızı <span class="math inline">\(\omega_{0}=\)</span> rad/s. Bu cismin hareket denklemini <span class="math inline">\(t=0-10\)</span> arasında Euler yöntemiyle çözünüz. En uygun sonuç için <span class="math inline">\(n=10000\)</span> adım alınız. (<span class="math inline">\(g=9.81\)</span>)</p>
-<p><span class="math display">\[
-\frac{d^{2}\theta}{dt^{2}}=-\frac{g}{l}\sin \theta
-\]</span></p>
-<p>Analitik çözüm: <span class="math inline">\(x(t) = A\cos(\sqrt{g/l}x)+B\sin(\sqrt{g/l}x)\)</span></p>
+<section id="problem-4" class="level3">
+<h3 class="anchored" data-anchor-id="problem-4">Problem 4</h3>
+<p>Normal (Gaussian) dağılım formülünü kullanarak standart dağılım formülünü (<span class="math inline">\(\mu=0\)</span>, <span class="math inline">\(\sigma=1\)</span>) elde ediniz.</p>
 </section>
-<section id="problem-5" class="level3">
-<h3 class="anchored" data-anchor-id="problem-5">Problem 5</h3>
-<p><a href="#sec-problem4" class="quarto-xref">Bölüm&nbsp;3.4</a> bölümündeki problemi <span class="math inline">\(\theta_{0}=\pi/2\)</span> başlangıç koşulu için tekrar çalıştırınız. <span class="math inline">\(\sin \theta \approx \theta\)</span> yaklaşıklığı artık geçerli olmadığı için analitik çözümün hatalı olduğunu unutmayınız.</p>
 </section>
-<section id="problem-6" class="level3">
-<h3 class="anchored" data-anchor-id="problem-6">Problem 6</h3>
-<p>İki cisim problemini (baryosentrik yani merkezdeki cisim hareket etmesin) Euler yöntemiyle (<span class="math inline">\(n= 1000, 10000, 100000\)</span> adımda) çözünüz. Burada <span class="math inline">\(\mu=3.98\times 10^{5}\)</span> km <span class="math inline">\(^{3}\)</span>/s <span class="math inline">\(^{2}\)</span>, <span class="math inline">\(x_{0}=-2500\)</span> km, <span class="math inline">\(y_{0}=-5500\)</span> km, <span class="math inline">\(v_{x0}=7.5\)</span> km/s, <span class="math inline">\(v_{y0}=0.5\)</span> km/s olarak alın. Aşağıdaki denklemleri <span class="math inline">\(t=0-100000\)</span> s arasında çözün. <span class="math inline">\(y-x\)</span> grafiği çizin. <span class="math inline">\((x,y)=(0,0)\)</span> noktası merkezdeki cismin konumunu göstersin.</p>
-<p><span class="math display">\[
-\frac{d^{2}x}{dt^{2}}=-\frac{\mu}{(x^{2}+y^{2})^{3/2}}x
-\]</span></p>
-<p><span class="math display">\[
-\frac{d^{2}y}{dt^{2}}=-\frac{\mu}{(x^{2}+y^{2})^{3/2}}y
-\]</span></p>
-
+<section id="kaynaklar" class="level2">
+<h2 class="anchored" data-anchor-id="kaynaklar">Kaynaklar</h2>
+<ol type="1">
+<li><a href="https://greenteapress.com/thinkstats2/thinkstats2.pdf">Think Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014</a></li>
+<li><a href="https://acikders.ankara.edu.tr/pluginfile.php/102514/mod_resource/content/0/Konu%209.pdf" class="uri">https://acikders.ankara.edu.tr/pluginfile.php/102514/mod_resource/content/0/Konu%209.pdf</a></li>
+</ol>
 
 
 </section>
-</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
-<div id="ref-web2024Feb-2" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><em><a href="https://brilliant.org/wiki/damped-harmonic-oscillators"><span>Damped Harmonic Oscillators <span><span class="math inline">\(\vert\)</span></span> Brilliant Math <span>&amp;</span> Science Wiki</span></a></em>, (2024).</div>
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1170,14 +1269,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="pagination-link" aria-label="BDP - Denklem Sistemleri">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">BDP - Denklem Sistemleri</span>
+      <a href="../../../icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.html" class="pagination-link" aria-label="Kümülatif Dağılım Fonksiyonu">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Kümülatif Dağılım Fonksiyonu</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="pagination-link" aria-label="BDP - Runge-Kutta Yöntemleri">
-        <span class="nav-page-text">BDP - Runge-Kutta Yöntemleri</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -1188,7 +1284,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/istatistik/dagilimlarin-modellenmesi.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>
