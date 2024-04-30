@@ -1,0 +1,91 @@
+---
+title: "Hipotez Testi"
+---
+
+- Bir iddianın doğruluğunu test etmek için kullanılan istatistiksel bir yöntemdir.
+- Bir hipotezi test ederken önce boş (null) hipotez ve alternatif hipotez olmak üzere iki hipotez kurulur.
+  - Boş hipotez ($H_{0}$): İddia edilen durumun doğru olmadığını savunan hipotezdir.
+  - Alternatif hipotez ($H_{1}$): İddia edilen durumun doğru olduğunu savunan hipotezdir.
+- Boş hipotez veya alternatif hipotezden biri reddedilir.
+- Hipotezler kurulduktan sonra veri toplanır.
+- Veri toplandıktan sonra veriye uygun bir **test istatistiği** seçilir ve hesaplanır.
+-  Sonraki adım olarak test istatistiği ile **p-değeri** hesaplanır.
+-  Son olarak p-değeri, önem düzeyi (significant level) ($\alpha$, genelde \%5 veya %1) ile karşılaştırılır ve karşılaştırma sonucunda boş hipotez reddedilir veya reddedilmez.
+
+## Alıştırma 1
+
+Bir araştırmacı, bir ilaç tedavisinin etkililiğini test etmek için bir hipotez testi yapabilir. Null hipotez, "bu ilaç tedavisi, hastalığın iyileşme oranını artırmaz" şeklinde olabilir. Test istatistiği hesaplandıktan sonra, önem düzeyi (alfa) belirlenir ve test istatistiği, alfa ile karşılaştırılır. Eğer elde edilen p-değeri, alfa'dan küçükse, null hipotez reddedilir ve alternatif hipotez kabul edilir.
+
+## Hipotez Testinin Aşamaları
+
+1. Boş ve alternatif hipotezlerin formüle edilmesi,
+2. Test istatistiğinin seçilmesi. Boş hipotez altında dağılımı bilinen bir test istatistiği seçilir (kesin veya yaklaşık),
+3. Veri toplanması
+4. Veriye uygun test istatistiğinin hesaplanması ve boş hipotez altında p-değeri hesaplanması,
+5. p-değeri ve önem düzeyi karşılaştırması ve boş hipotezin reddedilip reddedilmeyeceğinin belirlenmesi.
+
+## Alıştırma 2
+
+- Boş hipotez: Ortalama değer $\mu_{0} = 1$'dir.
+- $X$ örneklemi verilsin ve bu örneklemdeki veri boş hipotez altında test edilsin.
+- Farz edelim ki elimizdeki veri $X$ örneklemi normal dağılıma sahip, $\mu=0.8$ ve $\sigma=0.5$ olan 100 adet veriye sahip olsun.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+# Bilinen değerler
+mu0, mu, sigma = 1.0, 0.8, 0.5
+# Test edeceğimiz veriyi oluşturalım.
+X = stats.norm(mu, sigma)
+n = 100
+X_samples = X.rvs(n)
+```
+
+- Test istatistiğini hesap edelim. Eğer standart sapma $\sigma$ biliniyorsa z istatistiği kullanılır. Bu da şu şekilde hesaplanır:
+
+$$
+z = \frac{\bar{X}-\mu_{0}}{\sigma/\sqrt{n}}
+$$
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+# Bilinen değerler
+mu0, mu, sigma = 1.0, 0.8, 0.5
+# Test edeceğimiz veriyi oluşturalım.
+X = stats.norm(mu, sigma)
+# Z istatistiği
+z= (X_samples.mean() - mu0) / (sigma / np.sqrt(n))
+print(f"z değeri: {z}")
+```
+
+- Eğer standart sapma $\sigma$ bilinmiyorsa t istatistiği kullanılır. Bu da şu şekilde hesaplanır:
+
+$$t = \frac{\bar{X}-\mu_{0}}{s/\sqrt{n}}$$
+
+- Burada $s$ örneklem standart sapmasıdır ve şu şekilde hesaplanır:
+
+$$s = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}}$$
+
+- Eğer t-istatiği kullanılırsa, normal dağılım yerine öğrencinin t dağılımı kullanılır.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+# Bilinen değerler
+mu0, mu, sigma = 1.0, 0.8, 0.5
+# Test edeceğimiz veriyi oluşturalım.
+X = stats.norm(mu, sigma)
+t = (X_samples.mean() - mu0) / (X_samples.std(ddof=1) / np.sqrt(n))
+print(f"t değeri: {t}")
+```
+
+## Kaynaklar
+
+1. Numerical Python: Scientific Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019

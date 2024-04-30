@@ -71,6 +71,8 @@ website:
               - icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.qmd
               - icerik/konular/istatistik/dagilimlarin-modellenmesi.qmd
               - icerik/konular/istatistik/scipy-stats.qmd
+              - icerik/konular/istatistik/hipotez-testi.qmd
+              
 
 format:
   html:
