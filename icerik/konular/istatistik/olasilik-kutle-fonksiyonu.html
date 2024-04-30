@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>Bilgisayarlı Yöntemler - SDP - Sonlu Farklar Yöntemi</title>
+<title>Bilgisayarlı Yöntemler - Olasılık Kütle Fonksiyonu</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../icerik/konular/fourier-analizi.html" rel="next">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" rel="prev">
+<link href="../../../icerik/konular/istatistik/uygulama-thinkstat2.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -149,7 +148,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html">SDP - Sonlu Farklar Yöntemi</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/istatistik.html">İstatistik</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/istatistik/olasilik-kutle-fonksiyonu.html">Olasılık Kütle Fonksiyonu</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -269,7 +268,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Sonlu Farklar Yöntemi</span></a>
   </div>
 </li>
@@ -368,7 +367,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/istatistik/olasilik-kutle-fonksiyonu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/olasilik-kutle-fonksiyonu.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Olasılık Kütle Fonksiyonu</span></a>
   </div>
 </li>
@@ -386,28 +385,29 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#sonlu-farklar-yöntemi" id="toc-sonlu-farklar-yöntemi" class="nav-link active" data-scroll-target="#sonlu-farklar-yöntemi">Sonlu Farklar Yöntemi</a></li>
+  <li><a href="#olasılık-kütle-fonksiyonu" id="toc-olasılık-kütle-fonksiyonu" class="nav-link active" data-scroll-target="#olasılık-kütle-fonksiyonu">Olasılık Kütle Fonksiyonu</a></li>
   <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a>
   <ul class="collapse">
-  <li><a href="#çözüm-elle" id="toc-çözüm-elle" class="nav-link" data-scroll-target="#çözüm-elle">Çözüm (Elle)</a></li>
-  <li><a href="#çözüm-kod" id="toc-çözüm-kod" class="nav-link" data-scroll-target="#çözüm-kod">Çözüm (Kod)</a></li>
+  <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
   </ul></li>
-  <li><a href="#sonlu-farklar-yönteminin-çalışmadığı-örnek" id="toc-sonlu-farklar-yönteminin-çalışmadığı-örnek" class="nav-link" data-scroll-target="#sonlu-farklar-yönteminin-çalışmadığı-örnek">Sonlu Farklar Yönteminin Çalışmadığı Örnek</a></li>
-  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
+  <li><a href="#alıştırma-2" id="toc-alıştırma-2" class="nav-link" data-scroll-target="#alıştırma-2">Alıştırma 2</a>
   <ul class="collapse">
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#çözüm-1" id="toc-çözüm-1" class="nav-link" data-scroll-target="#çözüm-1">Çözüm</a></li>
   </ul></li>
-  <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
+  <li><a href="#beklenen-değer" id="toc-beklenen-değer" class="nav-link" data-scroll-target="#beklenen-değer">Beklenen Değer</a></li>
+  <li><a href="#alıştırma-3" id="toc-alıştırma-3" class="nav-link" data-scroll-target="#alıştırma-3">Alıştırma 3</a>
+  <ul class="collapse">
+  <li><a href="#çözüm-2" id="toc-çözüm-2" class="nav-link" data-scroll-target="#çözüm-2">Çözüm</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/istatistik/olasilik-kutle-fonksiyonu.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html">SDP - Sonlu Farklar Yöntemi</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/istatistik.html">İstatistik</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/istatistik/olasilik-kutle-fonksiyonu.html">Olasılık Kütle Fonksiyonu</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">SDP - Sonlu Farklar Yöntemi</h1>
+<h1 class="title">Olasılık Kütle Fonksiyonu</h1>
 </div>
 
 
@@ -436,397 +436,305 @@ window.Quarto = {
 </header>
 
 
-<section id="sonlu-farklar-yöntemi" class="level2">
-<h2 class="anchored" data-anchor-id="sonlu-farklar-yöntemi">Sonlu Farklar Yöntemi</h2>
-<p>Sonlu farklar yöntemini kullanarak sınır değer problemine ait diferansiyel denklem çözeceğiz. Bunun için Taylor açılımını kullanacağız. Taylor açılımında birinci türevi orta noktayı kullanarak yazalım.</p>
-<p><span class="math display">\[
-y'_{i} = \frac{y_{i+1}-y_{i-1}}{2h}
-\]</span></p>
-<p>Farz edelim ki bu fonksiyonu <span class="math inline">\(g_{i}\)</span> için yazmışız.</p>
-<p><span class="math display">\[
-g'_{i} = \frac{g_{i+1}-g_{i-1}}{2h}
-\]</span></p>
-<p>Bu <span class="math inline">\(g_{i}\)</span> fonksiyonu <span class="math inline">\(y'_{i}\)</span> fonksiyonuna eşit olsun. Yani <span class="math inline">\(g_{i}=y'_{i}\)</span> olur. Bu durumda</p>
-<p><span class="math display">\[
-\begin{align*}
-    y''_{i} &amp;= \frac{y'_{i+1}-y'_{i-1}}{2h} \\
-            &amp;= \frac{1}{2h}\left(\frac{y_{i+2}-y_{i}}{2h}-\frac{y_{i}-y_{i-2}}{2h}\right)
-\end{align*}
-\]</span></p>
-<p>Biraz düzenleyelim.</p>
-<p><span class="math display">\[
-\begin{align*}
-    y''_{i} &amp;= \frac{1}{4h^2}\left(y_{i+2}-y_{i}-y_{i}+y_{i-2}\right) \\
-            &amp;= \frac{y_{i+2}-2y_{i}+y_{i-2}}{4h^2}
-\end{align*}
-\]</span></p>
-<p>Eğer adım aralığını yarıya indirirsek yani <span class="math inline">\(h \rightarrow h/2\)</span> yaparsak <span class="math inline">\(y_{i+2}\)</span> noktasından <span class="math inline">\(y_{i+1}\)</span> noktasına gelebiliriz. Benzer şekilde <span class="math inline">\(y_{i-2}\)</span> noktasından <span class="math inline">\(y_{i-1}\)</span> noktasına geliriz. O halde ikinci türeve ait olan denklem şöyle olur.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="olasılık-kütle-fonksiyonu" class="level2">
+<h2 class="anchored" data-anchor-id="olasılık-kütle-fonksiyonu">Olasılık Kütle Fonksiyonu</h2>
+<p>Para atma örneğine tekrar dönelim. 100 tane parayı atalım ve tura gelenleri sayalım. Atışta gelen tura sayısını kaydedelim. Ardından aynı işlemi 500 kere daha yapalım.</p>
+<p><strong>Ne bekliyoruz?</strong> İdeal koşullarda 100 tane paranın 50 tanesi tura gelecek. Bu işlemi 500 kere bile yapsak her seferinde tura gelmesini bekleriz.</p>
+<p><strong>Neden?</strong> Tura gelme olasılığı <span class="math inline">\(1/2\)</span>’dir.</p>
+<p><strong>Olasılık Kütle Fonksiyonu</strong> (Probability Mass Function) Tura gelme dağılımı ile olasılığı eşleştiren (mapping) fonksiyondur.</p>
+<div id="42877d97" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Değişkenler</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>paraAtmaSayisi<span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>tekrarlamaSayisi<span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># Tura sayısını tutacak dizi</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>arr_toplamTura<span class="op">=</span> np.zeros(tekrarlamaSayisi)</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co"># Tekrarlam Sayisi kadar döngü</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="cf">for</span> it <span class="kw">in</span> <span class="bu">range</span>(tekrarlamaSayisi):</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="co"># 100 tane rastgele 0 veya 1 değeri üret</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>    <span class="co"># 0: yazı, 1: tura</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>    paraAtma<span class="op">=</span> np.random.choice([<span class="dv">0</span>,<span class="dv">1</span>], size<span class="op">=</span>paraAtmaSayisi)</span>
+<span id="cb1-15"><a href="#cb1-15"></a>    </span>
+<span id="cb1-16"><a href="#cb1-16"></a>    <span class="co"># Tüm Değerleri topla. 1'ler sanki tura gelmiş gibi düşünülebilir.</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>    arr_toplamTura[it] <span class="op">=</span> np.<span class="bu">sum</span>(paraAtma)</span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co"># Çiz</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>plt.hist(arr_toplamTura, bins<span class="op">=</span><span class="bu">range</span>(<span class="dv">101</span>))</span>
+<span id="cb1-21"><a href="#cb1-21"></a>plt.xlabel(<span class="st">"Tura Sayısı"</span>)</span>
+<span id="cb1-22"><a href="#cb1-22"></a>plt.ylabel(<span class="st">"Frekans"</span>)</span>
+<span id="cb1-23"><a href="#cb1-23"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="olasilik-kutle-fonksiyonu_files/figure-html/cell-2-output-1.png" width="585" height="429" class="figure-img"></p>
+</figure>
 </div>
-<div class="callout-title-container flex-fill">
-Not
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Bu işlem sadece sabit adım aralığı için geçerlidir.</p>
+<p>Yukarıdaki grafiği çizdirirken yatayda, tura gelme sayısını dikkate almıştık. Şimdi yataydaki değerlerin hepsini toplam sayıya yani <span class="math inline">\(100\)</span>’e bölerek çizelim.</p>
+<div id="b41e5b6b" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Değişkenler</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>paraAtmaSayisi<span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>tekrarlamaSayisi<span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># Tura sayısını tutacak dizi</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>arr_toplamTura<span class="op">=</span> np.zeros(tekrarlamaSayisi)</span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co"># Tekrarlam Sayisi kadar döngü</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="cf">for</span> it <span class="kw">in</span> <span class="bu">range</span>(tekrarlamaSayisi):</span>
+<span id="cb2-12"><a href="#cb2-12"></a>    <span class="co"># 100 tane rastgele 0 veya 1 değeri üret</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>    <span class="co"># 0: yazı, 1: tura</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>    paraAtma<span class="op">=</span> np.random.choice([<span class="dv">0</span>,<span class="dv">1</span>], size<span class="op">=</span>paraAtmaSayisi)</span>
+<span id="cb2-15"><a href="#cb2-15"></a>    </span>
+<span id="cb2-16"><a href="#cb2-16"></a>    <span class="co"># Tüm Değerleri topla. 1'ler sanki tura gelmiş gibi düşünülebilir.</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>    arr_toplamTura[it] <span class="op">=</span> np.<span class="bu">sum</span>(paraAtma)</span>
+<span id="cb2-18"><a href="#cb2-18"></a></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co"># Çiz</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>plt.hist(arr_toplamTura<span class="op">/</span><span class="dv">100</span>, bins<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb2-21"><a href="#cb2-21"></a>plt.xlabel(<span class="st">"Olasılık"</span>)</span>
+<span id="cb2-22"><a href="#cb2-22"></a>plt.ylabel(<span class="st">"Frekans"</span>)</span>
+<span id="cb2-23"><a href="#cb2-23"></a>plt.show()</span>
+<span id="cb2-24"><a href="#cb2-24"></a>plt.close()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="olasilik-kutle-fonksiyonu_files/figure-html/cell-3-output-1.png" width="585" height="429" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<p><span class="math display">\[
-y''_{i} = \frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}
-\]</span></p>
-<p>Bu denklemi kullanarak sınır değer problemlerini çözeceğiz. Yukarıdaki bağıntı, diferansiyel denklemi cebirsel denklem sistemine dönüştürür.</p>
-<p><span class="math display">\[
-y''_{i} = f\left(x,y_{i},\frac{y_{i+1}-y_{i-1}}{2h}\right)=\frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}
-\]</span></p>
+</div>
+<p>Görüldüğü üzere sıklıkları toplam sayıya böldüğümüzde olasılıklar elde edilmiş oldu. İşte bu tanıma <strong>olasılık kütle fonksiyonu</strong> (probability mass function) adı verilir. Kısaca <code>pmf</code> olarak adlandırılır.</p>
+<ul>
+<li>Olasılık kütle fonksiyonu 0 ile 1 arasında değer alır.</li>
+<li>Olasılık kütle fonksiyonu, dağılım değerlerinin süreksiz yani kesikli olması durumunda geçerlidir.</li>
+</ul>
 </section>
 <section id="alıştırma-1" class="level2">
 <h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h2>
-<p>Aşağıdaki denklemi adım adım çözelim.</p>
-<p><span class="math display">\[
-y''(t)=t, \quad y(0)=1, \quad y(3)=9
-\]</span></p>
-<section id="çözüm-elle" class="level3">
-<h3 class="anchored" data-anchor-id="çözüm-elle">Çözüm (Elle)</h3>
-<p>Adım aralığı <span class="math inline">\(h=1\)</span> olsun. Çözeceğimiz <span class="math inline">\(t\)</span>’nin değerleri <span class="math inline">\(0, 1, 2, 3\)</span> olacaktır. Bu değerlerden <span class="math inline">\(y\)</span> değerlerini bulalım.</p>
-<p><span class="math display">\[
-y''(t)=t=\frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}
-\]</span></p>
-<p>Çözüme <span class="math inline">\(y(0)\)</span>’dan başlayalım. Bunun için <span class="math inline">\(y(0) \equiv y_{i-1}\)</span> almamız gerekecektir. Aksi taktirde köşe noktalar için denklemi çözemeyiz.</p>
-<p>Aşağıdaki tabloyu <span class="math inline">\(h=1\)</span> için yazalım.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th><span class="math inline">\(y_{0}\)</span></th>
-<th><span class="math inline">\(y_{1}\)</span></th>
-<th><span class="math inline">\(y_{2}\)</span></th>
-<th><span class="math inline">\(y_{3}\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(y(0)\)</span></td>
-<td><span class="math inline">\(y(0+h)\)</span></td>
-<td><span class="math inline">\(y(0+2h)\)</span></td>
-<td><span class="math inline">\(y(0+3h)\)</span></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(y(t=0)\)</span></td>
-<td><span class="math inline">\(y(t=1)\)</span></td>
-<td><span class="math inline">\(y(t=2)\)</span></td>
-<td><span class="math inline">\(y(t=3)\)</span></td>
-</tr>
-<tr class="odd">
-<td>1</td>
-<td>?</td>
-<td>?</td>
-<td>9</td>
-</tr>
-</tbody>
-</table>
-<p>Örneğin aşağıdaki tabloyu da <span class="math inline">\(h=0.5\)</span> için yazalım.</p>
-<table class="table">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 13%">
-<col style="width: 15%">
-<col style="width: 15%">
-<col style="width: 15%">
-<col style="width: 15%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th><span class="math inline">\(y_{0}\)</span></th>
-<th><span class="math inline">\(y_{1}\)</span></th>
-<th><span class="math inline">\(y_{2}\)</span></th>
-<th><span class="math inline">\(y_{3}\)</span></th>
-<th><span class="math inline">\(y_{4}\)</span></th>
-<th><span class="math inline">\(y_{5}\)</span></th>
-<th><span class="math inline">\(y_{6}\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(y(0)\)</span></td>
-<td><span class="math inline">\(y(0.5)\)</span></td>
-<td><span class="math inline">\(y(1)\)</span></td>
-<td><span class="math inline">\(y(1.5)\)</span></td>
-<td><span class="math inline">\(y(2)\)</span></td>
-<td><span class="math inline">\(y(2.5)\)</span></td>
-<td><span class="math inline">\(y(3)\)</span></td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>?</td>
-<td>?</td>
-<td>?</td>
-<td>?</td>
-<td>?</td>
-<td>9</td>
-</tr>
-</tbody>
-</table>
-<p>Şimdi yukarıdaki elde ettiğimiz denklemi yazalım.</p>
-<p><span class="math display">\[
-y''(t)=t=\frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}
-\]</span></p>
-<p><span class="math inline">\(i=1\)</span> olmalı. Bundan dolayı <span class="math inline">\(t\)</span> ilk değil bir sonraki adımından yani <span class="math inline">\(t+h=0+0.5\)</span>’den itibaren başlatmalıyız. <span class="math display">\[
-0.5 = \frac{y_{2}-2y_{1}+y_{0}}{h^2}
-\]</span></p>
-<p>Bu denklemi <span class="math inline">\(h=0.5\)</span> için adım adım yazalım.</p>
-<p><span class="math display">\[
-\begin{align*}
-    0.5\times (0.5)^{2} =&amp; y_{2}-2y_{1}+y_{0}\\
-    1\times (0.5)^{2} =&amp; y_{3}-2y_{2}+y_{1}\\
-    1.5\times (0.5)^{2} =&amp; y_{4}-2y_{3}+y_{2}\\
-    2\times (0.5)^{2} =&amp; y_{5}-2y_{4}+y_{3}\\
-    2.5\times (0.5)^{2} =&amp; y_{6}-2y_{5}+y_{4}
-\end{align*}
-\]</span></p>
-<p>Yukarıdaki denklemleri matris şeklinde yazalım. Yazarken <span class="math inline">\(y_{0}=1\)</span> ve <span class="math inline">\(y_{6}=9\)</span> yazacağız.</p>
-<p><span class="math display">\[
-\begin{align*}
--0.875 =&amp; y_{2}-2y_{1}\\
-0.25 =&amp; y_{3}-2y_{2}+y_{1}\\
-0.375 =&amp; y_{4}-2y_{3}+y_{2}\\
-0.5 =&amp; y_{5}-2y_{4}+y_{3}\\
--8.375 =&amp; -2y_{5}+y_{4}
-\end{align*}
-\]</span></p>
-<p>Matris şeklinde yazalım.</p>
-<p><span class="math display">\[
-\begin{bmatrix}
-    -2 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\
-    1 &amp; -2 &amp; 1 &amp; 0 &amp; 0\\
-    0 &amp; 1 &amp; -2 &amp; 1 &amp; 0\\
-    0 &amp; 0 &amp; 1 &amp; -2 &amp; 1\\
-    0 &amp; 0 &amp; 0 &amp; 1 &amp; -2\\
-\end{bmatrix}
-\begin{bmatrix}
-    y_{1}\\
-    y_{2}\\
-    y_{3}\\
-    y_{4}\\
-    y_{5}\\
-\end{bmatrix}=
-\begin{bmatrix}
-    -0.875\\
-    0.25\\
-    0.375\\
-    0.5\\
-    -8.375    
-\end{bmatrix}
-\]</span></p>
-<p>Bu denklemi çözmeyi biliyoruz. Denklemi çözdüğümüzde <span class="math inline">\(y_{1}, y_{2}, y_{3}, y_{4}, y_{5}\)</span> değerlerini bulmuş oluruz.</p>
-</section>
-<section id="çözüm-kod" class="level3">
-<h3 class="anchored" data-anchor-id="çözüm-kod">Çözüm (Kod)</h3>
-<div id="79e2cfe1" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> scipy.linalg <span class="im">import</span> solve</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># Katsayı Matrisi</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>coefMat<span class="op">=</span> np.array([<span class="op">\</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>      [<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]<span class="op">\</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>    , [ <span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>]<span class="op">\</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>    , [ <span class="dv">0</span>, <span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>]<span class="op">\</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>    , [ <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>]<span class="op">\</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>    , [ <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>]])</span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># Sonuç Matrisi</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>solMat<span class="op">=</span> np.array([<span class="op">-</span><span class="fl">0.875</span>,<span class="fl">0.25</span>,<span class="fl">0.375</span>,<span class="fl">0.5</span>,<span class="op">-</span><span class="fl">8.375</span>])</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co"># Doğrusal Denklemi Çöz</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a>solution<span class="op">=</span>solve(coefMat, solMat)</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="co"># Başlangıç Değeri</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a>y0<span class="op">=</span> <span class="fl">1.</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co"># Çözümü Başına Ekle</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a>solution<span class="op">=</span>np.insert(solution, <span class="dv">0</span>, y0)</span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="co"># Bitiş Değeri</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a>ySon<span class="op">=</span> <span class="fl">9.</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="co"># Çözümü Sonuna Ekle</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a>solution<span class="op">=</span>np.append(solution, ySon)</span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="co"># Çözmek istediğimiz t değerleri</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a>t<span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">7</span>)</span>
-<span id="cb1-25"><a href="#cb1-25"></a><span class="co"># Çiz</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a>plt.plot(t, solution, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'Sonlu Farklar'</span>)</span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># --------------------------------------------</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="co"># Analitik Çözüm</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="co"># y''= t y(0)=1 y(3)=9</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a><span class="co"># y'= t^2/2  + C1</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="co"># y= t^3/6  + C1 t + C2</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a><span class="co"># y(0)=1 =&gt; C2=1</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="co"># y(3)=9 =&gt; 9=27/6 + 3C1 + 1=9 =&gt; C1=27/18</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="co">#=&gt; y(t)= t^3/6 + 21t/18 + 1</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a><span class="co"># --------------------------------------------</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a>plt.plot(t, t<span class="op">**</span><span class="dv">3</span><span class="op">/</span><span class="dv">6</span> <span class="op">+</span> <span class="dv">21</span><span class="op">*</span>t<span class="op">/</span><span class="dv">18</span> <span class="op">+</span> <span class="dv">1</span>, <span class="st">'r-'</span>, label<span class="op">=</span><span class="st">'Analitik'</span>)</span>
-<span id="cb1-37"><a href="#cb1-37"></a>plt.legend()</span>
-<span id="cb1-38"><a href="#cb1-38"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="sdp-sonlu-farklar-yontemi_files/figure-html/cell-2-output-1.png" width="558" height="411" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Matris denklemini el ile yazmadan yani başlangıçta biz vermeden çözmeye çalışalım.</p>
-<div id="d1f6bf24" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="im">from</span> scipy.linalg <span class="im">import</span> solve</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># Fonksiyon</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">def</span> fonk(t):</span>
-<span id="cb2-6"><a href="#cb2-6"></a>    <span class="cf">return</span> t</span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># Sınır Değerleri</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>y_t0<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>y_t3<span class="op">=</span><span class="dv">9</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="co"># Adım aralığı</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>h<span class="op">=</span><span class="fl">0.5</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="co"># Tum t değerleri</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a>t0<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a>tSon<span class="op">=</span><span class="dv">3</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># adet=(tSon-t0/h)+1</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a>adet<span class="op">=</span> <span class="bu">int</span>((tSon<span class="op">-</span>t0)<span class="op">/</span>h)<span class="op">+</span><span class="dv">1</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a>tTum<span class="op">=</span>np.linspace(t0, tSon, adet)</span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="co"># Yerine koyduğumuzda oluşan denklemler (tabloya bakınız)</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="co"># y''(t)=t = (y_{i+1}-2y_{i}+y_{i-1})/h^2</span></span>
-<span id="cb2-20"><a href="#cb2-20"></a><span class="co"># t * h^2 = y_{i+1}-2y_{i}+y_{i-1}</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a><span class="co"># ilk denklem için t= h olacak. i=1 olacak</span></span>
-<span id="cb2-22"><a href="#cb2-22"></a><span class="co"># h * h^2 = y_{2}-2y_{1}+y_{0}</span></span>
-<span id="cb2-23"><a href="#cb2-23"></a><span class="co"># ilkDenklemSagTaraf= h*(h**2)-y_{0}</span></span>
-<span id="cb2-24"><a href="#cb2-24"></a><span class="co"># Son denklem için t= tSon-h olacak. i=son-1 olacak</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a><span class="co"># (tSon-h) * h^2 = y_{son}-2y_{son-1}+y_{son-2}</span></span>
-<span id="cb2-26"><a href="#cb2-26"></a><span class="co"># sonDenklemSagTaraf=(tSon-h)*(h**2)-y_{son}</span></span>
-<span id="cb2-27"><a href="#cb2-27"></a>ilkDenklemSagTaraf<span class="op">=</span>fonk(h)<span class="op">*</span>(h<span class="op">**</span><span class="dv">2</span>)<span class="op">-</span>y_t0</span>
-<span id="cb2-28"><a href="#cb2-28"></a>sonDenklemSagTaraf<span class="op">=</span>fonk(tSon<span class="op">-</span>h)<span class="op">*</span>(h<span class="op">**</span><span class="dv">2</span>)<span class="op">-</span>y_t3</span>
-<span id="cb2-29"><a href="#cb2-29"></a><span class="co"># Ara denklemleri oluştur.</span></span>
-<span id="cb2-30"><a href="#cb2-30"></a><span class="co"># araDenklemlerSagTaraf[0]=ilkDenklemSagTaraf</span></span>
-<span id="cb2-31"><a href="#cb2-31"></a>araDenklemlerSagTaraf<span class="op">=</span>np.array(ilkDenklemSagTaraf)</span>
-<span id="cb2-32"><a href="#cb2-32"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, adet<span class="op">-</span><span class="dv">3</span>):</span>
-<span id="cb2-33"><a href="#cb2-33"></a>    araDenklemlerSagTaraf<span class="op">=</span> np.append(araDenklemlerSagTaraf, fonk(tTum[i<span class="op">+</span><span class="dv">1</span>])<span class="op">*</span>(h<span class="op">**</span><span class="dv">2</span>))</span>
-<span id="cb2-34"><a href="#cb2-34"></a><span class="co"># Son denklemi ekle</span></span>
-<span id="cb2-35"><a href="#cb2-35"></a>sonucMatrisi<span class="op">=</span> np.append(araDenklemlerSagTaraf,sonDenklemSagTaraf)</span>
-<span id="cb2-36"><a href="#cb2-36"></a><span class="co"># Katsayı Matrisi</span></span>
-<span id="cb2-37"><a href="#cb2-37"></a>katsayiMat<span class="op">=</span> np.zeros((adet<span class="op">-</span><span class="dv">2</span>, adet<span class="op">-</span><span class="dv">2</span>))</span>
-<span id="cb2-38"><a href="#cb2-38"></a><span class="co"># y''(t)=t = (y_{i+1}-2y_{i}+y_{i-1})/h^2</span></span>
-<span id="cb2-39"><a href="#cb2-39"></a><span class="co"># Denkleminde katsayılar hep aynı olur.</span></span>
-<span id="cb2-40"><a href="#cb2-40"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(adet<span class="op">-</span><span class="dv">2</span>):</span>
-<span id="cb2-41"><a href="#cb2-41"></a>    katsayiMat[i, i]<span class="op">=</span> <span class="op">-</span><span class="dv">2</span></span>
-<span id="cb2-42"><a href="#cb2-42"></a>    <span class="cf">if</span> <span class="kw">not</span> i <span class="op">==</span> adet<span class="op">-</span><span class="dv">3</span>:</span>
-<span id="cb2-43"><a href="#cb2-43"></a>        katsayiMat[i, i<span class="op">+</span><span class="dv">1</span>]<span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-44"><a href="#cb2-44"></a>    <span class="cf">if</span> <span class="kw">not</span> i <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb2-45"><a href="#cb2-45"></a>        katsayiMat[i, i<span class="op">-</span><span class="dv">1</span>]<span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-46"><a href="#cb2-46"></a><span class="co"># Çöz</span></span>
-<span id="cb2-47"><a href="#cb2-47"></a><span class="bu">print</span>(<span class="ss">f"Katsayı Matrisi: </span><span class="ch">\n</span><span class="sc">{</span>katsayiMat<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-48"><a href="#cb2-48"></a><span class="bu">print</span>(<span class="ss">f"Sonuç Matrisi: </span><span class="ch">\n</span><span class="sc">{</span>sonucMatrisi<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-49"><a href="#cb2-49"></a>cozum<span class="op">=</span>solve(katsayiMat, sonucMatrisi)</span>
-<span id="cb2-50"><a href="#cb2-50"></a><span class="co"># İlk Çözümü Ekle</span></span>
-<span id="cb2-51"><a href="#cb2-51"></a>cozum<span class="op">=</span>np.insert(cozum, <span class="dv">0</span>, y_t0)</span>
-<span id="cb2-52"><a href="#cb2-52"></a><span class="co"># Son Çözümü Ekle</span></span>
-<span id="cb2-53"><a href="#cb2-53"></a>cozum<span class="op">=</span>np.append(cozum, y_t3)</span>
-<span id="cb2-54"><a href="#cb2-54"></a><span class="co"># Çiz</span></span>
-<span id="cb2-55"><a href="#cb2-55"></a>plt.plot(tTum, cozum, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'Sonlu Farklar'</span>)</span>
-<span id="cb2-56"><a href="#cb2-56"></a>plt.plot(tTum, tTum<span class="op">**</span><span class="dv">3</span><span class="op">/</span><span class="dv">6</span> <span class="op">+</span> <span class="dv">21</span><span class="op">*</span>tTum<span class="op">/</span><span class="dv">18</span> <span class="op">+</span> <span class="dv">1</span>, <span class="st">'r-'</span>, label<span class="op">=</span><span class="st">'Analitik'</span>)</span>
-<span id="cb2-57"><a href="#cb2-57"></a>plt.legend()</span>
-<span id="cb2-58"><a href="#cb2-58"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Verimiz [1,1,2] olsun. Bu veri kümesinin frekansını ver olasılık kütle fonksiyonunu hesaplayalım ve çizelim.</li>
+<li>Aynı işlemleri [1,1,2,2,3,3] için yapalım.</li>
+</ul>
+<section id="çözüm" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
+<div id="24271576" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># Veri</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>seri1<span class="op">=</span> pd.Series([<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>])</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># Olasılık kütle fonksiyonu</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="bu">print</span>(<span class="ss">f"Tekrar eden sayılar</span><span class="ch">\n</span><span class="sc">{</span>seri1<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="bu">print</span>(<span class="ss">f"Kaç sayı var? </span><span class="sc">{</span><span class="bu">len</span>(seri1)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb3-12"><a href="#cb3-12"></a>pmf<span class="op">=</span> seri1.value_counts()<span class="op">/</span><span class="bu">len</span>(seri1)</span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="bu">print</span>(<span class="ss">f"pmf=</span><span class="ch">\n</span><span class="sc">{</span>pmf<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co"># pmf değişkenini dataframe'e çevir</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>pmf.name<span class="op">=</span> <span class="st">"Olasılık"</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="co"># Çiz</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a>pmf.plot(kind<span class="op">=</span><span class="st">"bar"</span>, title<span class="op">=</span><span class="st">"Pmf [1,1,2]"</span>)</span>
+<span id="cb3-19"><a href="#cb3-19"></a>plt.show()</span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="co">#---</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a>seri1<span class="op">=</span> pd.Series([<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>])</span>
+<span id="cb3-22"><a href="#cb3-22"></a></span>
+<span id="cb3-23"><a href="#cb3-23"></a><span class="co"># Olasılık kütle fonksiyonu</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a><span class="bu">print</span>(<span class="ss">f"Tekrar eden sayılar</span><span class="ch">\n</span><span class="sc">{</span>seri1<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb3-26"><a href="#cb3-26"></a><span class="bu">print</span>(<span class="ss">f"Kaç sayı var? </span><span class="sc">{</span><span class="bu">len</span>(seri1)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb3-28"><a href="#cb3-28"></a>pmf<span class="op">=</span> seri1.value_counts()<span class="op">/</span><span class="bu">len</span>(seri1)</span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="bu">print</span>(<span class="ss">f"pmf=</span><span class="ch">\n</span><span class="sc">{</span>pmf<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-30"><a href="#cb3-30"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb3-31"><a href="#cb3-31"></a><span class="co"># pmf değişkenini dataframe'e çevir</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a>pmf.name<span class="op">=</span> <span class="st">"Olasılık"</span></span>
+<span id="cb3-33"><a href="#cb3-33"></a><span class="co"># Çiz</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a>pmf.plot(kind<span class="op">=</span><span class="st">"bar"</span>, title<span class="op">=</span><span class="st">"Pmf [1,1,2,2,3,3]"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Katsayı Matrisi: 
-[[-2.  1.  0.  0.  0.]
- [ 1. -2.  1.  0.  0.]
- [ 0.  1. -2.  1.  0.]
- [ 0.  0.  1. -2.  1.]
- [ 0.  0.  0.  1. -2.]]
-Sonuç Matrisi: 
-[-0.875  0.25   0.375  0.5   -8.375]</code></pre>
+<pre><code>Tekrar eden sayılar
+1    2
+2    1
+Name: count, dtype: int64
+--------------------
+Kaç sayı var? 3
+--------------------
+pmf=
+1    0.666667
+2    0.333333
+Name: count, dtype: float64
+--------------------
+Tekrar eden sayılar
+1    2
+2    2
+3    2
+Name: count, dtype: int64
+--------------------
+Kaç sayı var? 6
+--------------------
+pmf=
+1    0.333333
+2    0.333333
+3    0.333333
+Name: count, dtype: float64
+--------------------</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="sdp-sonlu-farklar-yontemi_files/figure-html/cell-3-output-2.png" width="558" height="411" class="figure-img"></p>
+<p><img src="olasilik-kutle-fonksiyonu_files/figure-html/cell-4-output-2.png" width="571" height="427" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="olasilik-kutle-fonksiyonu_files/figure-html/cell-4-output-3.png" width="579" height="427" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="sonlu-farklar-yönteminin-çalışmadığı-örnek" class="level2">
-<h2 class="anchored" data-anchor-id="sonlu-farklar-yönteminin-çalışmadığı-örnek">Sonlu Farklar Yönteminin Çalışmadığı Örnek</h2>
-<p>Eğer oluşturduğumuz diferansiyel denklem sistemi doğrusal değilse, yukarıdaki algoritmayı kullanmayız. Aşağıdaki örneği inceleyelim.</p>
-<p><span class="math display">\[
-y''(t)=tyy'(t)
-\]</span></p>
-<p>Çözmemiz gereken denklem</p>
-<p><span class="math display">\[
-y''(t)=tyy'(t)=\frac{y_{i+1}-2y_{i}+y_{i-1}}{h^2}
-\]</span></p>
-<p><span class="math inline">\(i=1\)</span> için yazalım.</p>
-<p><span class="math display">\[
-ty_{1}y_{1}'=\frac{y_{2}-2y_{1}+y_{0}}{h^2}
-\]</span></p>
-<p>Türevi de açıkça yazalım.</p>
-<p><span class="math display">\[
-ty_{1} \frac{y_{2}-y_{0}}{2h}=\frac{y_{2}-2y_{1}+y_{0}}{h^2}
-\]</span></p>
-<p>Düzenleyelim.</p>
-<p><span class="math display">\[
-\frac{th}{2} (y_{1}y_{2}-y_{1}y_{0}) -y_{2}+2y_{1}-y_{0} = 0
-\]</span></p>
-<p><span class="math inline">\(y_{1}y_{2}\)</span> gibi terimlerin varlığından dolayı bu denklem doğrusal olmayan (nonlineer) denklemdir. Klasik yöntemlerle (LU ayrıştırma veya Gauss eleme) çözülemez.</p>
-</section>
-<section id="problemler" class="level2">
-<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
-<section id="problem-1" class="level3">
-<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
-<p>Aşağıdaki diferansiyel denklemi sonlu farklar yöntemi kullanarak çözebilir misinz?</p>
-<p><span class="math display">\[
-\frac{\hbar^{2}}{2 m}\frac{d^{2}}{dx^{2}}\psi(x) = E\psi(x), \qquad \psi(x=0)=0, \qquad \psi(x=L)=0 \text{.}
-\]</span></p>
-<p>Çözümü <span class="math inline">\(n=1\)</span> ve <span class="math inline">\(n=2\)</span> için bulmaya çalışın. Hem bulduğunuz enerji değerlerini hem de dalga fonksiyonunun karesini (olasılık yoğunluğunu, <span class="math inline">\(|\psi(x)|^{2}\)</span>) çizdirin. <span class="math inline">\(x\)</span> değerleri <span class="math inline">\(0\)</span> ile <span class="math inline">\(L\)</span> arasında <span class="math inline">\(N=100\)</span> adet olsun.</p>
-<p>Denklemdeki katsayıları aşağıdaki gibi alın.</p>
-<ol type="1">
-<li><span class="math inline">\(\hbar=1\)</span></li>
-<li><span class="math inline">\(m=1\)</span> kg</li>
-<li><span class="math inline">\(L=2\)</span></li>
-</ol>
-<p>Enerji özdeğerinin gerçek değeri aşağıdaki gibi olmalıdır.</p>
-<p><span class="math inline">\(E=\frac{\pi^{2}\hbar^{2}}{2mL^{2}}n^{2}\)</span> J.</p>
-<p>Dalga fonksiyonunun analitik çözümü aşağıdaki gibi olmalıdır.</p>
-<p><span class="math display">\[
-\psi(x)=\sqrt{\frac{2}{L}}\sin\left(\frac{n\pi x}{L}\right)
-\]</span></p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tavsiye
+Dikkat
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Bu problem bir özdeğer problemidir. Diferansiyel operatörü <span class="math inline">\(\left(\frac{d^{2}}{dx^{2}}\right)\)</span> doğrusal operatörü matris şeklinde yazmalısınız. Bu matrisi sonlu farklar yönteminde yazdık.</p>
+<p>PMF fonksiyonu çizdirilirken histogram grafiği değil bar grafiği çizdiriyoruz.</p>
 </div>
 </div>
-</section>
-<section id="problem-2" class="level3">
-<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
-<p>Aşağıdaki diferansiyel denklemi sonlu farklar yöntemini kullanarak çözün. Adım aralığını <span class="math inline">\(h=0.05\)</span> alın. Analitik sonuçla karşılaştırın.</p>
-<p><span class="math display">\[
-y''(t) = t^{3}+t+5, \quad y(0)=1, \quad y(6)=545.8
-\]</span></p>
+<p>Pmf fonksiyonunu elde etmek için yapılan işleme <strong>normalizasyon</strong> (normalization) denir. Normalizasyon işlemi, olasılık kütle fonksiyonunun toplamı 1 olacak şekilde yapılır, çünkü olasılığın tanımı gereği toplamı 1 olmalıdır.</p>
+<p>Olasılık kütle fonksiyonunu veri üzerinden değil de ideal koşullarda gelmesi gereken tüm değerler üzerinden de tanımlayabiliriz.</p>
 </section>
 </section>
-<section id="kaynaklar" class="level2">
-<h2 class="anchored" data-anchor-id="kaynaklar">Kaynaklar</h2>
+<section id="alıştırma-2" class="level2">
+<h2 class="anchored" data-anchor-id="alıştırma-2">Alıştırma 2</h2>
+<p>Bir para 3 kez atılıyor. Tura gelmelerinin sayısına ait olasılık kütle fonksiyonunu bulalım.</p>
+<section id="çözüm-1" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm-1">Çözüm</h3>
+<p>Olası çözümlerimiz:</p>
 <ol type="1">
-<li>Numerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013, <strong>Syf:307</strong></li>
-<li><a href="https://www.youtube.com/watch?v=-RK5r65OF-Y">Sonlu Farklar Yöntemi, Youtube Videosu</a></li>
-<li><a href="https://www1.itp.tu-berlin.de/brandes/public_html/qm/qv3.pdf">Numerical Solutions of Schrodinger’s Equation, Neill Lambert, 2001</a></li>
+<li>TTT</li>
+<li>TTY, TYT, YTT</li>
+<li>TYY, YTY, YYT</li>
+<li>YYY</li>
 </ol>
+<p>Toplam 8 ihtimal vardır. Her bir ihtimali rastgele değişkenlere atayalım.</p>
+<ul>
+<li><span class="math inline">\(X\)</span>: Tura gelme sayısı</li>
+</ul>
+<p><span class="math display">\[
+X= {0, 1, 2, 3}
+\]</span></p>
+<p>Burada 3 kez para atıldığında;</p>
+<ol type="1">
+<li>Hiç tura gelmeyebilir <span class="math inline">\(X=0\)</span>.</li>
+<li>Bir kere tura gelebilir <span class="math inline">\(X=1\)</span>.</li>
+<li>İki kere tura gelebilir <span class="math inline">\(X=2\)</span>.</li>
+<li>Üç kere tura gelebilir <span class="math inline">\(X=3\)</span>.</li>
+</ol>
+<p>Bu rastgele değişkenleri kullanarak olasılık kütle fonksiyonunu bulalım.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">x</th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">P(X=x)</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">3/8</td>
+<td style="text-align: center;">3/8</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+</tbody>
+</table>
+<p>Buradaki <span class="math inline">\(P(x)\)</span> olasılık kütle fonksiyonudur veya kesikli olasılık dağılımıdır.</p>
+</section>
+</section>
+<section id="beklenen-değer" class="level2">
+<h2 class="anchored" data-anchor-id="beklenen-değer">Beklenen Değer</h2>
+<ul>
+<li>Beklenen değer, rastgele değişkenin olasılık kütle fonksiyonu ile çarpımından elde edilir.</li>
+<li>Bir verinin <strong>ortalaması</strong> (mean) değerini hesaplamak demek, o verinin beklenen değerini hesaplamak demektir.</li>
+</ul>
+<p><span class="math display">\[
+E(X)\equiv \mu = \sum_{x} x P(X=x) \\
+&lt;X&gt; = \sum_{x} x P(X=x)
+\]</span></p>
+<p>Her bir rastgele değişken, <span class="math inline">\(x_{i}\)</span>, ile o rastgele değişkenin olasılığı, <span class="math inline">\(P(X=x_{i})\)</span> çarpılır ve tüm bu çarpımlar toplanır.</p>
+</section>
+<section id="alıştırma-3" class="level2">
+<h2 class="anchored" data-anchor-id="alıştırma-3">Alıştırma 3</h2>
+<p>Bir elektronun spininin <span class="math inline">\(z\)</span> bileşeni <span class="math inline">\(\hbar/2\)</span> veya <span class="math inline">\(-\hbar/2\)</span> değerlerini alabilir. Bu durumda bir elektronun spini <span class="math inline">\(0.5\)</span> olasılıkla <span class="math inline">\(\hbar/2\)</span>, <span class="math inline">\(0.5\)</span> olasılıkla <span class="math inline">\(-\hbar/2\)</span> olur. Elektronun spini ile ilgili rastgele değişkeni <span class="math inline">\(X\)</span> ile gösterelim.</p>
+<section id="çözüm-2" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm-2">Çözüm</h3>
+<p><span class="math display">\[
+X = \{-1/2, 1/2\}
+\]</span></p>
+<p>Elektronun spini ile ilgili olasılık kütle fonksiyonunu bulalım.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">x</th>
+<th style="text-align: center;"><span class="math inline">\(-\hbar/2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\hbar/2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">P(X=x)</td>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">0.5</td>
+</tr>
+</tbody>
+</table>
+<p>Elektronun spinin <span class="math inline">\(z\)</span> bileşeninin beklenen değeri, <span class="math inline">\(E(X)\)</span> bulalım.</p>
+<p><span class="math display">\[
+E(X) = \sum_{i} x_{i} P(X=x_{i}) = \frac{\hbar}{2} \times 0.5 -\frac{\hbar}{2} \times 0.5 = 0
+\]</span></p>
+<p>Elektronun spinin <span class="math inline">\(z\)</span> bileşeninin beklenen değeri <span class="math inline">\(0\)</span>’dır.</p>
+<p>Fiziksel notasyon ile karşılaştıralım. Bir elektronun spininin <span class="math inline">\(z\)</span> bileşeninin beklenen değeri, <span class="math inline">\(S_{z}\)</span>, <span class="math inline">\(\psi\)</span> dalga fonksiyonu ile hesaplanır.</p>
+<p><span class="math display">\[
+\langle S_{z}\rangle \equiv \langle\psi | S_{z} | \psi\rangle
+\]</span></p>
+<p>Burada dalga fonksiyonunu aşağıdaki gibi yazabiliriz. Spin yukarıyı <span class="math inline">\(|\uparrow\rangle\)</span> ile gösterelim, spin aşağıyı <span class="math inline">\(|\downarrow\rangle\)</span> ile gösterelim.</p>
+<p><span class="math display">\[
+|\psi\rangle = \frac{1}{\sqrt{2}} |\uparrow\rangle +\frac{1}{\sqrt{2}} |\downarrow\rangle
+\]</span></p>
+<p>Matris gösterimi ile de yazabiliriz.</p>
+<p><span class="math display">\[
+|\psi\rangle = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 0 \end{bmatrix} + \frac{1}{\sqrt{2}}\begin{bmatrix} 0 \\ 1 \end{bmatrix} \\
+\]</span></p>
+<p><span class="math display">\[
+|\psi\rangle = \begin{bmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{bmatrix}
+\]</span></p>
+<p>Şimdi de <span class="math inline">\(S_{z}\)</span> operatörünü matris formda yazalım.</p>
+<p><span class="math display">\[
+S_{z} = \frac{\hbar}{2} \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}
+\]</span></p>
+<p>Beklenen değeri hesaplayalım.</p>
+<p><span class="math display">\[
+|S_{z}\rangle = \langle \psi | S_{z} | \psi \rangle = \begin{bmatrix} 1/\sqrt{2} &amp; 1/\sqrt{2} \end{bmatrix} \frac{\hbar}{2} \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix} \begin{bmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{bmatrix} = 0
+\]</span></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1392,14 +1300,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="pagination-link" aria-label="SDP - Atış Yöntemi">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">SDP - Atış Yöntemi</span>
+      <a href="../../../icerik/konular/istatistik/uygulama-thinkstat2.html" class="pagination-link" aria-label="Uygulama - thinkstat2">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Uygulama - thinkstat2</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/fourier-analizi.html" class="pagination-link" aria-label="Fourier Analizi">
-        <span class="nav-page-text">Fourier Analizi</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -1410,7 +1315,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/istatistik/olasilik-kutle-fonksiyonu.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>
