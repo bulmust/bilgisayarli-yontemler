@@ -1,0 +1,283 @@
+---
+title: Dağılımlarin Modellenmesi
+---
+
+## Dağılımların Modellenmesi
+
+Bu zamana kadar elde ettiğimiz dağılımlar (normal ve düzgün (uniform)) empirik yani gözlem verilerine dayalıydı. 
+
+Şimdi **analitik dağılımlardan** bahsedeceğiz. Analitik dağılımlar bir formül ile karakterize edildiği için kesikli değil **sürekli** olur.
+
+PMF (Olasılık kütle fonksiyonu) kesikli değerler üzerinde tanımlı olduğu için yeni bir tanım yani PDF (olasılık yoğunluk fonksiyonu) tanımı yapacağız.
+
+## Olasılık Yoğunluk Fonksiyonu, PDF (Probability Density Function)
+
+Tıpkı PMF gibi PDF de rastgele bir değişkeni (örnek uzayında) alıp olasılıklardan oluşan tanım kümesine götüren bir fonksiyondur.
+
+PDF, bir sürekli değişkenin değerlerinin olasılıklarını tanımlar.
+
+### PDF'nin Özellikleri
+
+1. (**normalizasyon**) PDF'de tıpkı PMF gibi olasılık fonksiyonu olduğu için için değerlerinin toplamı 1 olmak zorundadır.
+
+$$
+\int_{-\infty}^{\infty} PDF(x) dx = 1
+$$
+
+2. (**pozitiflik.**) PDF'nin değeri her zaman pozitif olmak zorundadır. $PDF(x) \geq 0$ 
+3. (**Değerlerin Olasılık Yoğuluğu**) PDF'in değeri 1'e ne kadar yakınsa o kadar yüksek olasılık değerine sahiptir.
+
+## Alıştırma 1
+
+$PDF(x=2) = 0.5$ ise $x$ rastgele değişkeninin olasılığı $0.5$'dir. $PDF(x=3)=0.2$ ise $3$ rastgele değişkeninin olasılığı $0.2$'dir.
+
+
+- (**PDF ile PMF arasındaki ilişki**) PDF ile PMF arasındaki matematiksel ilişki aşağıdaki gibidir.
+
+$$
+PDF(x) = \frac{PMF(x)}{\Delta x}
+$$
+
+Burada $\Delta x$ birim uzunlukta $x$'in alabileceği değerlerin sayısıdır.
+
+- (**PDF ile CDF arasındaki ilişki**) PDF ile CDF arasındaki türev/integral ilişkisi vardır.
+
+$$
+CDF(x) = \int_{-\infty}^{x} PDF(t) dt
+$$
+
+veya
+
+$$
+PDF(x) = \frac{d}{dx} CDF(x)
+$$
+
+CDF fonksiyonunun $x$ noktasındaki türevi ne kadar yüksek ise $x$'in o bölgede olma olasılığı o kadar yüksektir ki bu da PMF(x)'in o bölgede yüksek değerde olması demektir.
+
+- (**Beklenen Değer** veya **PDF'in Ortalaması (Mean)**) Bir dağılımın ortalama değeri veya beklenen değeri $E[x]$ veya $<x>$ aşağıdaki gibi hesaplanır.
+
+$$E[x] \equiv \mu \equiv <x> = \int_{-\infty}^{\infty} x ~ PDF(x) dx$$
+
+- (**Varyans**) Bir dağılımın varyansı $\sigma^2$ aşağıdaki gibi hesaplanır.
+
+$$\sigma^2 = \int_{-\infty}^{\infty} (x - E[x])^2 PDF(x) dx$$
+
+### Varyans Üzerine Not
+
+Varyansı başka bir şekilde de hesaplayabiliriz.
+
+$$
+\sigma^2 = E[(x-E[x])^{2}] = \int_{-\infty}^{\infty} (x - E[x])^2 PDF(x) dx
+$$
+
+$$
+\begin{align}
+    E[(x-E[x])^{2}] =& E[x^2 - 2 x E[x] + E[x]^2] \\
+    =& E[x^2] - E[2 x E[x]] + E[E[x]^2] \\
+    =& E[x^2] - 2 E[x] E[x] + E[x]^2 \\
+    =& E[x^2] - E[x]^2
+\end{align}
+$$
+
+Burada kullandığımız özellikler
+
+1. $E[x+y] = E[x] + E[y]$
+2. $E[c x] = c E[x]$
+3. $E[x E[x]] = E[x]E[x]$ ($E[x]$ 'in bir sayı olduğunu unutmayın.)
+4. $E[E[x]^2] = E[x]^2$ ($E[c]= c$, $c$ sabit bir sayıdır.)
+
+Bu durumda varyans şu şekilde hesaplanabilir.
+
+$$
+\sigma^2 \equiv Var[x] = E[x^2] - E[x]^2
+$$
+
+## Eksponansiyel Dağılım
+
+Eksponansiyel dağılımı veren PDF formülü aşağıdaki gibidir:
+
+$$PDF(x) |_{exp} = \lambda e^{-\lambda x}$$
+
+Burada $\lambda$ parametresi pozitif bir reel sayıdır ve dağılımın karakteristiğini belirler. Bir diğer adı da **ölçü (rate)** parametresidir.
+
+## Normal Dağılım
+
+- Bir diğer ismi Gaussyen dağılımdır.
+- Normal dağılım $\mu$ ve $\sigma$ parametreleri ile tanımlanır.
+  - $\mu$ ortalama değerdir.
+  - $\sigma$ standart sapmadır.
+  - $\mu=0$ ve $\sigma=1$ ise **standart normal dağılım** denir.
+
+Normal dağılımın PDF formülü aşağıdaki gibidir:
+
+$$PDF(x) |_{normal} = \frac{1}{\sigma\sqrt{2\pi}} \exp{\left[-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}\right]}$$
+
+## Poisson Dağılımı
+
+Poisson dağılımı veren PDF formülü aşağıdaki gibidir:
+
+$$PDF(x) |_{poisson} = \frac{\lambda^{x} e^{-\lambda}}{x!}$$
+
+Burada $\lambda$ parametresi pozitif bir reel sayıdır ve dağılımın karakteristiğini belirler. Bir diğer adı da **ölçü (rate)** parametresidir.
+
+Burada $x$ bir tamsayıdır.
+
+## Maxwell-Boltzmann Dağılımı
+
+Maxwell-Boltzmann dağılımı veren PDF formülü aşağıdaki gibidir:
+
+$$PDF(x) |_{maxwell} = \sqrt{\frac{2}{\pi}} \frac{x^{2}}{a^{3}} e^{-\frac{x^{2}}{2a^{2}}}$$
+
+Burada $a$ parametresi pozitif bir reel sayıdır ve dağılımın karakteristiğini belirler.
+
+Fizikten bildiğimiz Maxwell Boltzman dağılımı aşağıdaki gibidir:
+
+$$ n_{i}= \frac{1}{e^{\frac{E_{i}-\mu}{kT}}} $$
+
+- Burada $E$ enerji, $\mu$ kimyasal potansiyel, $k$ Boltzman sabiti, $n_{i}$ $E_{i}$ enerjisine sahip parçacıkların sayısı  ve $T$ sıcaklıktır.
+- Bu dağılım normalize değildir.
+
+Bir diğer Maxwell Boltzman dağılımı ise ayırt edilemez parçacıkların hız dağılımıdır. 3 Boyutlu Maxwell Boltzman hız dağılımı aşağıdaki gibidir:
+
+$$ f(v) = \left(\frac{m}{2\pi k T}\right)^{3/2} 4\pi v^{2} e^{-\frac{mv^{2}}{2kT}} $$
+
+- Burada $m$ parçacığın kütlesi, $v$ parçacığın hızı, $k$ Boltzman sabiti ve $T$ sıcaklıktır.
+
+## Bose-Einstein Dağılımı
+
+Bose-Einstein dağılımı veren PDF formülü aşağıdaki gibidir:
+
+$$PDF(E) |_{bose-einstein} = \frac{1}{e^{\frac{E-\mu}{kT}}-1}$$
+
+- $\mu$ kimyasal potansiyeldir. Değeri $0$ ile $1$ arasında değişir.
+- Burada $k$ Boltzmann sabitidir. Değeri $8.617 \times 10^{-5}$ eV/K'dır.
+- $T$ sıcaklıktır. Birimi Kelvin'dir.
+- $E$ enerji seviyesidir. Birimi eV'dir.
+
+## Fermi-Dirac Dağılımı
+
+Fermi-Dirac dağılımı veren PDF formülü aşağıdaki gibidir:
+
+$$PDF(E) |_{fermi-dirac} = \frac{1}{e^{(E-\mu)/kT} + 1}$$
+
+- Burada $\mu$ kimyasal potansiyeldir. Birimi Joule'dur.
+- $k$ Boltzmann sabitidir ve değeri $1.380649 \times 10^{-23} J/K$'dır.
+- $T$ ise sıcaklıktır. Birimi Kelvin'dir.
+- $E$ enerji seviyesidir. Birimi eV'dir.
+- Bu dağılım sadece $T \geq 0$ için tanımlıdır.
+
+## Diğer Dağılımlar
+
+### Uniform Dağılım
+
+- Uniform dağılım $a$ ve $b$ parametreleri ile tanımlanır.
+  - $a$ alt sınır değeridir.
+  - $b$ üst sınır değeridir.
+
+Uniform dağılımın PDF formülü aşağıdaki gibidir:
+
+$$PDF(x) |_{uniform} = \frac{1}{b-a}$$
+
+### Binom Dağılım
+
+- Binom dağılımı $n$ ve $p$ parametreleri ile tanımlanır.
+  - $n$ deneme sayısıdır.
+  - $p$ başarı olasılığıdır.
+
+Binom dağılımın PMF formülü aşağıdaki gibidir:
+
+$$PMF(x) |_{binom} = \binom{n}{x} p^{x} (1-p)^{n-x}$$
+
+### Gamma Dağılım
+
+- Gamma dağılımı $\alpha$ ve $\beta$ parametreleri ile tanımlanır.
+  - $\alpha$ şekil parametresidir.
+  - $\beta$ ölçü (rate) parametresidir.
+
+Gamma dağılımın PDF formülü aşağıdaki gibidir:
+
+$$PDF(x) |_{gamma} = \frac{\beta^{\alpha}}{\Gamma(\alpha)} x^{\alpha-1} e^{-\beta x}$$
+
+## Teorik Dağılımları (Modelleri) Neden Kullanırız?
+
+Veri biliminde veri analizi yaparken veri setindeki verilerin dağılımının şeklinden birçok bilgi çıkarabiliriz. Bunun iki örneği aşağıdaki gibidir.
+
+### Parçacıkların Hız Dağılımı
+
+Klasik, ideal Gaz parçacıklarının hız dağılımının simülasyonunu aşağıdaki github reposunda bulabilirsiniz:
+
+<https://github.com/rafael-fuente/Ideal-Gas-Simulation-To-Verify-Maxwell-Boltzmann-distribution>
+
+### Nötrinonun Keşfi
+
+1900'lerin başında Curie, beta bozunumundan çıkan elektronların enerjisine baktı. Bu enerjinin bir dağılım değil belli bir enerjide olması gerekiyordu.
+Bunun sebebini aşağıdaki diyagramdan anlayabiliriz.
+
+$$
+(A,Z) \rightarrow (A,Z+1) + e^{-}
+$$
+
+Burada, çekirdek içerisinde bir adet nötron bir adet protona dönüşmektedir. Bu sırada açığa çıkan enerjiyi de sadece elektronun taşıması gerekir. Fakat yapılan spektrum (açığa çıkan elektronun hangi enerjide olduğunun grafiği) analizlerinde elektronun Fermi-Dirac dağılımında olduğu bulunuyordu. Bunun iki sebebi olabilirdi:
+
+1. Enerji korunmuyordu.
+2. Başka bir parçacık daha vardı.
+
+Enrico Fermi 1934 yılında bu sorunu çözdü. Enerji korunuyordu. Fakat başka bir parçacık daha vardı ve bu parçacığa nötrino adını verdi. Nötrinolar yük korunumundan dolayı yüksüz ve açısal momentum korunumundan dolayı da spin 1/2 yani fermion olmalıydı.
+
+$$
+(A,Z) \rightarrow (A,Z+1) + e^{-} + \bar{\nu_{e}}
+$$
+
+1956 yılında Amerikan bir ekip (Clyde Cowan, Frederick Reines, Francis B. ve diğerleri) açığa çıkan nötrinoyu deneysel olarak buldu ve 1995 yılında Nobel Fizik Ödülü'nü kazandılar.
+
+Elektronun Fermi-Dirac dağılımına bakarak cismin kütle ve sıcaklığı hakkında tahminde bulunabiliriz.
+
+### Bose-Einstein Yoğunlaşması
+
+Bose-Einstein dağılımının grafiğine tekrar bakalım. Bu grafikte üzerine yorum yapılacak iki nokta var.
+
+1. Parçacıkların hepsi, sıcakları düştükçe belli bir enerjide bulunma olasılıkları artıyor. Bu duruma **Bose-Einstein yoğuşması** (Bose–Einstein condensate) adı verilir.
+2. Teorik olarak negatif sıcaklıklar da olabilir. Negatif sıcaklığa, pozitif enerjili parçacıkların gelebilmesi için sonsuz miktarda enerjiye ihtiyaç vardır.
+
+Bozonların (spin tam sayı) uyduğu Bose-Einstein dağılımına bakarak cismin kütle ve sıcaklığı hakkında tahminde bulunabiliriz.
+
+## Problemler
+
+### Problem 1
+
+Heisenberg belirsizlik ilkesi aşağıdaki gibi verilir.
+
+$$\sigma_{x} \sigma_{p} \geq \frac{\hbar}{2}$$
+
+Burada $\sigma_{x}$, x'teki belirsizliği yani standart sapmayı verir. Bu eşitliği beklenen değerler cinsinden matematiksel olarak yazın.
+
+### Problem 2
+
+Öğrendiğiniz tüm dağılımları bir fonksiyon olarak yazın.
+
+- Eksponansiyel dağılım için $\lambda=0.1,1,2$ alın ve grafiğini çizdirin.
+- Normal dağılım için $(\mu,\sigma)= (0,1),(0,2), (0,3)$ alın ve grafiğini çizdirin. Aynı şekilde $(\mu,\sigma)= (-2,1),(0,1), (2,1)$ alın ve grafiğini çizdirin.
+- Poisson dağılımı için $\lambda=0.1,1,2$ alın ve grafiğini çizdirin.
+- Maxwell-Boltzman dağılımı için $a=1,2,5$ alın ve grafiğini çizdirin. 3 Boyutlu Maxwell-Boltzman hız dağılımı formülünü kullanarak 1Mol He, Ne ve Ar atomlarının hız dağılımını çizdirin.
+- Bose-Einstein dağılım için $(\mu [eV], T [K]) = (0,5), (0,100), (0,273)$ alın ve grafiğini çizdirin. Ayrı bir grafikte $(\mu [eV], T [K]) = (0,273), (0.01,273), (0.05,273)$ alın ve çizdirin.
+- Fermi-Dirac dağılımı için $(\mu [eV], T [K]) = (0.5,5), (0.5,100), (0.5,273)$ alın ve grafiğini çizdirin. Ayrı bir grafikte $(\mu [eV], T [K]) = (0.5,273), (0.55,273), (0.85,273)$ alın ve çizdirin.
+
+### Problem 3
+
+- Aşağıdaki sorularda eksponansiyel dağılımı $\lambda=2$ için, normal dağılımı $(\mu,\sigma)= (0,1)$ için hesaplayın. 
+- Dağılımların hem formülünü kullanarak hem de `scipy.stats` kütüphanesini kullanarak yaratın. $x=1$ ile $x=100$ arasında 1000 nokta için hesaplayın.
+
+1. Normal dağılımların ortalama değerini, varyansını, standart sapmasını hesaplayın ve ekrana yazdırın.
+2. Normal ve eksponansiyel dağılımların CDF fonksiyonlarını teorik olarak hesaplayın. Normal dağılım için integral hali ile bırakın. İntegral almak için `scipy.integrate.quad` fonksiyonunu kullanabilirsiniz.
+3. Normal ve eksponansiyel dağılımların PDF fonksiyonunu  ve aynı grafikte çizdirin.
+4. Normal dağılımda $\mu=0$ için $\sigma=0.25,0.81,1,9$ olan 4 farklı dağılımı aynı grafikte çizdirin.
+5. Normal dağılımda $\sigma=3$ için $\sigma=−5,-2.5,0,3,6$ olan 4 farklı dağılımı aynı grafikte çizdirin.
+
+### Problem 4
+
+Normal (Gaussian) dağılım formülünü kullanarak standart dağılım formülünü ($\mu=0$, $\sigma=1$) elde ediniz.
+
+## Kaynaklar
+
+1. [Think Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014](https://greenteapress.com/thinkstats2/thinkstats2.pdf)
+2. <https://acikders.ankara.edu.tr/pluginfile.php/102514/mod_resource/content/0/Konu%209.pdf>

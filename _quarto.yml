@@ -68,6 +68,8 @@ website:
               - icerik/konular/istatistik/temel-kavramlar.qmd
               - icerik/konular/istatistik/uygulama-thinkstat2.qmd
               - icerik/konular/istatistik/olasilik-kutle-fonksiyonu.qmd
+              - icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.qmd
+              - icerik/konular/istatistik/dagilimlarin-modellenmesi.qmd
 
 format:
   html:

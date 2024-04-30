@@ -167,7 +167,10 @@ Buradaki $P(x)$ olasılık kütle fonksiyonudur veya kesikli olasılık dağıl�
 - Bir verinin **ortalaması** (mean) değerini hesaplamak demek, o verinin beklenen değerini hesaplamak demektir.
 
 $$
-E(X)\equiv \mu = \sum_{x} x P(X=x) \\
+E(X)\equiv \mu = \sum_{x} x P(X=x)
+$$
+
+$$
 <X> = \sum_{x} x P(X=x)
 $$
 
@@ -219,7 +222,7 @@ $$
 |\psi\rangle = \begin{bmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{bmatrix}
 $$
 
-Şimdi de $S_{z}$ operatörünü matris formda yazalım.
+Şimdi de $S_{z}$ operatörünü matris formda yazalım. $S_{z}$ operatörü, spinin $z$ bileşenini temsil eder yani Pauli spin matrislerinin $z$ bileşenidir.
 
 $$
 S_{z} = \frac{\hbar}{2} \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}
@@ -228,5 +231,33 @@ $$
 Beklenen değeri hesaplayalım.
 
 $$
-|S_{z}\rangle = \langle \psi | S_{z} | \psi \rangle = \begin{bmatrix} 1/\sqrt{2} & 1/\sqrt{2} \end{bmatrix} \frac{\hbar}{2} \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} \begin{bmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{bmatrix} = 0
+\langle S_{z}\rangle = \langle \psi | S_{z} | \psi \rangle = \begin{bmatrix} 1/\sqrt{2} & 1/\sqrt{2} \end{bmatrix} \frac{\hbar}{2} \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix} \begin{bmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{bmatrix} = 0
 $$
+
+## Problemler
+
+### Problem 1
+
+1 ile 10 arasında rastgele 100 sayı üretin.
+
+1. Bu sayıların histogram grafiğini çizdirin.
+2. Bu sayıların frekanslarını ekrana yazdırın.
+3. Bu sayıları normalize edin ve ekrana yazdırın.
+4. Bu sayıların olasılık kütle grafiğini çizdirin.
+
+### Problem 2
+
+Bir zar atıldığında beklenen değer ne olur? Matematiksel olarak hesaplayınız (Bilgisayarda değil).
+
+### Problem 3
+
+1. 2 zar atıldığında zarların toplamının beklenen değerini, varyansını ve standart sapmasını teorik olarak hesaplayan betik dosyası yazın.
+2. 2 zarı atın ve zarların toplamını kaydedin. Bu işlemi 3600 kere yapın.
+   1. Toplam kaç kere "2,3,4,5,6,7,8,9,10,11,12" geldiğini gösteren histogramı aynı grafikte çizdirin.
+   2. Olasılık kütle fonksiyonunu çizdirin. (y eksenini 1'e normalize edin. Bunun için `np.array(np.unique(toplamGelme, return_counts=True))` fonksiyonunu kullanıp hangi sayıdan kaç adet geldiği bilgisini alabilirsiniz.) Bir önceki sorudan olması gereken olasılık kütle fonksiyonu değerlerini de bu grafikte gösteriniz. _Bonus: Bu işlemleri `pandas` paketini kullanarak yapınız._
+   3. Beklenen değerini, varyansı ve standart sapmasını, üstte bulduğunuz deney sonuçlarını ile bulduğunuz olasılık kütle fonksiyonunu kullanarak hesaplayın. Bu değerler ile teorik değerler ile karşılaştırın.
+
+## Kaynaklar
+
+1. [Think Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014, syf:31](https://greenteapress.com/thinkstats2/thinkstats2.pdf)
+1. <https://www.youtube.com/watch?v=6HQV3zg4ExQ>
