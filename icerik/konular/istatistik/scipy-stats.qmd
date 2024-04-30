@@ -168,7 +168,7 @@ from scipy import stats
 def plot_dist_samples(X, X_samples, yLabel=None, ax=None):
 # Plot the PDF and histogram of samples of a continuous 
     if ax is None:
-        fig, ax = plt.subplots(1, 1, figsize=(8, 4))
+        fig, ax = plt.subplots(1, 1)
 
     x_lim = X.interval(.99)
     
@@ -225,7 +225,7 @@ print(f"Fit edilmiş parametreler: {params}")
 X_fitted = stats.maxwell(*params)
 
 # Plot
-fig, ax = plt.subplots(1, 2, figsize=(12, 4))
+fig, ax = plt.subplots(2, 1)
 ax[0].plot(x, X.pdf(x), label="Veri")
 ax[0].plot(x, X_fitted.pdf(x), label="Fit edilmiş dağılım", lw=3)
 ax[0].legend()
