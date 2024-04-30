@@ -453,7 +453,7 @@ Aşağıdaki linkte bulunan excel dosyasını indirin.
   - Tüm veriyi `float` tipine çevirin.
 - Temizlediğiniz veriyi okuyun ve `Wavelength (nm)` sütununu x ekseni olacak şekilde tüm kolonların grafiklerini aynı figürde çizdirin.
 - `Extraterrestrial W*m-2*nm-1` en yüksek değerini bulun.
-- En yüksek değerin kaç Kelvin olduğunu bulun. (Stefan-Boltzmann Kanunu)
+- En yüksek değerin kaç Kelvin olduğunu bulun. ([Wien's Öteleme Kanunu](https://en.wikipedia.org/wiki/Wien%27s_displacement_law))
 - En yüksek değerin kaç Celsius olduğunu bulun.
 - Görünür ışığın spektrumunu yukarıda çizdiğiniz grafikte gösterin.
 

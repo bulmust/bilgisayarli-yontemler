@@ -70,6 +70,7 @@ website:
               - icerik/konular/istatistik/olasilik-kutle-fonksiyonu.qmd
               - icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.qmd
               - icerik/konular/istatistik/dagilimlarin-modellenmesi.qmd
+              - icerik/konular/istatistik/scipy-stats.qmd
 
 format:
   html:

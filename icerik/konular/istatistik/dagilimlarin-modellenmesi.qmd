@@ -198,6 +198,23 @@ Gamma dağılımın PDF formülü aşağıdaki gibidir:
 
 $$PDF(x) |_{gamma} = \frac{\beta^{\alpha}}{\Gamma(\alpha)} x^{\alpha-1} e^{-\beta x}$$
 
+### Öğrencinin t Dağılımı (t-dağılımı) (Student's t-distribution)
+
+- Öğrencinin t fonksiyonu, normal dağılımın standart sapmasının bilinmediği durumlarda kullanılır.
+- Örneklem büyüklüğü küçük olduğunda veya popülasyon normal dağılımdan sapma gösterdiği durumlarda kullanılır.
+- t-distribution, hipotez testleri ve güven aralıklarının hesaplanmasında yaygın olarak kullanılır
+- PDF fonksiyonu aşağıdaki gibidir:
+
+$$ f(x, \nu) = \frac{\Gamma(\frac{\nu+1}{2})}{\sqrt{\nu\pi}\Gamma(\frac{\nu}{2})} \left(1+\frac{x^2}{\nu}\right)^{-\frac{\nu+1}{2}} $$
+
+### Chi-kare Dağılımı (Chi-square Distribution)
+
+- Hipotez testleri ve istatistiksel çıkarımlar için kullanılan bir olasılık dağılımıdır.
+- Chi-kare dağılımı, normal dağılım verilerinin veya bir örneklemin varyansının test edilmesinde kullanılır.
+- PDF fonksiyonu aşağıdaki gibidir:
+
+$$ f(x, k) = \frac{1}{2^{\frac{k}{2}}\Gamma(\frac{k}{2})} x^{\frac{k}{2}-1} e^{-\frac{x}{2}} $$
+
 ## Teorik Dağılımları (Modelleri) Neden Kullanırız?
 
 Veri biliminde veri analizi yaparken veri setindeki verilerin dağılımının şeklinden birçok bilgi çıkarabiliriz. Bunun iki örneği aşağıdaki gibidir.
