@@ -32,7 +32,7 @@ Uygulamaları ise github sayfasından ulaşabilirsiniz. <https://github.com/Alle
 - [veri_thinkStats2_2002FemPreg.dct](../../../veri/veri_thinkStats2_2002FemPreg.dct) dosyası da veri dosyasının "dictionary" formatındaki halidir. Kabaca söylemek gerekirse verinin açıklamalarını içermektedir. Bu ve bunun gibi dict dosyaları ileride kullanılacaktır.
 
 ::: {.callout-caution}
-Bu kitapta kullanılan fonksiyonlardan bir class oluşturulmuştur.** Ancak kod kısmı eski olduğu için bazı kısımlarını yenileyeceğiz ve kendimiz yazacağız.
+Bu kitapta kullanılan fonksiyonlardan bir class oluşturulmuştur. Ancak kod kısmı eski olduğu için bazı kısımlarını yenileyeceğiz ve kendimiz yazacağız.
 :::
 
 ## Data Çerçeveleri
@@ -41,7 +41,7 @@ Bu kitapta `pandas` paketi ile hazır olarak yazılmış fonksiyonlar kullanıla
 
 ### Değişkenler
 
-[veri/veri_thinkStats2_2002FemPreg.dct](../../../veri/veri_thinkStats2_2002FemPreg.dct) dosyası içerisinde 244 adet değişken vardır. Kitapta kullanılacak olan bazıları şunlardır:
+[veri_thinkStats2_2002FemPreg.dct](../../../veri/veri_thinkStats2_2002FemPreg.dct) dosyası içerisinde 244 adet değişken vardır. Kitapta kullanılacak olan bazıları şunlardır:
 
 - `caseid`: Her bir kayıt (respondent) için bir benzersiz numara.
 - `prglngth`: Hamilelik süresi (hafta)
@@ -111,7 +111,7 @@ for val, freq in hist.Items():
 print("-"*20)
 ```
 
-### ## Histogramların thinkstats Kullanarak Çizimi
+### Histogramların thinkstats Kullanarak Çizimi
 
 `pandas` paketinde histogram çizimine eşdeğer olarak `thinkplot` paketinde de histogram çizim fonksiyonu vardır. `thinkplot` paketinin içeriğine [bu linkten](https://github.com/bulmust/bilgisayarli-yontemler/blob/main/icerik/konular/istatistik/thinkStats2/thinkplot.py) erişebilirsiniz.
 

@@ -20,18 +20,17 @@ title: "Temel Kavramlar"
 - **Çeyrekler (Quartiles):** Veri setindeki değerlerin sıralanmasından sonra ortadaki değer orta çeyreklik, orta çeyreklik ile en küçük değerin ortasındaki değer alt çeyreklik (\%25), orta çeyreklik ile en büyük değerin ortasındaki değer üst çeyreklik (\%75) olarak tanımlanır.
 - **Minimum ve maksimum değer (Minimum and Maximum):** Veri setindeki en küçük ve en büyük değerlerdir.
 
-## Dağılmların Özeti
+### Dağılımlar
 
-Histogramlar, veri setlerinin dağılımlarını görselleştirmek için kullanılır. Histogram ile yapılan görsellerde, veri setlerinin merkezi eğillerini, modunu, yayılımını ve kuyruklarını görebiliriz. Ayrıca histogramlar, veri setlerindeki aykırı değerleri belirlemek için de kullanılır.
+Dağılımları anlamak için aşağıdaki karakteristik özelliklere bakabiliriz.
 
-- Dağılımları anlamak için aşağıdaki karakteristik özelliklere bakabiliriz:
-  - **Merkezi eğilim** (Central tendency): Dağılımın bir merkezi var mı? 
-  - **Modlar**: En sık tekrar eden değerler dağılımda nasıl gözüküyor?
-  - **Yayılım** (Spread): Dağılımın merkezden uzağa doğru nasıl yayılmış? Simetrik mi?
-  - **Kuyruklar** (Tails): Dağılımın kuyruklarında nasıl bir dağılım var?
-  - **Aykırılar** (Outliers): Dağılımın kuyruklarında "aykırı" değerler var mı? Veriyi nasıl etkiliyorlar?
+- **Merkezi eğilim** (Central tendency): Dağılımın bir merkezi var mı? 
+- **Modlar**: En sık tekrar eden değerler dağılımda nasıl gözüküyor?
+- **Yayılım** (Spread): Dağılımın merkezden uzağa doğru nasıl yayılmış? Simetrik mi?
+- **Kuyruklar** (Tails): Dağılımın kuyruklarında nasıl bir dağılım var?
+- **Aykırılar** (Outliers): Dağılımın kuyruklarında "aykırı" değerler var mı? Veriyi nasıl etkiliyorlar?
 
-Ortalama değer aşağıdaki formül ile hesaplanır.
+Ortalama değer (aritmetik ortalama) aşağıdaki formül ile hesaplanır.
 
 $$
 \overline{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
@@ -46,11 +45,13 @@ s^{2} = \frac{1}{n} \sum_{i=1}^{n} (x_i - \overline{x})^{2}
 $$
 
 - Varyansın karekökü ise **standart sapma**dır.
-- Örneklem uzayı için payda $n-1$, popülasyon için payda $n$ olmalıdır.
+- Örneklem uzayı kullanılıyorsa, payda $n-1$, popülasyon kullanılıyorsa payda $n$ olmalıdır.
 
 Örneğin bir veri setinde ortalama hamilelik süresi $38.6$ olsun. Bu değerin standart sapması $2.7$ olarak elde edilsin. Bu da demek oluyor ki gebelik süresi $38.6 \mp 2.7$ şeklinde söyleyebiliriz.
 
-## Efektif Boyut
+Histogramlar, veri setlerinin dağılımlarını görselleştirmek için kullanılır. Histogram ile yapılan görsellerde, veri setlerinin merkezi eğillerini, modunu, yayılımını ve kuyruklarını görebiliriz. Ayrıca histogramlar, veri setlerindeki aykırı değerleri belirlemek için de kullanılır.
+
+### Efektif Boyut
 
 Bir popülasyonda veya örneklemde, iki değişken arasındaki ilişkinin gücünü vermek için **Cohen'in d değeri** tanımlanır. Ayrıntılı bilgi için referanslara bakın.
 
@@ -117,10 +118,6 @@ Yukarıdaki tanımlara doğrultusunda alıştırmayı tekrar ele alalım.
     - Üst Çeyreklik: 30 (\%75)
 - **Minimum ve Maksimum değer**: 5 ve 40
 
-::: {.callout-warning}
-Pandas'ın verdiği standart sapma ile tanımdan elde ettiğimiz standart sapma değerleri farklıdır. Bunun sebebi `pandas`'ın yansız (unbiased) yaklaşımı kullanmasıdır. Daha ayrıntılı bilgi için [@web2024Apr-2] numaralı kaynağa bakınız.
-:::
-
 Eğer veriler ortalama değerden farkları az olursa standart sapma ve varyanas değerleri küçük olur.
 
 ```{python}
@@ -151,7 +148,21 @@ print(f"Minimum ve Maksimum: {veri.min()} ve {veri.max()}")
 print(f"Çeyrekler: {np.percentile(veri, [25, 50, 75])}")
 ```
 
-Burada `pandas` ile `numpy` modüllerinin standart sapma (varyans) değerleri aynı değil. Bunun sebebi istatistikte "yanlı/yansız (biased/unbiased)" olarak bilinen iki farklı yaklaşım olmasıdır. Bu iki yaklaşımın farklılıkları için aşağıdaki linkleri inceleyebilirsiniz.
+::: {.callout-warning}
+Pandas'ın verdiği standart sapma ile tanımdan elde ettiğimiz standart sapma değerleri farklıdır. Bunun sebebi `pandas`'ın yansız (unbiased) yaklaşımı kullanmasıdır. Daha ayrıntılı bilgi için [@web2024Apr-2] numaralı kaynağa bakınız.
+:::
+
+```{python}
+import pandas as pd
+import numpy as np
+# Veri
+df= pd.Series([30, 15, 40, 10, 5])
+veriNP= np.array([30, 15, 40, 10, 5])
+print(f"Standart Sapma, Pandas: df.std()= {df.std()}")
+print(f"Standart Sapma, Numpy: veriNP.std()= {veriNP.std()}")
+```
+
+Burada `pandas` ile `numpy` modüllerinin standart sapma (varyans) değerleri, varsayılan özellikler kullanıldığında aynı sonucu vermez. Bunun sebebi istatistikte "yanlı/yansız (biased/unbiased)" olarak bilinen iki farklı yaklaşım olmasıdır. Bu iki yaklaşımın farklılıkları için aşağıdaki linkleri inceleyebilirsiniz.
 
 - [what-is-the-difference-between-bias-and-variance](https://stackoverflow.com/questions/2480650/)
 - [orneklemin-standart-sapmasinin-hesaplanmasi](assets/nedenOrnekleminVaryansiFarkli.pdf)
@@ -247,11 +258,11 @@ print("--"*20+"1")
 #      0.6 olasılıkla 3, 
 #      0 olasılıkla 4
 print(np.random.choice(5, 3, p=[0.1, 0, 0.3, 0.6, 0]))
-print("--"*20+"2")
+print("--"*20)
 # Tekrar seçim yapmadan 3 tane rastgele sayı seç
 print(np.random.choice(5, 3, replace=False))
 # Aynı işi np.random.permutation(np.arange(5))[:3] de yapar
-print("--"*20+"3")
+print("--"*20)
 # Harfler arasından 2 tane rastgele isim seç
 harfler = ['A', 'B', 'C', 'Ç' ,'D', 'E', 'F', 'G', 'Ğ' , 'H']
 print(np.random.choice(harfler, 2))
@@ -282,7 +293,7 @@ plt.imshow(cekirdek.rand(8,8), cmap='gray', interpolation='nearest')
 plt.show()
 plt.close()
 print(f"4 adet rastgele sayı: {cekirdek.rand(4)}")
-print("-"*20+"1")
+print("-"*20)
 print(f"4 adet rastgele sayı: {cekirdek.rand(4)}")
 ```
 
@@ -300,7 +311,7 @@ plt.imshow(cekirdek.rand(8,8), cmap='gray', interpolation='nearest')
 plt.show()
 plt.close()
 print(f"4 adet rastgele sayı: {cekirdek.rand(4)}")
-print("-"*20+"1")
+print("-"*20)
 print(f"4 adet rastgele sayı: {cekirdek.rand(4)}")
 ```
 
@@ -377,7 +388,7 @@ import matplotlib.pyplot as plt
 seri1= pd.Series([1,2,3,4,5,6,7,8,9,10])
 seri2= pd.Series([1,1.5,2,2,3,3,3,4,4,5,6,7,8,9,10])
 # Çiz
-fig, axs= plt.subplots(1,2, figsize=(10,5))
+fig, axs= plt.subplots(2,1)
 seri1.plot(kind="hist", ax=axs[0], title="seri1", bins=5)
 seri2.plot(kind="hist", ax=axs[1], title="seri2", bins=11)
 ```
