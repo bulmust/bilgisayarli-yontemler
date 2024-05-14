@@ -495,7 +495,7 @@ df.sum()
 
 ### Problem 1
 
-1. <https://www.kaggle.com/datasets/prithusharma1/all-nobel-laureates-1901-present> sitesine gidin ve nobel ödülü almış kişiler ile ilgili veriyi indirin. Direkt indirmek için [tıklayınız.](../../veri/veri_nobel_latest.csv)
+1. <https://www.kaggle.com/datasets/prithusharma1/all-nobel-laureates-1901-present> sitesine gidin ve nobel ödülü almış kişiler ile ilgili veriyi indirin. Direkt indirmek için [tıklayınız.](../../../veri/veri_nobel_latest.csv)
 2. Verileri pandas paketi ile okuyun.
 3. Cinsiyetler sütununda (Gender) biricik (unique) değerleri bulun. Bunları bir diziye (array) atayın.
 4. Bulduğunuz biricik değerlerden "Gender" sütununda kaç adet olduğunu bulun.
@@ -505,7 +505,7 @@ df.sum()
 
 ### Problem 2
 
-1. <https://www.kaggle.com/datasets/abhinand05/daily-sun-spot-data-1818-to-2019> sitesine gidin ve Güneş lekesi verilerini indirin. Direkt indirmek için [tıklayınız.](../../veri/veri_sunspot_data.csv)
+1. <https://www.kaggle.com/datasets/abhinand05/daily-sun-spot-data-1818-to-2019> sitesine gidin ve Güneş lekesi verilerini indirin. Direkt indirmek için [tıklayınız.](../../../veri/veri_sunspot_data.csv)
 2. Verileri pandas paketi ile okuyun.
 3. İlk sütunu ("Unnamed: 0") silin.
 4. "Number of Sunspots" başlığındaki tüm $-1$ olan terimleri `np.nan` ile değiştirin.
