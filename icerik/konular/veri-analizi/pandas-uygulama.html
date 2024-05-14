@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -86,7 +86,7 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
 <link href="../../../icerik/konular/istatistik.html" rel="next">
-<link href="../../../icerik/konular/veri-analizi/pandas-veri-manipülasyonu.html" rel="prev">
+<link href="../../../icerik/konular/veri-analizi/pandas-veri-manipulasyonu.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -353,7 +353,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipülasyonu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipulasyonu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Veri Manipülasyonu</span></a>
   </div>
 </li>
@@ -444,6 +444,7 @@ window.Quarto = {
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
   </ul></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/veri-analizi/pandas-uygulama.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
@@ -469,7 +470,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">30 Nisan 2024</p>
+      <p class="date">14 Mayıs 2024</p>
     </div>
   </div>
   
@@ -545,7 +546,7 @@ window.Quarto = {
 </ol>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="27fc8cae" class="cell" data-execution_count="1">
+<div id="3b648f92" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> os</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
@@ -634,7 +635,7 @@ window.Quarto = {
 </ol>
 <section id="çözüm-1" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm-1">Çözüm</h3>
-<div id="b73958d1" class="cell" data-execution_count="2">
+<div id="becdafd5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">################################################</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> os</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
@@ -793,10 +794,62 @@ window.Quarto = {
 <li>Toplam Yükün (Ton), iç hat yükünün (Ton) ve dış hat yükünün (Ton) yıllara göre grafiğini çizdirin.</li>
 </ol></li>
 </ol>
-
-
-
 </section>
+</section>
+<section id="problem-3" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<p>Bir veri çatısı (data frame) oluşturun ve aşağıdaki tablodaki verileri içine yerleştirin. Veri çatısının sütunları sırasıyla “Ad_Soyad”, “Yas”, “Cinsiyet”, “Meslek” olsun.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Ad_Soyad</th>
+<th>Yas</th>
+<th>Cinsiyet</th>
+<th>Meslek</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ali Yılmaz</td>
+<td>42</td>
+<td>Erkek</td>
+<td>Mühendis</td>
+</tr>
+<tr class="even">
+<td>Canan Kaya</td>
+<td>35</td>
+<td>Kadın</td>
+<td>Doktor</td>
+</tr>
+<tr class="odd">
+<td>Ece Özer</td>
+<td>27</td>
+<td>Kadın</td>
+<td>Hukukçu</td>
+</tr>
+<tr class="even">
+<td>Fatma Yılmaz</td>
+<td>45</td>
+<td>Kadın</td>
+<td>Avukat</td>
+</tr>
+<tr class="odd">
+<td>Gamze Kaya</td>
+<td>32</td>
+<td>Kadın</td>
+<td>Mühendis</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Veri çatısının ilk 3 satırını yazdırın.</li>
+<li>Veri çatısının ad-soyad sütununu temelli olarak etikete (indexe) kaydedin, ve ekrana yazdırın.</li>
+<li>Veri çatısındaki kişilerin yaş ortalamasını hazır fonksiyon kullanarak hesaplayın ve ekrana yazdırın.</li>
+<li>Yaşı 40’dan büyük olanların bilgilerini ekrana yazdırın.</li>
+</ul>
+
+
+
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
@@ -1366,7 +1419,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipülasyonu.html" class="pagination-link" aria-label="pandas - Veri Manipülasyonu">
+      <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipulasyonu.html" class="pagination-link" aria-label="pandas - Veri Manipülasyonu">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">pandas - Veri Manipülasyonu</span>
       </a>          
   </div>

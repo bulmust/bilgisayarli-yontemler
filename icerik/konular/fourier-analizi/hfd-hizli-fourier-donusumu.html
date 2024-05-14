@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -353,7 +353,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipülasyonu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipulasyonu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Veri Manipülasyonu</span></a>
   </div>
 </li>
@@ -441,6 +441,7 @@ window.Quarto = {
   <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
   <ul class="collapse">
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
   </ul></li>
   <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
@@ -468,7 +469,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">30 Nisan 2024</p>
+      <p class="date">14 Mayıs 2024</p>
     </div>
   </div>
   
@@ -554,7 +555,7 @@ Dikkat
 <p><code>fourier_hfd</code> fonksiyonu, sadece <span class="math inline">\(N\)</span> sayısının 2’nin üssü olduğu durumlar için çalışır. <strong>Yani <code>fourier_hfd</code> fonksiyonu verdiğiniz her sinyal için çalışmaz.</strong></p>
 </div>
 </div>
-<div id="15551f75" class="cell" data-execution_count="1">
+<div id="c32e4974" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -670,7 +671,7 @@ Dikkat
 </section>
 <section id="hız-testi" class="level2">
 <h2 class="anchored" data-anchor-id="hız-testi">Hız Testi</h2>
-<div id="99162017" class="cell" data-execution_count="2">
+<div id="fb234378" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
@@ -720,7 +721,7 @@ Dikkat
 <span id="cb2-47"><a href="#cb2-47"></a><span class="bu">print</span>(<span class="ss">f"Hızlı Fourier Dönüşümü  : </span><span class="sc">{</span>end<span class="op">-</span>start<span class="sc">:.2f}</span><span class="ss"> saniye"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Örnekleme Sayısı: 2048
-Kesikli Fourier Dönüşümü: 5.90 saniye
+Kesikli Fourier Dönüşümü: 5.96 saniye
 Hızlı Fourier Dönüşümü  : 0.02 saniye</code></pre>
 </div>
 </div>
@@ -728,7 +729,7 @@ Hızlı Fourier Dönüşümü  : 0.02 saniye</code></pre>
 <section id="hazır-fonksiyonlar" class="level2">
 <h2 class="anchored" data-anchor-id="hazır-fonksiyonlar">Hazır Fonksiyonlar</h2>
 <p>Daha detaylı bilgi için <a href="https://numpy.org/doc/stable/reference/routines.fft.html"><code>numpy.fft</code></a> ve <a href="https://docs.scipy.org/doc/scipy/reference/fft.html"><code>scipy.fft</code></a> modüllerinin dökümantasyonunu inceleyebilirsiniz.</p>
-<div id="72503e73" class="cell" data-execution_count="3">
+<div id="89c49ce0" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co">#import scipy.fft as spfft</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -784,6 +785,24 @@ Not
 <section id="problem-1" class="level3">
 <h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
 <p>Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali ve açısal frekansı 10, genliği 5 olan bir sinüs sinyalinin toplamını çizdirin. Örneklem oranı <span class="math inline">\(100\)</span>, <span class="math inline">\(t=[0,6)\)</span> aralığında olsun. Sinyalin HFD’sini hesaplayın ve doğru frekanslar için çizdirin.</p>
+</section>
+<section id="problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
+<p>Bir sinyalin frekans uzayını kullanarak örneklem miktarını arttıralım. Bunn için örnek bir sinyal oluşturacağız. Bu sinyalin örneklem sayısını frekans uzayında arttırıp efektif olarak interpolasyon yapacağız.</p>
+<ol type="1">
+<li>Bir sinyal oluşturun. Bu sinyal, <span class="math inline">\(0\)</span> ile <span class="math inline">\(8\pi\)</span> arasında, her <span class="math inline">\(\pi/2\)</span> aralığında bir örnekleme ile alınmış olsun.</li>
+<li>Sinyal <span class="math inline">\(\sin(t) + 0.3\sin(0.2t)\)</span> şeklinde olsun.</li>
+<li>Bu sinyalin HFD’sini hesaplayın.</li>
+<li>Bu sinyalin frekans bileşenlerini bulun.</li>
+<li>Bu sinyalin örneklem sayısını <span class="math inline">\(64\)</span> kat artırın.</li>
+<li>Yeni örneklem sayısına göre frekans bileşenlerini bulun.</li>
+<li>Yeni bir hfd sinyal değişkeni oluşturun. Bu yeni hfd sinyal değişkeni yeni örneklem sayısından oluşan frekans boyutunda olacaktır.</li>
+<li>Eski hfd sinyalinin 0. bileşenini yeni hfd sinyal değişkeninin 0. bileşenine atayın.</li>
+<li>Eski hfd sinyalinin pozitif (<code>[1:N//2+1]</code>) bileşenlerini ve negatif (<code>[-N//2+1:]</code>) bileşenlerini yeni hfd sinyal değişkenine atayın.</li>
+<li>Eski ve yeni hfd sinyallerini çizdirin.</li>
+<li>Yeni hfd sinyalini ters Fourier dönüşümü yaparak zaman uzayına çevirin.</li>
+<li>Orijinal ve interpolasyon yapılmış sinyalleri çizdirin.</li>
+</ol>
 </section>
 </section>
 <section id="kaynaklar" class="level2">

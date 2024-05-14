@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -299,7 +299,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipülasyonu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipulasyonu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Veri Manipülasyonu</span></a>
   </div>
 </li>
@@ -411,6 +411,8 @@ window.Quarto = {
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
   <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
+  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
+  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
   </ul></li>
   <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
@@ -438,7 +440,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">30 Nisan 2024</p>
+      <p class="date">14 Mayıs 2024</p>
     </div>
   </div>
   
@@ -728,6 +730,54 @@ PDF(x) = \frac{d}{dx} CDF(x)
 <section id="problem-4" class="level3">
 <h3 class="anchored" data-anchor-id="problem-4">Problem 4</h3>
 <p>Normal (Gaussian) dağılım formülünü kullanarak standart dağılım formülünü (<span class="math inline">\(\mu=0\)</span>, <span class="math inline">\(\sigma=1\)</span>) elde ediniz.</p>
+</section>
+<section id="problem-5" class="level3">
+<h3 class="anchored" data-anchor-id="problem-5">Problem 5</h3>
+<ol type="1">
+<li>Sonsuz kuyu içerisindeki bir parçacığın dalga fonksiyonu aşağıdaki gibidir.</li>
+</ol>
+<p><span class="math display">\[\psi(x) = \sqrt{\frac{2}{a}} \sin{\left( \frac{n \pi x}{a} \right)}\]</span></p>
+<p>Burada <span class="math inline">\(a\)</span> kuyunun genişliği, <span class="math inline">\(n\)</span> ise parçacığın enerji seviyesidir.</p>
+<ol type="1">
+<li><span class="math inline">\(a = 10\)</span> ve <span class="math inline">\(n = 1\)</span> olarak sabit kabul edilsin. Bu durumda <span class="math inline">\(\psi(x)\)</span> fonksiyonunu konuma göre çizdirin.</li>
+<li>Olasılık yoğunluğu dalga fonksiyonunun karesi ile verilir. <span class="math inline">\(\psi(x)\)</span> fonksiyonunun karesini çizdirin.</li>
+<li>Yukarıdaki dalga fonksiyonunu <span class="math inline">\(n=2\)</span> veya <span class="math inline">\(n=3\)</span> için de çizerek gözlemleyin.</li>
+<li><span class="math inline">\(n=1\)</span> için olasılık yoğunluğunun standart sapmasını bulun.</li>
+<li><span class="math inline">\(n=1\)</span> için olasılık yoğunluğunun ortalamasını bulun.</li>
+<li><span class="math inline">\(n=1\)</span> için olasılık yoğunluğunun varyansını bulun.</li>
+<li>Yukarıda elde ettiğiniz değerler olasılık yoğunluğunun standart sapması oluğunu unutmayın. Yani fizikten bildiğimiz <span class="math inline">\(&lt;x&gt;\)</span> büyüklüğünü hesaplamıyoruz. Bunun için <span class="math inline">\(&lt;x&gt; = \int_{0}^{a} x \psi(x)^{2} dx\)</span> integralini hesaplamamız gerekir.</li>
+<li>Kuyu içerisinde bir parçacığın <span class="math inline">\(x=4\)</span> noktasında bulunma olasılığını bulun.</li>
+<li>Kümülatif yoğunluk fonksiyonunu çizdirin. Bunun için <code>np.cumsum()</code> fonksiyonunu kullanın ve elde ettiğiniz cdf dizisini de cdf’in son değerine bölerek <span class="math inline">\(1\)</span>’e normalize etmeyi unutmayın.</li>
+</ol>
+</section>
+<section id="problem-6" class="level3">
+<h3 class="anchored" data-anchor-id="problem-6">Problem 6</h3>
+<p>Aşağıdaki dağılımları fonksiyon olarak yazın ve verilen değerler için PDF grafiklerini çizdirin.</p>
+<ul>
+<li>Eksponansiyel dağılım için <span class="math inline">\(\lambda=0.1,1,2\)</span> alın ve grafiğini çizdirin. (<span class="math inline">\(x=[0,5]\)</span>)</li>
+<li>Normal dağılım için <span class="math inline">\((\mu,\sigma)= (0,1),(0,2), (0,3)\)</span> alın ve grafiğini çizdirin. Aynı şekilde <span class="math inline">\((\mu,\sigma)= (-2,1),(0,1), (2,1)\)</span> alın ve grafiğini çizdirin. (<span class="math inline">\(x=[-8,8]\)</span>)</li>
+<li>Poisson dağılımı için <span class="math inline">\(\lambda=0.1,1,2\)</span> alın ve grafiğini çizdirin. Faktöriyel almak için <code>scipy.special.factorial()</code> fonksiyonunu kullanın. (<span class="math inline">\(x=[0,10]\)</span>)</li>
+<li>3 Boyutlu Maxwell-Boltzman hız dağılımı formülünü kullanarak 1Mol He, Ne ve Ar atomlarının hız dağılımını çizdirin. Sıcaklığı <span class="math inline">\(T=298.15\)</span> K alın. (<span class="math inline">\(v=[0,2500]\)</span>)</li>
+<li>Bose-Einstein dağılım için <span class="math inline">\((\mu [eV], T [K]) = (0,5), (0,100), (0,273)\)</span> alın ve grafiğini çizdirin. Ayrı bir grafikte <span class="math inline">\((\mu [eV], T [K]) = (0,273), (0.01,273), (0.05,273)\)</span> alın ve çizdirin. Grafikde y eksenini -0.1 ile 1.1 arasında sınırlayın. (<span class="math inline">\(E=[0.0001,0.2]\)</span>)</li>
+<li>Fermi-Dirac dağılımı için <span class="math inline">\((\mu [eV], T [K]) = (0.5,5), (0.5,100), (0.5,273)\)</span> alın ve grafiğini çizdirin. Ayrı bir grafikte <span class="math inline">\((\mu [eV], T [K]) = (0.5,273), (0.55,273), (0.85,273)\)</span> alın ve çizdirin. (<span class="math inline">\(E=[0.45,0.65]\)</span>)</li>
+</ul>
+<p><strong>Yaralı bilgiler</strong></p>
+<ul>
+<li>Avagadro sayısı <span class="math inline">\(N_{A} = 6.022 \times 10^{23}\)</span></li>
+<li>Boltzman sabiti <span class="math inline">\(k = 1.380649 \times 10^{-23} J/K\)</span></li>
+<li>Boltzman sabiti <span class="math inline">\(k = 8313.25 g~ m^{2}~ s^{-2}/K\)</span></li>
+<li>Boltzman sabiti <span class="math inline">\(k = 8.617e-5 \times 10^{-5} eV/K\)</span></li>
+<li><span class="math inline">\(1 eV = 1.602176634 \times 10^{-19} J\)</span></li>
+<li>Helyumun kütlesi <span class="math inline">\(m_{He} = 4.002602 u\)</span></li>
+<li>Neonun kütlesi <span class="math inline">\(m_{Ne} = 20.1797 u\)</span></li>
+<li>Argonun kütlesi <span class="math inline">\(m_{Ar} = 39.948 u\)</span></li>
+<li><span class="math inline">\(1 u = 1.66053906660 \times 10^{-23} g\)</span>.</li>
+<li>Işık hızı <span class="math inline">\(c = 299792458 m/s\)</span></li>
+<li>Planck sabiti <span class="math inline">\(h = 6.62607015 \times 10^{-34} J s\)</span></li>
+<li><span class="math inline">\(1 \AA = 10^{-10} m\)</span></li>
+<li><span class="math inline">\(1 nm = 10^{-9} m\)</span></li>
+<li><span class="math inline">\(1 \mu m = 10^{-6} m\)</span></li>
+</ul>
 </section>
 </section>
 <section id="kaynaklar" class="level2">
