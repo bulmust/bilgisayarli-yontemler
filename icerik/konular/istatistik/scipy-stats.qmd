@@ -275,6 +275,15 @@ Survival function, bir olayın (örneğin ölüm, arıza, başarısızlık vb.) 
 
 $$f(E) = \frac{1}{1.803 T^{3}} \frac{E^{2}}{1+\exp(E/T)}$$
 
+### Problem 2
+
+1. Standart sapması 5 olan ve ortalaması 35 olan bir normal dağılıma sahip 1000 elemanlı bir dizi oluşturun. `scipy.stats.norm`.
+2. Bu dizinin histogramını çizdirin. Histogramı çizmeden önce ürettiğiniz objeye rastgele sayılar atamanız gerekecektir. Bunun için `rvs(10000)` komutunu kullanabilirsiniz. Bin sayısını 100 alabilirsiniz.
+3. Bu dizinin beklenen değerini ekrana yazdırın.
+4. Bu dizinin varyansını ekrana yazdırın.
+5. Bu dizinin standart sapmasını ekrana yazdırın.
+6. $40$'ın gelme olasılığını bulun.
+
 ## Kaynaklar
 
 1. Numerical Python: Scientific Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019, **syf 451**

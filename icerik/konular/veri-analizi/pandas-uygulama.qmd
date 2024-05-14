@@ -214,3 +214,20 @@ Aşağıdaki soruları cevaplayın.
 3. Veri çerçevesi temizleyin. Bu temizlemeyi excel dosyasını açıp değil pandas ile yapın. Bu temizlemeyi aşağıdaki grafikleri çizebilmek için yapın:
    1. Toplam Yolcu - Yıl grafiğini çizdirin. Aynı grafik üzeride iç hat yolcusu ve dış hat yolcusunun yıllara göre grafiği de olsun.
    2. Toplam Yükün (Ton), iç hat yükünün (Ton) ve dış hat yükünün (Ton) yıllara göre grafiğini çizdirin.
+
+## Problem 3
+
+Bir veri çatısı (data frame) oluşturun ve aşağıdaki tablodaki verileri içine yerleştirin. Veri çatısının sütunları sırasıyla "Ad_Soyad", "Yas", "Cinsiyet", "Meslek" olsun.
+
+| Ad_Soyad | Yas | Cinsiyet | Meslek |
+|------ |-----|----------|--------|
+| Ali   Yılmaz  | 42  | Erkek    | Mühendis|
+| Canan Kaya    | 35  | Kadın    | Doktor |
+| Ece   Özer    | 27  | Kadın    | Hukukçu|
+| Fatma Yılmaz  | 45  | Kadın    | Avukat |
+| Gamze Kaya    | 32  | Kadın    | Mühendis|
+
+- Veri çatısının ilk 3 satırını yazdırın.
+- Veri çatısının ad-soyad sütununu temelli olarak etikete (indexe) kaydedin, ve ekrana yazdırın.
+- Veri çatısındaki kişilerin yaş ortalamasını hazır fonksiyon kullanarak hesaplayın ve ekrana yazdırın.
+- Yaşı 40'dan büyük olanların bilgilerini ekrana yazdırın.

@@ -263,6 +263,23 @@ Hızlı Fourier dönüşümünde scipy, numpy'dan daha hazlıdır [@web2024Mar-2
 
 Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali ve açısal frekansı 10, genliği 5 olan bir sinüs sinyalinin toplamını çizdirin. Örneklem oranı $100$, $t=[0,6)$ aralığında olsun. Sinyalin HFD'sini hesaplayın ve doğru frekanslar için çizdirin.
 
+### Problem 2
+
+Bir sinyalin frekans uzayını kullanarak örneklem miktarını arttıralım. Bunn için örnek bir sinyal oluşturacağız. Bu sinyalin örneklem sayısını frekans uzayında arttırıp efektif olarak interpolasyon yapacağız. 
+
+1. Bir sinyal oluşturun. Bu sinyal, $0$ ile $8\pi$ arasında, her $\pi/2$ aralığında bir örnekleme ile alınmış olsun.
+2. Sinyal $\sin(t) + 0.3\sin(0.2t)$ şeklinde olsun.
+3. Bu sinyalin HFD'sini hesaplayın.
+4. Bu sinyalin frekans bileşenlerini bulun.
+5. Bu sinyalin örneklem sayısını $64$ kat artırın.
+6. Yeni örneklem sayısına göre frekans bileşenlerini bulun.
+7. Yeni bir hfd sinyal değişkeni oluşturun. Bu yeni hfd sinyal değişkeni yeni örneklem sayısından oluşan frekans boyutunda olacaktır.
+8. Eski hfd sinyalinin 0. bileşenini yeni hfd sinyal değişkeninin 0. bileşenine atayın.
+9. Eski hfd sinyalinin pozitif (`[1:N//2+1]`) bileşenlerini ve negatif (`[-N//2+1:]`) bileşenlerini yeni hfd sinyal değişkenine atayın.
+10. Eski ve yeni hfd sinyallerini çizdirin.
+11. Yeni hfd sinyalini ters Fourier dönüşümü yaparak zaman uzayına çevirin.
+12. Orijinal ve interpolasyon yapılmış sinyalleri çizdirin.
+
 ## Kaynaklar
 
 1. Python Programming and Numerical Methods, Qingkai Kong, 2018

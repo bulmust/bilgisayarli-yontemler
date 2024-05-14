@@ -294,6 +294,52 @@ Burada $\sigma_{x}$, x'teki belirsizliği yani standart sapmayı verir. Bu eşit
 
 Normal (Gaussian) dağılım formülünü kullanarak standart dağılım formülünü ($\mu=0$, $\sigma=1$) elde ediniz.
 
+### Problem 5
+
+1. Sonsuz kuyu içerisindeki bir parçacığın dalga fonksiyonu aşağıdaki gibidir.
+
+$$\psi(x) = \sqrt{\frac{2}{a}} \sin{\left( \frac{n \pi x}{a} \right)}$$
+
+Burada $a$ kuyunun genişliği, $n$ ise parçacığın enerji seviyesidir.
+
+1. $a = 10$ ve $n = 1$ olarak sabit kabul edilsin. Bu durumda $\psi(x)$ fonksiyonunu konuma göre çizdirin.
+2. Olasılık yoğunluğu dalga fonksiyonunun karesi ile verilir. $\psi(x)$ fonksiyonunun karesini çizdirin.
+3. Yukarıdaki dalga fonksiyonunu $n=2$ veya $n=3$ için de çizerek gözlemleyin.
+4. $n=1$ için olasılık yoğunluğunun standart sapmasını bulun.
+5. $n=1$ için olasılık yoğunluğunun ortalamasını bulun.
+6. $n=1$ için olasılık yoğunluğunun varyansını bulun.
+7. Yukarıda elde ettiğiniz değerler olasılık yoğunluğunun standart sapması oluğunu unutmayın. Yani fizikten bildiğimiz $<x>$ büyüklüğünü hesaplamıyoruz. Bunun için $<x> = \int_{0}^{a} x \psi(x)^{2} dx$ integralini hesaplamamız gerekir. 
+8. Kuyu içerisinde bir parçacığın $x=4$ noktasında bulunma olasılığını bulun.
+9. Kümülatif yoğunluk fonksiyonunu çizdirin. Bunun için `np.cumsum()` fonksiyonunu kullanın ve elde ettiğiniz cdf dizisini de cdf'in son değerine bölerek $1$'e normalize etmeyi unutmayın.
+
+### Problem 6
+
+Aşağıdaki dağılımları fonksiyon olarak yazın ve verilen değerler için PDF grafiklerini çizdirin.
+
+- Eksponansiyel dağılım için $\lambda=0.1,1,2$ alın ve grafiğini çizdirin. ($x=[0,5]$)
+- Normal dağılım için $(\mu,\sigma)= (0,1),(0,2), (0,3)$ alın ve grafiğini çizdirin. Aynı şekilde $(\mu,\sigma)= (-2,1),(0,1), (2,1)$ alın ve grafiğini çizdirin. ($x=[-8,8]$)
+- Poisson dağılımı için $\lambda=0.1,1,2$ alın ve grafiğini çizdirin. Faktöriyel almak için `scipy.special.factorial()` fonksiyonunu kullanın. ($x=[0,10]$)
+- 3 Boyutlu Maxwell-Boltzman hız dağılımı formülünü kullanarak 1Mol He, Ne ve Ar atomlarının hız dağılımını çizdirin. Sıcaklığı $T=298.15$ K alın. ($v=[0,2500]$)
+- Bose-Einstein dağılım için $(\mu [eV], T [K]) = (0,5), (0,100), (0,273)$ alın ve grafiğini çizdirin. Ayrı bir grafikte $(\mu [eV], T [K]) = (0,273), (0.01,273), (0.05,273)$ alın ve çizdirin. Grafikde y eksenini -0.1 ile 1.1 arasında sınırlayın. ($E=[0.0001,0.2]$)
+- Fermi-Dirac dağılımı için $(\mu [eV], T [K]) = (0.5,5), (0.5,100), (0.5,273)$ alın ve grafiğini çizdirin. Ayrı bir grafikte $(\mu [eV], T [K]) = (0.5,273), (0.55,273), (0.85,273)$ alın ve çizdirin. ($E=[0.45,0.65]$)
+
+**Yaralı bilgiler** 
+
+- Avagadro sayısı $N_{A} = 6.022 \times 10^{23}$
+- Boltzman sabiti $k = 1.380649 \times 10^{-23} J/K$
+- Boltzman sabiti $k = 8313.25 g~ m^{2}~ s^{-2}/K$
+- Boltzman sabiti $k = 8.617e-5 \times 10^{-5} eV/K$
+- $1 eV = 1.602176634 \times 10^{-19} J$
+- Helyumun kütlesi $m_{He} = 4.002602 u$
+- Neonun kütlesi $m_{Ne} = 20.1797 u$
+- Argonun kütlesi $m_{Ar} = 39.948 u$
+- $1 u = 1.66053906660 \times 10^{-23} g$.
+- Işık hızı $c = 299792458 m/s$
+- Planck sabiti $h = 6.62607015 \times 10^{-34} J s$
+- $1 \AA = 10^{-10} m$
+- $1 nm = 10^{-9} m$
+- $1 \mu m = 10^{-6} m$
+
 ## Kaynaklar
 
 1. [Think Stats: Probability and Statistics for Programmers, Allen B. Downey, Franklin W. Olin, Green Tea Press, 2014](https://greenteapress.com/thinkstats2/thinkstats2.pdf)

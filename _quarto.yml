@@ -60,7 +60,7 @@ website:
             href: icerik/konular/veri-analizi.qmd
             contents:
               - icerik/konular/veri-analizi/pandas-giris.qmd
-              - icerik/konular/veri-analizi/pandas-veri-manipülasyonu.qmd
+              - icerik/konular/veri-analizi/pandas-veri-manipulasyonu.qmd
               - icerik/konular/veri-analizi/pandas-uygulama.qmd
           - section: İstatistik
             href: icerik/konular/istatistik.qmd
