@@ -555,7 +555,7 @@ Dikkat
 <p><code>fourier_hfd</code> fonksiyonu, sadece <span class="math inline">\(N\)</span> sayısının 2’nin üssü olduğu durumlar için çalışır. <strong>Yani <code>fourier_hfd</code> fonksiyonu verdiğiniz her sinyal için çalışmaz.</strong></p>
 </div>
 </div>
-<div id="85fc7208" class="cell" data-execution_count="1">
+<div id="e30f2d61" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -671,7 +671,7 @@ Dikkat
 </section>
 <section id="hız-testi" class="level2">
 <h2 class="anchored" data-anchor-id="hız-testi">Hız Testi</h2>
-<div id="dfa4ef79" class="cell" data-execution_count="2">
+<div id="888501f6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
@@ -721,7 +721,7 @@ Dikkat
 <span id="cb2-47"><a href="#cb2-47"></a><span class="bu">print</span>(<span class="ss">f"Hızlı Fourier Dönüşümü  : </span><span class="sc">{</span>end<span class="op">-</span>start<span class="sc">:.2f}</span><span class="ss"> saniye"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Örnekleme Sayısı: 2048
-Kesikli Fourier Dönüşümü: 5.77 saniye
+Kesikli Fourier Dönüşümü: 6.03 saniye
 Hızlı Fourier Dönüşümü  : 0.02 saniye</code></pre>
 </div>
 </div>
@@ -729,7 +729,7 @@ Hızlı Fourier Dönüşümü  : 0.02 saniye</code></pre>
 <section id="hazır-fonksiyonlar" class="level2">
 <h2 class="anchored" data-anchor-id="hazır-fonksiyonlar">Hazır Fonksiyonlar</h2>
 <p>Daha detaylı bilgi için <a href="https://numpy.org/doc/stable/reference/routines.fft.html"><code>numpy.fft</code></a> ve <a href="https://docs.scipy.org/doc/scipy/reference/fft.html"><code>scipy.fft</code></a> modüllerinin dökümantasyonunu inceleyebilirsiniz.</p>
-<div id="69682935" class="cell" data-execution_count="3">
+<div id="d6dc5ce2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co">#import scipy.fft as spfft</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -788,7 +788,7 @@ Not
 </section>
 <section id="problem-2" class="level3">
 <h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
-<p>Bir sinyalin frekans uzayını kullanarak örneklem miktarını arttıralım. Bunn için örnek bir sinyal oluşturacağız. Bu sinyalin örneklem sayısını frekans uzayında arttırıp efektif olarak interpolasyon yapacağız.</p>
+<p>Bir sinyalin frekans uzayını kullanarak örneklem miktarını arttıralım. Bunun için örnek bir sinyal oluşturacağız. Bu sinyalin örneklem sayısını frekans uzayında arttırıp efektif olarak interpolasyon yapacağız.</p>
 <ol type="1">
 <li>Bir sinyal oluşturun. Bu sinyal, <span class="math inline">\(0\)</span> ile <span class="math inline">\(8\pi\)</span> arasında, her <span class="math inline">\(\pi/2\)</span> aralığında bir örnekleme ile alınmış olsun.</li>
 <li>Sinyal <span class="math inline">\(\sin(t) + 0.3\sin(0.2t)\)</span> şeklinde olsun.</li>
