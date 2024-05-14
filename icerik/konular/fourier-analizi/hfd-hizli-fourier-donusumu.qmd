@@ -265,7 +265,7 @@ Açısal frekansı 5, genliği 10 olan bir cosinüs sinyali ve açısal frekans�
 
 ### Problem 2
 
-Bir sinyalin frekans uzayını kullanarak örneklem miktarını arttıralım. Bunn için örnek bir sinyal oluşturacağız. Bu sinyalin örneklem sayısını frekans uzayında arttırıp efektif olarak interpolasyon yapacağız. 
+Bir sinyalin frekans uzayını kullanarak örneklem miktarını arttıralım. Bunun için örnek bir sinyal oluşturacağız. Bu sinyalin örneklem sayısını frekans uzayında arttırıp efektif olarak interpolasyon yapacağız. 
 
 1. Bir sinyal oluşturun. Bu sinyal, $0$ ile $8\pi$ arasında, her $\pi/2$ aralığında bir örnekleme ile alınmış olsun.
 2. Sinyal $\sin(t) + 0.3\sin(0.2t)$ şeklinde olsun.
