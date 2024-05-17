@@ -481,7 +481,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 Mayıs 2024</p>
+      <p class="date">17 Mayıs 2024</p>
     </div>
   </div>
   
@@ -584,7 +584,7 @@ s_{havuz}= \sqrt{\frac{n_1s_1^2 + n_2s_2^2}{n_1 + n_2}}
 </table>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="48b33b0c" class="cell" data-execution_count="1">
+<div id="ee5d3e5c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Veri seti</span></span>
@@ -656,7 +656,7 @@ dtype: float64</code></pre>
 <li><strong>Minimum ve Maksimum değer</strong>: 5 ve 40</li>
 </ul>
 <p>Eğer veriler ortalama değerden farkları az olursa standart sapma ve varyanas değerleri küçük olur.</p>
-<div id="a630e5d2" class="cell" data-execution_count="2">
+<div id="a639d212" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co"># Veri: 21,22,20,18,19</span></span>
@@ -679,7 +679,7 @@ Standart Sapma: 13.038404810405298</code></pre>
 </div>
 </div>
 <p><code>pandas</code> içerisinde <code>describe()</code> fonksiyonu ile belirlenen değerleri <code>numpy</code> paketi ile de belirleyebiliriz.</p>
-<div id="547be275" class="cell" data-execution_count="3">
+<div id="6faae323" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2"></a>veri<span class="op">=</span> np.array([<span class="fl">30.</span>, <span class="fl">15.</span>, <span class="fl">40.</span>, <span class="fl">10.</span>, <span class="fl">5.</span>])</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="bu">print</span>(<span class="st">"Veri: 30,15,40,10,5"</span>)</span>
@@ -712,7 +712,7 @@ Uyarı
 <p>Pandas’ın verdiği standart sapma ile tanımdan elde ettiğimiz standart sapma değerleri farklıdır. Bunun sebebi <code>pandas</code>’ın yansız (unbiased) yaklaşımı kullanmasıdır. Daha ayrıntılı bilgi için <span class="citation" data-cites="web2024Apr-2">&nbsp;[<a href="#ref-web2024Apr-2" role="doc-biblioref">1</a>]</span> numaralı kaynağa bakınız.</p>
 </div>
 </div>
-<div id="542540da" class="cell" data-execution_count="4">
+<div id="63dace56" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co"># Veri</span></span>
@@ -747,19 +747,19 @@ Standart Sapma, Numpy: veriNP.std()= 13.038404810405298</code></pre>
 <li><code>np.random.randn()</code>: <span class="math inline">\(N(0,1)\)</span> arasında <span style="color:red">standart normal dağılımlı </span> olarak (standard normal distribution) rastgele sayı üretir.</li>
 <li><code>np.random.randint(a,b)</code>: <span class="math inline">\([a,b)\)</span> arasında <span style="color:red">düzgün olarak </span> (uniformly) rastgele sayı üretir.</li>
 </ul>
-<div id="8c4fcaef" class="cell" data-execution_count="5">
+<div id="fbefbf60" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="bu">print</span>(<span class="ss">f"5 Boyutlu düzgün dağılımlı rastgele sayılar: </span><span class="sc">{</span>np<span class="sc">.</span>random<span class="sc">.</span>rand(<span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="bu">print</span>(<span class="ss">f"5 Boyutlu normal dağılımlı rastgele sayılar: </span><span class="sc">{</span>np<span class="sc">.</span>random<span class="sc">.</span>randn(<span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb9-4"><a href="#cb9-4"></a><span class="bu">print</span>(<span class="ss">f"5 boyutlu 0 ile 10 arasında rastgele tam sayılar: </span><span class="sc">{</span>np<span class="sc">.</span>random<span class="sc">.</span>randint(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>5 Boyutlu düzgün dağılımlı rastgele sayılar: [0.96296107 0.93837845 0.67330374 0.23520874 0.44945676]
-5 Boyutlu normal dağılımlı rastgele sayılar: [-0.05691193 -0.32872678 -1.45963568  1.19137805  1.08270231]
-5 boyutlu 0 ile 10 arasında rastgele tam sayılar: [3 3 8 2 4]</code></pre>
+<pre><code>5 Boyutlu düzgün dağılımlı rastgele sayılar: [0.89307896 0.74041907 0.52204038 0.34468526 0.43151892]
+5 Boyutlu normal dağılımlı rastgele sayılar: [ 0.53408402  0.50416221  0.64192588 -0.47089158  2.69973229]
+5 boyutlu 0 ile 10 arasında rastgele tam sayılar: [4 3 1 5 8]</code></pre>
 </div>
 </div>
 <p>Standart normal dağılımı rastgele sayı üreteci 0’ın ortasında ve 1’in standart sapması olan bir dağılım oluşturur. Bu dağılımın özelliklerini görmek için aşağıdaki kodu çalıştırın.</p>
-<div id="d8d23bd8" class="cell" data-execution_count="6">
+<div id="bf91ffe3" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a href="#cb11-3"></a></span>
@@ -779,7 +779,7 @@ Standart Sapma, Numpy: veriNP.std()= 13.038404810405298</code></pre>
 </div>
 </div>
 </div>
-<div id="aebba5d8" class="cell" data-execution_count="7">
+<div id="54da5047" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="co"># Rastgele sayı üret [0,1)</span></span>
@@ -815,22 +815,22 @@ Standart Sapma, Numpy: veriNP.std()= 13.038404810405298</code></pre>
 <span id="cb12-33"><a href="#cb12-33"></a>axes[<span class="dv">2</span>].set_title(<span class="st">"randint(low=1, high=10, size=10_000)"</span>)</span>
 <span id="cb12-34"><a href="#cb12-34"></a>plt.tight_layout()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.03082795333951993
+<pre><code>0.6863858039984486
 --------------------
-[0.45162482 0.11017349 0.00732304 0.2970861  0.81354898]
+[0.94297718 0.85236653 0.22880426 0.38312622 0.64985105]
 --------------------
-[[0.64430025 0.48380475 0.01899487 0.10457494]
- [0.17908316 0.32409148 0.20617081 0.34136285]]
+[[0.26727713 0.26503702 0.07090444 0.35952778]
+ [0.15720108 0.62327668 0.79811553 0.16654523]]
 --------------------
-[ 0.71685461 -0.12947945  0.2954387   1.91555501 -1.14170084  2.58998547
- -0.35313476 -1.12703129  0.22308329  0.48465439]
+[-1.47203006  0.59151131  0.50006631  1.22737471 -0.57143356  1.93803875
+  0.01191027 -2.18253426  0.59991172 -0.64410524]
 --------------------
-7
+4
 --------------------
-[0 0 9 9 8]
+[8 0 3 2 4]
 --------------------
-[[0 2 5 7]
- [3 7 3 6]]</code></pre>
+[[7 4 1 5]
+ [7 6 6 9]]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -841,7 +841,7 @@ Standart Sapma, Numpy: veriNP.std()= 13.038404810405298</code></pre>
 </div>
 </div>
 <p>İlerleyen bölümlerde belli bir array’den rastgele bir eleman seçmek isteyeceğiz. Bunun için <code>np.random.choice()</code> özelliğini kullanacağız. Eğer <code>replace=False</code> özelliği ile kullanırsak seçilen eleman tekrar seçilemez. Varsayılan özellik <code>replace=True</code>’dur.</p>
-<div id="36cfa1b7" class="cell" data-execution_count="8">
+<div id="3e819d85" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="co"># 0 ile 4 arasında 3 tane rastgele sayı seç</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a><span class="bu">print</span>(np.random.choice(<span class="dv">5</span>, <span class="dv">3</span>))</span>
@@ -866,12 +866,12 @@ Standart Sapma, Numpy: veriNP.std()= 13.038404810405298</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1 0 4]
 ----------------------------------------1
-[0 3 3]
+[0 2 3]
 ----------------------------------------
-[2 1 4]
+[1 2 0]
 ----------------------------------------
-['B' 'E']
-['Ğ' 'A']</code></pre>
+['Ç' 'Ç']
+['Ğ' 'H']</code></pre>
 </div>
 </div>
 <p>Rastgele sayı seçiminde çekirdek (seed) seçimi de önemli bir faktördür çünkü rastgelelik bir çekirdek üzerinden oluşur. Aynı çekirdek seçilir ise “<em>aynı rastgelelik</em>” kullanarak sayılar/seçimler oluşturulur.</p>
@@ -890,7 +890,7 @@ Standart Sapma, Numpy: veriNP.std()= 13.038404810405298</code></pre>
 </div>
 <p>Çekirdek seçimi için <code>np.random.seed()</code> fonksiyonunu kullanılır.</p>
 <p>Belirlenen bir çekirdek üzerine seçimler yapmak için aşağıdaki gibi bir rastgele durum belirlenir.</p>
-<div id="ed0c9268" class="cell" data-execution_count="9">
+<div id="e16c3558" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb16-3"><a href="#cb16-3"></a></span>
@@ -918,7 +918,7 @@ Standart Sapma, Numpy: veriNP.std()= 13.038404810405298</code></pre>
 </div>
 </div>
 <p>Yukarıdaki programı tekrar çalıştırdığımızda aynı sonuçları alırız. Çünkü çekirdek aynıdır.</p>
-<div id="aa5563b2" class="cell" data-execution_count="10">
+<div id="36fd6285" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-3"><a href="#cb18-3"></a></span>
@@ -989,7 +989,7 @@ Standart Sapma, Numpy: veriNP.std()= 13.038404810405298</code></pre>
 <p>Ortalama değeri 1 olan ve standart sapması 0.5 olan bir normal dağılım üretelim.</p>
 <section id="çözüm-1" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm-1">Çözüm</h3>
-<div id="3ca3187b" class="cell" data-execution_count="11">
+<div id="80c89e02" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
 <span id="cb20-2"><a href="#cb20-2"></a></span>
 <span id="cb20-3"><a href="#cb20-3"></a>X<span class="op">=</span> stats.norm(<span class="dv">1</span>, <span class="fl">0.5</span>)</span>
@@ -1015,7 +1015,7 @@ Varyans: 0.25</code></pre>
 <li><span class="math inline">\(1\)</span>, <span class="math inline">\(3\)</span>, <span class="math inline">\(3\)</span>, <span class="math inline">\(3\)</span>, <span class="math inline">\(4\)</span>, <span class="math inline">\(6\)</span> sayıları verimiz olsun. Bu verinin dağılımı tam sayılar arasında eşit olasılıkla dağılmamıştır. Yani her sayının gelme olasılığı aynı değildir. <span class="math inline">\(1\)</span>, <span class="math inline">\(4\)</span> ve <span class="math inline">\(6\)</span> sayılarının gelme olasılığı <span class="math inline">\(1/6\)</span>, <span class="math inline">\(3\)</span> sayısının gelme olasılığı <span class="math inline">\(3/6\)</span>’dır. Bu verinin frekansı yani tekrarlanma sayısı da aynı değildir. Çünkü <span class="math inline">\(3\)</span> sayısı 3 kez tekrar edilmiştir.</li>
 </ol>
 <p>Bu iki örneğin histogramlarını çizelim.</p>
-<div id="b10c7245" class="cell" data-execution_count="12">
+<div id="de136455" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb22-2"><a href="#cb22-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb22-3"><a href="#cb22-3"></a><span class="co"># Veri</span></span>
@@ -1041,7 +1041,7 @@ Varyans: 0.25</code></pre>
 <li><a href="https://stackoverflow.com/questions/64198842/">Bin arası nasıl ayrılır?</a></li>
 </ul>
 <p>Python ile veri analizinde <code>collections</code> paketi de kullanılır.</p>
-<div id="3c8883b4" class="cell" data-execution_count="13">
+<div id="e85f519d" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb23-3"><a href="#cb23-3"></a><span class="co"># Veri</span></span>

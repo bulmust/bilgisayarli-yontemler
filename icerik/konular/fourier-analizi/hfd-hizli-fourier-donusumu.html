@@ -442,6 +442,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   </ul></li>
   <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
@@ -469,7 +470,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 Mayıs 2024</p>
+      <p class="date">17 Mayıs 2024</p>
     </div>
   </div>
   
@@ -555,7 +556,7 @@ Dikkat
 <p><code>fourier_hfd</code> fonksiyonu, sadece <span class="math inline">\(N\)</span> sayısının 2’nin üssü olduğu durumlar için çalışır. <strong>Yani <code>fourier_hfd</code> fonksiyonu verdiğiniz her sinyal için çalışmaz.</strong></p>
 </div>
 </div>
-<div id="e30f2d61" class="cell" data-execution_count="1">
+<div id="431faf02" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -671,7 +672,7 @@ Dikkat
 </section>
 <section id="hız-testi" class="level2">
 <h2 class="anchored" data-anchor-id="hız-testi">Hız Testi</h2>
-<div id="888501f6" class="cell" data-execution_count="2">
+<div id="42941f84" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
@@ -721,7 +722,7 @@ Dikkat
 <span id="cb2-47"><a href="#cb2-47"></a><span class="bu">print</span>(<span class="ss">f"Hızlı Fourier Dönüşümü  : </span><span class="sc">{</span>end<span class="op">-</span>start<span class="sc">:.2f}</span><span class="ss"> saniye"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Örnekleme Sayısı: 2048
-Kesikli Fourier Dönüşümü: 6.03 saniye
+Kesikli Fourier Dönüşümü: 5.85 saniye
 Hızlı Fourier Dönüşümü  : 0.02 saniye</code></pre>
 </div>
 </div>
@@ -729,7 +730,7 @@ Hızlı Fourier Dönüşümü  : 0.02 saniye</code></pre>
 <section id="hazır-fonksiyonlar" class="level2">
 <h2 class="anchored" data-anchor-id="hazır-fonksiyonlar">Hazır Fonksiyonlar</h2>
 <p>Daha detaylı bilgi için <a href="https://numpy.org/doc/stable/reference/routines.fft.html"><code>numpy.fft</code></a> ve <a href="https://docs.scipy.org/doc/scipy/reference/fft.html"><code>scipy.fft</code></a> modüllerinin dökümantasyonunu inceleyebilirsiniz.</p>
-<div id="d6dc5ce2" class="cell" data-execution_count="3">
+<div id="839c0233" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co">#import scipy.fft as spfft</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -802,6 +803,19 @@ Not
 <li>Eski ve yeni hfd sinyallerini çizdirin.</li>
 <li>Yeni hfd sinyalini ters Fourier dönüşümü yaparak zaman uzayına çevirin.</li>
 <li>Orijinal ve interpolasyon yapılmış sinyalleri çizdirin.</li>
+</ol>
+</section>
+<section id="problem-3" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3">Problem 3</h3>
+<p>Zamandan bağımsız Schrödinger denklemini boşluk için çözdüğümüzde Gaussian dalga paketini elde ederiz. Konum uzayındaki dalga fonksiyonu aşağıdaki gibidir.</p>
+<p><span class="math display">\[ \psi(x, t=0) = &lt;x | \psi(0)&gt;= e^{-\frac{(x- \mu)^{2}}{4\sigma_{x}^{2}}+i k_{0} x}\]</span></p>
+<p>Burada <span class="math inline">\(\mu\)</span> paketin merkezini yani ortalama (mean) değeridir. <span class="math inline">\(\sigma_{x}\)</span> ise <span class="math inline">\(x\)</span> uzayındaki standart sapmayı yani belirsizliği verir. <span class="math inline">\(k_{0}= p/\hbar\)</span> ise paketin momentumunu verir.</p>
+<ol type="1">
+<li><strong>[5 Puan]</strong> Yukarıda verilen dalga paketinin konum uzayındaki <strong>olasılık yoğunluğunu</strong> çizdirin. Formülde <span class="math inline">\(\mu = 0\)</span>, <span class="math inline">\(\sigma_{x} = 0.1\)</span> ve <span class="math inline">\(k_{0} = 10\)</span> olarak alın. Konumu <span class="math inline">\(x = -1\)</span> ile <span class="math inline">\(x = 1\)</span> arasında on bin parçaya ayırarak alabilirsiniz.</li>
+<li><strong>[10 Puan]</strong> Elde ettiğiniz dalga paketinin Fourier dönüşümünü ve frekansları hesaplayın.</li>
+<li><strong>[5 Puan]</strong> Fourier dönüşümünden elde ettiğiniz Gaussian dalga paketinin momentum uzayındaki <strong>olasılık yoğunluğunu</strong> çizdirin.</li>
+<li><strong>[5 Puan]</strong> Aynı işlemi <span class="math inline">\(\sigma_x=0.001\)</span> için tekrar edin. Konum uzayındaki olasılık fonksiyonunu ve momentum uzayındaki olasılık fonksiyonunu nasıl değişti? <code>print()</code> fonksiyonu ile açıklayın.</li>
+<li><strong>[5 Puan]</strong> Yukarıdaki işlem ile Heisenberg belirsizlik ilkesi arasında nasıl bir bağlantı vardır? <code>print()</code> fonksiyonu ile açıklayın.</li>
 </ol>
 </section>
 </section>

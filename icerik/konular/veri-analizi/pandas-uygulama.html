@@ -443,8 +443,9 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
-  </ul></li>
   <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/veri-analizi/pandas-uygulama.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
@@ -470,7 +471,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 Mayıs 2024</p>
+      <p class="date">17 Mayıs 2024</p>
     </div>
   </div>
   
@@ -546,7 +547,7 @@ window.Quarto = {
 </ol>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="6d078061" class="cell" data-execution_count="1">
+<div id="e8178dbd" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> os</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
@@ -635,7 +636,7 @@ window.Quarto = {
 </ol>
 <section id="çözüm-1" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm-1">Çözüm</h3>
-<div id="ef0be8b8" class="cell" data-execution_count="2">
+<div id="7846d4b5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">################################################</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> os</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
@@ -795,9 +796,8 @@ window.Quarto = {
 </ol></li>
 </ol>
 </section>
-</section>
-<section id="problem-3" class="level2">
-<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<section id="problem-3" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3">Problem 3</h3>
 <p>Bir veri çatısı (data frame) oluşturun ve aşağıdaki tablodaki verileri içine yerleştirin. Veri çatısının sütunları sırasıyla “Ad_Soyad”, “Yas”, “Cinsiyet”, “Meslek” olsun.</p>
 <table class="table">
 <thead>
@@ -847,9 +847,53 @@ window.Quarto = {
 <li>Veri çatısındaki kişilerin yaş ortalamasını hazır fonksiyon kullanarak hesaplayın ve ekrana yazdırın.</li>
 <li>Yaşı 40’dan büyük olanların bilgilerini ekrana yazdırın.</li>
 </ul>
+</section>
+<section id="problem-4" class="level3">
+<h3 class="anchored" data-anchor-id="problem-4">Problem 4</h3>
+<p>Bir fizik laboratuvarında, bir yayın esneklik sabiti ölçümü için deney yapılmıştır. Deney, bir dizi ağırlığın (<span class="math inline">\(m_{1}\)</span>, <span class="math inline">\(m_{2}\)</span>, <span class="math inline">\(m_{3}\)</span>, <span class="math inline">\(\dots\)</span>) yayın ucuna asılması ve her bir ağırlığın yayı uzatma miktarının ölçülmesiyle gerçekleştirilmiştir.</p>
+<p>Veriler, her bir ağırlığın yayın uzatma miktarı (kg biriminde) ve uygulanan kuvvetin (N biriminde) bir listesi olarak elde edilmiştir.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Kütle (kg)</th>
+<th style="text-align: center;">Uzama, <span class="math inline">\(\Delta x\)</span> (m)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">0.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">0.05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.3</td>
+<td style="text-align: center;">0.07</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;">0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">0.12</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>Bu verileri bir DataFrame’e kaydedin.</li>
+<li>Her kütle için yayın esneklik sabitini (<span class="math inline">\(k\)</span> [N/m]) hesaplayın, (<span class="math inline">\(k = F / \Delta x\)</span>) ve DataFrame’e yeni sütun olarak ekleyin. (<span class="math inline">\(g=9.81\)</span> <span class="math inline">\(m/s^{2}\)</span>)</li>
+<li>Her bir ağırlık için potansiyel enerjiyi hesaplayın (<span class="math inline">\(E = 1/2 \times k \times x^{2}\)</span>) ve DataFrame’e yeni sütun olarak ekleyin.</li>
+<li>DataFrame’in son halinin ilk satırını ekrana yazdırın.</li>
+<li>DataFrame’in son halinin son satırını ekrana yazdırın.</li>
+<li>Yatay eksende uzama (m), dikey eksende potansiyel enerji (J = N <span class="math inline">\(\times\)</span> m) olacak şekilde bir grafik oluşturun.</li>
+</ol>
 
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
