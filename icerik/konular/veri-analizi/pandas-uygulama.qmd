@@ -215,7 +215,7 @@ Aşağıdaki soruları cevaplayın.
    1. Toplam Yolcu - Yıl grafiğini çizdirin. Aynı grafik üzeride iç hat yolcusu ve dış hat yolcusunun yıllara göre grafiği de olsun.
    2. Toplam Yükün (Ton), iç hat yükünün (Ton) ve dış hat yükünün (Ton) yıllara göre grafiğini çizdirin.
 
-## Problem 3
+### Problem 3
 
 Bir veri çatısı (data frame) oluşturun ve aşağıdaki tablodaki verileri içine yerleştirin. Veri çatısının sütunları sırasıyla "Ad_Soyad", "Yas", "Cinsiyet", "Meslek" olsun.
 
@@ -231,3 +231,24 @@ Bir veri çatısı (data frame) oluşturun ve aşağıdaki tablodaki verileri i�
 - Veri çatısının ad-soyad sütununu temelli olarak etikete (indexe) kaydedin, ve ekrana yazdırın.
 - Veri çatısındaki kişilerin yaş ortalamasını hazır fonksiyon kullanarak hesaplayın ve ekrana yazdırın.
 - Yaşı 40'dan büyük olanların bilgilerini ekrana yazdırın.
+
+### Problem 4
+
+Bir fizik laboratuvarında, bir yayın esneklik sabiti ölçümü için deney yapılmıştır. Deney, bir dizi ağırlığın ($m_{1}$, $m_{2}$, $m_{3}$, $\dots$) yayın ucuna asılması ve her bir ağırlığın yayı uzatma miktarının ölçülmesiyle gerçekleştirilmiştir.
+
+Veriler, her bir ağırlığın yayın uzatma miktarı (kg biriminde) ve uygulanan kuvvetin (N biriminde) bir listesi olarak elde edilmiştir.
+
+| Kütle (kg) | Uzama, $\Delta x$ (m) |
+|:---:|:---:|
+|0.1 | 0.02|
+|0.2 | 0.05|
+|0.3 | 0.07|
+|0.4 | 0.1|
+|0.5 | 0.12|
+
+1. Bu verileri bir DataFrame'e kaydedin.
+2. Her kütle için yayın esneklik sabitini ($k$ [N/m]) hesaplayın, ($k = F / \Delta x$) ve DataFrame'e yeni sütun olarak ekleyin. ($g=9.81$ $m/s^{2}$)
+3. Her bir ağırlık için potansiyel enerjiyi hesaplayın ($E = 1/2 \times k \times x^{2}$) ve DataFrame'e yeni sütun olarak ekleyin.
+4. DataFrame'in son halinin ilk satırını ekrana yazdırın.
+5. DataFrame'in son halinin son satırını ekrana yazdırın.
+6. Yatay eksende uzama (m), dikey eksende potansiyel enerji (J = N $\times$ m) olacak şekilde bir grafik oluşturun.

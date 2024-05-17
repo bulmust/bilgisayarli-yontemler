@@ -280,6 +280,20 @@ Bir sinyalin frekans uzayını kullanarak örneklem miktarını arttıralım. Bu
 11. Yeni hfd sinyalini ters Fourier dönüşümü yaparak zaman uzayına çevirin.
 12. Orijinal ve interpolasyon yapılmış sinyalleri çizdirin.
 
+### Problem 3
+
+Zamandan bağımsız Schrödinger denklemini boşluk için çözdüğümüzde Gaussian dalga paketini elde ederiz. Konum uzayındaki dalga fonksiyonu aşağıdaki gibidir.
+
+$$ \psi(x, t=0) = <x | \psi(0)>= e^{-\frac{(x- \mu)^{2}}{4\sigma_{x}^{2}}+i k_{0} x}$$
+
+Burada $\mu$ paketin merkezini yani ortalama (mean) değeridir. $\sigma_{x}$ ise $x$ uzayındaki standart sapmayı yani belirsizliği verir. $k_{0}= p/\hbar$ ise paketin momentumunu verir.
+
+1. **[5 Puan]** Yukarıda verilen dalga paketinin konum uzayındaki **olasılık yoğunluğunu** çizdirin. Formülde $\mu = 0$, $\sigma_{x} = 0.1$ ve $k_{0} = 10$ olarak alın. Konumu $x = -1$ ile $x = 1$ arasında on bin parçaya ayırarak alabilirsiniz.
+2. **[10 Puan]** Elde ettiğiniz dalga paketinin Fourier dönüşümünü ve frekansları hesaplayın. 
+3. **[5 Puan]** Fourier dönüşümünden elde ettiğiniz Gaussian dalga paketinin momentum uzayındaki **olasılık yoğunluğunu** çizdirin.
+4. **[5 Puan]** Aynı işlemi $\sigma_x=0.001$ için tekrar edin. Konum uzayındaki olasılık fonksiyonunu ve momentum uzayındaki olasılık fonksiyonunu nasıl değişti? `print()` fonksiyonu ile açıklayın.
+5. **[5 Puan]** Yukarıdaki işlem ile Heisenberg belirsizlik ilkesi arasında nasıl bir bağlantı vardır? `print()` fonksiyonu ile açıklayın.
+
 ## Kaynaklar
 
 1. Python Programming and Numerical Methods, Qingkai Kong, 2018
