@@ -74,7 +74,7 @@ Görüldüğü üzere sıklıkları toplam sayıya böldüğümüzde olasılıkl
 
 ## Alıştırma 1
 
-- Verimiz [1,1,2] olsun. Bu veri kümesinin frekansını ver olasılık kütle fonksiyonunu hesaplayalım ve çizelim.
+- Verimiz [1,1,2] olsun. Bu veri kümesinin frekansını ve olasılık kütle fonksiyonunu hesaplayalım ve çizelim.
 - Aynı işlemleri [1,1,2,2,3,3] için yapalım.
 
 ### Çözüm
