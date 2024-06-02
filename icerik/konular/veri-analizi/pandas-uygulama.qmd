@@ -252,3 +252,40 @@ Veriler, her bir ağırlığın yayın uzatma miktarı (kg biriminde) ve uygulan
 4. DataFrame'in son halinin ilk satırını ekrana yazdırın.
 5. DataFrame'in son halinin son satırını ekrana yazdırın.
 6. Yatay eksende uzama (m), dikey eksende potansiyel enerji (J = N $\times$ m) olacak şekilde bir grafik oluşturun.
+
+### Problem 5
+
+[Bu linkteki](../../../veri/veri_bilgYont1_notlar.csv) `veri_bilgYont1_notlar.csv` dosyasını indirin. Bu dosyada her bir öğrencinin ödevleri, quizleri, arasınav ve final notları bulunmaktadır. Bu dosyadaki veri kütüphanesini kullanarak aşağıdaki soruları cevaplayın.
+
+1. Dosyayı `pandas` kütüphanesini kullanarak okuyun.
+2. Verinin ilk 5 satırını ekrana yazdırın.
+3. Verinin son 2 satırını ekrana yazdırın.
+4. Verinin sütunların isimlerini ekrana yazdırın.
+
+Aşağıdaki işlemleri yapın ve değişkene atayın. Atadıktan sonra ilk 2 satırını ekrana yazdırın.
+
+5. Etiketleri `ogrenci1`, `ogrenci2` ... `ogrenci14` gibi olacak şekilde değiştirin. 
+6. Her bir öğrencinin ödevin ortalamasını bulun ve veri çatısında (data frame) bir sütun olarak kaydedin. Sütunun ismi `OdevOrt` olsun.
+7. Her bir öğrencinin quizlerinin ortalamasını bulun ve veri çatısında (data frame) bir sütun olarak kaydedin. Sütunun ismi `QuizOrt` olsun.
+8. Her bir öğrencinin dönem sonu ortalamasını bulun ve sütun ismi `Ortalama` olacak şekilde kaydedin. Dönem sonu ortalaması aşağıdaki gibi hesaplanır:
+   
+   - Quizler \%10
+   - Ödevler \%20
+   - Arasınav \%30
+   - Final \%40
+   
+9. Her bir öğrencinin harf sonu notunu, ortalamaya bakarak hesaplayın ve sütun ismi `HarfNot` olacak şekilde kaydedin. Harfli notlar aşağıdaki gibi hesaplanır:
+
+|Ortalama | Harf Notu |
+|---|---|
+|90-100 | AA |
+|85-89 | BA |
+|80-84 | BB |
+|75-79 | CB |
+|70-74 | CC |
+|65-69 | DC |
+|60-64 | DD |
+|50-59 | EE |
+|0-49 | FF |
+
+10. Her bir öğrencinin quizlerinin arasından en yüksek 5 notu seçin ve `QuizOrtBoost` sütunu olarak kaydedin. Her öğrencinin ortalamasını ve harf notunu `QuizOrtBoost` kullanarak hesaplayın.

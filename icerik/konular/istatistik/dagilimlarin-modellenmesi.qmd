@@ -336,7 +336,7 @@ Aşağıdaki dağılımları fonksiyon olarak yazın ve verilen değerler için 
 - $1 u = 1.66053906660 \times 10^{-23} g$.
 - Işık hızı $c = 299792458 m/s$
 - Planck sabiti $h = 6.62607015 \times 10^{-34} J s$
-- $1 \AA = 10^{-10} m$
+- $1 \mathring{A} = 10^{-10} m$
 - $1 nm = 10^{-9} m$
 - $1 \mu m = 10^{-6} m$
 

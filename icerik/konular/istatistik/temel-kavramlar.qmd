@@ -459,6 +459,38 @@ Aşağıdaki linkte bulunan excel dosyasını indirin.
 
 Kaynak: [Solar Spectrum](https://www.pveducation.org/pvcdrom/appendices/standard-solar-spectra)
 
+### Problem 5
+
+1. 600 adet parayı 1000 kere atan bir algoritma oluşturun. 600 adet parnın kaçı tura geldiğini hesaplasın. Bunu 1000 kere yapacak şekilde mofiye edin. 600 tane para atıldığında kaç tanesinin tura geldiğini gösteren bir histogram çizdirin.
+2. Aynı işlemi bu sefer bir zaın 3 gelmesi için yapın. Yani, 600 adet zarı 1000 kere attığınızda, 600 zarın kaç defa 3 geldiğini hesaplayan bir program yazın. 600 tane zar atıldığında kaç tanesinin 3 geldiğini gösteren bir histogram çizdirin.
+3. 600 adet zarı ve 600 adet parayı aynı anda yani beraber 1000 kere atıldığında, kaçında 3 ve tura geldiğini hesaplayan bir program yazın. 600 tane para ve zar atıldığında kaç tanesi 3 **ve** tura geldiğini gösteren bir histogram çizdirin.
+
+- **Not**: 2. sorunun verisini kullanabilirsiniz.
+- **İpucu**: Dağılımının $600\times(1/2)\times(1/6)=50$ etrafında olması beklenir.
+
+4. Aşağıdaki adımları yapın.
+   1. 1200 adet (birinci zarı 600 kere ikinci zarı 600 kere düşünün) zarı 1000 kere atıp, ikili toplamları kaç kere 7 geldiğini ve kaç kere 12 geldiğini hesaplayan bir program yazın. 1200 tane zar atıldığında ikili toplamları kaç kere 7 ve kaç kere 12 geldiğini gösteren histogramları aynı figürde çizdirin.
+   2. Toplamı 7 ve 12 gelen dağılımlar için aşağıdaki değerleri hesaplayın.
+      1. Ortalama değer
+      2. Mod (en çok tekrar eden değer)
+      3. Standart sapma, Varyans
+      4. Medyan
+      5. Maksimum ve Minimum değer
+   3. İki dağılım için efektif boyutu, Cohen'in d değerini hesaplayın.
+
+- **İpucu**: Algoritmayı şöyle yazabilirsiniz. İki ayrı zarı attım ve toplamları 7 geldi. Bunu 600 kere tekrarladım ve kaydettim. Bu işlemi 1000 kere daha yaptım.
+- **İpucu2**: 7'nin dağılımının $600\times(1/6)=100$ etrafında olması beklenir. (1+6, 2+5, 3+4, 4+3, 5+2, 6+1)
+- **İpucu3**: 12'nin dağılımının $600\times(1/36)=16.7$ etrafında olması beklenir.
+- **İpucu4**:
+
+$$
+d = \frac{\overline{x}_1 - \overline{x}_2}{s_{havuz}}
+$$
+
+$$
+s_{havuz}= \sqrt{\frac{n_1s_1^2 + n_2s_2^2}{n_1 + n_2}}
+$$
+
 ## Kaynaklar
 
 1. Numerical Python: Scientific Computing and Data, Science Applications with Numpy, SciPy and Matplotlib, Robert Johansson, Apress, İkinci Basım, 2019, **syf 443**
