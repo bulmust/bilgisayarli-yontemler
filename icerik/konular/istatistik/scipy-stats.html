@@ -483,7 +483,7 @@ window.Quarto = {
 
 <p>Yaklaşık 13 kesiklik ve 98 sürekli dağılım <code>scipy.stats</code> modülünde bulunmaktadır. Daha ayrıntılı bilgi için <a href="https://docs.scipy.org/doc/scipy/reference/stats.html">scipy.stats</a> dokümantasyonuna bakabilirsiniz.</p>
 <p>Rastgele değişkenler classları için aşağıdaki örneği inceleyelim.</p>
-<div id="8d518408" class="cell" data-execution_count="1">
+<div id="891a2c87" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -523,7 +523,7 @@ window.Quarto = {
 <span id="cb1-37"><a href="#cb1-37"></a>plt.show()</span>
 <span id="cb1-38"><a href="#cb1-38"></a>plt.close()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x7f2214aad720&gt;
+<pre><code>&lt;scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x7fd3f41b56c0&gt;
 
 X ortalama: 1.0, X standart sapma: 0.5
 
@@ -573,7 +573,7 @@ CDF(x=0, x=1, x=2): [0.02275013 0.5        0.97724987]</code></pre>
 <li>Bu hesaplama sonucu, güven aralığı (6.9 cm, 7.1 cm) olarak bulunur. Bu makine parçalarının gerçek uzunluğunu %95 güven seviyesinde bu aralıkta bulabileceği anlamına gelir.</li>
 </ol>
 <p>Uzunluk = <span class="math inline">\(7 \pm 0.1\)</span></p>
-<div id="28d6ec4c" class="cell" data-execution_count="2">
+<div id="c4c26121" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb3-2"><a href="#cb3-2"></a>X<span class="op">=</span> stats.norm(<span class="dv">7</span>, <span class="fl">0.5</span>) <span class="co"># ortalama 7, standart sapma 0.5 olan normal dağılım</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
@@ -600,7 +600,7 @@ Yani ortalama ort(X) = 7 ± 3.2905267314919104</code></pre>
 <section id="alıştırma-2" class="level2">
 <h2 class="anchored" data-anchor-id="alıştırma-2">Alıştırma 2</h2>
 <p>Şimdi öğrendiğimiz tüm bu fonksiyonları Normal, Maxwell ve Poission dağılımları üzerinde görelim.</p>
-<div id="6419da90" class="cell" data-execution_count="3">
+<div id="456981b7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
@@ -665,7 +665,7 @@ Yani ortalama ort(X) = 7 ± 3.2905267314919104</code></pre>
 <li>Süüreksiz dağılımlar için <code>rv_discrete</code> classını kullanılır.</li>
 <li>Her iki classı kullanarak rastgele değer ataması (random sampling) yapabiliriz.</li>
 </ul>
-<div id="bcb09ff5" class="cell" data-execution_count="4">
+<div id="cd394a15" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co"># Normal Dağılım Objesi Oluştur</span></span>
@@ -675,14 +675,14 @@ Yani ortalama ort(X) = 7 ± 3.2905267314919104</code></pre>
 <span id="cb7-7"><a href="#cb7-7"></a><span class="bu">print</span>(<span class="ss">f"Rastgele 5 sayı atama:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>X<span class="sc">.</span>rvs(<span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rastgele 5 sayı atama:
- [ 0.90614197 -0.12013938  0.9348654   0.78594835  0.87283753]</code></pre>
+ [0.91643949 0.84407552 1.27171137 0.29665711 0.8956916 ]</code></pre>
 </div>
 </div>
 </section>
 <section id="alıştırma-3" class="level2">
 <h2 class="anchored" data-anchor-id="alıştırma-3">Alıştırma 3</h2>
 <p>Öğrencinin t dağılım, chi-kare dağılım ve eksponansiyel dağılım üzerindeki rastgele örneklemeyi inceleyelim.</p>
-<div id="839ddffe" class="cell" data-execution_count="5">
+<div id="54de29bf" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
@@ -734,7 +734,7 @@ Yani ortalama ort(X) = 7 ± 3.2905267314919104</code></pre>
 <li><code>scipy.stats</code> modülü, veriye en uygun dağılımı bulmak için <code>fit()</code> fonksiyonunu kullanır.</li>
 <li><code>fit()</code> fonksiyonu, veriye en uygun dağılımı bulmak için maksimum olabilirlik yöntemini kullanır.</li>
 </ul>
-<div id="6f80b186" class="cell" data-execution_count="6">
+<div id="5cee691a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -772,12 +772,12 @@ Yani ortalama ort(X) = 7 ± 3.2905267314919104</code></pre>
 <span id="cb10-35"><a href="#cb10-35"></a></span>
 <span id="cb10-36"><a href="#cb10-36"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Fit edilmiş parametreler: (0.044673669997958604, 0.9855923110046889)</code></pre>
+<pre><code>Fit edilmiş parametreler: (0.008065968505709203, 0.9826298161253746)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="scipy-stats_files/figure-html/cell-7-output-2.png" width="606" height="432" class="figure-img"></p>
+<p><img src="scipy-stats_files/figure-html/cell-7-output-2.png" width="614" height="432" class="figure-img"></p>
 </figure>
 </div>
 </div>
