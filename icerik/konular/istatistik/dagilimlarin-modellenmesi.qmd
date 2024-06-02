@@ -323,7 +323,7 @@ Aşağıdaki dağılımları fonksiyon olarak yazın ve verilen değerler için 
 - Bose-Einstein dağılım için $(\mu [eV], T [K]) = (0,5), (0,100), (0,273)$ alın ve grafiğini çizdirin. Ayrı bir grafikte $(\mu [eV], T [K]) = (0,273), (0.01,273), (0.05,273)$ alın ve çizdirin. Grafikde y eksenini -0.1 ile 1.1 arasında sınırlayın. ($E=[0.0001,0.2]$)
 - Fermi-Dirac dağılımı için $(\mu [eV], T [K]) = (0.5,5), (0.5,100), (0.5,273)$ alın ve grafiğini çizdirin. Ayrı bir grafikte $(\mu [eV], T [K]) = (0.5,273), (0.55,273), (0.85,273)$ alın ve çizdirin. ($E=[0.45,0.65]$)
 
-**Yaralı bilgiler** 
+### Yaralı bilgiler
 
 - Avagadro sayısı $N_{A} = 6.022 \times 10^{23}$
 - Boltzman sabiti $k = 1.380649 \times 10^{-23} J/K$
