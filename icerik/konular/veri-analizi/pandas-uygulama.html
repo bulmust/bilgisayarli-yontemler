@@ -445,6 +445,7 @@ window.Quarto = {
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
   <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
+  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/veri-analizi/pandas-uygulama.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
@@ -471,7 +472,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">22 Mayıs 2024</p>
+      <p class="date">2 Haziran 2024</p>
     </div>
   </div>
   
@@ -547,7 +548,7 @@ window.Quarto = {
 </ol>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="81305490" class="cell" data-execution_count="1">
+<div id="a2626456" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> os</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
@@ -636,7 +637,7 @@ window.Quarto = {
 </ol>
 <section id="çözüm-1" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm-1">Çözüm</h3>
-<div id="074c6517" class="cell" data-execution_count="2">
+<div id="87c97f90" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">################################################</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> os</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
@@ -889,6 +890,79 @@ window.Quarto = {
 <li>DataFrame’in son halinin ilk satırını ekrana yazdırın.</li>
 <li>DataFrame’in son halinin son satırını ekrana yazdırın.</li>
 <li>Yatay eksende uzama (m), dikey eksende potansiyel enerji (J = N <span class="math inline">\(\times\)</span> m) olacak şekilde bir grafik oluşturun.</li>
+</ol>
+</section>
+<section id="problem-5" class="level3">
+<h3 class="anchored" data-anchor-id="problem-5">Problem 5</h3>
+<p><a href="../../../veri/veri_bilgYont1_notlar.csv">Bu linkteki</a> <code>veri_bilgYont1_notlar.csv</code> dosyasını indirin. Bu dosyada her bir öğrencinin ödevleri, quizleri, arasınav ve final notları bulunmaktadır. Bu dosyadaki veri kütüphanesini kullanarak aşağıdaki soruları cevaplayın.</p>
+<ol type="1">
+<li>Dosyayı <code>pandas</code> kütüphanesini kullanarak okuyun.</li>
+<li>Verinin ilk 5 satırını ekrana yazdırın.</li>
+<li>Verinin son 2 satırını ekrana yazdırın.</li>
+<li>Verinin sütunların isimlerini ekrana yazdırın.</li>
+</ol>
+<p>Aşağıdaki işlemleri yapın ve değişkene atayın. Atadıktan sonra ilk 2 satırını ekrana yazdırın.</p>
+<ol start="5" type="1">
+<li><p>Etiketleri <code>ogrenci1</code>, <code>ogrenci2</code> … <code>ogrenci14</code> gibi olacak şekilde değiştirin.</p></li>
+<li><p>Her bir öğrencinin ödevin ortalamasını bulun ve veri çatısında (data frame) bir sütun olarak kaydedin. Sütunun ismi <code>OdevOrt</code> olsun.</p></li>
+<li><p>Her bir öğrencinin quizlerinin ortalamasını bulun ve veri çatısında (data frame) bir sütun olarak kaydedin. Sütunun ismi <code>QuizOrt</code> olsun.</p></li>
+<li><p>Her bir öğrencinin dönem sonu ortalamasını bulun ve sütun ismi <code>Ortalama</code> olacak şekilde kaydedin. Dönem sonu ortalaması aşağıdaki gibi hesaplanır:</p>
+<ul>
+<li>Quizler %10</li>
+<li>Ödevler %20</li>
+<li>Arasınav %30</li>
+<li>Final %40</li>
+</ul></li>
+<li><p>Her bir öğrencinin harf sonu notunu, ortalamaya bakarak hesaplayın ve sütun ismi <code>HarfNot</code> olacak şekilde kaydedin. Harfli notlar aşağıdaki gibi hesaplanır:</p></li>
+</ol>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Ortalama</th>
+<th>Harf Notu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>90-100</td>
+<td>AA</td>
+</tr>
+<tr class="even">
+<td>85-89</td>
+<td>BA</td>
+</tr>
+<tr class="odd">
+<td>80-84</td>
+<td>BB</td>
+</tr>
+<tr class="even">
+<td>75-79</td>
+<td>CB</td>
+</tr>
+<tr class="odd">
+<td>70-74</td>
+<td>CC</td>
+</tr>
+<tr class="even">
+<td>65-69</td>
+<td>DC</td>
+</tr>
+<tr class="odd">
+<td>60-64</td>
+<td>DD</td>
+</tr>
+<tr class="even">
+<td>50-59</td>
+<td>EE</td>
+</tr>
+<tr class="odd">
+<td>0-49</td>
+<td>FF</td>
+</tr>
+</tbody>
+</table>
+<ol start="10" type="1">
+<li>Her bir öğrencinin quizlerinin arasından en yüksek 5 notu seçin ve <code>QuizOrtBoost</code> sütunu olarak kaydedin. Her öğrencinin ortalamasını ve harf notunu <code>QuizOrtBoost</code> kullanarak hesaplayın.</li>
 </ol>
 
 
