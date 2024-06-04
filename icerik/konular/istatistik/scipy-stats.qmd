@@ -60,16 +60,26 @@ Güven aralığı, bir parametrenin (genellikle bir ortalama veya oran) bilinmey
 
 Örneklem ortalaması 7 cm ve standart sapma 0.5 cm olsun. Güven seviyesini %95 olarak belirlediğimizde, bir normal dağılım tablosu kullanarak ortalama uzunluğun %95 güven seviyesinde bulunabileceği aralığı hesaplayabiliriz. 
 
-1. Örneklemin büyüklüğüne ($n=100$), standart sapmasına ($\sigma=0.5$) ve güven seviyesine ($\alpha=0.05$, \%95 güven indeksi) ihtiyacımız var. 
-2.  **Z-tablosu** kullanarak, güven seviyesine karşılık gelen z-puanını bulun. Örneğin, %95 güven seviyesine karşılık gelen z-puanı 1.96'dır.
-    1. **Z-tablosu** genellikle, standart normal dağılımın kuyruk altındaki alanını bulmak için kullanılır. Örneğin, bir z-değeri verildiğinde, z-tablosu kullanılarak, z-değerinin solundaki kuyruk altındaki alanın yüzdesi belirlenebilir.
-    2. **Z-tablosu**, matematiksel hesaplama yapmadan kuyruk altındaki alanların bulunmasına yardımcı olduğu için çok kullanışlı bir araçtır. Ancak, tablonun doğru kullanılması için, normal dağılım varsayımı ve z-değerinin doğru hesaplanması gereklidir.
-3. Örneklem ortalamasının standart hatasını hesaplayın. 
-   1. Standart hata, $\sigma/\sqrt{n} = 0.05$ formülüyle hesaplanır.
-   2. Güven aralığı, $ \bar{x} \pm z \times \sigma/\sqrt{n}$ formülüyle hesaplanır. Bu durumda, güven aralığı $7 \pm 1.96 \times (0.05) = 6.9, 7.1$ olarak hesaplanır.
-4. Bu hesaplama sonucu, güven aralığı (6.9 cm, 7.1 cm) olarak bulunur. Bu makine parçalarının gerçek uzunluğunu %95 güven seviyesinde bu aralıkta bulabileceği anlamına gelir.
+- Örneklemin büyüklüğüne ($n=100$), standart sapmasına ($\sigma=0.5$) ve güven seviyesine ($\alpha=0.05$, %95 güven indeksi) ihtiyacımız var. %95 güven seviyesi, iki kuyrukta toplam %5 hatayı kabul ettiğimiz anlamına gelir.
+- Önce **z-puanı** (**standart puan**) (z-score, standard score) hesaplamamız gerekir. Z-puanını standart normal dağılımın (ortalaması 0, standart sapması 1 olan normal dağılım) kuyruklarındaki alanı belirler. 
 
-Uzunluk = $7 \pm 0.1$
+![Normal Dağılım](assets/normal_dagilim.png)
+
+- Z-puanını, z-tablosundan bakarak veya `scipy.stats.norm.ppf()` fonksiyonunu kullanarak hesaplayabiliriz. Örneğin, %95 güven seviyesine karşılık gelen z-puanı 1.96'dır.
+- %95 güven aralığına karşılık gelen z değeri $\pm 1.96$ olduğuna göre, sol ve sağ taraftaki sınırları aşağıdaki formül ile belirleyebiliriz.
+
+Alt Sınır $=\mu - (z \times \sigma)$
+Üst Sınır $=\mu + (z \times \sigma)$
+
+- Bizim örneğimizde alt sınır $7-(1.96\times 0.5)= 6.02$ ve üst sınır ise $7+(1.96\times 0.5)= 7.98$ olacaktır. Yani, makine parçalarının gerçek uzunluğu %95 güven seviyesinde $6.02$ cm ile $7.98$ cm arasında olabilir.
+- Eğer Standart hatayı da eklemek istersek örneklem standart hata formülünden yararlanmalıyız.
+
+Standart Hata $=\sigma/\sqrt{n}$
+
+Burada $\sigma$ standart sapma ve $n$ örneklem sayısıdır.
+- Bizim örneğimizde standart hata $0.5/\sqrt{100}=0.05$ olacaktır.
+- Standart hatayı da kullanarak elde edilen güven aralığı $7 \pm 1.96 \times 0.05 = 6.9, 7.1$ olacaktır.
+- Bu hesaplama sonucu, güven aralığı ($6.9$ cm, $7.1$ cm) olarak bulunur. Bu makine parçalarının gerçek uzunluğunu %95 güven seviyesinde bu aralıkta bulabileceği anlamına gelir.
 
 ```{python}
 from scipy import stats
@@ -244,7 +254,7 @@ plt.show()
 
 ## Percent point function (PPF)
 
-PPF bir olasılık dağılımının ters fonksiyonudur. PPF, bir olasılık dağılımının verilen bir olasılık seviyesindeki (örneğin, %95) kritik değerini hesaplamak için kullanılır. Bundan dolayı diğer adı kuantil fonksiyonu (quantile function)dur.
+PPF, bir olasılık dağılımının ters fonksiyonudur. PPF, bir olasılık dağılımının verilen bir olasılık seviyesindeki (örneğin, %95) kritik değerini hesaplamak için kullanılır. Bundan dolayı diğer adı kuantil fonksiyonudur (quantile function.)
 
 PPF, kümülatif dağılım fonksiyonunun (CDF) tersidir. CDF, bir olasılık dağılımının belirli bir değere veya daha azına sahip olma olasılığını gösterirken, PPF, belirli bir olasılık seviyesindeki kritik değeri gösterir.
 
