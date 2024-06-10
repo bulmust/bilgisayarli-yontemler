@@ -138,3 +138,26 @@ $$
 $$
 \frac{d^{2}y}{dt^{2}}=-\frac{\mu}{(x^{2}+y^{2})^{3/2}}y
 $$
+
+### Problem 7
+
+Üç cisim problemini `scipy.integrate.solve_ivp()` fonksiyonu ile çözünüz Yardımcı kaynak için [tıklayınız](https://www.maths.ed.ac.uk/~ateckent/vacation_reports/Report_Faustino.pdf). Animasyonunu yaratınız.
+
+$$
+\frac{d^{2}r_{i}}{dt^{2}}=G\sum_{j\neq i}m_{j}\frac{(r_{j}-r_{i})}{|r_{j}-r_{i}|^{3}} , i=1,2,3$
+$$
+
+Burada $r_{i}$, $i$'nci parçacığın konum vektörü olup kartezyen koordinatlarda iki bileşenlidir, $r_{i}\equiv r_{i}(x,y)$. Başlangıç koşulları ve sabitleri aşağıdaki gibi alınız. Burada $v_{i}\equiv \frac{dr_{i}}{dt}$ şeklindedir.
+
+- $G=1$ Nm$^{2}$/kg$^{2}$.
+- Zaman aralığı $t=0-10$ s arasında 1000 adımda.
+
+**Figure-8** stabil çözümü:
+
+- $m_{1}=1$, $m_{2}=1$, $m_{3}=1$ kg
+- $r_{1}=(-0.97000436, 0.24308753)$ m,
+- $r_{2}=(-0.97000436, 0.24308753)$ m,
+- $r_{3}=(0, 0)$, m,
+- $v_{1}=(0.466203685, 0.43236573)$ m/s,
+- $v_{2}=(0.466203685, 0.43236573)$ m/s,
+- $v_{3}=(-0.93240737, -0.86473146)$ m/s.
