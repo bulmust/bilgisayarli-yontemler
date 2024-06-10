@@ -438,7 +438,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">4 Haziran 2024</p>
+      <p class="date">10 Haziran 2024</p>
     </div>
   </div>
   
@@ -484,7 +484,7 @@ window.Quarto = {
 <li><span class="math inline">\(X\)</span> örneklemi verilsin ve bu örneklemdeki veri boş hipotez altında test edilsin.</li>
 <li>Farz edelim ki elimizdeki veri <span class="math inline">\(X\)</span> örneklemi normal dağılıma sahip, <span class="math inline">\(\mu=0.8\)</span> ve <span class="math inline">\(\sigma=0.5\)</span> olan 100 adet veriye sahip olsun.</li>
 </ul>
-<div id="264efd2e" class="cell" data-execution_count="1">
+<div id="09f478c5" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
@@ -502,7 +502,7 @@ window.Quarto = {
 <p><span class="math display">\[
 z = \frac{\bar{X}-\mu_{0}}{\sigma/\sqrt{n}}
 \]</span></p>
-<div id="065dcf65" class="cell" data-execution_count="2">
+<div id="dfc63c39" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
@@ -515,7 +515,7 @@ z = \frac{\bar{X}-\mu_{0}}{\sigma/\sqrt{n}}
 <span id="cb2-10"><a href="#cb2-10"></a>z<span class="op">=</span> (X_samples.mean() <span class="op">-</span> mu0) <span class="op">/</span> (sigma <span class="op">/</span> np.sqrt(n))</span>
 <span id="cb2-11"><a href="#cb2-11"></a><span class="bu">print</span>(<span class="ss">f"z değeri: </span><span class="sc">{</span>z<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>z değeri: -1.988479675928041</code></pre>
+<pre><code>z değeri: -4.998942564145112</code></pre>
 </div>
 </div>
 <ul>
@@ -529,7 +529,7 @@ z = \frac{\bar{X}-\mu_{0}}{\sigma/\sqrt{n}}
 <ul>
 <li>Eğer t-istatiği kullanılırsa, normal dağılım yerine öğrencinin t dağılımı kullanılır.</li>
 </ul>
-<div id="16f5d815" class="cell" data-execution_count="3">
+<div id="2127090c" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
@@ -541,7 +541,7 @@ z = \frac{\bar{X}-\mu_{0}}{\sigma/\sqrt{n}}
 <span id="cb4-9"><a href="#cb4-9"></a>t <span class="op">=</span> (X_samples.mean() <span class="op">-</span> mu0) <span class="op">/</span> (X_samples.std(ddof<span class="op">=</span><span class="dv">1</span>) <span class="op">/</span> np.sqrt(n))</span>
 <span id="cb4-10"><a href="#cb4-10"></a><span class="bu">print</span>(<span class="ss">f"t değeri: </span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>t değeri: -2.0215161529516976</code></pre>
+<pre><code>t değeri: -5.275009828569295</code></pre>
 </div>
 </div>
 </section>

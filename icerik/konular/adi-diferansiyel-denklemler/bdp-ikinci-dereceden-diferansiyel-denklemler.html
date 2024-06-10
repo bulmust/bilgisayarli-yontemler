@@ -443,6 +443,7 @@ window.Quarto = {
   <li><a href="#sec-problem4" id="toc-sec-problem4" class="nav-link" data-scroll-target="#sec-problem4">Problem 4</a></li>
   <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
   <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
+  <li><a href="#problem-7" id="toc-problem-7" class="nav-link" data-scroll-target="#problem-7">Problem 7</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
@@ -469,7 +470,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">4 Haziran 2024</p>
+      <p class="date">10 Haziran 2024</p>
     </div>
   </div>
   
@@ -500,7 +501,7 @@ v'(x)=-4y
 <p>Sürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. <span class="math inline">\(g=9.81\)</span> m/s <span class="math inline">\(^{2}\)</span> sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları <span class="math inline">\(v(0)=0\)</span> ve <span class="math inline">\(y(0)=100\)</span> olsun. Çözümü <span class="math inline">\(n=100\)</span> s adımda yapın. Zaman aralığı <span class="math inline">\(t=0\)</span> s’den <span class="math inline">\(t=10\)</span> s’ye kadar olsun.</p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="41557d86" class="cell" data-execution_count="1">
+<div id="a6d79438" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -609,6 +610,28 @@ v'(x)=-4y
 <p><span class="math display">\[
 \frac{d^{2}y}{dt^{2}}=-\frac{\mu}{(x^{2}+y^{2})^{3/2}}y
 \]</span></p>
+</section>
+<section id="problem-7" class="level3">
+<h3 class="anchored" data-anchor-id="problem-7">Problem 7</h3>
+<p>Üç cisim problemini <code>scipy.integrate.solve_ivp()</code> fonksiyonu ile çözünüz Yardımcı kaynak için <a href="https://www.maths.ed.ac.uk/~ateckent/vacation_reports/Report_Faustino.pdf">tıklayınız</a>. Animasyonunu yaratınız.</p>
+<p><span class="math display">\[
+\frac{d^{2}r_{i}}{dt^{2}}=G\sum_{j\neq i}m_{j}\frac{(r_{j}-r_{i})}{|r_{j}-r_{i}|^{3}} , i=1,2,3$
+\]</span></p>
+<p>Burada <span class="math inline">\(r_{i}\)</span>, <span class="math inline">\(i\)</span>’nci parçacığın konum vektörü olup kartezyen koordinatlarda iki bileşenlidir, <span class="math inline">\(r_{i}\equiv r_{i}(x,y)\)</span>. Başlangıç koşulları ve sabitleri aşağıdaki gibi alınız. Burada <span class="math inline">\(v_{i}\equiv \frac{dr_{i}}{dt}\)</span> şeklindedir.</p>
+<ul>
+<li><span class="math inline">\(G=1\)</span> Nm<span class="math inline">\(^{2}\)</span>/kg<span class="math inline">\(^{2}\)</span>.</li>
+<li>Zaman aralığı <span class="math inline">\(t=0-10\)</span> s arasında 1000 adımda.</li>
+</ul>
+<p><strong>Figure-8</strong> stabil çözümü:</p>
+<ul>
+<li><span class="math inline">\(m_{1}=1\)</span>, <span class="math inline">\(m_{2}=1\)</span>, <span class="math inline">\(m_{3}=1\)</span> kg</li>
+<li><span class="math inline">\(r_{1}=(-0.97000436, 0.24308753)\)</span> m,</li>
+<li><span class="math inline">\(r_{2}=(-0.97000436, 0.24308753)\)</span> m,</li>
+<li><span class="math inline">\(r_{3}=(0, 0)\)</span>, m,</li>
+<li><span class="math inline">\(v_{1}=(0.466203685, 0.43236573)\)</span> m/s,</li>
+<li><span class="math inline">\(v_{2}=(0.466203685, 0.43236573)\)</span> m/s,</li>
+<li><span class="math inline">\(v_{3}=(-0.93240737, -0.86473146)\)</span> m/s.</li>
+</ul>
 
 
 
