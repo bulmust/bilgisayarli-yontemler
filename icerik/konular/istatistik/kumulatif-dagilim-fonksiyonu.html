@@ -467,7 +467,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">10 Haziran 2024</p>
+      <p class="date">11 Haziran 2024</p>
     </div>
   </div>
   
@@ -480,7 +480,7 @@ window.Quarto = {
 
 
 <p>Bir veri kümesi düşünelim. Öyle ki 1’den 300’e kadar tam sayılardan oluşmuş rastgele 5000 sayıdan oluşsun. Bu verinin olasılık kütle fonksiyonunu çizelim.</p>
-<div id="0da7d892" class="cell" data-execution_count="1">
+<div id="cf2d642a" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -496,17 +496,17 @@ window.Quarto = {
 <span id="cb1-13"><a href="#cb1-13"></a><span class="co"># Düşey eksen normalize edilmiş frekans değerleri</span></span>
 <span id="cb1-14"><a href="#cb1-14"></a>plt.bar(veri1_pmf.index, veri1_pmf, width<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>39     0.0062
-2      0.0058
-199    0.0054
-210    0.0054
-272    0.0052
+<pre><code>274    0.0056
+219    0.0054
+20     0.0054
+227    0.0054
+145    0.0054
         ...  
-157    0.0016
-192    0.0016
-299    0.0014
-186    0.0010
-15     0.0010
+168    0.0018
+245    0.0018
+67     0.0016
+60     0.0016
+95     0.0016
 Name: count, Length: 299, dtype: float64</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -524,7 +524,7 @@ Name: count, Length: 299, dtype: float64</code></pre>
 <li>Her bir sayının gelme olasılığını hesaplayalım.</li>
 <li>Bu olasılıkları birbirine ekleyerek kümülatif olasılık fonksiyonunu (cumulative distribution function, CDF) elde ederiz.</li>
 </ol>
-<div id="84126e65" class="cell" data-execution_count="2">
+<div id="303db694" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -558,17 +558,17 @@ Name: count, Length: 299, dtype: float64</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1      0.0046
-2      0.0026
-3      0.0030
+<pre><code>1      0.0036
+2      0.0036
+3      0.0040
 4      0.0038
-5      0.0030
+5      0.0038
         ...  
-295    0.0024
-296    0.0042
-297    0.0042
-298    0.0022
-299    0.0030
+295    0.0034
+296    0.0032
+297    0.0020
+298    0.0038
+299    0.0034
 Name: count, Length: 299, dtype: float64</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -597,7 +597,7 @@ Name: count, Length: 299, dtype: float64</code></pre>
 <span id="cb5-9"><a href="#cb5-9"></a> <span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>]</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="01440994" class="cell" data-execution_count="3">
+<div id="30b66bc3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>

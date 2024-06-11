@@ -474,7 +474,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">10 Haziran 2024</p>
+      <p class="date">11 Haziran 2024</p>
     </div>
   </div>
   
@@ -493,7 +493,7 @@ window.Quarto = {
 y(t) = \sin(\omega t + \phi) + \cos(2 \omega t + \phi)
 \]</span></p>
 <p>Çizdirelim.</p>
-<div id="971438c9" class="cell" data-execution_count="1">
+<div id="6339809d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Zaman</span></span>
@@ -650,7 +650,7 @@ Not
 <p><code>fourier_kfd</code> fonksiyonunu inceleyiniz.</p>
 </div>
 </div>
-<div id="5f6c2e59" class="cell" data-execution_count="2">
+<div id="3d725471" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
@@ -695,12 +695,12 @@ Not
 <div class="cell-output cell-output-stdout">
 <pre><code>20 örneklem sayısına sahip bir dalganın
 Fouirer dönüşümü yapması için geçen süre
-573 μs ± 4.04 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+565 μs ± 18.9 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 
 
 200 örneklem sayısına sahip bir dalganın
  Fouirer dönüşümü yapması için geçen süre
-55.8 ms ± 291 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)</code></pre>
+54.4 ms ± 64.9 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)</code></pre>
 </div>
 </div>
 <p>Zaman sorunu aşmak için 1965’te Cooley ve Tukey, Fourier dönüşümü algoritmasını geliştirdiler. Bu algoritma HFD, Hızlı Fourier Dönüşümü (FFT, Fast Fourier Transform) olarak bilinir - kesikli ifadesini kullanmacağız. HFD algoritması KFD’ye göre çok daha hızlı çalışır. HFD algoritmasının karmaşıklığı <span class="math inline">\(\mathcal{O}(n \log n)\)</span> iken KFD’nin karmaşıklığı <span class="math inline">\(\mathcal{O}(n^2)\)</span>’dir.</p>
@@ -795,7 +795,7 @@ y(t) = 7 \sin(2\pi t)
 <p>Bu sinyalin KFD’sini alın ve genlik ve faz değerlerini bulun.</p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="2efdfa41" class="cell" data-execution_count="3">
+<div id="bf7c05cf" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">################################################</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> os</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="im">import</span> sys</span>

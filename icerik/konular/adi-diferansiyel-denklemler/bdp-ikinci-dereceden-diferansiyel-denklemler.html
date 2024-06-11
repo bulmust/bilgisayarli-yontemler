@@ -470,7 +470,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">10 Haziran 2024</p>
+      <p class="date">11 Haziran 2024</p>
     </div>
   </div>
   
@@ -501,7 +501,7 @@ v'(x)=-4y
 <p>Sürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. <span class="math inline">\(g=9.81\)</span> m/s <span class="math inline">\(^{2}\)</span> sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları <span class="math inline">\(v(0)=0\)</span> ve <span class="math inline">\(y(0)=100\)</span> olsun. Çözümü <span class="math inline">\(n=100\)</span> s adımda yapın. Zaman aralığı <span class="math inline">\(t=0\)</span> s’den <span class="math inline">\(t=10\)</span> s’ye kadar olsun.</p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="a6d79438" class="cell" data-execution_count="1">
+<div id="d22cf651" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -622,16 +622,13 @@ v'(x)=-4y
 <li><span class="math inline">\(G=1\)</span> Nm<span class="math inline">\(^{2}\)</span>/kg<span class="math inline">\(^{2}\)</span>.</li>
 <li>Zaman aralığı <span class="math inline">\(t=0-10\)</span> s arasında 1000 adımda.</li>
 </ul>
-<p><strong>Figure-8</strong> stabil çözümü:</p>
-<ul>
-<li><span class="math inline">\(m_{1}=1\)</span>, <span class="math inline">\(m_{2}=1\)</span>, <span class="math inline">\(m_{3}=1\)</span> kg</li>
-<li><span class="math inline">\(r_{1}=(-0.97000436, 0.24308753)\)</span> m,</li>
-<li><span class="math inline">\(r_{2}=(-0.97000436, 0.24308753)\)</span> m,</li>
-<li><span class="math inline">\(r_{3}=(0, 0)\)</span>, m,</li>
-<li><span class="math inline">\(v_{1}=(0.466203685, 0.43236573)\)</span> m/s,</li>
-<li><span class="math inline">\(v_{2}=(0.466203685, 0.43236573)\)</span> m/s,</li>
-<li><span class="math inline">\(v_{3}=(-0.93240737, -0.86473146)\)</span> m/s.</li>
-</ul>
+<p><strong>Figure-8</strong> stabil çözümü icin gereken başlangıç koşulları:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>r1_0 <span class="op">=</span> np.array([<span class="fl">0.97000436</span>, <span class="op">-</span><span class="fl">0.24308753</span>])</span>
+<span id="cb2-2"><a href="#cb2-2"></a>r2_0 <span class="op">=</span> np.array([<span class="op">-</span><span class="fl">0.97000436</span>, <span class="fl">0.24308753</span>])</span>
+<span id="cb2-3"><a href="#cb2-3"></a>r3_0 <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="fl">0.0</span>])</span>
+<span id="cb2-4"><a href="#cb2-4"></a>v1_0 <span class="op">=</span> np.array([<span class="fl">0.466203685</span>, <span class="fl">0.43236573</span>])</span>
+<span id="cb2-5"><a href="#cb2-5"></a>v2_0 <span class="op">=</span> np.array([<span class="fl">0.466203685</span>, <span class="fl">0.43236573</span>])</span>
+<span id="cb2-6"><a href="#cb2-6"></a>v3_0 <span class="op">=</span> np.array([<span class="op">-</span><span class="fl">0.93240737</span>, <span class="op">-</span><span class="fl">0.86473146</span>])</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 
