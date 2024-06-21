@@ -42,7 +42,7 @@ print("55 inç = %1.1f cm' dir." %sonuc)
 
 sonuc2= cemberinAlani_cm2(3); print("3 cm yarıçaplı bir dairenin alanı %1.3f cm2 dir." %sonuc2)
 # cemberinAlani_cm2() fonksiyonunda pi sayısı tanımlanmıştı. O pi sayısını çağıralım.
-print(pi) #! ÇALIŞMAYACAK
+#print(pi) #! ÇALIŞMAYACAK
 #---
 
 baslangictakiHız_m_s=0
