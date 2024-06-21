@@ -210,21 +210,22 @@ Test için "denemeVeri.txt" adında bir dosya oluşturun ve içine aşağıdaki 
 Bu kodun çalışması için aynı klasörün içerisinde "denemeVeri.txt" dosyası olması gerekir.
 :::
 
-```{python}
-with open("assets/denemeVeri.txt", "r") as asddasd:
+```python
+with open("denemeVeri.txt", "r") as asddasd:
     print(asddasd.read())
 ```
 
-```{python}
-with open("assets/denemeVeri.txt", "r") as file1:
+```python
+with open("denemeVeri.txt", "r") as file1:
     satirlar= file1.readlines() # Satırları okur.
 print(satirlar)
 ```
 
 
 Her satırın sonunda alt satıra geç anlamına gelen '\n' karakteri vardır. Eğer bir satırın sonunda '\n' karakteri varsa o satırın sonunda bir alt satıra geçilmiştir. 
-```{python}
-with open("assets/denemeVeri.txt", "r") as file1:
+
+```python
+with open("denemeVeri.txt", "r") as file1:
     satirlar= file1.readlines() # Satırları okur.
 for satir in satirlar:
     print(satir) # Satırları ekrana yazdırır.
@@ -237,16 +238,17 @@ for itSatir in range(len(satirlar)):
 ```
 
 Dosyanın içindeki veriyi satır satır okumak için `readline()` fonksiyonu kullanılır. Bu fonksiyon her çağrıldığında bir satır okur.
-```{python}
-with open("assets/denemeVeri.txt", "r") as file1:
+
+```python
+with open("denemeVeri.txt", "r") as file1:
     print(file1.readline()) # Dosyanın ilk satırını okur.
     print(file1.readline()) # Dosyanın ikinci satırını okur.
 ```
 
 `readline()` fonksiyonu ile dosyanın içindeki veriyi satır satır okumak için aşağıdaki kodu kullanabilirsiniz.
 
-```{python}
-with open("assets/denemeVeri.txt", "r") as file1:
+```python
+with open("denemeVeri.txt", "r") as file1:
     a=file1.readline(4)
     b=file1.readline(4)
     print(a,b) # Dosyanın ilk satırının ilk 5 karakterini okur. 
@@ -263,7 +265,7 @@ Dosyaya yazmak için ise iki farklı yöntem vardır.
 
 Yazılacak veri `write()` fonksiyonu ile dosyaya yazılır.
 
-```{python}
+```python
 # "w" modu ile dosya açıldı ve veri yazıldı.
 with open("denemeVeri2.txt", "w") as file2:
     file2.write("Birinci veri.\n")
@@ -271,7 +273,7 @@ with open("denemeVeri2.txt", "w") as file2:
 
 Dosyanın sonuna yazmak için `a` argümanı kullanılır.
 
-```{python}
+```python
 # "a" modu ile dosya açıldı ve veri eklendi.
 with open("denemeVeri2.txt", "a") as file2:
     file2.write("Bu dosyaya yeni bir satır eklendi.")
@@ -285,7 +287,7 @@ with open("denemeVeri2.txt", "r") as file2:
 `w` modu ile dosya açıldığında dosya içeriği silinir ve dosyaya yazmaya başlanır. Eğer dosya yoksa yeni bir dosya oluşturulur.
 :::
 
-```{python}
+```python
 # "w" modu ile dosya açıldı ve tüm içerik silindi!.
 with open("denemeVeri2.txt", "w") as file2:
     file2.write("İkinci veri.")
