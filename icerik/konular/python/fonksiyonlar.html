@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>Bilgisayarlı Yöntemler - Adi Diferansiyel Denklemler</title>
+<title>Bilgisayarlı Yöntemler - Fonksiyonlar</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,30 +21,64 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" rel="next">
-<link href="../../icerik/konular/python/alistirmalar-problemler.html" rel="prev">
-<link href="../../resimler/favicon.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../icerik/konular/python/alistirmalar-problemler.html" rel="next">
+<link href="../../../icerik/konular/python/temel-terimler.html" rel="prev">
+<link href="../../../resimler/favicon.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -73,37 +107,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -115,7 +120,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html">Python</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/python/fonksiyonlar.html">Fonksiyonlar</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -129,8 +134,8 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../resimler/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../resimler/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/bulmust/bilgisayarli-yontemler" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
@@ -161,13 +166,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/izlence.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/izlence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İzlence</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/bilYonMod.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/bilYonMod.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python Modülü</span></a>
   </div>
 </li>
@@ -184,7 +189,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/python.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -193,25 +198,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/giris-degiskenler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/giris-degiskenler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Giriş - Değişkenler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/temel-terimler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/temel-terimler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Temel Terimler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/fonksiyonlar.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/fonksiyonlar.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Fonksiyonlar</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Alıştırmalar - Problemler - 1</span></a>
   </div>
 </li>
@@ -219,7 +224,7 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/adi-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link active">
+            <a href="../../../icerik/konular/adi-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Adi Diferansiyel Denklemler</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -228,49 +233,49 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Giriş</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Euler Yöntemi</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Denklem Sistemleri</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - İkinci Dereceden Diferansiyel Denklemler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Runge-Kutta Yöntemleri</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Giriş</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Atış Yöntemi</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Sonlu Farklar Yöntemi</span></a>
   </div>
 </li>
@@ -278,7 +283,7 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/fourier-analizi.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/fourier-analizi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fourier Analizi</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -287,31 +292,31 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Giriş</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">KFD - Kesikli Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HFD - Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">THFD - Ters Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Uygulama - Ses Dalgaları</span></a>
   </div>
 </li>
@@ -319,7 +324,7 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/veri-analizi.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/veri-analizi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Veri Analizi</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -328,19 +333,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/veri-analizi/pandas-giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Giris</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/veri-analizi/pandas-veri-manipulasyonu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipulasyonu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Veri Manipülasyonu</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/veri-analizi/pandas-uygulama.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-uygulama.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Uygulama</span></a>
   </div>
 </li>
@@ -348,7 +353,7 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/istatistik.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/istatistik.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İstatistik</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -357,43 +362,43 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/temel-kavramlar.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/temel-kavramlar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Temel Kavramlar</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/uygulama-thinkstat2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/uygulama-thinkstat2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Uygulama - thinkstat2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/olasilik-kutle-fonksiyonu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/olasilik-kutle-fonksiyonu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Olasılık Kütle Fonksiyonu</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kümülatif Dağılım Fonksiyonu</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/dagilimlarin-modellenmesi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/dagilimlarin-modellenmesi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dağılımlarin Modellenmesi</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/scipy-stats.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/scipy-stats.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">scipy - stats</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/hipotez-testi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/hipotez-testi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hipotez Testi</span></a>
   </div>
 </li>
@@ -411,19 +416,19 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#adi-diferansiyel-denklemler" id="toc-adi-diferansiyel-denklemler" class="nav-link active" data-scroll-target="#adi-diferansiyel-denklemler">Adi Diferansiyel Denklemler</a>
-  <ul class="collapse">
-  <li><a href="#örnek" id="toc-örnek" class="nav-link" data-scroll-target="#örnek">Örnek</a></li>
-  </ul></li>
+  <li><a href="#matematiksel-fonksiyonlar" id="toc-matematiksel-fonksiyonlar" class="nav-link active" data-scroll-target="#matematiksel-fonksiyonlar">Matematiksel Fonksiyonlar</a></li>
+  <li><a href="#modüller" id="toc-modüller" class="nav-link" data-scroll-target="#modüller">Modüller</a></li>
+  <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a></li>
+  <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/python/fonksiyonlar.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html">Python</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/python/fonksiyonlar.html">Fonksiyonlar</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Adi Diferansiyel Denklemler</h1>
+<h1 class="title">Fonksiyonlar</h1>
 </div>
 
 
@@ -452,47 +457,185 @@ window.Quarto = {
 </header>
 
 
-<section id="adi-diferansiyel-denklemler" class="level2">
-<h2 class="anchored" data-anchor-id="adi-diferansiyel-denklemler">Adi Diferansiyel Denklemler</h2>
-<p>Aşağıdaki gibi bir adet diferansiyel denklem veya denklem sistemimiz olsun.</p>
-<p><span class="math display">\[
-\begin{equation}
-    \frac{d}{dx}y(x) = F(x,y)
-\end{equation}
-\]</span></p>
-<ul>
-<li>Bu denklemi çözmek demek sağ ve sol tarafın integralini almak demektir.</li>
-<li>Bu denklemi çözmek demek <em>sayısal</em> olarak <span class="math inline">\(y(x)\)</span> fonksiyonunu bulmak demektir. Yani istenilen bir x değeri için <span class="math inline">\(y(x)\)</span> fonksiyonunun değerini elde ederiz.</li>
-<li><span class="math inline">\(y(x)\)</span> ve <span class="math inline">\(F(x,y)\)</span> birer vektör olabilir. Örneğin <span class="math inline">\(\vec{y}(x) = (y_{1}(x), y_{2}(x))\)</span>.</li>
-<li>İkinci dereceden diferansiyel denklemleri çözmek için denklemi iki adet birinci dereceden diferansiyel denkleme indirgeme yapmamız gerekmektedir.</li>
-</ul>
-<p><span class="math display">\[
-\begin{align*}
-    \frac{d^{2}}{dx^{2}}y(x) =&amp; F(x,y)\\
-    \frac{d}{dx}y(x) =&amp; v(x,y) \qquad \text{ve} \qquad \frac{d}{dx}v(x) = F(x,y)
-\end{align*}
-\]</span></p>
-<ol type="1">
-<li>Çözüme başlamak için fonksiyonun başlangıçtaki değerine ihtiyacınız vardır; <strong>Başlangıç Değer Problemi, BDP (IVP)</strong></li>
-<li>Çözümün sınırlarında hangi değerler aldığını bilerek de fonksiyonu elde edebiliriz; <strong>Sınır Değer Problemi, SDP (BVP)</strong></li>
-</ol>
-<section id="örnek" class="level3">
-<h3 class="anchored" data-anchor-id="örnek">Örnek</h3>
-<ul>
-<li>Başlangıç değer problemi:</li>
-</ul>
-<p><span class="math display">\[
-y''(x)= -y, \qquad y(0)=1, \qquad y'(0)=0 \text{.}
-\]</span></p>
-<ul>
-<li>Sınır değer problemi:</li>
-</ul>
-<p><span class="math display">\[
-y''(x)= -y, \qquad y(0)=1, \qquad y'(\pi)=0 \text{.}
-\]</span></p>
-
-
+<p>Fonksiyonlar bir kod bloğunu tekrar tekrar yazmamızı engeller. Fonksiyonlar yazılırken tıpkı matematikteki fonksiyonlar gibi değişkenler belirlenir ve fonksiyon içerisinde bu değişkenler kullanılır.</p>
+<p>Fonksiyon oluştururken <code>def</code> anahtar kelimesi kullanılır ve en sonuna <code>:</code> koyulur.</p>
+<p>Bir fonksiyon içerisinde yaptığımız işlemden sonra ana koda bir sayı vs.&nbsp;döndürmek istenirse <code>return</code> kullanılır.</p>
+<p>Fonksiyonlar genellikle betiğin başına yazılır. Ana fonksiyon ise altına yazılır.</p>
+<p>Fonksiyonlar içerisinde tanımlanan değişkenler, fonksiyon dışarısında kullanılamaz.</p>
+<p>Fonksiyonların çalışması için gereken değişkenine varsayılan (default) bir değer atanabilir. Bunun için fonksiyonu tanımlarken o değişkene bir atama yapılması gerekir. Varsayılan değerler hep sona yazılır.</p>
+<div id="4073ebdc" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Fonksiyon</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">def</span> merhabaDunyaYazdir():</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    <span class="bu">print</span>(<span class="st">"Merhaba Dünya!"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Bir değer döndüren fonksiyon</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="kw">def</span> incdenCMye_cevir(var1_inc):</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    <span class="cf">return</span> var1_inc<span class="op">*</span> <span class="fl">2.54</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># Fonksiyon içerisinde tanımlanan fonksiyonun dışarıda kullanılamaması</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="kw">def</span> cemberinAlani_cm2(r_cm):</span>
+<span id="cb1-11"><a href="#cb1-11"></a>    pi<span class="op">=</span> <span class="fl">3.14</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="cf">return</span> pi<span class="op">*</span> r_cm<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co"># Varsayılan bir değişken içeren fonksiyon</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="kw">def</span> serbestDusme_hizHesapla_m_s(v0_m_s, t_s, g_m_s2<span class="op">=</span> <span class="fl">9.8</span>):</span>
+<span id="cb1-16"><a href="#cb1-16"></a>    <span class="cf">return</span> v0_m_s<span class="op">+</span> g_m_s2<span class="op">*</span> t_s</span>
+<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co"># Fonksiyonları çağıralım</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>merhabaDunyaYazdir()</span>
+<span id="cb1-20"><a href="#cb1-20"></a></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="co"># --</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>sonuc <span class="op">=</span> incdenCMye_cevir(<span class="dv">55</span>)</span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="bu">print</span>(<span class="st">"55 inç = </span><span class="sc">%1.1f</span><span class="st"> cm' dir."</span> <span class="op">%</span>sonuc)</span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="co"># --</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a></span>
+<span id="cb1-26"><a href="#cb1-26"></a>sonuc2<span class="op">=</span> cemberinAlani_cm2(<span class="dv">3</span>)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"3 cm yarıçaplı bir dairenin alanı </span><span class="sc">%1.3f</span><span class="st"> cm2 dir."</span> <span class="op">%</span>sonuc2)</span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># cemberinAlani_cm2() fonksiyonunda pi sayısı tanımlanmıştı. O pi sayısını çağıralım.</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="co">#print(pi) #! ÇALIŞMAYACAK</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="co">#---</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a>baslangictakiHız_m_s<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a>zaman_s<span class="op">=</span><span class="dv">3</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a>sonuc3<span class="op">=</span> serbestDusme_hizHesapla_m_s(baslangictakiHız_m_s, zaman_s)</span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="bu">print</span>(<span class="ss">f"DÜNYADA: V0= </span><span class="sc">{</span>baslangictakiH<span class="sc">ı</span>z_m_s<span class="sc">}</span><span class="ss">, t= </span><span class="sc">{</span>zaman_s<span class="sc">}</span><span class="ss">, için H=</span><span class="sc">{</span>sonuc3<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="bu">print</span>(<span class="ss">f"DÜNYADA: V0= </span><span class="sc">{</span>baslangictakiH<span class="sc">ı</span>z_m_s<span class="sc">}</span><span class="ss">, t= </span><span class="sc">{</span>zaman_s<span class="sc">}</span><span class="ss">, için H=</span><span class="sc">{</span>sonuc3<span class="sc">:.2f}</span><span class="ss">"</span>) <span class="co"># Değişkenin yanında .2f yazarak virgülden sonra iki basamağı yazılması sağlanır.</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="co"># --</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a></span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="co"># Bu fonksiyonu Ay koşulları için çağıralım</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a>baslangictakiHız_Mer <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a>zaman_s <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a>g_AY_m_s2<span class="op">=</span> <span class="fl">1.625</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a>sonuc4 <span class="op">=</span> serbestDusme_hizHesapla_m_s(baslangictakiHız_Mer, zaman_s, g_AY_m_s2)</span>
+<span id="cb1-43"><a href="#cb1-43"></a><span class="bu">print</span>(<span class="ss">f"AYDA: V0= </span><span class="sc">{</span>baslangictakiH<span class="sc">ı</span>z_Mer<span class="sc">}</span><span class="ss">, t=</span><span class="sc">{</span>zaman_s<span class="sc">}</span><span class="ss">, g=</span><span class="sc">{</span>g_AY_m_s2<span class="sc">}</span><span class="ss"> için H=</span><span class="sc">{</span>sonuc4<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Merhaba Dünya!
+55 inç = 139.7 cm' dir.
+3 cm yarıçaplı bir dairenin alanı 28.260 cm2 dir.
+DÜNYADA: V0= 0, t= 3, için H=29.400000000000002
+DÜNYADA: V0= 0, t= 3, için H=29.40
+AYDA: V0= 0, t=3, g=1.625 için H=4.875</code></pre>
+</div>
+</div>
+<p>Kısa ve tek satırlık fonksiyonlar için <code>lambda</code> anahtar kelimesi kullanılır. <code>lambda</code> değişkeni yazıldıktan sonra boşluk bırakıp değişkenler yazılır ve <code>:</code> koyulur. Ardından yazılanlar fonksiyonun işlevini tanımlar. <code>lambda</code> fonksiyonlarında <code>return</code> kullanılmaz. Otomatik olarak yapılan işlem döndürülür.</p>
+<div id="966ad8c0" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Kısa yazılmış lambda fonksiyonu</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>kareAl <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="bu">print</span>(<span class="st">"3^2="</span>, kareAl(<span class="dv">3</span>))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3^2= 9</code></pre>
+</div>
+</div>
+<section id="matematiksel-fonksiyonlar" class="level2">
+<h2 class="anchored" data-anchor-id="matematiksel-fonksiyonlar">Matematiksel Fonksiyonlar</h2>
+<p>Python içerisinde bulunan (built-in) bazı matematiksel fonksiyolar vardır. Bu fonksiyonlar aşağıdaki gibidir.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Fonksiyonun Adı</strong></th>
+<th style="text-align: center;"><strong>İşlevi</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>abs()</code></td>
+<td style="text-align: center;">Mutlak değer</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>round()</code></td>
+<td style="text-align: center;">Yuvarlama</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>min()</code></td>
+<td style="text-align: center;">En küçük değer</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>max()</code></td>
+<td style="text-align: center;">En büyük değer</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>sum()</code></td>
+<td style="text-align: center;">Toplam</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>pow()</code> (veya <code>**</code>)</td>
+<td style="text-align: center;">Üs alma</td>
+</tr>
+</tbody>
+</table>
+<p>::: {.callout-note} karşılaştırma fonksiyonu <code>cmp(a,b)</code> python 3.0’dan itibaren kaldırılmıştır.</p>
+<div id="2db9422a" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>float1<span class="op">=</span> <span class="op">-</span><span class="fl">5.6</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>list1<span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="bu">print</span>(<span class="st">"abs(float1)="</span>, <span class="bu">abs</span>(float1)) <span class="co"># 5.6</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="bu">print</span>(<span class="st">"round(float1)="</span>, <span class="bu">int</span>(float1)) <span class="co"># -6</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="bu">print</span>(<span class="st">"min(list1)="</span>, <span class="bu">min</span>(list1)) <span class="co"># 1</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="bu">print</span>(<span class="st">"max(list1)="</span>, <span class="bu">max</span>(list1)) <span class="co"># 5</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="bu">print</span>(<span class="st">"sum(list1)="</span>, <span class="bu">sum</span>(list1)) <span class="co"># 15</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="bu">print</span>(<span class="st">"3^2="</span>, <span class="bu">pow</span>(<span class="dv">3</span>,<span class="dv">2</span>)) <span class="co"># 9</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="bu">print</span>(<span class="st">"3^2="</span>, <span class="dv">3</span><span class="op">**</span><span class="dv">2</span>) <span class="co"># 9</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>abs(float1)= 5.6
+round(float1)= -5
+min(list1)= 1
+max(list1)= 5
+sum(list1)= 15
+3^2= 9
+3^2= 9</code></pre>
+</div>
+</div>
 </section>
+<section id="modüller" class="level2">
+<h2 class="anchored" data-anchor-id="modüller">Modüller</h2>
+<p>Modüller bir dosyadaki fonksiyonları ve değişkenleri başka dosyalarda kullanmamızı sağlar.</p>
+<p>Modüllerin kullanılması için <code>import</code> anahtar kelimesi kullanılır.</p>
+<p>Modüllerin içerisindeki fonksiyonlar, değişkenler <code>.</code> ile çağrılır. Örneğin <code>math</code> modülü içerisindeki <code>pi</code> değişkeni <code>math.pi</code> şeklinde çağrılır.</p>
+<p>Modüller betiklerin başında yazılır. Birden fazla modül kullanılacaksa, modüllerin içerisindeki değişkenler ve fonksiyonların karışmaması için <code>as</code> anahtar kelimesi kullanılır. import math as m</p>
+<div id="172e2903" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> math <span class="im">as</span> m</span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="bu">print</span>(<span class="ss">f"Pi sayısı=  </span><span class="sc">{</span>m<span class="sc">.</span>pi<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="bu">print</span>(<span class="ss">f"e sayısı = </span><span class="sc">{</span>m<span class="sc">.</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="bu">print</span>(<span class="ss">f"2^3      = </span><span class="sc">{</span>m<span class="sc">.</span><span class="bu">pow</span>(<span class="dv">2</span>,<span class="dv">3</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Pi sayısı=  3.141592653589793
+e sayısı = 2.718281828459045
+2^3      = 8.0</code></pre>
+</div>
+</div>
+<p><code>math</code>, <code>numpy</code> gibi modüller Python komütesi tarafından geliştirilen modüllerdir. Bunların dışında kendi modüllerimizi de oluşturabiliriz. Bunun için farklı bir dosyada fonksiyonlar ve değişkenler tanımlanır. Bu dosyayı ana betikte <code>import</code> anahtar kelimesi kullanılarak çağırıp kullanabiliriz.</p>
+</section>
+<section id="alıştırma-1" class="level2">
+<h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h2>
+<p>Aşağıdaki alıştırmaları sırayla yapınız.</p>
+<ol type="1">
+<li><code>araAlistirma2_Modul.py</code> dosyasını oluşturun.
+<ol type="1">
+<li>Bu dosyaya <code>al_karesi()</code> fonksiyonunu tanımlayın. Bu fonksiyon bir sayı alsın ve karesini döndürsün.</li>
+<li>Bu dosyaya <code>al_faktoriyel()</code> fonksiyonunu tanımlayın. Bu fonksiyon bir sayı alsın ve faktöriyelini döndürsün.</li>
+<li>Bu dosyaya <code>kredi_mezunOlmakIcinGerekenAKTS</code> değişkeni tanımlayın. Bu değişkenin değeri mezun olmanız için gereken kredi sayısı olsun.</li>
+<li>Bu dosyanın içerisinde <code>if __name__ == "__main__":</code> <strong>bloğu bulunmasın</strong>. Bu blok <code>araAlistirma2_Modul.py</code> dosyasının modül değil çalıştırılabilir betik olduğu anlamına gelir.</li>
+</ol></li>
+<li>Aynı klasörün içerisine <code>araAlistirma2_Ana.py</code> dosyası oluşturun.
+<ol type="1">
+<li><code>araAlistirma2_Modul.py</code> dosyasını çağırın yani <code>import</code> edin.</li>
+<li>Import edilen modüle <code>denemeModul</code> adı verin.</li>
+<li>Bu dosyanın içerisinde <code>if __name__ == "__main__":</code> <strong>bloğu bulunsun</strong>. Tüm işlemlerinizi <code>if __name__ == "__main__":</code> ile oluşturduğunuz bloğa yazın.</li>
+<li><code>denemeModul</code> modülünün içerisindeki <code>al_karesi()</code> fonksiyonunu kullanarak 5 sayısının karesini ekrana yazdırın.</li>
+<li><code>denemeModul</code> modülünün içerisindeki <code>al_faktoriyel()</code> fonksiyonunu kullanarak 5 sayısının faktöriyelini ekrana yazdırın.</li>
+<li><code>denemeModul</code> modülünün içerisindeki <code>kredi_mezunOlmakIcinGerekenAKTS</code> değişkenini kullanarak mezun olmanız için gereken kredi sayısını ekrana yazdırın.</li>
+</ol></li>
+</ol>
+</section>
+<section id="kaynaklar" class="level2">
+<h2 class="anchored" data-anchor-id="kaynaklar">Kaynaklar</h2>
+<ol type="1">
+<li><a href="https://towardsdatascience.com/jypyter-notebook-shortcuts-bf0101a98330">Jupyter Kısa yolları</a></li>
+<li><a href="https://www.w3schools.com/python/">W3Schools</a></li>
+<li><a href="https://www.geeksforgeeks.org/python-programming-language/">GeeksForGeeks</a></li>
+</ol>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -1058,13 +1201,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../icerik/konular/python/alistirmalar-problemler.html" class="pagination-link" aria-label="Alıştırmalar - Problemler - 1">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Alıştırmalar - Problemler - 1</span>
+      <a href="../../../icerik/konular/python/temel-terimler.html" class="pagination-link" aria-label="Temel Terimler">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Temel Terimler</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="pagination-link" aria-label="BDP - Giriş">
-        <span class="nav-page-text">BDP - Giriş</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="pagination-link" aria-label="Alıştırmalar - Problemler - 1">
+        <span class="nav-page-text">Alıştırmalar - Problemler - 1</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1076,7 +1219,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/python/fonksiyonlar.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>

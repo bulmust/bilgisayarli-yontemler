@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>Bilgisayarlı Yöntemler - SDP - Atış Yöntemi</title>
+<title>Bilgisayarlı Yöntemler - Giriş - Değişkenler</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" rel="next">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" rel="prev">
+<link href="../../../icerik/konular/python/temel-terimler.html" rel="next">
+<link href="../../../icerik/konular/python.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -107,35 +107,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../../styles.css">
 </head>
@@ -149,7 +120,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html">SDP - Atış Yöntemi</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html">Python</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/python/giris-degiskenler.html">Giriş - Değişkenler</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -227,7 +198,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/python/giris-degiskenler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/giris-degiskenler.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Giriş - Değişkenler</span></a>
   </div>
 </li>
@@ -298,7 +269,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Atış Yöntemi</span></a>
   </div>
 </li>
@@ -445,30 +416,18 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#atış-yöntemi" id="toc-atış-yöntemi" class="nav-link active" data-scroll-target="#atış-yöntemi">Atış Yöntemi</a>
-  <ul class="collapse">
-  <li><a href="#çözüme-giden-adımları" id="toc-çözüme-giden-adımları" class="nav-link" data-scroll-target="#çözüme-giden-adımları">Çözüme Giden Adımları</a></li>
-  </ul></li>
-  <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a>
-  <ul class="collapse">
-  <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
-  </ul></li>
-  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
-  <ul class="collapse">
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
-  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
-  </ul></li>
-  <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
+  <li><a href="#temel-kurallar-pep8" id="toc-temel-kurallar-pep8" class="nav-link active" data-scroll-target="#temel-kurallar-pep8">Temel Kurallar (PEP8)</a></li>
+  <li><a href="#değişkenler-variables" id="toc-değişkenler-variables" class="nav-link" data-scroll-target="#değişkenler-variables">Değişkenler (Variables)</a></li>
+  <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/python/giris-degiskenler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html">SDP - Atış Yöntemi</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html">Python</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/python/giris-degiskenler.html">Giriş - Değişkenler</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">SDP - Atış Yöntemi</h1>
+<h1 class="title">Giriş - Değişkenler</h1>
 </div>
 
 
@@ -497,188 +456,311 @@ window.Quarto = {
 </header>
 
 
-<section id="atış-yöntemi" class="level2">
-<h2 class="anchored" data-anchor-id="atış-yöntemi">Atış Yöntemi</h2>
-<p>Aşağıdaki denklemi çözelim.</p>
-<p><span class="math display">\[
-y'' = f(x,y(x),y'(x)), \qquad y(a)=\alpha, \qquad y(b)=\beta \text{.}
-\]</span></p>
-<p>Bu denklemi başlangıç değer problemine çevirmeye çalışalım.</p>
-<p><span class="math display">\[
-y'' = f(x,y(x),y'(x)), \qquad y(a)=\alpha, \qquad y'(a)=u \text{.}
-\]</span></p>
-<p>Bulmamız gereken değer <span class="math inline">\(u\)</span> değeridir. Bu değeri tahmin edeceğiz. Buradan diferansiyel denklemi tıpkı başlangıç değer problemi gibi <span class="math inline">\(a\)</span>’dan <span class="math inline">\(b\)</span>’ye kadar çözeceğiz. Bulduğumuz çözümün son noktasındaki değerde yani <span class="math inline">\(y_{cozum}(b)\)</span>, <span class="math inline">\(\beta\)</span>’yu bulana kadar bu işleme devam edeceğiz.</p>
-<p>Sistematik bir tahmin yürütme mekanizması kurmamız lazım. Bunun için <span class="math inline">\(y(b)\)</span>, <span class="math inline">\(u\)</span>’nun bir fonksiyonu olsun tanımlaması yapalım.</p>
-<p><span class="math display">\[
-y(b)= \theta(u) \text{.}
-\]</span></p>
-<p>Buradan <span class="math inline">\(u\)</span> değerini bulmak için yukarıda verilen denklemin kökünü bulmamız lazım.</p>
-<p><span class="math display">\[
-\theta(u)- \beta \equiv r(u) = 0 \text{.}
-\]</span></p>
-<p>Buradaki <span class="math inline">\(r(u)\)</span> fonksiyonuna <em>artık fonksiyon</em> (residual function) denir. Bu fonksiyonun kökü <span class="math inline">\(u\)</span> değeridir. <span class="math inline">\(u\)</span> değerini biliyorsak sınır değer probleminden çevirdiğimiz başlangıç değer problemini çözebiliriz.</p>
-<p><strong>Artık fonksiyonunun kökü</strong> <span class="math inline">\(u\)</span> değerini verecek. Kök bulmak için <em>Ridder’in yöntemi</em> kullanabiliriz. (Bisection veya Newton-Raphson yöntemleri değil.)</p>
-<section id="çözüme-giden-adımları" class="level3">
-<h3 class="anchored" data-anchor-id="çözüme-giden-adımları">Çözüme Giden Adımları</h3>
+<p>Python karmaşık bir yapıya sahip, üst seviye bir programlama dilidir. Bu dili geliştirenler belli standartlar oluşturmuştur. Bu standartlar hem geliştiriciler hem de kullanıcılar için yol göstericidir. Bu kurallara genel adıyla PEP adı verilir. Ayrıntılı bilgi için <a href="https://peps.python.org/">resmi pep sayfasını</a> ziyaret edebilirsiniz.</p>
+<section id="temel-kurallar-pep8" class="level2">
+<h2 class="anchored" data-anchor-id="temel-kurallar-pep8">Temel Kurallar <a href="https://www.python.org/dev/peps/pep-0008/">(PEP8)</a></h2>
+<p>Aşağıda Python programlama dilinde kullanılan bazı temel kurallar listelenmiştir. Bu kuralların bazıları zorunlu olmakla beraber bazıları tavsiye niteliğindedir.</p>
 <ol type="1">
-<li>İkinci dereceden diferansiyel denklemimiz var. <span class="math inline">\(y''=f(x,y(x),y')(x)\)</span>.</li>
-<li>Çözüm kümesinin sınır değerlerini biliyoruz. <span class="math inline">\(y(a)=\alpha\)</span>, <span class="math inline">\(y(b)=\beta\)</span>.</li>
-<li>Bizim çözebildiğimiz denklem tipinde başlangıç koşulları <span class="math inline">\(y(a)=\alpha\)</span> ve <span class="math inline">\(y'(a)=u\)</span> şeklinde olmalı.</li>
-<li><span class="math inline">\(u\)</span> değerini tahmin edelim.</li>
-<li>Tahmin ettiğimiz <span class="math inline">\(u\)</span> değerini kullanarak <span class="math inline">\(y''=f(x,y(x),y'(x))\)</span> denklemini <span class="math inline">\(b\)</span> noktasına kadar çözelim.</li>
-<li>Elde ettiğimiz çözümün <span class="math inline">\(b\)</span>’deki değeri <span class="math inline">\(y(b)=\beta\)</span> değerini veriyor mu? Eğer vermiyorsa <span class="math inline">\(u\)</span> değerini değiştirerek tekrar deneyelim.</li>
-<li><span class="math inline">\(u\)</span>’nun bu değişimi sanki bir fonksiyon gibi olsun. Yukarıda bahsettiğimiz <span class="math inline">\(\theta(u)\)</span> fonksiyonu budur.</li>
-<li><span class="math inline">\(\theta(u)\)</span> fonksiyonu <span class="math inline">\(\beta\)</span>’ya eşit olursa <span class="math inline">\(u\)</span> değerini bulduk demektir. Yani <span class="math inline">\(\theta(u)- \beta = 0\)</span> denkleminin kökünü bulmaya çalışıyoruz.</li>
-<li><span class="math inline">\(y(b)=\beta\)</span> değerine <em>yeteri kadar</em> yaklaştı ise <span class="math inline">\(u\)</span> değerini yani başlangıç koşulunu yani <span class="math inline">\(y(x)\)</span> fonksiyonunu bulduk demektir.</li>
-<li>Denklem çözüldü.</li>
+<li>Python’da kodlar satır satır çalışır.</li>
+<li>Boş satırlar çalışmaz yani önemsizdir.</li>
+<li><code>#</code> işareti ile yorum satırı yazılır.</li>
+<li><code>;</code> ile birden fazla komut aynı satırda yazılabilir. Ancak bu kullanım tavsiye edilmez.</li>
+<li>Değişkenlere atamalarda <code>=</code> işareti kullanılır.</li>
+<li>Değişkenlerin ismi sayı ile başlayamaz.</li>
+<li>Değişkenlerin ismi boşluk içeremez.</li>
+<li>Değişkenlerin ismi özel yalın olmalı ve mümkün olduğunca özel karakterlerden kaçınılmalıdır. <code>_</code> kullanılabilir. Değişken adı verme kabulleri (convension) için <a href="https://www.python.org/dev/peps/pep-0008/#naming-conventions">(PEP8-Naming-conventions)</a> adlı bağıntıya gidiniz. Topluluğun benimsediği kabuller için <a href="https://en.wikipedia.org/wiki/Naming_convention_(programming)">buraya</a> bakabilirsiniz.</li>
+<li>Eğer çok kelime içeren bir değişken ismi kullanılacak ise tüm kod boyunca aynı format kullanılması tavsiye edilir. Örneğin: <code>firstName</code>, <code>lastName</code> gibi veya <code>first_name</code>, <code>last_name</code> gibi.</li>
+<li>Değişkenlerin ismi tanımlı anahtar kelimeler olamaz. Örneğin <code>for</code>, <code>while</code>, <code>if</code>, <code>True</code>, <code>in</code> gibi.</li>
+<li>Eğer satır içerisindeki kodlar çok uzun ise <code>\</code> kullanılarak alt satıra geçilebilir. Bazı durumlarda bu işlem gereksizdir. Örneğin parantez içerisinde uzun bir kod yazılması durumunda <code>\</code> kullanılmayabilir.</li>
+<li><code>for</code>, <code>if</code> gibi komutlardan sonra alt satıra geçildiğinde alt <strong>satırın başına 4 boşluk bırakılmalıdır</strong>. Bu işlemi yapmak için <code>Tab</code> tuşuna basılabilir. (Tab tuşuna basıldığında 4 boşluk (space) bırakması gerekir.)</li>
+<li>Kodun okunaklı olması için uygun yerlerde boşluk kullanılması tavsiye edilir.</li>
+<li>Bu derste yazılan betiklerin (script) dosya uzantısı <code>.py</code> olmalıdır.</li>
+<li>Eğer betik çalıştırıldıktan sonra görevini tamamladı ise sonuna <code>exit()</code> komutu konmalıdır. Bu komut betiği sonlandırmak için kullanılır.</li>
 </ol>
+<p>Diğer tavsiyeler için <a href="https://peps.python.org/pep-0008/#programming-recommendations">“PEP8 Programlama Tavsiyeleri”</a> sayfasına gidiniz.</p>
 </section>
+<section id="değişkenler-variables" class="level2">
+<h2 class="anchored" data-anchor-id="değişkenler-variables">Değişkenler (Variables)</h2>
+<p>Bu ders boyunca sık sık kullanacağımız 3 çeşit değişken tipi olacaktır.</p>
+<ol type="1">
+<li>Tam sayı (integer): <code>int</code></li>
+<li>Ondalık sayı (float): <code>float</code></li>
+<li>Sanal sayı (complex): <code>complex</code></li>
+</ol>
+<p>Herhangi bir değişkene sayı ataması yaparken değişkenin cinsini belirlemeye gerek yoktur (C++ gibi değil). Python otomatik olarak değişkenin cinsini belirler.</p>
+<p>Değişkenlere atananı ekrana yazdırmak için <code>print()</code> fonksiyonu kullanılır.</p>
+<div id="8e8f7833" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># int</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>tamsayi1<span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(tamsayi1)</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># float</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>float1<span class="op">=</span> <span class="fl">5.0</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="bu">print</span>(float1)</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># complex</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>complex1<span class="op">=</span> <span class="dv">5</span> <span class="op">+</span> <span class="ot">0j</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="bu">print</span>(complex1)</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="bu">print</span>(<span class="bu">complex</span>(<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a>digerKarmasikSayi<span class="op">=</span> <span class="ot">5j</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="bu">print</span>(digerKarmasikSayi)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5
+5.0
+(5+0j)
+(3+4j)
+5j</code></pre>
+</div>
+</div>
+<p>Değişken tanımlamarı hard diskte değil RAM’de depolanır. Bunun sebebi değişkenler ile ilgili okuma/yazma işleminin hızlı olması gerekir.</p>
+<p>Değişkenleri silmek (RAM’den) için <code>del</code> komutu kullanılır.</p>
+<div id="36ecb2c4" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>tamsayi1<span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>float1<span class="op">=</span> <span class="fl">5.0</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>complex1<span class="op">=</span> <span class="dv">5</span> <span class="op">+</span> <span class="ot">0j</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">del</span> tamsayi1, float1, complex1 <span class="co"># Değişkenleri siler</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Bir metini (string) bir değişkene atamak için <code>"</code> veya <code>'</code> kullanılır. Bu yöntemlerden bir tanesini seçin ve onu kullanmaya özen gösterin.</p>
+<div id="808f4406" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>str1<span class="op">=</span> <span class="st">"Hello "</span> <span class="co"># string</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>str2<span class="op">=</span> <span class="st">'World'</span> <span class="co"># string</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="bu">print</span>(str1)</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="bu">print</span>(str2)</span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co"># İki stringi birleştirip yazdirir</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="bu">print</span>(str1, str2)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello 
+World
+Hello  World</code></pre>
+</div>
+</div>
+<p>Ekrana bir değişkeni veya string’i yazdırmak için <code>print()</code> fonksiyonu kullanılır. Bu fonksiyonun kullanımı aşağıdakiler gibi olabilir.</p>
+<div id="80c0daad" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="bu">print</span>(<span class="st">"Merhaba Dünya"</span>) <span class="co"># "" kullanarak</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="bu">print</span>(<span class="st">'Merhaba Dünya'</span>) <span class="co"># '' kullanarak</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a>dunyaDegiskeni<span class="op">=</span> <span class="st">'Dünya'</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="bu">print</span>(<span class="st">"Merhaba"</span>, dunyaDegiskeni) <span class="co"># En kolay yolu</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="bu">print</span>(<span class="ss">f"Merhaba </span><span class="sc">{</span>dunyaDegiskeni<span class="sc">}</span><span class="ss">"</span>) <span class="co"># Biz bunu kullanmaya özen göstereceğiz.</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="bu">print</span>(<span class="st">"Merhaba </span><span class="sc">%s</span><span class="st">"</span> <span class="op">%</span>dunyaDegiskeni) <span class="co"># C dilleri gibi</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Merhaba Dünya
+Merhaba Dünya
+Merhaba Dünya
+Merhaba Dünya
+Merhaba Dünya</code></pre>
+</div>
+</div>
+<p>Bir değişkenin türünü öğrenmek için <code>type()</code> fonksiyonu kullanılır. Bu fonksiyonun çıktısı olarak <strong>class</strong> tipinde bir çıktı alınır. Bunun sebebi Python’da çoğu değişkenin bir nesne (object) olmasıdır.</p>
+<div id="2951dd5e" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>tamsayi1 <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>float1 <span class="op">=</span> <span class="fl">5.0</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>complex1 <span class="op">=</span> <span class="dv">5</span> <span class="op">+</span> <span class="ot">0j</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>str1<span class="op">=</span> <span class="st">"Selam"</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="bu">print</span>(<span class="bu">type</span>(tamsayi1))</span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="bu">print</span>(<span class="bu">type</span>(float1))</span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="bu">print</span>(<span class="bu">type</span>(complex1))</span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="bu">print</span>(<span class="bu">type</span>(str1))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'int'&gt;
+&lt;class 'float'&gt;
+&lt;class 'complex'&gt;
+&lt;class 'str'&gt;</code></pre>
+</div>
+</div>
+<p>Herhangi bir değişkenin tipini çevirmek için <code>int()</code>, <code>float()</code>, <code>complex()</code> fonksiyonları kullanılır. Bu fonksiyonların çalışmadığı durumlar olabilir.</p>
+<div id="d4393cb7" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="bu">print</span>(<span class="bu">int</span>(<span class="fl">4.9</span>)) <span class="co"># 4</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="bu">print</span>(<span class="bu">float</span>(<span class="dv">4</span>)) <span class="co"># 4.0</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="bu">print</span>(<span class="bu">complex</span>(<span class="dv">4</span>)) <span class="co"># (4+0j)</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="bu">print</span>(<span class="bu">complex</span>(<span class="dv">41</span>,<span class="dv">5</span>)) <span class="co"># (41+5j)</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="co">#print(int(4+3j)) # int fonksiyonu karmaşık bir sayıyı tam sayıya çeviremez.</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4
+4.0
+(4+0j)
+(41+5j)</code></pre>
+</div>
+</div>
+<p>Mantıksal (“boolean” veya “bool”) değişkenler <code>True</code> ve <code>False</code> değerlerini alabilirler.</p>
+<div id="9a4a9713" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>bool1<span class="op">=</span> <span class="va">True</span> <span class="co"># bool</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>bool2<span class="op">=</span> <span class="va">False</span> <span class="co"># bool</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="bu">print</span>(<span class="bu">type</span>(bool1))</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="bu">print</span>(bool1,bool2)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'bool'&gt;
+True False</code></pre>
+</div>
+</div>
+<p>Birden fazla değişkeni tutmak için iki çeşit dizi (array) kullanacağız. Bunlardan biri listeler (dinamik) diğeri ise demettir (tuple) (statik). Listelerin içindeki eleman sayısı ve elemanları değiştirilirken demetlerin içindeki elemanlar ve eleman sayısı değiştirilemez.</p>
+<p>Demetlerin bu özelliğine <strong>değişmez (immutable)</strong> denir.</p>
+<p>Diğer çeşit diziler ise sözlükler <code>dict</code> <a href="https://www.w3schools.com/python/python_dictionaries.asp">(örnekler için tıklayınız.)</a> ve kümelerdir, <code>set</code> <a href="https://www.w3schools.com/python/python_sets.asp">(örnekler için tıklayınız)</a>.</p>
+<p>Demet (tuple) oluşturmak için normal parantez, <code>()</code> kullanılır. Demet içindeki elemanlara erişmek için köşeli parantez <code>[]</code> kullanılır.</p>
+<div id="d484a695" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>tuple1<span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="co"># tuple</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="bu">print</span>(tuple1[<span class="dv">3</span>]) <span class="co"># 4</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co">#! tuple1[0] = 10 #! Demetler değişmezdir (immutable). Bu kod "TypeError" hatası verir.</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="bu">print</span>(<span class="st">"Ilk elmani"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="bu">print</span>(tuple1[<span class="dv">0</span>])</span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="bu">print</span>(<span class="st">"Son elmani"</span>)</span>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="bu">print</span>(tuple1[<span class="dv">4</span>])</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4
+Ilk elmani
+1
+Son elmani
+5</code></pre>
+</div>
+</div>
+<p>Metinler (string) değişmez (immutable) bir veri tipidir. Bu yüzden metinler üzerinde değişiklik yapmak istediğimizde yeni bir metin oluşturmak gerekir.</p>
+<p>Liste tanımlamak için köşeli parantez, <code>[]</code>, kullanılır. Liste içindeki elemanlara erişmek için de değişkenin yanına <code>[]</code> kullanılarak erişilir.</p>
+<div id="142cf8fe" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>list1<span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>] <span class="co"># list</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="bu">print</span>(list1) <span class="co"># Listenin tüm elemanları</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="bu">print</span>(list1[<span class="dv">0</span>]) <span class="co"># Listenin ilk elemanı</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="bu">print</span>(list1[<span class="dv">3</span>]) <span class="co"># Listenin 3. elemanı</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="bu">print</span>(list1[:]) <span class="co"># Listenin tüm elemanları</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="bu">print</span>(list1[<span class="dv">1</span>:<span class="dv">3</span>]) <span class="co"># Listenin 1. elemanından sona kadar olan elemanları # [2,3]</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="bu">print</span>(list1[::<span class="dv">2</span>]) <span class="co"># Listenin tüm elemanları 2'şer 2'şer atlayarak</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+1
+4
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[2, 3]
+[1, 3, 5, 7, 9]</code></pre>
+</div>
+</div>
+<p>Bir listenin içindeki elemanları değiştirebiliriz. Bunun için değiştirmek istediğimiz elemanın indeksini (index) yazıp onun yerine yeni bir değer yazmamız yeterlidir.</p>
+<div id="f6a70f81" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>list5<span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>]</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="bu">print</span>(list5)</span>
+<span id="cb18-3"><a href="#cb18-3"></a>list5[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">66</span> <span class="co"># Listenin 1. indeksindeki elemanı 66 yapar.</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="bu">print</span>(list5)</span>
+<span id="cb18-5"><a href="#cb18-5"></a>list5[<span class="dv">4</span>:<span class="dv">6</span>] <span class="op">=</span> [<span class="dv">78</span>, <span class="dv">93</span>] <span class="co"># Listenin 4. ve 5. indekslerindeki elemanları 78 ve 93 yapar.</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="bu">print</span>(list5)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 2, 3, 4, 5, 6, 7, 8, 9]
+[1, 66, 3, 4, 5, 6, 7, 8, 9]
+[1, 66, 3, 4, 78, 93, 7, 8, 9]</code></pre>
+</div>
+</div>
+<p>Listelerin sonuna eleman eklemek için <code>append()</code> fonksiyonu kullanılır. Listenin boyutunu arttırır.</p>
+<div id="1220e1ba" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>list2<span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="bu">print</span>(list2)</span>
+<span id="cb20-3"><a href="#cb20-3"></a>list2.append(<span class="dv">125</span>) <span class="co"># Listenin sonuna 125'ü ekler</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="bu">print</span>(list2)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 2, 3]
+[1, 2, 3, 125]</code></pre>
+</div>
+</div>
+<p>Bir listenin sonuna değil de istenilen bir yerine eleman eklemek için <code>insert()</code> fonksiyonunu kullanılar. Listenin boyutunu arttırır.</p>
+<div id="861e9cc3" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>list3<span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="bu">print</span>(list3)</span>
+<span id="cb22-3"><a href="#cb22-3"></a>list3.insert(<span class="dv">1</span>,<span class="dv">66</span>) <span class="co"># Listenin 1. indisi yerine 66'yı ekler ve diğer elemanları kaydırır.</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="bu">print</span>(list3)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 2, 3]
+[1, 66, 2, 3]</code></pre>
+</div>
+</div>
+<p>Bir listenin içinde kaç eleman olduğunu bulmak için <code>len()</code> fonksiyonu kullanılır.</p>
+<div id="0693bfe2" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>list4<span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="bu">print</span>(list4)</span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="bu">print</span>(<span class="bu">len</span>(list4))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 2, 3]
+3</code></pre>
+</div>
+</div>
+<p>Sıralı yazılmış bir liste oluşturmak için <code>list(range())</code> fonksiyonu kullanılır. Sadece <code>range()</code> fonksiyonu kullanıldığında bir liste oluşturulmaz. <code>range()</code> fonksiyonu sadece bir aralık oluşturur ve tek kullanıldığı yer çoğunlukla <code>for</code> döngülerinin içerisidir.</p>
+<div id="111f65d0" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>))) <span class="co"># 0'dan 10'a kadar olan sayıları listeye çevirir !! 10 Dahil değil !!.</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">3</span>,<span class="dv">10</span>))) <span class="co"># 3'ten 10'a kadar olan sayıları listeye çevirir.</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">5</span>,<span class="dv">20</span>,<span class="dv">2</span>))) <span class="co"># 5'den 20'a kadar olan sayıları 2'şer 2'şer atlayarak listeye çevirir.</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">20</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">2</span>))) <span class="co"># 20'den 5'e kadar olan sayıları 2'şer 2'şer atlayarak listeye çevirir.</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="bu">print</span>([<span class="op">*</span><span class="bu">range</span>(<span class="dv">10</span>)])</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[3, 4, 5, 6, 7, 8, 9]
+[5, 7, 9, 11, 13, 15, 17, 19]
+[20, 18, 16, 14, 12, 10, 8, 6]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Uyarı
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Değiştirilebilir (mutable) değişkenler <code>a=b</code> ifadesi ile <code>a</code> değişkenine <code>b</code> değişkeninin değerini atamaz. <code>a</code> değişkeninin değeri <code>b</code> değişkeninin değerini referans eder. Bu demektir ki <code>b</code> değişkeninin değeri değiştiğinde <code>a</code> değişkeninin değeri de değişir.</p>
+</div>
+</div>
+<div id="734c57b0" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>list5<span class="op">=</span> [<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>]  <span class="co"># list5= list([1.0, 2.0, 3.0])</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>list6_degismemesi_gereken<span class="op">=</span> list5 <span class="co"># list5= [1.0, 2.0, 3.0], list6_degismemesi_gereken= [1.0, 2.0, 3.0]</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="bu">print</span>(list6_degismemesi_gereken)</span>
+<span id="cb28-4"><a href="#cb28-4"></a>list5[<span class="dv">0</span>] <span class="op">=</span> <span class="fl">976.0</span> <span class="co"># list5= [976.0, 2.0, 3.0]</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a><span class="bu">print</span>(list6_degismemesi_gereken) <span class="co">#! Değiştirdiğimiz list5'in bir kopyası olan list6_degismemesi_gereken de değişti.</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1.0, 2.0, 3.0]
+[976.0, 2.0, 3.0]</code></pre>
+</div>
+</div>
+<p><strong>İki boyutlu listeler</strong> için iki parantez iç içe kullanılır. İlk parantezin içi ilk satırı, ikinci parantez içi ikinci satırı şeklinde devam eder.</p>
+<p>İki boyutlu listelere matris olarak da bakılabilir.</p>
+<p>İki boyutlu listelerdeki elemanlara erişmek için <code>[]</code> kullanılır. Köşeli parantezin içerisindeki ilk sayı satırı, ikinci sayı sütunu belirtir. Eğer sadece bir sayı yazılırsa o satırın tüm sütunları alınır.</p>
+<div id="8b1b207a" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>list2d_1<span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>],[<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>]]</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="bu">print</span>(list2d_1) <span class="co"># 2 boyutlu liste</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="bu">print</span>(list2d_1[<span class="dv">1</span>]) <span class="co"># 2 boyutlu listede 1. satır</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="bu">print</span>(list2d_1[<span class="dv">1</span>][<span class="dv">2</span>]) <span class="co"># 2 boyutlu listede 1. satırın 2. elemanı</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+[4, 5, 6]
+6</code></pre>
+</div>
+</div>
+<div class="callout-info">
+<p>Yukarıdaki örnekten farklı olarak biz 2 boyutlu listeleri yani matrisleri <code>numpy</code> paketi kullanarak çağıracağız. Bu pakette matris elemanlarına <code>[i][j]</code> olarak değil <code>[i,j]</code> olarak erişiriz.</p>
+</div>
 </section>
 <section id="alıştırma-1" class="level2">
 <h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h2>
-<p>Aşağıda verilen difarensiyel denklemi atış yöntemi ile çözelim. <span class="math display">\[
-y''(t) = -g, \qquad y(0)=0, \qquad y(5)=50 \text{.}
-\]</span></p>
-<section id="çözüm" class="level3">
-<h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<p>Çözüm adımlarından dördüncü olan ile başlayalım. <span class="math inline">\(u\)</span> değerini tahmin edelim. <span class="math inline">\(u=25\)</span> olsun. Bu değerle denklemi çözelim. Çözeceğimiz denklem aşağıdaki gibi olacak.</p>
-<p><span class="math display">\[
-y''(t) = -g, \qquad y(0)=0, \qquad y'(5)=25 \text{.}
-\]</span></p>
-<p>Bu denklemin çözümü</p>
-<p><span class="math display">\[
-\begin{align*}
-    y'(t)&amp;= -gt + C_{1} \text{,} \qquad y'(5)=25 \text{ ,} \\
-         &amp;= -gt + 25 \text{ ,} \\
-     y(x)&amp;= -\frac{gt^2}{2} + 25t + C_{2} \text{,} \qquad y(0)=0 \text{,} \\
-         &amp;= -\frac{gt^2}{2} + 25t \text{.}
-\end{align*}
-\]</span></p>
-<p>Şimdi tahminimiz doğru mu deneyelim. Yani <span class="math inline">\(y(t=5)\)</span> değeri <span class="math inline">\(50\)</span> mi olacak?</p>
-<p><span class="math display">\[
-y(t=5)= -\frac{10\times 25}{2} + 25\times 5 = 0 \ne 50 \text{.}
-\]</span></p>
-<p>Yanlış! Farklı bir <span class="math inline">\(u\)</span> değeri almamız gerekecek. Aynı işlemi <span class="math inline">\(u=40\)</span> ile tekrarlayalım. Sonuç:</p>
-<p><span class="math display">\[
-y(t)=-\frac{gt^2}{2} + 40t
-\]</span></p>
-<p>Olacak denersek eğer <span class="math inline">\(y(5)=75\)</span> olacak ve yanlış olacak.</p>
-<p>Teker teker denemek yerine <span class="math inline">\(u\)</span> değeri sanki bir fonksiyonmuş gibi davranalım.</p>
-<p><span class="math display">\[
-\theta(u) - 50 = 0\text{.}
-\]</span></p>
-<p>O halde <span class="math inline">\(\theta(u)\)</span> fonksiyonu başlangıç değer probleminin çözümüne bağlı. Bunu bir fonksiyon gibi tanımlayıp kökünü bulalım. Bu fonksiyon kodda şöyle tanımlanacak. <code>u</code> değeri girdi olacak. Bu <code>u</code> değerine göre başlangıç değer problemini çözecek. Çözümün son değeri <span class="math inline">\(y(5)\)</span> değeri olacak. Bu değer ile <span class="math inline">\(50\)</span> değeri arasındaki farkı döndürecek. Bu farkın kökünü bulmak için <code>scipy.optimize.ridder(fonksiyon, kok_araligi_baslangic, kok_araligi_bitis)</code> fonksiyonunu kullanacağız.</p>
-<div id="e7fc0232" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> scipy.integrate <span class="im">as</span> scInteg</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> scipy.optimize <span class="im">as</span> scOpt</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Diff. Denk:</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># y'' = -10 , y(0)=0 , y(5)=50</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># Fonksiyon:</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">def</span> fonk_SDP(t, y):</span>
-<span id="cb1-9"><a href="#cb1-9"></a>    <span class="co"># y[0]= y</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>    <span class="co"># y[1]= v</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>    <span class="cf">return</span> np.array([y[<span class="dv">1</span>], <span class="op">-</span><span class="dv">10</span>])</span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co"># Başlangıç Koşulları</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a>t0<span class="op">=</span><span class="fl">0.0</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a>tSon<span class="op">=</span><span class="fl">5.0</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a>y0<span class="op">=</span> <span class="fl">0.0</span>  <span class="co"># y(0) = 0</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a>ySon<span class="op">=</span> <span class="fl">50.</span> <span class="co"># y(5) = 50</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co"># v(0) = u (Bilmiyoruz)</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="co"># Theta fonksiyonu:</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="kw">def</span> thetaFonk(u):</span>
-<span id="cb1-20"><a href="#cb1-20"></a>    <span class="co">#solve_ivp(fonksiyon, t_span, y0)</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a>    <span class="co"># t_span=[t0, tStop] (y(0) ve y(1) değerini biliyoruz.)</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a>    cozum <span class="op">=</span> scInteg.solve_ivp(fonk_SDP, [t0, tSon], [y0, u])</span>
-<span id="cb1-23"><a href="#cb1-23"></a>    </span>
-<span id="cb1-24"><a href="#cb1-24"></a>    <span class="co"># İkinci derece diferansiyel denklemin çözümü</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a>    <span class="co"># cozum.y[0] = y(t)</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a>    <span class="co"># cozum.y[1] = v(t)</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a>    yCozum <span class="op">=</span> cozum.y[<span class="dv">0</span>]</span>
-<span id="cb1-28"><a href="#cb1-28"></a>    <span class="co"># yCozum bir array. Son elemanı yani y(t=5) değeri bizim için önemli.</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a>    <span class="co"># Bu da yCozum[-1] ile alınır.</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a>    <span class="co"># Eğer bulduğumuz yCozum[-1] değeri ySon değerine eşitse u değerini bulduk demektir.</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a>    <span class="cf">return</span> yCozum[<span class="op">-</span><span class="dv">1</span>]<span class="op">-</span> ySon</span>
-<span id="cb1-32"><a href="#cb1-32"></a><span class="co"># ---------------------------</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="co"># Theta fonksiyonunun içerini şöyle düşünelim.</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="co"># Polinom tipi bir g(x)=x^2+4x+4 fonksiyonu olsun. Bunun kökünü şöyle bulurduk.</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a><span class="co">'''</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a><span class="co">def g(x):</span></span>
-<span id="cb1-37"><a href="#cb1-37"></a><span class="co">    return x**2 + 4*x + 4</span></span>
-<span id="cb1-38"><a href="#cb1-38"></a></span>
-<span id="cb1-39"><a href="#cb1-39"></a><span class="co"># Kökünü 0 ile 10 arasında bul.</span></span>
-<span id="cb1-40"><a href="#cb1-40"></a><span class="co">x0, = scOpt.ridder(g, 0, 10)</span></span>
-<span id="cb1-41"><a href="#cb1-41"></a><span class="co">'''</span></span>
-<span id="cb1-42"><a href="#cb1-42"></a><span class="co"># ---------------------------</span></span>
-<span id="cb1-43"><a href="#cb1-43"></a><span class="co"># theta fonksiyonunun kökünü bulalım.</span></span>
-<span id="cb1-44"><a href="#cb1-44"></a>thetaU_kok_v0<span class="op">=</span> scOpt.ridder(thetaFonk, <span class="dv">0</span>, <span class="dv">50</span>)</span>
-<span id="cb1-45"><a href="#cb1-45"></a><span class="co"># Olması gereken başlangıç değeri:</span></span>
-<span id="cb1-46"><a href="#cb1-46"></a><span class="bu">print</span>(<span class="ss">f"v0= </span><span class="sc">{</span>thetaU_kok_v0<span class="sc">}</span><span class="ss"> m/s"</span>)</span>
-<span id="cb1-47"><a href="#cb1-47"></a><span class="co"># Deneyelim. Gerçekten v0 bu değerdeyken y(5)= 50 oluyor mu?</span></span>
-<span id="cb1-48"><a href="#cb1-48"></a>cozum<span class="op">=</span> scInteg.solve_ivp(fonk_SDP, [t0, tSon], [y0, thetaU_kok_v0])</span>
-<span id="cb1-49"><a href="#cb1-49"></a><span class="co"># Son değerleri karşılaştıralım.</span></span>
-<span id="cb1-50"><a href="#cb1-50"></a><span class="bu">print</span>(<span class="ss">f"y(t=5) Bulduğumuz Çözüm: </span><span class="sc">{</span>cozum<span class="sc">.</span>y[<span class="dv">0</span>][<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.1f}</span><span class="ss"> m"</span>)</span>
-<span id="cb1-51"><a href="#cb1-51"></a><span class="bu">print</span>(<span class="ss">f"y(t=5) Gerçek Değer    : </span><span class="sc">{</span>ySon<span class="sc">}</span><span class="ss"> m"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>v0= 35.000000000001016 m/s
-y(t=5) Bulduğumuz Çözüm: 50.0 m
-y(t=5) Gerçek Değer    : 50.0 m</code></pre>
-</div>
-</div>
-<p>Python ile ne yaptık?</p>
 <ol type="1">
-<li>Sanki başlangıç değer problemi çözer gibi fonksiyon tanımladık.</li>
-<li>Başlangıç koşullarını tanımladık. İkinci başlangıç değeri yani <span class="math inline">\(y(b)\)</span> değerini tanımlamadık.</li>
-<li>Ayrı bir fonksiyon ile başlangıç değer problemini çözdük. Bu fonksiyonun girdi değeri <code>u</code>, dönüş dğeri ise verilen <span class="math inline">\(y(b)\)</span> değeri ile çözümün son değerinin farkıdır.</li>
-<li>Başlangıç değer çözücü denklemi <code>scipy.optimize.ridder(fonksiyon, kok_araligi_baslangic, kok_araligi_bitis)</code> ile çözdük.</li>
-</ol>
-</section>
-</section>
-<section id="problemler" class="level2">
-<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
-<section id="problem-1" class="level3">
-<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
-<p>Aşağıdaki denklemi atış yöntemi ile çözün.</p>
-<p><span class="math display">\[
-y''(t)=t, \quad y(0)=1, \quad y(3)=9
-\]</span></p>
+<li><code>araAlistirma1_1.py</code> dosyasını oluşturun. Bu dosyanın içerisinde aşağıdaki adımları yapın ve sonucu gösterin.
 <ol type="1">
-<li>Elde ettiğiniz çözümü yani <span class="math inline">\(y(t)\)</span> fonksiyonunu çizdirin.</li>
-<li>Bu denklemi analitik olarak çözün ve çözümü de çizdirin.</li>
-</ol>
-</section>
-<section id="problem-2" class="level3">
-<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
-<p>Aşağıdaki diferansiyel denklemi atış yöntemini kullanarak çözün. Adım aralığını <span class="math inline">\(h=0.05\)</span> alın. Analitik sonuçla karşılaştırın.</p>
-<p><span class="math display">\[
-y''(t) = t^{3}+t+5, \quad y(0)=1, \quad y(6)=545.8
-\]</span></p>
-</section>
-<section id="problem-3" class="level3">
-<h3 class="anchored" data-anchor-id="problem-3">Problem 3</h3>
+<li><code>list1</code> adında bir değişken yarat ve içine 1’den 4889’e kadar değerlerini ata ve ekrana yazdır.</li>
+<li><code>list1</code> değişkeninin ilk 10 elemanını ekrana yazdır.</li>
+<li><code>list1</code> değişkeninin son elemanını ekrana yazdır.</li>
+<li><code>list1</code> değişkeninin 10. elemanını ekrana yazdır.</li>
+<li><code>list1</code> değişkeninin 10. elemanını 0 yap ve list1’i ekrana yazdır.</li>
+<li><code>list1</code> değişkeninin son 5 elemanını ekrana yazdır.</li>
+</ol></li>
+<li><code>araAlistirma1_2.py</code> dosyasını oluşturun. Bu dosyanın içerisinde aşağıdaki adımları yapın ve sonucu gösterin.
 <ol type="1">
-<li>Aşağıdaki diferansiyel denklemi atış (shooting) yöntemini kullanarak çözün.</li>
-<li>Çözümün grafiğini çizdirin. Sayısal çözüm noktalarını kırmızı nokta olarak belirleyin.</li>
-</ol>
-<p><span class="math display">\[
-\frac{d^{2}y(x)}{dx^{2}}+ \frac{dy(x)}{dx} = -4 \text{ ,}
-\]</span></p>
-<p>Sınır koşulları: <span class="math inline">\(y(0)=0\)</span>, <span class="math inline">\(y(3)=9\)</span>.</p>
-<p><em>Bu soruyu çözerken kökü <span class="math inline">\(-30\)</span> ile <span class="math inline">\(30\)</span> arasında arayın.</em></p>
-<ol start="3" type="1">
-<li>Aşağıda verilen analitik çözümü de aynı grafikte çizdirin.</li>
-</ol>
-<p><span class="math display">\[
-y(x) = \frac{\left(-4x + 21e^{3 - x} + e^{3}(4x - 21)\right)}{1 - e^3} \text{ .}
-\]</span></p>
-</section>
-</section>
-<section id="kaynaklar" class="level2">
-<h2 class="anchored" data-anchor-id="kaynaklar">Kaynaklar</h2>
-<ol type="1">
-<li>Numerical Methods in Engineering with Python 3, Jaan Kiusalaas, Cambridge University Press, 2013, <strong>Syf:293</strong></li>
-<li>Python Programming and Numerical Methods: A Guide for Engineers and Scientists, Qingkai Kong &amp; Timmy Siauw &amp; Alexandre Bayen, 2020, <a href="https://pythonnumericalmethods.berkeley.edu/notebooks/chapter23.02-The-Shooting-Method.html">chapter23.02-The-Shooting-Method</a></li>
+<li><code>list2d_1</code> adında bir değişkene 1’den 12’e kadar tüm değerleri <em>3x4</em> matris oluşturacak şekilde teker teker elemanlarını yazarak ata ve ekrana yazdır.</li>
+<li>Yukarıdaki işlemi <code>list2d_2</code> adında yeni bir değişken için yap ve ekrana yazdır. Bu sefer <code>range()</code> fonksiyonunu kullanarak yap.</li>
+</ol></li>
 </ol>
 
 
@@ -1247,13 +1329,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="pagination-link" aria-label="SDP - Giriş">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">SDP - Giriş</span>
+      <a href="../../../icerik/konular/python.html" class="pagination-link" aria-label="Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Python</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="pagination-link" aria-label="SDP - Sonlu Farklar Yöntemi">
-        <span class="nav-page-text">SDP - Sonlu Farklar Yöntemi</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../icerik/konular/python/temel-terimler.html" class="pagination-link" aria-label="Temel Terimler">
+        <span class="nav-page-text">Temel Terimler</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1265,7 +1347,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/python/giris-degiskenler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>
