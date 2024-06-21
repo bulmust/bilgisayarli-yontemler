@@ -110,6 +110,8 @@ Modüller betiklerin başında yazılır. Birden fazla modül kullanılacaksa, m
 import math as m
 
 ```{python}
+import math as m
+
 print(f"Pi sayısı=  {m.pi}")
 print(f"e sayısı = {m.e}")
 print(f"2^3      = {m.pow(2,3)}")
@@ -118,6 +120,7 @@ print(f"2^3      = {m.pow(2,3)}")
 `math`, `numpy` gibi modüller Python komütesi tarafından geliştirilen modüllerdir. Bunların dışında kendi modüllerimizi de oluşturabiliriz. Bunun için farklı bir dosyada fonksiyonlar ve değişkenler tanımlanır. Bu dosyayı ana betikte `import` anahtar kelimesi kullanılarak çağırıp kullanabiliriz.
 
 ## Alıştırma 1
+
 Aşağıdaki alıştırmaları sırayla yapınız.
 
 1. `araAlistirma2_Modul.py` dosyasını oluşturun.
