@@ -18,8 +18,10 @@ Temel olarak 6 adet aritmetik operatör vardır.
 Aritmetik operatörlerden mod alma dışındaki tüm operatörler sanal sayılar için de geçerlidir.
 
 ```{python}
-complex1= comp(2,3) # complex1= 2+3j
-complex2= comp(4,5) # complex2= 4+5j
+#complex1= comp(2,3) # complex1= 2+3j # Bu metot çalışmıyor
+complex1= 2+3j
+complex2= 4+5j
+
 print(complex1*complex2) # (2+3j)*(4+5j)= -7+22j
 print(complex1/complex2) # (2+3j)/(4+5j)= 0.5609756097560976+0.04878048780487805j
 ```
@@ -152,6 +154,8 @@ elif 25 == 25:
 ```{python}
 for it1 in range(10):
     print(it1)
+```
+
 `while` döngüsü için bir koşula ihtiyaç vardır. Bu koşul sağlanana kadar döngü içerisinden çıkılmaz.
 ```
 
