@@ -1,0 +1,293 @@
+---
+title: "Temel Terimler"
+---
+
+## Aritmetik Operatörler
+
+Temel olarak 6 adet aritmetik operatör vardır.
+
+|**Operatörün Adı**|**İşlevi**|
+|:---:|:---:|
+|`+`|Toplama|
+|`-`|Çıkarma|
+|`*`|Çarpma|
+|`/`|Bölme|
+|`%`|Mod alma|
+|`**`|Üs alma|
+
+Aritmetik operatörlerden mod alma dışındaki tüm operatörler sanal sayılar için de geçerlidir.
+
+```{python}
+complex1= comp(2,3) # complex1= 2+3j
+complex2= comp(4,5) # complex2= 4+5j
+print(complex1*complex2) # (2+3j)*(4+5j)= -7+22j
+print(complex1/complex2) # (2+3j)/(4+5j)= 0.5609756097560976+0.04878048780487805j
+```
+
+Aşağıdaki özellikler aritmetik operatörlerin metinlere (string) ve listelere (list) için nasıl uygulanacağını göstermektedir.
+
+1. Metinler `+` kullanarak toplanabilir. Bu durumda metinler birleştirilir.
+2. Listeler `+` kullanılarak birleştirilebilir.
+3. Listeler bir katsayı ile çarpılabilir. Bu durumda listenin her elemanı o katsayı ile **çarpılmaz**. Listeden çarpılan kadar kopya oluşturulur.
+
+```{python}
+str3= "Hello "
+str4= "World"
+print(str3 + str4) # Hello World
+
+print(str3 * 3) # Hello Hello Hello
+
+list7= [1,2,3]
+print(list7* 3) # [1, 2, 3, 1, 2, 3, 1, 2, 3]
+
+print("----------")
+print("-"*10) # ----------
+```
+
+Modunu alma operatörü `%` kullanılarak iki sayının bölümünden kalan sayıyı verir.
+
+```{python}
+print(7%2) # Modunu alma yani 2'ye bölümünden kalan sayı nedir?
+print(7%5)
+```
+
+Üs alma operatörü `**` kullanılarak bir sayının diğer sayıya göre üssü alınır.
+
+```{python}
+print(2**5) # 2 üzeri 5 = 32.
+```
+
+::: {.callout-caution}
+Üssü ifadesi alınırken `^` simgesini kullanmayaınız. Python'da `^` işaretinin başka bir anlamı olduğundan dolayı size hata döndürmeyebilir
+:::
+
+## Mantık İfadeleri
+Temel olarak 6 adet koşullu ifade vardır.
+
+|**Koşullar**|**İşlevi**|
+|:---:|:---:|
+|`==`|Eşitlik|
+|`!=`|Eşit değil|
+|`>`|Büyüktür|
+|`<`|Küçüktür|
+|`>=`|Büyük eşittir|
+|`<=`|Küçük eşittir|
+
+Koşullu ifadelerin sonucu mantıksal (boolean) `True` veya `False` olur.
+
+```{python}
+int5= 5
+int6= 6
+float2= 5.0
+
+print(int5 == int6) # False
+print(int5 < int6) # True
+
+print(int5 == float2) # True
+```
+
+Temel olarak 3 adet mantıksal operatör vardır.
+
+|**Mantıksal Operatörler**|**İşlevi**|
+|:---:|:---:|
+|`and` (bitwise `&`)|Mantıksal **ve** operatörü.|
+|`or`  (bitwise `\|`) |Mantıksal **veya** operatörü.|
+|`not` (bitwise `~`)|Bir koşulun tersini döner.|
+
+Mantıksal ifadelerin sonucu mantıksal (boolean) `True` veya `False` olur.
+
+::: {.callout-note}
+"Bitwise" operatörler, (boolean) için değil tam sayılar (int) için kullanılır. Biz kullanmayacağız.
+:::
+
+```{python}
+bool3= 4>3 and 5>3 # True
+print(bool3)
+
+bool4= 4>3 or 5<3 # True
+print(bool4)
+
+bool5= not(4>3 or 5<3) # False
+print(bool5)
+
+print(not 5<3)
+```
+
+Yukarıda belirtilmeyen diğer operatörler için [bu linke tıklayınız](https://www.w3schools.com/python/python_operators.asp).
+
+## Koşullar
+
+`True` veya `False` değerlerine göre programın ilerlemesi değiştirilebilir. Bu değişimi kontrol etmek için `if` kodu kullanılır. Eğer an `if`'den sonra gelen koşul gerçekleşirse `if` altında yazılmış olan kod bloğu çalışmaya başlar. Eğer koşul gerçekleşmezse `if` altında yazılmış olan kod bloğu çalışmaz ve program `if` bloğunun bittiği satıra geçer ve çalışmaya devam eder.
+
+Eğer `if` komutundan sonra gelen koşul gerçekleşmez, `else` komutu altında yazılmış olan bir kod bloğu var ise o kod bloğu çalışır. `else` komutu `if` komutundan sonra yazılmalıdır ve `else` komutu tek başına kullanılamaz. 
+
+Eğer `if` komutundan sonra gelen koşul gerçekleşmezse ve yeni bir koşul daha yazılmak isteniyorsa `elseif` kalıbı kullanılır.
+
+Yukarıda yazan tüm komutların sonuna `:` koyulmalıdır.
+
+```{python}
+if 5 > 3:
+    print(f"5 3'ten büyüktür. {5 > 3}")
+print("Bu satır if koşulundan bağımsızdır.")
+# ----------------------------
+if 42 > 111:
+    print(f"42 111'den büyüktür. {42 > 111}")
+else:
+    print(f"42 111'den küçüktür. {not 42 > 111}")
+# ----------------------------
+if 25 > 25:
+    print(f"25 25'ten büyüktür. {25 > 25}")
+elif 25 < 25:
+    print(f"25 25'ten küçüktür. {25 < 25}")
+elif 25 == 25:
+    print(f"25 25'e eşittir. {25 == 25}")
+```
+
+## Döngüler
+
+İki tür temel döngü vardır. Bunlar `for` ve `while` döngüleridir. Bu iki döngü satırının sonunda `:` ifadesi kullanılır ve altında yazılacak olan kod bloğu *4 boşluk* koyularak yazılr.
+
+`for` döngüsü için bir yineleyiciye (iterator) ihtiyaç vardır. Bu yineleyicinin sınırları `range()` fonksiyonuyla belirtilir.
+
+```{python}
+for it1 in range(10):
+    print(it1)
+`while` döngüsü için bir koşula ihtiyaç vardır. Bu koşul sağlanana kadar döngü içerisinden çıkılmaz.
+```
+
+Eğer `while` döngüsünü durduracak bir koşul yazılmazsa program sonsuza kadar çalışır. Eğer bir değişkene atama yapıyorsanız bilgisayarınız kitlenebilir. Biz çoğunlukla `for` döngüsü kullanacağız.
+`break` komutu ile döngüden çıkmak mümkündür. `continue` komutu ile bir sonraki adıma geçilir.
+
+```{python}
+for it2 in range(1,30):
+    if it2%5 != 0:
+        print(f"{it2}, sayısı 5'e bölünmez.")
+        continue
+    else:
+        print(f"{it2}, sayısı 5'e bölünür.")
+    if it2 > 14:
+        print("Döngü 14'ten sonrası için sonlandı.")
+        break
+```
+
+## Kullanıcıdan Girişlerin Okunması
+
+`input()` Komutunu kullanarak kullanıcı ile etkileşime geçilir. Bu komut içerisine yazılan kısmı ekrana yazıp, kullanıcının cevabını terminalden okur ve istenilen değişkene atar.
+
+::: {.callout-important}
+`input` komutu ile okunun tüm girdiler "string" formatında okunur. 
+:::
+
+```python
+input1 = input(f"Bir tam sayı giriniz:")
+print(f"Girilen sayı= {input1}")
+
+int1= int(input1)
+print(f"Girilen sayının iki katı =  {int1*2}")
+```
+
+## Bir Dosyadan Veri Okuma ve Dosyaya Yazma
+
+Bir dosyayı okumak için o dosyayı önce açıp sonra kapatmak gerekmektedir. Eğer bir dosya kod tarafından açılıp ardından kapanmadı ise yapılan işlemler boşa gider. Dosya açıp kapama işlemi `open()` ve `close()` fonksiyonlarıyla yapılır. Ayrıntılı bilgi için [bu linke tıklayınız](https://www.geeksforgeeks.org/reading-writing-text-files-python/).
+
+Bir dosyayı `with open()` komutuyla açmak daha kolaydır. Bu komut dosya açıldıktan sonra otomatik olarak kapanır. Ayrıntılı bilgi için [bu linke tıklayınız](https://www.geeksforgeeks.org/with-statement-in-python/). Dosya açıldıktan sonra bir obje oluşturulur. Bu obje üzerinden dosya okunur veya dosyaya yazılır.
+
+Dosyayı nasıl açtığımızı belirlemek için `open()` fonksiyonuna bir argüman vermemiz gerekir. Dosyadan okumak için `r` argümanı ile açılmadır. 
+
+Dosyayı açtıktan sonra içindeki tüm veriyi okumak için `read()` fonksiyonu kullanılır.
+
+Dosyadaki veriyi satır satır okuyup liste halinde tutmak için `readlines()` fonksiyonu kullanılır.
+
+Dosyadaki veriyi satır satır okumak için `readline()` fonksiyonu kullanılır. Bu fonksiyon her çağrıldığında bir satır okur.
+
+Test için "denemeVeri.txt" adında bir dosya oluşturun ve içine aşağıdaki veriyi yazın.
+
+::: {.callout-warning}
+Bu kodun çalışması için aynı klasörün içerisinde "denemeVeri.txt" dosyası olması gerekir.
+:::
+
+```{python}
+with open("assets/denemeVeri.txt", "r") as asddasd:
+    print(asddasd.read())
+```
+
+```{python}
+with open("assets/denemeVeri.txt", "r") as file1:
+    satirlar= file1.readlines() # Satırları okur.
+print(satirlar)
+```
+
+
+Her satırın sonunda alt satıra geç anlamına gelen '\n' karakteri vardır. Eğer bir satırın sonunda '\n' karakteri varsa o satırın sonunda bir alt satıra geçilmiştir. 
+```{python}
+with open("assets/denemeVeri.txt", "r") as file1:
+    satirlar= file1.readlines() # Satırları okur.
+for satir in satirlar:
+    print(satir) # Satırları ekrana yazdırır.
+print("--------------------")
+
+# veya
+
+for itSatir in range(len(satirlar)):
+    print(satirlar[itSatir])
+```
+
+Dosyanın içindeki veriyi satır satır okumak için `readline()` fonksiyonu kullanılır. Bu fonksiyon her çağrıldığında bir satır okur.
+```{python}
+with open("assets/denemeVeri.txt", "r") as file1:
+    print(file1.readline()) # Dosyanın ilk satırını okur.
+    print(file1.readline()) # Dosyanın ikinci satırını okur.
+```
+
+`readline()` fonksiyonu ile dosyanın içindeki veriyi satır satır okumak için aşağıdaki kodu kullanabilirsiniz.
+
+```{python}
+with open("assets/denemeVeri.txt", "r") as file1:
+    a=file1.readline(4)
+    b=file1.readline(4)
+    print(a,b) # Dosyanın ilk satırının ilk 5 karakterini okur. 
+```
+
+::: {.callout-note}
+`readline()` fonksiyonu ile `readlines()` fonksiyonu arasındaki fark `readline()` fonksiyonu her çağrıldığında bir satır okurken `readlines()` fonksiyonu dosyanın tüm satırlarını okur.
+:::
+
+Dosyaya yazmak için ise iki farklı yöntem vardır.
+
+1. `w` argümanı ile açtığımızda dosya içeriği silinir ve dosyaya yazmaya başlanır. Eğer dosya yoksa yeni bir dosya oluşturulur.
+2. `a` argümanı ile açtığımızda dosya içeriği silinmez ve dosyaya sondan eklemeye başlar. Eğer dosya yoksa yeni bir dosya oluşturulur.
+
+Yazılacak veri `write()` fonksiyonu ile dosyaya yazılır.
+
+```{python}
+# "w" modu ile dosya açıldı ve veri yazıldı.
+with open("denemeVeri2.txt", "w") as file2:
+    file2.write("Birinci veri.\n")
+```
+
+Dosyanın sonuna yazmak için `a` argümanı kullanılır.
+
+```{python}
+# "a" modu ile dosya açıldı ve veri eklendi.
+with open("denemeVeri2.txt", "a") as file2:
+    file2.write("Bu dosyaya yeni bir satır eklendi.")
+# İçeriği göster.
+with open("denemeVeri2.txt", "r") as file2:
+    print(file2.read())
+```
+
+
+::: {.callout-important}
+`w` modu ile dosya açıldığında dosya içeriği silinir ve dosyaya yazmaya başlanır. Eğer dosya yoksa yeni bir dosya oluşturulur.
+:::
+
+```{python}
+# "w" modu ile dosya açıldı ve tüm içerik silindi!.
+with open("denemeVeri2.txt", "w") as file2:
+    file2.write("İkinci veri.")
+# İçeriği göster.
+with open("denemeVeri2.txt", "r") as file2:
+    print(file2.read())
+```
+
+Diğer dosya açma metodları için [bu linke tıklayınız](https://www.w3schools.com/python/python_file_handling.asp).

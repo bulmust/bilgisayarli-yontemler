@@ -1,0 +1,65 @@
+---
+title: "Giriş"
+---
+
+Bu dersin giriş sunumu için [buraya tıklayınız.](assets/giris_slayt.pdf)
+
+## Python Paketlerini Yükleme, `pip`
+
+Bu ders boyunca kullanacağımız python paketlerini `pip` komutunu yardımıyla yükleyebilirsiniz. Bunun için önce `pip` uygulamasını yüklemeniz gerekmektedir.
+
+```sh
+sudo apt install python3-pip
+```
+
+Pip uygulaması yüklendikten sonra `numpy`, `scipy`, `matplotlib` ve `pandas` paketlerini aşağıdaki komutu çalıştırarak yükleyebilirsiniz.
+
+```sh
+pip install --upgrade numpy scipy matplotlib pandas
+```
+
+Fazladan paketleri de yüklemek isterseniz aşağıdaki kodu çalıştırınız.
+
+```sh
+pip install odeintw seaborn tensorflow sklearn tensorflow_probability
+```
+
+## Visual Studio Code Eklentileri
+
+Visual Studio Code programını daha efektif kullanmak için eklentiler yükleyebilirsiniz. Bazı kullanışlı eklentiler aşağıda verilmiştir.
+
+- Python
+- Jupyter Notebook
+- Julia
+- Cpp
+- Language Pack TR
+- Better-comments
+- Todo-tree
+- Code Spell Checker Turkish
+- Python Indent
+- Pylance
+- Markdown All In One
+- Latex Workshop
+- Gitlens
+- Excel Viewer
+
+Eğer Linux işletim sisteminiz var ise, terminal'e aşağıdaki komutları yazarak da yükleme yapabilirsiniz.
+
+```sh
+code --install-extension aaron-bond.better-comments
+code --install-extension ms-toolsai.jupyter-keymap
+code --install-extension ms-toolsai.jupyter
+code --install-extension julialang.language-julia
+code --install-extension ms-vscode.cpptools
+code --install-extension MS-CEINTL.vscode-language-pack-tr
+code --install-extension streetsidesoftware.code-spell-checker-turkish
+code --install-extension Gruntfuggly.todo-tree
+code --install-extension KevinRose.vsc-python-indent
+code --install-extension ms-python.vscode-pylance
+code --install-extension ms-python.python
+code --install-extension yzhang.markdown-all-in-one
+code --install-extension James-Yu.latex-workshop
+code --install-extension eamodio.gitlens
+code --install-extension GrapeCity.gc-excelviewer
+code --install-extension streetsidesoftware.code-spell-checker
+```

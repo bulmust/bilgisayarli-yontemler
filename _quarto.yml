@@ -37,6 +37,13 @@ website:
           - href: icerik/bilYonMod.qmd
       - section: "**Konular**"
         contents:
+          - section: Python
+            href: icerik/konular/python.qmd
+            contents: 
+              - icerik/konular/python/giris-degiskenler.qmd
+              - icerik/konular/python/temel-terimler.qmd
+              - icerik/konular/python/fonksiyonlar.qmd
+              - icerik/konular/python/alistirmalar-problemler.qmd
           - section: Adi Diferansiyel Denklemler
             href: icerik/konular/adi-diferansiyel-denklemler.qmd
             contents:

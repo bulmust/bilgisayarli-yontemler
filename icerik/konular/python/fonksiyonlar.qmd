@@ -1,0 +1,140 @@
+---
+title: "Fonksiyonlar"
+---
+
+Fonksiyonlar bir kod bloğunu tekrar tekrar yazmamızı engeller. Fonksiyonlar yazılırken tıpkı matematikteki fonksiyonlar gibi değişkenler belirlenir ve fonksiyon içerisinde bu değişkenler kullanılır.
+
+Fonksiyon oluştururken `def` anahtar kelimesi kullanılır ve en sonuna `:` koyulur.
+
+Bir fonksiyon içerisinde yaptığımız işlemden sonra ana koda bir sayı vs. döndürmek istenirse `return` kullanılır.
+
+Fonksiyonlar genellikle betiğin başına yazılır. Ana fonksiyon ise altına yazılır. 
+
+Fonksiyonlar içerisinde tanımlanan değişkenler, fonksiyon dışarısında kullanılamaz.
+
+Fonksiyonların çalışması için gereken değişkenine varsayılan (default) bir değer atanabilir. Bunun için fonksiyonu tanımlarken o değişkene bir atama yapılması gerekir. Varsayılan değerler hep sona yazılır.
+
+```{python}
+# Fonksiyon
+def merhabaDunyaYazdir():
+    print("Merhaba Dünya!")
+
+# Bir değer döndüren fonksiyon
+def incdenCMye_cevir(var1_inc):
+    return var1_inc* 2.54
+
+# Fonksiyon içerisinde tanımlanan fonksiyonun dışarıda kullanılamaması
+def cemberinAlani_cm2(r_cm):
+    pi= 3.14
+    return pi* r_cm**2
+
+# Varsayılan bir değişken içeren fonksiyon
+def serbestDusme_hizHesapla_m_s(v0_m_s, t_s, g_m_s2= 9.8):
+    return v0_m_s+ g_m_s2* t_s
+
+# Fonksiyonları çağıralım
+merhabaDunyaYazdir()
+
+# --
+sonuc = incdenCMye_cevir(55)
+print("55 inç = %1.1f cm' dir." %sonuc)
+# --
+
+sonuc2= cemberinAlani_cm2(3); print("3 cm yarıçaplı bir dairenin alanı %1.3f cm2 dir." %sonuc2)
+# cemberinAlani_cm2() fonksiyonunda pi sayısı tanımlanmıştı. O pi sayısını çağıralım.
+print(pi) #! ÇALIŞMAYACAK
+#---
+
+baslangictakiHız_m_s=0
+zaman_s=3
+sonuc3= serbestDusme_hizHesapla_m_s(baslangictakiHız_m_s, zaman_s)
+print(f"DÜNYADA: V0= {baslangictakiHız_m_s}, t= {zaman_s}, için H={sonuc3}")
+print(f"DÜNYADA: V0= {baslangictakiHız_m_s}, t= {zaman_s}, için H={sonuc3:.2f}") # Değişkenin yanında .2f yazarak virgülden sonra iki basamağı yazılması sağlanır.
+# --
+
+# Bu fonksiyonu Ay koşulları için çağıralım
+baslangictakiHız_Mer = 0
+zaman_s = 3
+g_AY_m_s2= 1.625
+sonuc4 = serbestDusme_hizHesapla_m_s(baslangictakiHız_Mer, zaman_s, g_AY_m_s2)
+print(f"AYDA: V0= {baslangictakiHız_Mer}, t={zaman_s}, g={g_AY_m_s2} için H={sonuc4}")
+```
+
+Kısa ve tek satırlık fonksiyonlar için `lambda` anahtar kelimesi kullanılır. `lambda` değişkeni yazıldıktan sonra boşluk bırakıp değişkenler yazılır ve `:` koyulur. Ardından yazılanlar fonksiyonun işlevini tanımlar. `lambda` fonksiyonlarında `return` kullanılmaz. Otomatik olarak yapılan işlem döndürülür.
+
+```{python}
+# Kısa yazılmış lambda fonksiyonu
+kareAl = lambda x: x**2
+
+print("3^2=", kareAl(3))
+```
+
+## Matematiksel Fonksiyonlar
+
+Python içerisinde bulunan (built-in) bazı matematiksel fonksiyolar vardır. Bu fonksiyonlar aşağıdaki gibidir.
+
+|**Fonksiyonun Adı**|**İşlevi**|
+|:---:|:---:|
+|`abs()`|Mutlak değer|
+|`round()`|Yuvarlama|
+|`min()`|En küçük değer|
+|`max()`|En büyük değer|
+|`sum()`|Toplam|
+|`pow()` (veya `**`)|Üs alma|
+
+
+::: {.callout-note}
+karşılaştırma fonksiyonu `cmp(a,b)` python 3.0'dan itibaren kaldırılmıştır.
+
+```{python}
+float1= -5.6
+list1= [1,2,3,4,5]
+print("abs(float1)=", abs(float1)) # 5.6
+print("round(float1)=", int(float1)) # -6
+print("min(list1)=", min(list1)) # 1
+print("max(list1)=", max(list1)) # 5
+print("sum(list1)=", sum(list1)) # 15
+print("3^2=", pow(3,2)) # 9
+print("3^2=", 3**2) # 9
+```
+
+## Modüller
+
+Modüller bir dosyadaki fonksiyonları ve değişkenleri başka dosyalarda kullanmamızı sağlar. 
+
+Modüllerin kullanılması için `import` anahtar kelimesi kullanılır. 
+
+Modüllerin içerisindeki fonksiyonlar, değişkenler  `.` ile çağrılır. Örneğin `math` modülü içerisindeki `pi` değişkeni `math.pi` şeklinde çağrılır.
+
+Modüller betiklerin başında yazılır. Birden fazla modül kullanılacaksa, modüllerin içerisindeki değişkenler ve fonksiyonların karışmaması için `as` anahtar kelimesi kullanılır.
+import math as m
+
+```{python}
+print(f"Pi sayısı=  {m.pi}")
+print(f"e sayısı = {m.e}")
+print(f"2^3      = {m.pow(2,3)}")
+```
+
+`math`, `numpy` gibi modüller Python komütesi tarafından geliştirilen modüllerdir. Bunların dışında kendi modüllerimizi de oluşturabiliriz. Bunun için farklı bir dosyada fonksiyonlar ve değişkenler tanımlanır. Bu dosyayı ana betikte `import` anahtar kelimesi kullanılarak çağırıp kullanabiliriz.
+
+## Alıştırma 1
+Aşağıdaki alıştırmaları sırayla yapınız.
+
+1. `araAlistirma2_Modul.py` dosyasını oluşturun.
+   1. Bu dosyaya `al_karesi()` fonksiyonunu tanımlayın. Bu fonksiyon bir sayı alsın ve karesini döndürsün.
+   2. Bu dosyaya `al_faktoriyel()` fonksiyonunu tanımlayın. Bu fonksiyon bir sayı alsın ve faktöriyelini döndürsün.
+   3. Bu dosyaya `kredi_mezunOlmakIcinGerekenAKTS` değişkeni tanımlayın. Bu değişkenin değeri mezun olmanız için gereken kredi sayısı olsun.
+   4. Bu dosyanın içerisinde `if __name__ == "__main__":` **bloğu bulunmasın**. Bu blok `araAlistirma2_Modul.py` dosyasının modül değil çalıştırılabilir betik olduğu anlamına gelir.
+2. Aynı klasörün içerisine `araAlistirma2_Ana.py` dosyası oluşturun.
+   1. `araAlistirma2_Modul.py` dosyasını çağırın yani `import` edin.
+   2. Import edilen modüle `denemeModul` adı verin.
+   3. Bu dosyanın içerisinde `if __name__ == "__main__":` **bloğu bulunsun**. Tüm işlemlerinizi `if __name__ == "__main__":` ile oluşturduğunuz bloğa yazın.
+   4. `denemeModul` modülünün içerisindeki `al_karesi()` fonksiyonunu kullanarak 5 sayısının karesini ekrana yazdırın.
+   5. `denemeModul` modülünün içerisindeki `al_faktoriyel()` fonksiyonunu kullanarak 5 sayısının faktöriyelini ekrana yazdırın.
+   6. `denemeModul` modülünün içerisindeki `kredi_mezunOlmakIcinGerekenAKTS` değişkenini kullanarak mezun olmanız için gereken kredi sayısını ekrana yazdırın.
+
+## Kaynaklar
+
+1. [Jupyter Kısa yolları](https://towardsdatascience.com/jypyter-notebook-shortcuts-bf0101a98330)
+2. [W3Schools](https://www.w3schools.com/python/)
+3. [GeeksForGeeks](https://www.geeksforgeeks.org/python-programming-language/)

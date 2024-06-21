@@ -1,0 +1,252 @@
+---
+title: "Giriş - Değişkenler"
+---
+
+Python karmaşık bir yapıya sahip, üst seviye bir programlama dilidir. Bu dili geliştirenler belli standartlar oluşturmuştur. Bu standartlar hem geliştiriciler hem de kullanıcılar için yol göstericidir. Bu kurallara genel adıyla PEP adı verilir. Ayrıntılı bilgi için [resmi pep sayfasını](https://peps.python.org/) ziyaret edebilirsiniz.
+
+## Temel Kurallar [(PEP8)](https://www.python.org/dev/peps/pep-0008/)
+
+Aşağıda Python programlama dilinde kullanılan bazı temel kurallar listelenmiştir. Bu kuralların bazıları zorunlu olmakla beraber bazıları tavsiye niteliğindedir.
+
+1. Python'da kodlar satır satır çalışır.
+2. Boş satırlar çalışmaz yani önemsizdir.
+3. `#` işareti ile yorum satırı yazılır.
+4. `;` ile birden fazla komut aynı satırda yazılabilir. Ancak bu kullanım tavsiye edilmez.
+5. Değişkenlere atamalarda `=` işareti kullanılır.
+6. Değişkenlerin ismi sayı ile başlayamaz.
+7. Değişkenlerin ismi boşluk içeremez.
+8. Değişkenlerin ismi özel yalın olmalı ve mümkün olduğunca özel karakterlerden kaçınılmalıdır. `_` kullanılabilir. Değişken adı verme kabulleri (convension) için [(PEP8-Naming-conventions)](https://www.python.org/dev/peps/pep-0008/#naming-conventions)  adlı bağıntıya gidiniz. Topluluğun benimsediği kabuller için [buraya](https://en.wikipedia.org/wiki/Naming_convention_(programming)) bakabilirsiniz.
+9. Eğer çok kelime içeren bir değişken ismi kullanılacak ise tüm kod boyunca aynı format kullanılması tavsiye edilir. Örneğin: `firstName`, `lastName` gibi veya `first_name`, `last_name` gibi.
+10. Değişkenlerin ismi tanımlı anahtar kelimeler olamaz. Örneğin `for`, `while`, `if`, `True`, `in` gibi.
+11. Eğer satır içerisindeki kodlar çok uzun ise `\` kullanılarak alt satıra geçilebilir. Bazı durumlarda bu işlem gereksizdir. Örneğin parantez içerisinde uzun bir kod yazılması durumunda `\` kullanılmayabilir.
+12. `for`, `if` gibi komutlardan sonra alt satıra geçildiğinde alt **satırın başına 4 boşluk bırakılmalıdır**. Bu işlemi yapmak için `Tab` tuşuna basılabilir. (Tab tuşuna basıldığında 4 boşluk (space) bırakması gerekir.)
+13. Kodun okunaklı olması için uygun yerlerde boşluk kullanılması tavsiye edilir.
+14. Bu derste yazılan betiklerin (script) dosya uzantısı `.py` olmalıdır.
+15. Eğer betik çalıştırıldıktan sonra görevini tamamladı ise sonuna `exit()` komutu konmalıdır. Bu komut betiği sonlandırmak için kullanılır.
+
+Diğer tavsiyeler için ["PEP8 Programlama Tavsiyeleri"](https://peps.python.org/pep-0008/#programming-recommendations) sayfasına gidiniz.
+
+## Değişkenler (Variables)
+
+Bu ders boyunca sık sık kullanacağımız 3 çeşit değişken tipi olacaktır.
+
+1. Tam sayı (integer): `int`
+2. Ondalık sayı (float): `float`
+3. Sanal sayı (complex): `complex`
+
+Herhangi bir değişkene sayı ataması yaparken değişkenin cinsini belirlemeye gerek yoktur (C++ gibi değil). Python otomatik olarak değişkenin cinsini belirler.
+
+Değişkenlere atananı ekrana yazdırmak için `print()` fonksiyonu kullanılır.
+
+```{python}
+# int
+tamsayi1= 5
+print(tamsayi1)
+
+# float
+float1= 5.0
+print(float1)
+
+# complex
+complex1= 5 + 0j
+print(complex1)
+print(complex(3,4))
+
+digerKarmasikSayi= 5j
+print(digerKarmasikSayi)
+```
+
+Değişken tanımlamarı hard diskte değil RAM'de depolanır. Bunun sebebi değişkenler ile ilgili okuma/yazma işleminin hızlı olması gerekir. 
+
+Değişkenleri silmek (RAM'den) için `del` komutu kullanılır.
+
+```{python}
+tamsayi1= 5
+float1= 5.0
+complex1= 5 + 0j
+del tamsayi1, float1, complex1 # Değişkenleri siler
+```
+
+Bir metini (string) bir değişkene atamak için `"` veya `'` kullanılır. Bu yöntemlerden bir tanesini seçin ve onu kullanmaya özen gösterin.
+
+```{python}
+str1= "Hello " # string
+str2= 'World' # string
+
+print(str1)
+print(str2)
+
+# İki stringi birleştirip yazdirir
+print(str1, str2)
+```
+
+Ekrana bir değişkeni veya string'i yazdırmak için `print()` fonksiyonu kullanılır. Bu fonksiyonun kullanımı aşağıdakiler gibi olabilir.
+
+```{python}
+print("Merhaba Dünya") # "" kullanarak
+print('Merhaba Dünya') # '' kullanarak
+
+dunyaDegiskeni= 'Dünya'
+
+print("Merhaba", dunyaDegiskeni) # En kolay yolu
+print(f"Merhaba {dunyaDegiskeni}") # Biz bunu kullanmaya özen göstereceğiz.
+print("Merhaba %s" %dunyaDegiskeni) # C dilleri gibi
+```
+
+Bir değişkenin türünü öğrenmek için `type()` fonksiyonu kullanılır. Bu fonksiyonun çıktısı olarak **class** tipinde bir çıktı alınır. Bunun sebebi Python'da çoğu değişkenin bir nesne (object) olmasıdır.
+
+```{python}
+tamsayi1 = 5
+float1 = 5.0
+complex1 = 5 + 0j
+str1= "Selam"
+
+print(type(tamsayi1))
+print(type(float1))
+print(type(complex1))
+print(type(str1))
+```
+
+Herhangi bir değişkenin tipini çevirmek için `int()`, `float()`, `complex()` fonksiyonları kullanılır. Bu fonksiyonların çalışmadığı durumlar olabilir.
+
+```{python}
+print(int(4.9)) # 4
+print(float(4)) # 4.0
+print(complex(4)) # (4+0j)
+print(complex(41,5)) # (41+5j)
+
+#print(int(4+3j)) # int fonksiyonu karmaşık bir sayıyı tam sayıya çeviremez.
+```
+
+Mantıksal ("boolean" veya "bool") değişkenler `True` ve `False` değerlerini alabilirler.
+
+```{python}
+bool1= True # bool
+bool2= False # bool
+print(type(bool1))
+print(bool1,bool2)
+```
+
+Birden fazla değişkeni tutmak için iki çeşit dizi (array) kullanacağız. Bunlardan biri listeler (dinamik) diğeri ise demettir (tuple) (statik). Listelerin içindeki eleman sayısı ve elemanları değiştirilirken demetlerin içindeki elemanlar ve eleman sayısı değiştirilemez.
+
+Demetlerin bu özelliğine **değişmez (immutable)** denir.
+
+Diğer çeşit diziler ise sözlükler `dict` [(örnekler için tıklayınız.)](https://www.w3schools.com/python/python_dictionaries.asp) ve kümelerdir, `set` [(örnekler için tıklayınız)](https://www.w3schools.com/python/python_sets.asp).
+
+Demet (tuple) oluşturmak için normal parantez, `()` kullanılır. Demet içindeki elemanlara erişmek için köşeli parantez `[]` kullanılır.
+
+```{python}
+tuple1= (1,2,3,4,5) # tuple
+print(tuple1[3]) # 4
+
+#! tuple1[0] = 10 #! Demetler değişmezdir (immutable). Bu kod "TypeError" hatası verir.
+
+print("Ilk elmani")
+print(tuple1[0])
+print("Son elmani")
+print(tuple1[4])
+```
+
+Metinler (string) değişmez (immutable) bir veri tipidir. Bu yüzden metinler üzerinde değişiklik yapmak istediğimizde yeni bir metin oluşturmak gerekir.
+
+Liste tanımlamak için köşeli parantez, `[]`, kullanılır. Liste içindeki elemanlara erişmek için de değişkenin yanına `[]` kullanılarak erişilir.
+
+```{python}
+list1= [1,2,3,4,5,6,7,8,9,10] # list
+print(list1) # Listenin tüm elemanları
+print(list1[0]) # Listenin ilk elemanı
+print(list1[3]) # Listenin 3. elemanı
+print(list1[:]) # Listenin tüm elemanları
+print(list1[1:3]) # Listenin 1. elemanından sona kadar olan elemanları # [2,3]
+print(list1[::2]) # Listenin tüm elemanları 2'şer 2'şer atlayarak
+```
+
+Bir listenin içindeki elemanları değiştirebiliriz. Bunun için değiştirmek istediğimiz elemanın indeksini (index) yazıp onun yerine yeni bir değer yazmamız yeterlidir.
+
+```{python}
+list5= [1,2,3,4,5,6,7,8,9]
+print(list5)
+list5[1] = 66 # Listenin 1. indeksindeki elemanı 66 yapar.
+print(list5)
+list5[4:6] = [78, 93] # Listenin 4. ve 5. indekslerindeki elemanları 78 ve 93 yapar.
+print(list5)
+```
+
+Listelerin sonuna eleman eklemek için `append()` fonksiyonu kullanılır. Listenin boyutunu arttırır.
+
+```{python}
+list2= [1,2,3]
+print(list2)
+list2.append(125) # Listenin sonuna 125'ü ekler
+print(list2)
+```
+
+Bir listenin sonuna değil de istenilen bir yerine eleman eklemek için `insert()` fonksiyonunu kullanılar. Listenin boyutunu arttırır.
+
+```{python}
+list3= [1,2,3]
+print(list3)
+list3.insert(1,66) # Listenin 1. indisi yerine 66'yı ekler ve diğer elemanları kaydırır.
+print(list3)
+```
+
+Bir listenin içinde kaç eleman olduğunu bulmak için `len()` fonksiyonu kullanılır.
+
+```{python}
+list4= [1,2,3]
+print(list4)
+print(len(list4))
+```
+
+Sıralı yazılmış bir liste oluşturmak için `list(range())` fonksiyonu kullanılır. Sadece `range()` fonksiyonu kullanıldığında bir liste oluşturulmaz. `range()` fonksiyonu sadece bir aralık oluşturur ve tek kullanıldığı yer çoğunlukla `for` döngülerinin içerisidir.
+
+```{python}
+print(list(range(10))) # 0'dan 10'a kadar olan sayıları listeye çevirir !! 10 Dahil değil !!.
+print(list(range(3,10))) # 3'ten 10'a kadar olan sayıları listeye çevirir.
+print(list(range(5,20,2))) # 5'den 20'a kadar olan sayıları 2'şer 2'şer atlayarak listeye çevirir.
+print(list(range(20,5,-2))) # 20'den 5'e kadar olan sayıları 2'şer 2'şer atlayarak listeye çevirir.
+
+print([*range(10)])
+```
+
+::: {.callout-warning}
+Değiştirilebilir (mutable) değişkenler `a=b` ifadesi ile `a` değişkenine `b` değişkeninin değerini atamaz. `a` değişkeninin değeri `b` değişkeninin değerini referans eder. Bu demektir ki `b` değişkeninin değeri değiştiğinde `a` değişkeninin değeri de değişir.
+:::
+
+```{python}
+list5= [1.0, 2.0, 3.0]  # list5= list([1.0, 2.0, 3.0])
+list6_degismemesi_gereken= list5 # list5= [1.0, 2.0, 3.0], list6_degismemesi_gereken= [1.0, 2.0, 3.0]
+print(list6_degismemesi_gereken)
+list5[0] = 976.0 # list5= [976.0, 2.0, 3.0]
+print(list6_degismemesi_gereken) #! Değiştirdiğimiz list5'in bir kopyası olan list6_degismemesi_gereken de değişti.
+```
+
+**İki boyutlu listeler** için iki parantez iç içe kullanılır. İlk parantezin içi ilk satırı, ikinci parantez içi ikinci satırı şeklinde devam eder.
+
+İki boyutlu listelere matris olarak da bakılabilir.
+
+İki boyutlu listelerdeki elemanlara erişmek için `[]` kullanılır. Köşeli parantezin içerisindeki ilk sayı satırı, ikinci sayı sütunu belirtir. Eğer sadece bir sayı yazılırsa o satırın tüm sütunları alınır.
+
+```{python}
+list2d_1= [[1,2,3],[4,5,6],[7,8,9]]
+print(list2d_1) # 2 boyutlu liste
+print(list2d_1[1]) # 2 boyutlu listede 1. satır
+print(list2d_1[1][2]) # 2 boyutlu listede 1. satırın 2. elemanı
+```
+
+::: {.callout-info}
+Yukarıdaki örnekten farklı olarak biz 2 boyutlu listeleri yani matrisleri `numpy` paketi kullanarak çağıracağız. Bu pakette matris elemanlarına `[i][j]` olarak değil `[i,j]` olarak erişiriz.
+:::
+
+## Alıştırma 1
+
+1. `araAlistirma1_1.py` dosyasını oluşturun. Bu dosyanın içerisinde aşağıdaki adımları yapın ve sonucu gösterin.
+   1. `list1` adında bir değişken yarat ve içine 1'den 4889'e kadar değerlerini ata ve ekrana yazdır.
+   2. `list1` değişkeninin ilk 10 elemanını ekrana yazdır.
+   3. `list1` değişkeninin son elemanını ekrana yazdır.
+   4. `list1` değişkeninin 10. elemanını ekrana yazdır.
+   5. `list1` değişkeninin 10. elemanını 0 yap ve list1'i ekrana yazdır.
+   6. `list1` değişkeninin son 5 elemanını ekrana yazdır.
+2. `araAlistirma1_2.py` dosyasını oluşturun. Bu dosyanın içerisinde aşağıdaki adımları yapın ve sonucu gösterin.
+   1. `list2d_1` adında bir değişkene 1'den 12'e kadar tüm değerleri *3x4* matris oluşturacak şekilde teker teker elemanlarını yazarak ata ve ekrana yazdır.
+   2. Yukarıdaki işlemi `list2d_2` adında yeni bir değişken için yap ve ekrana yazdır. Bu sefer `range()` fonksiyonunu kullanarak yap.

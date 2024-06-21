@@ -1,0 +1,38 @@
+---
+title: "Alıştırmalar - Problemler - 1"
+---
+
+## Alıştırma 1
+
+Kullanıcıdan dört sayı isteyin. Kullanıcının girdiği sayıları `float` formatına çevirin.
+
+1. Kullanıcının girdiği sayıları sırayla bir listeye yerleştirin. Yani 4 elemanlı tek boyutlu bir listenin elemanlarını kullanıcıya doldurtun. Listeyi ekrana yazdırın.
+2. Bu listenin tüm elemanlarının iki katını, `for` döngüsü kullanarak elde edin ve sonucu ekrana yazdırın.
+3. Eğer girilen sayılardan en az bir tanesi 5'ten büyükse ekrana `... sayıları 5'ten büyüktür.` yazsın. Burada "..." yerine kullanıcının girdiği sayılar yazsın. Aksi taktirde `5'ten büyük sayı girmediniz.` yazsın.
+
+## Alıştırma 2
+
+Bir liste oluşturun ve o listenin elemanları `4, 8, 15, 16, 23, 42` olsun. `for` döngüsü ve `.append()` fonksiyonu kullanarak listenin sonuna 1'den 80'a kadar sayılar ekleyin. Elde ettiğiniz yeni listenin adı `yeniListe` olsun.
+
+   1. Bilgilendirme: `[3,7]` listesinin birinci elemanı `7`'dir. `yeniListe` listenin birinci, beşinci ve son elemanını ekrana yazdırın.
+   2. `yeniListe` listesinin son beş elemanını ekrana yazdırın.
+   3. `yeniListe` listesinin son elli elemanının toplamını ekrana yazdırın. 
+   4. `yeniListe` listesinin son elli elemanının çarpımını ekrana yazdırın.
+   5. `yeniListe` listesindeki tüm çift elemanları yerine `True`, tüm tek elemanları yerine `False` yazın.
+   6. `yeniListe` listesinin elemanlarını alt alta olacak şekilde `yeniListe.txt` dosyasına yazdırın.
+
+## Alıştırma 3
+
+1.  1'den 42 sayısına kadar olan tüm sayıları toplayın. Sonu ekrana yazdırın.
+2.  1'den 42 sayısına kadar olan tüm çift sayıları toplayın. Ekrana yazdırın.
+3.  1'den 89'a kadar (89 dahil) olan tüm sayıları `for` döngüsünü kullanarak ekrana yazdıran bir betik yazın. Bu döngü, 18'de duracak şekilde olsun.
+
+## Alıştırma 4
+
+1.  Bir fonksiyon yazın. Bu fonksiyon ekrana sadece `Naber Dünyalı?` yazdırsın.
+2.  Bir fonksiyon yazın. Bu fonksiyon ekrana `Merhaba Dünyalı. Ben 100'a kadar saymayı biliyorum.` yazsın ardından ekrana 0'dan 100'e kadar (100 dahil) tüm sayıları yazdırsın.
+3.  Bir fonksiyon yazın. Bu fonksyion bir adet değişkeni alsın (Ör. `fonksiyon1(sayi)`) ve karesini geri döndürsün.
+4.  Bir fonksiyon yazın. Bu fonksiyon bir adet değişkeni alsın. `a sayısının kübü ...` yazsın ve kübünü geri döndürsün. Burada "a" fonksiyonun aldığı değişken ve "..." o değişkenin kübü olacaktır.
+5.  Bir fonksiyon yazın. Bu fonksiyon iki adet değişken alsın. Birinci değişkenden ikinci değişkene kadar olan tüm sayıların toplamını ekrana yazdırsın ve değerini döndürsün.
+6.  Bir fonksiyon yazın. Bu fonksiyon bir adet değişken alsın. Girilen değişken $x^2-1=0$ denkleminin çözümü ise `True` değil ise `False` döndürsün.
+7.  Bir fonksiyon yazın. Bu fonksiyon beş adet değişken alsın. Bu değişkenler bir cismin uzay-zaman koordinatları **x,y,z,t** ve x eksenine göre göreli (rölatif) **hızı** olsun. Eğer hız değişkenin değeri ışık hızından büyükse ekrana bunun mümkün olamayacağını yazsın. Eğer hız değişkeni ışık hızından küçükse, uzay-zaman koordinatlarının yere göre (duran gözlemci) ne olacağını hesaplasın ve yeni koordinatları ekrana yazdırsın. Bunun için [Lorentz Dönüşümünü](https://tr.wikipedia.org/wiki/Lorentz_d%C3%B6n%C3%BC%C5%9F%C3%BCm%C3%BC) kullanmanız gerekir. Buna ek olarak fonksiyon Galileo Dönüşümüne göre ne olacağını da hesaplasın ve ekrana yazdırsın. Fonksiyon, Lorentz dönüşümü ile elde ettiğiniz yeni uzay-zaman koordinatlarını döndürsün.
