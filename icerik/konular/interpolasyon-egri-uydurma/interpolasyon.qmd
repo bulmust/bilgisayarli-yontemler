@@ -566,9 +566,13 @@ plt.plot(veri[:,0],veri[:,1],'o', label='veri', color='blue')
 plt.plot(xYeni, yYeni, label='Lagrange', color='red')
 plt.legend()
 plt.show()
-##### Scipy Kütüphanesi
+```
+
+### Scipy Kütüphanesi
 
 `scipy` kütüphanesinin içerisindeki `interpolate` alt modülü içinde `lagrange` fonksiyonu bulunur. Bu fonksiyonu kullanarak Lagrange interpolasyonu yapın. Aynı `interpolate` alt modülü içerisinde tek doğrusal interpolasyon için `interp1d` fonksiyonu bulunur. Bu fonksiyonu da kullanarak tek doğrusal interpolasyon yapın.
+
+```{python}
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.interpolate as spInterp
