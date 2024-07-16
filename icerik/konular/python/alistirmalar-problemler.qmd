@@ -23,14 +23,14 @@ Bir liste oluşturun ve o listenin elemanları `4, 8, 15, 16, 23, 42` olsun. `fo
 
 ## Alıştırma 3
 
-1.  1'den 42 sayısına kadar olan tüm sayıları toplayın. Sonu ekrana yazdırın.
-2.  1'den 42 sayısına kadar olan tüm çift sayıları toplayın. Ekrana yazdırın.
-3.  1'den 89'a kadar (89 dahil) olan tüm sayıları `for` döngüsünü kullanarak ekrana yazdıran bir betik yazın. Bu döngü, 18'de duracak şekilde olsun.
+1.  $1$'den $42$ sayısına kadar olan tüm sayıları toplayın. Sonu ekrana yazdırın.
+2.  $1$'den $42$ sayısına kadar olan tüm çift sayıları toplayın. Ekrana yazdırın.
+3.  $1$'den $89$'a kadar ($89$ dahil) olan tüm sayıları `for` döngüsünü kullanarak ekrana yazdıran bir betik yazın. Bu döngü, 18'de duracak şekilde olsun.
 
 ## Alıştırma 4
 
 1.  Bir fonksiyon yazın. Bu fonksiyon ekrana sadece `Naber Dünyalı?` yazdırsın.
-2.  Bir fonksiyon yazın. Bu fonksiyon ekrana `Merhaba Dünyalı. Ben 100'a kadar saymayı biliyorum.` yazsın ardından ekrana 0'dan 100'e kadar (100 dahil) tüm sayıları yazdırsın.
+2.  Bir fonksiyon yazın. Bu fonksiyon ekrana `Merhaba Dünyalı. Ben $100$'a kadar saymayı biliyorum.` yazsın ardından ekrana $0$'dan $100$'e kadar ($100$ dahil) tüm sayıları yazdırsın.
 3.  Bir fonksiyon yazın. Bu fonksyion bir adet değişkeni alsın (Ör. `fonksiyon1(sayi)`) ve karesini geri döndürsün.
 4.  Bir fonksiyon yazın. Bu fonksiyon bir adet değişkeni alsın. `a sayısının kübü ...` yazsın ve kübünü geri döndürsün. Burada "a" fonksiyonun aldığı değişken ve "..." o değişkenin kübü olacaktır.
 5.  Bir fonksiyon yazın. Bu fonksiyon iki adet değişken alsın. Birinci değişkenden ikinci değişkene kadar olan tüm sayıların toplamını ekrana yazdırsın ve değerini döndürsün.

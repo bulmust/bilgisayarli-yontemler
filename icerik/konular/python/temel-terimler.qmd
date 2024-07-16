@@ -221,7 +221,6 @@ with open("denemeVeri.txt", "r") as file1:
 print(satirlar)
 ```
 
-
 Her satırın sonunda alt satıra geç anlamına gelen '\n' karakteri vardır. Eğer bir satırın sonunda '\n' karakteri varsa o satırın sonunda bir alt satıra geçilmiştir. 
 
 ```python
@@ -281,7 +280,6 @@ with open("denemeVeri2.txt", "a") as file2:
 with open("denemeVeri2.txt", "r") as file2:
     print(file2.read())
 ```
-
 
 ::: {.callout-important}
 `w` modu ile dosya açıldığında dosya içeriği silinir ve dosyaya yazmaya başlanır. Eğer dosya yoksa yeni bir dosya oluşturulur.

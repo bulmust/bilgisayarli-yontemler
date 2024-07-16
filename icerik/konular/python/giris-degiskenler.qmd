@@ -241,12 +241,35 @@ Yukarıdaki örnekten farklı olarak biz 2 boyutlu listeleri yani matrisleri `nu
 ## Alıştırma 1
 
 1. `araAlistirma1_1.py` dosyasını oluşturun. Bu dosyanın içerisinde aşağıdaki adımları yapın ve sonucu gösterin.
-   1. `list1` adında bir değişken yarat ve içine 1'den 4889'e kadar değerlerini ata ve ekrana yazdır.
-   2. `list1` değişkeninin ilk 10 elemanını ekrana yazdır.
+   1. `list1` adında bir değişken yarat ve içine $1$'den $4889$'e kadar değerlerini ata ve ekrana yazdır.
+   2. `list1` değişkeninin ilk $10$ elemanını ekrana yazdır.
    3. `list1` değişkeninin son elemanını ekrana yazdır.
-   4. `list1` değişkeninin 10. elemanını ekrana yazdır.
-   5. `list1` değişkeninin 10. elemanını 0 yap ve list1'i ekrana yazdır.
-   6. `list1` değişkeninin son 5 elemanını ekrana yazdır.
+   4. `list1` değişkeninin $10$. elemanını ekrana yazdır.
+   5. `list1` değişkeninin $10$. elemanını 0 yap ve list1'i ekrana yazdır.
+   6. `list1` değişkeninin son $5$ elemanını ekrana yazdır.
 2. `araAlistirma1_2.py` dosyasını oluşturun. Bu dosyanın içerisinde aşağıdaki adımları yapın ve sonucu gösterin.
-   1. `list2d_1` adında bir değişkene 1'den 12'e kadar tüm değerleri *3x4* matris oluşturacak şekilde teker teker elemanlarını yazarak ata ve ekrana yazdır.
+   1. `list2d_1` adında bir değişkene $1$'den $12$'e kadar tüm değerleri $3\times 4$ matris oluşturacak şekilde teker teker elemanlarını yazarak ata ve ekrana yazdır.
    2. Yukarıdaki işlemi `list2d_2` adında yeni bir değişken için yap ve ekrana yazdır. Bu sefer `range()` fonksiyonunu kullanarak yap.
+
+```python
+#araAlışstşrma1_1.py
+# Birinci Soru
+print("\nBirinci soru:")
+list1 = list(range(1,4890)) # 1'den 48'e kadar değerlerini ata.
+print("list1 değişkeni:\n", list1, "\n") # ekrana yazdır.
+print("İlk 10 değişken:",list1[0:10]) # ilk 10 değişken
+print("Son değişken:",list1[-1]) # son değişken
+print("Onuncu değişken:",list1[9]) # Onuncu değişken
+list1[9] = 0 # onuncu değişkeni sıfır 
+print("10. eleman 0 yapıldıktan sonra list1 değişkeni:\n", list1, "\n") # ekrana yazdır.
+print("Son 5 değişken:",list1[-5:]) # son 5 eleman
+
+# İkinci Soru
+print("\n---\nİkinci soru:")
+list2d_1 = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+print("list2d_1 değişkeni:\n", list2d_1, "\n") # ekrana yazdır.
+list2d_1 = [list(range(1,5)),list(range(5,9)),list(range(9,13))]
+print("list2d_1 değişkeni:\n", list2d_1, "\n") # ekrana yazdır.
+
+exit(' -- Taygun Bulmus -- Program sonlandırıldı.')
+```
