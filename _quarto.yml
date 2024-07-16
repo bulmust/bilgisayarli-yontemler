@@ -56,12 +56,9 @@ website:
             contents: 
               - icerik/konular/interpolasyon-egri-uydurma/interpolasyon.qmd
               - icerik/konular/interpolasyon-egri-uydurma/egri-uydurma.qmd
-          - section: Kök Bulma
-            href: icerik/konular/kok-bulma.qmd
-          - section: Sayısal Türev
-            href: icerik/konular/sayisal-turev.qmd
-          - section: Sayısal İntegral
-            href: icerik/konular/sayisal-integral.qmd
+          - href: icerik/konular/kok-bulma.qmd
+          - href: icerik/konular/sayisal-turev.qmd
+          - href: icerik/konular/sayisal-integral.qmd
           - section: Adi Diferansiyel Denklemler
             href: icerik/konular/adi-diferansiyel-denklemler.qmd
             contents:
@@ -97,7 +94,6 @@ website:
               - icerik/konular/istatistik/dagilimlarin-modellenmesi.qmd
               - icerik/konular/istatistik/scipy-stats.qmd
               - icerik/konular/istatistik/hipotez-testi.qmd
-              
 
 format:
   html:
