@@ -51,6 +51,17 @@ website:
             contents: 
               - icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.qmd
               - icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.qmd
+          - section: İnerpolasyon ve Eğri Uydurma
+            href: icerik/konular/interpolasyon-egri-uydurma.qmd
+            contents: 
+              - icerik/konular/interpolasyon-egri-uydurma/interpolasyon.qmd
+              - icerik/konular/interpolasyon-egri-uydurma/egri-uydurma.qmd
+          - section: Kök Bulma
+            href: icerik/konular/kok-bulma.qmd
+          - section: Sayısal Türev
+            href: icerik/konular/sayisal-turev.qmd
+          - section: Sayısal İntegral
+            href: icerik/konular/sayisal-integral.qmd
           - section: Adi Diferansiyel Denklemler
             href: icerik/konular/adi-diferansiyel-denklemler.qmd
             contents:

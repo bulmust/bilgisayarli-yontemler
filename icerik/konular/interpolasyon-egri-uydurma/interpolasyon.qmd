@@ -1,0 +1,698 @@
+---
+title: "İnterpolasyon"
+---
+
+## Polinom İnterpolasyonu
+
+### Lagrange Polinomu
+
+Bu yöntem kullanışlı değildir ancak basit bir yöntemdir.
+
+Eğer $(n+1)$ adet veri noktası varsa, $n$. dereceden biricik (unique) bir polinom aşağıdaki gibi yazabiliriz.
+
+$$
+P_{n}(x)= \sum_{i=0}^{n} y_{i}l_{i}(x)
+$$
+
+Burada $l_{i}(x)$ kardinal fonksiyonudur ve aşağıdaki gibi tanımlanır.
+
+$$
+l_{i}(x)= \prod_{j=0, j \ne i}^{n} \frac{x-x_{j}}{x_{i}-x_{j}} \qquad \text{,} \quad i = 0,1,2,\dots,n
+$$
+
+> $n+1$ adet noktamız var ise Python kodlarında iterasyon $0$'dan başladığı için $P_{n}$ yazacağız.
+
+**Örnek**
+
+İki noktamıs olsun. İki noktanın interpolasyonu düz çizgi olacak.
+
+$$
+P_{1}(x)= y_{0}l_{0}(x) + y_{1}l_{1}(x)
+$$
+
+$$
+l_{0}(x)= \frac{x-x_{1}}{x_{0}-x_{1}} \qquad \text{,} \quad l_{1}(x)= \frac{x-x_{0}}{x_{1}-x_{0}}
+$$
+
+$$
+P_{1}(x)= y_{0}\frac{x-x_{1}}{x_{0}-x_{1}} + y_{1}\frac{x-x_{0}}{x_{1}-x_{0}}
+$$
+
+Örnek verimiz aşağıdaki gibi olsun.
+
+| | x | y |
+|:---|:---|:---|
+|0. Veri| 0 | 4 |
+|1. Veri| 1 | 5 |
+
+$$
+P_{1}(x)= 4\frac{x-1}{0-1} + 5\frac{x-0}{1-0} \\
+\quad\\
+P_{1}(x)= x+4
+$$
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def p1_fonk(x):
+    return x+4
+
+veri= np.array([[0,4],[1,5]])
+
+plt.close('all')
+plt.plot(veri[:,0], veri[:,1], 'o', label='Veri')
+plt.plot(np.arange(-2,5), p1_fonk(np.arange(-2,5)), label='$P_{1}(x)$')
+plt.legend(loc='best')
+plt.show()
+```
+
+### Newton Yöntemi
+
+Bu yöntem Lagrange yönteminden daha etkili ve kullanışlıdır. En genel olarak interpolasyon polinomu aşağıdaki gibi yazılır.
+
+$$
+P_{n}(x)= a_{0} + a_{1}(x-x_{0}) + a_{2}(x-x_{0})(x-x_{1}) + \dots + a_{n}(x-x_{0})(x-x_{1})\dots(x-x_{n-1})
+$$
+
+Burada $a_{i}$ katsayılarıdır. Birazdan bu katsayıların nasıl elde edildiğini göreceğiz.
+
+**Örnek**
+
+3 veri noktamız olsun. Bu noktaları kullanarak 2. dereceden bir polinom yazalım.
+
+$$
+P_{2}(x)= a_{0} + a_{1}(x-x_{0}) + a_{2}(x-x_{0})(x-x_{1})
+$$
+
+**Örnek**
+
+4 veri noktamız olsun. Bu noktaları kullanarak 3. dereceden bir polinom yazalım.
+
+$$
+P_{3}(x)= a_{0} + a_{1}(x-x_{0}) + a_{2}(x-x_{0})(x-x_{1}) + a_{3}(x-x_{0})(x-x_{1})(x-x_{2})
+$$
+
+$$
+P_{3}(x)= a_{0} + (x-x_{0})[a_{1} + (x-x_{1})[a_{2}+ a_{3}(x-x_{2})]]
+$$
+$a_{i}$ katsayısını nasıl bulacağız?
+
+$P_{3}(x)$ ifadesine tekrar bakalım. Bu polinomu daha düşük dereceden polinomlar cinsinden yazmaya çalışacağız.
+
+$$
+P_{3}(x)= a_{0} + (x-x_{0})[a_{1} + (x-x_{1})[a_{2}+ a_{3}(x-x_{2})]]
+$$
+
+- Eğer bir nokta olsaydı $P_{0}$ sabit olmak zorundaydı. En içerden başlayalım ve $a_{3}$ katsayısını $P_{0}$ diyelim. O halde
+
+$$
+P_{0}(x)= a_{3}
+$$
+
+$$
+P_{3}(x)= a_{0} + (x-x_{0})[a_{1} + (x-x_{1})[a_{2}+ \mathbf{P_{0}(x)}(x-x_{2})]]
+$$
+
+- Benzer şekilde $P_{1}(x)= a_{2}+ (x-x_{2})a_{3}= a_{2}+ P_{0}(x)(x-x_{2})$ diyelim.
+
+$$
+P_{1}(x)= a_{2}+ P_{0}(x)(x-x_{2})
+$$
+
+$$
+P_{3}(x)= a_{0} + (x-x_{0})[a_{1} + \mathbf{P_{1}(x)}(x-x_{1})]
+$$
+
+- Son olarak $P_{2}(x)= a_{1}+ (x-x_{1})P_{1}(x)= a_{1}+ P_{1}(x)(x-x_{1})$ diyelim.
+
+$$
+P_{2}(x)= a_{1}+ P_{1}(x)(x-x_{1})
+$$
+
+$$
+P_{3}(x)= a_{0} + \mathbf{P_{2}(x)}(x-x_{0})
+$$
+
+olacaktır.
+Bu bağıntılardan kendini tekrarlayan (recurrence) bir formül elde edebiliriz. $n+1$ adet veri noktası olsun. Bu durumda
+
+$$
+P_{k}(x)= a_{n-k}+ P_{k-1}(x)(x-x_{n-k}) \qquad \text{,} \quad k=1,2,\dots,n \qquad \text{ve} \quad P_{0}(x)= a_{n} \text{,}
+$$
+
+olur.
+
+> Hala $a_{i}$ terimlerini pratik olarak nasıl hesaplayacağımızı bilmiyoruz.
+**Bölünmüş farkını** (divided difference) tanımlayalım.
+
+$$
+a_{0}
+$$
+
+$$
+a_{1} \equiv \nabla y_{i} \equiv \frac{y_{i}-y_{0}}{x_{i}-x_{0}} \qquad \text{,} \quad i=1,2,\dots,n
+$$
+
+$$
+a_{2} \equiv \nabla^{2} y_{i} \equiv \frac{\nabla y_{i}-\nabla y_{1}}{x_{i}-x_{1}} \qquad \text{,} \quad i=2,3,\dots,n
+$$
+
+$$
+\vdots
+$$
+
+$$
+a_{n} \equiv \nabla^{n} y_{i} \equiv \frac{\nabla^{n-1} y_{i}-\nabla^{n-1} y_{n-1}}{x_{i}-x_{n-1}} \qquad \text{,} \quad i=n
+$$
+Bu terimlerin çıkarılışını görelim. Örneğin 3 adet veri noktamız olsun. $P_{2}(x)$ terimini oluşturan $a_{0}$, $a_{1}$ ve $a_{2}$ terimlerini elde edelim.
+
+Veri noktalarımız aşağıdaki gibi olsun.
+
+| | x | y |
+|:---|:---|:---|
+|0. Veri| $x_{0}$ | $y_{0}$ |
+|1. Veri| $x_{1}$ | $y_{1}$ |
+|2. Veri| $x_{2}$ | $y_{2}$ |
+
+Katsayılar aşağıdaki gibi olur.
+
+$a_{0}$ terimi:
+
+$$
+P_{0}(x=x_{0})= a_{0} \\
+y_{0}= a_{0}
+$$
+
+$a_{1}$ terimi:
+
+$$
+\begin{align*}
+    P_{1}(x=x_{1})=& a_{0} + a_{1}(x_{1}-x_{0}) \\
+    y_{1}=& y_{0} + a_{1}(x_{1}-x_{0}) \\
+    a_{1}=& \frac{y_{1}-y_{0}}{x_{1}-x_{0}}
+\end{align*}
+$$
+
+$a_{2}$ terimi:
+
+$$
+\begin{align*}
+    P_{2}(x=x_{2})=& a_{0} + a_{1}(x_{2}-x_{0}) + a_{2}(x_{2}-x_{0})(x_{2}-x_{1}) \\
+    y_{2}=& y_{0} + \frac{y_{1}-y_{0}}{x_{1}-x_{0}}(x_{2}-x_{0}) + a_{2}(x_{2}-x_{0})(x_{2}-x_{1})
+\end{align*}
+$$
+
+Burada $\nabla y_{1}\equiv\frac{y_{1}-y_{0}}{x_{1}-x_{0}}$ tanımlaması yapalım. Ayrıca  $\nabla y_{2}\equiv\frac{y_{2}-y_{0}}{x_{2}-x_{0}}$ tanımlamasını da kullanacağız.
+
+$$
+\begin{align*}
+    y_{2}=& y_{0} + \nabla y_{1}(x_{2}-x_{0}) + a_{2}(x_{2}-x_{0})(x_{2}-x_{1}) \\
+    y_{2}-y_{0} =& (x_{2}-x_{0})[\nabla y_{1} + a_{2}(x_{2}-x_{1})] \\
+    \frac{y_{2}-y_{0}}{x_{2}-x_{0}}=& \nabla y_{1} + a_{2}(x_{2}-x_{1}) \\
+    \nabla y_{2}-\nabla y_{1}=& a_{2}(x_{2}-x_{1}) \\
+    \frac{\nabla y_{2}-\nabla y_{1}}{x_{2}-x_{1}}=& a_{2}
+\end{align*}
+$$
+
+Eğer  $\nabla^{2} y_{2}\equiv\frac{\nabla y_{2}- \nabla y_{1}}{x_{2}-x_{1}}$ tanımlaması yaparsak 
+
+$$
+a_{2}= \nabla^{2} y_{2}
+$$
+
+şeklinde yazılabilir. Üçten fazla nokta için bu iç içe koyma devam eder.
+
+**Örnek**
+
+3 veri noktamız olsun. Bu noktaları kullanarak 2. dereceden bir polinom yazalım.
+
+| | x | y |
+|:---|:---|:---|
+|0. Veri| 1 | 4 |
+|1. Veri| 2 | 5 |
+|2. Veri| 3 | 7 |
+
+Sayısal örneği aşağıdaki gibi hesaplayabiliriz.
+
+$$
+\begin{matrix} 
+   x_{0}=1 & y_{0}=4 \rightarrow a_{0} &                   & \\
+           &         & \frac{5-4}{2-1}=1 \rightarrow a_{2}& \\
+   x_{1}=2 & y_{1}=5 &                   & \frac{2-1}{3-1}=0.5 \rightarrow a_{2} \\
+           &         & \frac{7-5}{3-2}=2 & \\
+   x_{2}=3 & y_{2}=7 &                   &
+\end{matrix}
+$$
+
+Burada $a_{0}=4$, $a_{1}=1$ ve $a_{2}=0.5$ olarak bulunur. O halde $P_{2}(x)$ polinomunu tekrar yazalım.
+
+$$
+P_{2}(x)= a_{0} + a_{1}(x-x_{0}) + a_{2}(x-x_{0})(x-x_{1})
+$$
+
+Değerleri yerine koyalım.
+
+$$
+P_{2}(x)= 4 + 1(x-1) + 0.5(x-1)(x-2)
+$$
+
+Polinom aşağıdaki gibi olur.
+
+$$
+P_{2}(x)= \frac{x^{2}-x+8}{2}
+$$
+Bu polinom eğer doğruysa noktalardan geçiyor olması gerekir.
+
+$$
+P_{2}(x=1)\stackrel{?}{=}4 \rightarrow \frac{1^{2}-1+8}{2}= 4 \quad \checkmark \\
+P_{2}(x=2)\stackrel{?}{=}5 \rightarrow \frac{2^{2}-2+8}{2}= 5 \quad \checkmark \\
+P_{2}(x=3)\stackrel{?}{=}7 \rightarrow \frac{3^{2}-3+8}{2}= 7 \quad \checkmark
+$$
+
+Bu ders kapsamında Neville metodunu incelemeyeceğiz.
+
+### Kübik Spline İnterpolasyonu
+
+#### Doğrusal İnterpolasyon
+
+Veri noktalarını doğrusal olarak birleştirir.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Veri seti oluştur
+
+veri= np.array([[1,1],[2,3],[3,2]])
+
+plt.plot(veri[:,0],veri[:,1],'o', label='veri', color='blue')
+plt.plot(veri[0:2,0],veri[0:2,1], color='red')
+plt.plot(veri[1:3,0],veri[1:3,1], color='black')
+plt.legend()
+plt.show()
+```
+
+Burada iki adet fonksiyon vardır. Birincisi (1,1) ve (2,3) noktasını birleştiren $f_{1}(x)$ fonksiyonudur. İkincisi ise (2,3) ve (3,2) noktasını birleştiren $f_{2}(x)$ fonksiyonudur.
+
+$$
+f_{1}(x) = 2x-1
+$$
+
+$$
+f_{2}(x) = -x+5
+$$
+
+Bu tip interpolasyonlari parçasal (picewise) interpolasyon çeşididir. Tek bir fonksiyon bulmak yerine noktalar arası fonksiyonlar elde edilir.
+
+#### Kuadratik İnterpolasyon
+
+Noktalar arasıda kuadratik yani ikinci dereceden fonksiyonlar bulunur.
+
+#### Kübik Spline İnterpolasyonu
+
+Noktalar arasıda kübik yani üçüncü dereceden fonksiyonlar bulunur.
+
+**Spline İnterpolasyonu nedir?**
+
+Spline interpolasyonu olabilmesi için fonksiyonların birbirine bağlı ve *düzgün* olması gerekmektedir. Bunun için fonksiyonların birbirine bağlanması için iki adet kural vardır.
+
+1. Fonksiyon bağlandığı noktada eşit olsun: $f_{i}(x_{i}) = f_{i+1}(x_{i})$
+2. Fonksiyonun türevi bağlandığı eşit olsun: $f'_{i}(x_{i}) = f'_{i+1}(x_{i})$
+
+Bu tip kurallar sürekliliği sağlamak için kullanılır. 
+- Türevin sürekli olması demek fonksiyonun teğetinin aniden değişmemesi demektir.
+- Kübik Spline interplasyonunda ikinci türevler de sürekli olmalıdır.
+- Kübik Spline interpolasyonunda son noktadaki ikinci türev sıfır olursa o interpolasyona *doğal kübik spline* (natural cubic spline) adı verilir.
+
+**Kübik Spline İnterpolasyonu nasıl yapılır?**
+
+Üç nokta alalım. $(x_{0}, y_{0})$, $(x_{1}, y_{1})$, $(x_{2}, y_{2})$. Üç adet nokta varsa iki adet fonksiyon olmalı: $f_{0}(x)$ ve $f_{1}(x)$.
+
+- Fonksiyonlar kübik yani üçüncü dereceden olmalı.
+- Fonksiyonlar $x_{1}$ noktasında eşit olmalı: $f_{0}(x_{1}) = f_{1}(x_{1})$
+
+$$
+f_{0}(x_{1}) = y_{1}= a_{0} + a_{1}x_{1} + a_{2}x_{1}^{2} + a_{3}x_{1}^{3} \\
+f_{1}(x_{1}) = y_{1}= b_{0} + b_{1}x_{1} + b_{2}x_{1}^{2} + b_{3}x_{1}^{3}
+$$
+
+- Türevleri eşit olmalı
+
+$$
+\frac{df_{0}(x)}{dx} |_{(x=x_{1})} = \frac{df_{1}(x)}{dx} |_{(x=x_{1})}
+$$
+
+$$
+f'_{0}(x) = a_{1} + 2a_{2}x + 3a_{3}x^{2} \\
+f'_{1}(x) = b_{1} + 2b_{2}x + 3b_{3}x^{2}
+$$
+
+- İkinci türevleri eşit olmalı
+
+$$
+\frac{d^{2}f_{0}(x)}{dx^{2}} |_{(x=x_{1})} = \frac{d^{2}f_{1}(x)}{dx^{2}} |_{(x=x_{1})}
+$$
+
+$$
+f''_{0}(x) = 2a_{2} + 6a_{3}x \\
+f''_{1}(x) = 2b_{2} + 6b_{3}x
+$$
+
+- Doğal kübik spline için son noktadaki ikinci türev sıfır olmalı.
+
+$$
+2a_{2}+ 6a_{3}x_{2} = 2b_{2} + 6b_{3}x_{2} = 0
+$$
+
+> Bu ders kapsamında sizlere kağıt üstünde *Verilen noktalar için kübik spline interpolasyonu yapın* şeklinde bir soru gelmeyecek. Ancak aşağıdaki örneği yapmanız beklenir.
+
+**Örnek**
+
+Aşağıdaki fonksiyonların kübik spline olabilmesi için $a$, $b$, $c$ katsayıları ne olmalıdır bulunuz.
+
+$$
+f_{0}(x) = 2x^{3} - 3x^{2} + 3x -4 \qquad 0 \le x \le \\
+f_{1}(x) = x^{3} + ax^{2} + bx + c \qquad 1 \le x \le 2
+$$
+
+**Çözüm**
+
+Olması gereken koşulları yazalım.
+
+1. $f_{0}(x=1) = f_{1}(x=1)$
+2. $f_{0}'(x)|_{x=1} = f'_{0}(x)|_{x=1}$
+3. $f''_{0}(x)|_{x=1} = f''_{1}(x)|_{x=1}$
+4. Doğal kübik spline için $f''_{1}(x)|_{x=2} = 0$
+
+Koşul 1:
+
+$$
+2 - 3 + 3 -4 = 1 + a + b + c \\
+a + b + c = -3
+$$
+
+Koşul 2:
+
+$$
+(6x^{2} - 6x + 3)|_{x=1} = (3x^{2} + 2ax + b)|_{x=1} \\
+6 - 6 + 3 = 3 + 2a + b \\
+2a + b = 0
+$$
+
+Koşul 3:
+
+$$
+(12x - 6)|_{x=1} = (6x + 2a)|_{x=1} \\
+12 - 6 = 6 + 2a \\
+a = 0
+$$
+
+O halde $a=0$ olduğu için $b=0$ ve $c=-3$ olur. Bu çözüm bu kadar basit olmayabilirdi. Bu durumda 3 bilinmeyenli 3 denklem çözülmesi gerekirdi.
+
+$$
+\begin{bmatrix}    1 & 1 & 1 \\ 2 & 1 & 0 \\ 1 & 0 & 0    \end{bmatrix}\begin{bmatrix}    a \\ b \\ c    \end{bmatrix} = \begin{bmatrix}    -3 \\ 0 \\ 0    \end{bmatrix}
+$$
+
+İnterpolasyon ile ilgili gördüğümüz yöntemler aşağıdaki gibidir.
+
+1. Lagrange Yöntemi
+2. Newton Yöntemi
+3. Kübik Spline İnterpolasyonu
+
+Bu yöntemleri Python kodu ile inceleyelim.
+
+## Lagrange Yöntemi (Kod)
+
+Polinom formülü:
+
+$$
+P_{n}(x)= \sum_{i=0}^{n} y_{i}l_{i}(x)
+$$
+
+Kardinal fonksiyonlar
+
+$$
+l_{i}(x)= \prod_{j=0, j \ne i}^{n} \frac{x-x_{j}}{x_{i}-x_{j}} \qquad \text{,} \quad i = 0,1,2,\dots,n
+$$
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Lagrange Interpolasyonu
+def lagrange_interpolasyon_tekAraDeger(xVeri, yVeri, xAraTekDeger):
+    '''
+    Lagrange polinomu ile verilen noktalardan geçen polinom hesaplanır.
+    '''
+    # Verilen x datasının boyutu tutulur.
+    n = int(len(xVeri))
+    # =================
+
+    # Lagrange polinomu hesaplanır.
+    yTekDeger = 0.0
+    for i in range(n):
+        pt = 1.0
+        # Kardinal fonksiyonu hesaplanır.
+        for j in range(n):
+            if i != j:
+                pt= pt* (xAraTekDeger- xVeri[j])/(xVeri[i]- xVeri[j])
+        # Lagrange polinomu hesaplanır.
+        yTekDeger = yTekDeger + yVeri[i]* pt
+    # =================
+    return yTekDeger
+
+# Veri seti oluştur
+veri= np.array([
+    [1,1],
+    [2,3],
+    [3,2],
+    [4,4],
+    [5,3],
+    [6,5],
+    [7,4],
+    [8,7],
+    [9,6],
+    [10,8],
+    [11,7],
+    [12,9]
+])
+
+# Ara x değerlerini oluştur
+xYeni= np.arange(veri[0,0],
+                 veri[-1,0]+0.1,
+                 0.1)
+yYeni= np.zeros(len(xYeni))
+for it in range(len(xYeni)):
+    yYeni[it]= lagrange_interpolasyon_tekAraDeger(veri[:,0],veri[:,1],xYeni[it])
+
+# Çizdir
+plt.close('all')
+plt.plot(veri[:,0],veri[:,1],'o', label='veri', color='blue')
+plt.plot(xYeni,yYeni, label='Lagrange', color='red')
+plt.legend()
+plt.show()
+```
+
+### Alıştırma
+
+Yukarıda verilen Lagrange İnterpolasyon Python kodunu tek bir `xAraTekDeger` değer için değil `xAraDizi` için de çalışacak şekilde değiştiriniz.
+
+#### Çözüm
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Lagrange Interpolasyonu
+def lagrange_interpolasyon_dizi(xVeri, yVeri, xAraDizi):
+    '''
+    Lagrange polinomu ile verilen noktalardan geçen polinom hesaplanır.
+    '''
+    # Verilen xVeri datasının boyutu tutulur.
+    n = int(len(xVeri))
+    # İstenilen xAraDizi datasının boyutu tutulur.
+    nAra= int(len(xAraDizi))
+    # =================
+
+    # Lagrange polinomu hesaplanır.
+    yDizi = np.zeros(nAra)
+    for it in range(nAra):
+        yGecici = 0.0
+        for i in range(n):
+            pt = 1.0
+            # Kardinal fonksiyonu hesaplanır.
+            for j in range(n):
+                if i != j:
+                    pt= pt* (xAraDizi[it]- xVeri[j])/(xVeri[i]- xVeri[j])
+            # Lagrange polinomu hesaplanır.
+            yGecici = yGecici + yVeri[i]* pt
+        yDizi[it]= yGecici
+    # =================
+    return yDizi
+
+# Veri seti oluştur
+veri= np.array([
+    [1,1],
+    [2,3],
+    [3,2],
+    [4,4],
+    [5,3],
+    [6,5],
+    [7,4],
+    [8,7],
+    [9,15],
+    [10,8],
+    [11,7],
+    [12,9]
+])
+
+xVeri= np.arange(0, 11, 1)
+yVeri= np.arange(0, 11, 1)+ np.random.rand(len(np.arange(0, 11, 1)))*0.8
+
+veri=np.zeros((len(xVeri),2))
+veri[:,0]=xVeri
+veri[:,1]=yVeri
+
+# Ara x değerlerini oluştur
+xYeni= np.arange(veri[0,0],
+                 veri[-1,0]+0.1,
+                 0.1)
+yYeni= lagrange_interpolasyon_dizi(veri[:,0],veri[:,1],xYeni)
+
+# Çizdir
+plt.close('all')
+plt.plot(veri[:,0],veri[:,1],'o', label='veri', color='blue')
+plt.plot(xYeni, yYeni, label='Lagrange', color='red')
+plt.legend()
+plt.show()
+##### Scipy Kütüphanesi
+
+`scipy` kütüphanesinin içerisindeki `interpolate` alt modülü içinde `lagrange` fonksiyonu bulunur. Bu fonksiyonu kullanarak Lagrange interpolasyonu yapın. Aynı `interpolate` alt modülü içerisinde tek doğrusal interpolasyon için `interp1d` fonksiyonu bulunur. Bu fonksiyonu da kullanarak tek doğrusal interpolasyon yapın.
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.interpolate as spInterp
+
+veri = np.array([[0, 0],
+                  [1, 1],
+                  [2, 4],
+                  [3, 9],
+                  [4, 16],
+                  [5, 25],
+                  [6, 36],
+                  [7, 45],
+                  [8, 68],
+                  [9, 80],
+                  [10, 90]])
+
+# Scipy ile interpolasyon
+lagrange_fonk_sp= spInterp.lagrange(veri[:,0], veri[:,1])
+xYeni= np.arange(veri[0,0], veri[-1,0]+0.1, 0.1)
+yYeniLagrangeInterpolasyon= lagrange_fonk_sp(xYeni)
+
+# Çizdir
+plt.close('all')
+plt.plot(veri[:,0],veri[:,1],'o', label='veri', color='blue')
+plt.plot(xYeni, yYeniLagrangeInterpolasyon, label='Lagrange', color='red')
+
+# scipy kullanarak polynomial interpolasyon yapılır.
+dogrusal_fonk= spInterp.interp1d(veri[:,0], veri[:,1])
+yYeniDogrusalInterpolasyon= dogrusal_fonk(xYeni)
+
+# Çizdir
+plt.plot(xYeni, yYeniDogrusalInterpolasyon , 'g', linewidth=3, label='interp1d')
+plt.legend()
+plt.show()
+```
+
+## Newton Yöntemi (Kod)
+
+Polinom formülü:
+
+$$
+P_{n}(x)= \sum_{i=0}^{n} a_{i} \prod_{j=0}^{i-1} (x-x_{j})
+$$
+
+Kendini tekrar eden formül:
+
+$$
+P_{k}(x)= a_{n-k}+ P_{k-1}(x)(x-x_{n-k}) \qquad \text{,} \quad k=1,2,\dots,n \qquad \text{ve} \quad P_{0}(x)= a_{n} \text{,}
+$$
+
+Katsayılar:
+
+$$
+a_{n} \equiv \nabla^{n} y_{i} \equiv \frac{\nabla^{n-1} y_{i}-\nabla^{n-1} y_{n-1}}{x_{i}-x_{n-1}} \qquad \text{,} \quad i=n
+$$
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.interpolate as spInterp
+
+# Newton Interpolasyonu
+def newton_interpolasyon_dizi(xData, yData, xNewArray):
+    '''[https://pythonnumericalmethods.berkeley.edu/notebooks/chapter17.05-Newtons-Polynomial-Interpolation.html]
+    Newton polinomu ile verilen noktalardan geçen polinom hesaplanır.
+    '''
+    
+    # Bölünmüş Fark (Divided Differences) hesaplayan fonksiyon.
+    def divided_diff(xData, yData):
+        '''
+        Function to calculate the divided differences table
+        '''
+        n = len(yData)
+        coef = np.zeros([n, n])
+        # the first column is y
+        coef[:,0] = yData
+        
+        for j in range(1,n):
+            for i in range(n-j):
+                coef[i,j] = (coef[i+1,j-1] - coef[i,j-1]) / (xData[i+j]-xData[i])
+        return coef
+
+    # Verilen x değerlerinin bir eksiğinin boyutu tutulur.
+    n= len(xData)- 1
+    # =================
+    coef = divided_diff(xData, yData)[0, :]
+    # =================
+    # Newton polinomu hesaplanır.
+    yNewArray = coef[n]
+    for k in range(1,n+1):
+        yNewArray = coef[n-k] + (xNewArray -xData[n-k])* yNewArray
+    return yNewArray
+
+veri = np.array([[0, 0],
+                  [1, 1],
+                  [2, 4],
+                  [3, 9],
+                  [4, 16],
+                  [5, 25],
+                  [6, 36],
+                  [7, 45],
+                  [8, 68],
+                  [9, 80],
+                  [10, 90]])
+
+# Scipy ile interpolasyon
+lagrange_fonk_sc= spInterp.lagrange(veri[:,0], veri[:,1])
+xYeni= np.arange(veri[0,0], veri[-1,0]+0.1, 0.1)
+yYeniLagrangeInterpolasyon= lagrange_fonk_sc(xYeni)
+
+yYeniNewtonInterpolasyon= newton_interpolasyon_dizi(veri[:,0],veri[:,1],xYeni)
+
+# Çizdir
+plt.close('all')
+plt.plot(veri[:,0],veri[:,1],'o', label='veri', color='blue')
+plt.plot(xYeni, yYeniNewtonInterpolasyon, label='Newton', color='black', lw=4)
+plt.plot(xYeni, yYeniLagrangeInterpolasyon, label='Lagrange', color='red')
+
+# scipy kullanarak polynomial interpolasyon yapılır.
+dogrusal_fonk= spInterp.interp1d(veri[:,0], veri[:,1])
+yYeniDogrusalInterpolasyon= dogrusal_fonk(xYeni)
+
+# Çizdir
+plt.plot(xYeni, yYeniDogrusalInterpolasyon , 'g', linewidth=3, label='interp1d')
+plt.legend()
+plt.show()
+```

@@ -1,0 +1,563 @@
+---
+title: "Sayısal İntegral"
+---
+
+**Amaç**
+
+f(x) fonksiyonunun integralini $x=a$ ve $x=b$ aralığıda almak.
+
+## Newton-Cotes Formülleri
+
+Aşağıdaki integralin sonucunu arayalım.
+
+$$
+\int_a^b f(x) dx
+$$
+
+- İntegral sonsuz küçük $dx$ aralığı için yapılır. Bilgisayara bunu yaptıramayız.
+- Bu yüzden $dx$ aralığını küçük bir değer $h$ ile değiştiririz. Bunun için $ n $ adım sayısı olmak üzere adım aralığı $h$'yi tanımlanır.
+
+$$
+h=(b-a)/n
+$$
+
+- Adım aralığını belirleyip, $ f(x) $ fonksiyonunu $ n $ parçaya ayırdıktan sonra bu parçalardan Lagrange polinomu $ P_{n}(x) $ oluşturacağız.
+
+$$
+P_{n}(x)=\sum_{i=0}^{n} f(x_{i})l_{i}(x)
+$$
+
+- Burada $ l_{i}(x) $ kardinal fonksiyonudur. Bu polinomun integralini alırsak, $ f(x) $ fonksiyonunun integralini elde ederiz.
+
+$$
+I=\int_{a}^{b} P_{n} dx = \sum_{i=0}^{n}\left[f(x_{i})\int_{a}^{b} l_{i}(x) dx \right]=\sum_{i=0}^{n} A_{i}f(x_{i})
+$$
+
+Burada 
+
+$$
+A_{i}=\int_{a}^{b} l_{i}(x) dx, \quad i=0,1,\dots,n
+$$
+
+- $ n=1 $ alınırsa, trapezoidal formülü elde edilir. 
+- $ n=2 $ alınırsa, Simpson formülü elde edilir. 
+- $ n=3 $ alınırsa, Simpson 3/8 formülü elde edilir.
+- Eğer trapeziodal kuralı ile Richardson extrapolasyon algoritması birleştirilirse Romberg integrasyonu elde edilir.
+
+![](assets/integral_1.png)
+
+Kardinal fonksiyon aşağıdaki gibi tanımlanır.
+
+$$
+l_{i}(x)= \prod_{j=0, j \ne i}^{n} \frac{x-x_{j}}{x_{i}-x_{j}} \qquad \text{,} \quad i = 0,1,2,\dots,n
+$$
+
+## Trapezoidal Kuralı
+
+Yukarıdaki verilen integralde $ n=1 $ için kardional fonksiyonu bulalım. Ardından $ A_{i} $ fonksiyonunu elde edeceğiz. Burada $ x_{0}=a $ ve $ x_{1}=b $ olacaktır. **Tüm fonksiyonun alanı tek bir yamuğun alanı şeklinde düşünülür.**
+
+$$ I=\sum_{i=0}^{1} A_{i}f(x_{i})=A_{0}f(x_{0})+A_{1}f(x_{1}) $$
+
+![](assets/integral_2.png)
+
+$$ l_{0} = \frac{x-x_{1}}{x_{0}-x_{1}}= - \frac{x-b}{h}$$
+
+$$ A_{0} = \int_{a}^{b} l_{0}(x) dx = \int_{a}^{b} - \frac{x-b}{h} dx $$
+
+$$ A_{0} = \frac{1}{2h} (b-a)^{2} = \frac{h}{2} $$
+
+---
+
+$$ l_{1} = \frac{x-x_{0}}{x_{1}-x_{0}}= \frac{x-a}{h}$$
+
+$$ A_{1} = \int_{a}^{b} l_{1}(x) dx = \int_{a}^{b} - \frac{x-a}{h} dx $$
+
+$$ A_{1} = \frac{1}{2h} (b-a)^{2} = \frac{h}{2} $$
+
+Bu durumda integralin sonucu
+
+$$ I = \sum_{i=0}^{1} A_{i}f(x_{i}) = A_{0}f(x_{0})+ A_{1}f(x_{1})= \frac{h}{2} (f(a)+f(b)) $$
+
+Burada yaptığımız işlem, $ f(x) $ fonksiyonunu 1 parçaya ayırdık. $ f(x) $ fonksiyonunun integralini, bu parça için bir yamuk çizip ve alanını hesapladığımızda elde ederiz.
+
+Burada gerçek sonuç ile hesaplanan sonuç arasında bir hata olacaktır. Bu hata payına $ E $ diyelim.
+
+$$ E= \int_{a}^{b} f(x)dx - I $$
+
+Bu $ E $ değeri yamuk ile fonksiyonun arasında kalan alandır. 
+
+## Kompozit Trapezoidal Kuralı
+
+Tüm $ f(x) $ fonksiyonunu bir parçaya ayırmaktansa $ n $ parçaya ayırırız. Bu durumda $ f(x) $ fonksiyonunun integralini $ n-1 $ adet yamuk çizip ve alanlarını toplayarak elde ederiz.
+
+![](assets/integral_3.png)
+
+$$ I = \sum_{i=0}^{n-1} I_{i} = \sum_{i=0}^{n-1} \frac{h}{2} (f(x_{i})+f(x_{i+1})) $$
+
+Benzer şekilde hata da her çizilen yamuk için farklı bir değer olacaktır.
+
+### Trapezoid Kuralının Uygulaması
+
+```{python}
+import scipy.integrate as scpInt
+import numpy as np
+
+# Trapezoid Kuralı
+def integral_trapezoidal(fonk, solSinir, sagSinir, adimSayisi):
+    h= (sagSinir-solSinir)/ adimSayisi
+    
+    integral= 0
+    for i in range(adimSayisi):
+        integral= integral+ (fonk(solSinir)+ fonk(solSinir+h))* h/2
+        solSinir= solSinir+ h
+    # Alternatif Algoritma
+    # xVal= np.arange(solSinir, sagSinir+h, h)
+    # for i in range(adimSayisi):
+    #     integral = integral + (fonk(xVal[i])+ fonk(xVal[i+1])) * h/2
+    return integral
+
+# Trapezoidal kuralını uygula
+# İntegralini alınacak fonksiyon
+def fonk(x):
+    return x**2
+
+# Trapozoidal Kuralı (0,1) arasında 100 parçaya bölünmüş integrali
+integral = integral_trapezoidal(fonk, 0, 1, 10)
+print(f'Trapezoid Kuralı ile f(x)=x^{2} nin 0,1 arasındaki integrali {integral:.5f}')
+print('---')
+
+# Trapozoidal Kuralının Scipy kütüphanesindeki karşılığı
+integral2, hata = scpInt.quad(fonk, 0, 1)
+print(f'scipy.integrate.quad() ile f(x)=x^{2} nin 0,1 arasındaki integrali {integral2:.5f}')
+print(f'scipy.integrate.quad() ile f(x)=x^{2} nin 0,1 arasındaki integralin hata payı {hata:.2g}')
+print('---')
+```
+
+### Alıştırma
+Aşağıdaki integrali hem yukarıdaki trapezoidal fonksiyonu ile hem de scipy modülü ile hesaplayın.
+
+$$\int_{0}^{1} e^{-4x^{2}} dx$$
+
+#### Çözüm
+
+```{python}
+import scipy.integrate as scpInt
+import numpy as np
+
+def integral_trapezoidal(fonk, solSinir, sagSinir, adimSayisi):
+    h= (sagSinir-solSinir)/ adimSayisi
+    
+    integral= 0
+    for i in range(adimSayisi):
+        integral= integral+ (fonk(solSinir)+ fonk(solSinir+h))* h/2
+        solSinir= solSinir+ h
+    return integral
+
+# Fonksiyon
+def fonk(x):
+    return np.exp(-4*x**2)
+
+# Trapezoid Kuralı
+# Trapozoidal Kuralı (0,1) arasında 100 parçaya bölünmüş integrali
+integral = integral_trapezoidal(fonk, 0, 1, 100)
+print(f'Trapezoid Kuralı ile f(x)=x^{2} nin 0,1 arasındaki integrali {integral:.5f}')
+
+# Trapozoidal Kuralının Scipy kütüphanesindeki karşılığı
+integral2, hata = scpInt.quad(fonk, 0, 1)
+print(f'scipy.integrate.quad() ile f(x)=x^{2} nin 0,1 arasındaki integrali {integral2:.15f}')
+print(f'scipy.integrate.quad() ile f(x)=x^{2} nin 0,1 arasındaki integralin hata payı {hata:.2g}')
+```
+
+## Simpson Kuralı
+
+Trapezoid kuralında $ f(x) $ fonksiyonunu 1 parçaya ayırmıştık. Şimdi $ f(x) $ fonksiyonunu 2 ayıracağız. Bu durumda $ f(x) $ fonksiyonunun Lagrange polinomu 3 noktadan oluşacak ve bu polinom bir doğru değil ikinci dereceden bir polinom olacaktır.
+
+![](assets/integral_4.png)
+
+- 3 nokta alındığında integralin sonucu aşağıdaki gibi olur. 
+$$ I=\sum_{i=0}^{2} A_{i}f(x_{i})=A_{0}f(x_{0})+A_{1}f(x_{1})+A_{2}f(x_{2}) $$
+
+$$
+l_{i}(x)= \prod_{j=0, j \ne i}^{n} \frac{x-x_{j}}{x_{i}-x_{j}} \qquad \text{,} \quad i = 0,1,2,\dots,n
+$$
+
+$$ l_{0} = \frac{x-x_{1}}{x_{0}-x_{1}}\frac{x-x_{2}}{x_{0}-x_{2}}$$
+
+$$ \dots $$
+
+$$ I = \frac{h}{3}\left(f(a)+4f\left(\frac{a+b}{2}\right)+f(b)\right) $$
+
+Bu formül bazen aşağıdaki gibi de yazılır [[Wikipedia](https://en.wikipedia.org/wiki/Simpson%27s_rule#Composite_Simpson's_1/3_rule)].
+
+$$ \int_{a}^{b}f(x)dx \approx \left[f(a)+4f\left(\frac{a+b}{2}\right)+f(b)\right]\frac{(b-a)}{6} $$
+
+- Bu formüle Simpson'ın 1/3 kuralı adı verilir.
+- Bu metodu **kompozit** hale, yani n adet parçaya ayırıp kümülatif olarak toplayalım. Trapozoid kuralındaki gibi adım aralığı, $ h=(b-a)/n $ olarak tanımlanacaktır.
+
+$$ \int_{x_{i}}^{x_{i}+2}f(x)dx \approx [f(x_{i})+4f(x_{i+1})+f(x_{i+2})]\frac{h}{3} $$
+
+- Bu işlemi her $ i $ polinomu için yapıp toplarsak elde edeceğimiz sonuç aşağıdaki gibi olur.
+
+$$ \int_{a}^{b}f(x)dx \approx I = \left[f(x_{0})+4f(x_{1})+2f(x_{2})+4f(x_{3})+\dots+2f(x_{n-2})+4f(x_{n-1})+f(x_{n}) \right]\frac{h}{3}$$
+
+Toplam formülü şeklinde yazmak istersek
+
+$$ \int_{a}^{b}f(x)dx \approx I = \left[f(x_{0})+f(x_{n})+4\sum_{i=1}^{n/2}f(x_{2i-1})+ 2\sum_{i=1}^{n/2-1}f(x_{2i}) \right]\frac{h}{3}$$
+
+elde ederiz.
+
+## Simpson Kuralının Uygulaması
+
+```{python}
+import scipy.integrate as scpInt
+import numpy as np
+
+# Fonksiyon
+def fonk(x):
+    return np.exp(-4*x**2)
+
+# Simpson 1/3 Kuralı
+def integral_simpson(fonk, solSinir, sagSinir, adimSayisi):
+    h= (sagSinir-solSinir)/ adimSayisi
+    
+    integral= fonk(solSinir)+ fonk(sagSinir)
+    for i in range(1,adimSayisi):
+        katsayi= solSinir + i*h
+        if i%2 == 0:
+            integral = integral+ 2* fonk(katsayi)
+        else:
+            integral = integral+ 4* fonk(katsayi)        
+    return integral* (h/ 3)
+
+# Trapezoid Kuralı
+def integral_trapezoidal(fonk, solSinir, sagSinir, adimSayisi):
+    h= (sagSinir-solSinir)/ adimSayisi
+    
+    integral= 0
+    for i in range(adimSayisi):
+        integral= integral+ (fonk(solSinir)+ fonk(solSinir+h))* h/2
+        solSinir= solSinir+ h
+    return integral
+
+# Apply simpson rule to integrate f(x) = x^2 from 0 to 1
+# Define the function
+def fonk(x):
+    return x**2
+
+# Apply the simpson rule
+print(f'Simpson 1/3 kuralı ile x^2 nin integrali: {integral_simpson(fonk, 0, 1, 10)}')
+print(f'Trapozoidal kuralı ile x^2 nin integrali: {integral_trapezoidal(fonk, 0, 1, 10)}')
+print('---')
+```
+
+### Alıştırma
+Aşağıdaki integrali Simpson 1/3 kuralı ile hesaplayın.
+
+$$\int_{0}^{1} e^{-4x^{2}} dx$$
+
+#### Çözüm
+
+```{python}
+# Simpson 1/3 Kuralı
+def integral_simpson(fonk, solSinir, sagSinir, adimSayisi):
+    h= (sagSinir-solSinir)/ adimSayisi
+    
+    integral= fonk(solSinir)+ fonk(sagSinir)
+    for i in range(1,adimSayisi):
+        katsayi= solSinir + i*h
+        if i%2 == 0:
+            integral = integral+ 2* fonk(katsayi)
+        else:
+            integral = integral+ 4* fonk(katsayi)        
+    return integral* (h/ 3)
+
+# Fonksiyon
+def f(x):
+    return (-4)*(x**2)
+
+# Simpson 1/3 Kuralı
+print(integral_simpson(f, 0, 1, 100))
+```
+
+## Alıştırma
+
+Aşağıdaki integrali trapezoid, Simpson 1/3 kuralı ve scipy ile hesaplayın. Adım sayısını $100$ alın.
+
+$$
+\pi= 2 \times\int_{-1}^{1} \sqrt{1-x^{2}} dx
+$$
+
+```{python}
+import scipy.integrate as scpInt
+import numpy as np
+
+# Simpson 1/3 Kuralı
+def integral_simpson(fonk, solSinir, sagSinir, adimSayisi):
+    h= (sagSinir-solSinir)/ adimSayisi
+    
+    integral= fonk(solSinir)+ fonk(sagSinir)
+    for i in range(1,adimSayisi):
+        katsayi= solSinir + i*h
+        if i%2 == 0:
+            integral = integral+ 2* fonk(katsayi)
+        else:
+            integral = integral+ 4* fonk(katsayi)        
+    return integral* (h/ 3)
+
+# Trapezoid Kuralı
+def integral_trapezoidal(fonk, solSinir, sagSinir, adimSayisi):
+    h= (sagSinir-solSinir)/ adimSayisi
+    
+    integral= 0
+    for i in range(adimSayisi):
+        integral= integral+ (fonk(solSinir)+ fonk(solSinir+h))* h/2
+        solSinir= solSinir+ h
+    return integral
+
+def fonk(x):
+    return np.sqrt(1-x**2)
+
+print(f'Trapezoid Kuralı ile f(x)=sqrt(1-x^2) nin -1,1 arasındaki integrali {2*integral_trapezoidal(fonk, -1, 1, 50):.5f}')
+print(f'Simpson 1/3 Kuralı ile f(x)=sqrt(1-x^2) nin -1,1 arasındaki integrali {2*integral_simpson(fonk, -1, 1, 100):.5f}')
+print(f'scipy.integrate.quad() ile f(x)=sqrt(1-x^2) nin -1,1 arasındaki integrali {2*scpInt.quad(fonk, -1, 1)[0]:.5f}')
+```
+
+## Monte Carlo Yöntemi
+
+- Deterministik yöntemlerin aksine, rastgele sayılar kullanarak hesaplama yapılır.
+- Rastgele işlemler tekrarlanarak yapılır. Burada önemli olan tekrar sayısının olabildiğince çok olmasıdır.
+- Temelde üç branşta kullanılır: Optimizasyon, sayısal integral ve olasılık dağılımı hesaplaması [[1]](https://en.wikipedia.org/wiki/Monte_Carlo_method).
+- Düzgün değişmeyen bir fonksiyonun integralini hesaplamak için kullanışlıdır.
+
+### Monte Carlo Yöntemi Kullanılarak Pi Sayısının Hesaplanması
+
+- Rastgele sayılar üreterek pi sayısını hesaplayalım.
+- Bunun için birim çemberin alanı ve kenarı bir olan karenin alanını kullanacağız.
+
+![](assets/Pi_monte_carlo_all_wiki.gif)
+
+[Wikipedia](https://en.wikipedia.org/wiki/Monte_Carlo_method)
+
+Kenar uzunluğu $ 1 $ olan bir kare ele alalım. Bu karenin içerisine çeyrek daire koyalım. Dairenin alanı $ A_{1} $ olsun, karenin alanı da $ A_{2} $ olsun. Alanların birbirlerine oranı aşağıdaki gibi olacaktır.
+
+$$ 
+\frac{A_{1}}{A_{2}} = \frac{\pi \times (1/4)}{1^{2}} = \pi/4
+$$
+
+Buradan da anlaşılacağı üzere karenin alanının dairenin alanına oranı pi'nin dörtte birine eşittir. Bu oranı Monte Carlo yöntemiyle hesaplayalım.
+
+Bu hesabı tam bir daire (alanı $\pi\times 1^{2}$) ve kare (alanı $2^{2}$) için de yapabiliriz. Bu durumda da oran $\pi/4$ olacaktır.
+
+Önce Python ile rastegele sayı üretme fonksiyonlarını inceleyelim. Numpy ile rastgele sayı üreten fonksiyon aşağıdaki gibidir.
+
+```python
+import numpy as np
+
+np.random.rand() # 0 ile 1 arasında rastgele sayı üretir
+np.random.randint() # belirtilen aralıkta rastgele tam sayı üretir
+np.random.uniform() # belirtilen aralıkta rastgele sayı üretir
+np.random.choice() # belirtilen diziden rastgele eleman seçer
+```
+
+```{python}
+import numpy as np
+# 0 ile 10 arasında 5 sayı üretir
+print('\n0 ile 10 arasında (10 hariç) 5 sayı:\nnp.random.uniform(0,10, size=(5))\n', np.random.uniform(0,10, size=(5)))
+
+# 0 ile 10 arasında 5x2 matris üretir
+print('\n0 ile 10 arasında (10 hariç) 5x2 matris:\nnp.random.uniform(0,10, size=(5,2))\n', np.random.uniform(0,10, size=(5,2)))
+
+# ['Yazı', 'Tura'] 'yı rastgele seçer.
+print('\n["Yazı", "Tura"]"yı rastgele seçer:\nnp.random.choice(["Yazı", "Tura"])\n', np.random.choice(['Yazı', 'Tura']))
+```
+
+```{python}
+import numpy as np
+
+# np.random modülü ile rastgele sayı üretir.
+
+# 0 ile 1 arasında 5 sayı üretir
+print('\n0 ile 1 (1 hariç) arasında 5 sayı:\nnp.random.rand(5)\n', np.random.rand(5))
+
+# 0 ile 1 arasında 5x2 matrisi üretir
+print('\n0 ile 1 arasında (1 hariç) 5x2 matrisi:\nnp.random.rand(5,2)\n', np.random.rand(5,2))
+
+# 0 ile 10 arasında 5 tam sayı üretir
+print('\n0 ile 10 arasında (10 hariç) 5 **tam sayı**:\nnp.random.randint(0,10,5)\n', np.random.randint(0,10,5))
+print('0 ile 10 arasında (10 hariç) 5 **tam sayı**:\nnp.random.randint(10, size=(5))\n', np.random.randint(10, size=(5)))
+```
+
+Şimdi pi sayısını hesaplayalım.
+
+```{python}
+# Pi sayısının hesaplanması
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Örnekleme (sample) sayısı
+N = 1000
+
+# Kare içerisinde bir nokta oluşturma. Bunun için x ve y koordinatları üretiyoruz.
+# Karenin kenar uzunluğu 1 olduğu için x ve y koordinatları 0 ile 1 arasında olacak.
+x = np.random.uniform(-1,1,size=(N))
+y = np.random.uniform(-1,1,size=(N))
+
+# Noktalar çemberin içinde mi dışında mı?
+# Noktaların orijine olan uzaklıklarını hesaplayalım
+orijineUzakligi = np.sqrt(x**2 + y**2)
+
+# Eğer bu uzaklık 1'den küçükse nokta çemberin içinde demektir.
+# orijineUzakligi <= 1 ifadesi True veya False döndürür.
+# True + True = 2, False + False = 0, True + False = 1
+daireninIci= np.sum(orijineUzakligi <= 1)
+# Tüm noktaların daire içindeki noktalara oranını alırsak pi sayısının dörtte birini buluruz.
+piSayisi = 4*daireninIci/N
+
+print('Toplam Nokta sayısı            :', N)
+print('Dairenin içindeki nokta sayısı :', daireninIci)
+print('Dairenin dışındaki nokta sayısı:', N - daireninIci)
+print('---')
+print('Pi sayısı:', piSayisi)
+
+# ---------------------------
+# Grafik çizimi
+# Kareyi çizelim
+# Üst çizgi
+plt.plot([-1, 1], [1, 1], 'k')
+# Alt çizgi
+plt.plot([-1, 1], [-1, -1], 'k')
+# Sol çizgi
+plt.plot([-1, -1], [-1, 1], 'k')
+# Sağ çizgi
+plt.plot([1, 1], [-1, 1], 'k')
+
+# Çemberini çizelim
+t = np.linspace(0, 2*np.pi, 100)
+# Birim çember denklemi: x^2 + y^2 = 1
+xx= np.linspace(-1, 1, 100)
+yy= np.sqrt(1-xx**2)
+plt.plot(xx,yy,'b')
+plt.plot(xx,-yy,'b')
+#plt.plot(np.cos(t), np.sin(t), 'b')
+
+# Noktaları çizelim
+# Daire içindeki noktalar
+plt.scatter(x[orijineUzakligi <= 1], y[orijineUzakligi <= 1], c='r', s=0.1)
+# Daire dışındaki noktalar
+plt.scatter(x[orijineUzakligi > 1], y[orijineUzakligi > 1], c='b', s=0.1)
+plt.show()
+plt.close()
+```
+
+### Monte Carlo İntegrali
+
+Monte Carlo integrali için genel olarak bir $ f $ fonksiyonunun ortalamasını yazalım [[2]](https://en.wikipedia.org/wiki/Mean_of_a_function).
+
+$$ <f> = \frac{1}{b-a}\int^{b}_{a}f(x)dx $$
+
+$$ (b-a)<f> = \int^{b}_{a}f(x)dx $$
+
+Tıpkı diğer sayısal integral alma yöntemlerinde olduğu gibi burada da adım aralığını kesikli hale getirmemiz gerekiyor. Bunun için denklemin sol tarafını $ N $ adet eşit olmayan aralığa bölelim. Bu durumda ortalama fonksiyon $ <f> $ de $ N $ adet aralığa bölmemiz gerekecek.
+
+$$ (b-a)\frac{1}{N} \sum_{i}f(x_{i}) = \int^{b}_{a}f(x)dx $$
+
+Burada $ x_{i} $'ler $ [a,b] $ aralığında **rastgele seçilmiş noktalardır.** Bu noktalardan $ N $ adet seçtiğimiz için $ \frac{1}{N} \sum_{i}f(x_{i}) $ ifadesi $ <f> $'in bir yaklaşımı olacaktır. Sonucun doğruluğunu arttırmak için $ N $ sayısının büyüklüğünü arttırmak gerekir.
+
+Elde ettiğimiz denklemin sağ tarafında integral ifadesi olduğu için, herhangi bir $ f(x) $ fonksiyonun $ [a,b] $ aralığındaki integrali, denklemin sol tarafına eşittir diyebiliriz.
+
+Burada seçilen $ x_{i} $ noktaları eşit aralıklarla değil, rastgeledir. Yani $ x_{i} $'lerin birbirlerine olan uzaklıkları eşit değildir. Bundan dolayı fonksiyonun bazı kısımları hızlı değişip bazı kısımları daha yavaş değişiyorsa, Monte-Carlo integrali daha kullanışlı olacaktır.
+
+Bu yaklaşımı kullanarak bir fonksiyon yazalım.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Monte-Carlo İntegral Yöntemi
+def integral_monteCarlo(fonk, solSinir, sagSinir, adimSayisi):
+    if adimSayisi>1000000:
+        print('Adım sayısı çok büyük. Lütfen 1.000.000\'den küçük bir adım sayısı giriniz.')
+        return None
+    # a ve b arasında n tane rastgele sayı üret
+    x = np.random.uniform(solSinir, sagSinir, size=(adimSayisi))
+    fonksiyonDegerleri = fonk(x)
+    return ((sagSinir-solSinir)/adimSayisi)* np.sum(fonksiyonDegerleri)
+
+def f(x):
+    return x**2
+
+adimSayisi = 100000
+
+a=0
+b=1
+print('Monte-Carlo İntegral Yöntemi ile hesaplanan x^2 integral:', integral_monteCarlo(f, 0, 1, adimSayisi))
+print('Gerçek integral değeri                                  :', 1/3)
+
+def f2(x):
+    return np.cos(x)
+
+print('Monte-Carlo İntegral Yöntemi ile hesaplanan cos(x) integral:', integral_monteCarlo(f2, 0, np.pi/2, adimSayisi))
+print('Gerçek integral değeri                                     :', np.sin(np.pi/2))
+
+# Grafik çizimi
+adimSayisi=5
+x = np.random.uniform(0, 1, size=(adimSayisi))
+xOrj= np.linspace(0, 1, adimSayisi)
+fonksiyonDegerleri = f(x)
+
+plt.title('Monte-Carlo İntegrali, $f(x)=x^{2}$, $ N=%i $' % adimSayisi)
+plt.plot(np.linspace(0, 1, 100), f(np.linspace(0, 1,100)), 'g')
+plt.scatter(x, fonksiyonDegerleri, c='r', s=25, label='Rastgele noktalar')
+plt.scatter(xOrj, f(xOrj), c='b', s=25, label='Düzenli noktalar')
+plt.legend()
+plt.show()
+plt.close()
+```
+
+## Alıştırma
+
+Aşağıdaki integrali Monte-Carlo integral yöntemiyle hesaplayın.
+$$
+\int^{1}_{0}\int^{1}_{0}yx^{2}dxdy
+$$
+
+### Çözüm
+
+```{python}
+import numpy as np
+
+# Monte-Carlo İntegral Yöntemi
+def integral_monteCarlo(fonk,solSinir,sagSinir,adimSayisi):
+    if adimSayisi>1000000:
+        print('Adım sayısı çok büyük. Lütfen 1.000.000\'den küçük bir adım sayısı giriniz.')
+        return None
+    # a ve b arasında n tane rastgele sayı üret
+    x = np.random.uniform(solSinir,sagSinir,size=(adimSayisi))
+    fonksiyonDegerleri = fonk(x)
+    return ((sagSinir-solSinir)/adimSayisi)*np.sum(fonksiyonDegerleri)
+
+def f(x):
+    return x**2
+
+adimSayisi = 10000000
+a=0
+b=1
+
+# X^2 fonksiyonu için integral değeri
+monteCarlo_x= integral_monteCarlo(f, a, b, adimSayisi)
+# y fonksionun integrali
+def g(y):
+    return monteCarlo_x*y
+sonuc= integral_monteCarlo(g, a, b, adimSayisi)
+
+print('Monte-Carlo İntegral Yöntemi ile hesaplanan x^2 h integral:', sonuc)
+print('Gerçek integral değeri                                    :', 1/6)
+```
+
+## Referanslar
+
+1. Monte-Carlo Yöntemi: [https://en.wikipedia.org/wiki/Monte_Carlo_method](https://en.wikipedia.org/wiki/Monte_Carlo_method)
+2. Bir fonksiyonun ortalaması: [https://en.wikipedia.org/wiki/Mean_of_a_function](https://en.wikipedia.org/wiki/Mean_of_a_function)
+3. Monte Carlo İntegrali: [https://www.youtube.com/watch?v=WAf0rqwAvgg&t=29s](https://www.youtube.com/watch?v=WAf0rqwAvgg&t=29s)
+4. Monte-Carlo Yöntemi ve İntegrali[https://www.louisaslett.com/Courses/DSSC/notes/monte-carlo-integration.html](https://www.louisaslett.com/Courses/DSSC/notes/monte-carlo-integration.html)
+
