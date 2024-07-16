@@ -1,0 +1,405 @@
+---
+title: "Dogrusal Denklemler ve Çözümleri"
+---
+
+## Notasyon
+
+İki bilinmeyenli basit bir denklem alalım.
+
+$$
+4x + 7y =6\\
+2x+3y= 1
+$$
+
+Bu denklemi daha da genelleştirelim.
+
+$$
+A_{11}~x_{1} + A_{12}~x_{2}= b_{1}\\
+A_{21}~x_{1} + A_{22}~x_{2}= b_{2}
+$$
+
+Burada bilinmeyenler $x_{1}$ ve $x_{2}$ elemanlarıdır ve bu vektöre **çözüm vektörü**. $A_{ij}$ ise katsayı matrisininin elemanları ve $b_{i}$ ise sonuç vektörüdür. Bu denklemi matris şeklinde yazabiliriz.
+
+$$
+\begin{bmatrix} 4 & 7\\2 & 3 \end{bmatrix} \begin{bmatrix}    x_{1}\\x_{2}    \end{bmatrix}= \begin{bmatrix}    6 \\ 1    \end{bmatrix} \rightarrow \begin{bmatrix} A_{11} & A_{12}\\A_{21} & A_{22} \end{bmatrix} \begin{bmatrix}    x_{1}\\x_{2}    \end{bmatrix}= \begin{bmatrix}    b_{1} \\ b_{2}    \end{bmatrix} 
+$$
+Bu matris denklemini ayrıca aşağıdaki gibi de yazabiliriz.
+
+$$
+A \vec{x} = \vec{b}
+$$
+Katsayı matrisinin determinantı aşağıdaki gibi gösterilir.
+
+$$
+|A| \qquad \text{ veya } \qquad det(A) 
+$$
+Katsayı matrisinin tersi aşağıdaki gibi gösterilir.
+
+$$
+A^{-1} \qquad \text{ veya } \qquad inv(A) 
+$$
+
+>  Çözüm vektörü ve sonuç vektörleri matris de olabilir.
+
+## Çözümün Tekliği ve Durumu
+
+- Eğer $n$ tane denklem ve $n$ adet bilinmeyen varsa çözüm biricik (unique) *olabilir.*
+- Çözümün tek olabilmesi için $det(A)\ne 0$ şartı sağlanmalıdır.
+- Çözüm tek ise satır ve sütunlar birbirinin katı veya kombinasyonu olamaz.
+
+Yukarıdaki şartları sağlayan denklemlere **doğrusal bağımsız** adı verilir.
+
+### Örnek
+
+Aşağıdaki denklem doğrusal bağımlıdır. Ayrıca katsayı matrisinin determinantı da 0'a eşittir.
+
+$$
+2x_{1} + x_{2} =3\\
+4x_{1} + 2x_{2} =6
+$$
+
+### Örnek
+
+Aşağıdaki denklem doğrusal bağımsızdır ve $|A|\ne 0$ bağıntısına sahiptir.
+
+$$
+4x_{1}+7x_{2}=6\\
+2x_{1}+3x_{2}=1
+$$
+Bir denklem sisteminin katsayı matrisinin determinantı ne kadar 0'dan büyükse, o kadar **güzel koşulludur** (well-conditioned.) Güzel koşullunun tersi, yani determinantı 0'a yakın olan sistemlere ise **kötü koşullu** (ill-conditined.) adı verilir.
+
+### Örnek
+
+Aşağıdaki iki denklem sistemi, kötü koşulluluğa örnektir.
+
+$$
+2x_{1} + x_{2} = 3\\
+2x_{1} + 1.0001x_{2}=0
+$$
+
+Bu sistemde katsayı matrisinin determinantı $|A|=0.002$. Denklem sisteminin çözümü ise 
+
+$$
+\begin{bmatrix}    x_{1}\\x_{2}    \end{bmatrix}= \begin{bmatrix}    1501.5\\-3000    \end{bmatrix}
+$$
+
+Bir başka denklem ele alalım.
+
+$$
+2x_{1} + x_{2} = 3\\
+2x_{1} + 1.0002x_{2}=0
+$$
+
+Bu sistemde katsayı matrisinin determinantı $|A|=0.004$ Denklem sisteminin çözümü ise 
+
+$$
+\begin{bmatrix}    x_{1}\\x_{2}    \end{bmatrix}= \begin{bmatrix}    751.5\\-1500    \end{bmatrix}
+$$
+
+> Yukarıdaki örnekte, katsayı matrisinde yapılan binde bir bir değişikliklik, çözüm vektöründe \%200 oranında farklılaşmaya sebep oldu.
+
+## Doğrusal (Lineer) Sistem Çözümleri
+
+1. Bizim ilgileneceğimiz doğrusal sistemler kesikli sistemlerdir. Yani $\int$ yerine $\sum$ kullanılacakt.r
+2. Denklemler birinci dereceden bilinmeyenler içermelidir.
+3. $Ax=b$ şeklinde yazıp $x$'i bulmak istediğimiz denklem sistemleridir.
+
+### Doğrusal Denklem Çözüm Yöntemleri
+
+Doğrusal denklem sistemlerini çözmek için temelde iki yöntem vardır. Birincisi direkt çözüm yöntemleri, ikincisi ise inderekt veya iteratif çözüm yöntemleridir. Bu derste iteratif çözüm yöntemleri incelenmeyecektir.
+
+**İteratif Çözüm Metotları**: Çözüme yaklaşmak için sürekli işlem yapılması gerekir. Bilgisayar kaynakları açısından ekonomik değildir. Çözümün hangi aralıkta olduğu bilindiğinde kullanılabilir.
+
+**Direkt Çözüm Metotları**: Analitik çözüm metotları kullanarak sayısal çözüm elde etme metotlarıdır. Bu derste aşağıdaki üç adet direkt çözüm metotlarını inceleyeceğiz.
+
+1. Gauss eleme (elimination) yöntemi,
+2. LU ayrıştırma (decomposition) yöntemi,
+3. Gauss-Jordan eleme yöntemi
+
+## Gauss Eleme Yöntemi
+Katsayı matrisinde **satır** işlemleri yaparak alt veya üst üçgensel kısmı sıfır yapılır ve çözüm bulunur. Bu işlem yaparak denklem çözümüne **Gauss Eleme Yöntemi** adı verilir. 
+
+Katsayı matrislerinin köşegen elemanların altındaki elemanlar 0 yapılırsa *üst üçgensel form* yapma, köşegen elemanlarının üstündeki elemanlar 0 yapılırsa *alt üçgensel form* yapma adı verilir.
+
+Matrisi alt/üst üçgensel forma getirdikten sonra ileri/geri yerine koyma metodu ile denklem sisteminin çözümü elde edilir.
+Gauss eleme metodunu bilgisayarda yapmak için bir algoritma haline getirmek gerekmektedir. Bu işlemin sistematik hali aşağıdaki gibidir.
+
+$$
+\text{Eq}(i) - ~\lambda~ \text{Eq}(j) \rightarrow \text{Eq}(i)
+$$
+
+Burada *Eq* denklem anlamına gelir. Eq(i) ise i'inci denklem veya katsayı matrisinin i'inci satırı anlamına gelir.
+
+> Yukarıda verilen formülasyondaki eksi (-) işareti her zaman eksi kalmalıdır çünkü bu formülü kodlarken tek bir işaret kullanılmalıdır.
+
+> Yukarıda verilen formülasyonda $\rightarrow$ 'un sağındaki ve solundaki "**i**" indisine dikkat ediniz. 
+
+**Örneğin**
+
+1. Eq(1) - 4 Eq(2) $\rightarrow$ Eq(1). Burada $\lambda=4$.
+2. Eq(2) - (-5) Eq(3) $\rightarrow$ Eq(2). Burada $\lambda=-5$.
+
+> Tüm satır işlemleri sadece katsayı matrisine değil sonuç vektörüne (matrisine), $b$, de uygulanır.
+
+### Örnek
+
+Aşağıdaki denklemi Gauss-Jordan yöntemi kullanarak çözelim.
+
+$$
+4x_{1}- 2x_{2}+ x_{3} = 11\\
+-2x_{1}+ 4x_{2}- 2x_{3}= -16\\
+x_{1}-2x_{2}+4x_{3}= 17
+$$
+
+Matris formunda yazalım.
+
+$$
+\begin{bmatrix}    4 & -2 & 1 \\ -2 & 4 & -2 \\ 1 & -2 & 4    \end{bmatrix} \begin{bmatrix}    x_{1} \\ x_{2} \\ x_{3}    \end{bmatrix} = \begin{bmatrix}    11 \\ -16 \\ 17    \end{bmatrix}
+$$
+
+Burada satırları yani denklemleri isimlendirelim.
+
+- (1) denklemi yani Eq(1) $[4~~~-2~~~1]$ olur.
+- (2) denklemi yani Eq(2) $[-2~~~4~~~-2]$ olur.
+- (3) denklemi yani Eq(3) $[1~~~-2~~~4]$ olur.
+
+**ADIM 1**
+
+**2. satır 1. sütunu** yani $A_{21}$ terimini $0$ yapalım. Bu işlemde $\lambda=~-0.5$ olmalı aşağıdaki işlem uygulanmalı.
+
+$\lambda= $`A[1,0]/A[0,0]`
+
+$$
+\text{Eq}(2) - ~(-0.5)~ \text{Eq}(1) \rightarrow \text{Eq}(2)
+$$
+
+$$
+A=\begin{bmatrix}    4 & -2 & 1 \\ \mathbf{0} & 3 & -1.5 \\ 1 & -2 & 4    \end{bmatrix} \qquad \text{,} \qquad \vec{b}=\begin{bmatrix}    11 \\ -10.5 \\ 17    \end{bmatrix}
+$$
+
+**ADIM 2**
+
+**3. satır 1. sütunu** yani $A_{31}$ terimini $0$ yapalım. Bu işlemde $\lambda=~0.25$ olmalı aşağıdaki işlem uygulanmalı.
+
+$\lambda= $`A[2,0]/A[0,0]`
+
+$$
+\text{Eq}(3) - ~(0.25)~ \text{Eq}(1) \rightarrow \text{Eq}(2)
+$$
+
+$$
+A=\begin{bmatrix}    4 & -2 & 1 \\ 0 & 3 & -1.5 \\ \mathbf{0} & -1.5 & 3.75    \end{bmatrix} \qquad \text{,} \qquad \vec{b}=\begin{bmatrix}    11 \\ -10.5 \\ 14.25    \end{bmatrix}
+$$
+
+**ADIM 3**
+
+**3. satır 2. sütunu** yani $A_{32}$ terimini $0$ yapalım. Bu işlemde $\lambda=~-0.5$ olmalı aşağıdaki işlem uygulanmalı.
+
+$\lambda= $`A[2,1]/A[1,1]`
+
+$$
+\text{Eq}(3) - ~(-0.5)~ \text{Eq}(2) \rightarrow \text{Eq}(2)
+$$
+
+$$
+A= \begin{bmatrix}    4 & -2 & 1 \\ 0 & 3 & -1.5 \\ 0 & \mathbf{0} & 3    \end{bmatrix} \qquad \text{,} \qquad \vec{b}=\begin{bmatrix}    11 \\ -10.5 \\ 9    \end{bmatrix}
+$$
+
+> Katsayı matrisimiz üst üçgensel forma geldi.
+
+**ADIM 4**
+
+Üst üçgensel forma getirilen katsayı matrsinden çözüm elde edebiliriz. Bunun için **geri yerine koyma** metodu kullanacağız.
+
+$$
+A= \begin{bmatrix}    4 & -2 & 1 \\ 0 & 3 & -1.5 \\ 0 & \mathbf{0} & 3    \end{bmatrix} \qquad \text{,} \qquad \vec{b}=\begin{bmatrix}    11 \\ -10.5 \\ 9    \end{bmatrix}
+$$
+
+En son satırdan çözüm elde etmeye başlayalım.
+
+```python
+x[2] = b[2]/ A[2,2]
+```
+
+$$
+3x_{3}=9\\
+x_{3}=3
+$$
+
+Sondan bir önceki satıra yani ikinci satıra bakalım.
+
+```python
+x[1] = (b[1] - A[1,2]* x[2])/A[1,1]
+```
+
+$$
+3x_{2}-1.5x_{3}=-10.5\\
+3x_{2}-4.5=-10.5\\
+x_{2}=-2
+$$
+
+İlk satıra bakalım.
+
+```python
+x[0] = (b[0] - A[0,1]* x[1] - A[0,2]* x[2])/A[0,0]
+```
+
+$$
+4x_{1}-2x_{2}+x_{3}=11\\
+4x_{1}+4+3=11\\
+x_{1}=1
+$$
+
+Bu durumda çözüm vektörümüz, $\vec{x}$, aşağıdaki gibi olacaktır.
+
+$$
+\vec{x}= \begin{bmatrix}    1 \\ -2 \\ 3    \end{bmatrix}
+$$
+
+### Satır İşlemleri ve Determinant İlişkisi
+
+- İki satırın yerini değiştrimek $|A|$ determinantının işareti değiştirir.
+- Matrisin bir satırını bir katsayı ile çarparsak, matris determinanı da o katsayı ile çarpılır.
+- Bir katsayı ile bir satırı çarpıp, o satırı başka bir satır ile toplayıp ardindan topladığımız satırı katsayı ile çarpığıımz satır yerine yazarsak (yukarıda yaptığımız işlemler) determinant, $|A|$, değişmez.
+- Alt veya üst köşegen formda olan bir matrisin determinantı, köşegen elemanlarının çarpımına eşittir.
+
+### Alıştırma
+
+Aşağıdaki denklem sistemini Gauss Eleme yöntemi ile çözün. Çözüm elde ederken **alt üçgen formuna** getirin.
+
+$$
+\begin{bmatrix}    4 & -2 & 1 \\ -2 & 4 & -2 \\ 1 & -2 & 4    \end{bmatrix} \begin{bmatrix}    x_{1} \\ x_{2} \\ x_{3}    \end{bmatrix} = \begin{bmatrix}    11 \\ -16 \\ 17    \end{bmatrix}
+$$
+
+**ÇÖZÜM**
+
+**ADIM 1**
+
+**2 satır 1. sütunu** yani $A_{21}$ terimini $0$ yapalım. Bu işlemde $\lambda=~-0.5$ olmalı aşağıdaki işlem uygulanmalı.
+
+$\lambda= $`A[0,1]/A[1,1]`
+
+$$
+\text{Eq}(1) - ~(-0.5)~ \text{Eq}(2) \rightarrow \text{Eq}(1)
+$$
+
+$$
+A=\begin{bmatrix}    3 & \mathbf{0} & 0 \\ -2 & 4 & -2 \\ 1 & -2 & 4    \end{bmatrix} \qquad \text{,} \qquad \vec{b}=\begin{bmatrix}    3 \\ -16 \\ 17    \end{bmatrix}
+$$
+
+**ADIM 2**
+
+**1. satır 3. sütun** da 0 oldu. Geriye sadece 2. satır 3. sütun kaldı. Bunun için $\lambda=-0.5$ almalıyız.
+
+$\lambda= $`A[1,2]/A[2,2]`
+
+$$
+\text{Eq}(2) - ~(-0.5)~ \text{Eq}(3) \rightarrow \text{Eq}(2)
+$$
+
+$$
+A=\begin{bmatrix}    3 & 0 & \mathbf{0} \\ -1.5 & 3 & \mathbf{0} \\ 1 & -2 & 4    \end{bmatrix} \qquad \text{,} \qquad \vec{b}=\begin{bmatrix}    3 \\ -7.5 \\ 17    \end{bmatrix}
+$$
+
+**ADIM 3**
+
+İleri yerine koyma metodu ile çözümü elde edelim.
+
+$$
+3_{x_{1}}=3\\
+x_{1}=1
+$$
+
+$$
+-1.5x_{1}+3x_{2}=-7.5\\
+x_{2}= -2
+$$
+
+$$
+x_{1}-2x_{2}+4x_{3}=17\\
+x_{3}=3
+$$
+
+## Gauss Eleme Yönteminin algoritması
+
+### Yapılacaklar
+
+1. Bir fonksiyon oluştur. `gauss_eleme_ust_ucgen`. Bu fonksiyon iki değişken alsın. `katsayiMat` ve `sonucVec`.
+2. Katsayı matrisi ve sonuç matrisindeki tüm elemanlar float olmalı. `katsayiMat.astype(float)` ve `sonucVec.astype(float)` kullan.
+3. $\text{Eq}(i) - ~\lambda~ \text{Eq}(j) \rightarrow \text{Eq}(i)$ algoritmasını yaz. Sadece katsayı matrisi için değil sonuç vektörü için de uygula. Üst üçgensel forma getir.
+   1. Örneklerden de gördüğün üzere satırlara ve sütunlara erişmen gerekecek. Bunun için iki adet `for` döngüsü kullan.
+   2. **[Kontrol]** Katsayı matrisinin önceki halini yazdır.
+   3. Eğer $0$ yapmak istediğin eleman 0 ise işlem yapmana gerek yok.
+   4. $\lambda$ değerini hesapla.
+   5. **[Kontorl]** $\lambda$ değerini yazdır.
+   6. Algoritmayı yaz. Katsayı matrisini değiştir.
+   7. Sonuç vektörünü değiştir.
+   8. **[Kontrol]** Katsayı matrisinin sonraki halini yazdır.
+4. Geri yerine koyma fazını uygula çözüm vektörünü elde et.
+   1. `for` döngüsü kullanılmalı. Matrislerde yerine koyma işlemi en son satırdan başlayacak. Döngü sondan başa gitmeli. Ör. `for i in range(2, -1, -1):` -> `[2,1,0]`
+5. Çözüm vektörünü döndür.
+6.  **[Kontrol]** Aşağıdaki girdiler için çalıştır. Sonuçlar doğru mu kontrol et.
+
+```python
+A= np.array([[4, -2, 1], [-2, 4, -2], [1, -2, 4]])
+b= np.array([11, -16, 17])
+print(f"Çözüm vektörü: {gauss_eleme_ust_ucgen(A, b)}")
+```
+
+Çıktı aşağıdaki gibi olmalı
+
+```sh
+[ 1. -2.  3.]
+```
+
+### Geliştirmeler
+
+1. Eğer katsayı matrisi kare değilse hata ver.
+2. $\lambda$ elde edilirken 0'a bölme hatası vermemesi için kontrol yap.
+
+### Python Kodu
+
+```python
+import numpy as np
+
+def gauss_eleme_ust_ucgen(katsayiMat, sonucVec):
+    # Boyut
+    n= len(sonucVec)
+    # Katsayı ve sonuç matrislerini float tipine çevir.
+    katsayiMat= katsayiMat.astype(float)
+    sonucVec= sonucVec.astype(float)
+    # Üst üçgensel matris oluştur.
+    for k in range(0, n-1): # k: pivot satırı
+        for i in range(k+1, n): # i: pivot satırından sonraki satırlar
+            #print(f"katsayiMat Once\n {katsayiMat}")
+            if katsayiMat[i, k] != 0:
+                lamb = katsayiMat[i, k]/ katsayiMat[k, k]
+                #print(f"lamb: {lamb}")
+                # Katsayı matrisini değiştir
+                #print(f"i, k: {i}, {k}")
+                #print(f"katsayiMat[i, k:n]: {katsayiMat[i, k:n]}")
+                #print(f"lamb*katsayiMat[k, k:n]: {lamb*katsayiMat[k, k:n]}")
+                #print(f"katsayiMat[i, k:n]- lamb* katsayiMat[k, k:n]: {katsayiMat[i, k:n]- lamb* katsayiMat[k, k:n]}")
+                katsayiMat[i, :]= katsayiMat[i, :]- lamb* katsayiMat[k, :]
+                # Sonuç vektörünü değiştir
+                sonucVec[i]= sonucVec[i]- lamb* sonucVec[k]
+            #print(f"katsayiMat Sonra\n {katsayiMat}")
+    
+    # Geri Yerine Koyma Yap
+    cozumVek= np.zeros(n)
+    # Son satırdan başlayarak geriye doğru ilerleme
+    for i in range(n-1, -1, -1):
+        cozum= sonucVec[i]
+        # Üst üçgensel formülde yerine koyma
+        for j in range(i+1, n):
+            cozum= cozum- katsayiMat[i,j] * cozumVek[j]
+        # Katsayı matrisinde doğrudan çözümü bulma
+        cozumVek[i]= cozum/ katsayiMat[i,i]
+        
+    return cozumVek
+
+A= np.array([[4, -2, 1], [-2, 4, -2], [1, -2, 4]])
+b= np.array([11, -16, 17])
+
+print(gauss_eleme_ust_ucgen(A,b))
+```

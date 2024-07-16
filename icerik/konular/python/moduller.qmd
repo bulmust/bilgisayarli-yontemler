@@ -1,0 +1,353 @@
+---
+title : "Modüller"
+---
+
+Bu bölümde `math`, `cmath` ve `numpy` modüllerini inceleyeceğiz.
+
+## `math` Modülü
+
+Basit matematiksel işlemleri ve sabitleri betiğe çağırmak için `import math as mt` komutunu yazmak gerekir. Bu komutla `math` modülündeki her fonksiyonu ve değişkeni `mt` isimlendirmesi ile çağırabiliriz.
+
+`math` modülü python dilinin standart kütüphanesidir. Yani python dilini bilgisayarınıza kurduğunuzda bu modülü de bilgisayarınıza kurmuş olursunuz. 
+
+`math` modülünün içerisindekilere tüm fonksiyonlara ve değişkenlere erişmek için lütfen bu modülün [websitesini](https://docs.python.org/3/library/math.html) ziyaret ediniz. Betik içerisinden de `print(dir(mt))` komutu yardımıyla bakabilirsiniz.
+
+```python
+import math as mt
+print(dir(mt)) # math modülünün içindeki fonksiyonları/değişkenleri listeler
+```
+
+**Önemli**: `sin` gibi açi değişkeni ile çalışan fonksiyonlar, aksi belirtilmedikçe **radyan** birimi ile çalışır.
+
+```python
+# ÖRNEKLER
+
+print(mt.pi) # pi sayısını yazdırır
+print(mt.cos(0)) # cos(0) fonksiyonunu hesaplar
+print(mt.sin(mt.pi/ 2)) # sin(0) fonksiyonunu hesaplar
+print(mt.sin(3.14/ 2)) # sin(3.14) fonksiyonunu hesaplar
+```
+
+## `cmath` Modülü
+
+`cmath` modülü, sanal sayı değişkenleri ile çalışabilen `math` modülündeki fonksiyonlarına sahiptir. Ek olarak açıları polar koordinatlara çevirme gibi fonksiyonlara da sahiptir. Ayrıntılı dökümantasyonu için [websitesini](https://docs.python.org/3/library/cmath.html) ziyaret ediniz.
+
+Tıpkı `math` modülü gibi `cmath` de python dilinin standart kütüphanesidir.
+
+İçeriğini görmek için `dir()` fonksiyonunu ile bakalım.
+
+```python
+import cmath as cmt
+print(dir(cmt)) # cmath modülünün içindeki fonksiyonları/değişkenleri listeler
+# ÖRNEKLER
+print(cmt.polar(4+3j)) # 4+3j sayısının polar koordinatlarını hesaplar. (r, theta)
+print(cmt.phase(4+3j)) # 4+3j sayısının theta değerini hesaplar
+print(cmt.rect(5, 0.6435011087932844)) # 5 ve 0.9272952180016122 değerlerinin karşılığı olan (x,y) sayısını hesaplar
+```
+
+## `numpy` Modülü
+
+`numpy` modülü, matematiksel işlemleri ve veri analizi için kullanılan bir modüldür. Bu modülü kullanmak için `import numpy as np` komutunu yazmak gerekir. Bu komutla `numpy` modülündeki her fonksiyonu ve değişkeni `np` isimlendirmesi ile çağırabiliriz.
+
+`numpy` modülü standart bir modül değildir. Yani bu modülü çağırmak için öncelikle bilgisayarınıza kurmanız gerekir. Bu modülü kurmak için `pip3 install numpy` komutunu kullanabilirsiniz.
+
+Bu derste bir modül `np` olarak adlandırılmışsa numpy modülüne ait olduğunu anlayabilirsiniz.
+
+```python
+import numpy as np
+print(dir(np)) # numpy modülünün içindeki fonksiyonları/değişkenleri listeler
+print(dir(np.linalg)) # numpy/linalg modülünün içindeki fonksiyonları/değişkenleri listeler
+```
+
+### Numpy Arrayler (Diziler)
+
+Arrayler (diziler) `numpy` modülünün temel veri yapısıdır. Arrayler, "genellikle" birbirine benzer verileri tutmak için kullanılır.
+
+Arrayler ile ilgili bazı temel kavramlar gibidir:
+
+1. Numpy arrayi oluşturmak için `np.array()` fonksiyonunu kullanırız. Bu fonksiyonun içerisine bir liste veya tuple veririz. Bu fonksiyon bize bir array döndürür.
+   - **Bir boyutlu array:** `np.array([1,2,3,4,5])`
+   - **İki boyutlu array veya MATRIX:** `np.array([[1,2,3],[4,5,6], [7,8,9]])`2. 
+2. **Boyut**: Bir boyutlu arrayler için kaç elemanlı olduğu, iki boyutlu arrayler için arrayin içerisinde kaç tane array olduğunu ve eleman sayısını belirtir.
+
+### Numpy Arraylerinin Oluşturulması
+```python
+import numpy as np
+
+# ÖRNEKLER
+print('1 Boyutlu Arrayin Elemanlarını Yazarak Oluşturma')
+arr1d= np.array([1,2,3,4,5,6,7,8,9,10])
+print(arr1d)
+print('----------------------------------------')
+
+print('1 Boyutlu, n Tane Sıfırdan Oluşan Array Oluşturma')
+arr1d= np.zeros(10)
+print(arr1d)
+print('----------------------------------------')
+
+print('1 Boyutlu, n Tane Birden Oluşan Array Oluşturma')
+arr1d= np.ones(10)
+print(arr1d)
+print('----------------------------------------')
+
+print("1 Boyutlu, Sıfırdan Başlayıp n'e kadar Sayılardan Array Oluşturma")
+arr1d= np.arange(10)
+print(arr1d)
+# np.arange(2,10)   2'den başlayıp 10'a kadar sayılar
+# np.arange(2,10,2) 2'den başlayıp 10'a kadar 2'şer 2'şer sayılar
+print('----------------------------------------')
+```
+
+```python
+print('2 Boyutlu Arrayin Elemanlarını Yazarak Oluşturma')
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print(arr2d)
+print('----------------------------------------')
+
+print('2 Boyutlu, n Tane Sıfırdan Oluşan Array Oluşturma')
+arr2d= np.zeros((3,3))
+print(arr2d)
+print('----------------------------------------')
+
+print('2 Boyutlu, n Tane Birden Oluşan Array Oluşturma')
+arr2d= np.ones((3,3))
+print(arr2d)
+print('----------------------------------------')
+print('2 Boyutlu, n x n Boyttlu Birim Matris')
+arr2d= np.eye(3)
+print(arr2d)
+#print(np.identity(3))
+#print(arr2d)
+print('----------------------------------------')
+
+print('Arrayin Boyutunu Öğrenme')
+arr2d= np.ones((3,7))
+print(arr2d.shape)
+print(np.shape(arr2d))
+print('----------------------------------------')
+```
+
+### Numpy Arraylerinin Elemanlarına Erişim
+
+```python
+import numpy as np
+
+# ÖRNEKLER
+#! 2 Boyutlu Arrayin Elemanlarını Yazarak Oluşturma
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print(arr2d)
+
+print('arr2d[0,0]:\n', arr2d[0,0]) # 1. satır, 1. sütun
+
+print('arr2d[0,1]:\n', arr2d[0,1]) # 1. satır, 2. sütun
+
+print('arr2d[:,0]:\n', arr2d[:,0]) # Tüm satırlar, 1. sütun
+
+print('arr2d[0,:]:\n', arr2d[0,:]) # 1. satır, Tüm sütunlar
+
+print('arr2d[0,0:2]:\n', arr2d[0,0:2]) # 1. satır, 1. ve 2. sütunlar
+
+print('arr2d[0:2,0:2]:\n', arr2d[0:2,0:2]) # 1. ve 2. satırlar, 1. ve 2. sütunlar
+
+arr2d[0]= [10,11,12]
+print("arr2d'birinci satırı değişti:\n", arr2d) # 1. satırı değişti.
+```
+
+### Numpy Arrayleri ile Matematiksel İşlemler
+
+```python
+import numpy as np
+
+# ÖRNEKLER
+#! 2 Boyutlu Arrayin Elemanlarını Yazarak Oluşturma
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print('arr2d:\n',arr2d)
+
+#! Çarpma İşlemi
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print('arr2d*2 :\n', arr2d*2) # Tüm elemanları 2 ile çarpar
+
+#! Toplama İşlemi
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print('arr2d+2 :\n', arr2d+2) # Tüm elemanlara 2 ekler
+
+#! Çıkarma İşlemi
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print('arr2d-2 :\n', arr2d-2) # Tüm elemanlardan 2 çıkarır
+
+#! Bölme İşlemi
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print('arr2d/2 :\n', arr2d/2) # Tüm elemanları 2'ye böler
+
+#! Üs Alma İşlemi
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print('arr2d**2 :\n', arr2d**2) # Tüm elemanları karesini alır
+```
+
+```python
+import numpy as np
+
+#! Karekök Alma İşlemi
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print('np.sqrt(arr2d) :\n', np.sqrt(arr2d)) # Tüm elemanların karekökünü alır
+
+#! Üslü Sayı Alma İşlemi
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print('np.exp(arr2d) :\n', np.exp(arr2d)) # Tüm elemanların üslü sayısını alır
+
+#! Logaritma Alma İşlemi
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print('np.log(arr2d) :\n', np.log(arr2d)) # Tüm elemanların logaritmasını alır
+
+#! Sinüs Alma İşlemi (Radyan)
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print('np.sin(arr2d) :\n', np.sin(arr2d)) # Tüm elemanların sinüsünü alır
+
+#! Sinüs Hiperbolik Alma İşlemi (Radyan)
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print('np.sinh(arr2d) :\n', np.sinh(arr2d)) # Tüm elemanların sinüs hiperboliklerini alır
+```
+
+### Numpy Arrayleri (Matrisleri) ile İllgili Bazı Fonksiyonlar
+
+```python
+import numpy as np
+
+# ÖRNEKLER
+#! 2 Boyutlu Arrayin Elemanlarını Yazarak Oluşturma
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print('arr2d:\n',arr2d)
+
+#! Köşegen Elemanları
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print('arr2d.diagonal() :\n', arr2d.diagonal()) # Diagonal elemanları yazdırır
+#print('arr2d.diagonal(1) :\n', np.diag(arr2d))
+
+#! İzi (trace) 
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print('arr2d.trace() :\n', arr2d.trace()) # Diagonal elemanların toplamını yazdırır
+#print('arr2d.trace() :\n', np.trace(arr2d)) # Diagonal elemanların toplamını yazdırır
+
+#! Transpoz
+arr2d= np.array([[1,2,3],[4,5,6],[7,8,9]])
+#print('arr2d.T :\n', arr2d.T) # Transpozunu alır
+print('arr2d.T :\n', np.transpose(arr2d)) # Transpozunu alır
+```
+
+### Numpy Arraylerinin İşlemleri
+
+```python
+import numpy as np
+
+# ÖRNEKLER
+print("2 Boyutlu Arrayin Elemanlarını Yazarak Oluşturma")
+arr2d_1= np.array([[1,2,3],[4,5,6],[7,8,9]])
+arr2d_2= np.array([[10,11,12],[13,14,15],[16,17,18]])
+print("arr2d_1:\n",arr2d_1)   
+print("arr2d_2:\n",arr2d_2)
+
+print("İki Matrisi Yıldız (*) İle Çarpma")
+print("arr2d_1*arr2d_2:\n",arr2d_1*arr2d_2) # İki matrisi eleman eleman çarpar
+
+print("İki Matrisi Matrisi Çarpımı ile Çarpma")
+arr2d_1= np.array([[1,2,3],[4,5,6],[7,8,9]])
+arr2d_2= np.array([[10,11,12],[13,14,15],[16,17,18]])
+print("arr2d_1 @ arr2d_2:\n",arr2d_1 @ arr2d_2) # İki matrisi matris çarpımı ile çarpar
+
+print("Bir Satır Vektörü ile Bir Sütun Vektörü Çarpma")
+arr1d_1= np.array([1,2,3])
+arr2d_1= np.array([[1,2,3],[4,5,6],[7,8,9]])
+print("arr1d_1:\n",arr1d_1)
+print("arr2d_1:\n",arr2d_1)
+print("arr1d_1 @ arr2d_1:\n",arr1d_1 @ arr2d_1) # Bir satır vektörü ile bir sütun vektörü çarpar
+```
+
+## `matplotlib` Modülü
+
+`matplotlib` modülü en temelde python programlama dilini kullanarak çizim yapılmasına olanak kılan modüldür. İki boyutlu, üç boyutlu veya animasyon yapma gibi birçok fonksiyonu bulunsa da bu ders boyunca çoğunlukla iki boyutlu grafik çizimek için kullanacağız.
+
+`matplotlib` modülü python'un standart bir paketi değildir ve ekstra yüklenmesi gerekmektedir.
+
+Bu ders boyunca `matplotlib` modülünü `plt` ismiyle kullanacağız. Bu isimlendirme `matplotlib` modülünün genel olarak kullanılan bir isimlendirme şeklidir.
+
+Ayrıntılı bilgi için [matplotlib](https://matplotlib.org/) sitesine bakabilirsiniz.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# Örnek
+xAxis = np.arange(0, 6.2, 0.2) # 0'dan 6.2'ye kadar 0.2'şer artan bir dizi
+yAxis_1 = np.sin(xAxis) # sinüsü alınmış bir dizi
+yAxis_2 = np.cos(xAxis) # cosinüsü alınmış bir dizi
+
+# Çizim
+plt.plot(xAxis, yAxis_1, 'r', label='sin(x)') # 'r' Kırmızı
+plt.plot(xAxis, yAxis_2, 'k', label='cos(x)') # 'k' Siyah
+plt.legend() # etiketleri göster
+plt.show() # çizimi göster
+plt.close() # çizimi kapat
+```
+
+### `matplotlib.pyplot` Modülündeki Bazı Fonksiyonlar ve Özellikler
+
+`matplotlib.pyplot` modülü içerisindeki bazı fonksiyonlar ve özellikler aşağıdaki gibidir.
+
+1. `plt.plot()`: Çizim yapmak için kullanılır. 
+   1. `plt.plot(xAxis, yAxis)`: `xAxis` ve `yAxis` değerlerini kullanarak çizim yapar.
+   2. `plt.plot(xAxis, yAxis, 'r')`: `r` parametresi çizimin rengini kırmızı yapar. Temel renkler: `r` (kırmızı), `g` (yeşil), `b` (mavi), `c` (turkuaz), `m` (mor), `y` (sarı), `k` (siyah).
+   3. `plt.plot(xAxis, yAxis, 'r', label='line1')`:  `label` parametresi çizimin ismini belirler.
+   4. `plt.plot(xAxis, yAxis, 'r', label='line1', linewidth=2)`: `linewidth` parametresi çizimin kalınlığını belirler.
+   5. `plt.plot(xAxis, yAxis, 'r', label='line1', linewidth=2, marker='o')`: `marker` parametresi çizimin noktalarını belirler. Temel nokta tipleri: `o` (daire), `s` (kare), `^` (üçgen), `*` (yıldız), `+` (artı), `x` (çarpı).
+   6. `plt.plot(xAxis, yAxis, 'r', label='line1', linewidth=2, linestyle='--')`: `linestyle` parametresi çizimin çizgi tipini belirler. Temel çizgi tipleri: `--` (kesikli), `:` (noktalı), `-` (kesizsiz), `-.` (kesikli-noktalı).
+2. `plt.xlabel('Uzaklık [km]')`: `xAxis` ismini belirlemek için kullanılır.
+3. `plt.ylabel('Hız [km/s]')`: `yAxis` ismini belirlemek için kullanılır.
+4. `plt.title('Hız-Zaman Grafiği')`: Grafiğin başlığını belirlemek için kullanılır.
+5. `plt.legend()`: Çizimlerin isimlerini belirlemek için kullanılır.
+6. `plt.grid()`: Çizimlerin arka planına ızgara çizmek için kullanılır.
+7. `plt.show()`: Çizimleri göstermek için kullanılır.
+8. `plt.savefig('hiz-zaman.png')`: Çizimleri kaydetmek için kullanılır. `hiz-zaman.png` dosyası çalıştırılan dizinde oluşturulur.
+9. `plt.xscale('log')`: `xAxis` değerlerinin logaritmik ölçekte gösterilmesini sağlar.
+10. `plt.yscale('log')`: `yAxis` değerlerinin logaritmik ölçekte gösterilmesini sağlar.
+11. `plt.xlim(0, 100)`: `xAxis` değerlerinin 0 ile 100 arasında gösterilmesini sağlar.
+12. `plt.ylim(0, 100)`: `yAxis` değerlerinin 0 ile 100 arasında gösterilmesini sağlar.
+
+## Problemler
+
+### Problem 1
+
+1. Bir boyutlu arrayler
+   1. 80'den 250'ye kadar sayıları ikişer ikişer giden bir array oluşturunuz ve ekrana yazdırınız. Bu arrayin adı `arr1d_1` olsun.
+   2. Bu arrayin elemanlarının toplamını `np.sum()` fonksiyonu ile bulunuz ve ekrana yazdırınız.
+   3. Bu arrayin elemanlarının ortalamasını `np.mean()` fonksiyonu ile bulunuz ve ekrana yazdırınız.
+   4. Bu arrayin elemanlarının toplamını `for` döngüsü kullanarak bulunuz ve ekrana yazdırınız.
+2. İki boyutlu arrayler
+   1. 1 ile 100 arasındaki sayıları 10x10'luk bir matris haline getiriniz ve ekrana yazdırınız. Bu matrisin adı `arr2d_1` olsun.
+   2. Bu matrisin elemanlarının toplamını `np.sum()` fonksiyonu ile bulunuz ve ekrana yazdırınız.
+   3. Bu matrisin elemanlarının toplamını `for` döngüsü kullanarak bulunuz ve ekrana yazdırınız.
+3. Bir boyutlu ve iki boyutlu arraylerde matematiksel işlemler
+   1. Sadece 2'lerden oluşan 3 elemanlı bir boyutlu array oluşturunuz ve ekrana yazdırınız. Bu arrayin adı `arr1d_2` olsun. 
+   2. 1'den 6'ya kadar olan sayıları ile 3x2'lük bir matris oluşturunuz ve ekrana yazdırınız. Bu matrisin adı `arr2d_2` olsun.
+   3. `arr1d_2` arrayinin boyutunu ekrana yazdırınız.
+   4. `arr2d_2` matrisinin boyutunu ekrana yazdırınız.
+   5. Bu iki arrayin matris çarpımını yapınız ve ekrana yazdırınız.
+4. Bir boyutlu sütun array (**Vektör**)
+   1. Bir boyutlu, elemanları 1'den 3'e kadar olan sütun array oluşturunuz ve ekrana yazdırınız. Bu arrayin adı `vec_1` olsun.
+   2. 1'den 6'ya kadar olan sayıları ile 2x3'lük bir matris oluşturunuz ve ekrana yazdırınız. Bu matrisin adı `arr2d_3` olsun.
+   3. Bu iki arrayin matris çarpımını yapınız ve ekrana yazdırınız.
+
+### Problem 2
+
+1. `polinom1` adında `x` değişkeni ile çalışan bir fonksiyon oluşturun.
+2. `polinom1` fonksiyonu $x^{2}-1$ değerini döndürsün.
+3. Fonksiyon tanımlamasını bitirdikten sonra `if __name__ == '__main__':` bloğu yaratın. **ÖNEMLİ:** Artık her çalıştırılabilir dosyada bu bloğu kullanacağız.
+4. `if __name__ == '__main__':` bloğu içerisinde `xAxis` değişkeni için -3 ile 3 arasında 1000 adet değer oluşturun.
+5. Bu `xAxis` değişkeni için `polinom1` fonksiyonunu çağırın ve dönen sonucu `yAxis` değişkenine atayın.
+6. `xAxis` ve `yAxis` değerlerini kullanarak grafik çizin.
+7. Çizdiğiniz grafikte `xAxis` ve `yAxis` isimlerini belirleyin.
+8. Arkaplan ızgarasını çizin.
+9. Bu grafiği kapatın.
+10. Yeni bir grafik çizdirin. Bu grafik için `xAxis` ve `yAxis` değerlerini kullansın ama bu kesikli cizgi seklinde olsun.
+11. Yeni grafiği `polinom1.png` dosyası olarak kaydedin.
+12. Bu grafiği kapatın.

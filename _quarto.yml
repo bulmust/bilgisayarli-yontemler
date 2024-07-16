@@ -45,6 +45,12 @@ website:
               - icerik/konular/python/temel-terimler.qmd
               - icerik/konular/python/fonksiyonlar.qmd
               - icerik/konular/python/alistirmalar-problemler.qmd
+              - icerik/konular/python/moduller.qmd
+          - section: Doğrusal Denklemler
+            href: icerik/konular/dogrusal-denklemler.qmd
+            contents: 
+              - icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.qmd
+              - icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.qmd
           - section: Adi Diferansiyel Denklemler
             href: icerik/konular/adi-diferansiyel-denklemler.qmd
             contents:

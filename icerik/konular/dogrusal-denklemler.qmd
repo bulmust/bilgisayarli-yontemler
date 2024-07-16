@@ -1,0 +1,5 @@
+---
+title: "Dogrusal Denklemler"
+---
+
+Bu bölümde doğrusal denklemler, doğrusal denklem sistemleri ve çözüm yöntemleri incelenecektir.
