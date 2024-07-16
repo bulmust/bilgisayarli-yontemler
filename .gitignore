@@ -13,8 +13,7 @@
 
 # Ders ile alakalı
 /msgsu/
-*-cevaplar.qmd
-/icerik/tmp/
+/tmp/
 
 # pycache
 __pycache__/

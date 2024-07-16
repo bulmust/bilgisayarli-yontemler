@@ -1,0 +1,5 @@
+---
+title: "Projeler"
+---
+
+Projeler için github reposundaki [icerik/projeler](https://github.com/bulmust/bilgisayarli-yontemler/tree/main/icerik) yolunu kullanın.
