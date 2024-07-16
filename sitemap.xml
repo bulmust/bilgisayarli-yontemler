@@ -2,218 +2,238 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/index.html</loc>
-    <lastmod>2024-07-16T12:28:20.492Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.074Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/veri-analizi/pandas-veri-manipulasyonu-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/veri-analizi/pandas-giris.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/veri-analizi/pandas-uygulama.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/istatistik.html</loc>
-    <lastmod>2024-07-16T12:28:20.484Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.066Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.html</loc>
+    <lastmod>2024-07-16T15:00:08.062Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/istatistik/scipy-stats-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/istatistik/temel-kavramlar-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/istatistik/scipy-stats.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/istatistik/dagilimlarin-modellenmesi.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/istatistik/uygulama-thinkstat2.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/istatistik/olasilik-kutle-fonksiyonu.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html</loc>
-    <lastmod>2024-07-16T12:28:20.484Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.066Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html</loc>
-    <lastmod>2024-07-16T12:28:20.484Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.066Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi/uygulama-ses-dalgalari-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.484Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.066Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.484Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.066Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
   </url>
   <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/python/alistirmalar-problemler.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/python/temel-terimler.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/bilYonMod.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/izlence.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/python/fonksiyonlar.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/python/giris-degiskenler.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/dogrusal-denklemler.html</loc>
+    <lastmod>2024-07-16T15:00:08.062Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.468Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler-cevaplar.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri-cevaplar.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/python/giris-degiskenler.html</loc>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/python/moduller-cevaplar.html</loc>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/python/moduller.html</loc>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/izlence.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/bilYonMod.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/python/fonksiyonlar.html</loc>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/python/temel-terimler.html</loc>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/python/alistirmalar-problemler.html</loc>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi-cevaplar.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri-cevaplar.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi-cevaplar.html</loc>
+    <lastmod>2024-07-16T15:00:08.046Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi.html</loc>
-    <lastmod>2024-07-16T12:28:20.484Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.062Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi/giris.html</loc>
-    <lastmod>2024-07-16T12:28:20.484Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.062Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.484Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.066Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html</loc>
-    <lastmod>2024-07-16T12:28:20.484Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.066Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html</loc>
-    <lastmod>2024-07-16T12:28:20.484Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.066Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/veri-analizi.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/istatistik/uygulama-thinkstat2-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/istatistik/olasilik-kutle-fonksiyonu-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/istatistik/temel-kavramlar.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/istatistik/dagilimlarin-modellenmesi-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/istatistik/hipotez-testi.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.html</loc>
+    <lastmod>2024-07-16T15:00:08.062Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/python.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/veri-analizi/pandas-uygulama-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/veri-analizi/pandas-veri-manipulasyonu.html</loc>
-    <lastmod>2024-07-16T12:28:20.492Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/konular/veri-analizi/pandas-giris-cevaplar.html</loc>
-    <lastmod>2024-07-16T12:28:20.488Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
   <url>
     <loc>https://bulmust.github.io/bilgisayarli-yontemler/icerik/projeler.html</loc>
-    <lastmod>2024-07-16T12:28:20.492Z</lastmod>
+    <lastmod>2024-07-16T15:00:08.070Z</lastmod>
   </url>
 </urlset>

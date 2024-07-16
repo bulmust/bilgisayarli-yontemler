@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>BDP - Giriş – Bilgisayarlı Yöntemler</title>
+<title>Modüller - Problem Cevapları – Bilgisayarlı Yöntemler</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,8 +65,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" rel="next">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -115,7 +147,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html">BDP - Giriş</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Modüller - Problem Cevapları</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Aramak" onclick="window.quartoOpenSearch();">
@@ -263,7 +295,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Giriş</span></a>
   </div>
 </li>
@@ -446,16 +478,23 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#başlangıç-değer-problemi" id="toc-başlangıç-değer-problemi" class="nav-link active" data-scroll-target="#başlangıç-değer-problemi">Başlangıç Değer Problemi</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a>
+  <ul class="collapse">
+  <li><a href="#cevap" id="toc-cevap" class="nav-link" data-scroll-target="#cevap">Cevap</a></li>
+  </ul></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a>
+  <ul class="collapse">
+  <li><a href="#cevap-1" id="toc-cevap-1" class="nav-link" data-scroll-target="#cevap-1">Cevap</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-giris.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/python/moduller-cevaplar.md" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html">BDP - Giriş</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BDP - Giriş</h1>
+<h1 class="title">Modüller - Problem Cevapları</h1>
 </div>
 
 
@@ -484,40 +523,158 @@ window.Quarto = {
 </header>
 
 
-<section id="başlangıç-değer-problemi" class="level2">
-<h2 class="anchored" data-anchor-id="başlangıç-değer-problemi">Başlangıç Değer Problemi</h2>
-<p><strong>Amaç</strong> <span class="math inline">\(y'=F(x,y)\)</span> denklemini, <span class="math inline">\(y(a)=\alpha\)</span> başlangıç koşuluyla çözüp <span class="math inline">\(y(x)\)</span>’i istenilen aralıkta elde etmek.</p>
-<p>Aşağıdaki gibi formda olan diferansiyel denklemlere birinci dereceden adi diferansiyel denklemler denir.</p>
-<p><span class="math display">\[
-\frac{dy}{dx}=y'=f(x)
-\]</span></p>
-<p>Her iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.</p>
-<p>Eğer n.&nbsp;dereceden diferansiyel denklem varsa, yani <span class="math inline">\(y^{(n)}=f(x,y,y',\cdots,y^{(n-1)})\)</span>, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.</p>
-<p>Yüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,</p>
-<p><span class="math display">\[
-y''=-y(x) \qquad y'(x) \equiv v(x) \qquad v'(x)=-y(x)
-\]</span></p>
-<p>Yukarıdaki denklemin koşulları <span class="math inline">\(y(0)=1\)</span>, <span class="math inline">\(v(0)=1\)</span> şeklinde ise başlangıç değer problemi, <span class="math inline">\(y(0)=1\)</span> ve <span class="math inline">\(v(100)=0\)</span> şeklinde farklı ise sınır değer problemi olarak tanımlanır.</p>
-<p>Diferansiyel denklemler tek halde bulunabildiği gibi çoklu halde de bulunabilir. Örneğin,</p>
-<p><span class="math display">\[
-\textbf{y}'=\textbf{F}(x,\textbf{y})
-\]</span></p>
-<p><span class="math display">\[
-\begin{bmatrix}
-y_1' \\
-y_2' \\
-\vdots \\
-y_n'
-\end{bmatrix}=
-\begin{bmatrix}
-f_1(x,y_1,y_2,\cdots,y_n) \\
-f_2(x,y_1,y_2,\cdots,y_n) \\
-\vdots \\
-f_n(x,y_1,y_2,\cdots,y_n)
-\end{bmatrix}
-\]</span></p>
+<section id="problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<ol type="1">
+<li>Bir boyutlu arrayler
+<ol type="1">
+<li>80’den 250’ye kadar sayıları ikişer ikişer giden bir array oluşturunuz ve ekrana yazdırınız. Bu arrayin adı <code>arr1d_1</code> olsun.</li>
+<li>Bu arrayin elemanlarının toplamını <code>np.sum()</code> fonksiyonu ile bulunuz ve ekrana yazdırınız.</li>
+<li>Bu arrayin elemanlarının ortalamasını <code>np.mean()</code> fonksiyonu ile bulunuz ve ekrana yazdırınız.</li>
+<li>Bu arrayin elemanlarının toplamını <code>for</code> döngüsü kullanarak bulunuz ve ekrana yazdırınız.</li>
+</ol></li>
+<li>İki boyutlu arrayler
+<ol type="1">
+<li>1 ile 100 arasındaki sayıları 10x10’luk bir matris haline getiriniz ve ekrana yazdırınız. Bu matrisin adı <code>arr2d_1</code> olsun.</li>
+<li>Bu matrisin elemanlarının toplamını <code>np.sum()</code> fonksiyonu ile bulunuz ve ekrana yazdırınız.</li>
+<li>Bu matrisin elemanlarının toplamını <code>for</code> döngüsü kullanarak bulunuz ve ekrana yazdırınız.</li>
+</ol></li>
+<li>Bir boyutlu ve iki boyutlu arraylerde matematiksel işlemler
+<ol type="1">
+<li>Sadece 2’lerden oluşan 3 elemanlı bir boyutlu array oluşturunuz ve ekrana yazdırınız. Bu arrayin adı <code>arr1d_2</code> olsun.</li>
+<li>1’den 6’ya kadar olan sayıları ile 3x2’lük bir matris oluşturunuz ve ekrana yazdırınız. Bu matrisin adı <code>arr2d_2</code> olsun.</li>
+<li><code>arr1d_2</code> arrayinin boyutunu ekrana yazdırınız.</li>
+<li><code>arr2d_2</code> matrisinin boyutunu ekrana yazdırınız.</li>
+<li>Bu iki arrayin matris çarpımını yapınız ve ekrana yazdırınız.</li>
+</ol></li>
+<li>Bir boyutlu sütun array (<strong>Vektör</strong>)
+<ol type="1">
+<li>Bir boyutlu, elemanları 1’den 3’e kadar olan sütun array oluşturunuz ve ekrana yazdırınız. Bu arrayin adı <code>vec_1</code> olsun.</li>
+<li>1’den 6’ya kadar olan sayıları ile 2x3’lük bir matris oluşturunuz ve ekrana yazdırınız. Bu matrisin adı <code>arr2d_3</code> olsun.</li>
+<li>Bu iki arrayin matris çarpımını yapınız ve ekrana yazdırınız.</li>
+</ol></li>
+</ol>
+<section id="cevap" class="level3">
+<h3 class="anchored" data-anchor-id="cevap">Cevap</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># 1. Soru</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># 1.1. Soru</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>arr1d_1<span class="op">=</span> np.arange(<span class="dv">80</span>,<span class="dv">250</span>)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="bu">print</span>(<span class="st">'arr1d_1</span><span class="ch">\n</span><span class="st">'</span>, arr1d_1)</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># 1.2. Soru</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="bu">print</span>(<span class="st">"1.2 = "</span>, np.<span class="bu">sum</span>(arr1d_1))</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co"># 1.3. Soru</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="bu">print</span>(<span class="st">"1.3 = "</span>, np.mean(arr1d_1))</span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co"># 1.4. Soru</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>toplam<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="cf">for</span> it <span class="kw">in</span> arr1d_1:</span>
+<span id="cb1-16"><a href="#cb1-16"></a>    toplam <span class="op">+=</span> it</span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="bu">print</span>(<span class="st">'1.4 = '</span>, toplam)</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#veya</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>toplam2<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="cf">for</span> it <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(arr1d_1)):</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    toplam2 <span class="op">+=</span> arr1d_1[it]</span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="bu">print</span>(<span class="st">'veya 1.4 = '</span>, toplam2)</span>
+<span id="cb1-23"><a href="#cb1-23"></a></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="co"># 2. Soru</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="co"># 2.1. Soru</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>arr2d_1 <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">101</span>).reshape(<span class="dv">10</span>,<span class="dv">10</span>)</span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="bu">print</span>(<span class="st">'arr2d_1</span><span class="ch">\n</span><span class="st">'</span>, arr2d_1)</span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="co"># veya</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a>arr2d_1 <span class="op">=</span> np.array([np.arange(<span class="dv">1</span>,<span class="dv">11</span>),np.arange(<span class="dv">11</span>,<span class="dv">21</span>),np.arange(<span class="dv">21</span>,<span class="dv">31</span>),np.arange(<span class="dv">31</span>,<span class="dv">41</span>),np.arange(<span class="dv">41</span>,<span class="dv">51</span>)<span class="op">\</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>    , np.arange(<span class="dv">51</span>,<span class="dv">61</span>),np.arange(<span class="dv">61</span>,<span class="dv">71</span>),np.arange(<span class="dv">71</span>,<span class="dv">81</span>),np.arange(<span class="dv">81</span>,<span class="dv">91</span>),np.arange(<span class="dv">91</span>,<span class="dv">101</span>)])</span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="bu">print</span>(<span class="st">'arr2d_1</span><span class="ch">\n</span><span class="st">'</span>, arr2d_1)</span>
+<span id="cb1-32"><a href="#cb1-32"></a></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="co"># 2.2. Soru</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="bu">print</span>(<span class="st">"2.2 = "</span>, np.<span class="bu">sum</span>(arr2d_1))</span>
+<span id="cb1-35"><a href="#cb1-35"></a></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="co"># 2.3. Soru</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a>toplam<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="cf">for</span> it <span class="kw">in</span> arr2d_1:</span>
+<span id="cb1-39"><a href="#cb1-39"></a>    <span class="cf">for</span> it2 <span class="kw">in</span> it:</span>
+<span id="cb1-40"><a href="#cb1-40"></a>        toplam <span class="op">+=</span> it2</span>
+<span id="cb1-41"><a href="#cb1-41"></a><span class="bu">print</span>(<span class="st">'2.3 = '</span>, toplam)</span>
+<span id="cb1-42"><a href="#cb1-42"></a><span class="co">#veya</span></span>
+<span id="cb1-43"><a href="#cb1-43"></a>toplam2<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb1-44"><a href="#cb1-44"></a><span class="cf">for</span> it <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(arr2d_1)):</span>
+<span id="cb1-45"><a href="#cb1-45"></a>    <span class="cf">for</span> it2 <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(arr2d_1[it])):</span>
+<span id="cb1-46"><a href="#cb1-46"></a>        toplam2 <span class="op">+=</span> arr2d_1[it,it2]</span>
+<span id="cb1-47"><a href="#cb1-47"></a><span class="bu">print</span>(<span class="st">'veya 2.3 = '</span>, toplam2)</span>
+<span id="cb1-48"><a href="#cb1-48"></a></span>
+<span id="cb1-49"><a href="#cb1-49"></a><span class="co"># 3. Soru</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a><span class="co"># 3.1. Soru</span></span>
+<span id="cb1-51"><a href="#cb1-51"></a>arr1d_2 <span class="op">=</span> np.array([<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>])</span>
+<span id="cb1-52"><a href="#cb1-52"></a></span>
+<span id="cb1-53"><a href="#cb1-53"></a><span class="co"># 3.2. Soru</span></span>
+<span id="cb1-54"><a href="#cb1-54"></a>arr2d_2 <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">3</span>,<span class="dv">4</span>],[<span class="dv">5</span>,<span class="dv">6</span>]])</span>
+<span id="cb1-55"><a href="#cb1-55"></a></span>
+<span id="cb1-56"><a href="#cb1-56"></a><span class="co"># 3.3. Soru</span></span>
+<span id="cb1-57"><a href="#cb1-57"></a><span class="bu">print</span>(<span class="st">"3.3 = "</span>, arr1d_2.shape)</span>
+<span id="cb1-58"><a href="#cb1-58"></a></span>
+<span id="cb1-59"><a href="#cb1-59"></a><span class="co"># 3.4. Soru</span></span>
+<span id="cb1-60"><a href="#cb1-60"></a><span class="bu">print</span>(<span class="st">"3.4 = "</span>, arr2d_2.shape)</span>
+<span id="cb1-61"><a href="#cb1-61"></a></span>
+<span id="cb1-62"><a href="#cb1-62"></a><span class="co"># 3.5. Soru</span></span>
+<span id="cb1-63"><a href="#cb1-63"></a><span class="bu">print</span>(<span class="st">"3.5 = "</span>, np.dot(arr1d_2,arr2d_2))</span>
+<span id="cb1-64"><a href="#cb1-64"></a></span>
+<span id="cb1-65"><a href="#cb1-65"></a><span class="co"># 4. Soru</span></span>
+<span id="cb1-66"><a href="#cb1-66"></a><span class="co"># 4.1. Soru</span></span>
+<span id="cb1-67"><a href="#cb1-67"></a>vec_1 <span class="op">=</span> np.array([[<span class="dv">1</span>],[<span class="dv">2</span>],[<span class="dv">3</span>]])</span>
+<span id="cb1-68"><a href="#cb1-68"></a><span class="bu">print</span>(<span class="st">'vec_1</span><span class="ch">\n</span><span class="st">'</span>, vec_1)</span>
+<span id="cb1-69"><a href="#cb1-69"></a></span>
+<span id="cb1-70"><a href="#cb1-70"></a><span class="co"># 4.2. Soru</span></span>
+<span id="cb1-71"><a href="#cb1-71"></a>arr2d_3 <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]])</span>
+<span id="cb1-72"><a href="#cb1-72"></a><span class="bu">print</span>(<span class="st">'arr2d_3</span><span class="ch">\n</span><span class="st">'</span>, arr2d_3)</span>
+<span id="cb1-73"><a href="#cb1-73"></a></span>
+<span id="cb1-74"><a href="#cb1-74"></a><span class="co"># 4.3. Soru</span></span>
+<span id="cb1-75"><a href="#cb1-75"></a><span class="bu">print</span>(<span class="st">"4.3 = </span><span class="ch">\n</span><span class="st">"</span>, np.dot(arr2d_3, vec_1))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="problem-2" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
+<ol type="1">
+<li><code>polinom1</code> adında <code>x</code> değişkeni ile çalışan bir fonksiyon oluşturun.</li>
+<li><code>polinom1</code> fonksiyonu <span class="math inline">\(x^{2}-1\)</span> değerini döndürsün.</li>
+<li>Fonksiyon tanımlamasını bitirdikten sonra <code>if __name__ == '__main__':</code> bloğu yaratın. <strong>ÖNEMLİ:</strong> Artık her çalıştırılabilir dosyada bu bloğu kullanacağız.</li>
+<li><code>if __name__ == '__main__':</code> bloğu içerisinde <code>xAxis</code> değişkeni için -3 ile 3 arasında 1000 adet değer oluşturun.</li>
+<li>Bu <code>xAxis</code> değişkeni için <code>polinom1</code> fonksiyonunu çağırın ve dönen sonucu <code>yAxis</code> değişkenine atayın.</li>
+<li><code>xAxis</code> ve <code>yAxis</code> değerlerini kullanarak grafik çizin.</li>
+<li>Çizdiğiniz grafikte <code>xAxis</code> ve <code>yAxis</code> isimlerini belirleyin.</li>
+<li>Arkaplan ızgarasını çizin.</li>
+<li>Bu grafiği kapatın.</li>
+<li>Yeni bir grafik çizdirin. Bu grafik için <code>xAxis</code> ve <code>yAxis</code> değerlerini kullansın ama bu kesikli cizgi seklinde olsun.</li>
+<li>Yeni grafiği <code>polinom1.png</code> dosyası olarak kaydedin.</li>
+<li>Bu grafiği kapatın.</li>
+</ol>
+<section id="cevap-1" class="level3">
+<h3 class="anchored" data-anchor-id="cevap-1">Cevap</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">def</span> polinom1(x):</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb2-8"><a href="#cb2-8"></a>    xAxis <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1000</span>)</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    yAxis <span class="op">=</span> polinom1(xAxis)</span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a>    plt.plot(xAxis, yAxis)</span>
+<span id="cb2-12"><a href="#cb2-12"></a>    plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb2-13"><a href="#cb2-13"></a>    plt.ylabel(<span class="st">'y'</span>)</span>
+<span id="cb2-14"><a href="#cb2-14"></a>    plt.grid()</span>
+<span id="cb2-15"><a href="#cb2-15"></a>    plt.show()</span>
+<span id="cb2-16"><a href="#cb2-16"></a></span>
+<span id="cb2-17"><a href="#cb2-17"></a>    plt.plot(xAxis, yAxis, linestyle<span class="op">=</span><span class="st">'dashed'</span>)</span>
+<span id="cb2-18"><a href="#cb2-18"></a>    plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb2-19"><a href="#cb2-19"></a>    plt.ylabel(<span class="st">'y'</span>)</span>
+<span id="cb2-20"><a href="#cb2-20"></a>    plt.savefig(<span class="st">'polinom1.png'</span>)</span>
+<span id="cb2-21"><a href="#cb2-21"></a>    plt.close()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1092,18 +1249,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler.html" class="pagination-link" aria-label="Adi Diferansiyel Denklemler">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Adi Diferansiyel Denklemler</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="pagination-link" aria-label="BDP - Euler Yöntemi">
-        <span class="nav-page-text">BDP - Euler Yöntemi</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1112,7 +1257,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-giris.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/python/moduller-cevaplar.md" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>

@@ -107,6 +107,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../../styles.css">
 </head>
@@ -226,17 +255,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Alıştırmalar - Problemler - 1</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modüller</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../icerik/konular/dogrusal-denklemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doğrusal Denklemler</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dogrusal Denklemler ve Çözümleri</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doğrusal Denklem Sistemleri</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../icerik/konular/adi-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Adi Diferansiyel Denklemler</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
@@ -291,11 +349,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../../icerik/konular/fourier-analizi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fourier Analizi</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link">
@@ -332,11 +390,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../../icerik/konular/veri-analizi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Veri Analizi</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/veri-analizi/pandas-giris.html" class="sidebar-item-text sidebar-link">
@@ -361,11 +419,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../../icerik/konular/istatistik.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İstatistik</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/istatistik/temel-kavramlar.html" class="sidebar-item-text sidebar-link">
@@ -495,7 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>Herhangi bir değişkene sayı ataması yaparken değişkenin cinsini belirlemeye gerek yoktur (C++ gibi değil). Python otomatik olarak değişkenin cinsini belirler.</p>
 <p>Değişkenlere atananı ekrana yazdırmak için <code>print()</code> fonksiyonu kullanılır.</p>
-<div id="a18c8e10" class="cell" data-execution_count="1">
+<div id="66811170" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># int</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>tamsayi1<span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(tamsayi1)</span>
@@ -521,14 +579,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Değişken tanımlamarı hard diskte değil RAM’de depolanır. Bunun sebebi değişkenler ile ilgili okuma/yazma işleminin hızlı olması gerekir.</p>
 <p>Değişkenleri silmek (RAM’den) için <code>del</code> komutu kullanılır.</p>
-<div id="39c3b380" class="cell" data-execution_count="2">
+<div id="cf07d9c4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>tamsayi1<span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>float1<span class="op">=</span> <span class="fl">5.0</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>complex1<span class="op">=</span> <span class="dv">5</span> <span class="op">+</span> <span class="ot">0j</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="kw">del</span> tamsayi1, float1, complex1 <span class="co"># Değişkenleri siler</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Bir metini (string) bir değişkene atamak için <code>"</code> veya <code>'</code> kullanılır. Bu yöntemlerden bir tanesini seçin ve onu kullanmaya özen gösterin.</p>
-<div id="58dd1e65" class="cell" data-execution_count="3">
+<div id="27aaac9a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>str1<span class="op">=</span> <span class="st">"Hello "</span> <span class="co"># string</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>str2<span class="op">=</span> <span class="st">'World'</span> <span class="co"># string</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a></span>
@@ -544,7 +602,7 @@ Hello  World</code></pre>
 </div>
 </div>
 <p>Ekrana bir değişkeni veya string’i yazdırmak için <code>print()</code> fonksiyonu kullanılır. Bu fonksiyonun kullanımı aşağıdakiler gibi olabilir.</p>
-<div id="8f6a1fb3" class="cell" data-execution_count="4">
+<div id="90e9b60c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="bu">print</span>(<span class="st">"Merhaba Dünya"</span>) <span class="co"># "" kullanarak</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="bu">print</span>(<span class="st">'Merhaba Dünya'</span>) <span class="co"># '' kullanarak</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a></span>
@@ -562,7 +620,7 @@ Merhaba Dünya</code></pre>
 </div>
 </div>
 <p>Bir değişkenin türünü öğrenmek için <code>type()</code> fonksiyonu kullanılır. Bu fonksiyonun çıktısı olarak <strong>class</strong> tipinde bir çıktı alınır. Bunun sebebi Python’da çoğu değişkenin bir nesne (object) olmasıdır.</p>
-<div id="5f01e189" class="cell" data-execution_count="5">
+<div id="fe2828b2" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>tamsayi1 <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>float1 <span class="op">=</span> <span class="fl">5.0</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a>complex1 <span class="op">=</span> <span class="dv">5</span> <span class="op">+</span> <span class="ot">0j</span></span>
@@ -580,7 +638,7 @@ Merhaba Dünya</code></pre>
 </div>
 </div>
 <p>Herhangi bir değişkenin tipini çevirmek için <code>int()</code>, <code>float()</code>, <code>complex()</code> fonksiyonları kullanılır. Bu fonksiyonların çalışmadığı durumlar olabilir.</p>
-<div id="e70c6ad1" class="cell" data-execution_count="6">
+<div id="a1a7d92a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="bu">print</span>(<span class="bu">int</span>(<span class="fl">4.9</span>)) <span class="co"># 4</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="bu">print</span>(<span class="bu">float</span>(<span class="dv">4</span>)) <span class="co"># 4.0</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="bu">print</span>(<span class="bu">complex</span>(<span class="dv">4</span>)) <span class="co"># (4+0j)</span></span>
@@ -595,7 +653,7 @@ Merhaba Dünya</code></pre>
 </div>
 </div>
 <p>Mantıksal (“boolean” veya “bool”) değişkenler <code>True</code> ve <code>False</code> değerlerini alabilirler.</p>
-<div id="c9e4dd84" class="cell" data-execution_count="7">
+<div id="264cf1f3" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>bool1<span class="op">=</span> <span class="va">True</span> <span class="co"># bool</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a>bool2<span class="op">=</span> <span class="va">False</span> <span class="co"># bool</span></span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="bu">print</span>(<span class="bu">type</span>(bool1))</span>
@@ -609,7 +667,7 @@ True False</code></pre>
 <p>Demetlerin bu özelliğine <strong>değişmez (immutable)</strong> denir.</p>
 <p>Diğer çeşit diziler ise sözlükler <code>dict</code> <a href="https://www.w3schools.com/python/python_dictionaries.asp">(örnekler için tıklayınız.)</a> ve kümelerdir, <code>set</code> <a href="https://www.w3schools.com/python/python_sets.asp">(örnekler için tıklayınız)</a>.</p>
 <p>Demet (tuple) oluşturmak için normal parantez, <code>()</code> kullanılır. Demet içindeki elemanlara erişmek için köşeli parantez <code>[]</code> kullanılır.</p>
-<div id="21e91e4b" class="cell" data-execution_count="8">
+<div id="2bb32315" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>tuple1<span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>) <span class="co"># tuple</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="bu">print</span>(tuple1[<span class="dv">3</span>]) <span class="co"># 4</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a></span>
@@ -629,7 +687,7 @@ Son elmani
 </div>
 <p>Metinler (string) değişmez (immutable) bir veri tipidir. Bu yüzden metinler üzerinde değişiklik yapmak istediğimizde yeni bir metin oluşturmak gerekir.</p>
 <p>Liste tanımlamak için köşeli parantez, <code>[]</code>, kullanılır. Liste içindeki elemanlara erişmek için de değişkenin yanına <code>[]</code> kullanılarak erişilir.</p>
-<div id="c152d48f" class="cell" data-execution_count="9">
+<div id="01dd7f63" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>list1<span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>] <span class="co"># list</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="bu">print</span>(list1) <span class="co"># Listenin tüm elemanları</span></span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="bu">print</span>(list1[<span class="dv">0</span>]) <span class="co"># Listenin ilk elemanı</span></span>
@@ -647,7 +705,7 @@ Son elmani
 </div>
 </div>
 <p>Bir listenin içindeki elemanları değiştirebiliriz. Bunun için değiştirmek istediğimiz elemanın indeksini (index) yazıp onun yerine yeni bir değer yazmamız yeterlidir.</p>
-<div id="f2913d91" class="cell" data-execution_count="10">
+<div id="92fd5f2b" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>list5<span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>]</span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="bu">print</span>(list5)</span>
 <span id="cb18-3"><a href="#cb18-3"></a>list5[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">66</span> <span class="co"># Listenin 1. indeksindeki elemanı 66 yapar.</span></span>
@@ -661,7 +719,7 @@ Son elmani
 </div>
 </div>
 <p>Listelerin sonuna eleman eklemek için <code>append()</code> fonksiyonu kullanılır. Listenin boyutunu arttırır.</p>
-<div id="d879979e" class="cell" data-execution_count="11">
+<div id="c93f7fb0" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>list2<span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
 <span id="cb20-2"><a href="#cb20-2"></a><span class="bu">print</span>(list2)</span>
 <span id="cb20-3"><a href="#cb20-3"></a>list2.append(<span class="dv">125</span>) <span class="co"># Listenin sonuna 125'ü ekler</span></span>
@@ -672,7 +730,7 @@ Son elmani
 </div>
 </div>
 <p>Bir listenin sonuna değil de istenilen bir yerine eleman eklemek için <code>insert()</code> fonksiyonunu kullanılar. Listenin boyutunu arttırır.</p>
-<div id="51e5a2c4" class="cell" data-execution_count="12">
+<div id="8af2db84" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>list3<span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
 <span id="cb22-2"><a href="#cb22-2"></a><span class="bu">print</span>(list3)</span>
 <span id="cb22-3"><a href="#cb22-3"></a>list3.insert(<span class="dv">1</span>,<span class="dv">66</span>) <span class="co"># Listenin 1. indisi yerine 66'yı ekler ve diğer elemanları kaydırır.</span></span>
@@ -683,7 +741,7 @@ Son elmani
 </div>
 </div>
 <p>Bir listenin içinde kaç eleman olduğunu bulmak için <code>len()</code> fonksiyonu kullanılır.</p>
-<div id="262e00e2" class="cell" data-execution_count="13">
+<div id="62cf4697" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>list4<span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="bu">print</span>(list4)</span>
 <span id="cb24-3"><a href="#cb24-3"></a><span class="bu">print</span>(<span class="bu">len</span>(list4))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -693,7 +751,7 @@ Son elmani
 </div>
 </div>
 <p>Sıralı yazılmış bir liste oluşturmak için <code>list(range())</code> fonksiyonu kullanılır. Sadece <code>range()</code> fonksiyonu kullanıldığında bir liste oluşturulmaz. <code>range()</code> fonksiyonu sadece bir aralık oluşturur ve tek kullanıldığı yer çoğunlukla <code>for</code> döngülerinin içerisidir.</p>
-<div id="6da44000" class="cell" data-execution_count="14">
+<div id="df727ec5" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>))) <span class="co"># 0'dan 10'a kadar olan sayıları listeye çevirir !! 10 Dahil değil !!.</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">3</span>,<span class="dv">10</span>))) <span class="co"># 3'ten 10'a kadar olan sayıları listeye çevirir.</span></span>
 <span id="cb26-3"><a href="#cb26-3"></a><span class="bu">print</span>(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">5</span>,<span class="dv">20</span>,<span class="dv">2</span>))) <span class="co"># 5'den 20'a kadar olan sayıları 2'şer 2'şer atlayarak listeye çevirir.</span></span>
@@ -721,7 +779,7 @@ Uyarı
 <p>Değiştirilebilir (mutable) değişkenler <code>a=b</code> ifadesi ile <code>a</code> değişkenine <code>b</code> değişkeninin değerini atamaz. <code>a</code> değişkeninin değeri <code>b</code> değişkeninin değerini referans eder. Bu demektir ki <code>b</code> değişkeninin değeri değiştiğinde <code>a</code> değişkeninin değeri de değişir.</p>
 </div>
 </div>
-<div id="d2758f76" class="cell" data-execution_count="15">
+<div id="5f9a4de3" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>list5<span class="op">=</span> [<span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">3.0</span>]  <span class="co"># list5= list([1.0, 2.0, 3.0])</span></span>
 <span id="cb28-2"><a href="#cb28-2"></a>list6_degismemesi_gereken<span class="op">=</span> list5 <span class="co"># list5= [1.0, 2.0, 3.0], list6_degismemesi_gereken= [1.0, 2.0, 3.0]</span></span>
 <span id="cb28-3"><a href="#cb28-3"></a><span class="bu">print</span>(list6_degismemesi_gereken)</span>
@@ -735,7 +793,7 @@ Uyarı
 <p><strong>İki boyutlu listeler</strong> için iki parantez iç içe kullanılır. İlk parantezin içi ilk satırı, ikinci parantez içi ikinci satırı şeklinde devam eder.</p>
 <p>İki boyutlu listelere matris olarak da bakılabilir.</p>
 <p>İki boyutlu listelerdeki elemanlara erişmek için <code>[]</code> kullanılır. Köşeli parantezin içerisindeki ilk sayı satırı, ikinci sayı sütunu belirtir. Eğer sadece bir sayı yazılırsa o satırın tüm sütunları alınır.</p>
-<div id="99d57202" class="cell" data-execution_count="16">
+<div id="6c4bc285" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>list2d_1<span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>],[<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>]]</span>
 <span id="cb30-2"><a href="#cb30-2"></a><span class="bu">print</span>(list2d_1) <span class="co"># 2 boyutlu liste</span></span>
 <span id="cb30-3"><a href="#cb30-3"></a><span class="bu">print</span>(list2d_1[<span class="dv">1</span>]) <span class="co"># 2 boyutlu listede 1. satır</span></span>
@@ -755,19 +813,39 @@ Uyarı
 <ol type="1">
 <li><code>araAlistirma1_1.py</code> dosyasını oluşturun. Bu dosyanın içerisinde aşağıdaki adımları yapın ve sonucu gösterin.
 <ol type="1">
-<li><code>list1</code> adında bir değişken yarat ve içine 1’den 4889’e kadar değerlerini ata ve ekrana yazdır.</li>
-<li><code>list1</code> değişkeninin ilk 10 elemanını ekrana yazdır.</li>
+<li><code>list1</code> adında bir değişken yarat ve içine <span class="math inline">\(1\)</span>’den <span class="math inline">\(4889\)</span>’e kadar değerlerini ata ve ekrana yazdır.</li>
+<li><code>list1</code> değişkeninin ilk <span class="math inline">\(10\)</span> elemanını ekrana yazdır.</li>
 <li><code>list1</code> değişkeninin son elemanını ekrana yazdır.</li>
-<li><code>list1</code> değişkeninin 10. elemanını ekrana yazdır.</li>
-<li><code>list1</code> değişkeninin 10. elemanını 0 yap ve list1’i ekrana yazdır.</li>
-<li><code>list1</code> değişkeninin son 5 elemanını ekrana yazdır.</li>
+<li><code>list1</code> değişkeninin <span class="math inline">\(10\)</span>. elemanını ekrana yazdır.</li>
+<li><code>list1</code> değişkeninin <span class="math inline">\(10\)</span>. elemanını 0 yap ve list1’i ekrana yazdır.</li>
+<li><code>list1</code> değişkeninin son <span class="math inline">\(5\)</span> elemanını ekrana yazdır.</li>
 </ol></li>
 <li><code>araAlistirma1_2.py</code> dosyasını oluşturun. Bu dosyanın içerisinde aşağıdaki adımları yapın ve sonucu gösterin.
 <ol type="1">
-<li><code>list2d_1</code> adında bir değişkene 1’den 12’e kadar tüm değerleri <em>3x4</em> matris oluşturacak şekilde teker teker elemanlarını yazarak ata ve ekrana yazdır.</li>
+<li><code>list2d_1</code> adında bir değişkene <span class="math inline">\(1\)</span>’den <span class="math inline">\(12\)</span>’e kadar tüm değerleri <span class="math inline">\(3\times 4\)</span> matris oluşturacak şekilde teker teker elemanlarını yazarak ata ve ekrana yazdır.</li>
 <li>Yukarıdaki işlemi <code>list2d_2</code> adında yeni bir değişken için yap ve ekrana yazdır. Bu sefer <code>range()</code> fonksiyonunu kullanarak yap.</li>
 </ol></li>
 </ol>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="co">#araAlışstşrma1_1.py</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="co"># Birinci Soru</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Birinci soru:"</span>)</span>
+<span id="cb32-4"><a href="#cb32-4"></a>list1 <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">4890</span>)) <span class="co"># 1'den 48'e kadar değerlerini ata.</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a><span class="bu">print</span>(<span class="st">"list1 değişkeni:</span><span class="ch">\n</span><span class="st">"</span>, list1, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>) <span class="co"># ekrana yazdır.</span></span>
+<span id="cb32-6"><a href="#cb32-6"></a><span class="bu">print</span>(<span class="st">"İlk 10 değişken:"</span>,list1[<span class="dv">0</span>:<span class="dv">10</span>]) <span class="co"># ilk 10 değişken</span></span>
+<span id="cb32-7"><a href="#cb32-7"></a><span class="bu">print</span>(<span class="st">"Son değişken:"</span>,list1[<span class="op">-</span><span class="dv">1</span>]) <span class="co"># son değişken</span></span>
+<span id="cb32-8"><a href="#cb32-8"></a><span class="bu">print</span>(<span class="st">"Onuncu değişken:"</span>,list1[<span class="dv">9</span>]) <span class="co"># Onuncu değişken</span></span>
+<span id="cb32-9"><a href="#cb32-9"></a>list1[<span class="dv">9</span>] <span class="op">=</span> <span class="dv">0</span> <span class="co"># onuncu değişkeni sıfır </span></span>
+<span id="cb32-10"><a href="#cb32-10"></a><span class="bu">print</span>(<span class="st">"10. eleman 0 yapıldıktan sonra list1 değişkeni:</span><span class="ch">\n</span><span class="st">"</span>, list1, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>) <span class="co"># ekrana yazdır.</span></span>
+<span id="cb32-11"><a href="#cb32-11"></a><span class="bu">print</span>(<span class="st">"Son 5 değişken:"</span>,list1[<span class="op">-</span><span class="dv">5</span>:]) <span class="co"># son 5 eleman</span></span>
+<span id="cb32-12"><a href="#cb32-12"></a></span>
+<span id="cb32-13"><a href="#cb32-13"></a><span class="co"># İkinci Soru</span></span>
+<span id="cb32-14"><a href="#cb32-14"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">---</span><span class="ch">\n</span><span class="st">İkinci soru:"</span>)</span>
+<span id="cb32-15"><a href="#cb32-15"></a>list2d_1 <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>],[<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>],[<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>]]</span>
+<span id="cb32-16"><a href="#cb32-16"></a><span class="bu">print</span>(<span class="st">"list2d_1 değişkeni:</span><span class="ch">\n</span><span class="st">"</span>, list2d_1, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>) <span class="co"># ekrana yazdır.</span></span>
+<span id="cb32-17"><a href="#cb32-17"></a>list2d_1 <span class="op">=</span> [<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">5</span>)),<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">5</span>,<span class="dv">9</span>)),<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">9</span>,<span class="dv">13</span>))]</span>
+<span id="cb32-18"><a href="#cb32-18"></a><span class="bu">print</span>(<span class="st">"list2d_1 değişkeni:</span><span class="ch">\n</span><span class="st">"</span>, list2d_1, <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>) <span class="co"># ekrana yazdır.</span></span>
+<span id="cb32-19"><a href="#cb32-19"></a></span>
+<span id="cb32-20"><a href="#cb32-20"></a>exit(<span class="st">' -- Taygun Bulmus -- Program sonlandırıldı.'</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

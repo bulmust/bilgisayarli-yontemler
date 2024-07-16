@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.54">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Taygun Bulmus">
+
+<title>Doğrusal Denklem Sistemleri – Bilgisayarlı Yöntemler</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../icerik/konular/adi-diferansiyel-denklemler.html" rel="next">
+<link href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.html" rel="prev">
+<link href="../../../resimler/favicon.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sonuç yok",
+    "search-matching-documents-text": "eşleşen belgeler",
+    "search-copy-link-title": "Aramak için bağlantıyı kopyalayın",
+    "search-hide-matches-text": "Ek eşleşmeleri gizle",
+    "search-more-match-text": "bu belgede daha fazla eşleşme",
+    "search-more-matches-text": "bu belgede daha fazla eşleşmeler",
+    "search-clear-button-title": "Temizle",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "İptal et",
+    "search-submit-button-title": "Göndermek",
+    "search-label": "Aramak"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/dogrusal-denklemler.html">Doğrusal Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.html">Doğrusal Denklem Sistemleri</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Aramak" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../resimler/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/bulmust/bilgisayarli-yontemler" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://bulmust.github.io/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-file-person"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Karanlık modu değiştir"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Okuyucu modunu değiştir">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Aramak"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>İçerik</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/izlence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">İzlence</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/projeler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projeler</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/bilYonMod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python Modülü</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>Konular</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../icerik/konular/python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/giris-degiskenler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Giriş - Değişkenler</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/temel-terimler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Temel Terimler</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/fonksiyonlar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fonksiyonlar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alıştırmalar - Problemler - 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modüller</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../icerik/konular/dogrusal-denklemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Doğrusal Denklemler</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dogrusal Denklemler ve Çözümleri</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Doğrusal Denklem Sistemleri</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../icerik/konular/adi-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Adi Diferansiyel Denklemler</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Giriş</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Euler Yöntemi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Denklem Sistemleri</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - İkinci Dereceden Diferansiyel Denklemler</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">BDP - Runge-Kutta Yöntemleri</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SDP - Giriş</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SDP - Atış Yöntemi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SDP - Sonlu Farklar Yöntemi</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../icerik/konular/fourier-analizi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fourier Analizi</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Giriş</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">KFD - Kesikli Fourier Dönüşümü</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HFD - Hızlı Fourier Dönüşümü</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">THFD - Ters Hızlı Fourier Dönüşümü</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Uygulama - Ses Dalgaları</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../icerik/konular/veri-analizi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Veri Analizi</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/veri-analizi/pandas-giris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pandas - Giris</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipulasyonu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pandas - Veri Manipülasyonu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/veri-analizi/pandas-uygulama.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pandas - Uygulama</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../icerik/konular/istatistik.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">İstatistik</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/istatistik/temel-kavramlar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Temel Kavramlar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/istatistik/uygulama-thinkstat2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Uygulama - thinkstat2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/istatistik/olasilik-kutle-fonksiyonu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Olasılık Kütle Fonksiyonu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kümülatif Dağılım Fonksiyonu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/istatistik/dagilimlarin-modellenmesi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dağılımlarin Modellenmesi</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/istatistik/scipy-stats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">scipy - stats</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/istatistik/hipotez-testi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hipotez Testi</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
+   
+  <ul>
+  <li><a href="#lu-ayrıştırma" id="toc-lu-ayrıştırma" class="nav-link active" data-scroll-target="#lu-ayrıştırma">LU Ayrıştırma</a>
+  <ul class="collapse">
+  <li><a href="#doollittle-yöntemi" id="toc-doollittle-yöntemi" class="nav-link" data-scroll-target="#doollittle-yöntemi">Doollittle Yöntemi</a></li>
+  <li><a href="#örnek" id="toc-örnek" class="nav-link" data-scroll-target="#örnek">Örnek</a></li>
+  <li><a href="#alıştırma" id="toc-alıştırma" class="nav-link" data-scroll-target="#alıştırma">Alıştırma</a></li>
+  </ul></li>
+  <li><a href="#algoritma" id="toc-algoritma" class="nav-link" data-scroll-target="#algoritma">Algoritma</a>
+  <ul class="collapse">
+  <li><a href="#cholesky-yöntemi" id="toc-cholesky-yöntemi" class="nav-link" data-scroll-target="#cholesky-yöntemi">Cholesky Yöntemi</a></li>
+  </ul></li>
+  <li><a href="#gauss-jordan-eleme-yöntemi" id="toc-gauss-jordan-eleme-yöntemi" class="nav-link" data-scroll-target="#gauss-jordan-eleme-yöntemi">Gauss-Jordan Eleme Yöntemi</a></li>
+  <li><a href="#hazır-kodlar" id="toc-hazır-kodlar" class="nav-link" data-scroll-target="#hazır-kodlar">Hazır Kodlar</a></li>
+  <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma</a>
+  <ul class="collapse">
+  <li><a href="#cevap" id="toc-cevap" class="nav-link" data-scroll-target="#cevap">Cevap</a></li>
+  <li><a href="#köşegen-baskınlığı-diagonal-dominance" id="toc-köşegen-baskınlığı-diagonal-dominance" class="nav-link" data-scroll-target="#köşegen-baskınlığı-diagonal-dominance">Köşegen Baskınlığı (Diagonal Dominance)</a></li>
+  <li><a href="#ölçeklendirilmiş-scaled-satır-döndürmeli-gauss-elemesi" id="toc-ölçeklendirilmiş-scaled-satır-döndürmeli-gauss-elemesi" class="nav-link" data-scroll-target="#ölçeklendirilmiş-scaled-satır-döndürmeli-gauss-elemesi">Ölçeklendirilmiş (Scaled) Satır Döndürmeli Gauss Elemesi</a></li>
+  </ul></li>
+  <li><a href="#matrisin-tersi" id="toc-matrisin-tersi" class="nav-link" data-scroll-target="#matrisin-tersi">Matrisin Tersi</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/dogrusal-denklemler.html">Doğrusal Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.html">Doğrusal Denklem Sistemleri</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Doğrusal Denklem Sistemleri</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Yazar</div>
+    <div class="quarto-title-meta-contents">
+             <p>Taygun Bulmus </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">16 Temmuz 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Bir adet katsayı matrisine sahip olan denklem setleri olabilir. Örneğin;</p>
+<p><span class="math display">\[
+A \vec{x}= \vec{b} \qquad \text{veya} \qquad A \vec{y} = \vec{c}
+\]</span></p>
+<p>Bilgisayarsal olarak ekonomik olmak için bu denklem sistemlerini birleştirebiliriz.</p>
+<p><span class="math display">\[
+AX=B
+\]</span></p>
+<p><span class="math display">\[
+X= [x_{1}, x_{2}, \dots, x_{n}, y_{1}, y_{2}, \dots, y_{m}]
+B= [b_{1}, b_{2}, \dots, b_{n}, c_{1}, c_{2}, \dots, c_{m}]
+\]</span></p>
+<p>Bu birleştirilmiş denklemleri Gauss eleme yöntemi ile çözebiliriz. ## Örnek</p>
+<p>Aşağıdaki denklem sistemini çözelim.</p>
+<p><span class="math display">\[
+A= \begin{bmatrix}    4 &amp; 3 \\ 2 &amp; 1    \end{bmatrix}
+\]</span></p>
+<p><span class="math display">\[
+B= \begin{bmatrix}    1 &amp; -2 \\ 2 &amp; 3   \end{bmatrix}
+\]</span></p>
+<p>Burada çözmemiz gereken denklemler şu şekildedir.</p>
+<p><span class="math display">\[
+A \begin{bmatrix}    x_{1} \\ x_{2}    \end{bmatrix}= \begin{bmatrix}    1 \\ 2    \end{bmatrix}
+\]</span></p>
+<p>ve</p>
+<p><span class="math display">\[
+A \begin{bmatrix}    y_{1} \\ y_{2}    \end{bmatrix}= \begin{bmatrix}    -2 \\ 3    \end{bmatrix}
+\]</span></p>
+<p>Katsayı matrisini üst köşegen matrise çevirmek için Gauss eleme yöntemini kullanalım. Burada daha önceden gördüğümüz Gauss eleme yöntemine ek olarak sağ tarafteki <em>sonuç vektörü</em> yerine <em>sonuç matrisi</em> kullanacağız.</p>
+<p><strong>ADIM 1</strong></p>
+<p><span class="math display">\[\text{Eq}(2) - ~(0.5)~ \text{Eq}(1) \rightarrow \text{Eq}(2)\]</span></p>
+<p><span class="math display">\[
+\begin{bmatrix}    4 &amp; 3 &amp; | &amp; 1 &amp; -2 \\ 2 &amp; 1 &amp; | &amp; 2 &amp; 3    \end{bmatrix}
+\]</span></p>
+<p><span class="math display">\[
+\begin{bmatrix}    4 &amp; 3 &amp; | &amp; 1 &amp; -2 \\ 0 &amp; -0.5 &amp; | &amp; 1.5 &amp; 4    \end{bmatrix}
+\]</span></p>
+<p><strong>ADIM 2</strong></p>
+<p>Geri yerine kotma metodunu uygulayalım.</p>
+<p><span class="math display">\[
+-0.5x_{2} = 1.5 \rightarrow x_{2} = -3\\
+-0.5y_{2} = 4 \rightarrow y_{2} = -8
+\]</span></p>
+<p><span class="math display">\[
+4x_{1}-3= 1 \rightarrow x_{1} = 1\\
+4y_{1}-3= -2 \rightarrow y_{1} = -1
+\]</span></p>
+<p>Bu durumda <strong>çözüm matrisi</strong> aşağıdaki gibi olur.</p>
+<p><span class="math display">\[
+\begin{bmatrix}    x_{1} &amp; y_{1} \\ x_{2} &amp; y_{2}    \end{bmatrix} = \begin{bmatrix}    1 &amp; -1 \\ -3 &amp; -8    \end{bmatrix}
+\]</span></p>
+<section id="lu-ayrıştırma" class="level2">
+<h2 class="anchored" data-anchor-id="lu-ayrıştırma">LU Ayrıştırma</h2>
+<p>Gösterilebilinir ki herhangi bir <span class="math inline">\(A\)</span> matrisi, üst ve alt üçgensel matrisin çarpımı şeklinde yazılabilir. Yani <span class="math inline">\(A=LU\)</span> şeklinde yazabiliriz. Bu işleme <strong>LU ayrıştırma</strong> veya <strong>LU faktorizasyonu</strong> denir. Bu ayrıştırma işleminden sonra Gauss eleme yöntemi ile sistem çözülür.</p>
+<ul>
+<li>Ayrıştırma yöntemi LU, biricik (unique) değildir.</li>
+<li>İki çeşit ayrıştırma metodu vardır.
+<ol type="1">
+<li>Doolittle yöntemi</li>
+<li>Cholesky yöntemi</li>
+</ol></li>
+</ul>
+<p>LU’nun Gauss metoduna göre en büyük avantajı <span class="math inline">\(A\vec{x}=\vec{b}\)</span> denkleminde <span class="math inline">\(\vec{b}\)</span> vektöründen bağımsız olarak çözüm kolayca bulunabilir.</p>
+<section id="doollittle-yöntemi" class="level3">
+<h3 class="anchored" data-anchor-id="doollittle-yöntemi">Doollittle Yöntemi</h3>
+<p>Örneğin <span class="math inline">\(3x3\)</span> bir matris olsun. Bu durumda</p>
+<p><span class="math display">\[
+L= \begin{bmatrix}    1 &amp; 0 &amp; 0 \\ l_{21} &amp; 1 &amp; 0 \\ l_{31} &amp; l_{32} &amp; 1    \end{bmatrix} \qquad \text{,} \qquad U= \begin{bmatrix}    u_{11} &amp; u_{12} &amp; u_{13} \\ 0 &amp; u_{22} &amp; u_{23} \\ 0 &amp; 0 &amp; u_{33}    \end{bmatrix}
+\]</span></p>
+<p>olmak üzere <span class="math inline">\(A\)</span> matrisi aşağıdaki gibi yazılabilir.</p>
+<p><span class="math display">\[
+A= \begin{bmatrix}    u_{11} &amp; u_{12} &amp; u_{13} \\ l_{21}u_{11} &amp; l_{21}u_{12}+u_{22} &amp; l_{21}u_{13}+u_{23} \\ l_{31}u_{11} &amp; l_{31}u_{12}+l_{32}u_{22} &amp; l_{31}u_{13}+l_{32}u_{23}+u_{33}    \end{bmatrix}
+\]</span></p>
+<p>Bu durumda <span class="math inline">\(A\)</span> matrisinin elemanları aşağıdaki gibi olur.</p>
+<p><span class="math display">\[
+A_{11}= u_{11} \qquad \text{,} \qquad A_{12}= u_{12} \qquad \text{,} \qquad A_{13}= u_{13}\\
+A_{21}= l_{21}u_{11} \qquad \text{,} \qquad A_{22}= l_{21}u_{12}+u_{22} \qquad \text{,} \qquad A_{23}= l_{21}u_{13}+u_{23}\\
+A_{31}= l_{31}u_{11} \qquad \text{,} \qquad A_{32}= l_{31}u_{12}+l_{32}u_{22} \qquad \text{,} \qquad A_{33}= l_{31}u_{13}+l_{32}u_{23}+u_{33}
+\]</span></p>
+<p>Yukarıdaki işlemleri <strong>sırasıyla</strong> yaparsak L ve U matrislerinin elemanlarınlarını bulabilir.</p>
+<section id="çözüm-eldesi" class="level4">
+<h4 class="anchored" data-anchor-id="çözüm-eldesi">Çözüm Eldesi</h4>
+<p>Bir tane denklem setimiz olsun.</p>
+<p><span class="math display">\[
+A \vec{x}= \vec{b}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(A\)</span> matrisini LU faktorizasyonu yapmamız gerekir. Yani <span class="math inline">\(A=LU\)</span> şeklinde yazmalıyız.</li>
+</ul>
+<p><span class="math display">\[
+A \vec{x}= \vec{b} \\
+LU \vec{x}= \vec{b} \\
+L(U \vec{x})= \vec{b} \\
+L \vec{y}= \vec{b}
+\]</span></p>
+<p>Burada <span class="math inline">\(U\vec{x}\equiv \vec{y}\)</span> yanımlaması yaptık. Ancak <span class="math inline">\(\vec{y}\)</span> vektörünü bilmiyoruz.</p>
+<ul>
+<li><span class="math inline">\(L \vec{y}= \vec{b}\)</span> denklemini çözmemiz gerekir. Çözüm vektörü <span class="math inline">\(\vec{y}\)</span>’yi buluruz.</li>
+<li><span class="math inline">\(\vec{y}\)</span> vektörünü elde ettikten sonra <span class="math inline">\(U\vec{x}\equiv \vec{y}\)</span> denklemini çözmemiz gerekir. Çözüm vektörü <span class="math inline">\(\vec{x}\)</span>’i buluruz.</li>
+</ul>
+</section>
+</section>
+<section id="örnek" class="level3">
+<h3 class="anchored" data-anchor-id="örnek">Örnek</h3>
+<p>Aşağıdaki denklem setini Doollittle LU yöntemi ile çözelim.</p>
+<p><span class="math display">\[
+\begin{bmatrix}    2 &amp; 3 \\ 4 &amp; 5    \end{bmatrix} \begin{bmatrix}    x_{1} \\ x_{2}    \end{bmatrix}= \begin{bmatrix}    8 \\ 9    \end{bmatrix}
+\]</span></p>
+<p>Çözüme başlarken <span class="math inline">\(A\)</span> matrisini LU faktorizasyonu yapalım.</p>
+<p><strong>ADIM 1</strong></p>
+<p><span class="math display">\[
+\begin{bmatrix}    A_{11} &amp; A_{12} \\ A_{21} &amp; A_{22}    \end{bmatrix} = \begin{bmatrix}    1 &amp; 0 \\ l_{21} &amp; l_{22}    \end{bmatrix} \begin{bmatrix}    u_{11} &amp; u_{12} \\ 0 &amp; u_{22}    \end{bmatrix} \\
+\begin{bmatrix}    2 &amp; 3 \\ 4 &amp; 5    \end{bmatrix} = \begin{bmatrix}    u_{11} &amp; u_{12} \\ l_{21}u_{11} &amp; l_{21}u_{12}+u_{22}    \end{bmatrix}
+\]</span></p>
+<p>Bu durumda</p>
+<p><span class="math display">\[
+\begin{align*}
+    u_{11}=&amp; 2 \\
+    u_{12}=&amp; 3 \\
+    l_{21}u_{11}= 4 \rightarrow l_{21}=&amp; 2 \\
+    l_{21}u_{12}+u_{22}= 5 \rightarrow u_{22}=&amp; -1
+\end{align*}
+\]</span></p>
+<p>seklinde olur.</p>
+<p>Bu durumda L ve U matrisleri aşağıdaki gibi olur.</p>
+<p><span class="math display">\[
+L= \begin{bmatrix}    1 &amp; 0 \\ 2 &amp; 1    \end{bmatrix} \qquad \text{,} \qquad U= \begin{bmatrix}    2 &amp; 3 \\ 0 &amp; -1    \end{bmatrix}
+\]</span></p>
+<p><strong>ADIM 2</strong></p>
+<p>Çözmemiz gereken denklemi tekrar yazalım.</p>
+<p><span class="math display">\[
+A \vec{x}= \vec{b} \\
+LU \vec{x}= \vec{b} \\
+L(U \vec{x})= \vec{b} \\
+L \vec{y}= \vec{b}
+\]</span></p>
+<p>Önce <span class="math inline">\(L \vec{y}= \vec{b}\)</span> denklemini çözelim.</p>
+<p><span class="math display">\[
+\begin{bmatrix}    1 &amp; 0 \\ 2 &amp; 1    \end{bmatrix} \begin{bmatrix}    y_{1} \\ y_{2}    \end{bmatrix}= \begin{bmatrix}    8 \\ 9    \end{bmatrix}
+\]</span></p>
+<p>Burada, ileri yerine koyma yöntemiyle çözüm kolayca aşağıdaki gibi bulunur.</p>
+<p><span class="math display">\[
+\begin{align*}
+    y_{1}=&amp; 8 \\
+    y_{2}=&amp; 9-2y_{1} \rightarrow y_{2}= 9-2(8) \rightarrow y_{2}= -7
+\end{align*}
+\]</span></p>
+<p><span class="math inline">\(\vec{y}\)</span> vektörünü elde ettik.</p>
+<p><span class="math display">\[
+\vec{y}= \begin{bmatrix}    8 \\ -7    \end{bmatrix}
+\]</span></p>
+<p><strong>ADIM 3</strong></p>
+<p>Şimdi <span class="math inline">\(U\vec{x}\equiv \vec{y}\)</span> denklemini çözelim.</p>
+<p><span class="math display">\[
+U\vec{x}= \vec{y} \\
+\begin{bmatrix}    2 &amp; 3 \\ 0 &amp; -1    \end{bmatrix} \begin{bmatrix}    x_{1} \\ x_{2}    \end{bmatrix}= \begin{bmatrix}    8 \\ -7    \end{bmatrix}
+\]</span></p>
+<p>Bu denklemde de geri yerine koyma yöntemiyle <span class="math inline">\(\vec{x}\)</span> çözümü kolayca aşağıdaki gibi bulunur.</p>
+<p><span class="math display">\[
+\begin{align*}
+    x_{2}=&amp; 7 \\
+    2x_{1}+3x_{2}=8 \rightarrow x_{1}=&amp; -6.5
+\end{align*}
+\]</span></p>
+<p>Bu durumda çözüm vektörü aşağıdaki gibi olur.</p>
+<p><span class="math display">\[
+\vec{x}= \begin{bmatrix}    -6.5 \\ 7    \end{bmatrix}
+\]</span></p>
+</section>
+<section id="alıştırma" class="level3">
+<h3 class="anchored" data-anchor-id="alıştırma">Alıştırma</h3>
+<p>Aşağıdaki denklemi Doollittle yöntemi ile çözün.</p>
+<p><span class="math display">\[
+\begin{bmatrix}    4 &amp; -2 &amp; 1 \\ -2 &amp; 4 &amp; -2 \\ 1 &amp; -2 &amp; 4    \end{bmatrix} \begin{bmatrix}    x_{1} \\ x_{2} \\ x_{3}    \end{bmatrix} = \begin{bmatrix}    11 \\ -16 \\ 17    \end{bmatrix}
+\]</span></p>
+<section id="çözüm" class="level4">
+<h4 class="anchored" data-anchor-id="çözüm">Çözüm</h4>
+<p><strong>ADIM 1</strong></p>
+<p>Daha önceden <span class="math inline">\(3x3\)</span> boyutunda bir matrisi nasıl LU faktorizasyonu yapacağımızı gördük. Bu durumda <span class="math inline">\(A\)</span> matrisini aşağıdaki gibi yazabiliriz.</p>
+<p><span class="math display">\[
+A_{11}= u_{11} \qquad \text{,} \qquad A_{12}= u_{12} \qquad \text{,} \qquad A_{13}= u_{13}\\
+A_{21}= l_{21}u_{11} \qquad \text{,} \qquad A_{22}= l_{21}u_{12}+u_{22} \qquad \text{,} \qquad A_{23}= l_{21}u_{13}+u_{23}\\
+A_{31}= l_{31}u_{11} \qquad \text{,} \qquad A_{32}= l_{31}u_{12}+l_{32}u_{22} \qquad \text{,} \qquad A_{33}= l_{31}u_{13}+l_{32}u_{23}+u_{33}
+\]</span></p>
+<p>Bu durumda</p>
+<p><span class="math display">\[
+\begin{align*}
+    u_{11}=&amp; 4 \\
+    u_{12}=&amp; -2 \\
+    u_{13}=&amp; 1 \\
+    l_{21}u_{11}= -2 \rightarrow l_{21}=&amp; -0.5 \\
+    l_{21}u_{12}+u_{22}= 4 \rightarrow u_{22}=&amp; 3 \\
+    l_{21}u_{13}+u_{23}= -2 \rightarrow u_{23}=&amp; -1.5 \\
+    l_{31}u_{11}= 1 \rightarrow l_{31}=&amp; 0.25 \\
+    l_{31}u_{12}+l_{32}u_{22}= -2 \rightarrow l_{32}=&amp; -0.5 \\
+    l_{31}u_{13}+l_{32}u_{23}+u_{33}= 4 \rightarrow u_{33}=&amp; 3
+\end{align*}
+\]</span></p>
+<p><strong>ADIM 2</strong></p>
+<p>Çözmemiz gereken denklemi tekrar yazalım.</p>
+<p><span class="math display">\[
+A \vec{x}= \vec{b} \\
+LU \vec{x}= \vec{b} \\
+L(U \vec{x})= \vec{b} \\
+L \vec{y}= \vec{b}
+\]</span></p>
+<p>Önce <span class="math inline">\(L \vec{y}= \vec{b}\)</span> denklemini çözelim.</p>
+<p><span class="math display">\[ \begin{bmatrix}    1 &amp; 0 &amp; 0 \\ l_{21} &amp; 1 &amp; 0 \\ l_{31} &amp; l_{32} &amp; 1    \end{bmatrix} \begin{bmatrix}    y_{1} \\ y_{2} \\ y_{3}    \end{bmatrix}= \begin{bmatrix}    11 \\ -16 \\ 17    \end{bmatrix}
+\]</span></p>
+<p><span class="math display">\[
+\begin{bmatrix}    1 &amp; 0 &amp; 0 \\ -0.5 &amp; 1 &amp; 0 \\ 0.25 &amp; -0.5 &amp; 1    \end{bmatrix} \begin{bmatrix}    y_{1} \\ y_{2} \\ y_{3}    \end{bmatrix}= \begin{bmatrix}    11 \\ -16 \\ 17    \end{bmatrix}
+\]</span></p>
+<p>İleri yerine koyma yöntemiyle <span class="math inline">\(\vec{y}\)</span> çözümü aşağıdaki gibi bulunur.</p>
+<p><span class="math display">\[
+\begin{align*}
+    y_{1}=&amp; 11 \\
+    0.5y_{1} + y_{2}= -16 \rightarrow y_{2}=&amp; -10.5 \\
+    -0.25y_{1} - 0.5y_{2} + y_{3}= 17 \rightarrow y_{3}=&amp; 9
+\end{align*}
+\]</span></p>
+<p><strong>ADIM 3</strong></p>
+<p>Şimdi <span class="math inline">\(U\vec{x}\equiv \vec{y}\)</span> denklemini çözelim.</p>
+<p><span class="math display">\[
+\begin{bmatrix}    4 &amp; -2 &amp; 1 \\ 0 &amp; 3 &amp; -1.5 \\ 0 &amp; 0 &amp; 3    \end{bmatrix} \begin{bmatrix}    x_{1} \\ x_{2} \\ x_{3}    \end{bmatrix}= \begin{bmatrix}    11 \\ -10.5 \\ 9    \end{bmatrix}
+\]</span></p>
+<p>Geri yerine koyma yöntemiyle <span class="math inline">\(\vec{x}\)</span> çözümü aşağıdaki gibi bulunur.</p>
+<p><span class="math display">\[
+\begin{align*}
+    x_{3}=&amp; 3 \\
+    3x_{2} - 1.5x_{3}= -10.5 \rightarrow x_{2}=&amp; -2 \\
+    4x_{1} - 2x_{2} + x_{3}= 11 \rightarrow x_{1}=&amp; 1
+\end{align*}
+\]</span></p>
+<p>Çözüm vektörü aşağıdaki gibi olur.</p>
+<p><span class="math display">\[
+\vec{x}= \begin{bmatrix}    1 \\ -2 \\ 3    \end{bmatrix}
+\]</span></p>
+</section>
+</section>
+</section>
+<section id="algoritma" class="level2">
+<h2 class="anchored" data-anchor-id="algoritma">Algoritma</h2>
+<p>2x2 Matris için,</p>
+<p><span class="math display">\[
+\begin{align*}
+    A_{11} =&amp; u_{11}  \\
+    A_{12} =&amp; u_{12}  \\
+    A_{21} =&amp; l_{21}u_{11} \\
+    A_{22} =&amp; l_{21}u_{12}+u_{22}
+\end{align*}
+\]</span></p>
+<p>3x3 Matris için,</p>
+<p><span class="math display">\[
+\begin{align*}
+A_{11} =&amp; u_{11} \\
+A_{12} =&amp; u_{12} \\
+A_{13} =&amp; u_{13}\\
+A_{21} =&amp; l_{21}u_{11} \\
+A_{22} =&amp; l_{21}u_{12}+u_{22} \\
+A_{23} =&amp; l_{21}u_{13}+u_{23} \\
+A_{31} =&amp; l_{31}u_{11} \\
+A_{32} =&amp; l_{31}u_{12}+l_{32}u_{22} \\
+A_{33} =&amp; l_{31}u_{13}+l_{32}u_{23}+u_{33}    
+\end{align*}
+\]</span></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># LU Ayrıştırma Yöntemi İle Denklem Çözme</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># LU Ayrıştırma ile L, U elde etme</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">def</span> LU_ayrisma(katsayiMat):</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="co">'''</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">    LU ayrıştırma yöntemi ile katsayı matrisi ayrıştırılır.</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">    </span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">    coeffMat: Katsayı matrisi</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co">    '''</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>    <span class="co"># Katsayı matrisinin boyutu kontrol edilir</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>    n <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(katsayiMat))</span>
+<span id="cb1-13"><a href="#cb1-13"></a>    <span class="cf">if</span> n <span class="op">!=</span> <span class="bu">len</span>(katsayiMat[<span class="dv">0</span>]):</span>
+<span id="cb1-14"><a href="#cb1-14"></a>        <span class="bu">print</span>(<span class="st">"Katsayı matrisinin boyutu uyumlu değil."</span>)</span>
+<span id="cb1-15"><a href="#cb1-15"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>    <span class="co"># Eğer katsayı matrisi int verilirse float'a çevrilmesi gerekir, çünkü</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>    <span class="co"># LU ayrıştırma yapılırken katsayı matrisi ondalık sayı olabilir.</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a>    katsayiMat<span class="op">=</span> katsayiMat.astype(<span class="bu">float</span>)</span>
+<span id="cb1-19"><a href="#cb1-19"></a>    <span class="co"># L ve U matrisleri oluşturulur.</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>    L<span class="op">=</span> np.zeros((n,n))</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    U<span class="op">=</span> np.zeros((n,n))</span>
+<span id="cb1-22"><a href="#cb1-22"></a>    <span class="co"># LU ayrıştırma</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n):</span>
+<span id="cb1-24"><a href="#cb1-24"></a>        L[k, k]<span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>        <span class="co"># U matrisi</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(k, n): </span>
+<span id="cb1-27"><a href="#cb1-27"></a>            <span class="bu">sum</span><span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>            <span class="cf">for</span> s <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, k):</span>
+<span id="cb1-29"><a href="#cb1-29"></a>                <span class="bu">sum</span><span class="op">=</span> <span class="bu">sum</span> <span class="op">+</span> L[k, s]<span class="op">*</span> U[s, j]</span>
+<span id="cb1-30"><a href="#cb1-30"></a>            U[k, j]<span class="op">=</span> katsayiMat[k, j]<span class="op">-</span> <span class="bu">sum</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a>        <span class="co"># L matrisi</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(k<span class="op">+</span><span class="dv">1</span>, n):</span>
+<span id="cb1-33"><a href="#cb1-33"></a>            <span class="bu">sum</span> <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a>            <span class="cf">for</span> s <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, k):</span>
+<span id="cb1-35"><a href="#cb1-35"></a>                <span class="bu">sum</span> <span class="op">=</span> <span class="bu">sum</span> <span class="op">+</span> L[i,s]<span class="op">*</span> U[s,k]</span>
+<span id="cb1-36"><a href="#cb1-36"></a>            L[i,k] <span class="op">=</span> (katsayiMat[i,k] <span class="op">-</span> <span class="bu">sum</span>)<span class="op">/</span> U[k,k]</span>
+<span id="cb1-37"><a href="#cb1-37"></a>    <span class="cf">return</span> L, U</span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="co"># LU Ayrıştırma Yöntemi Denklem Çözme</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a><span class="kw">def</span> LU_ayrisma_cozucu(katsayiMat, sonucVec):</span>
+<span id="cb1-40"><a href="#cb1-40"></a>    <span class="co">'''[Numerical Methods in Engineering with Python 3]</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a><span class="co">    LU ayrıştırma yöntemi ile denklem sistemini çözer.</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a><span class="co">    </span></span>
+<span id="cb1-43"><a href="#cb1-43"></a><span class="co">    katsayiMat: Katsayı matrisi</span></span>
+<span id="cb1-44"><a href="#cb1-44"></a><span class="co">    sonucVec: Sonuç vektörü</span></span>
+<span id="cb1-45"><a href="#cb1-45"></a><span class="co">    '''</span></span>
+<span id="cb1-46"><a href="#cb1-46"></a>    <span class="co"># Katsayı matrisinin boyutu kontrol edilir</span></span>
+<span id="cb1-47"><a href="#cb1-47"></a>    n <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(katsayiMat))</span>
+<span id="cb1-48"><a href="#cb1-48"></a>    </span>
+<span id="cb1-49"><a href="#cb1-49"></a>    <span class="co"># LU ayrıştırma</span></span>
+<span id="cb1-50"><a href="#cb1-50"></a>    L, U<span class="op">=</span> LU_ayrisma(katsayiMat)</span>
+<span id="cb1-51"><a href="#cb1-51"></a>    <span class="co"># Ax = b -&gt; LUx = b -&gt; Ly = b (Ux=y)</span></span>
+<span id="cb1-52"><a href="#cb1-52"></a>    <span class="co"># Önce Ly = b denklemi çözülür.</span></span>
+<span id="cb1-53"><a href="#cb1-53"></a>    </span>
+<span id="cb1-54"><a href="#cb1-54"></a>    <span class="co"># İleri yerine koyma fazı</span></span>
+<span id="cb1-55"><a href="#cb1-55"></a>    y <span class="op">=</span> np.zeros(n)</span>
+<span id="cb1-56"><a href="#cb1-56"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n):</span>
+<span id="cb1-57"><a href="#cb1-57"></a>        y[k] <span class="op">=</span> sonucVec[k]<span class="op">-</span> np.dot(L[k,<span class="dv">0</span>:k], y[<span class="dv">0</span>:k])</span>
+<span id="cb1-58"><a href="#cb1-58"></a>    <span class="co"># Son olarak Ux = y denklemi çözülür.</span></span>
+<span id="cb1-59"><a href="#cb1-59"></a>    <span class="co"># Geri yerine koyma fazı</span></span>
+<span id="cb1-60"><a href="#cb1-60"></a>    cozumVek<span class="op">=</span> np.zeros(n)</span>
+<span id="cb1-61"><a href="#cb1-61"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb1-62"><a href="#cb1-62"></a>        cozum<span class="op">=</span> y[i]</span>
+<span id="cb1-63"><a href="#cb1-63"></a>        <span class="co"># Üst üçgensel formülde yerine koyma</span></span>
+<span id="cb1-64"><a href="#cb1-64"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>, n):</span>
+<span id="cb1-65"><a href="#cb1-65"></a>            cozum<span class="op">=</span> cozum<span class="op">-</span> U[i,j] <span class="op">*</span> cozumVek[j]</span>
+<span id="cb1-66"><a href="#cb1-66"></a>        <span class="co"># Katsayı matrisinde doğrudan çözümü bulma</span></span>
+<span id="cb1-67"><a href="#cb1-67"></a>        cozumVek[i]<span class="op">=</span> cozum<span class="op">/</span> U[i,i]</span>
+<span id="cb1-68"><a href="#cb1-68"></a>    <span class="cf">return</span> cozumVek</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="cholesky-yöntemi" class="level3">
+<h3 class="anchored" data-anchor-id="cholesky-yöntemi">Cholesky Yöntemi</h3>
+<p>Cholesky yöntemi, Doollittle yöntemine göre daha hızlıdır. Ancak Cholesky yöntemi sadece simetrik matrisler için geçerlidir. Bu yöntemde <span class="math inline">\(A\)</span> matrisi aşağıdaki gibi yazılır.</p>
+<p><span class="math display">\[
+A= LL^{T}
+\]</span></p>
+<p>Burada <span class="math inline">\(L\)</span> matrisi alt üçgensel matristir. <span class="math inline">\(L^{T}\)</span> matrisi ise <span class="math inline">\(L\)</span> matrisinin transpozudur.</p>
+</section>
+</section>
+<section id="gauss-jordan-eleme-yöntemi" class="level2">
+<h2 class="anchored" data-anchor-id="gauss-jordan-eleme-yöntemi">Gauss-Jordan Eleme Yöntemi</h2>
+<p>Gauss eleme yöntemini kullandığımızda sadece üst/alt köşegen formu elde edip geri/ileri yerleştirme metodu ile çözüme ulaşıyorduk.</p>
+<p>Eğer satır işlemlerini, katsayı matrisinin birim matris olana kadar devam ettirirsek, bu durumda köşegen elemanlar <span class="math inline">\(1\)</span> diğer elemanlar <span class="math inline">\(0\)</span> olur. Gauss yönteminde elde etmek için kullandığımız geri/ilerş yerine koyma yöntemine gerek kalmaz. Bu yönteme <strong>Gauss-Jordan eleme yöntemi</strong> denir.</p>
+</section>
+<section id="hazır-kodlar" class="level2">
+<h2 class="anchored" data-anchor-id="hazır-kodlar">Hazır Kodlar</h2>
+<p>Numpy ve Scipy paketlerinin içerisinde doğrusal denklem çözücüler bulunur.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a>katsayiMat<span class="op">=</span> np.array([[<span class="dv">4</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>], [<span class="op">-</span><span class="dv">2</span>, <span class="dv">4</span>, <span class="op">-</span><span class="dv">2</span>], [<span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">4</span>]])</span>
+<span id="cb2-5"><a href="#cb2-5"></a>sonucVek<span class="op">=</span> np.array([<span class="dv">11</span>, <span class="op">-</span><span class="dv">16</span>, <span class="dv">17</span>])</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># Numpy</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co"># Numpy ile denklem çözme</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co"># https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co"># The solutions are computed using LAPACK routine _gesv</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="bu">print</span>(<span class="ss">f"Numpy ile denklem çözme:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>np<span class="sc">.</span>linalg<span class="sc">.</span>solve(katsayiMat, sonucVek)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="bu">print</span>(<span class="st">""</span>)</span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co"># Scipy</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co"># LU Ayrıştırma</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.lu.html</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>P, L, U<span class="op">=</span> sp.linalg.lu(katsayiMat)</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="bu">print</span>(<span class="st">"Scipy ile LU matrisleri elde etme"</span>)</span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="bu">print</span>(<span class="ss">f"Scipy ile L matrisi:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>L<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="bu">print</span>(<span class="ss">f"Scipy ile U matrisi:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>U<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="bu">print</span>(<span class="ss">f"Scipy ile P matrisi:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>P<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="bu">print</span>(<span class="st">""</span>)</span>
+<span id="cb2-22"><a href="#cb2-22"></a></span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="co"># Denklem çözme</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="co"># https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.solve.html#scipy.linalg.solve</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="bu">print</span>(<span class="ss">f"Scipy ile denklem çözme:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>sp<span class="sc">.</span>linalg<span class="sc">.</span>solve(katsayiMat, sonucVek)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-26"><a href="#cb2-26"></a></span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="co"># Numpy</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="co"># https://numpy.org/doc/stable/reference/routines.linalg.html</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="co"># Cholesky Yöntemi ile Denklem Çözme</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="co"># https://numpy.org/doc/stable/reference/generated/numpy.linalg.cholesky.html</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a></span>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="co"># Scipy</span></span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="co"># https://docs.scipy.org/doc/scipy/reference/linalg.html</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a><span class="co"># LU Yöntemi ile Denklem Çözme</span></span>
+<span id="cb2-35"><a href="#cb2-35"></a><span class="co"># https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.lu_solve.html#scipy.linalg.lu_solve</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a><span class="co"># Cholesky Yöntemi ile Denklem Çözme</span></span>
+<span id="cb2-37"><a href="#cb2-37"></a><span class="co"># https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.cho_solve.html#scipy.linalg.cho_solve</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="alıştırma-1" class="level2">
+<h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma</h2>
+<ol type="1">
+<li>Aşağıdaki şekilde gözüken ve 4 adet $ m_{i} $ kütlesinden oluşan sürtünmeli fiziksel sistemin kuvvet analizini yapınız. Her bir kütleye etki eden sürtünme katsayısı $ <em>{i} $ olsun. Kütlelere etki eden toplam kuvvetleri veren analitik ifadeyi ayrı ayrı ve alt alta yazınız. Örneğin $ m</em>{1} $ kütlesine etki eden toplam kuvveti yazınız ve onun altına $ m_{2} $ kütlesine etki eden toplam kuvveti yazınız.</li>
+<li>Elde ettiğiniz denklem sisteminde eğim açısı yerine $ =/4 $ ve yer çekimi ivmesi yerine $ g = 9.82 $ m/s $ ^{2} $ sayısal değerleri yazınız. Kütleler $ m_{1} = 10 $ kg, $ m_{2} = 4 $ kg, $ m_{3} = 5 $ kg, $ m_{4} = 6 $ kg’dır. Sürtünme katsayıları ise $ <em>{1} = 0.25 $, $ </em>{2} = 0.3 $, $ <em>{3} = 0.2 $ ve $ </em>{4} = 0 $ olsun. Bu değerleri bir önceki şıkta bulduğunuz denklemlerde yerine koyunuz.</li>
+<li>Denklem sistemini $ = $ olacak şekilde tekrar yazınız ve $ $ katsayı matrisini, $ $ ve $ $ vektörlerini belirleyiniz. $ $ vektörünün sayısal olarak ne olduğunu bilmediğimizi ve ancak doğrusal denklem sistemini çözerek bulmaya çalışacağımızı hatırlayınız.</li>
+<li>Bu denklemi Gauss eleme ve Doolittle’ın LU ayrıştırma yöntemini kullanarak $ T_{i} $ ve $ a $ değerini bulunuz.</li>
+</ol>
+<p><img src="img/ornek_EgriDuzlem.png" class="img-fluid"></p>
+<section id="cevap" class="level3">
+<h3 class="anchored" data-anchor-id="cevap">Cevap</h3>
+<p>Hareket denklemi aşağıdaki gibidir.</p>
+<p><span class="math display">\[
+\begin{align}
+    -T_{1} + m_{1}a =&amp; m_{1}g (-\sin \theta-\mu_{1}\cos \theta )\\
+    T_{1} - T_{2} + m_{2}a =&amp; m_{2}g(-\sin \theta+\mu_{2}\cos \theta )\\
+    T_{2} - T_{3} + m_{3}a =&amp; m_{3}g(-\sin \theta+\mu_{3}\cos \theta )\\
+    T_{3} + m_{4}a =&amp; m_{4}g
+\end{align}
+\]</span></p>
+<p><span class="math inline">\(\theta=\pi/4\)</span>, <span class="math inline">\(m_{1}=10\)</span>, <span class="math inline">\(m_{2}=4\)</span>, <span class="math inline">\(m_{3}=5\)</span>, <span class="math inline">\(m_{4}=6\)</span>, <span class="math inline">\(\mu_{1}=0.25\)</span>, <span class="math inline">\(\mu_{2}=0.3\)</span>, <span class="math inline">\(\mu_{3}=0.2\)</span>, <span class="math inline">\(\mu_{4}=0\)</span>, <span class="math inline">\(g=9.82\)</span> m/2 <span class="math inline">\(^{2}\)</span></p>
+<p>Katsayı matrisi <span class="math inline">\(T_{1}\)</span>, <span class="math inline">\(T_{2}\)</span>, <span class="math inline">\(T_{3}\)</span>, <span class="math inline">\(T_{4}\)</span> ve <span class="math inline">\(a\)</span>’dan oluşmaktadır.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> sys</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> os</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># Bu betiğin çalıştığı dizin</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>dizin_burasi <span class="op">=</span> os.getcwd()</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># Bir üst dizin</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>bir_ust_dizin <span class="op">=</span> os.path.dirname(dizin_burasi)</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co"># Bir üst dizindeki moduller klasörü</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>modul_dizini <span class="op">=</span> os.path.join(bir_ust_dizin, <span class="st">'moduller'</span>)</span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co"># O klasörü de bu betiğe ekle</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>sys.path.append(modul_dizini)</span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="im">import</span> fizik365 <span class="im">as</span> f365</span>
+<span id="cb3-13"><a href="#cb3-13"></a></span>
+<span id="cb3-14"><a href="#cb3-14"></a>theta<span class="op">=</span> np.pi<span class="op">/</span><span class="dv">4</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>m1<span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>m2<span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>m3<span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a>m4<span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a>mu1<span class="op">=</span> <span class="fl">0.25</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>mu2<span class="op">=</span> <span class="fl">0.3</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a>mu3<span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a>g<span class="op">=</span> <span class="fl">9.82</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a></span>
+<span id="cb3-24"><a href="#cb3-24"></a>sonucVek<span class="op">=</span> np.array([ m1<span class="op">*</span>g<span class="op">*</span>(np.sin(theta)<span class="op">-</span> mu1<span class="op">*</span> np.cos(theta)), </span>
+<span id="cb3-25"><a href="#cb3-25"></a>                     m2<span class="op">*</span>g<span class="op">*</span>(np.sin(theta)<span class="op">-</span> mu2<span class="op">*</span> np.cos(theta)), </span>
+<span id="cb3-26"><a href="#cb3-26"></a>                     m3<span class="op">*</span>g<span class="op">*</span>(np.sin(theta)<span class="op">-</span> mu3<span class="op">*</span> np.cos(theta)), </span>
+<span id="cb3-27"><a href="#cb3-27"></a>                     <span class="op">-</span>m4<span class="op">*</span>g])</span>
+<span id="cb3-28"><a href="#cb3-28"></a>katsayiMat<span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, m1],</span>
+<span id="cb3-29"><a href="#cb3-29"></a>                      [<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, m2],</span>
+<span id="cb3-30"><a href="#cb3-30"></a>                      [<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, m3],</span>
+<span id="cb3-31"><a href="#cb3-31"></a>                      [<span class="dv">0</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, m4]])</span>
+<span id="cb3-32"><a href="#cb3-32"></a></span>
+<span id="cb3-33"><a href="#cb3-33"></a><span class="bu">print</span>(<span class="ss">f"katsayiMat:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>katsayiMat<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-34"><a href="#cb3-34"></a><span class="bu">print</span>(<span class="ss">f"sonucVek:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>sonucVek<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-35"><a href="#cb3-35"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n\n</span><span class="ss">Çözüm Vektörü: gauss_eleme_ust_ucgen:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>f365<span class="sc">.</span>gauss_eleme_ust_ucgen(katsayiMat, sonucVek)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-36"><a href="#cb3-36"></a><span class="bu">print</span>(<span class="ss">f"Çözüm Vektörü: LU_ayrisma_cozucu</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>f365<span class="sc">.</span>LU_ayrisma_cozucu(katsayiMat, sonucVek)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-37"><a href="#cb3-37"></a><span class="bu">print</span>(<span class="ss">f"Cozum Vektörü: np.linalg.solve:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>np<span class="sc">.</span>linalg<span class="sc">.</span>solve(katsayiMat, sonucVek)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-38"><a href="#cb3-38"></a><span class="co"># İvmenin yönü şekilde verilen gibi alınmamıştır. Ters yönde alınmıştır.</span></span>
+<span id="cb3-39"><a href="#cb3-39"></a><span class="co"># İvme pozitif çıktı. Şekilde verilenin ters yönünde ivme oluşur.</span></span>
+<span id="cb3-40"><a href="#cb3-40"></a></span>
+<span id="cb3-41"><a href="#cb3-41"></a><span class="co"># İvme yönü şekilde verilenin tersi yönünde alındığında ilk denklem aşağıdaki gibi olur.</span></span>
+<span id="cb3-42"><a href="#cb3-42"></a><span class="co"># Sola doğru hareketi pozitif alırsak;</span></span>
+<span id="cb3-43"><a href="#cb3-43"></a><span class="co"># -m1*a -T1 + m1*g*sin(theta) - mu1*m1*g*cos(theta) = 0</span></span>
+<span id="cb3-44"><a href="#cb3-44"></a><span class="co"># -m1*a -T1 = -m1*g*sin(theta) + mu1*m1*g*cos(theta)</span></span>
+<span id="cb3-45"><a href="#cb3-45"></a><span class="co"># T1 + m1a = m1*g*sin(theta) - mu1*m1*g*cos(theta)</span></span>
+<span id="cb3-46"><a href="#cb3-46"></a><span class="co"># T1 + m1a = m1*g*(sin(theta) - mu1*cos(theta))</span></span>
+<span id="cb3-47"><a href="#cb3-47"></a><span class="co"># Doğrusal Denklem Çözümünlerde Döndürme (Pivoting)</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Aşağıdaki gibi bir sistem ele alalaım</p>
+<p><span class="math display">\[
+[A|b] = \begin{bmatrix}    2 &amp; -1 &amp; 0 &amp; | &amp; 1 \\ -1 &amp; 2 &amp; -1 &amp; | &amp; 0 \\ 0 &amp; -1 &amp; 1 &amp; | &amp; 0   \end{bmatrix}
+\]</span></p>
+<p>Çözümü <span class="math inline">\(x_{1}=x_{2}=x_{3}=1\)</span> olduğunu görebiliriz. Bu sistem Gauss eleme yöntemiyle çözülebilir.</p>
+<p>Denklem sistemini matris hale getirirken hangi denklemi ilk satıra hangi denklemi son satıra yazacağımızın bir kuralı yoktur. Örneğin yukarıdaki matrisi tekrar yazalım. Bu sefer üçüncü ve birinci satırları yer değiştirelim.</p>
+<p><span class="math display">\[
+[A|b] = \begin{bmatrix}    0 &amp; -1 &amp; 1 &amp; | &amp; 0 \\ -1 &amp; 2 &amp; -1 &amp; | &amp; 0 \\ 2 &amp; -1 &amp; 0 &amp; | &amp; 1   \end{bmatrix}
+\]</span></p>
+<p>Bu denklem, bu hali ile Gauss eleme yöntemi yapamayız, Çünkü matrisin bu haliyle üst veya alt köşegen matris oluşturamayız.</p>
+<p>Bunun gibi durumlarda satırların yeri değiştirme veya matris <em>satırlarını döndürme</em> (row pivoting) yapmamız gerekir.</p>
+<p>Köşegen elemanlarındaki sıfır terimlerini çok küçük <span class="math inline">\(\epsilon\)</span> ile yer değiştirelim. Daha sonra <span class="math inline">\(\epsilon \rightarrow 0\)</span> yapacağız.</p>
+<p><span class="math display">\[
+[B|b] = \begin{bmatrix}    \epsilon &amp; -1 &amp; 1 &amp; | &amp; 0 \\ -1 &amp; 2 &amp; -1 &amp; | &amp; 0 \\ 2 &amp; -1 &amp; 0 &amp; | &amp; 1   \end{bmatrix}
+\]</span></p>
+<p>Bu denklemde ilk sütunda, <span class="math inline">\(\epsilon\)</span> altındaki terimleri sıfırlayalım.</p>
+<p><span class="math display">\[
+[B'|b'] = \begin{bmatrix}    \epsilon &amp; -1 &amp; 1 &amp; | &amp; 0 \\ 0 &amp; 2-1/\epsilon &amp; -1+1/\epsilon &amp; | &amp; 0 \\ 0 &amp; -1+2/\epsilon &amp; -2/\epsilon &amp; | &amp; 1   \end{bmatrix}
+\]</span></p>
+<p><span class="math inline">\(\epsilon \rightarrow 0\)</span> giderken sayı/<span class="math inline">\(\epsilon\)</span> sonsuza gider.</p>
+<p><span class="math display">\[
+[B'|b'] = \begin{bmatrix}    \epsilon &amp; -1 &amp; 1 &amp; | &amp; 0 \\ 0 &amp; 1/\epsilon &amp; -1/\epsilon &amp; | &amp; 0 \\ 0 &amp; -2/\epsilon &amp; -2/\epsilon &amp; | &amp; 1   \end{bmatrix}
+\]</span></p>
+<p>Burada ikinci ve üçüncü satır denklemleri yüzünden çözüm tutarsızdır. Eğer satırları döndürseydik bunun gibi tutarsızlıklarla karşılamayacaktık.</p>
+<p>Son örnekteki <span class="math inline">\(1/\epsilon\)</span>’nun sonsuza gitmesini engellemek (patlamasını önlemek) için bir yuvarlama-hata (round-off error) tanımalamamız gerekecektir.</p>
+</section>
+<section id="köşegen-baskınlığı-diagonal-dominance" class="level3">
+<h3 class="anchored" data-anchor-id="köşegen-baskınlığı-diagonal-dominance">Köşegen Baskınlığı (Diagonal Dominance)</h3>
+<p>Köşegen elemanları, köşegen olmayan elemanlarından büyük olan matrislere <em>köşegen baskın</em> (diagonal dominant) denir.</p>
+<p>Kontor:</p>
+<p><span class="math display">\[
+A_{ii} &gt; \sum_{j \ne i}^{n} |A_{ij}|
+\]</span></p>
+<p><strong>Örnek</strong></p>
+<p>Aşağıdaki matrisin köşegen dominantlığını kontrol edelim.</p>
+<p><span class="math display">\[
+A = \begin{bmatrix}    2 &amp; -1 &amp; 0 \\ -1 &amp; 2 &amp; -1 \\ 0 &amp; -1 &amp; 1   \end{bmatrix}
+\]</span></p>
+<p><span class="math display">\[
+A_{11} &gt; |A_{12}| + |A_{13}| \rightarrow 2 &gt; 1 + 0 \rightarrow \text{Doğru} \\
+A_{22} &gt; |A_{21}| + |A_{23}| \rightarrow 2 &gt; 1 + 1 \rightarrow \text{Neredeyse Doğru} \\
+A_{33} &gt; |A_{31}| + |A_{32}| \rightarrow 1 &gt; 0 + 1 \rightarrow \text{Neredeyse Doğru}
+\]</span></p>
+<p>Üçüncü ve birinci satırları yer değiştirdiğimiz durumu inceleyelim.</p>
+<p><span class="math display">\[
+A' = \begin{bmatrix}    0 &amp; -1 &amp; 1 \\ -1 &amp; 2 &amp; -1 \\ 2 &amp; -1 &amp; 0   \end{bmatrix}
+\]</span></p>
+<p><span class="math display">\[
+A'_{11} &gt; |A'_{12}| + |A'_{13}| \rightarrow 0 &gt; 1 + 1 \rightarrow \text{Yanlış} \\
+A'_{22} &gt; |A'_{21}| + |A'_{23}| \rightarrow 2 &gt; 1 + 1 \rightarrow \text{Doğru} \\
+A'_{33} &gt; |A'_{31}| + |A'_{32}| \rightarrow 0 &gt; 2 + 1 \rightarrow \text{Yanlış}
+\]</span></p>
+<p>Yukarıdan da anlaşılacağı üzere <span class="math inline">\(A\)</span> matrisi köşegen dominant iken <span class="math inline">\(A'\)</span> matrisi ise köşegen dominant değildir.</p>
+<p>Köşegen dominant olmayan matrisler için <strong>döndürme</strong> yapmak gerekir.</p>
+</section>
+<section id="ölçeklendirilmiş-scaled-satır-döndürmeli-gauss-elemesi" class="level3">
+<h3 class="anchored" data-anchor-id="ölçeklendirilmiş-scaled-satır-döndürmeli-gauss-elemesi">Ölçeklendirilmiş (Scaled) Satır Döndürmeli Gauss Elemesi</h3>
+<p>Matrisin herbir satırının maksimum değerini tutan <strong>ölçekleme faktörü</strong> (scaling factor) <span class="math inline">\(s_{i}\)</span> tanımlayalım.</p>
+<p><span class="math display">\[
+s_{i} = \max_{j} |A_{ij}|
+\]</span></p>
+<p>Örneğin <span class="math inline">\(\begin{bmatrix}    -1 &amp; 2 \\ 3 &amp; 4    \end{bmatrix}\)</span> için <span class="math inline">\(s_{1} = 2\)</span> ve <span class="math inline">\(s_{2} = 4\)</span> olur.</p>
+<p>Python kodu aşağıdaki gibi olur.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    s[i]<span class="op">=</span> <span class="bu">max</span>(<span class="bu">abs</span>(matris[i,:])) <span class="co"># s[i]= max(abs(matris[i]))</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Göreli büyüklük (relative size) <span class="math inline">\(r_{ij}\)</span> tanımlayalım.</p>
+<p><span class="math display">\[
+r_{ij} = \frac{|A_{ij}|}{s_{i}}
+\]</span></p>
+<p>Örneğin <span class="math inline">\(\begin{bmatrix}    -1 &amp; 2 \\ 3 &amp; 4    \end{bmatrix}\)</span> ele alalım. <span class="math inline">\(s_{1} = 2\)</span> ve <span class="math inline">\(s_{2} = 4\)</span> olur. <span class="math inline">\(r_{11} = |-1|/2 = 0.5\)</span> ve <span class="math inline">\(r_{12} = |2|/2 = 1\)</span> olur. Benzer şekilde ikinci satır için <span class="math inline">\(r_{21} = |3|/4 = 0.75\)</span> ve <span class="math inline">\(r_{22} = |4|/4 = 1\)</span> olur. Yani</p>
+<p><span class="math display">\[
+r = \begin{bmatrix}    0.5 &amp; 1 \\ 0.75 &amp; 1    \end{bmatrix}
+\]</span></p>
+<p>olur.</p>
+<p>Göreli büyüklük bize döndürme işlemine <strong>başlayacağımız</strong> satırı söyleyecektir.</p>
+<p>Döndürmenin yapılacağı satırı <span class="math inline">\(k\)</span> olarak tanımlayalım. Göreli büyüklük</p>
+<p><span class="math display">\[
+r_{pk} = \max_{j} r_{jk} \qquad \text{öyle ki} \quad k \le j
+\]</span></p>
+<p>Bir örnek üzerinden gidelim.</p>
+<section id="örnek-1" class="level4">
+<h4 class="anchored" data-anchor-id="örnek-1">Örnek</h4>
+<p>Katsayı matrisi ve çözüm vektörü aşağıdaki gibi olsun.</p>
+<p><span class="math display">\[
+A = \begin{bmatrix}    2 &amp; -2 &amp; 6 &amp; | &amp; 16 \\ -2 &amp; 4 &amp; 3 &amp; | &amp; 0 \\ -1 &amp; 8 &amp; 4 &amp; | &amp; -1    \end{bmatrix}
+\]</span></p>
+<p>Burada <span class="math inline">\(s_{1} = 6\)</span>, <span class="math inline">\(s_{2} = 4\)</span> ve <span class="math inline">\(s_{3} = 8\)</span> olur. Yani <span class="math inline">\(\vec{s}=\begin{bmatrix}    6\\4\\8    \end{bmatrix}\)</span></p>
+<p><span class="math inline">\(r\)</span> matrisi ise aşağıdaki gibi olur.</p>
+<p><span class="math display">\[
+r = \begin{bmatrix}    0.33 &amp; 0.33 &amp; 1 \\ 0.5 &amp; 1 &amp; 0.75 \\ 0.125 &amp; 1 &amp; 0.5    \end{bmatrix}
+\]</span></p>
+<p><span class="math inline">\(r\)</span> matrisinin ilk sütununu yani <span class="math inline">\(r_{jk}\)</span>’i yazalım.</p>
+<p><span class="math display">\[
+r_{j1} = \begin{bmatrix}    0.33 \\ 0.5 \\ 0.125    \end{bmatrix}
+\]</span></p>
+<p>Bu vektörün en büyük elemanı 0.5 olduğundan <span class="math inline">\(j=2\)</span> olur. Yani döndürme işlemine ikinci satırdan başlayacağız.</p>
+<p><span class="math inline">\(j=2\)</span>, <span class="math inline">\(k=1\)</span> olduğundan ikinci satırı birinci satır ile yer değiştireceğiz. <span class="math inline">\(r_{j1}\)</span> <em>vektöründeki en büyük eleman ile 1’inci satırı yer değiştirdik.</em></p>
+<p><span class="math display">\[
+A = \begin{bmatrix}    -2 &amp; 4 &amp; 3 &amp; | &amp; 0 \\ 2 &amp; -2 &amp; 6 &amp; | &amp; 16 \\ -1 &amp; 8 &amp; 4 &amp; | &amp; -1    \end{bmatrix}
+\]</span></p>
+<p><span class="math inline">\(s\)</span> vektörünü yeniden hesaplayalım. <span class="math inline">\(s_{1}=4\)</span>, <span class="math inline">\(s_{2}=6\)</span> ve <span class="math inline">\(s_{3}=8\)</span> olur. Yani <span class="math inline">\(\vec{s}=\begin{bmatrix}    4\\6\\8    \end{bmatrix}\)</span>. Artık birinci sütundaki en büyük eleman birin satırda. Gauss ayrıştırma yöntemi kullanarak <span class="math inline">\(A_{21}\)</span> ve <span class="math inline">\(A_{31}\)</span>’i sıfırlayalım.</p>
+<p><span class="math display">\[
+\text{Eq(2)} - (-1)\text{Eq(1)} \rightarrow \text{Eq(2)}
+\]</span></p>
+<p><span class="math display">\[
+\text{Eq(3)} - (0.5)\text{Eq(1)} \rightarrow \text{Eq(3)}
+\]</span></p>
+<p>Katsayı matrisi ve sonuç vektörü aşağıdaki gibi olur.</p>
+<p><span class="math display">\[
+A = \begin{bmatrix}    -2 &amp; 4 &amp; 3 &amp; | &amp; 0 \\ 0 &amp; 2 &amp; 9 &amp; | &amp; 16 \\ 0 &amp; 6 &amp; 2.5 &amp; | &amp; -1    \end{bmatrix}
+\]</span></p>
+<p>Yeni matriste ölçeklendirme faktörünün yani <span class="math inline">\(s\)</span>’nin değeri değişmemiştir. Yani <span class="math inline">\(s=\begin{bmatrix}    2\\6\\8    \end{bmatrix}\)</span>’dir.</p>
+<p>Şimdi <span class="math inline">\(k=2\)</span> için <span class="math inline">\(r_{j2}\)</span> yazalım. Unutmayın ki <span class="math inline">\(j&gt;k\)</span> olmalı.</p>
+<p><span class="math display">\[
+r_{j2}= \begin{bmatrix}    - \\ 0.33 \\ 3/4    \end{bmatrix}
+\]</span></p>
+<p><span class="math inline">\(r_{j2}\)</span>’nin en büyük değeri üçüncü satırı yani <span class="math inline">\(j=3\)</span> olan değeridir. O halde <span class="math inline">\(j=3\)</span>, <span class="math inline">\(k=2\)</span> olduğu için 2. satır ile 3. satırı yer değiştireceğiz.</p>
+<p><span class="math display">\[
+A = \begin{bmatrix}    -2 &amp; 4 &amp; 3 &amp; | &amp; 0 \\ 0 &amp; 6 &amp; 2.5 &amp; | &amp; -1 \\ 0 &amp; 2 &amp; 9 &amp; | &amp; 16    \end{bmatrix}
+\]</span></p>
+<p>Şimdi <span class="math inline">\(A_{32}\)</span> terimi sıfır yapmak için Gauss eleme yöntemini kullanacağız.</p>
+<p><span class="math display">\[
+\text{Eq(3)} - (0.33)\text{Eq(2)} \rightarrow \text{Eq(3)}
+\]</span></p>
+<p>Katsayı matrisi ve sonuç vektörü aşağıdaki gibi olur.</p>
+<p><span class="math display">\[
+A = \begin{bmatrix}    -2 &amp; 4 &amp; 3 &amp; | &amp; 0 \\ 0 &amp; 6 &amp; 2.5 &amp; | &amp; -1 \\ 0 &amp; 0 &amp; -8.2 &amp; | &amp; -6.3    \end{bmatrix}
+\]</span></p>
+<p>Buradan, geri yerine koyma yöntemi ile çözüm bulmak mümkündür.</p>
+</section>
+</section>
+</section>
+<section id="matrisin-tersi" class="level2">
+<h2 class="anchored" data-anchor-id="matrisin-tersi">Matrisin Tersi</h2>
+<p>Aynı katsayıya sahip iki denklem setini yani denklem sistemlerini hatırlayalım.</p>
+<p><strong>Örnek</strong></p>
+<p><span class="math inline">\(AX=B\)</span> olan denklem sistemi aşağıdaki gibi olsun. Burada <span class="math inline">\(B\)</span> çözüm matrisi de birim matris olsun.</p>
+<p><span class="math display">\[
+\begin{bmatrix}    1 &amp; 2 \\ 3 &amp; 4    \end{bmatrix}\begin{bmatrix}    x_{1} &amp; x_{2} \\ x_{3} &amp; x_{4}    \end{bmatrix}= \begin{bmatrix}    1 &amp; 0 \\ 0 &amp; 1    \end{bmatrix}
+\]</span></p>
+<p>Denklem şunu farkedebiliriz. Sanki katsayı matrisini <strong>kendisinin tersi</strong> ile çarpmışım ve birim matris elde etmişim.</p>
+<p><span class="math display">\[
+A A^{-1} = I
+\]</span></p>
+<p>Görüleceği üzere <span class="math inline">\(A\)</span> matrisinin tersi aslında çözüm matrisimiz oldu. Biz yukarıdaki denklem sistemini nasıl çözeceğimiz biliyoruz. İster LU ayrıştırma yöntemiyle ister Gauss eleme yöntemi ile <span class="math inline">\(A\)</span> matrisinin tersi bulunabilir.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopyalandı");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopyalandı");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/bulmust\.github\.io\/bilgisayarli-yontemler");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.html" class="pagination-link" aria-label="Dogrusal Denklemler ve Çözümleri">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Dogrusal Denklemler ve Çözümleri</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../icerik/konular/adi-diferansiyel-denklemler.html" class="pagination-link" aria-label="Adi Diferansiyel Denklemler">
+        <span class="nav-page-text">Adi Diferansiyel Denklemler</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>This website is built with <a href="https://quarto.org/"><img src="https://quarto.org/quarto.png" class="img-fluid" alt="Quarto" width="80"></a>.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>© Copyright 2024, Taygun Bulmus</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

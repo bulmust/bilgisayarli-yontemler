@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>BDP - Giriş – Bilgisayarlı Yöntemler</title>
+<title>Dogrusal Denklemler ve Çözümleri – Bilgisayarlı Yöntemler</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,8 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" rel="next">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler.html" rel="prev">
+<link href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.html" rel="next">
+<link href="../../../icerik/konular/dogrusal-denklemler.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -115,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html">BDP - Giriş</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/dogrusal-denklemler.html">Doğrusal Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.html">Dogrusal Denklemler ve Çözümleri</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Aramak" onclick="window.quartoOpenSearch();">
@@ -240,7 +274,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Dogrusal Denklemler ve Çözümleri</span></a>
   </div>
 </li>
@@ -263,7 +297,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Giriş</span></a>
   </div>
 </li>
@@ -446,16 +480,38 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#başlangıç-değer-problemi" id="toc-başlangıç-değer-problemi" class="nav-link active" data-scroll-target="#başlangıç-değer-problemi">Başlangıç Değer Problemi</a></li>
+  <li><a href="#notasyon" id="toc-notasyon" class="nav-link active" data-scroll-target="#notasyon">Notasyon</a></li>
+  <li><a href="#çözümün-tekliği-ve-durumu" id="toc-çözümün-tekliği-ve-durumu" class="nav-link" data-scroll-target="#çözümün-tekliği-ve-durumu">Çözümün Tekliği ve Durumu</a>
+  <ul class="collapse">
+  <li><a href="#örnek" id="toc-örnek" class="nav-link" data-scroll-target="#örnek">Örnek</a></li>
+  <li><a href="#örnek-1" id="toc-örnek-1" class="nav-link" data-scroll-target="#örnek-1">Örnek</a></li>
+  <li><a href="#örnek-2" id="toc-örnek-2" class="nav-link" data-scroll-target="#örnek-2">Örnek</a></li>
+  </ul></li>
+  <li><a href="#doğrusal-lineer-sistem-çözümleri" id="toc-doğrusal-lineer-sistem-çözümleri" class="nav-link" data-scroll-target="#doğrusal-lineer-sistem-çözümleri">Doğrusal (Lineer) Sistem Çözümleri</a>
+  <ul class="collapse">
+  <li><a href="#doğrusal-denklem-çözüm-yöntemleri" id="toc-doğrusal-denklem-çözüm-yöntemleri" class="nav-link" data-scroll-target="#doğrusal-denklem-çözüm-yöntemleri">Doğrusal Denklem Çözüm Yöntemleri</a></li>
+  </ul></li>
+  <li><a href="#gauss-eleme-yöntemi" id="toc-gauss-eleme-yöntemi" class="nav-link" data-scroll-target="#gauss-eleme-yöntemi">Gauss Eleme Yöntemi</a>
+  <ul class="collapse">
+  <li><a href="#örnek-3" id="toc-örnek-3" class="nav-link" data-scroll-target="#örnek-3">Örnek</a></li>
+  <li><a href="#satır-işlemleri-ve-determinant-ilişkisi" id="toc-satır-işlemleri-ve-determinant-ilişkisi" class="nav-link" data-scroll-target="#satır-işlemleri-ve-determinant-ilişkisi">Satır İşlemleri ve Determinant İlişkisi</a></li>
+  <li><a href="#alıştırma" id="toc-alıştırma" class="nav-link" data-scroll-target="#alıştırma">Alıştırma</a></li>
+  </ul></li>
+  <li><a href="#gauss-eleme-yönteminin-algoritması" id="toc-gauss-eleme-yönteminin-algoritması" class="nav-link" data-scroll-target="#gauss-eleme-yönteminin-algoritması">Gauss Eleme Yönteminin algoritması</a>
+  <ul class="collapse">
+  <li><a href="#yapılacaklar" id="toc-yapılacaklar" class="nav-link" data-scroll-target="#yapılacaklar">Yapılacaklar</a></li>
+  <li><a href="#geliştirmeler" id="toc-geliştirmeler" class="nav-link" data-scroll-target="#geliştirmeler">Geliştirmeler</a></li>
+  <li><a href="#python-kodu" id="toc-python-kodu" class="nav-link" data-scroll-target="#python-kodu">Python Kodu</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-giris.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html">BDP - Giriş</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/dogrusal-denklemler.html">Doğrusal Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.html">Dogrusal Denklemler ve Çözümleri</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">BDP - Giriş</h1>
+<h1 class="title">Dogrusal Denklemler ve Çözümleri</h1>
 </div>
 
 
@@ -484,40 +540,345 @@ window.Quarto = {
 </header>
 
 
-<section id="başlangıç-değer-problemi" class="level2">
-<h2 class="anchored" data-anchor-id="başlangıç-değer-problemi">Başlangıç Değer Problemi</h2>
-<p><strong>Amaç</strong> <span class="math inline">\(y'=F(x,y)\)</span> denklemini, <span class="math inline">\(y(a)=\alpha\)</span> başlangıç koşuluyla çözüp <span class="math inline">\(y(x)\)</span>’i istenilen aralıkta elde etmek.</p>
-<p>Aşağıdaki gibi formda olan diferansiyel denklemlere birinci dereceden adi diferansiyel denklemler denir.</p>
+<section id="notasyon" class="level2">
+<h2 class="anchored" data-anchor-id="notasyon">Notasyon</h2>
+<p>İki bilinmeyenli basit bir denklem alalım.</p>
 <p><span class="math display">\[
-\frac{dy}{dx}=y'=f(x)
+4x + 7y =6\\
+2x+3y= 1
 \]</span></p>
-<p>Her iki tarafın integralini alırsak sağ tarafta bir integral sabiti olur. Bu integral sabitini belirlemek için bir adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.</p>
-<p>Eğer n.&nbsp;dereceden diferansiyel denklem varsa, yani <span class="math inline">\(y^{(n)}=f(x,y,y',\cdots,y^{(n-1)})\)</span>, bu durumda n adet başlangıç koşuluna veya sınır değere ihtiyaç vardır.</p>
-<p>Yüksek dereceden diferansiyel denklemler düşük dereceden diferansiyel denklemlere çevrilebilir. Örneğin,</p>
+<p>Bu denklemi daha da genelleştirelim.</p>
 <p><span class="math display">\[
-y''=-y(x) \qquad y'(x) \equiv v(x) \qquad v'(x)=-y(x)
+A_{11}~x_{1} + A_{12}~x_{2}= b_{1}\\
+A_{21}~x_{1} + A_{22}~x_{2}= b_{2}
 \]</span></p>
-<p>Yukarıdaki denklemin koşulları <span class="math inline">\(y(0)=1\)</span>, <span class="math inline">\(v(0)=1\)</span> şeklinde ise başlangıç değer problemi, <span class="math inline">\(y(0)=1\)</span> ve <span class="math inline">\(v(100)=0\)</span> şeklinde farklı ise sınır değer problemi olarak tanımlanır.</p>
-<p>Diferansiyel denklemler tek halde bulunabildiği gibi çoklu halde de bulunabilir. Örneğin,</p>
+<p>Burada bilinmeyenler <span class="math inline">\(x_{1}\)</span> ve <span class="math inline">\(x_{2}\)</span> elemanlarıdır ve bu vektöre <strong>çözüm vektörü</strong>. <span class="math inline">\(A_{ij}\)</span> ise katsayı matrisininin elemanları ve <span class="math inline">\(b_{i}\)</span> ise sonuç vektörüdür. Bu denklemi matris şeklinde yazabiliriz.</p>
 <p><span class="math display">\[
-\textbf{y}'=\textbf{F}(x,\textbf{y})
+\begin{bmatrix} 4 &amp; 7\\2 &amp; 3 \end{bmatrix} \begin{bmatrix}    x_{1}\\x_{2}    \end{bmatrix}= \begin{bmatrix}    6 \\ 1    \end{bmatrix} \rightarrow \begin{bmatrix} A_{11} &amp; A_{12}\\A_{21} &amp; A_{22} \end{bmatrix} \begin{bmatrix}    x_{1}\\x_{2}    \end{bmatrix}= \begin{bmatrix}    b_{1} \\ b_{2}    \end{bmatrix}
+\]</span> Bu matris denklemini ayrıca aşağıdaki gibi de yazabiliriz.</p>
+<p><span class="math display">\[
+A \vec{x} = \vec{b}
+\]</span> Katsayı matrisinin determinantı aşağıdaki gibi gösterilir.</p>
+<p><span class="math display">\[
+|A| \qquad \text{ veya } \qquad det(A)
+\]</span> Katsayı matrisinin tersi aşağıdaki gibi gösterilir.</p>
+<p><span class="math display">\[
+A^{-1} \qquad \text{ veya } \qquad inv(A)
+\]</span></p>
+<blockquote class="blockquote">
+<p>Çözüm vektörü ve sonuç vektörleri matris de olabilir.</p>
+</blockquote>
+</section>
+<section id="çözümün-tekliği-ve-durumu" class="level2">
+<h2 class="anchored" data-anchor-id="çözümün-tekliği-ve-durumu">Çözümün Tekliği ve Durumu</h2>
+<ul>
+<li>Eğer <span class="math inline">\(n\)</span> tane denklem ve <span class="math inline">\(n\)</span> adet bilinmeyen varsa çözüm biricik (unique) <em>olabilir.</em></li>
+<li>Çözümün tek olabilmesi için <span class="math inline">\(det(A)\ne 0\)</span> şartı sağlanmalıdır.</li>
+<li>Çözüm tek ise satır ve sütunlar birbirinin katı veya kombinasyonu olamaz.</li>
+</ul>
+<p>Yukarıdaki şartları sağlayan denklemlere <strong>doğrusal bağımsız</strong> adı verilir.</p>
+<section id="örnek" class="level3">
+<h3 class="anchored" data-anchor-id="örnek">Örnek</h3>
+<p>Aşağıdaki denklem doğrusal bağımlıdır. Ayrıca katsayı matrisinin determinantı da 0’a eşittir.</p>
+<p><span class="math display">\[
+2x_{1} + x_{2} =3\\
+4x_{1} + 2x_{2} =6
+\]</span></p>
+</section>
+<section id="örnek-1" class="level3">
+<h3 class="anchored" data-anchor-id="örnek-1">Örnek</h3>
+<p>Aşağıdaki denklem doğrusal bağımsızdır ve <span class="math inline">\(|A|\ne 0\)</span> bağıntısına sahiptir.</p>
+<p><span class="math display">\[
+4x_{1}+7x_{2}=6\\
+2x_{1}+3x_{2}=1
+\]</span> Bir denklem sisteminin katsayı matrisinin determinantı ne kadar 0’dan büyükse, o kadar <strong>güzel koşulludur</strong> (well-conditioned.) Güzel koşullunun tersi, yani determinantı 0’a yakın olan sistemlere ise <strong>kötü koşullu</strong> (ill-conditined.) adı verilir.</p>
+</section>
+<section id="örnek-2" class="level3">
+<h3 class="anchored" data-anchor-id="örnek-2">Örnek</h3>
+<p>Aşağıdaki iki denklem sistemi, kötü koşulluluğa örnektir.</p>
+<p><span class="math display">\[
+2x_{1} + x_{2} = 3\\
+2x_{1} + 1.0001x_{2}=0
+\]</span></p>
+<p>Bu sistemde katsayı matrisinin determinantı <span class="math inline">\(|A|=0.002\)</span>. Denklem sisteminin çözümü ise</p>
+<p><span class="math display">\[
+\begin{bmatrix}    x_{1}\\x_{2}    \end{bmatrix}= \begin{bmatrix}    1501.5\\-3000    \end{bmatrix}
+\]</span></p>
+<p>Bir başka denklem ele alalım.</p>
+<p><span class="math display">\[
+2x_{1} + x_{2} = 3\\
+2x_{1} + 1.0002x_{2}=0
+\]</span></p>
+<p>Bu sistemde katsayı matrisinin determinantı <span class="math inline">\(|A|=0.004\)</span> Denklem sisteminin çözümü ise</p>
+<p><span class="math display">\[
+\begin{bmatrix}    x_{1}\\x_{2}    \end{bmatrix}= \begin{bmatrix}    751.5\\-1500    \end{bmatrix}
+\]</span></p>
+<blockquote class="blockquote">
+<p>Yukarıdaki örnekte, katsayı matrisinde yapılan binde bir bir değişikliklik, çözüm vektöründe %200 oranında farklılaşmaya sebep oldu.</p>
+</blockquote>
+</section>
+</section>
+<section id="doğrusal-lineer-sistem-çözümleri" class="level2">
+<h2 class="anchored" data-anchor-id="doğrusal-lineer-sistem-çözümleri">Doğrusal (Lineer) Sistem Çözümleri</h2>
+<ol type="1">
+<li>Bizim ilgileneceğimiz doğrusal sistemler kesikli sistemlerdir. Yani <span class="math inline">\(\int\)</span> yerine <span class="math inline">\(\sum\)</span> kullanılacakt.r</li>
+<li>Denklemler birinci dereceden bilinmeyenler içermelidir.</li>
+<li><span class="math inline">\(Ax=b\)</span> şeklinde yazıp <span class="math inline">\(x\)</span>’i bulmak istediğimiz denklem sistemleridir.</li>
+</ol>
+<section id="doğrusal-denklem-çözüm-yöntemleri" class="level3">
+<h3 class="anchored" data-anchor-id="doğrusal-denklem-çözüm-yöntemleri">Doğrusal Denklem Çözüm Yöntemleri</h3>
+<p>Doğrusal denklem sistemlerini çözmek için temelde iki yöntem vardır. Birincisi direkt çözüm yöntemleri, ikincisi ise inderekt veya iteratif çözüm yöntemleridir. Bu derste iteratif çözüm yöntemleri incelenmeyecektir.</p>
+<p><strong>İteratif Çözüm Metotları</strong>: Çözüme yaklaşmak için sürekli işlem yapılması gerekir. Bilgisayar kaynakları açısından ekonomik değildir. Çözümün hangi aralıkta olduğu bilindiğinde kullanılabilir.</p>
+<p><strong>Direkt Çözüm Metotları</strong>: Analitik çözüm metotları kullanarak sayısal çözüm elde etme metotlarıdır. Bu derste aşağıdaki üç adet direkt çözüm metotlarını inceleyeceğiz.</p>
+<ol type="1">
+<li>Gauss eleme (elimination) yöntemi,</li>
+<li>LU ayrıştırma (decomposition) yöntemi,</li>
+<li>Gauss-Jordan eleme yöntemi</li>
+</ol>
+</section>
+</section>
+<section id="gauss-eleme-yöntemi" class="level2">
+<h2 class="anchored" data-anchor-id="gauss-eleme-yöntemi">Gauss Eleme Yöntemi</h2>
+<p>Katsayı matrisinde <strong>satır</strong> işlemleri yaparak alt veya üst üçgensel kısmı sıfır yapılır ve çözüm bulunur. Bu işlem yaparak denklem çözümüne <strong>Gauss Eleme Yöntemi</strong> adı verilir.</p>
+<p>Katsayı matrislerinin köşegen elemanların altındaki elemanlar 0 yapılırsa <em>üst üçgensel form</em> yapma, köşegen elemanlarının üstündeki elemanlar 0 yapılırsa <em>alt üçgensel form</em> yapma adı verilir.</p>
+<p>Matrisi alt/üst üçgensel forma getirdikten sonra ileri/geri yerine koyma metodu ile denklem sisteminin çözümü elde edilir. Gauss eleme metodunu bilgisayarda yapmak için bir algoritma haline getirmek gerekmektedir. Bu işlemin sistematik hali aşağıdaki gibidir.</p>
+<p><span class="math display">\[
+\text{Eq}(i) - ~\lambda~ \text{Eq}(j) \rightarrow \text{Eq}(i)
+\]</span></p>
+<p>Burada <em>Eq</em> denklem anlamına gelir. Eq(i) ise i’inci denklem veya katsayı matrisinin i’inci satırı anlamına gelir.</p>
+<blockquote class="blockquote">
+<p>Yukarıda verilen formülasyondaki eksi (-) işareti her zaman eksi kalmalıdır çünkü bu formülü kodlarken tek bir işaret kullanılmalıdır.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Yukarıda verilen formülasyonda <span class="math inline">\(\rightarrow\)</span> ’un sağındaki ve solundaki “<strong>i</strong>” indisine dikkat ediniz.</p>
+</blockquote>
+<p><strong>Örneğin</strong></p>
+<ol type="1">
+<li>Eq(1) - 4 Eq(2) <span class="math inline">\(\rightarrow\)</span> Eq(1). Burada <span class="math inline">\(\lambda=4\)</span>.</li>
+<li>Eq(2) - (-5) Eq(3) <span class="math inline">\(\rightarrow\)</span> Eq(2). Burada <span class="math inline">\(\lambda=-5\)</span>.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Tüm satır işlemleri sadece katsayı matrisine değil sonuç vektörüne (matrisine), <span class="math inline">\(b\)</span>, de uygulanır.</p>
+</blockquote>
+<section id="örnek-3" class="level3">
+<h3 class="anchored" data-anchor-id="örnek-3">Örnek</h3>
+<p>Aşağıdaki denklemi Gauss-Jordan yöntemi kullanarak çözelim.</p>
+<p><span class="math display">\[
+4x_{1}- 2x_{2}+ x_{3} = 11\\
+-2x_{1}+ 4x_{2}- 2x_{3}= -16\\
+x_{1}-2x_{2}+4x_{3}= 17
+\]</span></p>
+<p>Matris formunda yazalım.</p>
+<p><span class="math display">\[
+\begin{bmatrix}    4 &amp; -2 &amp; 1 \\ -2 &amp; 4 &amp; -2 \\ 1 &amp; -2 &amp; 4    \end{bmatrix} \begin{bmatrix}    x_{1} \\ x_{2} \\ x_{3}    \end{bmatrix} = \begin{bmatrix}    11 \\ -16 \\ 17    \end{bmatrix}
+\]</span></p>
+<p>Burada satırları yani denklemleri isimlendirelim.</p>
+<ul>
+<li><ol type="1">
+<li>denklemi yani Eq(1) <span class="math inline">\([4~~~-2~~~1]\)</span> olur.</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li>denklemi yani Eq(2) <span class="math inline">\([-2~~~4~~~-2]\)</span> olur.</li>
+</ol></li>
+<li><ol start="3" type="1">
+<li>denklemi yani Eq(3) <span class="math inline">\([1~~~-2~~~4]\)</span> olur.</li>
+</ol></li>
+</ul>
+<p><strong>ADIM 1</strong></p>
+<p><strong>2. satır 1. sütunu</strong> yani <span class="math inline">\(A_{21}\)</span> terimini <span class="math inline">\(0\)</span> yapalım. Bu işlemde <span class="math inline">\(\lambda=~-0.5\)</span> olmalı aşağıdaki işlem uygulanmalı.</p>
+<p>$= $<code>A[1,0]/A[0,0]</code></p>
+<p><span class="math display">\[
+\text{Eq}(2) - ~(-0.5)~ \text{Eq}(1) \rightarrow \text{Eq}(2)
 \]</span></p>
 <p><span class="math display">\[
-\begin{bmatrix}
-y_1' \\
-y_2' \\
-\vdots \\
-y_n'
-\end{bmatrix}=
-\begin{bmatrix}
-f_1(x,y_1,y_2,\cdots,y_n) \\
-f_2(x,y_1,y_2,\cdots,y_n) \\
-\vdots \\
-f_n(x,y_1,y_2,\cdots,y_n)
-\end{bmatrix}
+A=\begin{bmatrix}    4 &amp; -2 &amp; 1 \\ \mathbf{0} &amp; 3 &amp; -1.5 \\ 1 &amp; -2 &amp; 4    \end{bmatrix} \qquad \text{,} \qquad \vec{b}=\begin{bmatrix}    11 \\ -10.5 \\ 17    \end{bmatrix}
 \]</span></p>
+<p><strong>ADIM 2</strong></p>
+<p><strong>3. satır 1. sütunu</strong> yani <span class="math inline">\(A_{31}\)</span> terimini <span class="math inline">\(0\)</span> yapalım. Bu işlemde <span class="math inline">\(\lambda=~0.25\)</span> olmalı aşağıdaki işlem uygulanmalı.</p>
+<p>$= $<code>A[2,0]/A[0,0]</code></p>
+<p><span class="math display">\[
+\text{Eq}(3) - ~(0.25)~ \text{Eq}(1) \rightarrow \text{Eq}(2)
+\]</span></p>
+<p><span class="math display">\[
+A=\begin{bmatrix}    4 &amp; -2 &amp; 1 \\ 0 &amp; 3 &amp; -1.5 \\ \mathbf{0} &amp; -1.5 &amp; 3.75    \end{bmatrix} \qquad \text{,} \qquad \vec{b}=\begin{bmatrix}    11 \\ -10.5 \\ 14.25    \end{bmatrix}
+\]</span></p>
+<p><strong>ADIM 3</strong></p>
+<p><strong>3. satır 2. sütunu</strong> yani <span class="math inline">\(A_{32}\)</span> terimini <span class="math inline">\(0\)</span> yapalım. Bu işlemde <span class="math inline">\(\lambda=~-0.5\)</span> olmalı aşağıdaki işlem uygulanmalı.</p>
+<p>$= $<code>A[2,1]/A[1,1]</code></p>
+<p><span class="math display">\[
+\text{Eq}(3) - ~(-0.5)~ \text{Eq}(2) \rightarrow \text{Eq}(2)
+\]</span></p>
+<p><span class="math display">\[
+A= \begin{bmatrix}    4 &amp; -2 &amp; 1 \\ 0 &amp; 3 &amp; -1.5 \\ 0 &amp; \mathbf{0} &amp; 3    \end{bmatrix} \qquad \text{,} \qquad \vec{b}=\begin{bmatrix}    11 \\ -10.5 \\ 9    \end{bmatrix}
+\]</span></p>
+<blockquote class="blockquote">
+<p>Katsayı matrisimiz üst üçgensel forma geldi.</p>
+</blockquote>
+<p><strong>ADIM 4</strong></p>
+<p>Üst üçgensel forma getirilen katsayı matrsinden çözüm elde edebiliriz. Bunun için <strong>geri yerine koyma</strong> metodu kullanacağız.</p>
+<p><span class="math display">\[
+A= \begin{bmatrix}    4 &amp; -2 &amp; 1 \\ 0 &amp; 3 &amp; -1.5 \\ 0 &amp; \mathbf{0} &amp; 3    \end{bmatrix} \qquad \text{,} \qquad \vec{b}=\begin{bmatrix}    11 \\ -10.5 \\ 9    \end{bmatrix}
+\]</span></p>
+<p>En son satırdan çözüm elde etmeye başlayalım.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>x[<span class="dv">2</span>] <span class="op">=</span> b[<span class="dv">2</span>]<span class="op">/</span> A[<span class="dv">2</span>,<span class="dv">2</span>]</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="math display">\[
+3x_{3}=9\\
+x_{3}=3
+\]</span></p>
+<p>Sondan bir önceki satıra yani ikinci satıra bakalım.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x[<span class="dv">1</span>] <span class="op">=</span> (b[<span class="dv">1</span>] <span class="op">-</span> A[<span class="dv">1</span>,<span class="dv">2</span>]<span class="op">*</span> x[<span class="dv">2</span>])<span class="op">/</span>A[<span class="dv">1</span>,<span class="dv">1</span>]</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="math display">\[
+3x_{2}-1.5x_{3}=-10.5\\
+3x_{2}-4.5=-10.5\\
+x_{2}=-2
+\]</span></p>
+<p>İlk satıra bakalım.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>x[<span class="dv">0</span>] <span class="op">=</span> (b[<span class="dv">0</span>] <span class="op">-</span> A[<span class="dv">0</span>,<span class="dv">1</span>]<span class="op">*</span> x[<span class="dv">1</span>] <span class="op">-</span> A[<span class="dv">0</span>,<span class="dv">2</span>]<span class="op">*</span> x[<span class="dv">2</span>])<span class="op">/</span>A[<span class="dv">0</span>,<span class="dv">0</span>]</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="math display">\[
+4x_{1}-2x_{2}+x_{3}=11\\
+4x_{1}+4+3=11\\
+x_{1}=1
+\]</span></p>
+<p>Bu durumda çözüm vektörümüz, <span class="math inline">\(\vec{x}\)</span>, aşağıdaki gibi olacaktır.</p>
+<p><span class="math display">\[
+\vec{x}= \begin{bmatrix}    1 \\ -2 \\ 3    \end{bmatrix}
+\]</span></p>
+</section>
+<section id="satır-işlemleri-ve-determinant-ilişkisi" class="level3">
+<h3 class="anchored" data-anchor-id="satır-işlemleri-ve-determinant-ilişkisi">Satır İşlemleri ve Determinant İlişkisi</h3>
+<ul>
+<li>İki satırın yerini değiştrimek <span class="math inline">\(|A|\)</span> determinantının işareti değiştirir.</li>
+<li>Matrisin bir satırını bir katsayı ile çarparsak, matris determinanı da o katsayı ile çarpılır.</li>
+<li>Bir katsayı ile bir satırı çarpıp, o satırı başka bir satır ile toplayıp ardindan topladığımız satırı katsayı ile çarpığıımz satır yerine yazarsak (yukarıda yaptığımız işlemler) determinant, <span class="math inline">\(|A|\)</span>, değişmez.</li>
+<li>Alt veya üst köşegen formda olan bir matrisin determinantı, köşegen elemanlarının çarpımına eşittir.</li>
+</ul>
+</section>
+<section id="alıştırma" class="level3">
+<h3 class="anchored" data-anchor-id="alıştırma">Alıştırma</h3>
+<p>Aşağıdaki denklem sistemini Gauss Eleme yöntemi ile çözün. Çözüm elde ederken <strong>alt üçgen formuna</strong> getirin.</p>
+<p><span class="math display">\[
+\begin{bmatrix}    4 &amp; -2 &amp; 1 \\ -2 &amp; 4 &amp; -2 \\ 1 &amp; -2 &amp; 4    \end{bmatrix} \begin{bmatrix}    x_{1} \\ x_{2} \\ x_{3}    \end{bmatrix} = \begin{bmatrix}    11 \\ -16 \\ 17    \end{bmatrix}
+\]</span></p>
+<p><strong>ÇÖZÜM</strong></p>
+<p><strong>ADIM 1</strong></p>
+<p><strong>2 satır 1. sütunu</strong> yani <span class="math inline">\(A_{21}\)</span> terimini <span class="math inline">\(0\)</span> yapalım. Bu işlemde <span class="math inline">\(\lambda=~-0.5\)</span> olmalı aşağıdaki işlem uygulanmalı.</p>
+<p>$= $<code>A[0,1]/A[1,1]</code></p>
+<p><span class="math display">\[
+\text{Eq}(1) - ~(-0.5)~ \text{Eq}(2) \rightarrow \text{Eq}(1)
+\]</span></p>
+<p><span class="math display">\[
+A=\begin{bmatrix}    3 &amp; \mathbf{0} &amp; 0 \\ -2 &amp; 4 &amp; -2 \\ 1 &amp; -2 &amp; 4    \end{bmatrix} \qquad \text{,} \qquad \vec{b}=\begin{bmatrix}    3 \\ -16 \\ 17    \end{bmatrix}
+\]</span></p>
+<p><strong>ADIM 2</strong></p>
+<p><strong>1. satır 3. sütun</strong> da 0 oldu. Geriye sadece 2. satır 3. sütun kaldı. Bunun için <span class="math inline">\(\lambda=-0.5\)</span> almalıyız.</p>
+<p>$= $<code>A[1,2]/A[2,2]</code></p>
+<p><span class="math display">\[
+\text{Eq}(2) - ~(-0.5)~ \text{Eq}(3) \rightarrow \text{Eq}(2)
+\]</span></p>
+<p><span class="math display">\[
+A=\begin{bmatrix}    3 &amp; 0 &amp; \mathbf{0} \\ -1.5 &amp; 3 &amp; \mathbf{0} \\ 1 &amp; -2 &amp; 4    \end{bmatrix} \qquad \text{,} \qquad \vec{b}=\begin{bmatrix}    3 \\ -7.5 \\ 17    \end{bmatrix}
+\]</span></p>
+<p><strong>ADIM 3</strong></p>
+<p>İleri yerine koyma metodu ile çözümü elde edelim.</p>
+<p><span class="math display">\[
+3_{x_{1}}=3\\
+x_{1}=1
+\]</span></p>
+<p><span class="math display">\[
+-1.5x_{1}+3x_{2}=-7.5\\
+x_{2}= -2
+\]</span></p>
+<p><span class="math display">\[
+x_{1}-2x_{2}+4x_{3}=17\\
+x_{3}=3
+\]</span></p>
+</section>
+</section>
+<section id="gauss-eleme-yönteminin-algoritması" class="level2">
+<h2 class="anchored" data-anchor-id="gauss-eleme-yönteminin-algoritması">Gauss Eleme Yönteminin algoritması</h2>
+<section id="yapılacaklar" class="level3">
+<h3 class="anchored" data-anchor-id="yapılacaklar">Yapılacaklar</h3>
+<ol type="1">
+<li>Bir fonksiyon oluştur. <code>gauss_eleme_ust_ucgen</code>. Bu fonksiyon iki değişken alsın. <code>katsayiMat</code> ve <code>sonucVec</code>.</li>
+<li>Katsayı matrisi ve sonuç matrisindeki tüm elemanlar float olmalı. <code>katsayiMat.astype(float)</code> ve <code>sonucVec.astype(float)</code> kullan.</li>
+<li><span class="math inline">\(\text{Eq}(i) - ~\lambda~ \text{Eq}(j) \rightarrow \text{Eq}(i)\)</span> algoritmasını yaz. Sadece katsayı matrisi için değil sonuç vektörü için de uygula. Üst üçgensel forma getir.
+<ol type="1">
+<li>Örneklerden de gördüğün üzere satırlara ve sütunlara erişmen gerekecek. Bunun için iki adet <code>for</code> döngüsü kullan.</li>
+<li><strong>[Kontrol]</strong> Katsayı matrisinin önceki halini yazdır.</li>
+<li>Eğer <span class="math inline">\(0\)</span> yapmak istediğin eleman 0 ise işlem yapmana gerek yok.</li>
+<li><span class="math inline">\(\lambda\)</span> değerini hesapla.</li>
+<li><strong>[Kontorl]</strong> <span class="math inline">\(\lambda\)</span> değerini yazdır.</li>
+<li>Algoritmayı yaz. Katsayı matrisini değiştir.</li>
+<li>Sonuç vektörünü değiştir.</li>
+<li><strong>[Kontrol]</strong> Katsayı matrisinin sonraki halini yazdır.</li>
+</ol></li>
+<li>Geri yerine koyma fazını uygula çözüm vektörünü elde et.
+<ol type="1">
+<li><code>for</code> döngüsü kullanılmalı. Matrislerde yerine koyma işlemi en son satırdan başlayacak. Döngü sondan başa gitmeli. Ör. <code>for i in range(2, -1, -1):</code> -&gt; <code>[2,1,0]</code></li>
+</ol></li>
+<li>Çözüm vektörünü döndür.</li>
+<li><strong>[Kontrol]</strong> Aşağıdaki girdiler için çalıştır. Sonuçlar doğru mu kontrol et.</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>A<span class="op">=</span> np.array([[<span class="dv">4</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>], [<span class="op">-</span><span class="dv">2</span>, <span class="dv">4</span>, <span class="op">-</span><span class="dv">2</span>], [<span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">4</span>]])</span>
+<span id="cb4-2"><a href="#cb4-2"></a>b<span class="op">=</span> np.array([<span class="dv">11</span>, <span class="op">-</span><span class="dv">16</span>, <span class="dv">17</span>])</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="bu">print</span>(<span class="ss">f"Çözüm vektörü: </span><span class="sc">{</span>gauss_eleme_ust_ucgen(A, b)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Çıktı aşağıdaki gibi olmalı</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="bu">[</span> 1. -2.  3.]</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="geliştirmeler" class="level3">
+<h3 class="anchored" data-anchor-id="geliştirmeler">Geliştirmeler</h3>
+<ol type="1">
+<li>Eğer katsayı matrisi kare değilse hata ver.</li>
+<li><span class="math inline">\(\lambda\)</span> elde edilirken 0’a bölme hatası vermemesi için kontrol yap.</li>
+</ol>
+</section>
+<section id="python-kodu" class="level3">
+<h3 class="anchored" data-anchor-id="python-kodu">Python Kodu</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="kw">def</span> gauss_eleme_ust_ucgen(katsayiMat, sonucVec):</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="co"># Boyut</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>    n<span class="op">=</span> <span class="bu">len</span>(sonucVec)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>    <span class="co"># Katsayı ve sonuç matrislerini float tipine çevir.</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>    katsayiMat<span class="op">=</span> katsayiMat.astype(<span class="bu">float</span>)</span>
+<span id="cb6-8"><a href="#cb6-8"></a>    sonucVec<span class="op">=</span> sonucVec.astype(<span class="bu">float</span>)</span>
+<span id="cb6-9"><a href="#cb6-9"></a>    <span class="co"># Üst üçgensel matris oluştur.</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n<span class="op">-</span><span class="dv">1</span>): <span class="co"># k: pivot satırı</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(k<span class="op">+</span><span class="dv">1</span>, n): <span class="co"># i: pivot satırından sonraki satırlar</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a>            <span class="co">#print(f"katsayiMat Once\n {katsayiMat}")</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>            <span class="cf">if</span> katsayiMat[i, k] <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb6-14"><a href="#cb6-14"></a>                lamb <span class="op">=</span> katsayiMat[i, k]<span class="op">/</span> katsayiMat[k, k]</span>
+<span id="cb6-15"><a href="#cb6-15"></a>                <span class="co">#print(f"lamb: {lamb}")</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a>                <span class="co"># Katsayı matrisini değiştir</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a>                <span class="co">#print(f"i, k: {i}, {k}")</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a>                <span class="co">#print(f"katsayiMat[i, k:n]: {katsayiMat[i, k:n]}")</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a>                <span class="co">#print(f"lamb*katsayiMat[k, k:n]: {lamb*katsayiMat[k, k:n]}")</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a>                <span class="co">#print(f"katsayiMat[i, k:n]- lamb* katsayiMat[k, k:n]: {katsayiMat[i, k:n]- lamb* katsayiMat[k, k:n]}")</span></span>
+<span id="cb6-21"><a href="#cb6-21"></a>                katsayiMat[i, :]<span class="op">=</span> katsayiMat[i, :]<span class="op">-</span> lamb<span class="op">*</span> katsayiMat[k, :]</span>
+<span id="cb6-22"><a href="#cb6-22"></a>                <span class="co"># Sonuç vektörünü değiştir</span></span>
+<span id="cb6-23"><a href="#cb6-23"></a>                sonucVec[i]<span class="op">=</span> sonucVec[i]<span class="op">-</span> lamb<span class="op">*</span> sonucVec[k]</span>
+<span id="cb6-24"><a href="#cb6-24"></a>            <span class="co">#print(f"katsayiMat Sonra\n {katsayiMat}")</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a>    </span>
+<span id="cb6-26"><a href="#cb6-26"></a>    <span class="co"># Geri Yerine Koyma Yap</span></span>
+<span id="cb6-27"><a href="#cb6-27"></a>    cozumVek<span class="op">=</span> np.zeros(n)</span>
+<span id="cb6-28"><a href="#cb6-28"></a>    <span class="co"># Son satırdan başlayarak geriye doğru ilerleme</span></span>
+<span id="cb6-29"><a href="#cb6-29"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb6-30"><a href="#cb6-30"></a>        cozum<span class="op">=</span> sonucVec[i]</span>
+<span id="cb6-31"><a href="#cb6-31"></a>        <span class="co"># Üst üçgensel formülde yerine koyma</span></span>
+<span id="cb6-32"><a href="#cb6-32"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>, n):</span>
+<span id="cb6-33"><a href="#cb6-33"></a>            cozum<span class="op">=</span> cozum<span class="op">-</span> katsayiMat[i,j] <span class="op">*</span> cozumVek[j]</span>
+<span id="cb6-34"><a href="#cb6-34"></a>        <span class="co"># Katsayı matrisinde doğrudan çözümü bulma</span></span>
+<span id="cb6-35"><a href="#cb6-35"></a>        cozumVek[i]<span class="op">=</span> cozum<span class="op">/</span> katsayiMat[i,i]</span>
+<span id="cb6-36"><a href="#cb6-36"></a>        </span>
+<span id="cb6-37"><a href="#cb6-37"></a>    <span class="cf">return</span> cozumVek</span>
+<span id="cb6-38"><a href="#cb6-38"></a></span>
+<span id="cb6-39"><a href="#cb6-39"></a>A<span class="op">=</span> np.array([[<span class="dv">4</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>], [<span class="op">-</span><span class="dv">2</span>, <span class="dv">4</span>, <span class="op">-</span><span class="dv">2</span>], [<span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">4</span>]])</span>
+<span id="cb6-40"><a href="#cb6-40"></a>b<span class="op">=</span> np.array([<span class="dv">11</span>, <span class="op">-</span><span class="dv">16</span>, <span class="dv">17</span>])</span>
+<span id="cb6-41"><a href="#cb6-41"></a></span>
+<span id="cb6-42"><a href="#cb6-42"></a><span class="bu">print</span>(gauss_eleme_ust_ucgen(A,b))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1094,13 +1455,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler.html" class="pagination-link" aria-label="Adi Diferansiyel Denklemler">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Adi Diferansiyel Denklemler</span>
+      <a href="../../../icerik/konular/dogrusal-denklemler.html" class="pagination-link" aria-label="Doğrusal Denklemler">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Doğrusal Denklemler</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="pagination-link" aria-label="BDP - Euler Yöntemi">
-        <span class="nav-page-text">BDP - Euler Yöntemi</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.html" class="pagination-link" aria-label="Doğrusal Denklem Sistemleri">
+        <span class="nav-page-text">Doğrusal Denklem Sistemleri</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1112,7 +1473,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-giris.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>
