@@ -251,12 +251,6 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Alıştırmalar ve Problemler</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
   </div>
@@ -265,6 +259,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Classlar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
       </ul>
@@ -539,6 +539,11 @@ window.Quarto = {
   <li><a href="#scipy-kütüphanesi" id="toc-scipy-kütüphanesi" class="nav-link" data-scroll-target="#scipy-kütüphanesi">Scipy Kütüphanesi</a></li>
   </ul></li>
   <li><a href="#newton-yöntemi-kod" id="toc-newton-yöntemi-kod" class="nav-link" data-scroll-target="#newton-yöntemi-kod">Newton Yöntemi (Kod)</a></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
+  <ul class="collapse">
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/interpolasyon-egri-uydurma/interpolasyon.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
@@ -630,7 +635,7 @@ P_{1}(x)= 4\frac{x-1}{0-1} + 5\frac{x-0}{1-0} \\
 \quad\\
 P_{1}(x)= x+4
 \]</span></p>
-<div id="8013e8b8" class="cell" data-execution_count="1">
+<div id="8b5cec3e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -856,7 +861,7 @@ P_{2}(x=3)\stackrel{?}{=}7 \rightarrow \frac{3^{2}-3+8}{2}= 7 \quad \checkmark
 <section id="doğrusal-interpolasyon" class="level4">
 <h4 class="anchored" data-anchor-id="doğrusal-interpolasyon">Doğrusal İnterpolasyon</h4>
 <p>Veri noktalarını doğrusal olarak birleştirir.</p>
-<div id="c0185912" class="cell" data-execution_count="2">
+<div id="adde42e8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
@@ -994,7 +999,7 @@ P_{n}(x)= \sum_{i=0}^{n} y_{i}l_{i}(x)
 <p><span class="math display">\[
 l_{i}(x)= \prod_{j=0, j \ne i}^{n} \frac{x-x_{j}}{x_{i}-x_{j}} \qquad \text{,} \quad i = 0,1,2,\dots,n
 \]</span></p>
-<div id="3840b158" class="cell" data-execution_count="3">
+<div id="1b2ab617" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
@@ -1063,7 +1068,7 @@ l_{i}(x)= \prod_{j=0, j \ne i}^{n} \frac{x-x_{j}}{x_{i}-x_{j}} \qquad \text{,} \
 <p>Yukarıda verilen Lagrange İnterpolasyon Python kodunu tek bir <code>xAraTekDeger</code> değer için değil <code>xAraDizi</code> için de çalışacak şekilde değiştiriniz.</p>
 <section id="çözüm" class="level4">
 <h4 class="anchored" data-anchor-id="çözüm">Çözüm</h4>
-<div id="995ce3c7" class="cell" data-execution_count="4">
+<div id="6d1a3512" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3"></a></span>
@@ -1132,7 +1137,7 @@ l_{i}(x)= \prod_{j=0, j \ne i}^{n} \frac{x-x_{j}}{x_{i}-x_{j}} \qquad \text{,} \
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="interpolasyon_files/figure-html/cell-5-output-1.png" width="566" height="411" class="figure-img"></p>
+<p><img src="interpolasyon_files/figure-html/cell-5-output-1.png" width="569" height="411" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1142,7 +1147,7 @@ l_{i}(x)= \prod_{j=0, j \ne i}^{n} \frac{x-x_{j}}{x_{i}-x_{j}} \qquad \text{,} \
 <section id="scipy-kütüphanesi" class="level3">
 <h3 class="anchored" data-anchor-id="scipy-kütüphanesi">Scipy Kütüphanesi</h3>
 <p><code>scipy</code> kütüphanesinin içerisindeki <code>interpolate</code> alt modülü içinde <code>lagrange</code> fonksiyonu bulunur. Bu fonksiyonu kullanarak Lagrange interpolasyonu yapın. Aynı <code>interpolate</code> alt modülü içerisinde tek doğrusal interpolasyon için <code>interp1d</code> fonksiyonu bulunur. Bu fonksiyonu da kullanarak tek doğrusal interpolasyon yapın.</p>
-<div id="23fe255b" class="cell" data-execution_count="5">
+<div id="4b8d79cf" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="im">import</span> scipy.interpolate <span class="im">as</span> spInterp</span>
@@ -1201,7 +1206,7 @@ P_{k}(x)= a_{n-k}+ P_{k-1}(x)(x-x_{n-k}) \qquad \text{,} \quad k=1,2,\dots,n \qq
 <p><span class="math display">\[
 a_{n} \equiv \nabla^{n} y_{i} \equiv \frac{\nabla^{n-1} y_{i}-\nabla^{n-1} y_{n-1}}{x_{i}-x_{n-1}} \qquad \text{,} \quad i=n
 \]</span></p>
-<div id="6c427fb1" class="cell" data-execution_count="6">
+<div id="8d7764aa" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="im">import</span> scipy.interpolate <span class="im">as</span> spInterp</span>
@@ -1279,8 +1284,44 @@ a_{n} \equiv \nabla^{n} y_{i} \equiv \frac{\nabla^{n-1} y_{i}-\nabla^{n-1} y_{n-
 </div>
 </div>
 </div>
+</section>
+<section id="problemler" class="level2">
+<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
+<section id="problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
+<p>En alttaki veriyi kullanarak - Kübik spline interpolasyonu yapın (<code>scipy.interpolate.CubicSpline</code>). - Doğrusal (1. derece) ve 4. derece en küçük kareler uydurması (fiting) yapın (<code>numpy.polyfit</code>). - Veriyi (nokta olacak şekilde), interpolasyonu ve uydurmaları (çizgi olacak şekilde) aynı grafikte çizdirin. Grafikte gözüken <span class="math inline">\(y\)</span> eksenini <span class="math inline">\(-5\)</span> ile <span class="math inline">\(5\)</span> arasında sınırlayın grafiği gösterin. - İnterpolasyonu ve uydurumayı <span class="math inline">\(x=(0,6)\)</span> arasındaki noktalar için yapın.</p>
+<p>Veri:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(y\)</span></td>
+<td>-1</td>
+<td>1</td>
+<td>-2</td>
+<td>2</td>
+<td>-6</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
+<p><span class="math inline">\((x_{0}, y_{0}) = (0, 1)\)</span>, <span class="math inline">\((x_{1}, y_{1}) = (1, 1)\)</span>, <span class="math inline">\((x_{2}, y_{2}) = (3, 7)\)</span> verisini kullanarak Lagrange polinomunu elde edin. Gerekli formüller:</p>
+<p><span class="math inline">\(P_{2}(x) = \sum_{i=0}^{2}y_{i}l_{i}(x)\)</span></p>
+<p><span class="math inline">\(l_{i}= \prod_{j=0,j\neq i}^{2}\frac{x-x_{j}}{x_{i}-x_{j}}\)</span></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

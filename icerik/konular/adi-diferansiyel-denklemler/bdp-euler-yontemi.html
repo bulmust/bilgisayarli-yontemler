@@ -271,12 +271,6 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Alıştırmalar ve Problemler</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
   </div>
@@ -285,6 +279,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Classlar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
       </ul>
@@ -547,8 +547,7 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#başlangıç-değer-problemi---euler-yöntemi" id="toc-başlangıç-değer-problemi---euler-yöntemi" class="nav-link active" data-scroll-target="#başlangıç-değer-problemi---euler-yöntemi">Başlangıç Değer Problemi - Euler Yöntemi</a></li>
-  <li><a href="#hata-analizi" id="toc-hata-analizi" class="nav-link" data-scroll-target="#hata-analizi">Hata Analizi</a></li>
+  <li><a href="#hata-analizi" id="toc-hata-analizi" class="nav-link active" data-scroll-target="#hata-analizi">Hata Analizi</a></li>
   <li><a href="#euler-yöntemi-ile-çözümde-hata-analizi" id="toc-euler-yöntemi-ile-çözümde-hata-analizi" class="nav-link" data-scroll-target="#euler-yöntemi-ile-çözümde-hata-analizi">Euler Yöntemi ile Çözümde Hata Analizi</a></li>
   <li><a href="#euler-yönteminin-geometrik-tasviri" id="toc-euler-yönteminin-geometrik-tasviri" class="nav-link" data-scroll-target="#euler-yönteminin-geometrik-tasviri">Euler Yönteminin Geometrik Tasviri</a></li>
   <li><a href="#euler-yönteminin-kodlanması" id="toc-euler-yönteminin-kodlanması" class="nav-link" data-scroll-target="#euler-yönteminin-kodlanması">Euler Yönteminin Kodlanması</a></li>
@@ -598,8 +597,6 @@ window.Quarto = {
 </header>
 
 
-<section id="başlangıç-değer-problemi---euler-yöntemi" class="level2">
-<h2 class="anchored" data-anchor-id="başlangıç-değer-problemi---euler-yöntemi">Başlangıç Değer Problemi - Euler Yöntemi</h2>
 <ul>
 <li>Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.</li>
 <li>Alternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.</li>
@@ -627,7 +624,6 @@ Not
 <p>Alternatif olarak her (x+h) noktası için integral de alabiliriz ancak diferansiyel denklem çözerken sayısal integral alma yöntemleri kullanmak sakıncalıdır.</p>
 </div>
 </div>
-</section>
 <section id="hata-analizi" class="level2">
 <h2 class="anchored" data-anchor-id="hata-analizi">Hata Analizi</h2>
 <p>Bir uygulamada Taylor serisi kullanılırsa hata analizi aşağıdaki gibi yapılır. Farz edelim ki <span class="math inline">\(f(x+h)\)</span> fonksiyonunu <span class="math inline">\(f(x)\)</span> etrafında seriye açıyoruz ve <span class="math inline">\(n\)</span>’nci dereceden terimden sonrasını atıyoruz. <span class="math inline">\(E_{n}\)</span> terimi ise kestiğimiz terimden sonraki terimler yani hata terimi olarak tanımlansın.</p>
@@ -702,7 +698,7 @@ Dikkat
 <p><span class="math display">\[
 y(x)=1+\frac{x^{2}}{2}
 \]</span></p>
-<div id="3048ef48" class="cell" data-execution_count="1">
+<div id="995104ec" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
@@ -757,7 +753,7 @@ y(x)=\frac{31}{32}e^{-4x} + \frac{1}{4}x^{2}- \frac{1}{8}x + \frac{1}{32}
 \]</span></p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="cf726d15" class="cell" data-execution_count="2">
+<div id="d4af01a3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>

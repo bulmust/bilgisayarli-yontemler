@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../icerik/konular/python/alistirmalar-problemler.html" rel="next">
+<link href="../../../icerik/konular/python/moduller.html" rel="next">
 <link href="../../../icerik/konular/python/temel-terimler.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
@@ -222,12 +222,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Alıştırmalar ve Problemler</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
   </div>
@@ -236,6 +230,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Classlar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
       </ul>
@@ -548,7 +548,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Fonksiyonlar genellikle betiğin başına yazılır. Ana fonksiyon ise altına yazılır.</p>
 <p>Fonksiyonlar içerisinde tanımlanan değişkenler, fonksiyon dışarısında kullanılamaz.</p>
 <p>Fonksiyonların çalışması için gereken değişkenine varsayılan (default) bir değer atanabilir. Bunun için fonksiyonu tanımlarken o değişkene bir atama yapılması gerekir. Varsayılan değerler hep sona yazılır.</p>
-<div id="ec3b6eba" class="cell" data-execution_count="1">
+<div id="3cf3093c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Fonksiyon</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">def</span> merhabaDunyaYazdir():</span>
 <span id="cb1-3"><a href="#cb1-3"></a>    <span class="bu">print</span>(<span class="st">"Merhaba Dünya!"</span>)</span>
@@ -602,7 +602,7 @@ AYDA: V0= 0, t=3, g=1.625 için H=4.875</code></pre>
 </div>
 </div>
 <p>Kısa ve tek satırlık fonksiyonlar için <code>lambda</code> anahtar kelimesi kullanılır. <code>lambda</code> değişkeni yazıldıktan sonra boşluk bırakıp değişkenler yazılır ve <code>:</code> koyulur. Ardından yazılanlar fonksiyonun işlevini tanımlar. <code>lambda</code> fonksiyonlarında <code>return</code> kullanılmaz. Otomatik olarak yapılan işlem döndürülür.</p>
-<div id="5d1b4325" class="cell" data-execution_count="2">
+<div id="2e8ddb9e" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Kısa yazılmış lambda fonksiyonu</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>kareAl <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
@@ -661,7 +661,7 @@ Not
 <p>karşılaştırma fonksiyonu <code>cmp(a,b)</code> python 3.0’dan itibaren kaldırılmıştır.</p>
 </div>
 </div>
-<div id="fe5592eb" class="cell" data-execution_count="3">
+<div id="b6a7717d" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>float1<span class="op">=</span> <span class="op">-</span><span class="fl">5.6</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>list1<span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="bu">print</span>(<span class="st">"abs(float1)="</span>, <span class="bu">abs</span>(float1)) <span class="co"># 5.6</span></span>
@@ -688,7 +688,7 @@ sum(list1)= 15
 <p>Modüllerin kullanılması için <code>import</code> anahtar kelimesi kullanılır.</p>
 <p>Modüllerin içerisindeki fonksiyonlar, değişkenler <code>.</code> ile çağrılır. Örneğin <code>math</code> modülü içerisindeki <code>pi</code> değişkeni <code>math.pi</code> şeklinde çağrılır.</p>
 <p>Modüller betiklerin başında yazılır. Birden fazla modül kullanılacaksa, modüllerin içerisindeki değişkenler ve fonksiyonların karışmaması için <code>as</code> anahtar kelimesi kullanılır. import math as m</p>
-<div id="a813cbc5" class="cell" data-execution_count="4">
+<div id="7d10955a" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> math <span class="im">as</span> m</span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="bu">print</span>(<span class="ss">f"Pi sayısı=  </span><span class="sc">{</span>m<span class="sc">.</span>pi<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -1316,8 +1316,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="pagination-link" aria-label="Alıştırmalar ve Problemler">
-        <span class="nav-page-text">Alıştırmalar ve Problemler</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../icerik/konular/python/moduller.html" class="pagination-link" aria-label="Modüller">
+        <span class="nav-page-text">Modüller</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

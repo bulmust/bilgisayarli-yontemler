@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>Uygulama - Ses Dalgaları – Bilgisayarlı Yöntemler</title>
+<title>Eğri Uydurma (Fitting) - Problem Cevapları – Bilgisayarlı Yöntemler</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -55,27 +55,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -85,8 +65,6 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../icerik/konular/veri-analizi.html" rel="next">
-<link href="../../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -169,7 +147,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html">Uygulama - Ses Dalgaları</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Eğri Uydurma (Fitting) - Problem Cevapları</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Aramak" onclick="window.quartoOpenSearch();">
@@ -447,7 +425,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Uygulama - Ses Dalgaları</span></a>
   </div>
 </li>
@@ -547,25 +525,19 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#ses-dosyası-oluşturma" id="toc-ses-dosyası-oluşturma" class="nav-link active" data-scroll-target="#ses-dosyası-oluşturma">Ses Dosyası Oluşturma</a></li>
-  <li><a href="#nota-silme" id="toc-nota-silme" class="nav-link" data-scroll-target="#nota-silme">Nota Silme</a></li>
-  <li><a href="#alıştırma-1" id="toc-alıştırma-1" class="nav-link" data-scroll-target="#alıştırma-1">Alıştırma 1</a></li>
-  <li><a href="#gürültü-ve-ses-dosyası-analizi" id="toc-gürültü-ve-ses-dosyası-analizi" class="nav-link" data-scroll-target="#gürültü-ve-ses-dosyası-analizi">Gürültü ve Ses Dosyası Analizi</a></li>
-  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a>
   <ul class="collapse">
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
-  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/fourier-analizi/uygulama-ses-dalgalari.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/interpolasyon-egri-uydurma/egri-uydurma-cevaplar.md" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi.html">Fourier Analizi</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html">Uygulama - Ses Dalgaları</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Uygulama - Ses Dalgaları</h1>
+<h1 class="title">Eğri Uydurma (Fitting) - Problem Cevapları</h1>
 </div>
 
 
@@ -594,440 +566,70 @@ window.Quarto = {
 </header>
 
 
-<section id="ses-dosyası-oluşturma" class="level2">
-<h2 class="anchored" data-anchor-id="ses-dosyası-oluşturma">Ses Dosyası Oluşturma</h2>
-<p>Örnek olarak aşağıdaki adımları takip edelim.</p>
+<section id="problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
 <ol type="1">
-<li><code>scipy.io.wavfile</code> modülünü çağırın.</li>
-<li>Örnekleme oranı <span class="math inline">\(44100\)</span> Hz olsun. Yani oluşturacağınız sinyallerin bir saniyesindeki veri sayısı bu olsun. Ses bilgi için <span class="citation" data-cites="web2024Mar-3">&nbsp;[<a href="#ref-web2024Mar-3" role="doc-biblioref">1</a>]</span> numaralı kaynağa bakabilirsiniz.</li>
-<li>Bir sinüs sinyali oluşturun. Frekansı 440 Hz, süresi 5 saniye olsun.</li>
-<li>Bir sinüs sinyali oluşturun. Frekansı 880 Hz, süresi 5 saniye olsun.</li>
-<li>Bu iki sinyali başka bir değişkende toplayın.</li>
-<li>Tüm sinyalleri alt alta çizdirin.</li>
-<li>Tüm sinyalleri 0.01 saniyeye kadar olan kısmını alt alta çizdirin.</li>
-<li>Tüm değişkenleri oranlayın wav dosyası kaydetmek üzere değişkene atayın (scaling).</li>
-<li>Tüm değişkenleri <code>write("&lt;dosya_adi&gt;.wav", örneklemeOranı, &lt;degisken&gt;)</code> ile kaydedin.</li>
+<li>Aşağıdaki veriyi kullanarak Lagrange interpolasyonu yapın.</li>
+<li>Aşağıdaki veriyi kullanarak doğrusal (1. derece) en küçük kareler uydurması (fiting) yapın.</li>
 </ol>
-<p>Şimdi bu adımları kodlayalım.</p>
-<div id="89693311" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> os</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> sys</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># 3 üst dizine çık + sesler klasörü</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>sesler_dir <span class="op">=</span> os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), <span class="st">'sesler'</span>)</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co"># Bu klasör var mı? Yoksa oluştur</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(sesler_dir):</span>
-<span id="cb1-10"><a href="#cb1-10"></a>    <span class="co"># Oluştur</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>    os.makedirs(sesler_dir)</span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co"># Linux/MacOS için</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co"># Eğer OS Linux/Unix ise</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="cf">if</span> sys.platform <span class="op">==</span> <span class="st">"linux"</span> <span class="kw">or</span> sys.platform <span class="op">==</span> <span class="st">"linux2"</span> <span class="kw">or</span> sys.platform <span class="op">==</span> <span class="st">"darwin"</span>:</span>
-<span id="cb1-15"><a href="#cb1-15"></a>    sesler_dir <span class="op">=</span> sesler_dir <span class="op">+</span> <span class="st">"/"</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="co"># Eğer OS, Windows ise</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="cf">elif</span> sys.platform <span class="op">==</span> <span class="st">"win32"</span>:</span>
-<span id="cb1-18"><a href="#cb1-18"></a>    sesler_dir <span class="op">=</span> sesler_dir <span class="op">+</span> <span class="st">"</span><span class="ch">\\</span><span class="st">"</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="co">################################################</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="im">import</span> scipy.io.wavfile <span class="im">as</span> wavfile</span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="co"># Veriyi oluştur</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a>orneklemeOrani<span class="op">=</span> <span class="dv">44100</span> <span class="co"># 1 saniyede kaç tane veri var?</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a>sure<span class="op">=</span> <span class="dv">5</span> <span class="co"># s</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># Zaman</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a>t<span class="op">=</span> np.linspace(<span class="dv">0</span>, sure, orneklemeOrani<span class="op">*</span> sure)</span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="co"># Sinüs dalgaları</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a>veri1_440Hz<span class="op">=</span> np.sin(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="dv">440</span><span class="op">*</span>t)</span>
-<span id="cb1-31"><a href="#cb1-31"></a>veri2_880Hz<span class="op">=</span> np.sin(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="dv">880</span><span class="op">*</span>t)</span>
-<span id="cb1-32"><a href="#cb1-32"></a>veri3<span class="op">=</span> veri1_440Hz <span class="op">+</span> veri2_880Hz</span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="co"># Çiz</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a>fig, axs<span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb1-35"><a href="#cb1-35"></a>axs[<span class="dv">0</span>].plot(t, veri1_440Hz)</span>
-<span id="cb1-36"><a href="#cb1-36"></a>axs[<span class="dv">0</span>].set_title(<span class="st">"440Hz"</span>)</span>
-<span id="cb1-37"><a href="#cb1-37"></a>axs[<span class="dv">0</span>].set_xlim([<span class="dv">0</span>, <span class="fl">0.01</span>])</span>
-<span id="cb1-38"><a href="#cb1-38"></a>axs[<span class="dv">1</span>].plot(t, veri2_880Hz)</span>
-<span id="cb1-39"><a href="#cb1-39"></a>axs[<span class="dv">1</span>].set_title(<span class="st">"880Hz"</span>)</span>
-<span id="cb1-40"><a href="#cb1-40"></a>axs[<span class="dv">1</span>].set_xlim([<span class="dv">0</span>, <span class="fl">0.01</span>])</span>
-<span id="cb1-41"><a href="#cb1-41"></a>axs[<span class="dv">2</span>].plot(t, veri3)</span>
-<span id="cb1-42"><a href="#cb1-42"></a>axs[<span class="dv">2</span>].set_title(<span class="st">"440Hz + 880Hz"</span>)</span>
-<span id="cb1-43"><a href="#cb1-43"></a>axs[<span class="dv">2</span>].set_xlim([<span class="dv">0</span>, <span class="fl">0.01</span>])</span>
-<span id="cb1-44"><a href="#cb1-44"></a>plt.tight_layout()</span>
-<span id="cb1-45"><a href="#cb1-45"></a>plt.show()</span>
-<span id="cb1-46"><a href="#cb1-46"></a><span class="co"># Normalizasyon için [-32767, 32767] kullacağız.</span></span>
-<span id="cb1-47"><a href="#cb1-47"></a><span class="co"># Çünkü 16 bitlik ses dosyaları bu aralıkta değer alır.</span></span>
-<span id="cb1-48"><a href="#cb1-48"></a>veri1_440Hz <span class="op">=</span> np.int16((veri1_440Hz<span class="op">/</span> np.<span class="bu">max</span>(np.<span class="bu">abs</span>(veri1_440Hz)))<span class="op">*</span> <span class="dv">32767</span>)</span>
-<span id="cb1-49"><a href="#cb1-49"></a>veri2_880Hz <span class="op">=</span> np.int16((veri2_880Hz<span class="op">/</span> np.<span class="bu">max</span>(np.<span class="bu">abs</span>(veri2_880Hz)))<span class="op">*</span> <span class="dv">32767</span>)</span>
-<span id="cb1-50"><a href="#cb1-50"></a>veri3 <span class="op">=</span> np.int16((veri3<span class="op">/</span> np.<span class="bu">max</span>(np.<span class="bu">abs</span>(veri3)))<span class="op">*</span> <span class="dv">32767</span>)</span>
-<span id="cb1-51"><a href="#cb1-51"></a><span class="co"># Dosyları wav formatında, ../../../sesler klasörüne kaydet</span></span>
-<span id="cb1-52"><a href="#cb1-52"></a>wavfile.write(sesler_dir<span class="op">+</span> <span class="st">"sin1_440Hz.wav"</span>, orneklemeOrani, veri1_440Hz)</span>
-<span id="cb1-53"><a href="#cb1-53"></a>wavfile.write(sesler_dir<span class="op">+</span> <span class="st">"sin2_880Hz.wav"</span>, orneklemeOrani, veri2_880Hz)</span>
-<span id="cb1-54"><a href="#cb1-54"></a>wavfile.write(sesler_dir<span class="op">+</span> <span class="st">"sin3_440Hz880Hz.wav"</span>, orneklemeOrani, veri3)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uygulama-ses-dalgalari_files/figure-html/cell-2-output-1.png" width="662" height="470" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="nota-silme" class="level2">
-<h2 class="anchored" data-anchor-id="nota-silme">Nota Silme</h2>
-<ol type="1">
-<li><code>scipy.io.wavfile</code> modülünü çağırın.</li>
-<li>Bir önceki bölümde kaydettiğiniz toplam sinüs dalgası ses dosyasını <code>wavfile.read()</code> ile okuyun.</li>
-<li>Ses dosyasının ilk 0.01 saniyesinin grafiğini çizdirin.</li>
-<li>Ses dosyasının Fourier analizini yapın.</li>
-<li><code>scipy.fft.fftfreq(len(veri), 1/orneklemOrani)</code> ile frekansları bulun.</li>
-<li>Ses dosyasındaki frekansları (HFD) çizdirin.</li>
-<li>500 Hz’den büyük tüm frekansları sıfırlayın.</li>
-<li>Ters Fourier dönüşümü yapın.</li>
-<li>Ses dosyasının ilk 0.01 saniyesini gösterin.</li>
-<li>Ters dönüşüm ile elde ettiğiniz ses dosyasını kaydedin.</li>
-</ol>
-<p>Şimdi bu adımları kodlayalım.</p>
-<div id="e7df6b79" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> os</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> sys</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co"># 3 üst dizine çık + sesler klasörü</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>sesler_dir <span class="op">=</span> os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), <span class="st">'sesler'</span>)</span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="co"># Bu klasör var mı? Yoksa oluştur</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(sesler_dir):</span>
-<span id="cb2-10"><a href="#cb2-10"></a>    <span class="co"># Oluştur</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>    os.makedirs(sesler_dir)</span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="co"># Linux/MacOS için</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="co"># Eğer OS Linux/Unix ise</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="cf">if</span> sys.platform <span class="op">==</span> <span class="st">"linux"</span> <span class="kw">or</span> sys.platform <span class="op">==</span> <span class="st">"linux2"</span> <span class="kw">or</span> sys.platform <span class="op">==</span> <span class="st">"darwin"</span>:</span>
-<span id="cb2-15"><a href="#cb2-15"></a>    sesler_dir <span class="op">=</span> sesler_dir <span class="op">+</span> <span class="st">"/"</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="co"># Eğer OS, Windows ise</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="cf">elif</span> sys.platform <span class="op">==</span> <span class="st">"win32"</span>:</span>
-<span id="cb2-18"><a href="#cb2-18"></a>    sesler_dir <span class="op">=</span> sesler_dir <span class="op">+</span> <span class="st">"</span><span class="ch">\\</span><span class="st">"</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="co">################################################</span></span>
-<span id="cb2-20"><a href="#cb2-20"></a></span>
-<span id="cb2-21"><a href="#cb2-21"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-22"><a href="#cb2-22"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-23"><a href="#cb2-23"></a><span class="im">import</span> scipy.io.wavfile <span class="im">as</span> wavfile</span>
-<span id="cb2-24"><a href="#cb2-24"></a><span class="im">import</span> scipy.fft <span class="im">as</span> fft</span>
-<span id="cb2-25"><a href="#cb2-25"></a><span class="co"># sin3_440Hz880Hz.wav dosyasını oku</span></span>
-<span id="cb2-26"><a href="#cb2-26"></a>orneklemOrani, veri <span class="op">=</span> wavfile.read(sesler_dir<span class="op">+</span> <span class="st">"sin3_440Hz880Hz.wav"</span>)</span>
-<span id="cb2-27"><a href="#cb2-27"></a><span class="co"># Süre</span></span>
-<span id="cb2-28"><a href="#cb2-28"></a>sure<span class="op">=</span> <span class="bu">len</span>(veri)<span class="op">/</span> orneklemOrani</span>
-<span id="cb2-29"><a href="#cb2-29"></a><span class="co"># Zaman dizisi</span></span>
-<span id="cb2-30"><a href="#cb2-30"></a>t<span class="op">=</span> np.linspace(<span class="dv">0</span>, sure, <span class="bu">len</span>(veri))</span>
-<span id="cb2-31"><a href="#cb2-31"></a>plt.plot(t, veri)</span>
-<span id="cb2-32"><a href="#cb2-32"></a>plt.xlim([<span class="dv">0</span>,<span class="fl">0.01</span>])</span>
-<span id="cb2-33"><a href="#cb2-33"></a>plt.ylabel(<span class="st">"Genlik"</span>)</span>
-<span id="cb2-34"><a href="#cb2-34"></a>plt.xlabel(<span class="st">"Zaman (s)"</span>)</span>
-<span id="cb2-35"><a href="#cb2-35"></a>plt.show()</span>
-<span id="cb2-36"><a href="#cb2-36"></a>plt.close()</span>
-<span id="cb2-37"><a href="#cb2-37"></a><span class="co"># HFD</span></span>
-<span id="cb2-38"><a href="#cb2-38"></a>veriHFD<span class="op">=</span> fft.fft(veri)</span>
-<span id="cb2-39"><a href="#cb2-39"></a><span class="co"># Frekanslar</span></span>
-<span id="cb2-40"><a href="#cb2-40"></a>veriHFDFrek<span class="op">=</span> fft.fftfreq(<span class="bu">len</span>(veri), <span class="dv">1</span><span class="op">/</span>orneklemOrani)</span>
-<span id="cb2-41"><a href="#cb2-41"></a><span class="co"># Çiz</span></span>
-<span id="cb2-42"><a href="#cb2-42"></a>plt.plot(veriHFDFrek, np.<span class="bu">abs</span>(veriHFD))</span>
-<span id="cb2-43"><a href="#cb2-43"></a>plt.xlim([<span class="op">-</span><span class="dv">1000</span>,<span class="dv">1000</span>])</span>
-<span id="cb2-44"><a href="#cb2-44"></a>plt.ylabel(<span class="st">"|X(f)|"</span>)</span>
-<span id="cb2-45"><a href="#cb2-45"></a>plt.xlabel(<span class="st">"Frekans (Hz)"</span>)</span>
-<span id="cb2-46"><a href="#cb2-46"></a>plt.show()</span>
-<span id="cb2-47"><a href="#cb2-47"></a>plt.close()</span>
-<span id="cb2-48"><a href="#cb2-48"></a><span class="co"># 500 Hz'den büyük tüm frekansları sıfırla</span></span>
-<span id="cb2-49"><a href="#cb2-49"></a><span class="co"># (Low Pass Filter)</span></span>
-<span id="cb2-50"><a href="#cb2-50"></a>veriHFD[veriHFDFrek <span class="op">&gt;</span> <span class="dv">500</span>] <span class="op">=</span> <span class="dv">0</span> </span>
-<span id="cb2-51"><a href="#cb2-51"></a><span class="co">#veriHFD[veriHFDFrek &gt; 500] = veriHFD[veriHFDFrek &gt; 500]* 0.5</span></span>
-<span id="cb2-52"><a href="#cb2-52"></a>veriHFD[veriHFDFrek <span class="op">&lt;</span> <span class="op">-</span><span class="dv">500</span>] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-53"><a href="#cb2-53"></a><span class="co">#veriHFD[veriHFDFrek &lt; -500] = veriHFD[veriHFDFrek &lt; -500]* 0.5 </span></span>
-<span id="cb2-54"><a href="#cb2-54"></a><span class="co"># Çiz</span></span>
-<span id="cb2-55"><a href="#cb2-55"></a>plt.plot(veriHFDFrek, np.<span class="bu">abs</span>(veriHFD))</span>
-<span id="cb2-56"><a href="#cb2-56"></a>plt.xlim([<span class="op">-</span><span class="dv">1000</span>,<span class="dv">1000</span>])</span>
-<span id="cb2-57"><a href="#cb2-57"></a>plt.ylabel(<span class="st">"|X(f)| (Filtreli)"</span>)</span>
-<span id="cb2-58"><a href="#cb2-58"></a>plt.xlabel(<span class="st">"Frekans (Hz)"</span>)</span>
-<span id="cb2-59"><a href="#cb2-59"></a>plt.show()</span>
-<span id="cb2-60"><a href="#cb2-60"></a>plt.close()</span>
-<span id="cb2-61"><a href="#cb2-61"></a><span class="co"># THFD</span></span>
-<span id="cb2-62"><a href="#cb2-62"></a>veriTHFD_filtreli<span class="op">=</span> fft.ifft(veriHFD)</span>
-<span id="cb2-63"><a href="#cb2-63"></a><span class="co"># Zaman</span></span>
-<span id="cb2-64"><a href="#cb2-64"></a>tTHFD_filtreli<span class="op">=\</span></span>
-<span id="cb2-65"><a href="#cb2-65"></a>    np.linspace(<span class="dv">0</span>, sure, <span class="bu">len</span>(veriTHFD_filtreli))</span>
-<span id="cb2-66"><a href="#cb2-66"></a><span class="co"># Çiz</span></span>
-<span id="cb2-67"><a href="#cb2-67"></a>plt.plot(tTHFD_filtreli, np.real(veriTHFD_filtreli))</span>
-<span id="cb2-68"><a href="#cb2-68"></a>plt.xlim([<span class="dv">0</span>,<span class="fl">0.01</span>])</span>
-<span id="cb2-69"><a href="#cb2-69"></a>plt.ylabel(<span class="st">"Genlik"</span>)</span>
-<span id="cb2-70"><a href="#cb2-70"></a>plt.xlabel(<span class="st">"Zaman (s)"</span>)</span>
-<span id="cb2-71"><a href="#cb2-71"></a>plt.show()</span>
-<span id="cb2-72"><a href="#cb2-72"></a>plt.close()</span>
-<span id="cb2-73"><a href="#cb2-73"></a><span class="co"># Normalizasyon</span></span>
-<span id="cb2-74"><a href="#cb2-74"></a><span class="co"># Gerek yok ama yine de yapalım</span></span>
-<span id="cb2-75"><a href="#cb2-75"></a>veriTHFD_filtreli <span class="op">=</span> np.int16((np.real(veriTHFD_filtreli)<span class="op">/</span> np.<span class="bu">max</span>(np.<span class="bu">abs</span>(veriTHFD_filtreli)))<span class="op">*</span> <span class="dv">32767</span>)</span>
-<span id="cb2-76"><a href="#cb2-76"></a><span class="co"># Dosyları wav formatında kaydet</span></span>
-<span id="cb2-77"><a href="#cb2-77"></a>wavfile.write(sesler_dir<span class="op">+</span><span class="st">"sin3_440Hz880Hz_filtreliLowPass500.wav"</span>, orneklemOrani, veriTHFD_filtreli)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uygulama-ses-dalgalari_files/figure-html/cell-3-output-1.png" width="640" height="429" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uygulama-ses-dalgalari_files/figure-html/cell-3-output-2.png" width="606" height="443" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uygulama-ses-dalgalari_files/figure-html/cell-3-output-3.png" width="606" height="443" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uygulama-ses-dalgalari_files/figure-html/cell-3-output-4.png" width="640" height="429" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="alıştırma-1" class="level2">
-<h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h2>
-<p>Yukarıda yapılan örnekte 500’den küçük frekansları sıfırlayın ve tüm adımları tekrarlayın.</p>
-</section>
-<section id="gürültü-ve-ses-dosyası-analizi" class="level2">
-<h2 class="anchored" data-anchor-id="gürültü-ve-ses-dosyası-analizi">Gürültü ve Ses Dosyası Analizi</h2>
-<ol type="1">
-<li>Örnekleme oranını 44100 Hz olarak belirleyin.</li>
-<li>Toplam 5 saniye olacak şekilde bir zaman dizisi oluşturun.</li>
-<li>5 saniyelik rastgele bir sinyal gürültüsü oluşturun. <code>np.rand.randn(arrayBoyutu)</code> kullanabilirsiniz.</li>
-<li>5 saniyelik bir sinüs sinyali oluşturun. Frekansı 170 Hz olsun.</li>
-<li>Gürültü ve sinüs sinyalini toplayın ve yeni bir değişkene atayın.</li>
-<li>Tüm değişkenleri oranlayın (scaling) ve <code>write("&lt;dosya_adi&gt;.wav", örneklemeOranı, &lt;oranli-degisken&gt;)</code> ile kaydedin.</li>
-<li>Sinüs, gürültü ve toplam sinyallerinin ilk 0.1 saniyesini aynı grafikte alt alta çizdirin.</li>
-<li>3 adet sinyalin hızlı Fourier dönüşümünü (<code>scipy.fft.fft()</code>) yapın.</li>
-<li>3 adet sinyalin frekanslarını (<code>scipy.fft.fftfreq(len(veri), 1/orneklem_orani)</code>) hesaplayın. Frekans miktarı verinizden bağımsız olacaktır. Sadece verinizin örnekleme oranı (verinin büyüklüğü) ve saniyede kaç örnekleme yaptığınız önemlidir.</li>
-<li>Frekans uzayını, 3 adet alt alta grafik olacak şekilde çizdirin.</li>
-<li>Toplam sinyalden gürültü frekansını silin.</li>
-<li>Filtrelenmiş sinyalin Fourier dönüşümünü, karşılaştırmalı olarak çizdirin.</li>
-<li>Ters Fourier dönüşümü yapın ve filtrelenmiş sinyalin ilk 0.1 saniyesi ile filtrelenmemiş sinyalin ilk 0.1 saniyesini grafik üzerinde karşılaştırın.</li>
-<li>Filtrelenmiş sinyali wav dosyası olarak kaydedin.</li>
-</ol>
-<div id="910bfde4" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">################################################</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> os</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="im">import</span> sys</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># 3 üst dizine çık + sesler klasörü</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>sesler_dir <span class="op">=</span> os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), <span class="st">'sesler'</span>)</span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co"># Bu klasör var mı? Yoksa oluştur</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(sesler_dir):</span>
-<span id="cb3-10"><a href="#cb3-10"></a>    <span class="co"># Oluştur</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a>    os.makedirs(sesler_dir)</span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co"># Linux/MacOS için</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co"># Eğer OS Linux/Unix ise</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="cf">if</span> sys.platform <span class="op">==</span> <span class="st">"linux"</span> <span class="kw">or</span> sys.platform <span class="op">==</span> <span class="st">"linux2"</span> <span class="kw">or</span> sys.platform <span class="op">==</span> <span class="st">"darwin"</span>:</span>
-<span id="cb3-15"><a href="#cb3-15"></a>    sesler_dir <span class="op">=</span> sesler_dir <span class="op">+</span> <span class="st">"/"</span></span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="co"># Eğer OS, Windows ise</span></span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="cf">elif</span> sys.platform <span class="op">==</span> <span class="st">"win32"</span>:</span>
-<span id="cb3-18"><a href="#cb3-18"></a>    sesler_dir <span class="op">=</span> sesler_dir <span class="op">+</span> <span class="st">"</span><span class="ch">\\</span><span class="st">"</span></span>
-<span id="cb3-19"><a href="#cb3-19"></a><span class="co">################################################</span></span>
-<span id="cb3-20"><a href="#cb3-20"></a></span>
-<span id="cb3-21"><a href="#cb3-21"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-22"><a href="#cb3-22"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-23"><a href="#cb3-23"></a><span class="im">import</span> scipy.io.wavfile <span class="im">as</span> wavfile</span>
-<span id="cb3-24"><a href="#cb3-24"></a><span class="im">import</span> scipy.fft <span class="im">as</span> fft</span>
-<span id="cb3-25"><a href="#cb3-25"></a><span class="co"># Veriyi oluştur</span></span>
-<span id="cb3-26"><a href="#cb3-26"></a>orneklemeOrani<span class="op">=</span> <span class="dv">44100</span></span>
-<span id="cb3-27"><a href="#cb3-27"></a>sure<span class="op">=</span> <span class="dv">5</span> <span class="co"># s</span></span>
-<span id="cb3-28"><a href="#cb3-28"></a><span class="co"># Zaman</span></span>
-<span id="cb3-29"><a href="#cb3-29"></a>t<span class="op">=</span> np.linspace(<span class="dv">0</span>, sure, orneklemeOrani<span class="op">*</span> sure)</span>
-<span id="cb3-30"><a href="#cb3-30"></a><span class="co"># Sinüs dalgaları</span></span>
-<span id="cb3-31"><a href="#cb3-31"></a>veri4_170Hz<span class="op">=</span> np.sin(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span><span class="dv">170</span><span class="op">*</span>t)</span>
-<span id="cb3-32"><a href="#cb3-32"></a>veri5_Gurultu<span class="op">=</span> np.random.rand(<span class="bu">len</span>(t))</span>
-<span id="cb3-33"><a href="#cb3-33"></a>veri6_topla<span class="op">=</span> veri4_170Hz<span class="op">+</span> veri5_Gurultu</span>
-<span id="cb3-34"><a href="#cb3-34"></a><span class="co"># Çiz</span></span>
-<span id="cb3-35"><a href="#cb3-35"></a>fig, axs<span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb3-36"><a href="#cb3-36"></a>axs[<span class="dv">0</span>].plot(t, veri4_170Hz)</span>
-<span id="cb3-37"><a href="#cb3-37"></a>axs[<span class="dv">0</span>].set_title(<span class="st">"170Hz"</span>)</span>
-<span id="cb3-38"><a href="#cb3-38"></a>axs[<span class="dv">0</span>].set_xlim([<span class="dv">0</span>, <span class="fl">0.01</span>])</span>
-<span id="cb3-39"><a href="#cb3-39"></a>axs[<span class="dv">1</span>].plot(t, veri5_Gurultu)</span>
-<span id="cb3-40"><a href="#cb3-40"></a>axs[<span class="dv">1</span>].set_title(<span class="st">"Gürültü"</span>)</span>
-<span id="cb3-41"><a href="#cb3-41"></a>axs[<span class="dv">1</span>].set_xlim([<span class="dv">0</span>, <span class="fl">0.01</span>])</span>
-<span id="cb3-42"><a href="#cb3-42"></a>axs[<span class="dv">2</span>].plot(t, veri6_topla)</span>
-<span id="cb3-43"><a href="#cb3-43"></a>axs[<span class="dv">2</span>].set_title(<span class="st">"Gürültü+170Hz"</span>)</span>
-<span id="cb3-44"><a href="#cb3-44"></a>axs[<span class="dv">2</span>].set_xlim([<span class="dv">0</span>, <span class="fl">0.01</span>])</span>
-<span id="cb3-45"><a href="#cb3-45"></a>plt.tight_layout()</span>
-<span id="cb3-46"><a href="#cb3-46"></a>plt.show()</span>
-<span id="cb3-47"><a href="#cb3-47"></a>plt.close()</span>
-<span id="cb3-48"><a href="#cb3-48"></a><span class="co"># Wav dosyası olarak kaydet</span></span>
-<span id="cb3-49"><a href="#cb3-49"></a>wavfile.write(sesler_dir<span class="op">+</span> <span class="st">"sin4_170Hz.wav"</span>, orneklemeOrani, np.int16((np.real(veri4_170Hz)<span class="op">/</span> np.<span class="bu">max</span>(np.<span class="bu">abs</span>(veri4_170Hz)))<span class="op">*</span> <span class="dv">32767</span>))</span>
-<span id="cb3-50"><a href="#cb3-50"></a>wavfile.write(sesler_dir<span class="op">+</span> <span class="st">"gurultu.wav"</span>, orneklemeOrani, np.int16((np.real(veri5_Gurultu)<span class="op">/</span> np.<span class="bu">max</span>(np.<span class="bu">abs</span>(veri5_Gurultu)))<span class="op">*</span> <span class="dv">32767</span>))</span>
-<span id="cb3-51"><a href="#cb3-51"></a>wavfile.write(sesler_dir<span class="op">+</span> <span class="st">"sin4_170Hz_gurultulu.wav"</span>, orneklemeOrani, np.int16((np.real(veri6_topla)<span class="op">/</span> np.<span class="bu">max</span>(np.<span class="bu">abs</span>(veri6_topla)))<span class="op">*</span> <span class="dv">32767</span>))</span>
-<span id="cb3-52"><a href="#cb3-52"></a><span class="co"># HFD</span></span>
-<span id="cb3-53"><a href="#cb3-53"></a>hfd_veri4_170Hz<span class="op">=</span> fft.fft(veri4_170Hz)</span>
-<span id="cb3-54"><a href="#cb3-54"></a>hfd_veri5_Gurultu<span class="op">=</span> fft.fft(veri5_Gurultu)</span>
-<span id="cb3-55"><a href="#cb3-55"></a>hfd_veri6_topla<span class="op">=</span> fft.fft(veri6_topla)</span>
-<span id="cb3-56"><a href="#cb3-56"></a><span class="co"># Frekanslar</span></span>
-<span id="cb3-57"><a href="#cb3-57"></a>hfd_veri4_170HZ_frek<span class="op">=</span> fft.fftfreq(<span class="bu">len</span>(veri4_170Hz), <span class="dv">1</span><span class="op">/</span>orneklemeOrani)</span>
-<span id="cb3-58"><a href="#cb3-58"></a>hfd_veri5_Gurultu_frek<span class="op">=</span> fft.fftfreq(<span class="bu">len</span>(veri5_Gurultu), <span class="dv">1</span><span class="op">/</span>orneklemeOrani)</span>
-<span id="cb3-59"><a href="#cb3-59"></a>hfd_veri6_topla_frek<span class="op">=</span> fft.fftfreq(<span class="bu">len</span>(veri6_topla), <span class="dv">1</span><span class="op">/</span>orneklemeOrani)</span>
-<span id="cb3-60"><a href="#cb3-60"></a><span class="co"># Çiz</span></span>
-<span id="cb3-61"><a href="#cb3-61"></a>fig, axs<span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb3-62"><a href="#cb3-62"></a>axs[<span class="dv">0</span>].plot(hfd_veri4_170HZ_frek, np.<span class="bu">abs</span>(hfd_veri4_170Hz))</span>
-<span id="cb3-63"><a href="#cb3-63"></a>axs[<span class="dv">0</span>].set_title(<span class="st">"HFD-170Hz"</span>)</span>
-<span id="cb3-64"><a href="#cb3-64"></a>axs[<span class="dv">0</span>].set_xlim([<span class="op">-</span><span class="dv">1000</span>, <span class="dv">1000</span>])</span>
-<span id="cb3-65"><a href="#cb3-65"></a>axs[<span class="dv">1</span>].plot(hfd_veri5_Gurultu_frek, np.<span class="bu">abs</span>(hfd_veri5_Gurultu))</span>
-<span id="cb3-66"><a href="#cb3-66"></a>axs[<span class="dv">1</span>].set_title(<span class="st">"HFD-Gürültü"</span>)</span>
-<span id="cb3-67"><a href="#cb3-67"></a>axs[<span class="dv">1</span>].set_xlim([<span class="op">-</span><span class="dv">1000</span>, <span class="dv">1000</span>])</span>
-<span id="cb3-68"><a href="#cb3-68"></a>axs[<span class="dv">2</span>].plot(hfd_veri6_topla_frek, np.<span class="bu">abs</span>(hfd_veri6_topla))</span>
-<span id="cb3-69"><a href="#cb3-69"></a>axs[<span class="dv">2</span>].set_title(<span class="st">"HFD-Toplam"</span>)</span>
-<span id="cb3-70"><a href="#cb3-70"></a>axs[<span class="dv">2</span>].set_xlim([<span class="op">-</span><span class="dv">1000</span>, <span class="dv">1000</span>])</span>
-<span id="cb3-71"><a href="#cb3-71"></a>plt.tight_layout()</span>
-<span id="cb3-72"><a href="#cb3-72"></a>plt.show()</span>
-<span id="cb3-73"><a href="#cb3-73"></a>plt.close()</span>
-<span id="cb3-74"><a href="#cb3-74"></a><span class="co"># Toplam sinyalden gürültüyü çıkar</span></span>
-<span id="cb3-75"><a href="#cb3-75"></a>hfd_veri7_topla_filtre<span class="op">=</span> hfd_veri6_topla <span class="op">-</span> hfd_veri5_Gurultu</span>
-<span id="cb3-76"><a href="#cb3-76"></a><span class="co"># Çiz</span></span>
-<span id="cb3-77"><a href="#cb3-77"></a>fig, axs<span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">1</span>)</span>
-<span id="cb3-78"><a href="#cb3-78"></a>axs[<span class="dv">0</span>].plot(hfd_veri6_topla_frek, np.<span class="bu">abs</span>(hfd_veri6_topla))</span>
-<span id="cb3-79"><a href="#cb3-79"></a>axs[<span class="dv">0</span>].set_title(<span class="st">"HFD-Toplam"</span>)</span>
-<span id="cb3-80"><a href="#cb3-80"></a>axs[<span class="dv">0</span>].set_xlim([<span class="op">-</span><span class="dv">1000</span>, <span class="dv">1000</span>])</span>
-<span id="cb3-81"><a href="#cb3-81"></a>axs[<span class="dv">1</span>].plot(hfd_veri6_topla_frek, np.<span class="bu">abs</span>(hfd_veri7_topla_filtre))</span>
-<span id="cb3-82"><a href="#cb3-82"></a>axs[<span class="dv">1</span>].set_title(<span class="st">"HFD-Toplam-Gürültüsüz"</span>)</span>
-<span id="cb3-83"><a href="#cb3-83"></a>axs[<span class="dv">1</span>].set_xlim([<span class="op">-</span><span class="dv">1000</span>, <span class="dv">1000</span>])</span>
-<span id="cb3-84"><a href="#cb3-84"></a>plt.tight_layout()</span>
-<span id="cb3-85"><a href="#cb3-85"></a>plt.show()</span>
-<span id="cb3-86"><a href="#cb3-86"></a>plt.close()</span>
-<span id="cb3-87"><a href="#cb3-87"></a><span class="co"># Ters HFD</span></span>
-<span id="cb3-88"><a href="#cb3-88"></a>veri7_topla_filtre<span class="op">=</span> fft.ifft(hfd_veri7_topla_filtre)</span>
-<span id="cb3-89"><a href="#cb3-89"></a><span class="co"># Çiz</span></span>
-<span id="cb3-90"><a href="#cb3-90"></a>fig, axs<span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">1</span>)</span>
-<span id="cb3-91"><a href="#cb3-91"></a>axs[<span class="dv">0</span>].plot(t, np.<span class="bu">abs</span>(veri6_topla))</span>
-<span id="cb3-92"><a href="#cb3-92"></a>axs[<span class="dv">0</span>].set_title(<span class="st">"Toplam-Veri"</span>)</span>
-<span id="cb3-93"><a href="#cb3-93"></a>axs[<span class="dv">0</span>].set_xlim([<span class="dv">0</span>, <span class="fl">0.01</span>])</span>
-<span id="cb3-94"><a href="#cb3-94"></a>axs[<span class="dv">1</span>].plot(t, np.real(veri7_topla_filtre))</span>
-<span id="cb3-95"><a href="#cb3-95"></a>axs[<span class="dv">1</span>].set_title(<span class="st">"Toplam-Veri-Gürültüsüz"</span>)</span>
-<span id="cb3-96"><a href="#cb3-96"></a>axs[<span class="dv">1</span>].set_xlim([<span class="dv">0</span>, <span class="fl">0.01</span>])</span>
-<span id="cb3-97"><a href="#cb3-97"></a>plt.tight_layout()</span>
-<span id="cb3-98"><a href="#cb3-98"></a>plt.show()</span>
-<span id="cb3-99"><a href="#cb3-99"></a>plt.close()</span>
-<span id="cb3-100"><a href="#cb3-100"></a><span class="co"># Wav dosyası olarak kaydet</span></span>
-<span id="cb3-101"><a href="#cb3-101"></a>wavfile.write(sesler_dir<span class="op">+</span> <span class="st">"sin4_170Hz_gurultulu_filtreli.wav"</span>, orneklemeOrani, np.int16((np.real(veri7_topla_filtre)<span class="op">/</span> np.<span class="bu">max</span>(np.<span class="bu">abs</span>(veri7_topla_filtre)))<span class="op">*</span> <span class="dv">32767</span>))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uygulama-ses-dalgalari_files/figure-html/cell-4-output-1.png" width="662" height="470" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uygulama-ses-dalgalari_files/figure-html/cell-4-output-2.png" width="662" height="470" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uygulama-ses-dalgalari_files/figure-html/cell-4-output-3.png" width="662" height="470" class="figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="uygulama-ses-dalgalari_files/figure-html/cell-4-output-4.png" width="662" height="470" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="problemler" class="level2">
-<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
-<section id="problem-1" class="level3">
-<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
-<p><strong>Kara Delik Birleşmesi (GW150914)</strong></p>
-<ol type="1">
-<li><a href="https://gwosc.org/events/GW150914/" class="uri">https://gwosc.org/events/GW150914/</a> sitesine gidin. Bu sitede 2015 yılında tespit edilen kara delik birleşmesi verileri bulunmaktadır.</li>
-<li><em>Observation of Gravitational Waves from a Binary Black Hole Merger</em> başlığına tıklayınız. Burada hem Hanford hem de Livingston merkezlerinden alınan veriler bulunmaktadır.
-<ol type="1">
-<li><a href="https://gwosc.org/GW150914data/P150914/fig1-observed-H.txt" class="uri">https://gwosc.org/GW150914data/P150914/fig1-observed-H.txt</a></li>
-<li><a href="https://gwosc.org/GW150914data/P150914/fig1-observed-L.txt" class="uri">https://gwosc.org/GW150914data/P150914/fig1-observed-L.txt</a></li>
-</ol></li>
-<li>Bu dosyaları <code>pandas</code> kütüphanesini kullanarak okuyun, <code>pandas.read_csv("&lt;LINK&gt;, skiprows=1, sep=" ", header=None")</code> .</li>
-<li>Verilerin grafiğini üst üste çizdirin.</li>
-<li>Verileri wav dosyası olarak kaydedin. (https://www.youtube.com/watch?v=TWqhUANNFXw)</li>
-<li>Verilerin Fourier dönüşümünü yapın ve grafiklerini çizdirin.</li>
-</ol>
-</section>
-<section id="problem-2" class="level3">
-<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
-<p><strong>Gürültü Silme</strong></p>
-<ol type="1">
-<li>Gürültü filtreleme işlemini <code>problem2-gurultulu-sinyal.wav</code> dosyası için yapın. Dosyaya <a href="../../../sesler/problem2-gurultulu-sinyal.wav">bu linkten</a> ulaşabilirsiniz. Bu dosya C akoru ve G akorunu ardı ardına eklenerek oluşturulmuştur.</li>
-<li>Ses dosyasını tam ortadan ikiye ayırın.</li>
-<li>İlk yarısına hfd yapın. Bu frekansların 261.63 Hz, 329.63 Hz ve 392.0 Hz olduğunu göreceksiniz.</li>
-<li>Bu frekanslar dışındaki tüm frekansları sıfırlayın.</li>
-<li>İkinci yarısına hfd yapın. Bu frekansların 392.0 Hz, 493.88 Hz ve 293.66 Hz olduğunu göreceksiniz.</li>
-<li>Bu frekanslar dışındaki tüm frekansları sıfırlayın.</li>
-<li>Ardından bu iki dosyanın ters hfd’sini alın ve birleştirin.</li>
-<li>Filtrelenmiş ses dosyasını <code>problem2-gurultusuz-sinyal.wav</code> olarak kaydedin.</li>
-</ol>
-</section>
-<section id="problem-3" class="level3">
-<h3 class="anchored" data-anchor-id="problem-3">Problem 3</h3>
-<ol type="1">
-<li><code>/sesler/</code> klasörünün içerisinde bulunan <a href="../../../sesler/DeepPurple_SmokeOnTheWaterIntro.wav">DeepPurple_SmokeOnTheWaterIntro.wav</a> dosyasını <code>orneklemOrani, data = wavfile.read()</code> olacak şekilde okuyun. Bu kayıt stereo bir dosyadır ve <code>data</code> değişkeninin ilk sütununu almanız yeterlidir. <em>Bu işlem ile stereo ses kaydının sadece bir tarafını alıyorsunuz.</em></li>
-<li>Sinyali 4’e ayırın. Bunun için aşağıda verilen tablodaki süreleri kullanın. <em>Yardım: <code>t</code> zaman arrayiniz olsun. <span class="math inline">\(t=2\)</span> saniyeye karşılık gelen argümanı bulmak için <code>arg1=np.argmin(np.abs(t- 2))</code> komutunu kullanabilirsiniz. Yani <code>arg1</code> değişkeni <code>100</code> gibi bir değer olursa <code>t[arg1]</code> değeri <span class="math inline">\(2\)</span> saniye olacaktır.</em></li>
-<li>Ayrılan riffleri zamana göre <code>fig, axs= plt.subplots(4, 1)</code> komutunu kullanarak 4 ayrı grafikte çizdirin. <code>axs[0].plot()</code> komutunu kullanın. Güzel gözükmesini istiyorsanız grafiği göstermeden önce <code>fig.tight_layout()</code> komutunu kullanabilirsiniz.</li>
-<li>Ayırdığınız riffleri ayrı ayrı <code>wav</code> dosyası olarak kaydedin.</li>
-<li>Tüm rifflerin Fourier dönüşümlerini alın ve frekanslarını belirleyin.</li>
-<li>Tüm rifflerin pozitif frekans uzaylarını alt alta çizdirin. <code>axs[0].set_xlim(0, 1000)</code> komutunu kullanarak x-eksenini <span class="math inline">\(0\)</span> ile <span class="math inline">\(1000\)</span> arasında limitleyebilirsiniz.</li>
-<li>ilk riff verisinin pozitif frekans uzayında gördüğünüz tepe (peak) değerleri hangi frekansa denk geliyor, bulun, ekrana yazdırın ve Fourier dönüşümü grafiğinde gösterin (<code>plt.axvline(x= hfdfrek_riff1_tepeler_pozitif[0], color= "red", lw= 0.5, ls= "--")</code>). <em>Yardım: “<code>fft</code> verisinde hangi değerler <code>fft &gt; 9e6</code> koşulunu sağlanıyor?” sorusuna cevap olacak şekilde bir komut yazabilirsiniz.</em></li>
-</ol>
+<ul>
+<li>En küçük kareler uydurmaları <code>numpy</code> paketinin <code>polyfit</code> fonksiyonunu kullanarak yapabilirsiniz.</li>
+<li>İnterpolasyonu ve uydurumayı <span class="math inline">\(x'=(0,6)\)</span> arasındaki noktalar için yapın.</li>
+<li>Veriyi (nokta olarak), Lagrange interpolasyonu ve uydurmaları aynı grafikte çizdirin ve <code>plt.savefig("soru3\_bilgisayar.png")</code> kodunu kullanarak kaydedin.</li>
+</ul>
+<p>Veri:</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Riff-1</th>
-<th style="text-align: center;">Riff-2</th>
-<th style="text-align: center;">Riff-3</th>
-<th style="text-align: center;">Riff-4</th>
+<th style="text-align: center;">Koordinat</th>
+<th style="text-align: center;">1. Nokta</th>
+<th style="text-align: center;">2. Nokta</th>
+<th style="text-align: center;">3. Nokta</th>
+<th style="text-align: center;">4. Nokta</th>
+<th style="text-align: center;">5. Nokta</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0 s - 2.0 s</td>
-<td style="text-align: center;">2.0 s - 4.25 s</td>
-<td style="text-align: center;">4.25 s - 6.35 s</td>
-<td style="text-align: center;">6.35 s - Sonuna kadar</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">y</td>
+<td style="text-align: center;"><span class="math inline">\(-1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-6\)</span></td>
 </tr>
 </tbody>
 </table>
-
+<section id="çözüm" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> fizik365 <span class="im">as</span> fiz</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a>veri<span class="op">=</span>np.array([[<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="dv">2</span>,<span class="dv">1</span>],[<span class="dv">3</span>,<span class="op">-</span><span class="dv">2</span>],[<span class="dv">4</span>,<span class="dv">2</span>],[<span class="dv">5</span>,<span class="op">-</span><span class="dv">6</span>]]) <span class="co"># [3 Puan]</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>xHep<span class="op">=</span>np.linspace(<span class="dv">0</span>,<span class="dv">6</span>,<span class="dv">100</span>) <span class="co"># [2 Puan]</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>yLag<span class="op">=</span>fiz.lagrange_interpolasyon_dizi(veri[:,<span class="dv">0</span>],veri[:,<span class="dv">1</span>],xHep) <span class="co"># [10 Puan]</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>yUydurma1<span class="op">=</span>np.polyfit(veri[:,<span class="dv">0</span>],veri[:,<span class="dv">1</span>],<span class="dv">1</span>) <span class="co"># [10 Puan]</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a>plt.plot(veri[:,<span class="dv">0</span>],veri[:,<span class="dv">1</span>],<span class="st">'o'</span>) <span class="co"># [5 Puan]</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>plt.plot(xHep,yLag)</span>
+<span id="cb1-12"><a href="#cb1-12"></a>plt.plot(xHep,yUydurma1[<span class="dv">0</span>]<span class="op">*</span>xHep<span class="op">+</span>yUydurma1[<span class="dv">1</span>])</span>
+<span id="cb1-13"><a href="#cb1-13"></a>plt.savefig(<span class="st">'soru3_bilgisayar.png'</span>)</span>
+<span id="cb1-14"><a href="#cb1-14"></a>plt.close()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
-<div id="ref-web2024Mar-3" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">Contributors to Wikimedia projects, <em><a href="https://en.wikipedia.org/w/index.php?title=Sampling_(signal_processing)&amp;oldid=1213226745"><span>Sampling (signal processing) - Wikipedia</span></a></em>, (2024).</div>
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1599,18 +1201,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" class="pagination-link" aria-label="THFD - Ters Hızlı Fourier Dönüşümü">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">THFD - Ters Hızlı Fourier Dönüşümü</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/veri-analizi.html" class="pagination-link" aria-label="Veri Analizi">
-        <span class="nav-page-text">Veri Analizi</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1619,7 +1209,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/fourier-analizi/uygulama-ses-dalgalari.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/interpolasyon-egri-uydurma/egri-uydurma-cevaplar.md" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>

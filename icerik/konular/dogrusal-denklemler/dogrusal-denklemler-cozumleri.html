@@ -251,12 +251,6 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Alıştırmalar ve Problemler</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
   </div>
@@ -265,6 +259,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Classlar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
       </ul>
@@ -549,6 +549,10 @@ window.Quarto = {
   <li><a href="#yapılacaklar" id="toc-yapılacaklar" class="nav-link" data-scroll-target="#yapılacaklar">Yapılacaklar</a></li>
   <li><a href="#geliştirmeler" id="toc-geliştirmeler" class="nav-link" data-scroll-target="#geliştirmeler">Geliştirmeler</a></li>
   <li><a href="#python-kodu" id="toc-python-kodu" class="nav-link" data-scroll-target="#python-kodu">Python Kodu</a></li>
+  </ul></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
+  <ul class="collapse">
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
@@ -923,6 +927,27 @@ x_{3}=3
 <span id="cb6-40"><a href="#cb6-40"></a>b<span class="op">=</span> np.array([<span class="dv">11</span>, <span class="op">-</span><span class="dv">16</span>, <span class="dv">17</span>])</span>
 <span id="cb6-41"><a href="#cb6-41"></a></span>
 <span id="cb6-42"><a href="#cb6-42"></a><span class="bu">print</span>(gauss_eleme_ust_ucgen(A,b))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="problemler" class="level2">
+<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
+<section id="problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
+<p>Aşağıda verilen denklem sistemlerini <strong>LU ayrıştırma</strong> yöntemiyle çözün.</p>
+<ul>
+<li>Hem <strong>L</strong> hem de <strong>U</strong> matrislerini ekrana yazdırın.</li>
+<li>Çözümü (<span class="math inline">\(x_{1,2,3}\)</span> ve <span class="math inline">\(y_{1,2,3}\)</span>) ekrana yazdırın.</li>
+</ul>
+<p>Denklem sistemi:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+    1 &amp; 3 &amp; 5 \\ 7 &amp; 9 &amp; 11 \\ 13 &amp; 15 &amp; 42
+\end{bmatrix}\begin{bmatrix}
+    x_1 &amp; y_{1}\\ x_2 &amp; y_{2}\\ x_3 &amp; y_{3}
+\end{bmatrix}=\begin{bmatrix}
+    1 &amp; 3 \\ 2 &amp; 7 \\ 42 &amp; 12
+\end{bmatrix}
+\]</span></p>
 
 
 </section>

@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>İnterpolasyon ve Eğri Uydurma – Bilgisayarlı Yöntemler</title>
+<title>Dogrusal Denklemler ve Çözümleri - Problem Cevapları – Bilgisayarlı Yöntemler</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,27 +58,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../icerik/konular/interpolasyon-egri-uydurma/interpolasyon.html" rel="next">
-<link href="../../icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.html" rel="prev">
-<link href="../../resimler/favicon.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../resimler/favicon.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -137,7 +135,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -149,7 +147,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../icerik/konular/interpolasyon-egri-uydurma.html">İnerpolasyon ve Eğri Uydurma</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Dogrusal Denklemler ve Çözümleri - Problem Cevapları</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Aramak" onclick="window.quartoOpenSearch();">
@@ -163,8 +161,8 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../resimler/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../resimler/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/bulmust/bilgisayarli-yontemler" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
@@ -195,19 +193,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/izlence.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/izlence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İzlence</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/projeler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/projeler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Projeler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/bilYonMod.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/bilYonMod.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python Modülü</span></a>
   </div>
 </li>
@@ -224,7 +222,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/python.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -233,37 +231,37 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/giris-degiskenler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/giris-degiskenler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Giriş - Değişkenler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/temel-terimler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/temel-terimler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Temel Terimler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/fonksiyonlar.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/fonksiyonlar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fonksiyonlar</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Classlar</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
@@ -271,7 +269,7 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/dogrusal-denklemler.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/dogrusal-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Doğrusal Denklemler</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -280,13 +278,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dogrusal Denklemler ve Çözümleri</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Doğrusal Denklem Sistemleri</span></a>
   </div>
 </li>
@@ -294,7 +292,7 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/interpolasyon-egri-uydurma.html" class="sidebar-item-text sidebar-link active">
+            <a href="../../../icerik/konular/interpolasyon-egri-uydurma.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İnerpolasyon ve Eğri Uydurma</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -303,13 +301,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/interpolasyon-egri-uydurma/interpolasyon.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/interpolasyon-egri-uydurma/interpolasyon.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İnterpolasyon</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/interpolasyon-egri-uydurma/egri-uydurma.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/interpolasyon-egri-uydurma/egri-uydurma.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Eğri Uydurma (Fitting)</span></a>
   </div>
 </li>
@@ -317,25 +315,25 @@ window.Quarto = {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/kok-bulma.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/kok-bulma.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kök Bulma</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/sayisal-turev.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/sayisal-turev.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sayısal Türev</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/sayisal-integral.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/sayisal-integral.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sayısal İntegral</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/adi-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/adi-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Adi Diferansiyel Denklemler</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -344,49 +342,49 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Giriş</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Euler Yöntemi</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Denklem Sistemleri</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - İkinci Dereceden Diferansiyel Denklemler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Runge-Kutta Yöntemleri</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Giriş</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Atış Yöntemi</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Sonlu Farklar Yöntemi</span></a>
   </div>
 </li>
@@ -394,7 +392,7 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/fourier-analizi.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/fourier-analizi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fourier Analizi</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -403,31 +401,31 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Giriş</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">KFD - Kesikli Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HFD - Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">THFD - Ters Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Uygulama - Ses Dalgaları</span></a>
   </div>
 </li>
@@ -435,7 +433,7 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/veri-analizi.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/veri-analizi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Veri Analizi</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -444,19 +442,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/veri-analizi/pandas-giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Giris</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/veri-analizi/pandas-veri-manipulasyonu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipulasyonu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Veri Manipülasyonu</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/veri-analizi/pandas-uygulama.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-uygulama.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Uygulama</span></a>
   </div>
 </li>
@@ -464,7 +462,7 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/istatistik.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/istatistik.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İstatistik</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -473,43 +471,43 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/temel-kavramlar.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/temel-kavramlar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Temel Kavramlar</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/uygulama-thinkstat2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/uygulama-thinkstat2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Uygulama - thinkstat2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/olasilik-kutle-fonksiyonu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/olasilik-kutle-fonksiyonu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Olasılık Kütle Fonksiyonu</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kümülatif Dağılım Fonksiyonu</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/dagilimlarin-modellenmesi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/dagilimlarin-modellenmesi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dağılımlarin Modellenmesi</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/scipy-stats.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/scipy-stats.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">scipy - stats</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/hipotez-testi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/hipotez-testi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hipotez Testi</span></a>
   </div>
 </li>
@@ -523,14 +521,23 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
+   
+  <ul>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a>
+  <ul class="collapse">
+  <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri-cevaplar.md" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../icerik/konular/interpolasyon-egri-uydurma.html">İnerpolasyon ve Eğri Uydurma</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">İnterpolasyon ve Eğri Uydurma</h1>
+<h1 class="title">Dogrusal Denklemler ve Çözümleri - Problem Cevapları</h1>
 </div>
 
 
@@ -559,47 +566,38 @@ window.Quarto = {
 </header>
 
 
-<blockquote class="blockquote">
-<p>Düzenli takip ettiğiniz bir veriyi, sütun isimleri no - tarih - değer olmak üzere bir dosyaya kaydedin. Örneğin, kilo, günlük telefona bakma saati, uyku saati, yolda geçirdiğiniz süre vs.&nbsp;Bu kısmın sonunda bu veriyi kullanabiliriz.</p>
-</blockquote>
-<p><strong>Amaç:</strong> <span class="math inline">\((n+1)\)</span> adet <span class="math inline">\(x\)</span> ve <span class="math inline">\(y\)</span> noktamız olsun. Bu noktaları kullanarak <span class="math inline">\(y(x)\)</span> analitik fonksiyonu yazabilmek.</p>
-<p><strong>İnterpolasyon:</strong> Veri noktalarından geçer.</p>
-<p><strong>Eğri Uydurma:</strong> Veri noktalarından geçmek zorunda değil.</p>
-<div id="5838c8e8" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> scipy <span class="im">import</span> interpolate</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> curve_fit</span>
+<section id="problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<p>Aşağıda verilen denklem sistemlerini <strong>LU ayrıştırma</strong> yöntemiyle çözün.</p>
+<ul>
+<li>Hem <strong>L</strong> hem de <strong>U</strong> matrislerini ekrana yazdırın.</li>
+<li>Çözümü (<span class="math inline">\(x_{1,2,3}\)</span> ve <span class="math inline">\(y_{1,2,3}\)</span>) ekrana yazdırın.</li>
+</ul>
+<p>Denklem sistemi:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+    1 &amp; 3 &amp; 5 \\ 7 &amp; 9 &amp; 11 \\ 13 &amp; 15 &amp; 42
+\end{bmatrix}\begin{bmatrix}
+    x_1 &amp; y_{1}\\ x_2 &amp; y_{2}\\ x_3 &amp; y_{3}
+\end{bmatrix}=\begin{bmatrix}
+    1 &amp; 3 \\ 2 &amp; 7 \\ 42 &amp; 12
+\end{bmatrix}
+\]</span></p>
+<section id="çözüm" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> scipy.linalg <span class="im">as</span> spLin</span>
+<span id="cb1-3"><a href="#cb1-3"></a>coeffMat<span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>],[<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">11</span>],[<span class="dv">13</span>,<span class="dv">15</span>,<span class="dv">42</span>]])</span>
+<span id="cb1-4"><a href="#cb1-4"></a>bVec<span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">42</span>],[<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">12</span>]])</span>
 <span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># Veri</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>)</span>
-<span id="cb1-8"><a href="#cb1-8"></a>y <span class="op">=</span> <span class="dv">4</span><span class="op">*</span>x <span class="op">+</span><span class="dv">5</span> <span class="op">+</span> np.random.randn(<span class="bu">len</span>(x))<span class="op">*</span><span class="dv">6</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="co"># İnterpolasyon</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>f_int <span class="op">=</span> interpolate.interp1d(x, y)</span>
-<span id="cb1-12"><a href="#cb1-12"></a>xInt <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">9</span>, <span class="fl">0.1</span>)</span>
-<span id="cb1-13"><a href="#cb1-13"></a>yInt <span class="op">=</span> f_int(xInt)</span>
-<span id="cb1-14"><a href="#cb1-14"></a></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="co"># Eğri Uydurma</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="kw">def</span> func_egri(x, a, b):</span>
-<span id="cb1-17"><a href="#cb1-17"></a>    <span class="cf">return</span> a<span class="op">*</span>x <span class="op">+</span> b</span>
-<span id="cb1-18"><a href="#cb1-18"></a>popt, pcov <span class="op">=</span> curve_fit(func_egri, x, y)</span>
-<span id="cb1-19"><a href="#cb1-19"></a></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="co"># Çizdirme</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a>plt.close(<span class="st">'all'</span>)</span>
-<span id="cb1-22"><a href="#cb1-22"></a>plt.plot(x, y, <span class="st">'o'</span>, xInt, yInt, <span class="st">'-'</span>, x, func_egri(x,<span class="op">*</span>popt), <span class="st">'--'</span>)</span>
-<span id="cb1-23"><a href="#cb1-23"></a>plt.legend([<span class="st">'Veri'</span>, <span class="st">'İnterpolasyon'</span>, <span class="st">'Eğri Uydurma'</span>], loc<span class="op">=</span><span class="st">'best'</span>)</span>
-<span id="cb1-24"><a href="#cb1-24"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="interpolasyon-egri-uydurma_files/figure-html/cell-2-output-1.png" width="566" height="411" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<span id="cb1-6"><a href="#cb1-6"></a>P,L,U<span class="op">=</span>spLin.lu(coeffMat)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="bu">print</span>(<span class="ss">f"(3. Soru)</span><span class="ch">\n</span><span class="ss"> L= </span><span class="sc">{</span>L<span class="sc">}</span><span class="ch">\n</span><span class="ss">U= </span><span class="sc">{</span>U<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)<span class="op">;</span> <span class="kw">del</span> L,U</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="bu">print</span>(<span class="ss">f"Sonuc (x1,x2,x3)= </span><span class="sc">{</span>spLin<span class="sc">.</span>solve(coeffMat, bVec[<span class="dv">0</span>])<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="bu">print</span>(<span class="ss">f"Sonuc (y1,y2,y3)= </span><span class="sc">{</span>spLin<span class="sc">.</span>solve(coeffMat, bVec[<span class="dv">1</span>])<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1173,18 +1171,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.html" class="pagination-link" aria-label="Doğrusal Denklem Sistemleri">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Doğrusal Denklem Sistemleri</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../icerik/konular/interpolasyon-egri-uydurma/interpolasyon.html" class="pagination-link" aria-label="İnterpolasyon">
-        <span class="nav-page-text">İnterpolasyon</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1193,7 +1179,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/interpolasyon-egri-uydurma.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri-cevaplar.md" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>

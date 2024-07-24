@@ -251,12 +251,6 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Alıştırmalar ve Problemler</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
   </div>
@@ -265,6 +259,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Classlar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
       </ul>
@@ -531,6 +531,10 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#örnek" id="toc-örnek" class="nav-link" data-scroll-target="#örnek">Örnek</a></li>
   </ul></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
+  <ul class="collapse">
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/interpolasyon-egri-uydurma/egri-uydurma.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
@@ -596,7 +600,7 @@ y= y_{0} + vt
 </tbody>
 </table>
 <p>Bu deney verisine bakıp hızı tahmin etmeye çalışacağız. Verinin grafiğini çizelim.</p>
-<div id="2fc0171f" class="cell" data-execution_count="1">
+<div id="5119ef65" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -617,7 +621,7 @@ y= y_{0} + vt
 <section id="en-küçük-kare-uydurma-least-squares-fitting" class="level2">
 <h2 class="anchored" data-anchor-id="en-küçük-kare-uydurma-least-squares-fitting">En küçük Kare Uydurma (Least-Squares Fitting)</h2>
 <p>Eğri uydurma amacıyla yapılan uydurma yöntemlerinden bir tanesi en küçük kareler yöntemidir. Örneğin 3 noktayı bir doğru için uydurma yapmak istiyoruz. Bu işlemi yaparken de rastgele iki doğru çizelim. import numpy as np import matplotlib.pyplot as plt</p>
-<div id="badaf0c9" class="cell" data-execution_count="2">
+<div id="a4e1bb06" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
@@ -647,7 +651,7 @@ y= y_{0} + vt
 <p>Çizginin üzerindeki düşey çizgilerin karelerinin toplamı, çizginin altındaki düşey çizgilerin karelerinin toplamı ile aynı ise çizilen çizgi en iyi şekilde uydurmuş demektir. Bu yönteme <strong>en küçük kare uydurma</strong> yöntemi denir.</p>
 </blockquote>
 <p>En küçük kare uydurma yönteminde uydurma eğrisine çizilen çizgi düşey olmak zorunda değildir. Daha ayrıntılı bilgi için <a href="https://mathworld.wolfram.com/LeastSquaresFitting.html">https://mathworld.wolfram.com/LeastSquaresFitting.html</a> adresine bakabilirsiniz.</p>
-<div id="3cb50f1f" class="cell" data-execution_count="3">
+<div id="d35397b9" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
@@ -684,7 +688,7 @@ y= y_{0} + vt
 </div>
 <section id="örnek" class="level3">
 <h3 class="anchored" data-anchor-id="örnek">Örnek</h3>
-<div id="a9808a07" class="cell" data-execution_count="4">
+<div id="fc7fc28a" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a href="#cb5-3"></a></span>
@@ -736,6 +740,52 @@ y= y_{0} + vt
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="problemler" class="level2">
+<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
+<section id="problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
+<ol type="1">
+<li>Aşağıdaki veriyi kullanarak Lagrange interpolasyonu yapın.</li>
+<li>Aşağıdaki veriyi kullanarak doğrusal (1. derece) en küçük kareler uydurması (fiting) yapın.</li>
+</ol>
+<ul>
+<li>En küçük kareler uydurmaları <code>numpy</code> paketinin <code>polyfit</code> fonksiyonunu kullanarak yapabilirsiniz.</li>
+<li>İnterpolasyonu ve uydurumayı <span class="math inline">\(x'=(0,6)\)</span> arasındaki noktalar için yapın.</li>
+<li>Veriyi (nokta olarak), Lagrange interpolasyonu ve uydurmaları aynı grafikte çizdirin ve <code>plt.savefig("soru3\_bilgisayar.png")</code> kodunu kullanarak kaydedin.</li>
+</ul>
+<p>Veri:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Koordinat</th>
+<th style="text-align: center;">1. Nokta</th>
+<th style="text-align: center;">2. Nokta</th>
+<th style="text-align: center;">3. Nokta</th>
+<th style="text-align: center;">4. Nokta</th>
+<th style="text-align: center;">5. Nokta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">y</td>
+<td style="text-align: center;"><span class="math inline">\(-1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-6\)</span></td>
+</tr>
+</tbody>
+</table>
 
 
 </section>

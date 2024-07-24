@@ -271,12 +271,6 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Alıştırmalar ve Problemler</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
   </div>
@@ -285,6 +279,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Classlar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
       </ul>
@@ -547,10 +547,7 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#fourier-analizi" id="toc-fourier-analizi" class="nav-link active" data-scroll-target="#fourier-analizi">Fourier Analizi</a>
-  <ul class="collapse">
-  <li><a href="#dalgalar" id="toc-dalgalar" class="nav-link" data-scroll-target="#dalgalar">Dalgalar</a></li>
-  </ul></li>
+  <li><a href="#dalgalar" id="toc-dalgalar" class="nav-link active" data-scroll-target="#dalgalar">Dalgalar</a></li>
   <li><a href="#dalgaların-karakteristikleri" id="toc-dalgaların-karakteristikleri" class="nav-link" data-scroll-target="#dalgaların-karakteristikleri">Dalgaların Karakteristikleri</a></li>
   <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
   <ul class="collapse">
@@ -594,12 +591,10 @@ window.Quarto = {
 </header>
 
 
-<section id="fourier-analizi" class="level2">
-<h2 class="anchored" data-anchor-id="fourier-analizi">Fourier Analizi</h2>
-<section id="dalgalar" class="level3">
-<h3 class="anchored" data-anchor-id="dalgalar">Dalgalar</h3>
+<section id="dalgalar" class="level2">
+<h2 class="anchored" data-anchor-id="dalgalar">Dalgalar</h2>
 <p>Basit bir sinüs dalgası oluşturalım.</p>
-<div id="5d41dff5" class="cell" data-execution_count="1">
+<div id="df671abd" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># x-y noktaları</span></span>
@@ -619,7 +614,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Sinüs dalgası hem zamanda hem de uzayda değişebilir. Yukarıda çizilen dalga zaman içerisinde değişmemektedir yani durağan bir dalgadır. Durağan olmayan dalgalara örnek bir kod yazalım.</p>
-<div id="32b1586e" class="cell" data-execution_count="2">
+<div id="a7c84e22" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Zaman</span></span>
@@ -648,7 +643,6 @@ window.Quarto = {
 </div>
 <p>Yukarıdaki grafikte kırmızı nokta durağan olmayan bir dalganın konumunu göstermektedir. Bu davranış, tıpkı bir su dalgası üzerinde bulunan bir odun parçasının yukarı aşağıya gitmesi gibidir. Dalga x doğrultusunda ilerlerken, odun parçası yukarı aşağıya hareket eder.</p>
 </section>
-</section>
 <section id="dalgaların-karakteristikleri" class="level2">
 <h2 class="anchored" data-anchor-id="dalgaların-karakteristikleri">Dalgaların Karakteristikleri</h2>
 <p>Dalgaların karakteristik özelliklerini tanımlayan bazı ifadeler aşağıda maddelenmiştir.</p>
@@ -672,7 +666,7 @@ Not
 </div>
 </div>
 <p>Bu nicelikleri grafik üzerinde gösteren python kodunu yazalım <span class="citation" data-cites="chatGPT">&nbsp;[<a href="#ref-chatGPT" role="doc-biblioref">1</a>]</span>.</p>
-<div id="d28c6c82" class="cell" data-execution_count="3">
+<div id="d5e287af" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co"># Dalganın karakteristikleri</span></span>
@@ -721,7 +715,7 @@ y(t) = A \sin(\omega t + \phi)
 <p>Burada <span class="math inline">\(A\)</span> genlik, <span class="math inline">\(\omega\)</span> açısal frekans, <span class="math inline">\(\phi\)</span> ise fazdır.</p>
 <p>Açısal frekans ise <span class="math inline">\(\omega = 2 \pi f\)</span> şeklinde hesaplanır. Burada <span class="math inline">\(f\)</span> frekansıdır.</p>
 <p>Faz, <span class="math inline">\(\phi\)</span> ise dalganın başlangıç noktasını belirler.</p>
-<div id="4f2dcb6e" class="cell" data-execution_count="4">
+<div id="328a95bc" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="co"># Zaman</span></span>

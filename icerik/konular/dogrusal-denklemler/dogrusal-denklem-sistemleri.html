@@ -251,12 +251,6 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Alıştırmalar ve Problemler</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
   </div>
@@ -265,6 +259,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Classlar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
       </ul>
@@ -546,6 +546,13 @@ window.Quarto = {
   <li><a href="#ölçeklendirilmiş-scaled-satır-döndürmeli-gauss-elemesi" id="toc-ölçeklendirilmiş-scaled-satır-döndürmeli-gauss-elemesi" class="nav-link" data-scroll-target="#ölçeklendirilmiş-scaled-satır-döndürmeli-gauss-elemesi">Ölçeklendirilmiş (Scaled) Satır Döndürmeli Gauss Elemesi</a></li>
   </ul></li>
   <li><a href="#matrisin-tersi" id="toc-matrisin-tersi" class="nav-link" data-scroll-target="#matrisin-tersi">Matrisin Tersi</a></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
+  <ul class="collapse">
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
@@ -1193,8 +1200,45 @@ A = \begin{bmatrix}    -2 &amp; 4 &amp; 3 &amp; | &amp; 0 \\ 0 &amp; 6 &amp; 2.5
 A A^{-1} = I
 \]</span></p>
 <p>Görüleceği üzere <span class="math inline">\(A\)</span> matrisinin tersi aslında çözüm matrisimiz oldu. Biz yukarıdaki denklem sistemini nasıl çözeceğimiz biliyoruz. İster LU ayrıştırma yöntemiyle ister Gauss eleme yöntemi ile <span class="math inline">\(A\)</span> matrisinin tersi bulunabilir.</p>
+</section>
+<section id="problemler" class="level2">
+<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
+<section id="problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="problem-1">Problem 1</h3>
+<p>Aşağıda verilen denklem sistemini Gauss eleme yöntemi ile çözünüz. Çözüm elde ederken Eq(i) - <span class="math inline">\(\lambda\)</span> <span class="math inline">\(\times\)</span> Eq(j) <span class="math inline">\(\rightarrow\)</span> Eq(i) işlemini kullanmak zorundasınız.</p>
+<p><span class="math display">\[
+\begin{bmatrix}    1 &amp; 2\\ 3 &amp; 4    \end{bmatrix}\begin{bmatrix}    x_{1} \\ x_{2}   \end{bmatrix}= \begin{bmatrix}    8 \\ 10    \end{bmatrix}
+\]</span></p>
+</section>
+<section id="problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="problem-2">Problem 2</h3>
+<p>Aşağıda verilen denklem sistemini Doolittle’ın LU ayrıştırma yöntemi ile çözünüz.</p>
+<p><span class="math display">\[
+\begin{bmatrix}    1 &amp; 2\\ 3 &amp; 4    \end{bmatrix}\begin{bmatrix}    x_{1} \\ x_{2}   \end{bmatrix}= \begin{bmatrix}    12 \\ 14    \end{bmatrix}
+\]</span></p>
+</section>
+<section id="problem-3" class="level3">
+<h3 class="anchored" data-anchor-id="problem-3">Problem 3</h3>
+<p>Aşağıda yazılan denklem sistemini Doolittle’ın LU ayrıştırma yöntemiyle çözünüz ve $ <em>{x}, </em>{y}, _{z} $’nin değerlerini elde ediniz.</p>
+<p><span class="math display">\[
+\begin{align*}
+    \theta_{x}-\theta_{y}+2\theta_{z}=&amp;7\\
+    -\theta_{x}+2\theta_{y}-\theta_{z}=&amp;0\\
+    \theta_{y}-\theta_{z}=&amp;-1
+\end{align*}
+\]</span></p>
+</section>
+<section id="problem-4" class="level3">
+<h3 class="anchored" data-anchor-id="problem-4">Problem 4</h3>
+<p>Aşağıdaki $ A= $ doğrusal denklem sistemini istediğiniz sayısal yöntem ile çözün.</p>
+<p>Çözümü yani $ $ vektörünün elemanlarını ekrana yazdırın.</p>
+<p><span class="math display">\[
+\begin{bmatrix}    4&amp;1&amp;3&amp;2&amp;1&amp;1\\0&amp;3&amp;1&amp;0&amp;-1&amp;1\\0&amp;1&amp;2&amp;0&amp;-1&amp;1\\0&amp;-1&amp;1&amp;6&amp;-1&amp;1\\0&amp;1&amp;0&amp;0&amp;-6&amp;1\\0&amp;0&amp;0&amp;0&amp;0&amp;7    \end{bmatrix}\begin{bmatrix}    x_{0}\\ x_{1}\\ x_{2}\\y_{0}\\y_{1}\\y_{2}    \end{bmatrix}= \begin{bmatrix}    19\\3\\3\\-1\\-36\\35    \end{bmatrix}
+\]</span></p>
+<p><em>Not: Çözümünüzde <span class="math inline">\(\dots e^{-16}\)</span> gibi sayılar çıktıysa bu 0 demektir.</em></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

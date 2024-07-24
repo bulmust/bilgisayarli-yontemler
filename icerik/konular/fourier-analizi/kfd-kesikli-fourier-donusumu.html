@@ -271,12 +271,6 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Alıştırmalar ve Problemler</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
   </div>
@@ -285,6 +279,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Classlar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
       </ul>
@@ -547,8 +547,7 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#kfd---kesikli-fourier-dönüşümü-ddt---discrete-fourier-transform" id="toc-kfd---kesikli-fourier-dönüşümü-ddt---discrete-fourier-transform" class="nav-link active" data-scroll-target="#kfd---kesikli-fourier-dönüşümü-ddt---discrete-fourier-transform">KFD - Kesikli Fourier Dönüşümü (DDT - Discrete Fourier Transform)</a></li>
-  <li><a href="#örnek-elle" id="toc-örnek-elle" class="nav-link" data-scroll-target="#örnek-elle">Örnek (Elle)</a></li>
+  <li><a href="#örnek-elle" id="toc-örnek-elle" class="nav-link active" data-scroll-target="#örnek-elle">Örnek (Elle)</a></li>
   <li><a href="#tkfd---ters-kesikli-fourier-dönüşümü-idft---inverse-discrete-fourier-transform" id="toc-tkfd---ters-kesikli-fourier-dönüşümü-idft---inverse-discrete-fourier-transform" class="nav-link" data-scroll-target="#tkfd---ters-kesikli-fourier-dönüşümü-idft---inverse-discrete-fourier-transform">TKFD - Ters Kesikli Fourier Dönüşümü, (IDFT - Inverse Discrete Fourier Transform),</a></li>
   <li><a href="#kfdnin-limitleri" id="toc-kfdnin-limitleri" class="nav-link" data-scroll-target="#kfdnin-limitleri">KFD’nin Limitleri</a></li>
   <li><a href="#kod" id="toc-kod" class="nav-link" data-scroll-target="#kod">Kod</a></li>
@@ -603,14 +602,12 @@ window.Quarto = {
 </header>
 
 
-<section id="kfd---kesikli-fourier-dönüşümü-ddt---discrete-fourier-transform" class="level2">
-<h2 class="anchored" data-anchor-id="kfd---kesikli-fourier-dönüşümü-ddt---discrete-fourier-transform">KFD - Kesikli Fourier Dönüşümü (DDT - Discrete Fourier Transform)</h2>
 <p>Basit bir dalgada periyot/frekans, genlik faz gibi kavramları anladık. Peki daha üst üste binen dalgaları nasıl analiz edeceğiz? Örneğin aşağıdaki gibi bir dalgayı analiz etmek istediğimizi düşünelim.</p>
 <p><span class="math display">\[
 y(t) = \sin(\omega t + \phi) + \cos(2 \omega t + \phi)
 \]</span></p>
 <p>Çizdirelim.</p>
-<div id="3c098697" class="cell" data-execution_count="1">
+<div id="dc1a1fc8" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Zaman</span></span>
@@ -673,7 +670,6 @@ Not
 <p><img src="https://blog.dta.com.tr/wp-content/uploads/2020/03/fourier_donusumu.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-</section>
 <section id="örnek-elle" class="level2">
 <h2 class="anchored" data-anchor-id="örnek-elle">Örnek (Elle)</h2>
 <p>Elimizde 3 adet örnekleme sahip (3 nokta) bir dalga olsun. Yani sinüs dalgasını 3 adet nokta ile temsil edelim. Bu noktalardan oluşan dalganın frekans bileşenlerini bulmak için Fourier dönüşümünü adım adım yapalım.</p>
@@ -767,7 +763,7 @@ Not
 <p><code>fourier_kfd</code> fonksiyonunu inceleyiniz.</p>
 </div>
 </div>
-<div id="572cee35" class="cell" data-execution_count="2">
+<div id="d3102705" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">################################################</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
@@ -812,12 +808,12 @@ Not
 <div class="cell-output cell-output-stdout">
 <pre><code>20 örneklem sayısına sahip bir dalganın
 Fouirer dönüşümü yapması için geçen süre
-573 μs ± 4.48 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+574 μs ± 3.8 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 
 
 200 örneklem sayısına sahip bir dalganın
  Fouirer dönüşümü yapması için geçen süre
-55.2 ms ± 310 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)</code></pre>
+56.3 ms ± 218 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)</code></pre>
 </div>
 </div>
 <p>Zaman sorunu aşmak için 1965’te Cooley ve Tukey, Fourier dönüşümü algoritmasını geliştirdiler. Bu algoritma HFD, Hızlı Fourier Dönüşümü (FFT, Fast Fourier Transform) olarak bilinir - kesikli ifadesini kullanmacağız. HFD algoritması KFD’ye göre çok daha hızlı çalışır. HFD algoritmasının karmaşıklığı <span class="math inline">\(\mathcal{O}(n \log n)\)</span> iken KFD’nin karmaşıklığı <span class="math inline">\(\mathcal{O}(n^2)\)</span>’dir.</p>
@@ -912,7 +908,7 @@ y(t) = 7 \sin(2\pi t)
 <p>Bu sinyalin KFD’sini alın ve genlik ve faz değerlerini bulun.</p>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="7b4eb697" class="cell" data-execution_count="3">
+<div id="5e05140e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">################################################</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> os</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="im">import</span> sys</span>
