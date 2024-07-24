@@ -630,7 +630,7 @@ P_{1}(x)= 4\frac{x-1}{0-1} + 5\frac{x-0}{1-0} \\
 \quad\\
 P_{1}(x)= x+4
 \]</span></p>
-<div id="35c18ec7" class="cell" data-execution_count="1">
+<div id="8013e8b8" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -726,7 +726,8 @@ a_{2} \equiv \nabla^{2} y_{i} \equiv \frac{\nabla y_{i}-\nabla y_{1}}{x_{i}-x_{1
 \]</span></p>
 <p><span class="math display">\[
 a_{n} \equiv \nabla^{n} y_{i} \equiv \frac{\nabla^{n-1} y_{i}-\nabla^{n-1} y_{n-1}}{x_{i}-x_{n-1}} \qquad \text{,} \quad i=n
-\]</span> Bu terimlerin çıkarılışını görelim. Örneğin 3 adet veri noktamız olsun. <span class="math inline">\(P_{2}(x)\)</span> terimini oluşturan <span class="math inline">\(a_{0}\)</span>, <span class="math inline">\(a_{1}\)</span> ve <span class="math inline">\(a_{2}\)</span> terimlerini elde edelim.</p>
+\]</span></p>
+<p>Bu terimlerin çıkarılışını görelim. Örneğin 3 adet veri noktamız olsun. <span class="math inline">\(P_{2}(x)\)</span> terimini oluşturan <span class="math inline">\(a_{0}\)</span>, <span class="math inline">\(a_{1}\)</span> ve <span class="math inline">\(a_{2}\)</span> terimlerini elde edelim.</p>
 <p>Veri noktalarımız aşağıdaki gibi olsun.</p>
 <table class="caption-top table">
 <thead>
@@ -839,11 +840,14 @@ P_{2}(x)= 4 + 1(x-1) + 0.5(x-1)(x-2)
 <p>Polinom aşağıdaki gibi olur.</p>
 <p><span class="math display">\[
 P_{2}(x)= \frac{x^{2}-x+8}{2}
-\]</span> Bu polinom eğer doğruysa noktalardan geçiyor olması gerekir.</p>
+\]</span></p>
+<p>Bu polinom eğer doğruysa noktalardan geçiyor olması gerekir.</p>
 <p><span class="math display">\[
+\begin{align*}
 P_{2}(x=1)\stackrel{?}{=}4 \rightarrow \frac{1^{2}-1+8}{2}= 4 \quad \checkmark \\
 P_{2}(x=2)\stackrel{?}{=}5 \rightarrow \frac{2^{2}-2+8}{2}= 5 \quad \checkmark \\
 P_{2}(x=3)\stackrel{?}{=}7 \rightarrow \frac{3^{2}-3+8}{2}= 7 \quad \checkmark
+\end{align*}
 \]</span></p>
 <p>Bu ders kapsamında Neville metodunu incelemeyeceğiz.</p>
 </section>
@@ -852,7 +856,7 @@ P_{2}(x=3)\stackrel{?}{=}7 \rightarrow \frac{3^{2}-3+8}{2}= 7 \quad \checkmark
 <section id="doğrusal-interpolasyon" class="level4">
 <h4 class="anchored" data-anchor-id="doğrusal-interpolasyon">Doğrusal İnterpolasyon</h4>
 <p>Veri noktalarını doğrusal olarak birleştirir.</p>
-<div id="adab33ac" class="cell" data-execution_count="2">
+<div id="c0185912" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
@@ -990,7 +994,7 @@ P_{n}(x)= \sum_{i=0}^{n} y_{i}l_{i}(x)
 <p><span class="math display">\[
 l_{i}(x)= \prod_{j=0, j \ne i}^{n} \frac{x-x_{j}}{x_{i}-x_{j}} \qquad \text{,} \quad i = 0,1,2,\dots,n
 \]</span></p>
-<div id="e20a4e0c" class="cell" data-execution_count="3">
+<div id="3840b158" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
@@ -1059,7 +1063,7 @@ l_{i}(x)= \prod_{j=0, j \ne i}^{n} \frac{x-x_{j}}{x_{i}-x_{j}} \qquad \text{,} \
 <p>Yukarıda verilen Lagrange İnterpolasyon Python kodunu tek bir <code>xAraTekDeger</code> değer için değil <code>xAraDizi</code> için de çalışacak şekilde değiştiriniz.</p>
 <section id="çözüm" class="level4">
 <h4 class="anchored" data-anchor-id="çözüm">Çözüm</h4>
-<div id="a9d729a9" class="cell" data-execution_count="4">
+<div id="995ce3c7" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3"></a></span>
@@ -1138,7 +1142,7 @@ l_{i}(x)= \prod_{j=0, j \ne i}^{n} \frac{x-x_{j}}{x_{i}-x_{j}} \qquad \text{,} \
 <section id="scipy-kütüphanesi" class="level3">
 <h3 class="anchored" data-anchor-id="scipy-kütüphanesi">Scipy Kütüphanesi</h3>
 <p><code>scipy</code> kütüphanesinin içerisindeki <code>interpolate</code> alt modülü içinde <code>lagrange</code> fonksiyonu bulunur. Bu fonksiyonu kullanarak Lagrange interpolasyonu yapın. Aynı <code>interpolate</code> alt modülü içerisinde tek doğrusal interpolasyon için <code>interp1d</code> fonksiyonu bulunur. Bu fonksiyonu da kullanarak tek doğrusal interpolasyon yapın.</p>
-<div id="71b3cf5c" class="cell" data-execution_count="5">
+<div id="23fe255b" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="im">import</span> scipy.interpolate <span class="im">as</span> spInterp</span>
@@ -1197,7 +1201,7 @@ P_{k}(x)= a_{n-k}+ P_{k-1}(x)(x-x_{n-k}) \qquad \text{,} \quad k=1,2,\dots,n \qq
 <p><span class="math display">\[
 a_{n} \equiv \nabla^{n} y_{i} \equiv \frac{\nabla^{n-1} y_{i}-\nabla^{n-1} y_{n-1}}{x_{i}-x_{n-1}} \qquad \text{,} \quad i=n
 \]</span></p>
-<div id="2e878b07" class="cell" data-execution_count="6">
+<div id="6c427fb1" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="im">import</span> scipy.interpolate <span class="im">as</span> spInterp</span>

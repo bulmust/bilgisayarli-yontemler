@@ -497,6 +497,19 @@ window.Quarto = {
   <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
   <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
   <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
+  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
+  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
+  <li><a href="#problem-7" id="toc-problem-7" class="nav-link" data-scroll-target="#problem-7">Problem 7</a></li>
+  <li><a href="#problem-8" id="toc-problem-8" class="nav-link" data-scroll-target="#problem-8">Problem 8</a></li>
+  <li><a href="#problem-9" id="toc-problem-9" class="nav-link" data-scroll-target="#problem-9">Problem 9</a></li>
+  <li><a href="#problem-10" id="toc-problem-10" class="nav-link" data-scroll-target="#problem-10">Problem 10</a></li>
+  <li><a href="#problem-11" id="toc-problem-11" class="nav-link" data-scroll-target="#problem-11">Problem 11</a></li>
+  <li><a href="#problem-12" id="toc-problem-12" class="nav-link" data-scroll-target="#problem-12">Problem 12</a></li>
+  <li><a href="#problem-13" id="toc-problem-13" class="nav-link" data-scroll-target="#problem-13">Problem 13</a></li>
+  <li><a href="#problem-14" id="toc-problem-14" class="nav-link" data-scroll-target="#problem-14">Problem 14</a></li>
+  <li><a href="#problem-15" id="toc-problem-15" class="nav-link" data-scroll-target="#problem-15">Problem 15</a></li>
+  <li><a href="#problem-16" id="toc-problem-16" class="nav-link" data-scroll-target="#problem-16">Problem 16</a></li>
+  <li><a href="#referanslar" id="toc-referanslar" class="nav-link" data-scroll-target="#referanslar">Referanslar</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/python/alistirmalar-problemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
@@ -573,6 +586,305 @@ window.Quarto = {
 <li>Bir fonksiyon yazın. Bu fonksiyon iki adet değişken alsın. Birinci değişkenden ikinci değişkene kadar olan tüm sayıların toplamını ekrana yazdırsın ve değerini döndürsün.</li>
 <li>Bir fonksiyon yazın. Bu fonksiyon bir adet değişken alsın. Girilen değişken <span class="math inline">\(x^2-1=0\)</span> denkleminin çözümü ise <code>True</code> değil ise <code>False</code> döndürsün.</li>
 <li>Bir fonksiyon yazın. Bu fonksiyon beş adet değişken alsın. Bu değişkenler bir cismin uzay-zaman koordinatları <strong>x,y,z,t</strong> ve x eksenine göre göreli (rölatif) <strong>hızı</strong> olsun. Eğer hız değişkenin değeri ışık hızından büyükse ekrana bunun mümkün olamayacağını yazsın. Eğer hız değişkeni ışık hızından küçükse, uzay-zaman koordinatlarının yere göre (duran gözlemci) ne olacağını hesaplasın ve yeni koordinatları ekrana yazdırsın. Bunun için <a href="https://tr.wikipedia.org/wiki/Lorentz_d%C3%B6n%C3%BC%C5%9F%C3%BCm%C3%BC">Lorentz Dönüşümünü</a> kullanmanız gerekir. Buna ek olarak fonksiyon Galileo Dönüşümüne göre ne olacağını da hesaplasın ve ekrana yazdırsın. Fonksiyon, Lorentz dönüşümü ile elde ettiğiniz yeni uzay-zaman koordinatlarını döndürsün.</li>
+</ol>
+</section>
+<section id="problem-5" class="level2">
+<h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<p><strong>Modül</strong></p>
+<p>Aşağıdaki soruları, oluşturduğunuz <code>fiz365.py</code> dosyası içerisine cevaplayın. Ardından <code>calistir.py</code> adında bir betik dosyasında yazdıklarınızı çağırın.</p>
+<ol type="1">
+<li><code>fiz365.py</code> dosyasının içerisine <code>numpy</code> modülünü <code>np</code> ismiyle çağırın.</li>
+<li><code>faktoriyel()</code> adında bir fonksiyon yazın. Bu fonksiyon bir tam sayı alsın ve o sayının faktöriyelini döndürsün. Eğer verilen sayı tam sayı değilse <code>False</code> değeri döndürsün.
+<ol type="1">
+<li><code>isinstance(sayi, int)</code> fonksiyonu, <code>sayi</code> degiskeninin <code>int</code> tipinde olup olmadığını sınar. Eğer <code>int</code> ise <code>True</code> değeri döndürür. Eğer değilse <code>False</code> değeri döndürür.</li>
+</ol></li>
+<li><code>topla()</code> adında bir fonksyion yazın. Bu fonksyion bir tam sayı alsın ve birden o sayıya kadar olan tüm tam sayıların toplamını döndürsün. Eğer sayı tam sayı değilse <code>False</code> değeri döndürsün.</li>
+<li><code>obeb()</code> adında bir fonksyion yazın. Bu fonksyion iki tam sayı alsın ve o sayıların ortak bölenlerinin en büyüğünü döndürsün. Eğer verilen sayı tam sayı değilse <code>False</code> değeri döndürsün.</li>
+<li><code>okek()</code> adında bir fonksyion yazın. Bu fonksyion iki tam sayı alsın ve o sayıların ortak katlarının en küçüğünü döndürsün. Eğer verilen sayı tam sayı değilse <code>False</code> değeri döndürsün.</li>
+<li><code>dik_mi()</code> adında bir fonksyion yazın. Bu fonksiyon üç sayı alsın ve bu üç sayıdan bir dik üçgen oluşuyor mu denesin. Eğer oluşuyorsa <code>True</code> dönmüyorsa <code>False</code> değeri döndürsün.
+<ol type="1">
+<li>Sayıları sıralamak için <code>np.sort([sayi1, sayi2])</code> fonksiyonunu kullanabilirsiniz.</li>
+</ol></li>
+<li><code>calistir.py</code> dosyası içerisine <code>fiz365</code> modülünü <code>f365</code> ismi ile çağırın ve aşağıdaki fonksiyonları çalıştırın. Çıktılarını ekrana ne olduklarını belirterek yazdırın.
+<ol type="1">
+<li><code>faktoriyel(5)</code>, <code>faktoriyel(5.5)</code></li>
+<li><code>topla(5)</code>, <code>topla(5.5)</code></li>
+<li><code>obeb(12, 28)</code>, <code>obeb(12, 28.5)</code></li>
+<li><code>okek(8, 28)</code>, <code>okek(8, 28.5)</code>, <code>okek(8.3, 28)</code>. Sonuç neden tam sayı yani <code>int</code> şeklinde değil de <code>.0</code> şeklinde oluyor? Açıklayınız.</li>
+<li><code>dik_mi(3, 5, 4)</code>, <code>dik_mi(3, 4, 6)</code></li>
+</ol></li>
+<li><code>fizik365.py</code> dosyasını kaydedin ve yedekleyin. Bu dosyayı dersin geri kalanında kullanacağız.</li>
+</ol>
+</section>
+<section id="problem-6" class="level2">
+<h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
+<p><strong>Karışık Alıştırmalar</strong></p>
+<p>Aşağıdaki sorularda fonksiyonları yazın. Ardından uygun değerler için fonksyionları çağırın ve çıktısını ekrana yazdırın.</p>
+<ol type="1">
+<li>Bir fonksiyon yazın. Bu fonksiyon iki adet değişken alsın. Birinci değişkenden ikinci değişkene kadar (ikinci değişken dahil değil) olan tüm sayıların toplamını ekrana yazdırsın ve değerini döndürsün.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon bir adet değişken alsın. Girilen değişken <span class="math inline">\(x^3+2x^2-x-1=0\)</span> denkleminin çözümü ise <code>True</code> değil ise <code>False</code> döndürsün.</li>
+<li>Bir fonksyion yazın. Bu fonksiyon bir adet değişken alsın. Bu değişken <strong>uzaklık</strong> gibi olsun ve 1 boyutlu negatif elektrik yükünün girilen (değişken) uzaklıktaki elektrik potansiyelini birimiyle beraber ekrana yazdırsın ve değerini döndürsün.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon iki adet değişken alsın. Birinci değişken <strong>konumdaki belirsizlik</strong> gibi olsun.İkinci değişken de <strong>momentumdaki belirsizlik</strong> gibi olsun. Girilen değerleri Heisenberg Belirsizlik İlkesine uyup uymadığını kontrol etsin. Eğer uyuyorsa <code>True</code> eğer uymuyorsa <code>False</code> döndürsün.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon üç adet değişken alsın. Bu değişkenler; <strong>kütle 1</strong>, <strong>kütle 2</strong> ve <strong>uzaklık</strong> olsun. Fonksiyonda, girilen kütle ve uzaklık değerleri kullanılarak iki kütle arasında oluşan çekim kuvvetinin değerini birimiyle beraber ekrana yazdırsın. Sonuç değerini de döndürsün.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon dört adet değişken alsın. Bu değişkenler; <strong>ilk uzaklık</strong>, <strong>ilk hız</strong>, <strong>zaman</strong> ve <strong>ivme</strong> olsun. Fonksiyonda, girilen değerler kullanılarak, başlangıçta <span class="math inline">\(x_0\)</span> konumunda olan ve ilk hızı <span class="math inline">\(v_0\)</span> olan bir cismin <span class="math inline">\(a\)</span> ivmesi altında <span class="math inline">\(t\)</span> saniye sonra hangi konumda olacağı belirlensin. Sonucu birimiyle beraber ekrana yazdırın. Sonuç değerini döndürsün. Burada tüm büyüklüklükler skalerdir.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon iki adet değişken alsın. Bu değişkenler; <strong>başlangıç hızı</strong> ve <strong>atış açısı</strong> olsun. Fonksiyonda, yatay düzlemde, <span class="math inline">\(v_0\)</span> ile <span class="math inline">\(\theta\)</span> açısıyla atılan bir cismin hangi konumda tekrar yatay düzlemde olacağı bulunsun. Atıştan sonra hangi konumda olduğu, havada geçirdiği süre ve maksimum çıkabileceği yükseklik ekrana yazdırılsın. Bu üç değerden oluşan bir tuple oluşturun. Fonksiyon bu tuple’ı döndürsün. Burada tüm büyüklüklükler skalerdir.</li>
+</ol>
+</section>
+<section id="problem-7" class="level2">
+<h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
+<p><strong>Matris çarpımı</strong></p>
+<ol type="1">
+<li>2 adet 3x3 matris oluşturun. Bunlardan bir tanesi 1’den 10’a kadar (10 dahil değil) diğeri ise 10’dan 19’a kadar olsun.</li>
+<li>Bu iki matrisi <code>@</code> ile çarpın ve sonucu ekrana yazdırın.</li>
+<li><code>sonuc</code> adında 3x3’lük sıfır matrisi oluşturun.</li>
+<li>İlk matrisin birinci, ikinci ve üçüncü satırlarını ekrana yazdırın.</li>
+<li>İkinci matrisin tüm sütunlarını ayrı ayrı ekrana yazdırın.</li>
+<li>İlk matrisin ilk satırını ikinci matrisin ilk sütunu ile çarpın. Çıkan sonucu <code>sonuc</code> elemanın birinci satır birinci sütunundaki elemanına atayın.</li>
+<li>İlk matrisin ikinci satırını ikinci matrisin ilk sütunu ile çarpın. Çıkan sonucu <code>sonuc</code> elemanın birinci satır ikinci sütunundaki elemanına atayın.</li>
+<li>İlk matrisin üçüncü satırını ikinci matrisin ilk sütunu ile çarpın. Çıkan sonucu <code>sonuc</code> elemanın birinci satır üçüncü sütunundaki elemanına atayın.</li>
+<li>İlk matrisin ikinci satırını ikinci matrisin ilk sütunu ile çarpın. Çıkan sonucu <code>sonuc</code> elemanın ikinci satır birinci sütunundaki elemanına atayın.</li>
+<li><code>mat_carp</code> adında bir fonksiyon oluşturun ve bu fonksiyon iki adet matris alsın. İki matrisi, <code>for</code> döngü(leri)sü yardımı ile çarpsın. Adımlar aşağıdaki gibidir.
+<ol type="1">
+<li>Bu fonksiyon, matrislerin boyutlarını incelesin. Eğer matrislerin boyutu, ilk matrisin boyutu <strong>NxM</strong>, ikinci matrisin boyutu <strong>MxT</strong> şeklinde değilse <code>False</code> değerini döndürsün.</li>
+<li>Eğer herhangi bir matrisin tüm elemanları <strong>0</strong> ise <strong>Bir matrisin tüm elemanları sıfırdır.</strong> şeklinde ekrana yazı yazsın ve <code>for</code> döngüsüne girmeden sonucu uygun boyutta <strong>0</strong> matrisi döndürsün.</li>
+<li>Eğer herhangi bir matris birim matris ise <strong>… matrisi birim matristir.</strong> şeklinde ekrana yazı yazsın ve <code>for</code> döngüsüne girmeden sonucu ekrana yazsın.</li>
+</ol></li>
+<li>Yukarıdaki yazdığınız fonksiyonu uyarı metinleri ekranda yazacak şekilde bir çok kez çağırın.</li>
+<li>Eğer <code>mat_carp()</code> fonksiyonunu çağırırken girdilerden birisi bir boyutlu array olursa, hata alacaksınız. Bunun nedeni hakkında düşünün ve gerekli düzenlemeyi yapın.</li>
+</ol>
+</section>
+<section id="problem-8" class="level2">
+<h2 class="anchored" data-anchor-id="problem-8">Problem 8</h2>
+<p><strong>Dalga Fonksiyonun Normalizasyonu</strong></p>
+<ol type="1">
+<li><code>normalize_et_dalgaFonk</code> adında bir fonksiyon yazın. Bu fonksiyonun bir adet numpy array tipi değişken alsın.
+<ol type="1">
+<li>Alınan array en genel olarak sanal sayılardan oluşsun. Array’in her elemanını kendisinin sanal eşleniği (<code>np.conj()</code>) kendisini çarpsın ve çıkan sonuçları toplayıp <strong>bir</strong> adet sayı elde etsin.</li>
+<li>Fonksiyona girdi olarak verilen arrayi, elde edilen bu sayının kareköküne (<code>np.sqrt()</code>) bölsün ve elde edilen arrayi geri döndürsün.</li>
+<li>Girdi 1 boyutlu array değilse, <strong>bu fonksiyon sadece arrayler için çalışmaktadır.</strong> yazsın. Bunun için <code>np.ndim()</code> fonksiyonunu kullanbilirsiniz. Fonksiyon girdisi bir boyutlu array değilse <code>None</code> değerini döndürsün.</li>
+</ol></li>
+<li>Bu fonksiyonu <code>[1, 1]</code> değerleri için çağırın.</li>
+<li><code>xAxis</code> adında ve içeriği <code>0</code>’dan <code>1</code>’e kadar 100 elemanlı bir array oluşturun. Yardım: <code>np.linspace(baslangicSayi, bitisSayi, adet)</code></li>
+<li><code>yAxis</code> adında ve içeriği <code>0</code>’dan <code>1</code>’e kadar 100 elemanlı bir array oluşturun.</li>
+<li>Çizim yapmak için <code>matplotlib.pyplot</code> modülünü <code>plt</code> ismiyle çağırın ve x ve y eksenlerini çizdirin. Çizginin rengi siyah <code>k</code> olsun.</li>
+<li><code>[1, 1]</code> arayini normalize ettiğimizde elde ettiğimiz arrayi de kırmızı ile <code>r</code> çizdirin.
+<ol type="1">
+<li>Bunun için 3. ve 4. adımı <code>normalize_et_dalgaFonk</code> fonksiyonunu kullanarak tekrarlamanız gerekir. Fonksiyonu çağırdığınızda geri dönen iki değerden ilki <code>xAxis</code>’in 0’dan o noktaya kadar olan değerlerini belirleyecek, ikincisi ise <code>yAxis</code>’in 0’dan o noktaya kadar olan değerlerini belirleyecek.</li>
+</ol></li>
+<li><strong>Bu adımda bilgisayar kod yazmanıza gerek yoktur.</strong> Kuantum dalga fonksiyonu aşağıdaki gibi verilmiştir. Aşağıdaki verilen gösterimler eşdeğerdir.</li>
+</ol>
+<p><span class="math display">\[
+|\psi&gt; = A \left(\sin\theta|\uparrow&gt; + \cos\theta|\downarrow&gt;\right)
+\]</span></p>
+<p><span class="math display">\[
+|\psi&gt; = A\sin\theta \left(\begin{matrix}1\\0\end{matrix}\right) + A\cos\theta\left(\begin{matrix}0\\1\end{matrix}\right)
+\]</span></p>
+<p><span class="math display">\[
+|\psi&gt; = A\left(\begin{matrix}\sin \theta\\\cos \theta\end{matrix}\right)
+\]</span></p>
+<p>Bu kuantum durumu normalize olması için A ne olmalıdır? Yardım: <span class="math inline">\(|&lt;\psi|\psi&gt;|^2=1\)</span> için <span class="math inline">\(A\)</span> ne olmalıdır?</p>
+<ol start="8" type="1">
+<li>Aşağıdaki dalga fonksiyonunu el ile normalize ediniz. <code>normalize_et_dalgaFonk</code> fonksiyonunu kullanarak yaptığınız hesabı kontrol ediniz.</li>
+</ol>
+<p><span class="math display">\[
+|\psi&gt; = A \left((1+i)|\uparrow&gt; + (1-i)|\downarrow&gt; \right)
+\]</span></p>
+</section>
+<section id="problem-9" class="level2">
+<h2 class="anchored" data-anchor-id="problem-9">Problem 9</h2>
+<p><strong>Temel Python</strong></p>
+<ol type="1">
+<li>Ekrana “Hello World” yazdırın.</li>
+<li>3 ve 2’yi toplayın. Cevabı ekrana yazdırın.</li>
+<li>2’nin kökünü hesaplayın ve ekrana yazdırın.</li>
+<li><code>degisken1= 5</code> ve <code>degisken2 = 3</code> olsun. <code>degisken1</code> ve <code>degisken2</code> değişkenlerinin değerlerini yer değiştirin.</li>
+<li><code>degisken1= 5</code> olsun. Bu değişkenin tek mi veya çift mi olduğunu sınayan bir program yazın.</li>
+<li><code>degisken1= 5</code> ve <code>degisken2 = 3</code> olsun. Eğer <code>degisken1</code>, <code>degisken2</code>’den büyükse ekrana “degisken1 büyük” yazdırın. Aksi durum için ise “degisken2 büyük” yazdırın.</li>
+<li>0’dan 30’a kadar olan sayıları (0 ve 30 dahil) ekrana yazdırın.</li>
+<li>0’dan 30’a kadar olan sayıların iki katını (0 ve 30 dahil) ekrana yazdırın.</li>
+<li>0’dan 30’a kadar olan sayılardan sadece çift olanlarını (0 ve 30 dahil) ekrana yazdırın.</li>
+<li>0’dan 30’a kadar olan sayıları ekrana yazdırın, ancak 12 ve 27’yi yazdırmayın.</li>
+</ol>
+</section>
+<section id="problem-10" class="level2">
+<h2 class="anchored" data-anchor-id="problem-10">Problem 10</h2>
+<p><strong>Kendisiyle İşlem Yaptırma</strong></p>
+<ol type="1">
+<li>0’dan 30’a kadar olan sayıları (0 ve 30 dahil) toplayın.</li>
+</ol>
+<p><span class="math display">\[\sum_{i=0}^{30}i\]</span></p>
+<ol type="1">
+<li>1’dan 10’a kadar olan sayıları (1 ve 10 dahil) çarpın.</li>
+</ol>
+<p><span class="math display">\[\prod_{i=1}^{10}i = 10!\]</span></p>
+<ol type="1">
+<li>0’dan 30’a kadar olan sayıları (0 ve 30 dahil) toplayın ancak 12 ve 27’yi toplamaya dahil etmeyin.</li>
+</ol>
+<p><span class="math display">\[\sum_{i=0,i\ne12,27}^{30}i\]</span></p>
+<ol type="1">
+<li>0’dan 30’a kadar olan sayıların iki katını (0 ve 30 dahil) toplayın.</li>
+</ol>
+<p><span class="math display">\[\sum_{i=0}^{30}2i\]</span></p>
+</section>
+<section id="problem-11" class="level2">
+<h2 class="anchored" data-anchor-id="problem-11">Problem 11</h2>
+<p><strong>Fonksiyonlar</strong></p>
+<ol type="1">
+<li><code>fonk1</code> adında bir fonksiyon yazın. Bu fonksiyon ekrana “Hello World” yazdırsın.</li>
+<li><code>fonk2</code> adında bir fonksiyon yazın. Bu fonksiyon bir sayı alsın ve bu sayının iki katını ekrana yazdırsın.</li>
+<li><code>fonk3</code> adında bir fonksiyon yazın. Bu fonksiyon bir sayı alsın ve o sayının tek mi çift mi olduğunu ekrana yazdırsın.</li>
+<li><code>fonk4</code> adında bir fonksiyon yazın. Bu fonksiyon bir sayı alsın ve o sayının 0’dan büyük olup olmadığını ekrana yazdırsın.</li>
+<li><code>fonk5</code> adında bir fonksiyon yazın. Bu fonksiyon bir sayı alsın ve o sayının karesini geri döndürsün.</li>
+<li><code>fonk6</code> adında bir fonksiyon yazın. Bu fonksiyon bir sayı alsın ve sıfırdan o sayıya kadar olan tüm sayıları toplayıp sonucu geri döndürsün.</li>
+<li><code>fonk7</code> adında bir fonksiyon yazın. Bu fonksiyon <strong>iki</strong> sayı alsın ve bu sayıların toplamını geri döndürsün.</li>
+<li><code>fonk1</code>’i çağırın.</li>
+<li><code>fonk2</code>’yi, <code>fonk3</code>’ü, <code>fonk4</code>’ü, <code>fonk5</code>’i ve <code>fonk6</code>’yı 30 için çağırın.</li>
+<li><code>fonk7</code>’yı, 30 ve 35 için çağırın.</li>
+<li><code>fonk8</code> adında bir fonksiyon yazın. Bu fonksiyon, <code>fonk</code> ve <code>x</code> adında iki parametre alsın. Burada <code>fonk</code> bir fonksiyon olacaktır. <code>fonk8</code> ana fonksiyonumuzun içerisinde bu <code>fonk</code> fonksiyonunu <code>x</code> çağırın ve sonucu ekrana yazdırın.</li>
+<li><code>fonk8</code>’i, <code>fonk5</code> ve 30 için çağırın.</li>
+</ol>
+</section>
+<section id="problem-12" class="level2">
+<h2 class="anchored" data-anchor-id="problem-12">Problem 12</h2>
+<p><strong>Numpy Arrayler</strong></p>
+<ol type="1">
+<li>Elemanları 3,4,9,1 olan ve adı <code>arr1</code> olan bir numpy arrayi oluşturun.</li>
+<li><code>arr1</code> arrayinin 2. elemanını ekrana yazdırın. (9 olan elemanı)</li>
+<li>Elemanları 11,22,33,44,55,66,77,88,99,100 olan ve adı <code>arr2</code> olan bir numpy arrayi oluşturun.</li>
+<li><code>arr2</code> arrayinin 3. elemanından 7. elemanına kadar olan elemanları ekrana yazdırın. (elemanlar 0’dan başlar)</li>
+<li><code>arr2</code> arrayinin elemanlarını <code>for</code> döngüsü kullanarak toplayın.</li>
+</ol>
+</section>
+<section id="problem-13" class="level2">
+<h2 class="anchored" data-anchor-id="problem-13">Problem 13</h2>
+<p><strong>Matrisler</strong></p>
+<ol type="1">
+<li>Birinci satırı 3,4,5 ikinci satırı 9,1,2 ve üçüncü satırı 11,12,13 olan ve adı <code>mat1</code> olan bir numpy arrayi oluşturun.</li>
+<li>Bu matrisin 0. satırını ekrana yazdırın.</li>
+<li>Bu matrisin 2. sütununu ekrana yazdırın.</li>
+<li>Bu matisin 1. satırının 1. sütunundaki elemanı ekrana yazdırın.</li>
+<li>Bu matrisin elemanları <code>for</code> döngüsü kullanarak toplayın.</li>
+</ol>
+</section>
+<section id="problem-14" class="level2">
+<h2 class="anchored" data-anchor-id="problem-14">Problem 14</h2>
+<p><strong>Algoritmalar</strong></p>
+<ol type="1">
+<li><code>algo1</code> adında bir fonksiyon yazın. Bu fonksiyon bir sayı alsın ve o sayının faktöriyelini geri döndürsün.</li>
+<li><code>algo2</code> adında bir fonksiyon yazın. Bu fonksiyon bir sayı alsın ve o sayıya kadar olan tüm sayılara bölünüp bölünmediğini ekrana yazdırsın. Örn. 8 için 1’e, 2’ye, 4’e bölünür.</li>
+<li><code>algo3</code> adında bir fonksiyon yazın. Bu fonksiyon iki sayı alsın ve bu sayıdan büyük olanını ekrana yazdırsın.</li>
+<li><code>algo4</code> adında bir fonksiyon yazın. Bu fonksiyon bir array alsın ve arrayin ortasındaki elemanı ekrana yazdırsın. Örn: [1,2,3] -&gt; 2. Eğer arrayin eleman sayısı çift ise ortadaki iki elemanı ekrana yazdırın. Örn: [1,2,3,4] -&gt; 2,3</li>
+<li><code>algo5</code> adında bir fonksiyon yazın. Bu fonksiyon bir array alsın ve bu arrayin elemanlarının yerini tersten yazsın. Örn: [1,2,3] -&gt; [3,2,1]. (numpy’ın <code>reverse</code> özelliğini kullanmayın.)</li>
+<li><code>algo6</code> adında bir fonksiyon yazın. Bu fonksiyon bir arrayin içindeki elemanları küçükten büyüğe sıralasın. (numpy’ın <code>sort</code> özelliğini kullanmayın.)</li>
+<li><code>algo7</code> adında bir fonksiyon yazın. Bu fonksiyon bir array alsın ve elemanlarının simetriğindeki elemanları toplayıp ekrana yazdırsın. Örn: [1,3,5,9] -&gt; 1+9=10, 3+5=8. Eğer arrayin eleman sayısı tek ise ortadaki elemanı toplamadan ekrana yazdırsın. Örn: [1,3,5,9,11] -&gt; 1+11=12, 3+9=12, 5.</li>
+<li><code>algo8</code> adında bir fonksiyon yazın. Bu fonksiyon bir array alsın ve bu array her elemanını bir sonraki elemanla toplayıp bir array yaratsın. Örn. [1,2,3,4] -&gt; [1+2, 2+3, 3+4] -&gt; [3,5,7].</li>
+<li><code>algo9</code> adında bir fonksiyon yazın. bir matris alsın ve bu matrisin transpozunu geri döndürsün. (numpy’ın <code>T</code> özelliğini kullanmayın.)</li>
+<li><code>algo10</code> adında bir fonksiyon yazın. bir matris alsın ve bu matrisin elemanlarının toplamını geri döndürsün. (numpy’ın <code>sum</code> özelliğini kullanmayın.)</li>
+<li><code>algo11</code> adında bir fonksiyon yazın. iki matris alsın ve bu matrislerin çarpımını geri döndürsün. (numpy’ın <code>dot</code> özelliğini veya <code>@</code> özelliğini kullanmayın.)</li>
+</ol>
+</section>
+<section id="problem-15" class="level2">
+<h2 class="anchored" data-anchor-id="problem-15">Problem 15</h2>
+<p><strong>Formülden Algoritma Yazma</strong></p>
+<ol type="1">
+<li><code>algofonk1</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.</li>
+</ol>
+<p><span class="math display">\[f(x)=x^{2}+4x-7\]</span></p>
+<ol start="2" type="1">
+<li><code>algofonk2</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.</li>
+</ol>
+<p><span class="math display">\[f(x)=\frac{sin(x)}{x}\]</span></p>
+<ol start="3" type="1">
+<li><code>algofonk3</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.</li>
+</ol>
+<p><span class="math display">\[f(x)=\prod_{i=1}^{x}i=x!\]</span></p>
+<ol start="4" type="1">
+<li><code>algofonk4</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.</li>
+</ol>
+<p><span class="math display">\[f(x)=\sum_{i=0}^{x}i\]</span></p>
+<ol start="5" type="1">
+<li><code>algofonk5</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.</li>
+</ol>
+<p><span class="math display">\[f(x)=\sum_{i=0}^{x}\sqrt{i}\]</span></p>
+<ol start="6" type="1">
+<li><code>algofonk6</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.</li>
+</ol>
+<p><span class="math display">\[f(x)=\sum_{i=3}^{x-5}i^{2}\]</span></p>
+<ol start="7" type="1">
+<li><code>algofonk7</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.</li>
+</ol>
+<p><span class="math display">\[f(x,a)=\sum_{i=0}^{a}x\]</span></p>
+<ol start="8" type="1">
+<li><code>algofonk8</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.</li>
+</ol>
+<p><span class="math display">\[f(x,a,b)=\sum_{i=a}^{b}\frac{x \times i}{a \times b}\]</span></p>
+<ol start="9" type="1">
+<li><code>algofonk9</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada <code>x</code> bir array.</li>
+</ol>
+<p><span class="math display">\[f(x)=\sum_{i}x_{i}\]</span></p>
+<ol start="10" type="1">
+<li><code>algofonk10</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada <code>x</code> bir array.</li>
+</ol>
+<p><span class="math display">\[f(x)=\prod_{i}x_{i}\]</span></p>
+<ol start="11" type="1">
+<li><code>algofonk11</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada <code>x</code>, n boyutlu bir array.</li>
+</ol>
+<p><span class="math display">\[f(x)=\sum_{i}^{n-1}x_{i}+x_{i+1}\]</span></p>
+<ol start="12" type="1">
+<li><code>algofonk12</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada <code>x</code>, n boyutlu bir array.</li>
+</ol>
+<p><span class="math display">\[f(x,a,b)=\sum_{i=0}^{n-1}a \times x_{i}+b \times x_{i+1}\]</span></p>
+<ol start="13" type="1">
+<li><code>algofonk13</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada <code>g</code>, tek değişkenli bir fonksiyon.</li>
+</ol>
+<p><span class="math display">\[f(g)= g(3)\]</span></p>
+<ol start="14" type="1">
+<li><code>algofonk14</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada <code>g</code>, tek değişkenli bir fonksiyon ve <code>x</code> bir sayı.</li>
+</ol>
+<p><span class="math display">\[f(g,x)= g(3)\times x\]</span></p>
+<ol start="15" type="1">
+<li><code>algofonk15</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada <code>g</code>, tek değişkenli bir fonksiyon ve <code>x</code> bir sayı.</li>
+</ol>
+<p><span class="math display">\[f(g,x)= g(x)\times g(x)\]</span></p>
+<ol start="16" type="1">
+<li><code>algofonk16</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada <code>g</code>, tek değişkenli bir fonksiyon ve <code>x</code> n boyutlu bir array.</li>
+</ol>
+<p><span class="math display">\[f(g,x)= \frac{g(x_{0})+g(x_{1})}{2}\]</span></p>
+<ol start="17" type="1">
+<li><code>algofonk17</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada <code>g</code>, tek değişkenli bir fonksiyon ve <code>x</code> n boyutlu bir array.</li>
+</ol>
+<p><span class="math display">\[f(g,x)= \sum_{i=0}^{n}g(x_{i})\]</span></p>
+<ol start="18" type="1">
+<li><code>algofonk18</code> adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada <code>g</code>, tek değişkenli bir fonksiyon ve <code>x</code> n boyutlu bir array.</li>
+</ol>
+<p><span class="math display">\[f(g,x)= \sum_{i=0}^{n-1}g(x_{i})+g(x_{i-1})\]</span></p>
+</section>
+<section id="problem-16" class="level2">
+<h2 class="anchored" data-anchor-id="problem-16">Problem 16</h2>
+<p><strong>Zor Algoritmalar</strong></p>
+<ol type="1">
+<li><code>algoZor1</code> adında bir fonksiyon yazın. iki matris alsın ve bu matrislerin çarpımını ters bir şekilde yapsın. Yani birinci matrisin sütunları ile ikinci matrisin satırları çarpılsın. Bu fonksiyon sadece kare matrisler için çalışsın.</li>
+<li><code>algoZor2</code> adında bir fonksiyon yazın. Bu fonksiyon bir kompleks matris alsın. Bu matrisin hermisyen olup olmadığını kontrol edip sonucu ekrana yazdırsın. Yani kompleks konjugesinin transpozu (dagger’ı) kendine eşit mi değil mi kontrol etsin.</li>
+<li><code>algoZor3</code> adında bir fonksiyon yazın. Bu fonksiyon <code>x</code>, <code>y</code> ve <code>z</code> kartezyen koordinatlarını alsın ve bu koordinatları <code>r</code>, <code>theta</code> ve <code>phi</code> küresel koordinatlarına çevirip değerleri geri döndürsün.</li>
+<li><code>algoZor4</code> adında bir fonksiyon yazın. Bu fonksyion <code>vec2d</code> adında iki bileşenli array ve <code>theta</code> adında bir açı alsın. Bu fonksiyon <code>vec2d</code> vektörünü <code>theta</code> açısıyla döndürsün ve bu fonksiyon yeni dönmüş vektörü geri döndürsün.</li>
+<li><code>algoZor5</code> adında bir fonksiyon yazın. Bu fonksiyon <code>vec3d</code> adında bir üç bileşenli bir array, <code>theta</code> ve <code>phi</code> adında açılar alsın. Bu fonksiyon <code>vec3d</code> vektörünü <code>theta</code> ve <code>phi</code> açılarıyla döndürsün ve yeni dönmüş vektörü geri döndürsün.</li>
+<li><code>algoZor6</code> adında bir fonksiyon yazın. Bu fonksiyon <code>spinFermi</code> adında iki bileşenli bir array, <code>theta</code> adında bir açı, <code>xBool</code>, <code>yBool</code> ve <code>zBool</code> adlarında 3 adet mantıksal değişken alsın. Bu fonksiyon <code>spinFermi</code> fermion spin vektörünü Pauli-spin matrislerini kullanarak ile <code>theta</code> açısıyla döndürsün. Eğer <code>xBool</code> doğru ise <code>x</code> eksenine göre döndürsün, <code>yBool</code> doğru ise <code>y</code> eksenine göre döndürsün, <code>zBool</code> doğru ise <code>z</code> eksenine göre döndürsün. Bu fonksiyon döndürülen vektörü geri döndürsün.</li>
+<li><code>algoZor7</code> fonksiyonunu kullanarak Stern-Gerlach deneyini simüle edin. Bunun için spini <span class="math inline">\(z\)</span> yönünde olan bir parçacığın spin vektörünü önce <span class="math inline">\(x\)</span> yönünde, sonra da <span class="math inline">\(y\)</span> yönünde döndürün.</li>
+<li><code>algoZor8</code> adında bir fonksiyon yazın. Bu fonksiyon <code>hamilt</code> adında Hamiltonyen matrisini alsın ve enerji özdeğerlerini ve buna karşılık gelen özdurumları bulup ekrana yazdırsın.</li>
+<li><code>algoZor9</code> adında bir fonksiyon yazın. Bu fonksiyon <code>yuk</code> yük miktarı, <code>x</code>, <code>y</code> ve <code>z</code> koordinatlarını alsın ve bu yükün <span class="math inline">\(x,y,z\)</span> noktasındaki elektrostatik potansiyelini geri döndürsün.</li>
+<li><code>algoZor10</code> adında bir fonksiyon yazın. Bu fonksiyon <code>yuk1</code>, <code>yuk2</code> yük miktarlarını, <code>x</code>, <code>y</code> ve <code>z</code> aralarındaki mesafeyi veren koordinatları alsın ve bu iki yük arasındaki Coulomb kuvvetinin büyüklüğünü geri döndürsün.</li>
+<li><code>algoZor11</code> adında bir fonksiyon yazın. Bu fonksiyon düzgün yoğunluğa sahip bir sonsuz uzunluktaki bir çubuğun yük dağılımını veren fonksiyonu <code>yukDagılımıFonk</code>, <code>r</code> koordinatını alsın ve çubuktan <code>r</code> kadar uzaklıktaki elektrostik potansiyel değerini geri döndürsün. <code>yukDagılımıFonk</code> fonksiyonu <code>x</code> koordinatında yük dağılımının değerini veren bir fonksiyon olmalı.</li>
+</ol>
+</section>
+<section id="referanslar" class="level2">
+<h2 class="anchored" data-anchor-id="referanslar">Referanslar</h2>
+<ol type="1">
+<li><a href="https://www.programiz.com/python-programming/examples">https://www.programiz.com/python-programming/examples</a></li>
+<li><a href="https://www.freecodecamp.org/news/python-code-examples-sample-script-coding-tutorial-for-beginners/#-for-loops-in-python">https://www.freecodecamp.org/news/python-code-examples-sample-script-coding-tutorial-for-beginners/#-for-loops-in-python</a></li>
+<li>Algorithms in Python – Full Course for Beginners: <a href="https://www.youtube.com/watch?v=fW_OS3LGB9Q">https://www.youtube.com/watch?v=fW_OS3LGB9Q</a></li>
+<li>Vektör döndürme: <a href="https://stackoverflow.com/questions/14607640/rotating-a-vector-in-3d-space">https://stackoverflow.com/questions/14607640/rotating-a-vector-in-3d-space</a>, <a href="https://en.wikipedia.org/wiki/Euler%E2%80%93Rodrigues_formula">https://en.wikipedia.org/wiki/Euler%E2%80%93Rodrigues_formula</a></li>
+<li>Bir vektörü Pauli-Spin matrisleri ile döndürme: <a href="https://quantummechanics.ucsd.edu/ph130a/130_notes/node279.html">https://quantummechanics.ucsd.edu/ph130a/130_notes/node279.html</a></li>
+<li>Sonsuz uzunluktaki çubuğun elektrostatik potansiyeli: <a href="http://hyperphysics.phy-astr.gsu.edu/hbase/electric/potlin.html">http://hyperphysics.phy-astr.gsu.edu/hbase/electric/potlin.html</a></li>
 </ol>
 
 

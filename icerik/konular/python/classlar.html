@@ -564,9 +564,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>Özel olarak oluşturduğumuz modüller betik dosyası ile aynı klasörde olmalı. Aksi taktirde python modülü varsayılan yollara (path) bakacak ve oluşturduğunuz modülü bulamayacaktır. Modüllerin yolunu görmek için <code>sys.path</code> komutunu kullanabilirsiniz. Modülünüzün yolunu eklemek için <code>sys.path.append("modulun_yolu")</code> komutunu kullanabilirsiniz.</p>
 </blockquote>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">import</span> bizimModul as bm</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> bizimModul <span class="im">as</span> bm</span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="ex">print</span><span class="er">(</span><span class="ex">bm.pi</span><span class="kw">)</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="bu">print</span>(bm.pi)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Şimdi <code>bizimModul.py</code> dosyasına <code>toplama(a,b)</code> adında bir fonksiyon ekleyelim. Bu fonksiyon <code>a</code> ve <code>b</code> değişkenlerini alsın ve sonuç olarak <code>a+b</code> değerini döndürsün.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"def toplama(a,b):\n    return a+b"</span> <span class="op">&gt;&gt;</span> bizimModul.py</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="fu">cat</span> bizimModul.py</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>

@@ -584,23 +584,24 @@ window.Quarto = {
 <p>Taylor serisini hatırlayalım.</p>
 <p><span class="math display">\[
 \begin{align*}
-    f(x+h)= f(x) + f'(x)h + \frac{f''(x)}{2!}h^2 + \frac{f'''(x)}{3!}h^3 + \cdots \\
-    f(x+2h)= f(x) + f'(x)2h + \frac{f''(x)}{2!}(2h)^2 + \frac{f'''(x)}{3!}(2h)^3 + \cdots \\
-    f(x-h)= f(x) - f'(x)h + \frac{f''(x)}{2!}h^2 - \frac{f'''(x)}{3!}h^3 + \cdots \\
-    f(x+2h)= f(x) + f'(x)2h + \frac{f''(x)}{2!}(2h)^2 + \frac{f'''(x)}{3!}(2h)^3 + \cdots
+    f(x+h)=&amp; f(x) + f'(x)h + \frac{f''(x)}{2!}h^2 + \frac{f'''(x)}{3!}h^3 + \cdots \\
+    f(x+2h)=&amp; f(x) + f'(x)2h + \frac{f''(x)}{2!}(2h)^2 + \frac{f'''(x)}{3!}(2h)^3 + \cdots \\
+    f(x-h)=&amp; f(x) - f'(x)h + \frac{f''(x)}{2!}h^2 - \frac{f'''(x)}{3!}h^3 + \cdots \\
+    f(x+2h)=&amp; f(x) + f'(x)2h + \frac{f''(x)}{2!}(2h)^2 + \frac{f'''(x)}{3!}(2h)^3 + \cdots
 \end{align*}
 \]</span></p>
 <p>Denklemlerin sağ ve sol tarafları belirli şekillerde toplayalım.</p>
 <p><span class="math display">\[
 \begin{align*}
-    f(x+h) + f(x-h) = 2f(x) + 2\frac{f''(x)}{2!}h^2 + \cdots \\
-    f(x+h) - f(x-h) = 2f'(x)h + 2\frac{f'''(x)}{3!}h^3 + \cdots
+    f(x+h) + f(x-h) =&amp; 2f(x) + 2\frac{f''(x)}{2!}h^2 + \cdots \\
+    f(x+h) - f(x-h) =&amp; 2f'(x)h + 2\frac{f'''(x)}{3!}h^3 + \cdots
 \end{align*}
 \]</span></p>
+<p>ve</p>
 <p><span class="math display">\[
 \begin{align*}
-    f(x+2h) + f(x-2h) = 2f(x) + 2\frac{f''(x)}{2!}(2h)^2 + \cdots \\
-    f(x+2h) - f(x-2h) = 2f'(x)2h + 2\frac{f'''(x)}{3!}(2h)^3 + \cdots
+    f(x+2h) + f(x-2h) =&amp; 2f(x) + 2\frac{f''(x)}{2!}(2h)^2 + \cdots \\
+    f(x+2h) - f(x-2h) =&amp; 2f'(x)2h + 2\frac{f'''(x)}{3!}(2h)^3 + \cdots
 \end{align*}
 \]</span></p>
 <section id="ilk-merkezi-farklar-yaklaşıklığı-first-central-difference-approximation" class="level3">
@@ -940,7 +941,7 @@ window.Quarto = {
 </tbody>
 </table>
 <p>Bu verileri kullanarak arabanın hızını hesaplayalım.</p>
-<div id="08cd34a6" class="cell" data-execution_count="1">
+<div id="a796ffa2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -964,7 +965,7 @@ window.Quarto = {
 </div>
 <section id="türev-alma-fonksiyonu" class="level3">
 <h3 class="anchored" data-anchor-id="türev-alma-fonksiyonu">Türev Alma Fonksiyonu</h3>
-<div id="46da4427" class="cell" data-execution_count="2">
+<div id="e6dee219" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
@@ -1012,7 +1013,7 @@ window.Quarto = {
 </section>
 <section id="interpolasyon" class="level3">
 <h3 class="anchored" data-anchor-id="interpolasyon">İnterpolasyon</h3>
-<div id="7fbcb869" class="cell" data-execution_count="3">
+<div id="153afaef" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co"># Veriyi scipy ile interpolasyon yapalım. LAgrange polinomu kullanalım</span></span>

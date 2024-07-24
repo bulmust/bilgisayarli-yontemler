@@ -657,7 +657,7 @@ l_{i}(x)= \prod_{j=0, j \ne i}^{n} \frac{x-x_{j}}{x_{i}-x_{j}} \qquad \text{,} \
 <p>Benzer şekilde hata da her çizilen yamuk için farklı bir değer olacaktır.</p>
 <section id="trapezoid-kuralının-uygulaması" class="level3">
 <h3 class="anchored" data-anchor-id="trapezoid-kuralının-uygulaması">Trapezoid Kuralının Uygulaması</h3>
-<div id="8d26b5d7" class="cell" data-execution_count="1">
+<div id="946353f4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> scipy.integrate <span class="im">as</span> scpInt</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -705,7 +705,7 @@ scipy.integrate.quad() ile f(x)=x^2 nin 0,1 arasındaki integralin hata payı 3.
 <p><span class="math display">\[\int_{0}^{1} e^{-4x^{2}} dx\]</span></p>
 <section id="çözüm" class="level4">
 <h4 class="anchored" data-anchor-id="çözüm">Çözüm</h4>
-<div id="6828d53f" class="cell" data-execution_count="2">
+<div id="66bf3750" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> scipy.integrate <span class="im">as</span> scpInt</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
@@ -770,7 +770,7 @@ l_{i}(x)= \prod_{j=0, j \ne i}^{n} \frac{x-x_{j}}{x_{i}-x_{j}} \qquad \text{,} \
 </section>
 <section id="simpson-kuralının-uygulaması" class="level2">
 <h2 class="anchored" data-anchor-id="simpson-kuralının-uygulaması">Simpson Kuralının Uygulaması</h2>
-<div id="f427dd6f" class="cell" data-execution_count="3">
+<div id="085d832b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> scipy.integrate <span class="im">as</span> scpInt</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-3"><a href="#cb5-3"></a></span>
@@ -822,7 +822,7 @@ Trapozoidal kuralı ile x^2 nin integrali: 0.33499999999999996
 <p><span class="math display">\[\int_{0}^{1} e^{-4x^{2}} dx\]</span></p>
 <section id="çözüm-1" class="level4">
 <h4 class="anchored" data-anchor-id="çözüm-1">Çözüm</h4>
-<div id="38b79b25" class="cell" data-execution_count="4">
+<div id="cf95d61f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Simpson 1/3 Kuralı</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="kw">def</span> integral_simpson(fonk, solSinir, sagSinir, adimSayisi):</span>
 <span id="cb7-3"><a href="#cb7-3"></a>    h<span class="op">=</span> (sagSinir<span class="op">-</span>solSinir)<span class="op">/</span> adimSayisi</span>
@@ -855,7 +855,7 @@ Trapozoidal kuralı ile x^2 nin integrali: 0.33499999999999996
 <p><span class="math display">\[
 \pi= 2 \times\int_{-1}^{1} \sqrt{1-x^{2}} dx
 \]</span></p>
-<div id="ddc68476" class="cell" data-execution_count="5">
+<div id="a7facf90" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> scipy.integrate <span class="im">as</span> scpInt</span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-3"><a href="#cb9-3"></a></span>
@@ -894,7 +894,7 @@ Simpson 1/3 Kuralı ile f(x)=sqrt(1-x^2) nin -1,1 arasındaki integrali 3.14029
 scipy.integrate.quad() ile f(x)=sqrt(1-x^2) nin -1,1 arasındaki integrali 3.14159</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2773/3989509976.py:28: RuntimeWarning: invalid value encountered in sqrt
+<pre><code>/tmp/ipykernel_2248/3989509976.py:28: RuntimeWarning: invalid value encountered in sqrt
   return np.sqrt(1-x**2)</code></pre>
 </div>
 </div>
@@ -928,7 +928,7 @@ scipy.integrate.quad() ile f(x)=sqrt(1-x^2) nin -1,1 arasındaki integrali 3.141
 <span id="cb12-4"><a href="#cb12-4"></a>np.random.randint() <span class="co"># belirtilen aralıkta rastgele tam sayı üretir</span></span>
 <span id="cb12-5"><a href="#cb12-5"></a>np.random.uniform() <span class="co"># belirtilen aralıkta rastgele sayı üretir</span></span>
 <span id="cb12-6"><a href="#cb12-6"></a>np.random.choice() <span class="co"># belirtilen diziden rastgele eleman seçer</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="19270e94" class="cell" data-execution_count="6">
+<div id="974b590e" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="co"># 0 ile 10 arasında 5 sayı üretir</span></span>
 <span id="cb13-3"><a href="#cb13-3"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">0 ile 10 arasında (10 hariç) 5 sayı:</span><span class="ch">\n</span><span class="st">np.random.uniform(0,10, size=(5))</span><span class="ch">\n</span><span class="st">'</span>, np.random.uniform(<span class="dv">0</span>,<span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">5</span>)))</span>
@@ -942,22 +942,22 @@ scipy.integrate.quad() ile f(x)=sqrt(1-x^2) nin -1,1 arasındaki integrali 3.141
 <pre><code>
 0 ile 10 arasında (10 hariç) 5 sayı:
 np.random.uniform(0,10, size=(5))
- [6.57605569 0.66005657 8.75411028 0.49003055 9.36970173]
+ [8.53105807 1.35450564 1.84384833 1.51503537 9.18601343]
 
 0 ile 10 arasında (10 hariç) 5x2 matris:
 np.random.uniform(0,10, size=(5,2))
- [[4.1001694  0.72523002]
- [8.54768661 2.24543038]
- [0.27978125 0.43355609]
- [2.23171126 3.51458777]
- [3.83926698 5.26379877]]
+ [[5.63526382 5.70515854]
+ [4.39741621 4.57634253]
+ [0.22051962 1.97690914]
+ [9.06720433 4.23072609]
+ [4.52260293 2.59821151]]
 
 ["Yazı", "Tura"]"yı rastgele seçer:
 np.random.choice(["Yazı", "Tura"])
- Yazı</code></pre>
+ Tura</code></pre>
 </div>
 </div>
-<div id="9f637469" class="cell" data-execution_count="7">
+<div id="d87ba634" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a href="#cb15-2"></a></span>
 <span id="cb15-3"><a href="#cb15-3"></a><span class="co"># np.random modülü ile rastgele sayı üretir.</span></span>
@@ -975,26 +975,26 @@ np.random.choice(["Yazı", "Tura"])
 <pre><code>
 0 ile 1 (1 hariç) arasında 5 sayı:
 np.random.rand(5)
- [0.4103388  0.47851424 0.4051463  0.45603509 0.34891674]
+ [0.10786975 0.0044106  0.24252766 0.4648712  0.53888534]
 
 0 ile 1 arasında (1 hariç) 5x2 matrisi:
 np.random.rand(5,2)
- [[0.96417645 0.48875945]
- [0.78213669 0.93415798]
- [0.34685658 0.62210072]
- [0.65755461 0.79276017]
- [0.40320692 0.13946686]]
+ [[0.86110856 0.7977018 ]
+ [0.97735493 0.59055132]
+ [0.88056055 0.69951292]
+ [0.24204802 0.81301987]
+ [0.83356482 0.93058774]]
 
 0 ile 10 arasında (10 hariç) 5 **tam sayı**:
 np.random.randint(0,10,5)
- [6 1 0 5 2]
+ [6 0 0 7 2]
 0 ile 10 arasında (10 hariç) 5 **tam sayı**:
 np.random.randint(10, size=(5))
- [8 2 6 4 5]</code></pre>
+ [1 8 6 3 5]</code></pre>
 </div>
 </div>
 <p>Şimdi pi sayısını hesaplayalım.</p>
-<div id="ab7853dc" class="cell" data-execution_count="8">
+<div id="6022344a" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Pi sayısının hesaplanması</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb17-3"><a href="#cb17-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1054,10 +1054,10 @@ np.random.randint(10, size=(5))
 <span id="cb17-57"><a href="#cb17-57"></a>plt.close()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Toplam Nokta sayısı            : 1000
-Dairenin içindeki nokta sayısı : 787
-Dairenin dışındaki nokta sayısı: 213
+Dairenin içindeki nokta sayısı : 779
+Dairenin dışındaki nokta sayısı: 221
 ---
-Pi sayısı: 3.148</code></pre>
+Pi sayısı: 3.116</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1070,16 +1070,16 @@ Pi sayısı: 3.148</code></pre>
 </section>
 <section id="monte-carlo-integrali" class="level3">
 <h3 class="anchored" data-anchor-id="monte-carlo-integrali">Monte Carlo İntegrali</h3>
-<p>Monte Carlo integrali için genel olarak bir $ f $ fonksiyonunun ortalamasını yazalım <a href="https://en.wikipedia.org/wiki/Mean_of_a_function">[2]</a>.</p>
+<p>Monte Carlo integrali için genel olarak bir <span class="math inline">\(f\)</span> fonksiyonunun ortalamasını yazalım <a href="https://en.wikipedia.org/wiki/Mean_of_a_function">[2]</a>.</p>
 <p><span class="math display">\[ &lt;f&gt; = \frac{1}{b-a}\int^{b}_{a}f(x)dx \]</span></p>
 <p><span class="math display">\[ (b-a)&lt;f&gt; = \int^{b}_{a}f(x)dx \]</span></p>
-<p>Tıpkı diğer sayısal integral alma yöntemlerinde olduğu gibi burada da adım aralığını kesikli hale getirmemiz gerekiyor. Bunun için denklemin sol tarafını $ N $ adet eşit olmayan aralığa bölelim. Bu durumda ortalama fonksiyon $ <f> $ de $ N $ adet aralığa bölmemiz gerekecek.</f></p>
+<p>Tıpkı diğer sayısal integral alma yöntemlerinde olduğu gibi burada da adım aralığını kesikli hale getirmemiz gerekiyor. Bunun için denklemin sol tarafını <span class="math inline">\(N\)</span> adet eşit olmayan aralığa bölelim. Bu durumda ortalama fonksiyon <span class="math inline">\(&lt;f&gt;\)</span> de <span class="math inline">\(N\)</span> adet aralığa bölmemiz gerekecek.</p>
 <p><span class="math display">\[ (b-a)\frac{1}{N} \sum_{i}f(x_{i}) = \int^{b}_{a}f(x)dx \]</span></p>
-<p>Burada $ x_{i} $’ler $ [a,b] $ aralığında <strong>rastgele seçilmiş noktalardır.</strong> Bu noktalardan $ N $ adet seçtiğimiz için $ <em>{i}f(x</em>{i}) $ ifadesi $ <f> $’in bir yaklaşımı olacaktır. Sonucun doğruluğunu arttırmak için $ N $ sayısının büyüklüğünü arttırmak gerekir.</f></p>
-<p>Elde ettiğimiz denklemin sağ tarafında integral ifadesi olduğu için, herhangi bir $ f(x) $ fonksiyonun $ [a,b] $ aralığındaki integrali, denklemin sol tarafına eşittir diyebiliriz.</p>
-<p>Burada seçilen $ x_{i} $ noktaları eşit aralıklarla değil, rastgeledir. Yani $ x_{i} $’lerin birbirlerine olan uzaklıkları eşit değildir. Bundan dolayı fonksiyonun bazı kısımları hızlı değişip bazı kısımları daha yavaş değişiyorsa, Monte-Carlo integrali daha kullanışlı olacaktır.</p>
+<p>Burada <span class="math inline">\(x_{i}\)</span>’ler <span class="math inline">\([a,b]\)</span> aralığında <strong>rastgele seçilmiş noktalardır.</strong> Bu noktalardan $ N $ adet seçtiğimiz için <span class="math inline">\(\frac{1}{N} \sum_{i}f(x_{i})\)</span> ifadesi <span class="math inline">\(&lt;f&gt;\)</span>’in bir yaklaşımı olacaktır. Sonucun doğruluğunu arttırmak için <span class="math inline">\(N\)</span> sayısının büyüklüğünü arttırmak gerekir.</p>
+<p>Elde ettiğimiz denklemin sağ tarafında integral ifadesi olduğu için, herhangi bir <span class="math inline">\(f(x)\)</span> fonksiyonun <span class="math inline">\([a,b]\)</span> aralığındaki integrali, denklemin sol tarafına eşittir diyebiliriz.</p>
+<p>Burada seçilen <span class="math inline">\(x_{i}\)</span> noktaları eşit aralıklarla değil, rastgeledir. Yani <span class="math inline">\(x_{i}\)</span>’lerin birbirlerine olan uzaklıkları eşit değildir. Bundan dolayı fonksiyonun bazı kısımları hızlı değişip bazı kısımları daha yavaş değişiyorsa, Monte-Carlo integrali daha kullanışlı olacaktır.</p>
 <p>Bu yaklaşımı kullanarak bir fonksiyon yazalım.</p>
-<div id="b9bdac68" class="cell" data-execution_count="9">
+<div id="574945f4" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb19-3"><a href="#cb19-3"></a></span>
@@ -1123,9 +1123,9 @@ Pi sayısı: 3.148</code></pre>
 <span id="cb19-41"><a href="#cb19-41"></a>plt.show()</span>
 <span id="cb19-42"><a href="#cb19-42"></a>plt.close()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Monte-Carlo İntegral Yöntemi ile hesaplanan x^2 integral: 0.3338566039725535
+<pre><code>Monte-Carlo İntegral Yöntemi ile hesaplanan x^2 integral: 0.33315736291290104
 Gerçek integral değeri                                  : 0.3333333333333333
-Monte-Carlo İntegral Yöntemi ile hesaplanan cos(x) integral: 0.9996573376630894
+Monte-Carlo İntegral Yöntemi ile hesaplanan cos(x) integral: 0.9976850482942767
 Gerçek integral değeri                                     : 1.0</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -1140,12 +1140,13 @@ Gerçek integral değeri                                     : 1.0</code></pre>
 </section>
 <section id="alıştırma-3" class="level2">
 <h2 class="anchored" data-anchor-id="alıştırma-3">Alıştırma</h2>
-<p>Aşağıdaki integrali Monte-Carlo integral yöntemiyle hesaplayın. <span class="math display">\[
+<p>Aşağıdaki integrali Monte-Carlo integral yöntemiyle hesaplayın.</p>
+<p><span class="math display">\[
 \int^{1}_{0}\int^{1}_{0}yx^{2}dxdy
 \]</span></p>
 <section id="çözüm-2" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm-2">Çözüm</h3>
-<div id="ec895ac1" class="cell" data-execution_count="10">
+<div id="91796dbb" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb21-2"><a href="#cb21-2"></a></span>
 <span id="cb21-3"><a href="#cb21-3"></a><span class="co"># Monte-Carlo İntegral Yöntemi</span></span>

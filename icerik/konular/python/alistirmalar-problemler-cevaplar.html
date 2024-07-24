@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>BDP - İkinci Dereceden Diferansiyel Denklemler – Bilgisayarlı Yöntemler</title>
+<title>Alıştırmalar ve Problemler – Bilgisayarlı Yöntemler</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -55,27 +55,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -85,8 +65,6 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" rel="next">
-<link href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" rel="prev">
 <link href="../../../resimler/favicon.png" rel="icon" type="image/png">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
@@ -169,7 +147,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html">BDP - İkinci Dereceden Diferansiyel Denklemler</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Alıştırmalar ve Problemler</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Aramak" onclick="window.quartoOpenSearch();">
@@ -382,7 +360,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - İkinci Dereceden Diferansiyel Denklemler</span></a>
   </div>
 </li>
@@ -547,30 +525,32 @@ window.Quarto = {
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#bdp---ikinci-dereceden-diferansiyel-denklemler" id="toc-bdp---ikinci-dereceden-diferansiyel-denklemler" class="nav-link active" data-scroll-target="#bdp---ikinci-dereceden-diferansiyel-denklemler">BDP - İkinci Dereceden Diferansiyel Denklemler</a></li>
-  <li><a href="#sec-alistirma1" id="toc-sec-alistirma1" class="nav-link" data-scroll-target="#sec-alistirma1">Alıştırma 1</a>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
+  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
+  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
+  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a>
   <ul class="collapse">
   <li><a href="#çözüm" id="toc-çözüm" class="nav-link" data-scroll-target="#çözüm">Çözüm</a></li>
   </ul></li>
-  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
+  <li><a href="#problem-7" id="toc-problem-7" class="nav-link" data-scroll-target="#problem-7">Problem 7</a>
   <ul class="collapse">
-  <li><a href="#sec-problem1" id="toc-sec-problem1" class="nav-link" data-scroll-target="#sec-problem1">Problem 1</a></li>
-  <li><a href="#sec-problem2" id="toc-sec-problem2" class="nav-link" data-scroll-target="#sec-problem2">Problem 2</a></li>
-  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
-  <li><a href="#sec-problem4" id="toc-sec-problem4" class="nav-link" data-scroll-target="#sec-problem4">Problem 4</a></li>
-  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
-  <li><a href="#problem-6" id="toc-problem-6" class="nav-link" data-scroll-target="#problem-6">Problem 6</a></li>
-  <li><a href="#problem-7" id="toc-problem-7" class="nav-link" data-scroll-target="#problem-7">Problem 7</a></li>
+  <li><a href="#çözüm-1" id="toc-çözüm-1" class="nav-link" data-scroll-target="#çözüm-1">Çözüm</a></li>
+  </ul></li>
+  <li><a href="#problem-8" id="toc-problem-8" class="nav-link" data-scroll-target="#problem-8">Problem 8</a>
+  <ul class="collapse">
+  <li><a href="#çözüm-2" id="toc-çözüm-2" class="nav-link" data-scroll-target="#çözüm-2">Çözüm</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/python/alistirmalar-problemler-cevaplar.md" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler.html">Adi Diferansiyel Denklemler</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html">BDP - İkinci Dereceden Diferansiyel Denklemler</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BDP - İkinci Dereceden Diferansiyel Denklemler</h1>
+<h1 class="title">Alıştırmalar ve Problemler</h1>
 </div>
 
 
@@ -599,164 +579,335 @@ window.Quarto = {
 </header>
 
 
-<section id="bdp---ikinci-dereceden-diferansiyel-denklemler" class="level2">
-<h2 class="anchored" data-anchor-id="bdp---ikinci-dereceden-diferansiyel-denklemler">BDP - İkinci Dereceden Diferansiyel Denklemler</h2>
-<p>İkinci dereceden diferansiyel denklemleri çözmek için Euler yöntemini iki kere kullanmak gerekir. Örneğin,</p>
-<p><span class="math display">\[
-y''(x)+4y(x)=0
-\]</span></p>
-<p>İlk adımda <span class="math inline">\(y''\)</span> türevi yerine <span class="math inline">\(v(x) \equiv y'(x)\)</span> tanımlaması yapalım bu durumda denklem şu şekilde olur.</p>
-<p><span class="math display">\[
-v'(x)=-4y
-\]</span></p>
-<p>Yukarıdaki denklem birinci dereceden bir diferansiyel denklem olduğu için Euler yöntemi ile çözülebilir. Bu denklemi çözdükten sonra <span class="math inline">\(y(x)\)</span> fonksiyonunu bulmak için <span class="math inline">\(y'(x)\equiv v(x)\)</span> denklemini çözmemiz gerekir. Sonuç olarak ikinci dereceden diferansiyel denklemi 2 adet birbirine bağlı dif. denk. sistemi olarak düşünebiliriz.</p>
-<p>Dikkat edilmesi gereken husus başlangıç koşullarının <span class="math inline">\(y(x)\)</span> ve <span class="math inline">\(v(x)\)</span> fonksiyonları için yazmaktır. İkinci dereden bir diferansiyel denklemin çözümünü bulabilmek için hem <span class="math inline">\(y(x_{0})\)</span> hem de <span class="math inline">\(y'(x_{0})=v(x_{0})\)</span> koşullarına ihtiyaç vardır.</p>
-<p>İkinci dereceden diferansiyel denklemleri çözmek üst üste Euler çözücü fonksiyonu çağırmak yerine denklemi vektörel bir şekilde yazabiliriz.</p>
+<section id="problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
+<p>Kullanıcıdan dört sayı isteyin. Kullanıcının girdiği sayıları <code>float</code> formatına çevirin.</p>
+<ol type="1">
+<li>Kullanıcının girdiği sayıları sırayla bir listeye yerleştirin. Yani 4 elemanlı tek boyutlu bir listenin elemanlarını kullanıcıya doldurtun. Listeyi ekrana yazdırın.</li>
+<li>Bu listenin tüm elemanlarının iki katını, <code>for</code> döngüsü kullanarak elde edin ve sonucu ekrana yazdırın.</li>
+<li>Eğer girilen sayılardan en az bir tanesi 5’ten büyükse ekrana <code>... sayıları 5'ten büyüktür.</code> yazsın. Burada “…” yerine kullanıcının girdiği sayılar yazsın. Aksi taktirde <code>5'ten büyük sayı girmediniz.</code> yazsın.</li>
+</ol>
 </section>
-<section id="sec-alistirma1" class="level2">
-<h2 class="anchored" data-anchor-id="sec-alistirma1">Alıştırma 1</h2>
-<p>Sürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton’un ikinci yasasını kullanarak çizin. <span class="math inline">\(g=9.81\)</span> m/s <span class="math inline">\(^{2}\)</span> sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları <span class="math inline">\(v(0)=0\)</span> ve <span class="math inline">\(y(0)=100\)</span> olsun. Çözümü <span class="math inline">\(n=100\)</span> s adımda yapın. Zaman aralığı <span class="math inline">\(t=0\)</span> s’den <span class="math inline">\(t=10\)</span> s’ye kadar olsun.</p>
+<section id="problem-2" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
+<p>Bir liste oluşturun ve o listenin elemanları <code>4, 8, 15, 16, 23, 42</code> olsun. <code>for</code> döngüsü ve <code>.append()</code> fonksiyonu kullanarak listenin sonuna 1’den 80’a kadar sayılar ekleyin. Elde ettiğiniz yeni listenin adı <code>yeniListe</code> olsun.</p>
+<ol type="1">
+<li>Bilgilendirme: <code>[3,7]</code> listesinin birinci elemanı <code>7</code>’dir. <code>yeniListe</code> listenin birinci, beşinci ve son elemanını ekrana yazdırın.</li>
+<li><code>yeniListe</code> listesinin son beş elemanını ekrana yazdırın.</li>
+<li><code>yeniListe</code> listesinin son elli elemanının toplamını ekrana yazdırın.</li>
+<li><code>yeniListe</code> listesinin son elli elemanının çarpımını ekrana yazdırın.</li>
+<li><code>yeniListe</code> listesindeki tüm çift elemanları yerine <code>True</code>, tüm tek elemanları yerine <code>False</code> yazın.</li>
+<li><code>yeniListe</code> listesinin elemanlarını alt alta olacak şekilde <code>yeniListe.txt</code> dosyasına yazdırın.</li>
+</ol>
+</section>
+<section id="problem-3" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<ol type="1">
+<li><span class="math inline">\(1\)</span>’den <span class="math inline">\(42\)</span> sayısına kadar olan tüm sayıları toplayın. Sonu ekrana yazdırın.</li>
+<li><span class="math inline">\(1\)</span>’den <span class="math inline">\(42\)</span> sayısına kadar olan tüm çift sayıları toplayın. Ekrana yazdırın.</li>
+<li><span class="math inline">\(1\)</span>’den <span class="math inline">\(89\)</span>’a kadar (<span class="math inline">\(89\)</span> dahil) olan tüm sayıları <code>for</code> döngüsünü kullanarak ekrana yazdıran bir betik yazın. Bu döngü, 18’de duracak şekilde olsun.</li>
+</ol>
+</section>
+<section id="problem-4" class="level2">
+<h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
+<ol type="1">
+<li>Bir fonksiyon yazın. Bu fonksiyon ekrana sadece <code>Naber Dünyalı?</code> yazdırsın.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon ekrana <code>Merhaba Dünyalı. Ben $100$'a kadar saymayı biliyorum.</code> yazsın ardından ekrana <span class="math inline">\(0\)</span>’dan <span class="math inline">\(100\)</span>’e kadar (<span class="math inline">\(100\)</span> dahil) tüm sayıları yazdırsın.</li>
+<li>Bir fonksiyon yazın. Bu fonksyion bir adet değişkeni alsın (Ör. <code>fonksiyon1(sayi)</code>) ve karesini geri döndürsün.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon bir adet değişkeni alsın. <code>a sayısının kübü ...</code> yazsın ve kübünü geri döndürsün. Burada “a” fonksiyonun aldığı değişken ve “…” o değişkenin kübü olacaktır.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon iki adet değişken alsın. Birinci değişkenden ikinci değişkene kadar olan tüm sayıların toplamını ekrana yazdırsın ve değerini döndürsün.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon bir adet değişken alsın. Girilen değişken <span class="math inline">\(x^2-1=0\)</span> denkleminin çözümü ise <code>True</code> değil ise <code>False</code> döndürsün.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon beş adet değişken alsın. Bu değişkenler bir cismin uzay-zaman koordinatları <strong>x,y,z,t</strong> ve x eksenine göre göreli (rölatif) <strong>hızı</strong> olsun. Eğer hız değişkenin değeri ışık hızından büyükse ekrana bunun mümkün olamayacağını yazsın. Eğer hız değişkeni ışık hızından küçükse, uzay-zaman koordinatlarının yere göre (duran gözlemci) ne olacağını hesaplasın ve yeni koordinatları ekrana yazdırsın. Bunun için <a href="https://tr.wikipedia.org/wiki/Lorentz_d%C3%B6n%C3%BC%C5%9F%C3%BCm%C3%BC">Lorentz Dönüşümünü</a> kullanmanız gerekir. Buna ek olarak fonksiyon Galileo Dönüşümüne göre ne olacağını da hesaplasın ve ekrana yazdırsın. Fonksiyon, Lorentz dönüşümü ile elde ettiğiniz yeni uzay-zaman koordinatlarını döndürsün.</li>
+</ol>
+</section>
+<section id="problem-5" class="level2">
+<h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<p><strong>Modül</strong></p>
+<p>Aşağıdaki soruları, oluşturduğunuz <code>fiz365.py</code> dosyası içerisine cevaplayın. Ardından <code>calistir.py</code> adında bir betik dosyasında yazdıklarınızı çağırın.</p>
+<ol type="1">
+<li><code>fiz365.py</code> dosyasının içerisine <code>numpy</code> modülünü <code>np</code> ismiyle çağırın.</li>
+<li><code>faktoriyel()</code> adında bir fonksiyon yazın. Bu fonksiyon bir tam sayı alsın ve o sayının faktöriyelini döndürsün. Eğer verilen sayı tam sayı değilse <code>False</code> değeri döndürsün.
+<ol type="1">
+<li><code>isinstance(sayi, int)</code> fonksiyonu, <code>sayi</code> degiskeninin <code>int</code> tipinde olup olmadığını sınar. Eğer <code>int</code> ise <code>True</code> değeri döndürür. Eğer değilse <code>False</code> değeri döndürür.</li>
+</ol></li>
+<li><code>topla()</code> adında bir fonksyion yazın. Bu fonksyion bir tam sayı alsın ve birden o sayıya kadar olan tüm tam sayıların toplamını döndürsün. Eğer sayı tam sayı değilse <code>False</code> değeri döndürsün.</li>
+<li><code>obeb()</code> adında bir fonksyion yazın. Bu fonksyion iki tam sayı alsın ve o sayıların ortak bölenlerinin en büyüğünü döndürsün. Eğer verilen sayı tam sayı değilse <code>False</code> değeri döndürsün.</li>
+<li><code>okek()</code> adında bir fonksyion yazın. Bu fonksyion iki tam sayı alsın ve o sayıların ortak katlarının en küçüğünü döndürsün. Eğer verilen sayı tam sayı değilse <code>False</code> değeri döndürsün.</li>
+<li><code>dik_mi()</code> adında bir fonksyion yazın. Bu fonksiyon üç sayı alsın ve bu üç sayıdan bir dik üçgen oluşuyor mu denesin. Eğer oluşuyorsa <code>True</code> dönmüyorsa <code>False</code> değeri döndürsün.
+<ol type="1">
+<li>Sayıları sıralamak için <code>np.sort([sayi1, sayi2])</code> fonksiyonunu kullanabilirsiniz.</li>
+</ol></li>
+<li><code>calistir.py</code> dosyası içerisine <code>fiz365</code> modülünü <code>f365</code> ismi ile çağırın ve aşağıdaki fonksiyonları çalıştırın. Çıktılarını ekrana ne olduklarını belirterek yazdırın.
+<ol type="1">
+<li><code>faktoriyel(5)</code>, <code>faktoriyel(5.5)</code></li>
+<li><code>topla(5)</code>, <code>topla(5.5)</code></li>
+<li><code>obeb(12, 28)</code>, <code>obeb(12, 28.5)</code></li>
+<li><code>okek(8, 28)</code>, <code>okek(8, 28.5)</code>, <code>okek(8.3, 28)</code>. Sonuç neden tam sayı yani <code>int</code> şeklinde değil de <code>.0</code> şeklinde oluyor? Açıklayınız.</li>
+<li><code>dik_mi(3, 5, 4)</code>, <code>dik_mi(3, 4, 6)</code></li>
+</ol></li>
+<li><code>fizik365.py</code> dosyasını kaydedin ve yedekleyin. Bu dosyayı dersin geri kalanında kullanacağız.</li>
+</ol>
+</section>
+<section id="problem-6" class="level2">
+<h2 class="anchored" data-anchor-id="problem-6">Problem 6</h2>
+<p><strong>Karışık Alıştırmalar</strong></p>
+<p>Aşağıdaki sorularda fonksiyonları yazın. Ardından uygun değerler için fonksyionları çağırın ve çıktısını ekrana yazdırın.</p>
+<ol type="1">
+<li>Bir fonksiyon yazın. Bu fonksiyon iki adet değişken alsın. Birinci değişkenden ikinci değişkene kadar (ikinci değişken dahil değil) olan tüm sayıların toplamını ekrana yazdırsın ve değerini döndürsün.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon bir adet değişken alsın. Girilen değişken <span class="math inline">\(x^3+2x^2-x-1=0\)</span> denkleminin çözümü ise <code>True</code> değil ise <code>False</code> döndürsün.</li>
+<li>Bir fonksyion yazın. Bu fonksiyon bir adet değişken alsın. Bu değişken <strong>uzaklık</strong> gibi olsun ve 1 boyutlu negatif elektrik yükünün girilen (değişken) uzaklıktaki elektrik potansiyelini birimiyle beraber ekrana yazdırsın ve değerini döndürsün.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon iki adet değişken alsın. Birinci değişken <strong>konumdaki belirsizlik</strong> gibi olsun.İkinci değişken de <strong>momentumdaki belirsizlik</strong> gibi olsun. Girilen değerleri Heisenberg Belirsizlik İlkesine uyup uymadığını kontrol etsin. Eğer uyuyorsa <code>True</code> eğer uymuyorsa <code>False</code> döndürsün.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon üç adet değişken alsın. Bu değişkenler; <strong>kütle 1</strong>, <strong>kütle 2</strong> ve <strong>uzaklık</strong> olsun. Fonksiyonda, girilen kütle ve uzaklık değerleri kullanılarak iki kütle arasında oluşan çekim kuvvetinin değerini birimiyle beraber ekrana yazdırsın. Sonuç değerini de döndürsün.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon dört adet değişken alsın. Bu değişkenler; <strong>ilk uzaklık</strong>, <strong>ilk hız</strong>, <strong>zaman</strong> ve <strong>ivme</strong> olsun. Fonksiyonda, girilen değerler kullanılarak, başlangıçta <span class="math inline">\(x_0\)</span> konumunda olan ve ilk hızı <span class="math inline">\(v_0\)</span> olan bir cismin <span class="math inline">\(a\)</span> ivmesi altında <span class="math inline">\(t\)</span> saniye sonra hangi konumda olacağı belirlensin. Sonucu birimiyle beraber ekrana yazdırın. Sonuç değerini döndürsün. Burada tüm büyüklüklükler skalerdir.</li>
+<li>Bir fonksiyon yazın. Bu fonksiyon iki adet değişken alsın. Bu değişkenler; <strong>başlangıç hızı</strong> ve <strong>atış açısı</strong> olsun. Fonksiyonda, yatay düzlemde, <span class="math inline">\(v_0\)</span> ile <span class="math inline">\(\theta\)</span> açısıyla atılan bir cismin hangi konumda tekrar yatay düzlemde olacağı bulunsun. Atıştan sonra hangi konumda olduğu, havada geçirdiği süre ve maksimum çıkabileceği yükseklik ekrana yazdırılsın. Bu üç değerden oluşan bir tuple oluşturun. Fonksiyon bu tuple’ı döndürsün. Burada tüm büyüklüklükler skalerdir.</li>
+</ol>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="79997dc1" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">################################################</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co">## Modül yolunu varsayılan yol olarak ekleme ve modülü içe aktarma</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> os</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> sys</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Bu dosyanın bulunduğu dizini al</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>current_dir <span class="op">=</span> os.path.abspath(<span class="st">''</span>)</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co"># 3 üst dizine çık</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>module_dir <span class="op">=</span> os.path.join(os.path.abspath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir)), <span class="st">'moduller'</span>)</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># moduller dizinini yol olarak ekle</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>sys.path.append(module_dir)</span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># bilYonMod.py modülünü içe aktar</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="im">import</span> bilYonMod <span class="im">as</span> bym</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co">################################################</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co"># Global değişkenler</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a>g<span class="op">=</span><span class="fl">9.81</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="co"># Denklemin sağ tarafı</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="kw">def</span> F(yVek, x):</span>
-<span id="cb1-21"><a href="#cb1-21"></a>    <span class="co"># F=m*a</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a>    <span class="co"># F=m*y''(t)</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a>    <span class="co"># -g=y''(t)</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a>    <span class="co"># y'(t)=v(t)</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a>    <span class="co"># v'(t)=-g</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a>    <span class="cf">return</span> np.array([yVek[<span class="dv">1</span>], <span class="op">-</span>g])</span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># Başlangıç koşulları</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a>x0<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a>yVek<span class="op">=</span>np.array([<span class="dv">100</span>, <span class="dv">0</span>])</span>
-<span id="cb1-30"><a href="#cb1-30"></a>xStop<span class="op">=</span><span class="dv">5</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a>n<span class="op">=</span><span class="dv">100</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a><span class="co"># Çöz</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a>xTum, yVekTum <span class="op">=</span> bym.add_coz_euler_sistem(F, x0, xStop, yVek, n)</span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="co"># Analitik çözüm</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a><span class="co"># y(t) = y0 + v0*t - (1/2)*g*t^2</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a><span class="co"># v(t) = v0 - g*t</span></span>
-<span id="cb1-37"><a href="#cb1-37"></a>yAnalitik<span class="op">=</span> yVek[<span class="dv">0</span>] <span class="op">+</span> yVek[<span class="dv">1</span>]<span class="op">*</span>xTum <span class="op">-</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>g<span class="op">*</span>xTum<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb1-38"><a href="#cb1-38"></a>vAnalitik<span class="op">=</span> yVek[<span class="dv">1</span>] <span class="op">-</span> g<span class="op">*</span>xTum</span>
-<span id="cb1-39"><a href="#cb1-39"></a><span class="co"># Çiz</span></span>
-<span id="cb1-40"><a href="#cb1-40"></a>fig,axs<span class="op">=</span>plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb1-41"><a href="#cb1-41"></a><span class="co"># Soldaki grafik</span></span>
-<span id="cb1-42"><a href="#cb1-42"></a>axs[<span class="dv">0</span>].plot(xTum, yVekTum[<span class="dv">0</span>,:], <span class="st">'o-'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Euler $y(t)$'</span>)</span>
-<span id="cb1-43"><a href="#cb1-43"></a>axs[<span class="dv">0</span>].plot(xTum, yAnalitik, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Analitik $y(t)$'</span>)</span>
-<span id="cb1-44"><a href="#cb1-44"></a>axs[<span class="dv">0</span>].set_ylabel(<span class="st">'$y(t)$'</span>)</span>
-<span id="cb1-45"><a href="#cb1-45"></a>axs[<span class="dv">0</span>].legend()</span>
-<span id="cb1-46"><a href="#cb1-46"></a><span class="co"># Sağdaki grafik</span></span>
-<span id="cb1-47"><a href="#cb1-47"></a>axs[<span class="dv">1</span>].plot(xTum, yVekTum[<span class="dv">1</span>,:], <span class="st">'o-'</span>, color<span class="op">=</span><span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Euler $v(t)$'</span>)</span>
-<span id="cb1-48"><a href="#cb1-48"></a>axs[<span class="dv">1</span>].plot(xTum, vAnalitik, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Analitik $v(t)$'</span>)</span>
-<span id="cb1-49"><a href="#cb1-49"></a>axs[<span class="dv">1</span>].set_ylabel(<span class="st">'$v(t)$'</span>)</span>
-<span id="cb1-50"><a href="#cb1-50"></a>axs[<span class="dv">1</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
-<span id="cb1-51"><a href="#cb1-51"></a>axs[<span class="dv">1</span>].legend()</span>
-<span id="cb1-52"><a href="#cb1-52"></a><span class="co"># Sıkıştır</span></span>
-<span id="cb1-53"><a href="#cb1-53"></a>plt.tight_layout()</span>
-<span id="cb1-54"><a href="#cb1-54"></a><span class="co"># Göster</span></span>
-<span id="cb1-55"><a href="#cb1-55"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="bdp-ikinci-dereceden-diferansiyel-denklemler_files/figure-html/cell-2-output-1.png" width="660" height="470" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Karışık Alıştırmalar</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co">#1</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">def</span> soru1(var1,var2):</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    sonuc <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="cf">for</span> it <span class="kw">in</span> <span class="bu">range</span>(var1, var2):</span>
+<span id="cb1-7"><a href="#cb1-7"></a>        sonuc <span class="op">=</span> sonuc<span class="op">+</span> it</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="cf">return</span> sonuc</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="bu">print</span>(soru1(<span class="dv">3</span>,<span class="dv">10</span>))</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co">#2</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="kw">def</span> soru2(x):</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="cf">if</span> x<span class="op">**</span><span class="dv">2</span><span class="op">-</span> <span class="dv">1</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-13"><a href="#cb1-13"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-15"><a href="#cb1-15"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="bu">print</span>(soru2(<span class="dv">1</span>))</span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="bu">print</span>(soru2(<span class="op">-</span><span class="dv">1</span>))</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="bu">print</span>(soru2(<span class="dv">2</span>))</span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co">#3</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="kw">def</span> soru3(r_m):</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    sabit_Nm2_C2 <span class="op">=</span> <span class="fl">8.99</span><span class="op">*</span><span class="fl">10e9</span> <span class="co"># Nm^2/C^2 </span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>    elektrikYuk_C<span class="op">=</span> <span class="fl">1.602</span><span class="op">*</span><span class="fl">10e-19</span> <span class="co"># C</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a>    potansiyel_V <span class="op">=</span> sabit_Nm2_C2<span class="op">*</span> elektrikYuk_C <span class="op">/</span> r_m</span>
+<span id="cb1-24"><a href="#cb1-24"></a>    <span class="cf">return</span> potansiyel_V</span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="bu">print</span>(soru3(r_m<span class="op">=</span><span class="dv">10</span>))</span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="co">#4</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="kw">def</span> soru4(deltaX_m, deltaP_kgm_s):</span>
+<span id="cb1-28"><a href="#cb1-28"></a>    hBar_J_s<span class="op">=</span> <span class="fl">1.0545718</span><span class="op">*</span><span class="fl">10e-34</span> <span class="co"># J*s</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a>    <span class="co"># 1 J = 1 kg m^2 / s^2</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>    <span class="cf">if</span> deltaX_m<span class="op">*</span> deltaP_kgm_s <span class="op">&gt;</span> hBar_J_s<span class="op">/</span><span class="dv">2</span>:</span>
+<span id="cb1-31"><a href="#cb1-31"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-33"><a href="#cb1-33"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="bu">print</span>(soru4(deltaX_m<span class="op">=</span><span class="fl">1e-19</span>, deltaP_kgm_s<span class="op">=</span><span class="fl">1e-9</span>))</span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="co">#5</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="kw">def</span> soru5(kutle1_kg, kutle2_kg, r_m):</span>
+<span id="cb1-37"><a href="#cb1-37"></a>    sabit_Nm2_kg2<span class="op">=</span> <span class="fl">6.67</span><span class="op">*</span><span class="fl">10e-11</span> <span class="co"># Nm^2/kg^2</span></span>
+<span id="cb1-38"><a href="#cb1-38"></a>    <span class="cf">return</span> sabit_Nm2_kg2<span class="op">*</span> kutle1_kg<span class="op">*</span> kutle2_kg<span class="op">/</span> r_m<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1-39"><a href="#cb1-39"></a><span class="bu">print</span>(soru5(kutle1_kg<span class="op">=</span><span class="dv">10</span>, kutle2_kg<span class="op">=</span><span class="dv">10</span>, r_m<span class="op">=</span><span class="dv">10</span>))</span>
+<span id="cb1-40"><a href="#cb1-40"></a><span class="co">#6</span></span>
+<span id="cb1-41"><a href="#cb1-41"></a><span class="kw">def</span> soru6(x0_m, v0_m_s, t_s, a_m2_s):</span>
+<span id="cb1-42"><a href="#cb1-42"></a>    <span class="cf">return</span> x0_m<span class="op">+</span> v0_m_s<span class="op">*</span>t_s<span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span> a_m2_s<span class="op">*</span> t_s<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1-43"><a href="#cb1-43"></a><span class="bu">print</span>(soru6(x0_m<span class="op">=</span><span class="dv">10</span>, v0_m_s<span class="op">=</span><span class="dv">10</span>, t_s<span class="op">=</span><span class="dv">10</span>, a_m2_s<span class="op">=</span><span class="dv">10</span>))</span>
+<span id="cb1-44"><a href="#cb1-44"></a><span class="co">#7</span></span>
+<span id="cb1-45"><a href="#cb1-45"></a><span class="kw">def</span> soru7(v0_m_s, theta):</span>
+<span id="cb1-46"><a href="#cb1-46"></a>    g_m_s2<span class="op">=</span> <span class="fl">9.81</span></span>
+<span id="cb1-47"><a href="#cb1-47"></a>    </span>
+<span id="cb1-48"><a href="#cb1-48"></a>    v0x_m_s<span class="op">=</span> v0_m_s<span class="op">*</span> np.sin(theta)</span>
+<span id="cb1-49"><a href="#cb1-49"></a>    v0y_m_s<span class="op">=</span> v0_m_s<span class="op">*</span> np.cos(theta)</span>
+<span id="cb1-50"><a href="#cb1-50"></a>    </span>
+<span id="cb1-51"><a href="#cb1-51"></a>    <span class="co"># t ucus</span></span>
+<span id="cb1-52"><a href="#cb1-52"></a>    tUcus_s<span class="op">=</span> <span class="dv">2</span><span class="op">*</span>(v0y_m_s<span class="op">/</span>g_m_s2)</span>
+<span id="cb1-53"><a href="#cb1-53"></a>    </span>
+<span id="cb1-54"><a href="#cb1-54"></a>    <span class="co"># Yatay duzlemde olduğu nokta</span></span>
+<span id="cb1-55"><a href="#cb1-55"></a>    xSon_m<span class="op">=</span> v0x_m_s<span class="op">*</span> tUcus_s</span>
+<span id="cb1-56"><a href="#cb1-56"></a>    </span>
+<span id="cb1-57"><a href="#cb1-57"></a>    <span class="co"># Maksimum Yükseklik</span></span>
+<span id="cb1-58"><a href="#cb1-58"></a>    hMax_m<span class="op">=</span> (v0y_m_s<span class="op">*</span> (tUcus_s<span class="op">/</span><span class="dv">2</span>))<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-59"><a href="#cb1-59"></a>    </span>
+<span id="cb1-60"><a href="#cb1-60"></a>    <span class="cf">return</span> (xSon_m, tUcus_s, hMax_m)</span>
+<span id="cb1-61"><a href="#cb1-61"></a><span class="bu">print</span>(soru7(v0_m_s<span class="op">=</span><span class="dv">10</span>, theta<span class="op">=</span>np.pi<span class="op">/</span><span class="dv">4</span>))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="problemler" class="level2">
-<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
-<section id="sec-problem1" class="level3">
-<h3 class="anchored" data-anchor-id="sec-problem1">Problem 1</h3>
-<p><a href="#sec-alistirma1" class="quarto-xref">Bölüm&nbsp;2</a> verilen denklemi ilk hızı <span class="math inline">\(v(0)=10\)</span> m/s olarak değiştirerek çözün. Grafikleri karşılaştırın.</p>
+<section id="problem-7" class="level2">
+<h2 class="anchored" data-anchor-id="problem-7">Problem 7</h2>
+<p><strong>Matris çarpımı</strong></p>
+<ol type="1">
+<li>2 adet 3x3 matris oluşturun. Bunlardan bir tanesi 1’den 10’a kadar (10 dahil değil) diğeri ise 10’dan 19’a kadar olsun.</li>
+<li>Bu iki matrisi <code>@</code> ile çarpın ve sonucu ekrana yazdırın.</li>
+<li><code>sonuc</code> adında 3x3’lük sıfır matrisi oluşturun.</li>
+<li>İlk matrisin birinci, ikinci ve üçüncü satırlarını ekrana yazdırın.</li>
+<li>İkinci matrisin tüm sütunlarını ayrı ayrı ekrana yazdırın.</li>
+<li>İlk matrisin ilk satırını ikinci matrisin ilk sütunu ile çarpın. Çıkan sonucu <code>sonuc</code> elemanın birinci satır birinci sütunundaki elemanına atayın.</li>
+<li>İlk matrisin ikinci satırını ikinci matrisin ilk sütunu ile çarpın. Çıkan sonucu <code>sonuc</code> elemanın birinci satır ikinci sütunundaki elemanına atayın.</li>
+<li>İlk matrisin üçüncü satırını ikinci matrisin ilk sütunu ile çarpın. Çıkan sonucu <code>sonuc</code> elemanın birinci satır üçüncü sütunundaki elemanına atayın.</li>
+<li>İlk matrisin ikinci satırını ikinci matrisin ilk sütunu ile çarpın. Çıkan sonucu <code>sonuc</code> elemanın ikinci satır birinci sütunundaki elemanına atayın.</li>
+<li><code>mat_carp</code> adında bir fonksiyon oluşturun ve bu fonksiyon iki adet matris alsın. İki matrisi, <code>for</code> döngü(leri)sü yardımı ile çarpsın. Adımlar aşağıdaki gibidir.
+<ol type="1">
+<li>Bu fonksiyon, matrislerin boyutlarını incelesin. Eğer matrislerin boyutu, ilk matrisin boyutu <strong>NxM</strong>, ikinci matrisin boyutu <strong>MxT</strong> şeklinde değilse <code>False</code> değerini döndürsün.</li>
+<li>Eğer herhangi bir matrisin tüm elemanları <strong>0</strong> ise <strong>Bir matrisin tüm elemanları sıfırdır.</strong> şeklinde ekrana yazı yazsın ve <code>for</code> döngüsüne girmeden sonucu uygun boyutta <strong>0</strong> matrisi döndürsün.</li>
+<li>Eğer herhangi bir matris birim matris ise <strong>… matrisi birim matristir.</strong> şeklinde ekrana yazı yazsın ve <code>for</code> döngüsüne girmeden sonucu ekrana yazsın.</li>
+</ol></li>
+<li>Yukarıdaki yazdığınız fonksiyonu uyarı metinleri ekranda yazacak şekilde bir çok kez çağırın.</li>
+<li>Eğer <code>mat_carp()</code> fonksiyonunu çağırırken girdilerden birisi bir boyutlu array olursa, hata alacaksınız. Bunun nedeni hakkında düşünün ve gerekli düzenlemeyi yapın.</li>
+</ol>
+<section id="çözüm-1" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm-1">Çözüm</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#1 </span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>mat1<span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>],[<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>]])</span>
+<span id="cb2-4"><a href="#cb2-4"></a>mat2<span class="op">=</span> np.array([[<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>],[<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>],[<span class="dv">16</span>,<span class="dv">17</span>,<span class="dv">18</span>]])</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="bu">print</span>(mat1)</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="bu">print</span>(mat2)</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#2</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="bu">print</span>(mat1 <span class="op">@</span> mat2)</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#3</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>sonuc<span class="op">=</span> np.zeros((<span class="dv">3</span>,<span class="dv">3</span>))</span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#4</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="bu">print</span>(mat1[<span class="dv">0</span>,:])</span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="bu">print</span>(mat1[<span class="dv">1</span>,:])</span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="bu">print</span>(mat1[<span class="dv">2</span>,:])</span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#5</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="bu">print</span>(mat2[:,<span class="dv">0</span>])</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="bu">print</span>(mat2[:,<span class="dv">1</span>])</span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="bu">print</span>(mat2[:,<span class="dv">2</span>])</span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#6</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>sonuc[<span class="dv">0</span>,<span class="dv">0</span>]<span class="op">=</span> np.<span class="bu">sum</span>(mat1[<span class="dv">0</span>,:] <span class="op">*</span> mat2[:,<span class="dv">0</span>])</span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="bu">print</span>(sonuc)</span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="co">#7</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>sonuc[<span class="dv">0</span>,<span class="dv">1</span>]<span class="op">=</span> np.<span class="bu">sum</span>(mat1[<span class="dv">0</span>,:] <span class="op">*</span> mat2[:,<span class="dv">1</span>])</span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="bu">print</span>(sonuc)</span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="co">#8</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a>sonuc[<span class="dv">0</span>,<span class="dv">2</span>]<span class="op">=</span> np.<span class="bu">sum</span>(mat1[<span class="dv">0</span>,:] <span class="op">*</span> mat2[:,<span class="dv">2</span>])</span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="bu">print</span>(sonuc)</span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="co">#9</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a>sonuc[<span class="dv">1</span>,<span class="dv">0</span>]<span class="op">=</span> np.<span class="bu">sum</span>(mat1[<span class="dv">1</span>,:] <span class="op">*</span> mat2[:,<span class="dv">0</span>])</span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="bu">print</span>(sonuc)</span>
+<span id="cb2-31"><a href="#cb2-31"></a><span class="co">#10</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="kw">def</span> mat_carp(mat1, mat2):</span>
+<span id="cb2-33"><a href="#cb2-33"></a>    boy1<span class="op">=</span> np.shape(mat1)</span>
+<span id="cb2-34"><a href="#cb2-34"></a>    boy2<span class="op">=</span> np.shape(mat2)</span>
+<span id="cb2-35"><a href="#cb2-35"></a>    <span class="co">#10.1</span></span>
+<span id="cb2-36"><a href="#cb2-36"></a>    <span class="cf">if</span> boy1[<span class="dv">1</span>] <span class="op">!=</span> boy2[<span class="dv">0</span>]:</span>
+<span id="cb2-37"><a href="#cb2-37"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb2-38"><a href="#cb2-38"></a>    <span class="co">#10.2</span></span>
+<span id="cb2-39"><a href="#cb2-39"></a>    <span class="cf">if</span> np.array_equal(mat1, np.zeros(boy1)) <span class="kw">or</span> np.array_equal(mat2, np.zeros(boy2)):</span>
+<span id="cb2-40"><a href="#cb2-40"></a>        <span class="bu">print</span>(<span class="st">"Bir matrisin tüm elemanları sıfırdır."</span>)</span>
+<span id="cb2-41"><a href="#cb2-41"></a>        <span class="bu">print</span>(<span class="ss">f"mat1:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>mat1<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-42"><a href="#cb2-42"></a>        <span class="bu">print</span>(<span class="ss">f"mat2:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>mat2<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-43"><a href="#cb2-43"></a>        <span class="cf">return</span> np.zeros((boy1[<span class="dv">1</span>], boy2[<span class="dv">0</span>]))</span>
+<span id="cb2-44"><a href="#cb2-44"></a>    <span class="co">#10.3</span></span>
+<span id="cb2-45"><a href="#cb2-45"></a>    <span class="cf">if</span> np.array_equal(mat1, np.eye(boy1[<span class="dv">0</span>])):</span>
+<span id="cb2-46"><a href="#cb2-46"></a>        <span class="bu">print</span>(<span class="st">"Bir matris birim matristir."</span>)</span>
+<span id="cb2-47"><a href="#cb2-47"></a>        <span class="bu">print</span>(<span class="ss">f"mat1:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>mat1<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-48"><a href="#cb2-48"></a>        <span class="cf">return</span> mat2</span>
+<span id="cb2-49"><a href="#cb2-49"></a>    <span class="cf">if</span> np.array_equal(mat2, np.eye(boy2[<span class="dv">0</span>])):</span>
+<span id="cb2-50"><a href="#cb2-50"></a>        <span class="bu">print</span>(<span class="st">"Bir matris birim matristir."</span>)</span>
+<span id="cb2-51"><a href="#cb2-51"></a>        <span class="bu">print</span>(<span class="ss">f"mat2:</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>mat2<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-52"><a href="#cb2-52"></a>        <span class="cf">return</span> mat1</span>
+<span id="cb2-53"><a href="#cb2-53"></a>    sonuc<span class="op">=</span> np.zeros((boy1[<span class="dv">0</span>], boy2[<span class="dv">1</span>]))</span>
+<span id="cb2-54"><a href="#cb2-54"></a>    <span class="cf">for</span> it1 <span class="kw">in</span> <span class="bu">range</span>(boy1[<span class="dv">0</span>]):</span>
+<span id="cb2-55"><a href="#cb2-55"></a>        <span class="cf">for</span> it2 <span class="kw">in</span> <span class="bu">range</span>(boy2[<span class="dv">1</span>]):</span>
+<span id="cb2-56"><a href="#cb2-56"></a>            sonuc[it1,it2]<span class="op">=</span> np.<span class="bu">sum</span>(mat1[it1,:] <span class="op">*</span> mat2[:,it2])</span>
+<span id="cb2-57"><a href="#cb2-57"></a>    <span class="cf">return</span> sonuc</span>
+<span id="cb2-58"><a href="#cb2-58"></a><span class="co">#11</span></span>
+<span id="cb2-59"><a href="#cb2-59"></a>mat1<span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">3</span>,<span class="dv">4</span>]]) <span class="co">#np.zeros((3,3)) #np.eye(3) #np.array([[1,2,3],[4,5,6],[7,8,9]])</span></span>
+<span id="cb2-60"><a href="#cb2-60"></a>mat2<span class="op">=</span> np.array([[<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>],[<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>],[<span class="dv">16</span>,<span class="dv">17</span>,<span class="dv">18</span>]])</span>
+<span id="cb2-61"><a href="#cb2-61"></a><span class="bu">print</span>(<span class="ss">f"mat_carp(mat1, mat2)</span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>mat_carp(mat1, mat2)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-62"><a href="#cb2-62"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">mat1 @ mat2 </span><span class="ch">\n</span><span class="sc">{</span>mat1 <span class="op">@</span> mat2<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="sec-problem2" class="level3">
-<h3 class="anchored" data-anchor-id="sec-problem2">Problem 2</h3>
-<p>Yatay düzlemde <span class="math inline">\(k=100\)</span> N/m sabitine sahip <span class="math inline">\(m=1\)</span> kg kütleli yay olsun. Bu cisme denge noktasından <span class="math inline">\(x_{0}=0.1\)</span> m sıkıştırılarak harekete başlatılıyor. Cisim bırakıldığı anda hızı <span class="math inline">\(v_{0}=0\)</span> m/s. Bu cismin hareket denklemini <span class="math inline">\(t=0-5\)</span> aralığında Euler yöntemiyle çözünüz.</p>
+</section>
+<section id="problem-8" class="level2">
+<h2 class="anchored" data-anchor-id="problem-8">Problem 8</h2>
+<p><strong>Dalga Fonksiyonun Normalizasyonu</strong></p>
+<ol type="1">
+<li><code>normalize_et_dalgaFonk</code> adında bir fonksiyon yazın. Bu fonksiyonun bir adet numpy array tipi değişken alsın.
+<ol type="1">
+<li>Alınan array en genel olarak sanal sayılardan oluşsun. Array’in her elemanını kendisinin sanal eşleniği (<code>np.conj()</code>) kendisini çarpsın ve çıkan sonuçları toplayıp <strong>bir</strong> adet sayı elde etsin.</li>
+<li>Fonksiyona girdi olarak verilen arrayi, elde edilen bu sayının kareköküne (<code>np.sqrt()</code>) bölsün ve elde edilen arrayi geri döndürsün.</li>
+<li>Girdi 1 boyutlu array değilse, <strong>bu fonksiyon sadece arrayler için çalışmaktadır.</strong> yazsın. Bunun için <code>np.ndim()</code> fonksiyonunu kullanbilirsiniz. Fonksiyon girdisi bir boyutlu array değilse <code>None</code> değerini döndürsün.</li>
+</ol></li>
+<li>Bu fonksiyonu <code>[1, 1]</code> değerleri için çağırın.</li>
+<li><code>xAxis</code> adında ve içeriği <code>0</code>’dan <code>1</code>’e kadar 100 elemanlı bir array oluşturun. Yardım: <code>np.linspace(baslangicSayi, bitisSayi, adet)</code></li>
+<li><code>yAxis</code> adında ve içeriği <code>0</code>’dan <code>1</code>’e kadar 100 elemanlı bir array oluşturun.</li>
+<li>Çizim yapmak için <code>matplotlib.pyplot</code> modülünü <code>plt</code> ismiyle çağırın ve x ve y eksenlerini çizdirin. Çizginin rengi siyah <code>k</code> olsun.</li>
+<li><code>[1, 1]</code> arayini normalize ettiğimizde elde ettiğimiz arrayi de kırmızı ile <code>r</code> çizdirin.
+<ol type="1">
+<li>Bunun için 3. ve 4. adımı <code>normalize_et_dalgaFonk</code> fonksiyonunu kullanarak tekrarlamanız gerekir. Fonksiyonu çağırdığınızda geri dönen iki değerden ilki <code>xAxis</code>’in 0’dan o noktaya kadar olan değerlerini belirleyecek, ikincisi ise <code>yAxis</code>’in 0’dan o noktaya kadar olan değerlerini belirleyecek.</li>
+</ol></li>
+<li><strong>Bu adımda bilgisayar kod yazmanıza gerek yoktur.</strong> Kuantum dalga fonksiyonu aşağıdaki gibi verilmiştir. Aşağıdaki verilen gösterimler eşdeğerdir.</li>
+</ol>
 <p><span class="math display">\[
--kx=m\frac{d^{2}x}{dt^{2}}
-\]</span></p>
-<p>Analitik çözüm: <span class="math inline">\(x(t) = A\cos(\sqrt{k/m}x)+B\sin(\sqrt{k/m}x)\)</span></p>
-</section>
-<section id="problem-3" class="level3">
-<h3 class="anchored" data-anchor-id="problem-3">Problem 3</h3>
-<p><a href="#sec-problem2" class="quarto-xref">Bölüm&nbsp;3.2</a> bölümündeki soruyu <span class="math inline">\(F_{sürtünme}= -bv\)</span> sürtünme kuvveti varlığında çözünüz. Burada <span class="math inline">\(b=1\)</span> Ns/m sabit ve <span class="math inline">\(v\)</span> cismin hızıdır.</p>
-<p><span class="math display">\[
--b\frac{dx}{dt}-kx=m\frac{d^{2}x}{dt^{2}}
-\]</span></p>
-<p>Analitik çözüm: <span class="math inline">\(x(t) = Ae^{-\sigma t}e^{i\omega t}+ Be^{-\sigma t}e^{-i \omega t}\)</span>. Burada frekans <span class="math inline">\(\omega = \sqrt{(k/m)-(b^{2}/4m^{2})}\)</span> ve genliği belirleyen terim <span class="math inline">\(\sigma=b/2m\)</span> <span class="citation" data-cites="web2024Feb-2">&nbsp;[<a href="#ref-web2024Feb-2" role="doc-biblioref">1</a>]</span>.</p>
-</section>
-<section id="sec-problem4" class="level3">
-<h3 class="anchored" data-anchor-id="sec-problem4">Problem 4</h3>
-<p>Düşey düzlemde <span class="math inline">\(m=1\)</span> kg kütleli bir cisim salınsın. Bu cisim denge noktasından <span class="math inline">\(\theta_{0}=\pi/9\)</span> rad açı ile harekete başlıyor. Cisim bırakıldığı anda açısal hızı <span class="math inline">\(\omega_{0}=\)</span> rad/s. Bu cismin hareket denklemini <span class="math inline">\(t=0-10\)</span> arasında Euler yöntemiyle çözünüz. En uygun sonuç için <span class="math inline">\(n=10000\)</span> adım alınız. (<span class="math inline">\(g=9.81\)</span>)</p>
-<p><span class="math display">\[
-\frac{d^{2}\theta}{dt^{2}}=-\frac{g}{l}\sin \theta
-\]</span></p>
-<p>Analitik çözüm: <span class="math inline">\(x(t) = A\cos(\sqrt{g/l}x)+B\sin(\sqrt{g/l}x)\)</span></p>
-</section>
-<section id="problem-5" class="level3">
-<h3 class="anchored" data-anchor-id="problem-5">Problem 5</h3>
-<p><a href="#sec-problem4" class="quarto-xref">Bölüm&nbsp;3.4</a> bölümündeki problemi <span class="math inline">\(\theta_{0}=\pi/2\)</span> başlangıç koşulu için tekrar çalıştırınız. <span class="math inline">\(\sin \theta \approx \theta\)</span> yaklaşıklığı artık geçerli olmadığı için analitik çözümün hatalı olduğunu unutmayınız.</p>
-</section>
-<section id="problem-6" class="level3">
-<h3 class="anchored" data-anchor-id="problem-6">Problem 6</h3>
-<p>İki cisim problemini (baryosentrik yani merkezdeki cisim hareket etmesin) Euler yöntemiyle (<span class="math inline">\(n= 1000, 10000, 100000\)</span> adımda) çözünüz. Burada <span class="math inline">\(\mu=3.98\times 10^{5}\)</span> km <span class="math inline">\(^{3}\)</span>/s <span class="math inline">\(^{2}\)</span>, <span class="math inline">\(x_{0}=-2500\)</span> km, <span class="math inline">\(y_{0}=-5500\)</span> km, <span class="math inline">\(v_{x0}=7.5\)</span> km/s, <span class="math inline">\(v_{y0}=0.5\)</span> km/s olarak alın. Aşağıdaki denklemleri <span class="math inline">\(t=0-100000\)</span> s arasında çözün. <span class="math inline">\(y-x\)</span> grafiği çizin. <span class="math inline">\((x,y)=(0,0)\)</span> noktası merkezdeki cismin konumunu göstersin.</p>
-<p><span class="math display">\[
-\frac{d^{2}x}{dt^{2}}=-\frac{\mu}{(x^{2}+y^{2})^{3/2}}x
+|\psi&gt; = A \left(\sin\theta|\uparrow&gt; + \cos\theta|\downarrow&gt;\right)
 \]</span></p>
 <p><span class="math display">\[
-\frac{d^{2}y}{dt^{2}}=-\frac{\mu}{(x^{2}+y^{2})^{3/2}}y
+|\psi&gt; = A\sin\theta \left(\begin{matrix}1\\0\end{matrix}\right) + A\cos\theta\left(\begin{matrix}0\\1\end{matrix}\right)
 \]</span></p>
-</section>
-<section id="problem-7" class="level3">
-<h3 class="anchored" data-anchor-id="problem-7">Problem 7</h3>
-<p>Üç cisim problemini <code>scipy.integrate.solve_ivp()</code> fonksiyonu ile çözünüz Yardımcı kaynak için <a href="https://www.maths.ed.ac.uk/~ateckent/vacation_reports/Report_Faustino.pdf">tıklayınız</a>. Animasyonunu yaratınız.</p>
 <p><span class="math display">\[
-\frac{d^{2}r_{i}}{dt^{2}}=G\sum_{j\neq i}m_{j}\frac{(r_{j}-r_{i})}{|r_{j}-r_{i}|^{3}} , i=1,2,3$
+|\psi&gt; = A\left(\begin{matrix}\sin \theta\\\cos \theta\end{matrix}\right)
 \]</span></p>
-<p>Burada <span class="math inline">\(r_{i}\)</span>, <span class="math inline">\(i\)</span>’nci parçacığın konum vektörü olup kartezyen koordinatlarda iki bileşenlidir, <span class="math inline">\(r_{i}\equiv r_{i}(x,y)\)</span>. Başlangıç koşulları ve sabitleri aşağıdaki gibi alınız. Burada <span class="math inline">\(v_{i}\equiv \frac{dr_{i}}{dt}\)</span> şeklindedir.</p>
-<ul>
-<li><span class="math inline">\(G=1\)</span> Nm<span class="math inline">\(^{2}\)</span>/kg<span class="math inline">\(^{2}\)</span>.</li>
-<li>Zaman aralığı <span class="math inline">\(t=0-10\)</span> s arasında 1000 adımda.</li>
-</ul>
-<p><strong>Figure-8</strong> stabil çözümü icin gereken başlangıç koşulları:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>r1_0 <span class="op">=</span> np.array([<span class="fl">0.97000436</span>, <span class="op">-</span><span class="fl">0.24308753</span>])</span>
-<span id="cb2-2"><a href="#cb2-2"></a>r2_0 <span class="op">=</span> np.array([<span class="op">-</span><span class="fl">0.97000436</span>, <span class="fl">0.24308753</span>])</span>
-<span id="cb2-3"><a href="#cb2-3"></a>r3_0 <span class="op">=</span> np.array([<span class="fl">0.0</span>, <span class="fl">0.0</span>])</span>
-<span id="cb2-4"><a href="#cb2-4"></a>v1_0 <span class="op">=</span> np.array([<span class="fl">0.466203685</span>, <span class="fl">0.43236573</span>])</span>
-<span id="cb2-5"><a href="#cb2-5"></a>v2_0 <span class="op">=</span> np.array([<span class="fl">0.466203685</span>, <span class="fl">0.43236573</span>])</span>
-<span id="cb2-6"><a href="#cb2-6"></a>v3_0 <span class="op">=</span> np.array([<span class="op">-</span><span class="fl">0.93240737</span>, <span class="op">-</span><span class="fl">0.86473146</span>])</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Bu kuantum durumu normalize olması için A ne olmalıdır? Yardım: <span class="math inline">\(|&lt;\psi|\psi&gt;|^2=1\)</span> için <span class="math inline">\(A\)</span> ne olmalıdır?</p>
+<ol start="8" type="1">
+<li>Aşağıdaki dalga fonksiyonunu el ile normalize ediniz. <code>normalize_et_dalgaFonk</code> fonksiyonunu kullanarak yaptığınız hesabı kontrol ediniz.</li>
+</ol>
+<p><span class="math display">\[
+|\psi&gt; = A \left((1+i)|\uparrow&gt; + (1-i)|\downarrow&gt; \right)
+\]</span></p>
+<section id="çözüm-2" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm-2">Çözüm</h3>
+<p>Dalga Fonksiyonunu normalize edelim.</p>
+<p><span class="math display">\[
+|&lt;\psi|\psi&gt;|^2=1
+\]</span></p>
+<p><span class="math display">\[
+| |A|^{2} \left[(1-i)(1+i) + (1+i)(1-i) \right]|^2 = 1
+\]</span></p>
+<p><span class="math display">\[
+|4 |A|^{2} |^{2} = 1
+\]</span></p>
+<p><span class="math display">\[
+|A|^{2}= \frac{1}{4}
+\]</span></p>
+<p><span class="math display">\[
+A= \frac{1}{2}
+\]</span></p>
+<p>Bu durumda normalize edilmiş dalga fonksiyonu aşağıdaki gibidir.</p>
+<p><span class="math display">\[
+|\psi&gt; = \frac{1+i}{2}|\uparrow&gt; + \frac{1-i}{2}|\downarrow&gt;
+\]</span></p>
+<p>Diğer soruların cevapları da aşaıdaki gibidir.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#1</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">def</span> normalize_et_dalgaFonk(arr1):</span>
+<span id="cb3-6"><a href="#cb3-6"></a>    <span class="co">#1.1</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>    <span class="cf">if</span> np.ndim(arr1) <span class="op">!=</span> <span class="dv">1</span>:</span>
+<span id="cb3-8"><a href="#cb3-8"></a>        <span class="bu">print</span>(<span class="st">"Bu fonksiyon sadece arrayler için çalışmaktadır."</span>)</span>
+<span id="cb3-9"><a href="#cb3-9"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a>    sonuc<span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>    <span class="cf">for</span> it <span class="kw">in</span> arr1:</span>
+<span id="cb3-12"><a href="#cb3-12"></a>        sonuc <span class="op">+=</span> np.conj(it)<span class="op">*</span> it</span>
+<span id="cb3-13"><a href="#cb3-13"></a>    normalizasyonKatsayisi<span class="op">=</span> <span class="dv">1</span><span class="op">/</span>np.sqrt(sonuc)</span>
+<span id="cb3-14"><a href="#cb3-14"></a>    <span class="cf">return</span> arr1<span class="op">*</span> normalizasyonKatsayisi</span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co">#2</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="bu">print</span>(<span class="ss">f"normalize_et_dalgaFonk(np.array([1,1])) = </span><span class="sc">{</span>normalize_et_dalgaFonk(np.array([<span class="dv">1</span>,<span class="dv">1</span>]))<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="co">#3</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a>xAxis<span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="co">#4</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>yAxis<span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="co">#5</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a>plt.plot(xAxis, yAxis, <span class="st">'k'</span>)</span>
+<span id="cb3-23"><a href="#cb3-23"></a><span class="co">#6</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a>normalize_arr<span class="op">=</span> normalize_et_dalgaFonk(np.array([<span class="dv">1</span>,<span class="dv">1</span>]))</span>
+<span id="cb3-25"><a href="#cb3-25"></a>xAxis<span class="op">=</span> np.linspace(<span class="dv">0</span>, normalize_arr[<span class="dv">0</span>], <span class="dv">100</span>)</span>
+<span id="cb3-26"><a href="#cb3-26"></a>yAxis<span class="op">=</span> np.linspace(<span class="dv">0</span>, normalize_arr[<span class="dv">1</span>], <span class="dv">100</span>)</span>
+<span id="cb3-27"><a href="#cb3-27"></a>plt.plot(xAxis, yAxis, <span class="st">'r'</span>)</span>
+<span id="cb3-28"><a href="#cb3-28"></a><span class="co">#8</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="bu">print</span>(normalize_et_dalgaFonk(np.array([<span class="dv">1</span><span class="op">+</span><span class="ot">1j</span>,<span class="dv">1</span><span class="op">-</span><span class="ot">1j</span>])))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
-
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referanslar</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
-<div id="ref-web2024Feb-2" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><em><a href="https://brilliant.org/wiki/damped-harmonic-oscillators"><span>Damped Harmonic Oscillators <span><span class="math inline">\(\vert\)</span></span> Brilliant Math <span>&amp;</span> Science Wiki</span></a></em>, (2024).</div>
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1328,18 +1479,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="pagination-link" aria-label="BDP - Denklem Sistemleri">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">BDP - Denklem Sistemleri</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="pagination-link" aria-label="BDP - Runge-Kutta Yöntemleri">
-        <span class="nav-page-text">BDP - Runge-Kutta Yöntemleri</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1348,7 +1487,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/python/alistirmalar-problemler-cevaplar.md" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>
