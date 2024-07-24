@@ -167,7 +167,7 @@ Burada satırları yani denklemleri isimlendirelim.
 
 **2. satır 1. sütunu** yani $A_{21}$ terimini $0$ yapalım. Bu işlemde $\lambda=~-0.5$ olmalı aşağıdaki işlem uygulanmalı.
 
-$\lambda= $`A[1,0]/A[0,0]`
+$\lambda=$ `A[1,0]/A[0,0]`
 
 $$
 \text{Eq}(2) - ~(-0.5)~ \text{Eq}(1) \rightarrow \text{Eq}(2)
@@ -181,7 +181,7 @@ $$
 
 **3. satır 1. sütunu** yani $A_{31}$ terimini $0$ yapalım. Bu işlemde $\lambda=~0.25$ olmalı aşağıdaki işlem uygulanmalı.
 
-$\lambda= $`A[2,0]/A[0,0]`
+$\lambda=$ `A[2,0]/A[0,0]`
 
 $$
 \text{Eq}(3) - ~(0.25)~ \text{Eq}(1) \rightarrow \text{Eq}(2)
@@ -195,7 +195,7 @@ $$
 
 **3. satır 2. sütunu** yani $A_{32}$ terimini $0$ yapalım. Bu işlemde $\lambda=~-0.5$ olmalı aşağıdaki işlem uygulanmalı.
 
-$\lambda= $`A[2,1]/A[1,1]`
+$\lambda=$ `A[2,1]/A[1,1]`
 
 $$
 \text{Eq}(3) - ~(-0.5)~ \text{Eq}(2) \rightarrow \text{Eq}(2)
@@ -277,7 +277,7 @@ $$
 
 **2 satır 1. sütunu** yani $A_{21}$ terimini $0$ yapalım. Bu işlemde $\lambda=~-0.5$ olmalı aşağıdaki işlem uygulanmalı.
 
-$\lambda= $`A[0,1]/A[1,1]`
+$\lambda=$ `A[0,1]/A[1,1]`
 
 $$
 \text{Eq}(1) - ~(-0.5)~ \text{Eq}(2) \rightarrow \text{Eq}(1)
@@ -291,7 +291,7 @@ $$
 
 **1. satır 3. sütun** da 0 oldu. Geriye sadece 2. satır 3. sütun kaldı. Bunun için $\lambda=-0.5$ almalıyız.
 
-$\lambda= $`A[1,2]/A[2,2]`
+$\lambda=$ `A[1,2]/A[2,2]`
 
 $$
 \text{Eq}(2) - ~(-0.5)~ \text{Eq}(3) \rightarrow \text{Eq}(2)

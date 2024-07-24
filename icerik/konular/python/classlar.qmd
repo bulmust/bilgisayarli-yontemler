@@ -1,0 +1,97 @@
+---
+title: Classlar
+---
+
+Python'da class (sınıf) tanımlamak için `class` anahtar kelimesi kullanılır. Classlar belli konularda sınıflandırmaya yarar. Bu sınıflandırma içerisinde değişkenler fonksiyonlar gibi parametreler olabilir.
+
+Classları yarattıktan sonra bir değişkene atayarak veya sınıfın ismini kullanarak classın içerisindeki parametrelere erişebiliriz. Sınıfların alt elemanlarına nokta `.` ile erişebiliriz.
+
+```python
+class class1:
+    gerekliAKTS= 240
+print(class1.gerekliAKTS)
+Classlar içerisine fonksiyon da yazabiliriz.
+class class2:
+    pi=3.14
+    def printMerhabaDunya():
+        print("Merhaba Dünya")
+
+print(class2.pi)
+
+class2.printMerhabaDunya()
+```
+
+Bir dosya içerisine değişkenler ve fonksiyonlar aynı anda yazabilir. Bu dosyayı, başka bir python betik dosyasından çağırarak modül gibi davranabiliriz.
+
+## Örnek
+
+Önce `bizimModul.py` adlı bir dosya yaratalım. Jupyter notebook kullanıyorsanız `!` işaretiyle linux komutları çalıştırabilirsiniz. Eğer Jupyter notebook kullanmıyorsanız aşağıdaki işlemleri elle yapmanız gerekmektedir. Linux isletim sisteminin komutlarını kullanarak `bizimModul.py` adında bir dosya yaratalım.
+
+```sh
+touch bizimModul.py
+```
+
+Bu dosyanın, `bizimModul.py` dosyasının, içerisini dolduralım.
+
+```sh
+echo "pi= 3.1415" >> bizimModul.py
+```
+
+Bu modülün içerisine bakalım.
+
+```sh
+cat bizimModul.py
+```
+
+Başka bir python betik dosyasından `bizimModul.py` dosyasını `import` komutu ile çalıştıralım. Bizim modul içerisindeki `pi` değişkenini içeriğini ekrana yazdırın.
+
+`bizimModul.py`'nin olduğu klasöre `bizimModulCagir.py` adında bir dosya yaratın.
+
+> Özel olarak oluşturduğumuz modüller betik dosyası ile aynı klasörde olmalı. Aksi taktirde python modülü varsayılan yollara (path) bakacak ve oluşturduğunuz modülü bulamayacaktır. Modüllerin yolunu görmek için `sys.path` komutunu kullanabilirsiniz. Modülünüzün yolunu eklemek için `sys.path.append("modulun_yolu")` komutunu kullanabilirsiniz.
+
+```sh
+import bizimModul as bm
+
+print(bm.pi)
+```
+
+Şimdi `bizimModul.py` dosyasına `toplama(a,b)` adında bir fonksiyon ekleyelim. Bu fonksiyon `a` ve `b` değişkenlerini alsın ve sonuç olarak `a+b` değerini döndürsün.
+
+```sh
+echo -e "def toplama(a,b):\n    return a+b" >> bizimModul.py
+cat bizimModul.py
+```
+
+`bizimModul` modülünü tekrar çağıralım ve `toplama` fonksiyonunu deneyelim.
+
+```python
+import bizimModul as bm
+
+print(bm.pi)
+print(bm.toplama(4,5))
+```
+
+Eğer Jupiter notebook kullanıyorsanız yukarıdaki komut çalışmayabilir. Bunun sebebi daha önceden `bizimModul` çağırmanızdır. Kerneli (çekirdek) yeniden başlatın ve sadece yukarıda bulunan kod bloğunu çalıştırın.
+Yukarıdaki örnekte gördüğümüz gibi modüller de classlar gibi davranmaktadır. Çalıştırmak istediğimiz betik dosyasında `class` oluşturup ona ait olan alt bileşenleri çağırabiliriz veya başka bir dosyada kullanmak istediğimiz fonksiyon, değişken, class vb. tanımlamalar yapar, betik dosyamızda bu tanımlamaları kullanabiliriz.
+
+> Bir python dosyasının betik dosyası mı yoksa bir modül mü olduğunu anlamanın kısa bir yolu yoktur. Bunun için yapılan bir _kabul_ vardır. Eğer bir `.py` dosyasında `if __name__ == '__main__':` komutu varsa ve istenilen işlemler bu koşulun altında yapılıyorsa, o dosya **betik** dosyası olarak kabul edilir. Yani bu dosyayı çalıştırabilirsiniz (`python dosya.py` şeklinde). Eğer bu koşul yoksa o dosya modül olarak çağırlmaya uygun bir dosya anlamına gelir. Bunun bir _kabul_ olduğunu tekrar etmekte yarar vardır. Bu konvensiyona uymak zorunda değilsiniz.
+
+> **UYARI**: Jupyter notebooklarda `if __name__ == '__main__'` kullanmayınız. 
+Bir sınıf oluştururken sınıfın içerisindeki değişkenleri kullanarak da işlem yapabilirsiniz. Bunun için `__init__` fonksyionunu _ezmeniz_ gerekmektedir.
+
+Aşağıdaki örneği inceleyelim.
+
+```python
+class sizinClass: # Class oluştur.
+    def __init__(self, degiskenStr): # Class'ı çağırırken ekstra bir değişken daha isteyebilirsin.
+        # Self dışındaki bu değişkeni self içerisine atıp class'ın diğer bileşenlerinde
+        # kullanabilirsin.
+        self.merhabaDunya= degiskenStr + " Merhaba Dünya!"
+    def yazdir(self):
+        print(self.merhabaDunya) # Yukarıda tanımladığım self'in merhabaDunya değişkenini yazdır.
+
+sizinClassDegiskeni= sizinClass('Ben uzaylıyım.') # Class oluştur ve oluşturma değişkenine 'Ben uzaylıyım' yaz.
+sizinClassDegiskeni.yazdir() # Class'ın yazdır fonksiyonunu çağır.
+
+sizinClass('Kartallar yüksekten uçar...').yazdir() # Class'ı değişkene atamadan da bu işlem yapılabilir.
+```

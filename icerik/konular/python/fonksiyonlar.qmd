@@ -85,6 +85,7 @@ Python içerisinde bulunan (built-in) bazı matematiksel fonksiyolar vardır. Bu
 
 ::: {.callout-note}
 karşılaştırma fonksiyonu `cmp(a,b)` python 3.0'dan itibaren kaldırılmıştır.
+:::
 
 ```{python}
 float1= -5.6
@@ -119,9 +120,9 @@ print(f"2^3      = {m.pow(2,3)}")
 
 `math`, `numpy` gibi modüller Python komütesi tarafından geliştirilen modüllerdir. Bunların dışında kendi modüllerimizi de oluşturabiliriz. Bunun için farklı bir dosyada fonksiyonlar ve değişkenler tanımlanır. Bu dosyayı ana betikte `import` anahtar kelimesi kullanılarak çağırıp kullanabiliriz.
 
-## Alıştırma 1
+## Problemler
 
-Aşağıdaki alıştırmaları sırayla yapınız.
+### Problemler 1
 
 1. `araAlistirma2_Modul.py` dosyasını oluşturun.
    1. Bu dosyaya `al_karesi()` fonksiyonunu tanımlayın. Bu fonksiyon bir sayı alsın ve karesini döndürsün.

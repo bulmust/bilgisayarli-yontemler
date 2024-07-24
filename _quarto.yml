@@ -46,6 +46,7 @@ website:
               - icerik/konular/python/fonksiyonlar.qmd
               - icerik/konular/python/alistirmalar-problemler.qmd
               - icerik/konular/python/moduller.qmd
+              - icerik/konular/python/classlar.qmd
           - section: Doğrusal Denklemler
             href: icerik/konular/dogrusal-denklemler.qmd
             contents: 

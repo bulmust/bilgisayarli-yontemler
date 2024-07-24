@@ -1,8 +1,8 @@
 ---
-title: "Alıştırmalar - Problemler - 1"
+title: "Alıştırmalar ve Problemler"
 ---
 
-## Alıştırma 1
+## Problem 1
 
 Kullanıcıdan dört sayı isteyin. Kullanıcının girdiği sayıları `float` formatına çevirin.
 
@@ -10,7 +10,7 @@ Kullanıcıdan dört sayı isteyin. Kullanıcının girdiği sayıları `float` 
 2. Bu listenin tüm elemanlarının iki katını, `for` döngüsü kullanarak elde edin ve sonucu ekrana yazdırın.
 3. Eğer girilen sayılardan en az bir tanesi 5'ten büyükse ekrana `... sayıları 5'ten büyüktür.` yazsın. Burada "..." yerine kullanıcının girdiği sayılar yazsın. Aksi taktirde `5'ten büyük sayı girmediniz.` yazsın.
 
-## Alıştırma 2
+## Problem 2
 
 Bir liste oluşturun ve o listenin elemanları `4, 8, 15, 16, 23, 42` olsun. `for` döngüsü ve `.append()` fonksiyonu kullanarak listenin sonuna 1'den 80'a kadar sayılar ekleyin. Elde ettiğiniz yeni listenin adı `yeniListe` olsun.
 
@@ -21,13 +21,13 @@ Bir liste oluşturun ve o listenin elemanları `4, 8, 15, 16, 23, 42` olsun. `fo
    5. `yeniListe` listesindeki tüm çift elemanları yerine `True`, tüm tek elemanları yerine `False` yazın.
    6. `yeniListe` listesinin elemanlarını alt alta olacak şekilde `yeniListe.txt` dosyasına yazdırın.
 
-## Alıştırma 3
+## Problem 3
 
 1.  $1$'den $42$ sayısına kadar olan tüm sayıları toplayın. Sonu ekrana yazdırın.
 2.  $1$'den $42$ sayısına kadar olan tüm çift sayıları toplayın. Ekrana yazdırın.
 3.  $1$'den $89$'a kadar ($89$ dahil) olan tüm sayıları `for` döngüsünü kullanarak ekrana yazdıran bir betik yazın. Bu döngü, 18'de duracak şekilde olsun.
 
-## Alıştırma 4
+## Problem 4
 
 1.  Bir fonksiyon yazın. Bu fonksiyon ekrana sadece `Naber Dünyalı?` yazdırsın.
 2.  Bir fonksiyon yazın. Bu fonksiyon ekrana `Merhaba Dünyalı. Ben $100$'a kadar saymayı biliyorum.` yazsın ardından ekrana $0$'dan $100$'e kadar ($100$ dahil) tüm sayıları yazdırsın.

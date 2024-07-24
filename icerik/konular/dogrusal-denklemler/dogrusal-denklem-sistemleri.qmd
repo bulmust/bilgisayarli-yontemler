@@ -107,9 +107,11 @@ $$
 Bu durumda $A$ matrisinin elemanları aşağıdaki gibi olur.
 
 $$
+\begin{align*}
 A_{11}= u_{11} \qquad \text{,} \qquad A_{12}= u_{12} \qquad \text{,} \qquad A_{13}= u_{13}\\
 A_{21}= l_{21}u_{11} \qquad \text{,} \qquad A_{22}= l_{21}u_{12}+u_{22} \qquad \text{,} \qquad A_{23}= l_{21}u_{13}+u_{23}\\
 A_{31}= l_{31}u_{11} \qquad \text{,} \qquad A_{32}= l_{31}u_{12}+l_{32}u_{22} \qquad \text{,} \qquad A_{33}= l_{31}u_{13}+l_{32}u_{23}+u_{33}
+\end{align*}
 $$
 
 Yukarıdaki işlemleri **sırasıyla** yaparsak L ve U matrislerinin elemanlarınlarını bulabilir.
@@ -243,9 +245,11 @@ $$
 Daha önceden $3x3$ boyutunda bir matrisi nasıl LU faktorizasyonu yapacağımızı gördük. Bu durumda $A$ matrisini aşağıdaki gibi yazabiliriz.
 
 $$
+\begin{align*}
 A_{11}= u_{11} \qquad \text{,} \qquad A_{12}= u_{12} \qquad \text{,} \qquad A_{13}= u_{13}\\
 A_{21}= l_{21}u_{11} \qquad \text{,} \qquad A_{22}= l_{21}u_{12}+u_{22} \qquad \text{,} \qquad A_{23}= l_{21}u_{13}+u_{23}\\
 A_{31}= l_{31}u_{11} \qquad \text{,} \qquad A_{32}= l_{31}u_{12}+l_{32}u_{22} \qquad \text{,} \qquad A_{33}= l_{31}u_{13}+l_{32}u_{23}+u_{33}
+\end{align*}
 $$
 
 Bu durumda
@@ -480,10 +484,10 @@ print(f"Scipy ile denklem çözme:\n {sp.linalg.solve(katsayiMat, sonucVek)}")
 
 ## Alıştırma
 
-1. Aşağıdaki şekilde gözüken ve 4 adet $ m_{i} $ kütlesinden oluşan sürtünmeli fiziksel sistemin kuvvet analizini yapınız. Her bir kütleye etki eden sürtünme katsayısı $ \mu_{i} $ olsun. Kütlelere etki eden toplam kuvvetleri veren analitik ifadeyi ayrı ayrı ve alt alta yazınız. Örneğin $ m_{1} $ kütlesine etki eden toplam kuvveti yazınız ve onun altına $ m_{2} $ kütlesine etki eden toplam kuvveti yazınız.
-2. Elde ettiğiniz denklem sisteminde eğim açısı yerine $ \theta=\pi/4 $ ve yer çekimi ivmesi yerine $ g = 9.82 $ m/s $ ^{2} $ sayısal değerleri yazınız. Kütleler $ m_{1} = 10 $ kg, $ m_{2} = 4 $ kg, $ m_{3} = 5 $ kg, $ m_{4} = 6 $ kg'dır. Sürtünme katsayıları ise $ \mu_{1} = 0.25 $, $ \mu_{2} = 0.3 $, $ \mu_{3} = 0.2 $ ve $ \mu_{4} = 0 $ olsun. Bu değerleri bir önceki şıkta bulduğunuz denklemlerde yerine koyunuz.
-3. Denklem sistemini $ \mathbf{A}\vec{x}=\vec{b} $ olacak şekilde tekrar yazınız ve $ \mathbf{A} $ katsayı matrisini, $ \vec{b} $ ve $ \vec{x} $ vektörlerini belirleyiniz. $ \vec{x} $ vektörünün sayısal olarak ne olduğunu bilmediğimizi ve ancak doğrusal denklem sistemini çözerek bulmaya çalışacağımızı hatırlayınız.
-4. Bu denklemi Gauss eleme ve Doolittle'ın LU ayrıştırma yöntemini kullanarak $ T_{i} $ ve $ a $ değerini bulunuz.
+1. Aşağıdaki şekilde gözüken ve 4 adet $m_{i}$ kütlesinden oluşan sürtünmeli fiziksel sistemin kuvvet analizini yapınız. Her bir kütleye etki eden sürtünme katsayısı $\mu_{i}$ olsun. Kütlelere etki eden toplam kuvvetleri veren analitik ifadeyi ayrı ayrı ve alt alta yazınız. Örneğin $m_{1}$ kütlesine etki eden toplam kuvveti yazınız ve onun altına $m_{2}$ kütlesine etki eden toplam kuvveti yazınız.
+2. Elde ettiğiniz denklem sisteminde eğim açısı yerine $\theta=\pi/4$ ve yer çekimi ivmesi yerine $g = 9.82$ m/s $^{2}$ sayısal değerleri yazınız. Kütleler $m_{1} = 10$ kg, $m_{2} = 4$ kg, $m_{3} = 5$ kg, $m_{4} = 6$ kg'dır. Sürtünme katsayıları ise $\mu_{1} = 0.25$, $\mu_{2} = 0.3$, $\mu_{3} = 0.2$ ve $\mu_{4} = 0$ olsun. Bu değerleri bir önceki şıkta bulduğunuz denklemlerde yerine koyunuz.
+3. Denklem sistemini $\mathbf{A}\vec{x}=\vec{b}$ olacak şekilde tekrar yazınız ve $\mathbf{A}$ katsayı matrisini, $\vec{b}$ ve $\vec{x}$ vektörlerini belirleyiniz. $\vec{x}$ vektörünün sayısal olarak ne olduğunu bilmediğimizi ve ancak doğrusal denklem sistemini çözerek bulmaya çalışacağımızı hatırlayınız.
+4. Bu denklemi Gauss eleme ve Doolittle'ın LU ayrıştırma yöntemini kullanarak $T_{i}$ ve $a$ değerini bulunuz.
 
 ![](img/ornek_EgriDuzlem.png)
 
@@ -500,7 +504,7 @@ $$
 \end{align}
 $$
 
-$\theta=\pi/4$, $m_{1}=10$, $m_{2}=4$, $m_{3}=5$, $m_{4}=6$, $\mu_{1}=0.25$, $\mu_{2}=0.3$, $\mu_{3}=0.2$, $\mu_{4}=0$, $g=9.82$ m/2 $^{2}$
+$\theta=\pi/4$, $m_{1}=10$, $m_{2}=4$, $m_{3}=5$, $m_{4}=6$, $\mu_{1}=0.25$, $\mu_{2}=0.3$, $\mu_{3}=0.2$, $\mu_{4}=0$, $g=9.82$.
 
 Katsayı matrisi $T_{1}$, $T_{2}$, $T_{3}$, $T_{4}$ ve $a$'dan oluşmaktadır. 
 
@@ -613,9 +617,11 @@ A = \begin{bmatrix}    2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 1   \end{bmatrix}
 $$
 
 $$
+\begin{align*}
 A_{11} > |A_{12}| + |A_{13}| \rightarrow 2 > 1 + 0 \rightarrow \text{Doğru} \\
 A_{22} > |A_{21}| + |A_{23}| \rightarrow 2 > 1 + 1 \rightarrow \text{Neredeyse Doğru} \\
 A_{33} > |A_{31}| + |A_{32}| \rightarrow 1 > 0 + 1 \rightarrow \text{Neredeyse Doğru}
+\end{align*}
 $$
 
 Üçüncü ve birinci satırları yer değiştirdiğimiz durumu inceleyelim.
@@ -625,9 +631,11 @@ A' = \begin{bmatrix}    0 & -1 & 1 \\ -1 & 2 & -1 \\ 2 & -1 & 0   \end{bmatrix}
 $$
 
 $$
+\begin{align*}
 A'_{11} > |A'_{12}| + |A'_{13}| \rightarrow 0 > 1 + 1 \rightarrow \text{Yanlış} \\
 A'_{22} > |A'_{21}| + |A'_{23}| \rightarrow 2 > 1 + 1 \rightarrow \text{Doğru} \\
 A'_{33} > |A'_{31}| + |A'_{32}| \rightarrow 0 > 2 + 1 \rightarrow \text{Yanlış}
+\end{align*}
 $$
 
 Yukarıdan da anlaşılacağı üzere $A$ matrisi köşegen dominant iken $A'$ matrisi ise köşegen dominant değildir.

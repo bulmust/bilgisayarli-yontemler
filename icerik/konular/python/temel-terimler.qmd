@@ -42,8 +42,8 @@ print(str3 * 3) # Hello Hello Hello
 list7= [1,2,3]
 print(list7* 3) # [1, 2, 3, 1, 2, 3, 1, 2, 3]
 
-print("----------")
-print("-"*10) # ----------
+print("----------") # ----------
+print("-"*10) # 10 tane "-" yazdırır.
 ```
 
 Modunu alma operatörü `%` kullanılarak iki sayının bölümünden kalan sayıyı verir.
@@ -157,9 +157,9 @@ for it1 in range(10):
 ```
 
 `while` döngüsü için bir koşula ihtiyaç vardır. Bu koşul sağlanana kadar döngü içerisinden çıkılmaz.
-```
 
 Eğer `while` döngüsünü durduracak bir koşul yazılmazsa program sonsuza kadar çalışır. Eğer bir değişkene atama yapıyorsanız bilgisayarınız kitlenebilir. Biz çoğunlukla `for` döngüsü kullanacağız.
+
 `break` komutu ile döngüden çıkmak mümkündür. `continue` komutu ile bir sonraki adıma geçilir.
 
 ```{python}
