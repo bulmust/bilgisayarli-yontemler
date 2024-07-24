@@ -13,10 +13,10 @@ Taylor serisini hatırlayalım.
 
 $$
 \begin{align*}
-    f(x+h)= f(x) + f'(x)h + \frac{f''(x)}{2!}h^2 + \frac{f'''(x)}{3!}h^3 + \cdots \\
-    f(x+2h)= f(x) + f'(x)2h + \frac{f''(x)}{2!}(2h)^2 + \frac{f'''(x)}{3!}(2h)^3 + \cdots \\
-    f(x-h)= f(x) - f'(x)h + \frac{f''(x)}{2!}h^2 - \frac{f'''(x)}{3!}h^3 + \cdots \\
-    f(x+2h)= f(x) + f'(x)2h + \frac{f''(x)}{2!}(2h)^2 + \frac{f'''(x)}{3!}(2h)^3 + \cdots
+    f(x+h)=& f(x) + f'(x)h + \frac{f''(x)}{2!}h^2 + \frac{f'''(x)}{3!}h^3 + \cdots \\
+    f(x+2h)=& f(x) + f'(x)2h + \frac{f''(x)}{2!}(2h)^2 + \frac{f'''(x)}{3!}(2h)^3 + \cdots \\
+    f(x-h)=& f(x) - f'(x)h + \frac{f''(x)}{2!}h^2 - \frac{f'''(x)}{3!}h^3 + \cdots \\
+    f(x+2h)=& f(x) + f'(x)2h + \frac{f''(x)}{2!}(2h)^2 + \frac{f'''(x)}{3!}(2h)^3 + \cdots
 \end{align*}
 $$
 
@@ -24,15 +24,17 @@ Denklemlerin sağ ve sol tarafları belirli şekillerde toplayalım.
 
 $$
 \begin{align*}
-    f(x+h) + f(x-h) = 2f(x) + 2\frac{f''(x)}{2!}h^2 + \cdots \\
-    f(x+h) - f(x-h) = 2f'(x)h + 2\frac{f'''(x)}{3!}h^3 + \cdots
+    f(x+h) + f(x-h) =& 2f(x) + 2\frac{f''(x)}{2!}h^2 + \cdots \\
+    f(x+h) - f(x-h) =& 2f'(x)h + 2\frac{f'''(x)}{3!}h^3 + \cdots
 \end{align*}
 $$
 
+ve
+
 $$
 \begin{align*}
-    f(x+2h) + f(x-2h) = 2f(x) + 2\frac{f''(x)}{2!}(2h)^2 + \cdots \\
-    f(x+2h) - f(x-2h) = 2f'(x)2h + 2\frac{f'''(x)}{3!}(2h)^3 + \cdots
+    f(x+2h) + f(x-2h) =& 2f(x) + 2\frac{f''(x)}{2!}(2h)^2 + \cdots \\
+    f(x+2h) - f(x-2h) =& 2f'(x)2h + 2\frac{f'''(x)}{3!}(2h)^3 + \cdots
 \end{align*}
 $$
 

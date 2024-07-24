@@ -165,6 +165,7 @@ $$
 $$
 a_{n} \equiv \nabla^{n} y_{i} \equiv \frac{\nabla^{n-1} y_{i}-\nabla^{n-1} y_{n-1}}{x_{i}-x_{n-1}} \qquad \text{,} \quad i=n
 $$
+
 Bu terimlerin çıkarılışını görelim. Örneğin 3 adet veri noktamız olsun. $P_{2}(x)$ terimini oluşturan $a_{0}$, $a_{1}$ ve $a_{2}$ terimlerini elde edelim.
 
 Veri noktalarımız aşağıdaki gibi olsun.
@@ -262,12 +263,15 @@ Polinom aşağıdaki gibi olur.
 $$
 P_{2}(x)= \frac{x^{2}-x+8}{2}
 $$
+
 Bu polinom eğer doğruysa noktalardan geçiyor olması gerekir.
 
 $$
+\begin{align*}
 P_{2}(x=1)\stackrel{?}{=}4 \rightarrow \frac{1^{2}-1+8}{2}= 4 \quad \checkmark \\
 P_{2}(x=2)\stackrel{?}{=}5 \rightarrow \frac{2^{2}-2+8}{2}= 5 \quad \checkmark \\
 P_{2}(x=3)\stackrel{?}{=}7 \rightarrow \frac{3^{2}-3+8}{2}= 7 \quad \checkmark
+\end{align*}
 $$
 
 Bu ders kapsamında Neville metodunu incelemeyeceğiz.

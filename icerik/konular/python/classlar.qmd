@@ -49,7 +49,7 @@ Başka bir python betik dosyasından `bizimModul.py` dosyasını `import` komutu
 
 > Özel olarak oluşturduğumuz modüller betik dosyası ile aynı klasörde olmalı. Aksi taktirde python modülü varsayılan yollara (path) bakacak ve oluşturduğunuz modülü bulamayacaktır. Modüllerin yolunu görmek için `sys.path` komutunu kullanabilirsiniz. Modülünüzün yolunu eklemek için `sys.path.append("modulun_yolu")` komutunu kullanabilirsiniz.
 
-```sh
+```python
 import bizimModul as bm
 
 print(bm.pi)

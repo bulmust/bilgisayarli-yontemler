@@ -73,6 +73,72 @@ Aşağıdaki sorularda fonksiyonları yazın. Ardından uygun değerler için fo
 6. Bir fonksiyon yazın. Bu fonksiyon dört adet değişken alsın. Bu değişkenler; **ilk uzaklık**, **ilk hız**, **zaman** ve **ivme** olsun. Fonksiyonda, girilen değerler kullanılarak, başlangıçta $x_0$ konumunda olan ve ilk hızı $v_0$ olan bir cismin $a$ ivmesi altında $t$ saniye sonra hangi konumda olacağı belirlensin. Sonucu birimiyle beraber ekrana yazdırın. Sonuç değerini döndürsün. Burada tüm büyüklüklükler skalerdir.
 7. Bir fonksiyon yazın. Bu fonksiyon iki adet değişken alsın. Bu değişkenler; **başlangıç hızı** ve **atış açısı** olsun. Fonksiyonda, yatay düzlemde, $v_0$ ile $\theta$ açısıyla atılan bir cismin hangi konumda tekrar yatay düzlemde olacağı bulunsun. Atıştan sonra hangi konumda olduğu, havada geçirdiği süre ve maksimum çıkabileceği yükseklik ekrana yazdırılsın. Bu üç değerden oluşan bir tuple oluşturun. Fonksiyon bu tuple'ı döndürsün. Burada tüm büyüklüklükler skalerdir.
 
+### Çözüm
+
+```python
+# Karışık Alıştırmalar
+import numpy as np
+#1
+def soru1(var1,var2):
+    sonuc = 0
+    for it in range(var1, var2):
+        sonuc = sonuc+ it
+    return sonuc
+print(soru1(3,10))
+#2
+def soru2(x):
+    if x**2- 1 == 0:
+        return True
+    else:
+        return False
+print(soru2(1))
+print(soru2(-1))
+print(soru2(2))
+#3
+def soru3(r_m):
+    sabit_Nm2_C2 = 8.99*10e9 # Nm^2/C^2 
+    elektrikYuk_C= 1.602*10e-19 # C
+    potansiyel_V = sabit_Nm2_C2* elektrikYuk_C / r_m
+    return potansiyel_V
+print(soru3(r_m=10))
+#4
+def soru4(deltaX_m, deltaP_kgm_s):
+    hBar_J_s= 1.0545718*10e-34 # J*s
+    # 1 J = 1 kg m^2 / s^2
+    if deltaX_m* deltaP_kgm_s > hBar_J_s/2:
+        return True
+    else:
+        return False
+print(soru4(deltaX_m=1e-19, deltaP_kgm_s=1e-9))
+#5
+def soru5(kutle1_kg, kutle2_kg, r_m):
+    sabit_Nm2_kg2= 6.67*10e-11 # Nm^2/kg^2
+    return sabit_Nm2_kg2* kutle1_kg* kutle2_kg/ r_m**2
+print(soru5(kutle1_kg=10, kutle2_kg=10, r_m=10))
+#6
+def soru6(x0_m, v0_m_s, t_s, a_m2_s):
+    return x0_m+ v0_m_s*t_s+ 0.5* a_m2_s* t_s**2
+print(soru6(x0_m=10, v0_m_s=10, t_s=10, a_m2_s=10))
+#7
+def soru7(v0_m_s, theta):
+    g_m_s2= 9.81
+    
+    v0x_m_s= v0_m_s* np.sin(theta)
+    v0y_m_s= v0_m_s* np.cos(theta)
+    
+    # t ucus
+    tUcus_s= 2*(v0y_m_s/g_m_s2)
+    
+    # Yatay duzlemde olduğu nokta
+    xSon_m= v0x_m_s* tUcus_s
+    
+    # Maksimum Yükseklik
+    hMax_m= (v0y_m_s* (tUcus_s/2))/2
+    
+    return (xSon_m, tUcus_s, hMax_m)
+print(soru7(v0_m_s=10, theta=np.pi/4))
+```
+
 ## Problem 7
 
 **Matris çarpımı**
@@ -92,6 +158,73 @@ Aşağıdaki sorularda fonksiyonları yazın. Ardından uygun değerler için fo
     3. Eğer herhangi bir matris birim matris ise **... matrisi birim matristir.** şeklinde ekrana yazı yazsın ve `for` döngüsüne girmeden sonucu ekrana yazsın.
 11. Yukarıdaki yazdığınız fonksiyonu uyarı metinleri ekranda yazacak şekilde bir çok kez çağırın.
 12. Eğer `mat_carp()` fonksiyonunu çağırırken girdilerden birisi bir boyutlu array olursa, hata alacaksınız. Bunun nedeni hakkında düşünün ve gerekli düzenlemeyi yapın.
+
+### Çözüm
+
+```python
+import numpy as np
+#1 
+mat1= np.array([[1,2,3],[4,5,6],[7,8,9]])
+mat2= np.array([[10,11,12],[13,14,15],[16,17,18]])
+print(mat1)
+print(mat2)
+#2
+print(mat1 @ mat2)
+#3
+sonuc= np.zeros((3,3))
+#4
+print(mat1[0,:])
+print(mat1[1,:])
+print(mat1[2,:])
+#5
+print(mat2[:,0])
+print(mat2[:,1])
+print(mat2[:,2])
+#6
+sonuc[0,0]= np.sum(mat1[0,:] * mat2[:,0])
+print(sonuc)
+#7
+sonuc[0,1]= np.sum(mat1[0,:] * mat2[:,1])
+print(sonuc)
+#8
+sonuc[0,2]= np.sum(mat1[0,:] * mat2[:,2])
+print(sonuc)
+#9
+sonuc[1,0]= np.sum(mat1[1,:] * mat2[:,0])
+print(sonuc)
+#10
+def mat_carp(mat1, mat2):
+    boy1= np.shape(mat1)
+    boy2= np.shape(mat2)
+    #10.1
+    if boy1[1] != boy2[0]:
+        return False
+    #10.2
+    if np.array_equal(mat1, np.zeros(boy1)) or np.array_equal(mat2, np.zeros(boy2)):
+        print("Bir matrisin tüm elemanları sıfırdır.")
+        print(f"mat1:\n {mat1}")
+        print(f"mat2:\n {mat2}")
+        return np.zeros((boy1[1], boy2[0]))
+    #10.3
+    if np.array_equal(mat1, np.eye(boy1[0])):
+        print("Bir matris birim matristir.")
+        print(f"mat1:\n {mat1}")
+        return mat2
+    if np.array_equal(mat2, np.eye(boy2[0])):
+        print("Bir matris birim matristir.")
+        print(f"mat2:\n {mat2}")
+        return mat1
+    sonuc= np.zeros((boy1[0], boy2[1]))
+    for it1 in range(boy1[0]):
+        for it2 in range(boy2[1]):
+            sonuc[it1,it2]= np.sum(mat1[it1,:] * mat2[:,it2])
+    return sonuc
+#11
+mat1= np.array([[1,2],[3,4]]) #np.zeros((3,3)) #np.eye(3) #np.array([[1,2,3],[4,5,6],[7,8,9]])
+mat2= np.array([[10,11,12],[13,14,15],[16,17,18]])
+print(f"mat_carp(mat1, mat2)\n {mat_carp(mat1, mat2)}")
+print(f"\nmat1 @ mat2 \n{mat1 @ mat2}")
+```
 
 ## Problem 8
 
@@ -129,193 +262,66 @@ $$
 |\psi> = A \left((1+i)|\uparrow> + (1-i)|\downarrow> \right)
 $$
 
-## Problem 9
-
-**Temel Python**
-
-1. Ekrana "Hello World" yazdırın.
-2. 3 ve 2'yi toplayın. Cevabı ekrana yazdırın.
-3. 2'nin kökünü hesaplayın ve ekrana yazdırın.
-4. `degisken1= 5` ve `degisken2 = 3` olsun. `degisken1` ve `degisken2` değişkenlerinin değerlerini yer değiştirin.
-5. `degisken1= 5` olsun. Bu değişkenin tek mi veya çift mi olduğunu sınayan bir program yazın.
-6. `degisken1= 5` ve `degisken2 = 3` olsun. Eğer `degisken1`, `degisken2`'den büyükse ekrana "degisken1 büyük" yazdırın. Aksi durum için ise "degisken2 büyük" yazdırın.
-7. 0'dan 30'a kadar olan sayıları (0 ve 30 dahil) ekrana yazdırın.
-8. 0'dan 30'a kadar olan sayıların iki katını (0 ve 30 dahil) ekrana yazdırın.
-9. 0'dan 30'a kadar olan sayılardan sadece çift olanlarını (0 ve 30 dahil) ekrana yazdırın.
-10. 0'dan 30'a kadar olan sayıları ekrana yazdırın, ancak 12 ve 27'yi yazdırmayın.
-
-
-## Problem 10
-
-**Kendisiyle İşlem Yaptırma**
-
-1. 0'dan 30'a kadar olan sayıları (0 ve 30 dahil) toplayın. 
-
-$$\sum_{i=0}^{30}i$$
-
-1. 1'dan 10'a kadar olan sayıları (1 ve 10 dahil) çarpın.
-
-$$\prod_{i=1}^{10}i = 10!$$
-
-1.  0'dan 30'a kadar olan sayıları (0 ve 30 dahil) toplayın ancak 12 ve 27'yi toplamaya dahil etmeyin.
-
-$$\sum_{i=0,i\ne12,27}^{30}i$$
-
-1.  0'dan 30'a kadar olan sayıların iki katını (0 ve 30 dahil) toplayın.
-   
-$$\sum_{i=0}^{30}2i$$
-
-## Problem 11
-
-**Fonksiyonlar**
-
-1.  `fonk1` adında bir fonksiyon yazın. Bu fonksiyon ekrana "Hello World" yazdırsın.
-2.  `fonk2` adında bir fonksiyon yazın. Bu fonksiyon bir sayı alsın ve bu sayının iki katını ekrana yazdırsın.
-3.  `fonk3` adında bir fonksiyon yazın. Bu fonksiyon bir sayı alsın ve o sayının tek mi çift mi olduğunu ekrana yazdırsın.
-4.  `fonk4` adında bir fonksiyon yazın. Bu fonksiyon bir sayı alsın ve o sayının 0'dan büyük olup olmadığını ekrana yazdırsın.
-5.  `fonk5` adında bir fonksiyon yazın. Bu fonksiyon bir sayı alsın ve o sayının karesini geri döndürsün.
-6.  `fonk6` adında bir fonksiyon yazın. Bu fonksiyon bir sayı alsın ve sıfırdan o sayıya kadar olan tüm sayıları toplayıp sonucu geri döndürsün.
-7.  `fonk7` adında bir fonksiyon yazın. Bu fonksiyon **iki** sayı alsın ve bu sayıların toplamını geri döndürsün.
-8.  `fonk1`'i çağırın.
-9.  `fonk2`'yi, `fonk3`'ü, `fonk4`'ü, `fonk5`'i ve `fonk6`'yı 30 için çağırın.
-10. `fonk7`'yı, 30 ve 35 için çağırın.
-11. `fonk8` adında bir fonksiyon yazın. Bu fonksiyon, `fonk` ve `x` adında iki parametre alsın. Burada `fonk` bir fonksiyon olacaktır. `fonk8` ana fonksiyonumuzun içerisinde bu `fonk` fonksiyonunu `x` çağırın ve sonucu ekrana yazdırın.
-12. `fonk8`'i, `fonk5` ve 30 için çağırın.
-
-## Problem 12
-
-**Numpy Arrayler**
-
-1.  Elemanları 3,4,9,1 olan ve adı `arr1` olan bir numpy arrayi oluşturun.
-2.  `arr1` arrayinin 2. elemanını ekrana yazdırın. (9 olan elemanı)
-3.  Elemanları 11,22,33,44,55,66,77,88,99,100 olan ve adı `arr2` olan bir numpy arrayi oluşturun.
-4.  `arr2` arrayinin 3. elemanından 7. elemanına kadar olan elemanları ekrana yazdırın. (elemanlar 0'dan başlar)
-5.  `arr2` arrayinin elemanlarını `for` döngüsü kullanarak toplayın.
-
-## Problem 13
-
-**Matrisler**
-
-1.  Birinci satırı 3,4,5 ikinci satırı 9,1,2 ve üçüncü satırı 11,12,13 olan ve adı `mat1` olan bir numpy arrayi oluşturun.
-2.  Bu matrisin 0. satırını ekrana yazdırın.
-3.  Bu matrisin 2. sütununu ekrana yazdırın.
-4.  Bu matisin 1. satırının 1. sütunundaki elemanı ekrana yazdırın.
-5.  Bu matrisin elemanları `for` döngüsü kullanarak toplayın.
-
-## Problem 14
-
-**Algoritmalar**
-
-1.  `algo1` adında bir fonksiyon yazın. Bu fonksiyon bir sayı alsın ve o sayının faktöriyelini geri döndürsün.
-2.  `algo2` adında bir fonksiyon yazın. Bu fonksiyon bir sayı alsın ve o sayıya kadar olan tüm sayılara bölünüp bölünmediğini ekrana yazdırsın. Örn. 8 için 1'e, 2'ye, 4'e bölünür.
-3.  `algo3` adında bir fonksiyon yazın. Bu fonksiyon iki sayı alsın ve bu sayıdan büyük olanını ekrana yazdırsın.
-4.  `algo4` adında bir fonksiyon yazın. Bu fonksiyon bir array alsın ve arrayin ortasındaki elemanı ekrana yazdırsın. Örn: [1,2,3] -> 2. Eğer arrayin eleman sayısı çift ise ortadaki iki elemanı ekrana yazdırın. Örn: [1,2,3,4] -> 2,3
-5.  `algo5` adında bir fonksiyon yazın. Bu fonksiyon bir array alsın ve bu arrayin elemanlarının yerini tersten yazsın. Örn: [1,2,3] -> [3,2,1]. (numpy'ın `reverse` özelliğini kullanmayın.)
-6.  `algo6` adında bir fonksiyon yazın. Bu fonksiyon bir arrayin içindeki elemanları küçükten büyüğe sıralasın. (numpy'ın `sort` özelliğini kullanmayın.)
-7.  `algo7` adında bir fonksiyon yazın. Bu fonksiyon bir array alsın ve elemanlarının simetriğindeki elemanları toplayıp ekrana yazdırsın. Örn: [1,3,5,9] -> 1+9=10, 3+5=8. Eğer arrayin eleman sayısı tek ise ortadaki elemanı toplamadan ekrana yazdırsın. Örn: [1,3,5,9,11] -> 1+11=12, 3+9=12, 5.
-8.  `algo8` adında bir fonksiyon yazın. Bu fonksiyon bir array alsın ve bu array her elemanını bir sonraki elemanla toplayıp bir array yaratsın. Örn. [1,2,3,4] -> [1+2, 2+3, 3+4] -> [3,5,7].
-9.  `algo9` adında bir fonksiyon yazın. bir matris alsın ve bu matrisin transpozunu geri döndürsün. (numpy'ın `T` özelliğini kullanmayın.)
-10. `algo10` adında bir fonksiyon yazın. bir matris alsın ve bu matrisin elemanlarının toplamını geri döndürsün. (numpy'ın `sum` özelliğini kullanmayın.)
-11. `algo11` adında bir fonksiyon yazın. iki matris alsın ve bu matrislerin çarpımını geri döndürsün. (numpy'ın `dot` özelliğini veya `@` özelliğini kullanmayın.)
-
-## Problem 15
-
-**Formülden Algoritma Yazma**
-
-1.  `algofonk1` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.
-
-$$f(x)=x^{2}+4x-7$$
-
-2.  `algofonk2` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.
-
-$$f(x)=\frac{sin(x)}{x}$$
-
-3.  `algofonk3` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.
-
-$$f(x)=\prod_{i=1}^{x}i=x!$$
-
-4.  `algofonk4` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.
-
-$$f(x)=\sum_{i=0}^{x}i$$
-
-5.  `algofonk5` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.
-
-$$f(x)=\sum_{i=0}^{x}\sqrt{i}$$
-
-6.  `algofonk6` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.
-
-$$f(x)=\sum_{i=3}^{x-5}i^{2}$$
-
-7.  `algofonk7` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.
-
-$$f(x,a)=\sum_{i=0}^{a}x$$
-
-8.  `algofonk8` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın.
-
-$$f(x,a,b)=\sum_{i=a}^{b}\frac{x \times i}{a \times b}$$
-
-9.  `algofonk9` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada `x` bir array.
-
-$$f(x)=\sum_{i}x_{i}$$
-
-10. `algofonk10` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada `x` bir array.
-
-$$f(x)=\prod_{i}x_{i}$$
-
-11. `algofonk11` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada `x`, n boyutlu bir array.
-
-$$f(x)=\sum_{i}^{n-1}x_{i}+x_{i+1}$$
-
-12. `algofonk12` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada `x`, n boyutlu bir array.
-
-$$f(x,a,b)=\sum_{i=0}^{n-1}a \times x_{i}+b \times x_{i+1}$$
-
-13. `algofonk13` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada `g`, tek değişkenli bir fonksiyon.
-
-$$f(g)= g(3)$$
-
-14. `algofonk14` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada `g`, tek değişkenli bir fonksiyon ve `x` bir sayı.
-
-$$f(g,x)= g(3)\times x$$
-
-15. `algofonk15` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada `g`, tek değişkenli bir fonksiyon ve `x` bir sayı.
-
-$$f(g,x)= g(x)\times g(x)$$
-
-16. `algofonk16` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada `g`, tek değişkenli bir fonksiyon ve `x` n boyutlu bir array.
-
-$$f(g,x)= \frac{g(x_{0})+g(x_{1})}{2}$$
-
-17. `algofonk17` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada `g`, tek değişkenli bir fonksiyon ve `x` n boyutlu bir array.
-
-$$f(g,x)= \sum_{i=0}^{n}g(x_{i})$$
-
-18. `algofonk18` adında bir fonksiyon yazın. Bu fonksiyon aşağıdaki formülü hesaplasın. Burada `g`, tek değişkenli bir fonksiyon ve `x` n boyutlu bir array.
-
-$$f(g,x)= \sum_{i=0}^{n-1}g(x_{i})+g(x_{i-1})$$
-
-## Problem 16
-
-**Zor Algoritmalar**
-
-1. `algoZor1` adında bir fonksiyon yazın. iki matris alsın ve bu matrislerin çarpımını ters bir şekilde yapsın. Yani birinci matrisin sütunları ile ikinci matrisin satırları çarpılsın. Bu fonksiyon sadece kare matrisler için çalışsın.
-1. `algoZor2` adında bir fonksiyon yazın. Bu fonksiyon bir kompleks matris alsın. Bu matrisin hermisyen olup olmadığını kontrol edip sonucu ekrana yazdırsın. Yani kompleks konjugesinin transpozu (dagger'ı) kendine eşit mi değil mi kontrol etsin.
-1. `algoZor3` adında bir fonksiyon yazın. Bu fonksiyon `x`, `y` ve `z` kartezyen koordinatlarını alsın ve bu koordinatları `r`, `theta` ve `phi` küresel koordinatlarına çevirip değerleri geri döndürsün.
-1. `algoZor4` adında bir fonksiyon yazın. Bu fonksyion `vec2d` adında iki bileşenli array ve `theta` adında bir açı alsın. Bu fonksiyon `vec2d` vektörünü `theta` açısıyla döndürsün ve bu fonksiyon yeni dönmüş vektörü geri döndürsün.
-1. `algoZor5` adında bir fonksiyon yazın. Bu fonksiyon `vec3d` adında bir üç bileşenli bir array, `theta` ve `phi` adında açılar alsın. Bu fonksiyon `vec3d` vektörünü `theta` ve `phi` açılarıyla döndürsün ve yeni dönmüş vektörü geri döndürsün. 
-1. `algoZor6` adında bir fonksiyon yazın. Bu fonksiyon `spinFermi` adında iki bileşenli bir array, `theta` adında bir açı, `xBool`, `yBool` ve `zBool` adlarında 3 adet mantıksal değişken alsın. Bu fonksiyon `spinFermi` fermion spin vektörünü Pauli-spin matrislerini kullanarak ile `theta` açısıyla döndürsün. Eğer `xBool` doğru ise `x` eksenine göre döndürsün, `yBool` doğru ise `y` eksenine göre döndürsün, `zBool` doğru ise `z` eksenine göre döndürsün. Bu fonksiyon döndürülen vektörü geri döndürsün.
-1. `algoZor7` fonksiyonunu kullanarak Stern-Gerlach deneyini simüle edin. Bunun için spini $z$ yönünde olan bir parçacığın spin vektörünü önce $x$ yönünde, sonra da $y$ yönünde döndürün. 
-1. `algoZor8` adında bir fonksiyon yazın. Bu fonksiyon `hamilt` adında Hamiltonyen matrisini alsın ve enerji özdeğerlerini ve buna karşılık gelen özdurumları bulup ekrana yazdırsın.
-1. `algoZor9` adında bir fonksiyon yazın. Bu fonksiyon `yuk` yük miktarı, `x`, `y` ve `z` koordinatlarını alsın ve bu yükün $x,y,z$ noktasındaki elektrostatik potansiyelini geri döndürsün.
-1. `algoZor10` adında bir fonksiyon yazın. Bu fonksiyon `yuk1`, `yuk2` yük miktarlarını, `x`, `y` ve `z` aralarındaki mesafeyi veren koordinatları alsın ve bu iki yük arasındaki Coulomb kuvvetinin büyüklüğünü geri döndürsün.
-1. `algoZor11` adında bir fonksiyon yazın. Bu fonksiyon düzgün yoğunluğa sahip bir sonsuz uzunluktaki bir çubuğun yük dağılımını veren fonksiyonu `yukDagılımıFonk`, `r` koordinatını alsın ve çubuktan `r` kadar uzaklıktaki elektrostik potansiyel değerini geri döndürsün. `yukDagılımıFonk` fonksiyonu `x` koordinatında yük dağılımının değerini veren bir fonksiyon olmalı.
-
-
-## Referanslar
-
-1. [https://www.programiz.com/python-programming/examples](https://www.programiz.com/python-programming/examples)
-2. [https://www.freecodecamp.org/news/python-code-examples-sample-script-coding-tutorial-for-beginners/#-for-loops-in-python](https://www.freecodecamp.org/news/python-code-examples-sample-script-coding-tutorial-for-beginners/#-for-loops-in-python)
-3. Algorithms in Python – Full Course for Beginners: [https://www.youtube.com/watch?v=fW_OS3LGB9Q](https://www.youtube.com/watch?v=fW_OS3LGB9Q)
-4. Vektör döndürme: [https://stackoverflow.com/questions/14607640/rotating-a-vector-in-3d-space](https://stackoverflow.com/questions/14607640/rotating-a-vector-in-3d-space), [https://en.wikipedia.org/wiki/Euler%E2%80%93Rodrigues_formula](https://en.wikipedia.org/wiki/Euler%E2%80%93Rodrigues_formula)
-5. Bir vektörü Pauli-Spin matrisleri ile döndürme: [https://quantummechanics.ucsd.edu/ph130a/130_notes/node279.html](https://quantummechanics.ucsd.edu/ph130a/130_notes/node279.html)
-6. Sonsuz uzunluktaki çubuğun elektrostatik potansiyeli: [http://hyperphysics.phy-astr.gsu.edu/hbase/electric/potlin.html](http://hyperphysics.phy-astr.gsu.edu/hbase/electric/potlin.html)
+### Çözüm
+
+Dalga Fonksiyonunu normalize edelim.
+
+$$
+|<\psi|\psi>|^2=1
+$$
+
+$$
+| |A|^{2} \left[(1-i)(1+i) + (1+i)(1-i) \right]|^2 = 1
+$$
+
+$$
+|4 |A|^{2} |^{2} = 1
+$$
+
+$$
+|A|^{2}= \frac{1}{4}
+$$
+
+$$
+A= \frac{1}{2}
+$$
+
+Bu durumda normalize edilmiş dalga fonksiyonu aşağıdaki gibidir.
+
+$$
+|\psi> = \frac{1+i}{2}|\uparrow> + \frac{1-i}{2}|\downarrow>
+$$
+
+Diğer soruların cevapları da aşaıdaki gibidir.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+#1
+def normalize_et_dalgaFonk(arr1):
+    #1.1
+    if np.ndim(arr1) != 1:
+        print("Bu fonksiyon sadece arrayler için çalışmaktadır.")
+        return None
+    sonuc= 0
+    for it in arr1:
+        sonuc += np.conj(it)* it
+    normalizasyonKatsayisi= 1/np.sqrt(sonuc)
+    return arr1* normalizasyonKatsayisi
+#2
+print(f"normalize_et_dalgaFonk(np.array([1,1])) = {normalize_et_dalgaFonk(np.array([1,1]))}")
+#3
+xAxis= np.linspace(0, 1, 100)
+#4
+yAxis= np.linspace(0, 1, 100)
+#5
+plt.plot(xAxis, yAxis, 'k')
+#6
+normalize_arr= normalize_et_dalgaFonk(np.array([1,1]))
+xAxis= np.linspace(0, normalize_arr[0], 100)
+yAxis= np.linspace(0, normalize_arr[1], 100)
+plt.plot(xAxis, yAxis, 'r')
+#8
+print(normalize_et_dalgaFonk(np.array([1+1j,1-1j])))
+```

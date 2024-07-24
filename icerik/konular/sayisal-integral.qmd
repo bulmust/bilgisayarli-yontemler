@@ -451,21 +451,21 @@ plt.close()
 
 ### Monte Carlo İntegrali
 
-Monte Carlo integrali için genel olarak bir $ f $ fonksiyonunun ortalamasını yazalım [[2]](https://en.wikipedia.org/wiki/Mean_of_a_function).
+Monte Carlo integrali için genel olarak bir $f$ fonksiyonunun ortalamasını yazalım [[2]](https://en.wikipedia.org/wiki/Mean_of_a_function).
 
 $$ <f> = \frac{1}{b-a}\int^{b}_{a}f(x)dx $$
 
 $$ (b-a)<f> = \int^{b}_{a}f(x)dx $$
 
-Tıpkı diğer sayısal integral alma yöntemlerinde olduğu gibi burada da adım aralığını kesikli hale getirmemiz gerekiyor. Bunun için denklemin sol tarafını $ N $ adet eşit olmayan aralığa bölelim. Bu durumda ortalama fonksiyon $ <f> $ de $ N $ adet aralığa bölmemiz gerekecek.
+Tıpkı diğer sayısal integral alma yöntemlerinde olduğu gibi burada da adım aralığını kesikli hale getirmemiz gerekiyor. Bunun için denklemin sol tarafını $N$ adet eşit olmayan aralığa bölelim. Bu durumda ortalama fonksiyon $<f>$ de $N$ adet aralığa bölmemiz gerekecek.
 
 $$ (b-a)\frac{1}{N} \sum_{i}f(x_{i}) = \int^{b}_{a}f(x)dx $$
 
-Burada $ x_{i} $'ler $ [a,b] $ aralığında **rastgele seçilmiş noktalardır.** Bu noktalardan $ N $ adet seçtiğimiz için $ \frac{1}{N} \sum_{i}f(x_{i}) $ ifadesi $ <f> $'in bir yaklaşımı olacaktır. Sonucun doğruluğunu arttırmak için $ N $ sayısının büyüklüğünü arttırmak gerekir.
+Burada $x_{i}$'ler $[a,b]$ aralığında **rastgele seçilmiş noktalardır.** Bu noktalardan $ N $ adet seçtiğimiz için $\frac{1}{N} \sum_{i}f(x_{i})$ ifadesi $<f>$'in bir yaklaşımı olacaktır. Sonucun doğruluğunu arttırmak için $N$ sayısının büyüklüğünü arttırmak gerekir.
 
-Elde ettiğimiz denklemin sağ tarafında integral ifadesi olduğu için, herhangi bir $ f(x) $ fonksiyonun $ [a,b] $ aralığındaki integrali, denklemin sol tarafına eşittir diyebiliriz.
+Elde ettiğimiz denklemin sağ tarafında integral ifadesi olduğu için, herhangi bir $f(x)$ fonksiyonun $[a,b]$ aralığındaki integrali, denklemin sol tarafına eşittir diyebiliriz.
 
-Burada seçilen $ x_{i} $ noktaları eşit aralıklarla değil, rastgeledir. Yani $ x_{i} $'lerin birbirlerine olan uzaklıkları eşit değildir. Bundan dolayı fonksiyonun bazı kısımları hızlı değişip bazı kısımları daha yavaş değişiyorsa, Monte-Carlo integrali daha kullanışlı olacaktır.
+Burada seçilen $x_{i}$ noktaları eşit aralıklarla değil, rastgeledir. Yani $x_{i}$'lerin birbirlerine olan uzaklıkları eşit değildir. Bundan dolayı fonksiyonun bazı kısımları hızlı değişip bazı kısımları daha yavaş değişiyorsa, Monte-Carlo integrali daha kullanışlı olacaktır.
 
 Bu yaklaşımı kullanarak bir fonksiyon yazalım.
 
@@ -517,6 +517,7 @@ plt.close()
 ## Alıştırma
 
 Aşağıdaki integrali Monte-Carlo integral yöntemiyle hesaplayın.
+
 $$
 \int^{1}_{0}\int^{1}_{0}yx^{2}dxdy
 $$

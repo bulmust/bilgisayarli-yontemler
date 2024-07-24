@@ -27,14 +27,14 @@ title: "Modüller - Problem Cevapları"
 ### Cevap
 
 ```python
-import numpy as np
 # 1. Soru
 # 1.1. Soru
-arr1d_1= np.arange(80,250)
+arr1d_1= np.arange(80,250,2)
 print('arr1d_1\n', arr1d_1)
 
 # 1.2. Soru
 print("1.2 = ", np.sum(arr1d_1))
+#print(f'1.2= {np.sum(arr1d_1)}')
 
 # 1.3. Soru
 print("1.3 = ", np.mean(arr1d_1))
@@ -43,11 +43,13 @@ print("1.3 = ", np.mean(arr1d_1))
 toplam=0
 for it in arr1d_1:
     toplam += it
+    #toplam = toplam + it
 print('1.4 = ', toplam)
 #veya
 toplam2=0
 for it in range(len(arr1d_1)):
     toplam2 += arr1d_1[it]
+    #toplam2 = toplam2 + arr1d_1[it]
 print('veya 1.4 = ', toplam2)
 
 # 2. Soru
@@ -57,8 +59,7 @@ print('arr2d_1\n', arr2d_1)
 # veya
 arr2d_1 = np.array([np.arange(1,11),np.arange(11,21),np.arange(21,31),np.arange(31,41),np.arange(41,51)\
     , np.arange(51,61),np.arange(61,71),np.arange(71,81),np.arange(81,91),np.arange(91,101)])
-print('arr2d_1\n', arr2d_1)
-
+print('arr2d_1\n', arr2d_1)       
 # 2.2. Soru
 print("2.2 = ", np.sum(arr2d_1))
 
@@ -102,6 +103,7 @@ print('arr2d_3\n', arr2d_3)
 
 # 4.3. Soru
 print("4.3 = \n", np.dot(arr2d_3, vec_1))
+print("4.3 = \n", arr2d_3 @ vec_1)
 ```
 
 ## Problem 2
