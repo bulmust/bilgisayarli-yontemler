@@ -8,7 +8,7 @@
 
 <meta name="author" content="Taygun Bulmus">
 
-<title>Kök Bulma – Bilgisayarlı Yöntemler</title>
+<title>Classlar – Bilgisayarlı Yöntemler</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,27 +58,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../icerik/konular/sayisal-turev.html" rel="next">
-<link href="../../icerik/konular/interpolasyon-egri-uydurma/egri-uydurma.html" rel="prev">
-<link href="../../resimler/favicon.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../icerik/konular/dogrusal-denklemler.html" rel="next">
+<link href="../../../icerik/konular/python/moduller.html" rel="prev">
+<link href="../../../resimler/favicon.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../icerik/konular/kok-bulma.html">Kök Bulma</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html">Python</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/python/classlar.html">Classlar</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Kenar çubuğunu değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Aramak" onclick="window.quartoOpenSearch();">
@@ -134,8 +134,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../resimler/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../resimler/logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/bulmust/bilgisayarli-yontemler" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
@@ -166,19 +166,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/izlence.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/izlence.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İzlence</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/projeler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/projeler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Projeler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/bilYonMod.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/bilYonMod.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python Modülü</span></a>
   </div>
 </li>
@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/python.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -204,37 +204,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/giris-degiskenler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/giris-degiskenler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Giriş - Değişkenler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/temel-terimler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/temel-terimler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Temel Terimler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/fonksiyonlar.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/fonksiyonlar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fonksiyonlar</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Classlar</span></a>
   </div>
 </li>
@@ -242,7 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/dogrusal-denklemler.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/dogrusal-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Doğrusal Denklemler</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -251,13 +251,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklemler-cozumleri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dogrusal Denklemler ve Çözümleri</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/dogrusal-denklemler/dogrusal-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Doğrusal Denklem Sistemleri</span></a>
   </div>
 </li>
@@ -265,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/interpolasyon-egri-uydurma.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/interpolasyon-egri-uydurma.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İnerpolasyon ve Eğri Uydurma</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -274,13 +274,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/interpolasyon-egri-uydurma/interpolasyon.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/interpolasyon-egri-uydurma/interpolasyon.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İnterpolasyon</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/interpolasyon-egri-uydurma/egri-uydurma.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/interpolasyon-egri-uydurma/egri-uydurma.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Eğri Uydurma (Fitting)</span></a>
   </div>
 </li>
@@ -288,25 +288,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/kok-bulma.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../icerik/konular/kok-bulma.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kök Bulma</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/sayisal-turev.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/sayisal-turev.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sayısal Türev</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/sayisal-integral.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/sayisal-integral.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sayısal İntegral</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/adi-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/adi-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Adi Diferansiyel Denklemler</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -315,49 +315,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Giriş</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-euler-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Euler Yöntemi</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-denklem-sistemleri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Denklem Sistemleri</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-ikinci-dereceden-diferansiyel-denklemler.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - İkinci Dereceden Diferansiyel Denklemler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/bdp-runge-kutta-yontemleri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">BDP - Runge-Kutta Yöntemleri</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Giriş</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-atis-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Atış Yöntemi</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/adi-diferansiyel-denklemler/sdp-sonlu-farklar-yontemi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">SDP - Sonlu Farklar Yöntemi</span></a>
   </div>
 </li>
@@ -365,7 +365,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/fourier-analizi.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/fourier-analizi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fourier Analizi</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -374,31 +374,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Giriş</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/kfd-kesikli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">KFD - Kesikli Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/hfd-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HFD - Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/thfd-ters-hizli-fourier-donusumu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">THFD - Ters Hızlı Fourier Dönüşümü</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/fourier-analizi/uygulama-ses-dalgalari.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Uygulama - Ses Dalgaları</span></a>
   </div>
 </li>
@@ -406,7 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/veri-analizi.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/veri-analizi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Veri Analizi</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -415,19 +415,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/veri-analizi/pandas-giris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-giris.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Giris</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/veri-analizi/pandas-veri-manipulasyonu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-veri-manipulasyonu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Veri Manipülasyonu</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/veri-analizi/pandas-uygulama.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/veri-analizi/pandas-uygulama.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pandas - Uygulama</span></a>
   </div>
 </li>
@@ -435,7 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../icerik/konular/istatistik.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../icerik/konular/istatistik.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">İstatistik</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Bölümü değiştir">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -444,43 +444,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/temel-kavramlar.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/temel-kavramlar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Temel Kavramlar</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/uygulama-thinkstat2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/uygulama-thinkstat2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Uygulama - thinkstat2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/olasilik-kutle-fonksiyonu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/olasilik-kutle-fonksiyonu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Olasılık Kütle Fonksiyonu</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/kumulatif-dagilim-fonksiyonu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kümülatif Dağılım Fonksiyonu</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/dagilimlarin-modellenmesi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/dagilimlarin-modellenmesi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dağılımlarin Modellenmesi</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/scipy-stats.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/scipy-stats.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">scipy - stats</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../icerik/konular/istatistik/hipotez-testi.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../icerik/konular/istatistik/hipotez-testi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hipotez Testi</span></a>
   </div>
 </li>
@@ -498,19 +498,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title"><strong>Bu sayfada</strong></h2>
    
   <ul>
-  <li><a href="#artan-arama-metodu" id="toc-artan-arama-metodu" class="nav-link active" data-scroll-target="#artan-arama-metodu">Artan Arama Metodu</a></li>
-  <li><a href="#ikiye-bölme-yöntemi" id="toc-ikiye-bölme-yöntemi" class="nav-link" data-scroll-target="#ikiye-bölme-yöntemi">İkiye Bölme Yöntemi</a></li>
-  <li><a href="#newton-raphson-yöntemi" id="toc-newton-raphson-yöntemi" class="nav-link" data-scroll-target="#newton-raphson-yöntemi">Newton-Raphson Yöntemi</a></li>
-  <li><a href="#hazır-paketler" id="toc-hazır-paketler" class="nav-link" data-scroll-target="#hazır-paketler">Hazır paketler</a></li>
+  <li><a href="#örnek" id="toc-örnek" class="nav-link active" data-scroll-target="#örnek">Örnek</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/kok-bulma.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/python/classlar.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../icerik/konular/kok-bulma.html">Kök Bulma</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html"><strong>Konular</strong></a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/python.html">Python</a></li><li class="breadcrumb-item"><a href="../../../icerik/konular/python/classlar.html">Classlar</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Kök Bulma</h1>
+<h1 class="title">Classlar</h1>
 </div>
 
 
@@ -539,205 +536,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="artan-arama-metodu" class="level2">
-<h2 class="anchored" data-anchor-id="artan-arama-metodu">Artan Arama Metodu</h2>
-<div id="036a7782" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">def</span> kok_bulma_artan_arama(fonksiyon,aralikKucuk,aralikBuyuk,adimAraligi):</span>
-<span id="cb1-6"><a href="#cb1-6"></a>    <span class="co">'''[Numerical Methods in Engineering with Python 3]</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="co">    '''</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>    x1 <span class="op">=</span> aralikKucuk</span>
-<span id="cb1-9"><a href="#cb1-9"></a>    f1 <span class="op">=</span> fonksiyon(aralikKucuk)</span>
-<span id="cb1-10"><a href="#cb1-10"></a>    x2 <span class="op">=</span> aralikKucuk <span class="op">+</span> adimAraligi</span>
-<span id="cb1-11"><a href="#cb1-11"></a>    f2 <span class="op">=</span> fonksiyon(x2)</span>
-<span id="cb1-12"><a href="#cb1-12"></a>    <span class="cf">while</span> np.sign(f1) <span class="op">==</span> np.sign(f2):</span>
-<span id="cb1-13"><a href="#cb1-13"></a>        <span class="cf">if</span> x1 <span class="op">&gt;=</span> aralikBuyuk: </span>
-<span id="cb1-14"><a href="#cb1-14"></a>            <span class="cf">return</span> <span class="va">None</span>,<span class="va">None</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a>        x1 <span class="op">=</span> x2</span>
-<span id="cb1-16"><a href="#cb1-16"></a>        f1 <span class="op">=</span> f2</span>
-<span id="cb1-17"><a href="#cb1-17"></a>        x2 <span class="op">=</span> x1 <span class="op">+</span> adimAraligi</span>
-<span id="cb1-18"><a href="#cb1-18"></a>        f2 <span class="op">=</span> f(x2)</span>
-<span id="cb1-19"><a href="#cb1-19"></a>    <span class="cf">return</span> x1,x2</span>
-<span id="cb1-20"><a href="#cb1-20"></a></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="co"># Ornek</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a></span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="kw">def</span> f(x):</span>
-<span id="cb1-24"><a href="#cb1-24"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">3</span> <span class="op">-</span> <span class="fl">10.0</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="fl">5.0</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-26"><a href="#cb1-26"></a>x1 <span class="op">=</span> <span class="op">-</span><span class="fl">2.0</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a>x2 <span class="op">=</span> <span class="fl">11.0</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a>dx<span class="op">=</span> <span class="fl">1e-3</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
-<span id="cb1-30"><a href="#cb1-30"></a>    <span class="bu">print</span>(kok_bulma_artan_arama(f,x1,x2,dx))</span>
-<span id="cb1-31"><a href="#cb1-31"></a>    x1,x2 <span class="op">=</span> kok_bulma_artan_arama(f,x1,x2,dx)</span>
-<span id="cb1-32"><a href="#cb1-32"></a>    </span>
-<span id="cb1-33"><a href="#cb1-33"></a>x <span class="op">=</span> (x1 <span class="op">+</span> x2)<span class="op">/</span><span class="fl">2.0</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="bu">print</span>(<span class="st">'x ='</span>, <span class="st">'</span><span class="sc">{:6.6f}</span><span class="st">'</span>.<span class="bu">format</span>(x))</span>
-<span id="cb1-35"><a href="#cb1-35"></a></span>
-<span id="cb1-36"><a href="#cb1-36"></a><span class="bu">print</span>(<span class="st">'f(x1) ='</span>, <span class="st">'</span><span class="sc">{:6.6f}</span><span class="st">'</span>.<span class="bu">format</span>(f(x1)))</span>
-<span id="cb1-37"><a href="#cb1-37"></a><span class="bu">print</span>(<span class="st">'f(x2)    ='</span>, <span class="st">'</span><span class="sc">{:6.6f}</span><span class="st">'</span>.<span class="bu">format</span>(f(x2)))</span>
-<span id="cb1-38"><a href="#cb1-38"></a></span>
-<span id="cb1-39"><a href="#cb1-39"></a>xCok <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">100</span>)</span>
-<span id="cb1-40"><a href="#cb1-40"></a></span>
-<span id="cb1-41"><a href="#cb1-41"></a>xCok<span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">11</span>,<span class="dv">100</span>)</span>
-<span id="cb1-42"><a href="#cb1-42"></a></span>
-<span id="cb1-43"><a href="#cb1-43"></a>plt.plot(xCok,f(xCok))</span>
-<span id="cb1-44"><a href="#cb1-44"></a>plt.grid()</span>
-<span id="cb1-45"><a href="#cb1-45"></a>plt.ylim(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb1-46"><a href="#cb1-46"></a>plt.show()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(-0.6850000000001099, -0.6840000000001099)
-(-0.6850000000001099, -0.6840000000001099)
-(-0.6850000000001099, -0.6840000000001099)
-(-0.6850000000001099, -0.6840000000001099)
-x = -0.684500
-f(x1) = -0.013669
-f(x2)    = 0.001426</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="kok-bulma_files/figure-html/cell-2-output-2.png" width="569" height="416" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="ikiye-bölme-yöntemi" class="level2">
-<h2 class="anchored" data-anchor-id="ikiye-bölme-yöntemi">İkiye Bölme Yöntemi</h2>
-<div id="511f7fef" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">def</span> kok_bulma_ikiye_bolme(fonksiyon, aralikKucuk, aralikBuyuk, tolerans):</span>
-<span id="cb3-4"><a href="#cb3-4"></a>    <span class="co">'''https://pythonnumericalmethods.berkeley.edu/notebooks/chapter19.03-Bisection-Method.html</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">    '''</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>    </span>
-<span id="cb3-7"><a href="#cb3-7"></a>    <span class="co"># aralikKucuk ve aralikBuyuk kök mü?</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>    <span class="cf">if</span> np.sign(fonksiyon(aralikKucuk)) <span class="op">==</span> np.sign(fonksiyon(aralikBuyuk)):</span>
-<span id="cb3-9"><a href="#cb3-9"></a>        <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="st">"The scalars a and b do not bound a root"</span>)</span>
-<span id="cb3-10"><a href="#cb3-10"></a>        </span>
-<span id="cb3-11"><a href="#cb3-11"></a>    <span class="co"># Aralığın orta noktasını bul</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a>    m <span class="op">=</span> (aralikKucuk <span class="op">+</span> aralikBuyuk)<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a>    </span>
-<span id="cb3-14"><a href="#cb3-14"></a>    <span class="co"># Eğer orta nokta kök ise, kök orta noktadır.</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a>    <span class="cf">if</span> np.<span class="bu">abs</span>(fonksiyon(m)) <span class="op">&lt;</span> tolerans:</span>
-<span id="cb3-16"><a href="#cb3-16"></a>        <span class="cf">return</span> m</span>
-<span id="cb3-17"><a href="#cb3-17"></a>    <span class="co"># Eğer kök aralik küçük ve orta nokta arasındaysa, aralığı küçült</span></span>
-<span id="cb3-18"><a href="#cb3-18"></a>    <span class="cf">elif</span> np.sign(fonksiyon(aralikKucuk)) <span class="op">==</span> np.sign(fonksiyon(m)):</span>
-<span id="cb3-19"><a href="#cb3-19"></a>        <span class="cf">return</span> kok_bulma_ikiye_bolme(fonksiyon, m, aralikBuyuk, tolerans)</span>
-<span id="cb3-20"><a href="#cb3-20"></a>    <span class="co"># Eğer kök aralik büyük ve orta nokta arasındaysa, aralığı küçült</span></span>
-<span id="cb3-21"><a href="#cb3-21"></a>    <span class="cf">elif</span> np.sign(fonksiyon(aralikBuyuk)) <span class="op">==</span> np.sign(fonksiyon(m)):</span>
-<span id="cb3-22"><a href="#cb3-22"></a>        <span class="cf">return</span> kok_bulma_ikiye_bolme(fonksiyon, aralikKucuk, m, tolerans)</span>
-<span id="cb3-23"><a href="#cb3-23"></a></span>
-<span id="cb3-24"><a href="#cb3-24"></a><span class="co"># Ornek</span></span>
-<span id="cb3-25"><a href="#cb3-25"></a><span class="kw">def</span> f(x):</span>
-<span id="cb3-26"><a href="#cb3-26"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">3</span> <span class="op">-</span> <span class="fl">10.0</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="fl">5.0</span></span>
-<span id="cb3-27"><a href="#cb3-27"></a></span>
-<span id="cb3-28"><a href="#cb3-28"></a>a <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb3-29"><a href="#cb3-29"></a>b <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb3-30"><a href="#cb3-30"></a>tol <span class="op">=</span> <span class="fl">1e-4</span></span>
-<span id="cb3-31"><a href="#cb3-31"></a></span>
-<span id="cb3-32"><a href="#cb3-32"></a>x <span class="op">=</span> kok_bulma_ikiye_bolme(f, a, b, tol)</span>
-<span id="cb3-33"><a href="#cb3-33"></a><span class="bu">print</span>(<span class="st">'x ='</span>, <span class="st">'</span><span class="sc">{:6.6f}</span><span class="st">'</span>.<span class="bu">format</span>(x))</span>
-<span id="cb3-34"><a href="#cb3-34"></a></span>
-<span id="cb3-35"><a href="#cb3-35"></a><span class="bu">print</span>(<span class="st">'f(x-tol) ='</span>, <span class="st">'</span><span class="sc">{:6.6f}</span><span class="st">'</span>.<span class="bu">format</span>(f(x<span class="op">-</span>tol)))</span>
-<span id="cb3-36"><a href="#cb3-36"></a><span class="bu">print</span>(<span class="st">'f(x) ='</span>, <span class="st">'</span><span class="sc">{:6.6f}</span><span class="st">'</span>.<span class="bu">format</span>(f(x)))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>x = 0.734604
-f(x-tol) = 0.001302
-f(x) = -0.000005</code></pre>
-</div>
-</div>
-</section>
-<section id="newton-raphson-yöntemi" class="level2">
-<h2 class="anchored" data-anchor-id="newton-raphson-yöntemi">Newton-Raphson Yöntemi</h2>
-<div id="228682c5" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<p>Python’da class (sınıf) tanımlamak için <code>class</code> anahtar kelimesi kullanılır. Classlar belli konularda sınıflandırmaya yarar. Bu sınıflandırma içerisinde değişkenler fonksiyonlar gibi parametreler olabilir.</p>
+<p>Classları yarattıktan sonra bir değişkene atayarak veya sınıfın ismini kullanarak classın içerisindeki parametrelere erişebiliriz. Sınıfların alt elemanlarına nokta <code>.</code> ile erişebiliriz.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">class</span> class1:</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    gerekliAKTS<span class="op">=</span> <span class="dv">240</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(class1.gerekliAKTS)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>Classlar içerisine fonksiyon da yazabiliriz.</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">class</span> class2:</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    pi<span class="op">=</span><span class="fl">3.14</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>    <span class="kw">def</span> printMerhabaDunya():</span>
+<span id="cb1-8"><a href="#cb1-8"></a>        <span class="bu">print</span>(<span class="st">"Merhaba Dünya"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="bu">print</span>(class2.pi)</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a>class2.printMerhabaDunya()</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Bir dosya içerisine değişkenler ve fonksiyonlar aynı anda yazabilir. Bu dosyayı, başka bir python betik dosyasından çağırarak modül gibi davranabiliriz.</p>
+<section id="örnek" class="level2">
+<h2 class="anchored" data-anchor-id="örnek">Örnek</h2>
+<p>Önce <code>bizimModul.py</code> adlı bir dosya yaratalım. Jupyter notebook kullanıyorsanız <code>!</code> işaretiyle linux komutları çalıştırabilirsiniz. Eğer Jupyter notebook kullanmıyorsanız aşağıdaki işlemleri elle yapmanız gerekmektedir. Linux isletim sisteminin komutlarını kullanarak <code>bizimModul.py</code> adında bir dosya yaratalım.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">touch</span> bizimModul.py</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Bu dosyanın, <code>bizimModul.py</code> dosyasının, içerisini dolduralım.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">echo</span> <span class="st">"pi= 3.1415"</span> <span class="op">&gt;&gt;</span> bizimModul.py</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Bu modülün içerisine bakalım.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">cat</span> bizimModul.py</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Başka bir python betik dosyasından <code>bizimModul.py</code> dosyasını <code>import</code> komutu ile çalıştıralım. Bizim modul içerisindeki <code>pi</code> değişkenini içeriğini ekrana yazdırın.</p>
+<p><code>bizimModul.py</code>’nin olduğu klasöre <code>bizimModulCagir.py</code> adında bir dosya yaratın.</p>
+<blockquote class="blockquote">
+<p>Özel olarak oluşturduğumuz modüller betik dosyası ile aynı klasörde olmalı. Aksi taktirde python modülü varsayılan yollara (path) bakacak ve oluşturduğunuz modülü bulamayacaktır. Modüllerin yolunu görmek için <code>sys.path</code> komutunu kullanabilirsiniz. Modülünüzün yolunu eklemek için <code>sys.path.append("modulun_yolu")</code> komutunu kullanabilirsiniz.</p>
+</blockquote>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">import</span> bizimModul as bm</span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="kw">def</span> f(x): </span>
-<span id="cb5-4"><a href="#cb5-4"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="kw">def</span> f_prime(x):</span>
-<span id="cb5-7"><a href="#cb5-7"></a>    <span class="cf">return</span> <span class="dv">2</span><span class="op">*</span>x</span>
-<span id="cb5-8"><a href="#cb5-8"></a>newton_raphson <span class="op">=</span> <span class="fl">1.4</span> <span class="op">-</span> (f(<span class="fl">1.4</span>))<span class="op">/</span>(f_prime(<span class="fl">1.4</span>))</span>
-<span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="bu">print</span>(<span class="st">"newton_raphson ="</span>, newton_raphson)</span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="bu">print</span>(<span class="st">"sqrt(2) ="</span>, np.sqrt(<span class="dv">2</span>))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>newton_raphson = 1.4142857142857144
-sqrt(2) = 1.4142135623730951</code></pre>
-</div>
-</div>
-<div id="abe28993" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="ex">print</span><span class="er">(</span><span class="ex">bm.pi</span><span class="kw">)</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Şimdi <code>bizimModul.py</code> dosyasına <code>toplama(a,b)</code> adında bir fonksiyon ekleyelim. Bu fonksiyon <code>a</code> ve <code>b</code> değişkenlerini alsın ve sonuç olarak <code>a+b</code> değerini döndürsün.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"def toplama(a,b):\n    return a+b"</span> <span class="op">&gt;&gt;</span> bizimModul.py</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">cat</span> bizimModul.py</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>bizimModul</code> modülünü tekrar çağıralım ve <code>toplama</code> fonksiyonunu deneyelim.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> bizimModul <span class="im">as</span> bm</span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">def</span> kok_bulma_newton_raphson(fonksiyon, turevFonksiyon, baslangicNoktasi, tolerans):</span>
-<span id="cb7-4"><a href="#cb7-4"></a>    <span class="co">'''https://pythonnumericalmethods.berkeley.edu/notebooks/chapter19.04-Newton-Raphson-Method.html</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">    '''</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>    <span class="co"># Başlangıç noktası kök mü?</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>    <span class="cf">if</span> np.<span class="bu">abs</span>(fonksiyon(baslangicNoktasi)) <span class="op">&lt;</span> tolerans:</span>
-<span id="cb7-8"><a href="#cb7-8"></a>        <span class="cf">return</span> baslangicNoktasi</span>
-<span id="cb7-9"><a href="#cb7-9"></a>    <span class="co"># Başlangıç noktası kök değilse, yeni bir başlangıç noktası bul</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a>    <span class="cf">else</span>:</span>
-<span id="cb7-11"><a href="#cb7-11"></a>        <span class="cf">return</span> kok_bulma_newton_raphson(fonksiyon, </span>
-<span id="cb7-12"><a href="#cb7-12"></a>                                        turevFonksiyon, </span>
-<span id="cb7-13"><a href="#cb7-13"></a>                                        baslangicNoktasi <span class="op">-</span> fonksiyon(baslangicNoktasi)<span class="op">/</span>turevFonksiyon(baslangicNoktasi), </span>
-<span id="cb7-14"><a href="#cb7-14"></a>                                        tolerans)</span>
-<span id="cb7-15"><a href="#cb7-15"></a></span>
-<span id="cb7-16"><a href="#cb7-16"></a><span class="kw">def</span> f(x): </span>
-<span id="cb7-17"><a href="#cb7-17"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">2</span></span>
-<span id="cb7-18"><a href="#cb7-18"></a></span>
-<span id="cb7-19"><a href="#cb7-19"></a><span class="kw">def</span> f_prime(x):</span>
-<span id="cb7-20"><a href="#cb7-20"></a>    <span class="cf">return</span> <span class="dv">2</span><span class="op">*</span>x</span>
-<span id="cb7-21"><a href="#cb7-21"></a></span>
-<span id="cb7-22"><a href="#cb7-22"></a>estimate <span class="op">=</span> kok_bulma_newton_raphson(f, f_prime, <span class="fl">1.5</span>, <span class="fl">1e-6</span>)</span>
-<span id="cb7-23"><a href="#cb7-23"></a><span class="bu">print</span>(<span class="st">"estimate ="</span>, estimate)</span>
-<span id="cb7-24"><a href="#cb7-24"></a><span class="bu">print</span>(<span class="st">"sqrt(2) ="</span>, np.sqrt(<span class="dv">2</span>))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>estimate = 1.4142135623746899
-sqrt(2) = 1.4142135623730951</code></pre>
-</div>
-</div>
-</section>
-<section id="hazır-paketler" class="level2">
-<h2 class="anchored" data-anchor-id="hazır-paketler">Hazır paketler</h2>
-<div id="8644b5e5" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-3"><a href="#cb9-3"></a></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="kw">def</span> f(x):</span>
-<span id="cb9-5"><a href="#cb9-5"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">3</span> <span class="op">-</span> <span class="fl">10.0</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="fl">5.0</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a></span>
-<span id="cb9-7"><a href="#cb9-7"></a></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="co"># https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fsolve.html</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#fullOutput= sp.optimize.fsolve(f, [0.0], full_output=True)</span></span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="co">#fullOutput= sp.optimize.fsolve(f, [0.0], full_output=True, xtol=1e-19)</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a><span class="co">#fullOutput= sp.optimize.fsolve(f, [0.1], full_output=True)</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a></span>
-<span id="cb9-13"><a href="#cb9-13"></a><span class="co">#fullOutput= sp.optimize.fsolve(f, [18.0], full_output=True)</span></span>
-<span id="cb9-14"><a href="#cb9-14"></a><span class="co">#fullOutput= sp.optimize.fsolve(f, [-1.0], full_output=True)</span></span>
-<span id="cb9-15"><a href="#cb9-15"></a></span>
-<span id="cb9-16"><a href="#cb9-16"></a>fullOutput<span class="op">=</span> sp.optimize.fsolve(f, [<span class="op">-</span><span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">8.0</span>], full_output<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb9-17"><a href="#cb9-17"></a></span>
-<span id="cb9-18"><a href="#cb9-18"></a></span>
-<span id="cb9-19"><a href="#cb9-19"></a><span class="bu">print</span>(<span class="bu">type</span>(fullOutput))</span>
-<span id="cb9-20"><a href="#cb9-20"></a></span>
-<span id="cb9-21"><a href="#cb9-21"></a><span class="cf">for</span> it <span class="kw">in</span> fullOutput:</span>
-<span id="cb9-22"><a href="#cb9-22"></a>    <span class="bu">print</span>(it)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'tuple'&gt;
-[-0.68409457  0.73460351  9.94949106]
-{'nfev': 18, 'fjac': array([[-0.98811706, -0.15230149,  0.02071054],
-       [ 0.15245084, -0.98829389,  0.00582501],
-       [-0.01958095, -0.00891313, -0.99976854]]), 'r': array([-14.01078658,   1.51524046,   5.58342376,  13.95659158,
-         0.76897666, -98.82622489]), 'qtf': array([ 4.09473227e-09, -1.20212711e-08,  1.68011267e-09]), 'fvec': array([ 3.24629212e-12, -6.14264195e-12,  9.09494702e-13])}
-1
-The solution converged.</code></pre>
-</div>
-</div>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="bu">print</span>(bm.pi)</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="bu">print</span>(bm.toplama(<span class="dv">4</span>,<span class="dv">5</span>))</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Eğer Jupiter notebook kullanıyorsanız yukarıdaki komut çalışmayabilir. Bunun sebebi daha önceden <code>bizimModul</code> çağırmanızdır. Kerneli (çekirdek) yeniden başlatın ve sadece yukarıda bulunan kod bloğunu çalıştırın. Yukarıdaki örnekte gördüğümüz gibi modüller de classlar gibi davranmaktadır. Çalıştırmak istediğimiz betik dosyasında <code>class</code> oluşturup ona ait olan alt bileşenleri çağırabiliriz veya başka bir dosyada kullanmak istediğimiz fonksiyon, değişken, class vb. tanımlamalar yapar, betik dosyamızda bu tanımlamaları kullanabiliriz.</p>
+<blockquote class="blockquote">
+<p>Bir python dosyasının betik dosyası mı yoksa bir modül mü olduğunu anlamanın kısa bir yolu yoktur. Bunun için yapılan bir <em>kabul</em> vardır. Eğer bir <code>.py</code> dosyasında <code>if __name__ == '__main__':</code> komutu varsa ve istenilen işlemler bu koşulun altında yapılıyorsa, o dosya <strong>betik</strong> dosyası olarak kabul edilir. Yani bu dosyayı çalıştırabilirsiniz (<code>python dosya.py</code> şeklinde). Eğer bu koşul yoksa o dosya modül olarak çağırlmaya uygun bir dosya anlamına gelir. Bunun bir <em>kabul</em> olduğunu tekrar etmekte yarar vardır. Bu konvensiyona uymak zorunda değilsiniz.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>UYARI</strong>: Jupyter notebooklarda <code>if __name__ == '__main__'</code> kullanmayınız. Bir sınıf oluştururken sınıfın içerisindeki değişkenleri kullanarak da işlem yapabilirsiniz. Bunun için <code>__init__</code> fonksyionunu <em>ezmeniz</em> gerekmektedir.</p>
+</blockquote>
+<p>Aşağıdaki örneği inceleyelim.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">class</span> sizinClass: <span class="co"># Class oluştur.</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, degiskenStr): <span class="co"># Class'ı çağırırken ekstra bir değişken daha isteyebilirsin.</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>        <span class="co"># Self dışındaki bu değişkeni self içerisine atıp class'ın diğer bileşenlerinde</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>        <span class="co"># kullanabilirsin.</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>        <span class="va">self</span>.merhabaDunya<span class="op">=</span> degiskenStr <span class="op">+</span> <span class="st">" Merhaba Dünya!"</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="kw">def</span> yazdir(<span class="va">self</span>):</span>
+<span id="cb8-7"><a href="#cb8-7"></a>        <span class="bu">print</span>(<span class="va">self</span>.merhabaDunya) <span class="co"># Yukarıda tanımladığım self'in merhabaDunya değişkenini yazdır.</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a>sizinClassDegiskeni<span class="op">=</span> sizinClass(<span class="st">'Ben uzaylıyım.'</span>) <span class="co"># Class oluştur ve oluşturma değişkenine 'Ben uzaylıyım' yaz.</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>sizinClassDegiskeni.yazdir() <span class="co"># Class'ın yazdır fonksiyonunu çağır.</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a></span>
+<span id="cb8-12"><a href="#cb8-12"></a>sizinClass(<span class="st">'Kartallar yüksekten uçar...'</span>).yazdir() <span class="co"># Class'ı değişkene atamadan da bu işlem yapılabilir.</span></span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -1316,13 +1173,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../icerik/konular/interpolasyon-egri-uydurma/egri-uydurma.html" class="pagination-link" aria-label="Eğri Uydurma (Fitting)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Eğri Uydurma (Fitting)</span>
+      <a href="../../../icerik/konular/python/moduller.html" class="pagination-link" aria-label="Modüller">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Modüller</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../icerik/konular/sayisal-turev.html" class="pagination-link" aria-label="Sayısal Türev">
-        <span class="nav-page-text">Sayısal Türev</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../icerik/konular/dogrusal-denklemler.html" class="pagination-link" aria-label="Doğrusal Denklemler">
+        <span class="nav-page-text">Doğrusal Denklemler</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1334,7 +1191,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/kok-bulma.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/python/classlar.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>© Copyright 2024, Taygun Bulmus</p>
 </div>

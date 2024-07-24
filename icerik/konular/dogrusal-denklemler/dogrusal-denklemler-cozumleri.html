@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
+<meta name="generator" content="quarto-1.5.55">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -252,13 +252,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Alıştırmalar - Problemler - 1</span></a>
+ <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classlar</span></a>
   </div>
 </li>
       </ul>
@@ -569,7 +575,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">16 Temmuz 2024</p>
+      <p class="date">24 Temmuz 2024</p>
     </div>
   </div>
   
@@ -727,7 +733,7 @@ x_{1}-2x_{2}+4x_{3}= 17
 </ul>
 <p><strong>ADIM 1</strong></p>
 <p><strong>2. satır 1. sütunu</strong> yani <span class="math inline">\(A_{21}\)</span> terimini <span class="math inline">\(0\)</span> yapalım. Bu işlemde <span class="math inline">\(\lambda=~-0.5\)</span> olmalı aşağıdaki işlem uygulanmalı.</p>
-<p>$= $<code>A[1,0]/A[0,0]</code></p>
+<p><span class="math inline">\(\lambda=\)</span> <code>A[1,0]/A[0,0]</code></p>
 <p><span class="math display">\[
 \text{Eq}(2) - ~(-0.5)~ \text{Eq}(1) \rightarrow \text{Eq}(2)
 \]</span></p>
@@ -736,7 +742,7 @@ A=\begin{bmatrix}    4 &amp; -2 &amp; 1 \\ \mathbf{0} &amp; 3 &amp; -1.5 \\ 1 &a
 \]</span></p>
 <p><strong>ADIM 2</strong></p>
 <p><strong>3. satır 1. sütunu</strong> yani <span class="math inline">\(A_{31}\)</span> terimini <span class="math inline">\(0\)</span> yapalım. Bu işlemde <span class="math inline">\(\lambda=~0.25\)</span> olmalı aşağıdaki işlem uygulanmalı.</p>
-<p>$= $<code>A[2,0]/A[0,0]</code></p>
+<p><span class="math inline">\(\lambda=\)</span> <code>A[2,0]/A[0,0]</code></p>
 <p><span class="math display">\[
 \text{Eq}(3) - ~(0.25)~ \text{Eq}(1) \rightarrow \text{Eq}(2)
 \]</span></p>
@@ -745,7 +751,7 @@ A=\begin{bmatrix}    4 &amp; -2 &amp; 1 \\ 0 &amp; 3 &amp; -1.5 \\ \mathbf{0} &a
 \]</span></p>
 <p><strong>ADIM 3</strong></p>
 <p><strong>3. satır 2. sütunu</strong> yani <span class="math inline">\(A_{32}\)</span> terimini <span class="math inline">\(0\)</span> yapalım. Bu işlemde <span class="math inline">\(\lambda=~-0.5\)</span> olmalı aşağıdaki işlem uygulanmalı.</p>
-<p>$= $<code>A[2,1]/A[1,1]</code></p>
+<p><span class="math inline">\(\lambda=\)</span> <code>A[2,1]/A[1,1]</code></p>
 <p><span class="math display">\[
 \text{Eq}(3) - ~(-0.5)~ \text{Eq}(2) \rightarrow \text{Eq}(2)
 \]</span></p>
@@ -803,7 +809,7 @@ x_{1}=1
 <p><strong>ÇÖZÜM</strong></p>
 <p><strong>ADIM 1</strong></p>
 <p><strong>2 satır 1. sütunu</strong> yani <span class="math inline">\(A_{21}\)</span> terimini <span class="math inline">\(0\)</span> yapalım. Bu işlemde <span class="math inline">\(\lambda=~-0.5\)</span> olmalı aşağıdaki işlem uygulanmalı.</p>
-<p>$= $<code>A[0,1]/A[1,1]</code></p>
+<p><span class="math inline">\(\lambda=\)</span> <code>A[0,1]/A[1,1]</code></p>
 <p><span class="math display">\[
 \text{Eq}(1) - ~(-0.5)~ \text{Eq}(2) \rightarrow \text{Eq}(1)
 \]</span></p>
@@ -812,7 +818,7 @@ A=\begin{bmatrix}    3 &amp; \mathbf{0} &amp; 0 \\ -2 &amp; 4 &amp; -2 \\ 1 &amp
 \]</span></p>
 <p><strong>ADIM 2</strong></p>
 <p><strong>1. satır 3. sütun</strong> da 0 oldu. Geriye sadece 2. satır 3. sütun kaldı. Bunun için <span class="math inline">\(\lambda=-0.5\)</span> almalıyız.</p>
-<p>$= $<code>A[1,2]/A[2,2]</code></p>
+<p><span class="math inline">\(\lambda=\)</span> <code>A[1,2]/A[2,2]</code></p>
 <p><span class="math display">\[
 \text{Eq}(2) - ~(-0.5)~ \text{Eq}(3) \rightarrow \text{Eq}(2)
 \]</span></p>

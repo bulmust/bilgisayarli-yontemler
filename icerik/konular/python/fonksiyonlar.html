@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
+<meta name="generator" content="quarto-1.5.55">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -223,13 +223,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Alıştırmalar - Problemler - 1</span></a>
+ <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classlar</span></a>
   </div>
 </li>
       </ul>
@@ -493,6 +499,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#matematiksel-fonksiyonlar" id="toc-matematiksel-fonksiyonlar" class="nav-link active" data-scroll-target="#matematiksel-fonksiyonlar">Matematiksel Fonksiyonlar</a></li>
+  <li><a href="#modüller" id="toc-modüller" class="nav-link" data-scroll-target="#modüller">Modüller</a></li>
+  <li><a href="#problemler" id="toc-problemler" class="nav-link" data-scroll-target="#problemler">Problemler</a>
+  <ul class="collapse">
+  <li><a href="#problemler-1" id="toc-problemler-1" class="nav-link" data-scroll-target="#problemler-1">Problemler 1</a></li>
+  </ul></li>
+  <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/edit/main/icerik/konular/python/fonksiyonlar.qmd" class="toc-action"><i class="bi bi-github"></i>Bu sayfayı düzenle</a></li><li><a href="https://github.com/bulmust/bilgisayarli-yontemler/issues/new" class="toc-action"><i class="bi empty"></i>Sorun bildir</a></li></ul></div><div class="quarto-code-links"><h2>Kod Bağlantıları</h2><ul><li><a href="../../../moduller/bilYonMod.py"><i class="bi bi-file-code"></i>bilYonMod.py</a></li></ul></div></nav>
     </div>
@@ -518,7 +530,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">16 Temmuz 2024</p>
+      <p class="date">24 Temmuz 2024</p>
     </div>
   </div>
   
@@ -536,7 +548,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Fonksiyonlar genellikle betiğin başına yazılır. Ana fonksiyon ise altına yazılır.</p>
 <p>Fonksiyonlar içerisinde tanımlanan değişkenler, fonksiyon dışarısında kullanılamaz.</p>
 <p>Fonksiyonların çalışması için gereken değişkenine varsayılan (default) bir değer atanabilir. Bunun için fonksiyonu tanımlarken o değişkene bir atama yapılması gerekir. Varsayılan değerler hep sona yazılır.</p>
-<div id="f1e56ff7" class="cell" data-execution_count="1">
+<div id="e993c9e4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Fonksiyon</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">def</span> merhabaDunyaYazdir():</span>
 <span id="cb1-3"><a href="#cb1-3"></a>    <span class="bu">print</span>(<span class="st">"Merhaba Dünya!"</span>)</span>
@@ -590,7 +602,7 @@ AYDA: V0= 0, t=3, g=1.625 için H=4.875</code></pre>
 </div>
 </div>
 <p>Kısa ve tek satırlık fonksiyonlar için <code>lambda</code> anahtar kelimesi kullanılır. <code>lambda</code> değişkeni yazıldıktan sonra boşluk bırakıp değişkenler yazılır ve <code>:</code> koyulur. Ardından yazılanlar fonksiyonun işlevini tanımlar. <code>lambda</code> fonksiyonlarında <code>return</code> kullanılmaz. Otomatik olarak yapılan işlem döndürülür.</p>
-<div id="22eaa254" class="cell" data-execution_count="2">
+<div id="e19825f3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Kısa yazılmış lambda fonksiyonu</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>kareAl <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
@@ -647,7 +659,9 @@ Not
 </div>
 <div class="callout-body-container callout-body">
 <p>karşılaştırma fonksiyonu <code>cmp(a,b)</code> python 3.0’dan itibaren kaldırılmıştır.</p>
-<div id="50011789" class="cell" data-execution_count="3">
+</div>
+</div>
+<div id="8f6b8b76" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>float1<span class="op">=</span> <span class="op">-</span><span class="fl">5.6</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>list1<span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="bu">print</span>(<span class="st">"abs(float1)="</span>, <span class="bu">abs</span>(float1)) <span class="co"># 5.6</span></span>
@@ -667,13 +681,14 @@ sum(list1)= 15
 3^2= 9</code></pre>
 </div>
 </div>
+</section>
 <section id="modüller" class="level2">
 <h2 class="anchored" data-anchor-id="modüller">Modüller</h2>
 <p>Modüller bir dosyadaki fonksiyonları ve değişkenleri başka dosyalarda kullanmamızı sağlar.</p>
 <p>Modüllerin kullanılması için <code>import</code> anahtar kelimesi kullanılır.</p>
 <p>Modüllerin içerisindeki fonksiyonlar, değişkenler <code>.</code> ile çağrılır. Örneğin <code>math</code> modülü içerisindeki <code>pi</code> değişkeni <code>math.pi</code> şeklinde çağrılır.</p>
 <p>Modüller betiklerin başında yazılır. Birden fazla modül kullanılacaksa, modüllerin içerisindeki değişkenler ve fonksiyonların karışmaması için <code>as</code> anahtar kelimesi kullanılır. import math as m</p>
-<div id="e1226d91" class="cell" data-execution_count="4">
+<div id="27592271" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> math <span class="im">as</span> m</span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="bu">print</span>(<span class="ss">f"Pi sayısı=  </span><span class="sc">{</span>m<span class="sc">.</span>pi<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -687,9 +702,10 @@ e sayısı = 2.718281828459045
 </div>
 <p><code>math</code>, <code>numpy</code> gibi modüller Python komütesi tarafından geliştirilen modüllerdir. Bunların dışında kendi modüllerimizi de oluşturabiliriz. Bunun için farklı bir dosyada fonksiyonlar ve değişkenler tanımlanır. Bu dosyayı ana betikte <code>import</code> anahtar kelimesi kullanılarak çağırıp kullanabiliriz.</p>
 </section>
-<section id="alıştırma-1" class="level2">
-<h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma 1</h2>
-<p>Aşağıdaki alıştırmaları sırayla yapınız.</p>
+<section id="problemler" class="level2">
+<h2 class="anchored" data-anchor-id="problemler">Problemler</h2>
+<section id="problemler-1" class="level3">
+<h3 class="anchored" data-anchor-id="problemler-1">Problemler 1</h3>
 <ol type="1">
 <li><code>araAlistirma2_Modul.py</code> dosyasını oluşturun.
 <ol type="1">
@@ -709,6 +725,7 @@ e sayısı = 2.718281828459045
 </ol></li>
 </ol>
 </section>
+</section>
 <section id="kaynaklar" class="level2">
 <h2 class="anchored" data-anchor-id="kaynaklar">Kaynaklar</h2>
 <ol type="1">
@@ -718,9 +735,6 @@ e sayısı = 2.718281828459045
 </ol>
 
 
-</section>
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
@@ -1302,8 +1316,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="pagination-link" aria-label="Alıştırmalar - Problemler - 1">
-        <span class="nav-page-text">Alıştırmalar - Problemler - 1</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="pagination-link" aria-label="Alıştırmalar ve Problemler">
+        <span class="nav-page-text">Alıştırmalar ve Problemler</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

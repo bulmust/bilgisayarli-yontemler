@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
+<meta name="generator" content="quarto-1.5.55">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -252,13 +252,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Alıştırmalar - Problemler - 1</span></a>
+ <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classlar</span></a>
   </div>
 </li>
       </ul>
@@ -567,7 +573,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">16 Temmuz 2024</p>
+      <p class="date">24 Temmuz 2024</p>
     </div>
   </div>
   
@@ -585,7 +591,7 @@ window.Quarto = {
 <p><strong>Ne bekliyoruz?</strong> İdeal koşullarda 100 tane paranın 50 tanesi tura gelecek. Bu işlemi 500 kere bile yapsak her seferinde tura gelmesini bekleriz.</p>
 <p><strong>Neden?</strong> Tura gelme olasılığı <span class="math inline">\(1/2\)</span>’dir.</p>
 <p><strong>Olasılık Kütle Fonksiyonu</strong> (Probability Mass Function) Tura gelme dağılımı ile olasılığı eşleştiren (mapping) fonksiyondur.</p>
-<div id="4d5c43fe" class="cell" data-execution_count="1">
+<div id="100feeb8" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Değişkenler</span></span>
@@ -618,7 +624,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Yukarıdaki grafiği çizdirirken yatayda, tura gelme sayısını dikkate almıştık. Şimdi yataydaki değerlerin hepsini toplam sayıya yani <span class="math inline">\(100\)</span>’e bölerek çizelim.</p>
-<div id="df339a25" class="cell" data-execution_count="2">
+<div id="645b974a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Değişkenler</span></span>
@@ -646,7 +652,7 @@ window.Quarto = {
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="olasilik-kutle-fonksiyonu_files/figure-html/cell-3-output-1.png" width="593" height="429" class="figure-img"></p>
+<p><img src="olasilik-kutle-fonksiyonu_files/figure-html/cell-3-output-1.png" width="585" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -665,7 +671,7 @@ window.Quarto = {
 </ul>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="ed18590f" class="cell" data-execution_count="3">
+<div id="7d6fdad7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>

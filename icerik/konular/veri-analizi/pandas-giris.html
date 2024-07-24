@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
+<meta name="generator" content="quarto-1.5.55">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -243,13 +243,19 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Alıştırmalar - Problemler - 1</span></a>
+ <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classlar</span></a>
   </div>
 </li>
       </ul>
@@ -555,7 +561,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">16 Temmuz 2024</p>
+      <p class="date">24 Temmuz 2024</p>
     </div>
   </div>
   
@@ -574,7 +580,7 @@ div.csl-indent {
 <p><strong>Dökümantasyon:</strong> <a href="http://pandas.pydata.org/docs/">pandas.pydata.org</a></p>
 <p>Pandas, tıpkı numpy arrayleri gibi veri yapılarını kullanarak veri analizi yapmamızı sağlayan bir Python modülüdür. Arka planda <code>numpy</code>, <code>matplotlib</code> ve <code>scipy</code> gibi modülleri kullanır.</p>
 <p>Pandas modülünü kullanabilmek için öncelikle modülü içe aktarmamız gerekiyor. Bu modülün yanında genellikle numpy ve matplotlib modüllerini de içe aktarıyoruz.</p>
-<div id="6fd94d49" class="cell" data-execution_count="1">
+<div id="16cdb45d" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -583,7 +589,7 @@ div.csl-indent {
 <section id="seriler" class="level2">
 <h2 class="anchored" data-anchor-id="seriler">Seriler</h2>
 <p>Tıpkı <code>numpy</code> paketindeki bir boyutlu diziler gibi <code>pandas</code> paketinde de bir boyutlu seriler vardır. Bu seriler aşağıdaki gibi oluşturulur.</p>
-<div id="473eb29e" class="cell" data-execution_count="2">
+<div id="f629e801" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">## Numpy Array</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co">#arr1= np.array([1,2,3,4])</span></span>
@@ -602,7 +608,7 @@ dtype: int64</code></pre>
 <p><code>numpy</code> paketindeki dizilerdeki gibi serilerde de <code>dtype</code> parametresi ile veri tipi belirtilir. <code>dtype</code> parametresi belirtilmezse veri tipi otomatik olarak belirlenir. Yukarıdaki örnekte <code>dtype</code> parametresi belirtilmediği için veri tipi otomatik olarak <code>int64</code> olarak belirlenmiştir.</p>
 <p><code>numpy</code> dizileri ile <code>pandas</code> serileri arasındaki en büyük fark indekslemedir. <code>s</code> değişkenini ekrana yazdırdığımızda değerlerin sol tarafında sıfırdan başlayan etiketler (index) görüyoruz. Bu etiketler serilerdeki değerlerin sırasını gösterir.</p>
 <p>Etiketlerin ne olduğunda erişmek için <code>.index</code> komutu kullanılır.</p>
-<div id="e0c222e4" class="cell" data-execution_count="3">
+<div id="a39916e8" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a href="#cb4-2"></a>s<span class="op">=</span>pd.Series([<span class="dv">909976</span>, <span class="dv">8615246</span>, <span class="dv">2872086</span>, <span class="dv">2273305</span>])</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="bu">print</span>(<span class="ss">f"s.index       =&gt; </span><span class="sc">{</span>s<span class="sc">.</span>index<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -618,7 +624,7 @@ list(range(4)) =&gt; [0, 1, 2, 3]</code></pre>
 </div>
 </div>
 <p>Serilerin etiketsiz, yani ham değerlerine de <code>.values</code> komutu ile erişilir.</p>
-<div id="25bd2bec" class="cell" data-execution_count="4">
+<div id="d3a3b4e4" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-2"><a href="#cb6-2"></a>s<span class="op">=</span>pd.Series([<span class="dv">909976</span>, <span class="dv">8615246</span>, <span class="dv">2872086</span>, <span class="dv">2273305</span>])</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="co"># Değerleri</span></span>
@@ -635,7 +641,7 @@ list(range(4)) =&gt; [0, 1, 2, 3]</code></pre>
 </div>
 </div>
 <p>Etiketleme yöntemi ile veriye erişmek faydalıdır. Örneğin <code>s</code> ile tanımladığımız değerler Stockholm, Londra, Roma ve Paris’in nüfusları olsun. Bu durumda etiketleri de şehir isimlerine değiştirebiliriz. Aynı zamanda serinin ismini de belirleyebiliriz.</p>
-<div id="ce2af2ec" class="cell" data-execution_count="5">
+<div id="8d1094da" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb8-2"><a href="#cb8-2"></a>s<span class="op">=</span>pd.Series([<span class="dv">909976</span>, <span class="dv">8615246</span>, <span class="dv">2872086</span>, <span class="dv">2273305</span>])</span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="co"># Etiketleri değiştirme</span></span>
@@ -659,7 +665,7 @@ Name: Nüfus, dtype: int64</code></pre>
 </div>
 </div>
 <p>Tüm bu işlemleri tek tek yapmaktansa seriyi tanımlarken de yapabiliriz.</p>
-<div id="7c176db6" class="cell" data-execution_count="6">
+<div id="b9be9832" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb10-2"><a href="#cb10-2"></a>s<span class="op">=</span>pd.Series([<span class="dv">909976</span>, <span class="dv">8615246</span>, <span class="dv">2872086</span>, <span class="dv">2273305</span>], index<span class="op">=</span>[<span class="st">'Stockholm'</span>, <span class="st">'Londra'</span>, <span class="st">'Roma'</span>, <span class="st">'Paris'</span>], name<span class="op">=</span><span class="st">'Nüfus'</span>)</span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="bu">print</span>(s)</span></code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -676,7 +682,7 @@ Name: Nüfus, dtype: int64</code></pre>
 <h2 class="anchored" data-anchor-id="veriye-erişmek">Veriye Erişmek</h2>
 <p>Tıpkı <code>numpy</code> dizilerinde veya matrislerinde olduğu gibi <code>pandas</code> serilerinde de bazı verilere erişmek gerekecektir. Bunun için çeşitli yöntemler vardır.</p>
 <p>Önce yukarıda tanımladığımız <code>s</code> serisinin “Londra” etiketine sahip değerine erişelim.</p>
-<div id="c7d08d6a" class="cell" data-execution_count="7">
+<div id="7edb7cbf" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb12-2"><a href="#cb12-2"></a>s<span class="op">=</span>pd.Series([<span class="dv">909976</span>, <span class="dv">8615246</span>, <span class="dv">2872086</span>, <span class="dv">2273305</span>], index<span class="op">=</span>[<span class="st">'Stockholm'</span>, <span class="st">'Londra'</span>, <span class="st">'Roma'</span>, <span class="st">'Paris'</span>], name<span class="op">=</span><span class="st">'Nüfus'</span>)</span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="co"># İki çeşit erişim</span></span>
@@ -688,7 +694,7 @@ s.Londra    =&gt; 8615246</code></pre>
 </div>
 </div>
 <p>Görüldüğü üzere etiketler üzerinden iki farklı şekilde veriye erişebiliyoruz. Benzer şekilde hem “Londra” hem de “Roma” etiketlerine sahip değerlere erişmek için aşağıdaki gibi bir kod yazabiliriz. Sonucun yeni bir seri olduğuna dikkat edin.</p>
-<div id="8fdb8215" class="cell" data-execution_count="8">
+<div id="739031e5" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb14-2"><a href="#cb14-2"></a>s<span class="op">=</span>pd.Series([<span class="dv">909976</span>, <span class="dv">8615246</span>, <span class="dv">2872086</span>, <span class="dv">2273305</span>], index<span class="op">=</span>[<span class="st">'Stockholm'</span>, <span class="st">'Londra'</span>, <span class="st">'Roma'</span>, <span class="st">'Paris'</span>], name<span class="op">=</span><span class="st">'Nüfus'</span>)</span>
 <span id="cb14-3"><a href="#cb14-3"></a><span class="co"># Londra, Roma etiketlerine sahip değerler</span></span>
@@ -704,7 +710,7 @@ Name: Nüfus, dtype: int64
 </div>
 </div>
 <p><code>pandas</code> paketi temel olarak istatistiksel işlemler yapmaya uygun olduğu için tanımlanan serilerde bazı istatistiksel işlemler yapılabilir.</p>
-<div id="2f6029de" class="cell" data-execution_count="9">
+<div id="12c63560" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb16-2"><a href="#cb16-2"></a>s<span class="op">=</span>pd.Series([<span class="dv">909976</span>, <span class="dv">8615246</span>, <span class="dv">2872086</span>, <span class="dv">2273305</span>], index<span class="op">=</span>[<span class="st">'Stockholm'</span>, <span class="st">'Londra'</span>, <span class="st">'Roma'</span>, <span class="st">'Paris'</span>], name<span class="op">=</span><span class="st">'Nüfus'</span>)</span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="co"># Medyan (Ortanca)</span></span>
@@ -738,7 +744,7 @@ Name: Nüfus, dtype: float64</code></pre>
 </div>
 </div>
 <p>Serileri çizdimrk için <code>plot</code> fonksiyonu kullanılır. Plot fonksiyonunu eskiden yaptığımız gibi <code>plt.plot()</code> şeklinde de kullanabiliriz veya <code>s.plot()</code> şeklinde de kullanabiliriz. <code>s.plot()</code> şeklinde kullanılması, <code>pandas</code> paketinin içerisinde <code>matplotlib</code> paketinin bulunduğu anlamına gelir.</p>
-<div id="64ddcd43" class="cell" data-execution_count="10">
+<div id="382ab775" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-3"><a href="#cb18-3"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
@@ -857,7 +863,7 @@ Name: Nüfus, dtype: float64</code></pre>
 </ol>
 <section id="çözüm" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm">Çözüm</h3>
-<div id="3cefb9f8" class="cell" data-execution_count="11">
+<div id="0a21b049" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb19-3"><a href="#cb19-3"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
@@ -920,7 +926,7 @@ Ortalama: 32.55555555555556</code></pre>
 <section id="veri-çerçevesi-dataframe" class="level2">
 <h2 class="anchored" data-anchor-id="veri-çerçevesi-dataframe">Veri Çerçevesi (DataFrame)</h2>
 <p>Serileri tek boyutlu diziler olarak düşünebiliriz. Yukarıda verdiğimiz örnekte, <code>s</code> serisi sadece şehirlerin nüfus bilgisini içeriyordu. <code>pandas</code> paketinde verileri iki boyutlu bir yapıda tutan veri çerçeveleri (data frame) vardır.Veri çerçevelerini aşağıdaki gibi oluşturabiliriz.</p>
-<div id="63d1c25b" class="cell" data-execution_count="12">
+<div id="62f3b742" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb21-2"><a href="#cb21-2"></a><span class="co"># Data Frame</span></span>
 <span id="cb21-3"><a href="#cb21-3"></a>df<span class="op">=</span> pd.DataFrame([<span class="op">\</span></span>
@@ -940,7 +946,7 @@ Paris      2273305            Fransa</code></pre>
 </div>
 <p>Serideki nüfus bilgisine ek olarak ülke verisini de kaydettik. Yatayda (satır) eklenen veri etiket, <code>index</code> bazında ilerlerken düşeyde (sütun) eklenen veri sütun bazında ilerlemektedir. Sütunlar <code>columns-</code> olarak isimlendirilmektedir. Eğer herhangi bir adlandırma yapılmazsa, tıpkı etiketlerde olduğu gibi otomatik olarak sıfırdan başlayan sıralı sayılar atanır.</p>
 <p>Sütunlara erişmek için aşağıdaki gibi bir kod yazılır.</p>
-<div id="c12b4656" class="cell" data-execution_count="13">
+<div id="8b9e152e" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="co"># Data Frame</span></span>
 <span id="cb23-3"><a href="#cb23-3"></a>df<span class="op">=</span> pd.DataFrame([<span class="op">\</span></span>
@@ -958,7 +964,7 @@ Nüfus</code></pre>
 </div>
 </div>
 <p>Dataframe’leri python sözlük (dictionary) şeklinde de tanımlayabiliriz.</p>
-<div id="3a9440ef" class="cell" data-execution_count="14">
+<div id="37df5ce7" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb25-2"><a href="#cb25-2"></a><span class="co"># Alternatif Tanımlama</span></span>
 <span id="cb25-3"><a href="#cb25-3"></a>df2<span class="op">=</span> pd.DataFrame({</span>
@@ -1004,7 +1010,7 @@ Uyarı
 <p>Türkçe karakter kullanarak tanımlanan sütunlarda nokta kullanarak erişim sağlayamayabilirsiniz. Bunun için köşeli parantez ve tırnak kullanmanız gerekir.</p>
 </div>
 </div>
-<div id="f355b8e3" class="cell" data-execution_count="15">
+<div id="48f84558" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb27-2"><a href="#cb27-2"></a><span class="co"># Data Frame</span></span>
 <span id="cb27-3"><a href="#cb27-3"></a>df<span class="op">=</span> pd.DataFrame([<span class="op">\</span></span>
@@ -1048,7 +1054,7 @@ Uyarı
 <p>Serilerde <code>["Satır"]</code> şeklinde erişim yaparken dataframe’lerde <code>["Sütun"]</code> şeklinde erişim yapılır.</p>
 </div>
 </div>
-<div id="0d455e8f" class="cell" data-execution_count="16">
+<div id="c2ea217b" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb29-2"><a href="#cb29-2"></a><span class="co"># Seri</span></span>
 <span id="cb29-3"><a href="#cb29-3"></a>s<span class="op">=</span>pd.Series([<span class="dv">909976</span>, <span class="dv">8615246</span>, <span class="dv">2872086</span>, <span class="dv">2273305</span>], index<span class="op">=</span>[<span class="st">'Stockholm'</span>, <span class="st">'Londra'</span>, <span class="st">'Roma'</span>, <span class="st">'Paris'</span>], name<span class="op">=</span><span class="st">'Nüfus'</span>)</span>
@@ -1077,7 +1083,7 @@ Name: Nüfus, dtype: int64</code></pre>
 </div>
 <p>Sütunlara köşeli parantez veya nokta kullanarak erişebildik. Satırlara dar <code>.loc[]</code> yöntemi ile erişebiliriz. <code>loc</code> yöntemi ile erişmek istediğimizde belirlediğimiz satır(lar)daki tüm sütun değerlerini alırız.</p>
 <p>Eğer belirlediğimiz bir satırın tüm sütun değerlerini almak istemiyorsak, sütunları da belirtmemiz gerekir. Bunun için <code>loc[Satır(lar), Sütun(lar)]</code> şeklinde bir kullanım yaparız.</p>
-<div id="576f6f89" class="cell" data-execution_count="17">
+<div id="00c84f03" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb31-2"><a href="#cb31-2"></a><span class="co"># Data Frame</span></span>
 <span id="cb31-3"><a href="#cb31-3"></a>df<span class="op">=</span> pd.DataFrame([<span class="op">\</span></span>
@@ -1205,7 +1211,7 @@ Name: Nüfus, dtype: int64</code></pre>
 </ol>
 <section id="çözüm-1" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm-1">Çözüm</h3>
-<div id="73a35104" class="cell" data-execution_count="18">
+<div id="379bae66" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb33-2"><a href="#cb33-2"></a><span class="co"># 1. Soru</span></span>
 <span id="cb33-3"><a href="#cb33-3"></a>df<span class="op">=</span> pd.DataFrame({</span>

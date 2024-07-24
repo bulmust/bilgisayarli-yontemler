@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.54">
+<meta name="generator" content="quarto-1.5.55">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -252,13 +252,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/alistirmalar-problemler.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Alıştırmalar - Problemler - 1</span></a>
+ <span class="menu-text">Alıştırmalar ve Problemler</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../icerik/konular/python/moduller.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modüller</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../icerik/konular/python/classlar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classlar</span></a>
   </div>
 </li>
       </ul>
@@ -565,7 +571,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">16 Temmuz 2024</p>
+      <p class="date">24 Temmuz 2024</p>
     </div>
   </div>
   
@@ -652,9 +658,11 @@ A= \begin{bmatrix}    u_{11} &amp; u_{12} &amp; u_{13} \\ l_{21}u_{11} &amp; l_{
 \]</span></p>
 <p>Bu durumda <span class="math inline">\(A\)</span> matrisinin elemanları aşağıdaki gibi olur.</p>
 <p><span class="math display">\[
+\begin{align*}
 A_{11}= u_{11} \qquad \text{,} \qquad A_{12}= u_{12} \qquad \text{,} \qquad A_{13}= u_{13}\\
 A_{21}= l_{21}u_{11} \qquad \text{,} \qquad A_{22}= l_{21}u_{12}+u_{22} \qquad \text{,} \qquad A_{23}= l_{21}u_{13}+u_{23}\\
 A_{31}= l_{31}u_{11} \qquad \text{,} \qquad A_{32}= l_{31}u_{12}+l_{32}u_{22} \qquad \text{,} \qquad A_{33}= l_{31}u_{13}+l_{32}u_{23}+u_{33}
+\end{align*}
 \]</span></p>
 <p>Yukarıdaki işlemleri <strong>sırasıyla</strong> yaparsak L ve U matrislerinin elemanlarınlarını bulabilir.</p>
 <section id="çözüm-eldesi" class="level4">
@@ -757,9 +765,11 @@ U\vec{x}= \vec{y} \\
 <p><strong>ADIM 1</strong></p>
 <p>Daha önceden <span class="math inline">\(3x3\)</span> boyutunda bir matrisi nasıl LU faktorizasyonu yapacağımızı gördük. Bu durumda <span class="math inline">\(A\)</span> matrisini aşağıdaki gibi yazabiliriz.</p>
 <p><span class="math display">\[
+\begin{align*}
 A_{11}= u_{11} \qquad \text{,} \qquad A_{12}= u_{12} \qquad \text{,} \qquad A_{13}= u_{13}\\
 A_{21}= l_{21}u_{11} \qquad \text{,} \qquad A_{22}= l_{21}u_{12}+u_{22} \qquad \text{,} \qquad A_{23}= l_{21}u_{13}+u_{23}\\
 A_{31}= l_{31}u_{11} \qquad \text{,} \qquad A_{32}= l_{31}u_{12}+l_{32}u_{22} \qquad \text{,} \qquad A_{33}= l_{31}u_{13}+l_{32}u_{23}+u_{33}
+\end{align*}
 \]</span></p>
 <p>Bu durumda</p>
 <p><span class="math display">\[
@@ -968,10 +978,10 @@ A= LL^{T}
 <section id="alıştırma-1" class="level2">
 <h2 class="anchored" data-anchor-id="alıştırma-1">Alıştırma</h2>
 <ol type="1">
-<li>Aşağıdaki şekilde gözüken ve 4 adet $ m_{i} $ kütlesinden oluşan sürtünmeli fiziksel sistemin kuvvet analizini yapınız. Her bir kütleye etki eden sürtünme katsayısı $ <em>{i} $ olsun. Kütlelere etki eden toplam kuvvetleri veren analitik ifadeyi ayrı ayrı ve alt alta yazınız. Örneğin $ m</em>{1} $ kütlesine etki eden toplam kuvveti yazınız ve onun altına $ m_{2} $ kütlesine etki eden toplam kuvveti yazınız.</li>
-<li>Elde ettiğiniz denklem sisteminde eğim açısı yerine $ =/4 $ ve yer çekimi ivmesi yerine $ g = 9.82 $ m/s $ ^{2} $ sayısal değerleri yazınız. Kütleler $ m_{1} = 10 $ kg, $ m_{2} = 4 $ kg, $ m_{3} = 5 $ kg, $ m_{4} = 6 $ kg’dır. Sürtünme katsayıları ise $ <em>{1} = 0.25 $, $ </em>{2} = 0.3 $, $ <em>{3} = 0.2 $ ve $ </em>{4} = 0 $ olsun. Bu değerleri bir önceki şıkta bulduğunuz denklemlerde yerine koyunuz.</li>
-<li>Denklem sistemini $ = $ olacak şekilde tekrar yazınız ve $ $ katsayı matrisini, $ $ ve $ $ vektörlerini belirleyiniz. $ $ vektörünün sayısal olarak ne olduğunu bilmediğimizi ve ancak doğrusal denklem sistemini çözerek bulmaya çalışacağımızı hatırlayınız.</li>
-<li>Bu denklemi Gauss eleme ve Doolittle’ın LU ayrıştırma yöntemini kullanarak $ T_{i} $ ve $ a $ değerini bulunuz.</li>
+<li>Aşağıdaki şekilde gözüken ve 4 adet <span class="math inline">\(m_{i}\)</span> kütlesinden oluşan sürtünmeli fiziksel sistemin kuvvet analizini yapınız. Her bir kütleye etki eden sürtünme katsayısı <span class="math inline">\(\mu_{i}\)</span> olsun. Kütlelere etki eden toplam kuvvetleri veren analitik ifadeyi ayrı ayrı ve alt alta yazınız. Örneğin <span class="math inline">\(m_{1}\)</span> kütlesine etki eden toplam kuvveti yazınız ve onun altına <span class="math inline">\(m_{2}\)</span> kütlesine etki eden toplam kuvveti yazınız.</li>
+<li>Elde ettiğiniz denklem sisteminde eğim açısı yerine <span class="math inline">\(\theta=\pi/4\)</span> ve yer çekimi ivmesi yerine <span class="math inline">\(g = 9.82\)</span> m/s <span class="math inline">\(^{2}\)</span> sayısal değerleri yazınız. Kütleler <span class="math inline">\(m_{1} = 10\)</span> kg, <span class="math inline">\(m_{2} = 4\)</span> kg, <span class="math inline">\(m_{3} = 5\)</span> kg, <span class="math inline">\(m_{4} = 6\)</span> kg’dır. Sürtünme katsayıları ise <span class="math inline">\(\mu_{1} = 0.25\)</span>, <span class="math inline">\(\mu_{2} = 0.3\)</span>, <span class="math inline">\(\mu_{3} = 0.2\)</span> ve <span class="math inline">\(\mu_{4} = 0\)</span> olsun. Bu değerleri bir önceki şıkta bulduğunuz denklemlerde yerine koyunuz.</li>
+<li>Denklem sistemini <span class="math inline">\(\mathbf{A}\vec{x}=\vec{b}\)</span> olacak şekilde tekrar yazınız ve <span class="math inline">\(\mathbf{A}\)</span> katsayı matrisini, <span class="math inline">\(\vec{b}\)</span> ve <span class="math inline">\(\vec{x}\)</span> vektörlerini belirleyiniz. <span class="math inline">\(\vec{x}\)</span> vektörünün sayısal olarak ne olduğunu bilmediğimizi ve ancak doğrusal denklem sistemini çözerek bulmaya çalışacağımızı hatırlayınız.</li>
+<li>Bu denklemi Gauss eleme ve Doolittle’ın LU ayrıştırma yöntemini kullanarak <span class="math inline">\(T_{i}\)</span> ve <span class="math inline">\(a\)</span> değerini bulunuz.</li>
 </ol>
 <p><img src="img/ornek_EgriDuzlem.png" class="img-fluid"></p>
 <section id="cevap" class="level3">
@@ -985,7 +995,7 @@ A= LL^{T}
     T_{3} + m_{4}a =&amp; m_{4}g
 \end{align}
 \]</span></p>
-<p><span class="math inline">\(\theta=\pi/4\)</span>, <span class="math inline">\(m_{1}=10\)</span>, <span class="math inline">\(m_{2}=4\)</span>, <span class="math inline">\(m_{3}=5\)</span>, <span class="math inline">\(m_{4}=6\)</span>, <span class="math inline">\(\mu_{1}=0.25\)</span>, <span class="math inline">\(\mu_{2}=0.3\)</span>, <span class="math inline">\(\mu_{3}=0.2\)</span>, <span class="math inline">\(\mu_{4}=0\)</span>, <span class="math inline">\(g=9.82\)</span> m/2 <span class="math inline">\(^{2}\)</span></p>
+<p><span class="math inline">\(\theta=\pi/4\)</span>, <span class="math inline">\(m_{1}=10\)</span>, <span class="math inline">\(m_{2}=4\)</span>, <span class="math inline">\(m_{3}=5\)</span>, <span class="math inline">\(m_{4}=6\)</span>, <span class="math inline">\(\mu_{1}=0.25\)</span>, <span class="math inline">\(\mu_{2}=0.3\)</span>, <span class="math inline">\(\mu_{3}=0.2\)</span>, <span class="math inline">\(\mu_{4}=0\)</span>, <span class="math inline">\(g=9.82\)</span>.</p>
 <p>Katsayı matrisi <span class="math inline">\(T_{1}\)</span>, <span class="math inline">\(T_{2}\)</span>, <span class="math inline">\(T_{3}\)</span>, <span class="math inline">\(T_{4}\)</span> ve <span class="math inline">\(a\)</span>’dan oluşmaktadır.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> sys</span>
@@ -1073,18 +1083,22 @@ A_{ii} &gt; \sum_{j \ne i}^{n} |A_{ij}|
 A = \begin{bmatrix}    2 &amp; -1 &amp; 0 \\ -1 &amp; 2 &amp; -1 \\ 0 &amp; -1 &amp; 1   \end{bmatrix}
 \]</span></p>
 <p><span class="math display">\[
+\begin{align*}
 A_{11} &gt; |A_{12}| + |A_{13}| \rightarrow 2 &gt; 1 + 0 \rightarrow \text{Doğru} \\
 A_{22} &gt; |A_{21}| + |A_{23}| \rightarrow 2 &gt; 1 + 1 \rightarrow \text{Neredeyse Doğru} \\
 A_{33} &gt; |A_{31}| + |A_{32}| \rightarrow 1 &gt; 0 + 1 \rightarrow \text{Neredeyse Doğru}
+\end{align*}
 \]</span></p>
 <p>Üçüncü ve birinci satırları yer değiştirdiğimiz durumu inceleyelim.</p>
 <p><span class="math display">\[
 A' = \begin{bmatrix}    0 &amp; -1 &amp; 1 \\ -1 &amp; 2 &amp; -1 \\ 2 &amp; -1 &amp; 0   \end{bmatrix}
 \]</span></p>
 <p><span class="math display">\[
+\begin{align*}
 A'_{11} &gt; |A'_{12}| + |A'_{13}| \rightarrow 0 &gt; 1 + 1 \rightarrow \text{Yanlış} \\
 A'_{22} &gt; |A'_{21}| + |A'_{23}| \rightarrow 2 &gt; 1 + 1 \rightarrow \text{Doğru} \\
 A'_{33} &gt; |A'_{31}| + |A'_{32}| \rightarrow 0 &gt; 2 + 1 \rightarrow \text{Yanlış}
+\end{align*}
 \]</span></p>
 <p>Yukarıdan da anlaşılacağı üzere <span class="math inline">\(A\)</span> matrisi köşegen dominant iken <span class="math inline">\(A'\)</span> matrisi ise köşegen dominant değildir.</p>
 <p>Köşegen dominant olmayan matrisler için <strong>döndürme</strong> yapmak gerekir.</p>
