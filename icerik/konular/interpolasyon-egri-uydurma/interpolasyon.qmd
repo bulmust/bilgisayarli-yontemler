@@ -704,3 +704,27 @@ plt.plot(xYeni, yYeniDogrusalInterpolasyon , 'g', linewidth=3, label='interp1d')
 plt.legend()
 plt.show()
 ```
+
+## Problemler
+
+### Problem 1
+
+En alttaki veriyi kullanarak 
+   - Kübik spline interpolasyonu yapın (`scipy.interpolate.CubicSpline`).
+   - Doğrusal (1. derece) ve 4. derece en küçük kareler uydurması (fiting) yapın (`numpy.polyfit`).
+   - Veriyi (nokta olacak şekilde), interpolasyonu ve uydurmaları (çizgi olacak şekilde) aynı grafikte çizdirin. Grafikte gözüken $y$ eksenini $-5$ ile $5$ arasında sınırlayın grafiği gösterin.
+   - İnterpolasyonu ve uydurumayı $x=(0,6)$ arasındaki noktalar için yapın.
+
+Veri: 
+
+| $x$ | 1  | 2 | 3  | 4 | 5  |
+|---|----|---|----|---|----|
+| $y$ | -1 | 1 | -2 | 2 | -6 |
+
+### Problem 2
+
+$(x_{0}, y_{0}) = (0, 1)$, $(x_{1}, y_{1}) = (1, 1)$, $(x_{2}, y_{2}) = (3, 7)$ verisini kullanarak Lagrange polinomunu elde edin. Gerekli formüller: 
+
+$P_{2}(x) = \sum_{i=0}^{2}y_{i}l_{i}(x)$
+
+$l_{i}= \prod_{j=0,j\neq i}^{2}\frac{x-x_{j}}{x_{i}-x_{j}}$

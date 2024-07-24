@@ -1,8 +1,6 @@
 ---
-title: "BDP - Denklem Sistemleri - Problem Çözümleri"
+title: "BDP - Denklem Sistemleri - Problem Cevapları"
 ---
-
-## BDP - Denklem Sistemleri - Problem Çözümleri
 
 ## Problemi 1
 

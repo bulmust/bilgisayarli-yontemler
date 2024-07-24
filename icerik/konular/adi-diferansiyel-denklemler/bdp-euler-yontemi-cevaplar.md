@@ -1,5 +1,5 @@
 ---
-title:  "BDP - Euler Yöntemi - Problem Çözümleri"
+title:  "BDP - Euler Yöntemi - Problem Cevapları"
 ---
 
 ## Problem 1

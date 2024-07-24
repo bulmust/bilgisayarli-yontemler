@@ -310,6 +310,123 @@ $$f(g,x)= \sum_{i=0}^{n-1}g(x_{i})+g(x_{i-1})$$
 1. `algoZor10` adında bir fonksiyon yazın. Bu fonksiyon `yuk1`, `yuk2` yük miktarlarını, `x`, `y` ve `z` aralarındaki mesafeyi veren koordinatları alsın ve bu iki yük arasındaki Coulomb kuvvetinin büyüklüğünü geri döndürsün.
 1. `algoZor11` adında bir fonksiyon yazın. Bu fonksiyon düzgün yoğunluğa sahip bir sonsuz uzunluktaki bir çubuğun yük dağılımını veren fonksiyonu `yukDagılımıFonk`, `r` koordinatını alsın ve çubuktan `r` kadar uzaklıktaki elektrostik potansiyel değerini geri döndürsün. `yukDagılımıFonk` fonksiyonu `x` koordinatında yük dağılımının değerini veren bir fonksiyon olmalı.
 
+## Problem 17
+
+Aşağıdaki denklemde verilen ve $g$ fonksiyonunu hesaplayan `fonk1` adında bir python fonksiyonu yazın.
+
+- `fonk1` fonksiyonu `f1`, `f2` fonksiyonlarını ve bir adet `xVec` adında numpy arrayini input olarak alsın.
+- `fonk1` fonksiyonu $g$ fonksiyonun değerini döndürsün.
+- Denklemdeki $n$, `xVec` değişkeninin uzunluğudur ve $x_{i}$, $\vec{x}$ vektörünün (arrayinin) bileşenleridir.
+
+Fonksiyon:
+$$
+g(f_{1}(\vec{x}),f_{2}(\vec{x}),\vec{x}) = x_{0}\sum_{i=1}^{n} \frac{f_1(x_i)}{f_2(x_{i-1})}
+$$
+
+## Problem 18
+
+`fonk2` adında bir fonksiyon yazın. Bu fonksiyon `xVec` adında bir adet array alsın ve her elemanını kendinden bir sonraki elemanla toplayıp sonucu döndürsün. Örneğin `[1,2,3,4]` alsın, `[3,5,7]` döndürsün.
+
+- `fonk2` fonksiyonunu `[11,22,33,44,55,66,77,88,99]` dizisiyle çağırın ve sonucu ekrana yazdırın.
+
+## Problem 19
+
+$42$ ile $100$ arasındaki (100 dahil değil) tüm tek sayıları ekrana yazdırın.
+
+## Problem 20
+
+Aşağıdaki kodun nasıl çalıştığını açıklayın.
+
+- En altta bu kodun nasıl çalışmaya başladığı ile ilgili satırlar verilmiştir. Bu adımların devamını siz yazın. 
+- Cevabınızı, sisteme yükleyeceğiniz `.py` dosyasına yorum şeklinde yani `#` ile başlayan satırlarla açıklayın.
+- Aşağıda yazılı olan betiği cevap kağıdınıza tekrar yazmayın.
+- Cevabınızı yazarken önce aşağıda yazılan açıklamaları yazın.
+
+```python
+sayi= 5                        # Satır 1
+asalCarp= []                   # Satır 2
+for i in range(2,sayi):        # Satır 3
+    if sayi%i==0:              # Satır 4
+        asalMi= True           # Satır 5
+        for j in range(2,i):   # Satır 6
+            if i%j==0:         # Satır 7
+                asalMi= False  # Satır 8
+                break          # Satır 9
+        if asalMi:             # Satır 10
+            asalCarp.append(i) # Satır 11
+asalCarp.append(sayi)          # Satır 12
+print(asalCarp)                # Satır 13
+```
+
+Betiğin çalışması:
+
+```python
+# (satır 1) sayi değişkenine 6 ata.
+# (satır 2) asalCarp değişkenine boş bir liste ata.
+# (satır 3) for döngüsüne gir. --> i=>2, sayi=>6
+# (satır 4) sayi=>6 sayısı i=>2'ye tam bölünüyor mu? --> Evet --> if koşuluna gir.
+# (satır 5) asalMi değişkenine True ata.
+# (satır 6) 2. for döngüsüne gir. --> j=>2 --> for döngüsünden çık çünkü range(2,2) boş bir liste.
+# (satır 10) asalMi değişkeni True mu? --> Evet.
+# (satır 11) i'yi yani 2'yi asalCarp değişkeninin sonuna ekle.
+# (satır 3) ...... DEVAM EDİN ......
+```
+
+## Problem 21
+
+- Ekrana `Soru başlamıştır.` yazdırın. 
+- Elemanları `4,8,15,16,23,42` olan bir liste oluşturun. Numpy array de kabul edilecektir.
+- `for` döngüsü kullanarak tüm elemanları teker teker ekrana yazdırın.
+- Ardından ekrana `Soru bitmiştir.` yazdırın.
+
+## Problem 22
+
+**Numpy**
+
+Numpy paketini kullanarak aşağıdaki matrisi oluşturun ve `mat1` değişkenine atayın. `mat1` değişkeninin ilk sütunundaki tüm elemanları yazdırın. Son satırdaki tüm elemanları ekrana yazdırın. *Not: Elemanları teker teker print etmeyin.*
+
+$$
+\begin{bmatrix*}
+    1 & 2 & 3 & 4\\ 5 & 6 & 7 & 8\\ 9 & 10 & 11 & 12\\ 13 & 14 & 15 & 16
+\end{bmatrix*}
+$$
+
+## Problem 23
+
+**Numpy**
+
+1. `fonk_tekIndis42` adında bir fonksiyon yazın. Bu fonksiyon bir adet bir boyutlu numpy arrayini alsın. Bu arrayin tüm tek sayılı indekslerini **0** yapsın ve sonucu geri döndürsün. 
+2. `fonk_tekIndis42` fonksiyonunu **4, 8, 15, 16, 23, 42** sayılarından oluşan array için çağırın ve fonksiyondan dönen arrayi ekrana yazdırın.
+
+## Problem 24
+
+**Numpy**
+
+1. `fonk_diag42` adında bir fonksyion yazın. Bu fonksiyon bir adet iki boyutlu numpy arrayi yani matrisi alsın. Bu arrayin köşegen elemanlarını **42** yapsın ve sonucu geri döndürsün.
+2. `fonk_diag42` fonksiyonunu **12x12 boyutlu birim matris** için çağırın ve geri dönen sonucu ekrana yazdırın.
+
+## Problem 25
+
+1. Fibonacci dizisinde sayıları veren, `fonk_fibonacci` isimli bir fonksiyon yazın. Bu fonksiyon bir tam sayı, `n`, alsın ve o tam sayı kadar elemanı olan bir numpy arrayi döndürsün. Örneğin; `n=4` verilmiş ise `fonk_fibonacci(n)` fonksiyonu $F_{1}$, $F_{2}$, $F_{3}$, $F_{3}$ elemanlarından oluşan arrayi döndürmeli.
+2. `fonk_fibonacci(10)` fonksiyonunu çağırın ve sonucu ekrana yazdırın.
+
+**Bilgilendirme**: Fibonacci dizisi $F_{n}=F_{n-1} + F_{n-2}$ ve $F_{1}=1$ ve $F_{2}=1$ olarak tanımlanır.
+
+## Problem 26
+
+**Numpy**
+
+- Ekrana `Soru başlamıştır.` yazdırın.
+- Elemanları `421,142,412,42` olan iki boyutlu ($2\times2$ matris gibi) bir numpy array oluşturun. `421,142` ilk satırda, `412,42` ikinci satırda olsun.
+- `for` döngüsü kullanarak tüm elemanları teker teker ekrana yazdırın. Yazım formatı `MATRIS [0,0] = 421` şeklinde olmalıdır.
+- Ekrana `2. soru bitmiştir.` yazdırın.
+
+## Problem 27
+
+- Satırları `1,2,3`, `4,5,6` ve `7,8,9` olan bir matris oluşturun.
+- Oluşturduğunuz matrisin tüm elemanlarını `for` döngüsü kullanarak çarpın.
+
+
 
 ## Referanslar
 

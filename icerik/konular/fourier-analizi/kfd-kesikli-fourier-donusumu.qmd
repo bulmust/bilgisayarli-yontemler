@@ -2,8 +2,6 @@
 title: "KFD - Kesikli Fourier Dönüşümü"
 ---
 
-## KFD - Kesikli Fourier Dönüşümü (DDT - Discrete Fourier Transform)
-
 Basit bir dalgada periyot/frekans, genlik faz gibi kavramları anladık. Peki daha üst üste binen dalgaları nasıl analiz edeceğiz? Örneğin aşağıdaki gibi bir dalgayı analiz etmek istediğimizi düşünelim.
 
 $$

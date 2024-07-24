@@ -2,9 +2,7 @@
 title: "BDP - İkinci Dereceden Diferansiyel Denklemler - Promlem Cevapları"
 ---
 
-## BDP - İkinci Dereceden Diferansiyel Denklemler - Promlem Cevapları
-
-## Problem 1 {#sec-problem1}
+## Problem 1 
 
 Sürtünmesiz bir düzlemde serbest düşen bir parçacığın konum zaman grafiğini ve hız zaman grafiğini Newton'un ikinci yasasını kullanarak çizin. $g=9.81$ m/s $^{2}$ sabit düşüş ivmesi. Denklemleri Euler yöntemi ile çözün. Başlangıç koşulları $v(0)=10$ ve $y(0)=100$ olsun. Çözümü $n=100$ s adımda yapın. Zaman aralığı $t=0$ s'den $t=10$ s'ye kadar olsun.
 
@@ -97,7 +95,7 @@ plt.show()
 plt.close()
 ```
 
-## Problem 2 {#sec-problem2}
+## Problem 2
 
 Yatay düzlemde $k=100$ N/m sabitine sahip $m=1$ kg kütleli yay olsun. Bu cisme denge noktasından $x_{0}=0.1$ m sıkıştırılarak harekete başlatılıyor. Cisim bırakıldığı anda hızı $v_{0}=0$ m/s. Bu cismin hareket denklemini $t=0-5$ aralığında Euler yöntemiyle çözünüz.
 
@@ -218,7 +216,7 @@ plt.show()
 plt.close()
 ```
 
-## Problem 4 {#sec-problem4}
+## Problem 4
 
 Düşey düzlemde $m=1$ kg kütleli bir cisim salınsın. Bu cisim denge noktasından $\theta_{0}=\pi/9$ rad açı ile harekete başlıyor. Cisim bırakıldığı anda açısal hızı $\omega_{0}=$ rad/s. Bu cismin hareket denklemini $t=0-10$ arasında Euler yöntemiyle çözünüz. En uygun sonuç için $n=10000$ adım alınız. ($g=9.81$)
 

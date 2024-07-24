@@ -325,3 +325,284 @@ plt.plot(xAxis, yAxis, 'r')
 #8
 print(normalize_et_dalgaFonk(np.array([1+1j,1-1j])))
 ```
+
+## Problem 17
+
+Aşağıdaki denklemde verilen ve $g$ fonksiyonunu hesaplayan `fonk1` adında bir python fonksiyonu yazın.
+
+- `fonk1` fonksiyonu `f1`, `f2` fonksiyonlarını ve bir adet `xVec` adında numpy arrayini input olarak alsın.
+- `fonk1` fonksiyonu $g$ fonksiyonun değerini döndürsün.
+- Denklemdeki $n$, `xVec` değişkeninin uzunluğudur ve $x_{i}$, $\vec{x}$ vektörünün (arrayinin) bileşenleridir.
+
+Fonksiyon:
+$$
+g(f_{1}(\vec{x}),f_{2}(\vec{x}),\vec{x}) = x_{0}\sum_{i=1}^{n} \frac{f_1(x_i)}{f_2(x_{i-1})}
+$$
+
+### Çözüm
+
+```python
+def fonk1(f1,f2,xVec):
+    result= 0
+    for i in range(1,len(xVec)):
+        result += (f1(xVec[i]) / f2(xVec[i-1]))
+    return xVec[0]*result
+```
+
+## Problem 18
+
+`fonk2` adında bir fonksiyon yazın. Bu fonksiyon `xVec` adında bir adet array alsın ve her elemanını kendinden bir sonraki elemanla toplayıp sonucu döndürsün. Örneğin `[1,2,3,4]` alsın, `[3,5,7]` döndürsün.
+
+- `fonk2` fonksiyonunu `[11,22,33,44,55,66,77,88,99]` dizisiyle çağırın ve sonucu ekrana yazdırın.
+
+### Çözüm
+
+```python
+import numpy as np
+def fonk2(xVec):
+    result= np.array([xVec[0]+xVec[1]])
+    for i in range(1,len(xVec)-1):
+        result= np.append(result,xVec[i]+xVec[i+1])
+    return result
+print(f'(2. Soru)\n Cevap: {fonk2(np.array([11,22,33,44,55,66,77,88,99]))}')
+```
+
+## Problem 19
+
+$42$ ile $100$ arasındaki (100 dahil değil) tüm tek sayıları ekrana yazdırın.
+
+### Çözüm
+
+```python
+sonuc= 0
+for it in range(42, 100):
+    sonuc = sonuc + it
+print(f"42 ile 100 arasındaki sayıların toplamı: {sonuc}")
+```
+
+## Problem 20
+
+Aşağıdaki kodun nasıl çalıştığını açıklayın.
+
+- En altta bu kodun nasıl çalışmaya başladığı ile ilgili satırlar verilmiştir. Bu adımların devamını siz yazın. 
+- Cevabınızı, sisteme yükleyeceğiniz `.py` dosyasına yorum şeklinde yani `#` ile başlayan satırlarla açıklayın.
+- Aşağıda yazılı olan betiği cevap kağıdınıza tekrar yazmayın.
+- Cevabınızı yazarken önce aşağıda yazılan açıklamaları yazın.
+
+```python
+sayi= 5                        # Satır 1
+asalCarp= []                   # Satır 2
+for i in range(2,sayi):        # Satır 3
+    if sayi%i==0:              # Satır 4
+        asalMi= True           # Satır 5
+        for j in range(2,i):   # Satır 6
+            if i%j==0:         # Satır 7
+                asalMi= False  # Satır 8
+                break          # Satır 9
+        if asalMi:             # Satır 10
+            asalCarp.append(i) # Satır 11
+asalCarp.append(sayi)          # Satır 12
+print(asalCarp)                # Satır 13
+```
+
+Betiğin çalışması:
+
+```python
+# (satır 1) sayi değişkenine 6 ata.
+# (satır 2) asalCarp değişkenine boş bir liste ata.
+# (satır 3) for döngüsüne gir. --> i=>2, sayi=>6
+# (satır 4) sayi=>6 sayısı i=>2'ye tam bölünüyor mu? --> Evet --> if koşuluna gir.
+# (satır 5) asalMi değişkenine True ata.
+# (satır 6) 2. for döngüsüne gir. --> j=>2 --> for döngüsünden çık çünkü range(2,2) boş bir liste.
+# (satır 10) asalMi değişkeni True mu? --> Evet.
+# (satır 11) i'yi yani 2'yi asalCarp değişkeninin sonuna ekle.
+# (satır 3) ...... DEVAM EDİN ......
+```
+
+### Çözüm
+
+```python
+# (satır 1) sayi değişkenine 6 ata.
+# (satır 2) asalCarp değişkenine boş bir liste ata.
+# (satır 3) for döngüsüne gir. --> i=>2, sayi=>6
+# (satır 4) sayi=>6 sayısı i=>2'ye tam bölünüyor mu? --> Evet --> if koşuluna gir.
+# (satır 5) asalMi değişkenine True ata.
+# (satır 6) 2. for döngüsüne gir. --> j=>2 --> for döngüsünden çık çünkü range(2,2) boş bir liste.
+# (satır 10) asalMi değişkeni True mu? --> Evet.
+# (satır 11) i'yi yani 2'yi asalCarp değişkeninin sonuna ekle.
+# (satır 3) for döngüsüne gir. --> i=>3, sayi=>6
+# (satır 4) sayi=>6 sayısı i=>3'e tam bölünüyor mu? --> Evet --> if koşuluna gir.
+# (satır 5) asalMi değişkenine True ata.
+# (satır 6) 2. for döngüsüne gir. --> j=>2 --> range(2,i=>3)
+# (satır 7) Eğer i=>3 sayısı j=>2 sayısına tam bölünüyor mu? --> Hayır.
+# (satır 10) asalMi değişkeni True mu? --> Evet.
+# (satır 11) i'yi yani 3'ü asalCarp değişkeninin sonuna ekle. asalCarp=>[2,3]
+# (satır 3) for döngüsüne gir. --> i=>4, sayi=>6
+# (satır 4) sayi=>6 sayısı i=>4'e tam bölünüyor mu? --> Hayır
+# (satır 3) for döngüsüne gir. --> i=>5, sayi=>6
+# (satır 4) sayi=>6 sayısı i=>5'e tam bölünüyor mu? --> Hayır
+# (satır 12) asalCarp değişkenine sayi=>6 sayısını ekle. asalCarp=>[2,3,6]
+# (satır 13) asalCarp değişkenini ekrana yazdır. [2,3,6]
+```
+
+## Problem 21
+
+- Ekrana `Soru başlamıştır.` yazdırın. 
+- Elemanları `4,8,15,16,23,42` olan bir liste oluşturun. Numpy array de kabul edilecektir.
+- `for` döngüsü kullanarak tüm elemanları teker teker ekrana yazdırın.
+- Ardından ekrana `Soru bitmiştir.` yazdırın.
+
+### Çözüm
+
+```python
+print("Soru başlamıştır.")
+list1= [4, 8, 15, 16, 23, 42]
+
+for it in range(len(list1)):
+    print(list1[it])
+
+print("Soru bitmiştir.")
+```
+
+## Problem 22
+
+**Numpy**
+
+Numpy paketini kullanarak aşağıdaki matrisi oluşturun ve `mat1` değişkenine atayın. `mat1` değişkeninin ilk sütunundaki tüm elemanları yazdırın. Son satırdaki tüm elemanları ekrana yazdırın. *Not: Elemanları teker teker print etmeyin.*
+
+$$
+\begin{bmatrix*}
+    1 & 2 & 3 & 4\\ 5 & 6 & 7 & 8\\ 9 & 10 & 11 & 12\\ 13 & 14 & 15 & 16
+\end{bmatrix*}
+$$
+
+### Çözüm
+
+```python
+import numpy as np
+
+mat1= np.array([[1,2,3,4], [5,6,7,8], [9,10,11,12], [13, 14, 15, 16]])
+print(f"mat1 değişkeninin ilk sütunundaki tüm elelmanlar: {mat1[:,0]}")
+print(f"mat1 değişkeninin son satırındaki tüm elelmanlar: {mat1[-1,:]}")
+#print(f"mat1 değişkeninin son satırındaki tüm elelmanlar: {mat1[3,:]}")
+```
+
+## Problem 23
+
+**Numpy**
+
+1. `fonk_tekIndis42` adında bir fonksiyon yazın. Bu fonksiyon bir adet bir boyutlu numpy arrayini alsın. Bu arrayin tüm tek sayılı indekslerini **0** yapsın ve sonucu geri döndürsün. 
+2. `fonk_tekIndis42` fonksiyonunu **4, 8, 15, 16, 23, 42** sayılarından oluşan array için çağırın ve fonksiyondan dönen arrayi ekrana yazdırın.
+
+### Çözüm
+
+```python
+import numpy as np
+#1
+def fonk_tekIndis42(arr1):
+    for it in range(len(arr1)):
+    #for it in range(np.shape(arr1)[0]):
+        if it%2 == 1:
+            arr1[it] = 0
+    return arr1
+#2
+print(f"fonk_tekIndis42([4,8,15,16,23,42]) sonucu:\n {fonk_tekIndis42(np.array([4,8,15,16,23,42]))}")
+```
+
+## Problem 24
+
+**Numpy**
+
+1. `fonk_diag42` adında bir fonksyion yazın. Bu fonksiyon bir adet iki boyutlu numpy arrayi yani matrisi alsın. Bu arrayin köşegen elemanlarını **42** yapsın ve sonucu geri döndürsün.
+2. `fonk_diag42` fonksiyonunu **12x12 boyutlu birim matris** için çağırın ve geri dönen sonucu ekrana yazdırın.
+
+### Çözüm
+
+```python
+import numpy as np
+#1
+def fonk_diag42(mat1):
+    for i in range(mat1.shape[0]):
+    #for i in range(len(mat1)):
+        mat1[i,i]= 42
+    return mat1
+#2
+print(f"fonk_diag42(mat1) sonucu:\n {fonk_diag42(np.eye(12))}")
+```
+
+## Problem 25
+
+1. Fibonacci dizisinde sayıları veren, `fonk_fibonacci` isimli bir fonksiyon yazın. Bu fonksiyon bir tam sayı, `n`, alsın ve o tam sayı kadar elemanı olan bir numpy arrayi döndürsün. Örneğin; `n=4` verilmiş ise `fonk_fibonacci(n)` fonksiyonu $F_{1}$, $F_{2}$, $F_{3}$, $F_{3}$ elemanlarından oluşan arrayi döndürmeli.
+2. `fonk_fibonacci(10)` fonksiyonunu çağırın ve sonucu ekrana yazdırın.
+
+**Bilgilendirme**: Fibonacci dizisi $F_{n}=F_{n-1} + F_{n-2}$ ve $F_{1}=1$ ve $F_{2}=1$ olarak tanımlanır.
+
+### Çözüm
+
+```python
+#1
+def fonk_fibonacci(n):
+    sonuc= [1,1]
+    for it in range(2,n):
+        sonuc.append(sonuc[it-1]+sonuc[it-2])
+    return sonuc
+#2
+print(f"fonk_fibonacci(10) sonucu:\n {fonk_fibonacci(10)}")
+```
+
+## Problem 26
+
+**Numpy**
+
+- Ekrana `Soru başlamıştır.` yazdırın.
+- Elemanları `421,142,412,42` olan iki boyutlu ($2\times2$ matris gibi) bir numpy array oluşturun. `421,142` ilk satırda, `412,42` ikinci satırda olsun.
+- `for` döngüsü kullanarak tüm elemanları teker teker ekrana yazdırın. Yazım formatı `MATRIS [0,0] = 421` şeklinde olmalıdır.
+- Ekrana `2. soru bitmiştir.` yazdırın.
+
+### Çözüm
+
+```python
+import numpy as np
+
+print("Soru başlamıştır.")
+matris= np.array([[421,142], [412,42]])
+
+for it in range(np.shape(matris)[0]):
+    for it2 in range(np.shape(matris)[1]):
+        print(f"MATRIS[{it},{it2}] = {matris[it,it2]}")
+print("Soru bitmiştir.")
+```
+
+## Problem 27
+
+- Satırları `1,2,3`, `4,5,6` ve `7,8,9` olan bir matris oluşturun.
+- Oluşturduğunuz matrisin tüm elemanlarını `for` döngüsü kullanarak çarpın.
+
+### Çözüm
+
+```python
+import numpy as np
+
+mat= np.array([[1,2,3],[4,5,6],[7,8,9]]) # [1 Puan] 
+
+sonuc= 1 # [1 Puan]
+for it in range(3): # [2 Puan]
+    for it2 in range(3): # [2 Puan]
+        sonuc *= mat[it,it2] # [4 Puan]
+print(sonuc)
+
+# Alternatif çözüm
+# sonuc= 1
+# for it in mat:
+#     for it2 in it:
+#         sonuc *= it2
+# print(sonuc)
+
+# Alternatif sonuc
+# def factorial(n):
+#     if n == 1:
+#         return 1
+#     else:
+#         return n * factorial(n-1)
+# print(factorial(9))
+```

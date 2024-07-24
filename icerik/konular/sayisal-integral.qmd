@@ -555,6 +555,16 @@ print('Monte-Carlo İntegral Yöntemi ile hesaplanan x^2 h integral:', sonuc)
 print('Gerçek integral değeri                                    :', 1/6)
 ```
 
+## Problemler
+
+### Problem 1
+
+Aşağıda verilen integrali Simpsons yöntemi ile 100 adımda hesaplayın. $I$ sonucunu ekrana yazdırın.
+
+$$
+    I=\sum_{i=1}^{100}\int_{0}^{i} x^{2} dx
+$$
+
 ## Referanslar
 
 1. Monte-Carlo Yöntemi: [https://en.wikipedia.org/wiki/Monte_Carlo_method](https://en.wikipedia.org/wiki/Monte_Carlo_method)

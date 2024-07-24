@@ -2,9 +2,8 @@
 title: "Giriş"
 ---
 
-## Fourier Analizi
 
-### Dalgalar
+## Dalgalar
 
 Basit bir sinüs dalgası oluşturalım.
 

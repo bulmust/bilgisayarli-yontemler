@@ -135,3 +135,23 @@ plt.plot(x, enKucukKare_EgriUydur(x),  label= 'En küçük kare eğrisi')
 plt.legend()
 plt.show(); plt.close()
 ```
+
+## Problemler
+
+### Problem 1
+
+1. Aşağıdaki veriyi kullanarak Lagrange interpolasyonu yapın.
+2. Aşağıdaki veriyi kullanarak doğrusal (1. derece) en küçük kareler uydurması (fiting) yapın.
+
+
+- En küçük kareler uydurmaları `numpy` paketinin `polyfit` fonksiyonunu kullanarak yapabilirsiniz.
+- İnterpolasyonu ve uydurumayı $x'=(0,6)$ arasındaki noktalar için yapın.
+- Veriyi (nokta olarak), Lagrange interpolasyonu ve uydurmaları aynı grafikte çizdirin ve `plt.savefig("soru3\_bilgisayar.png")` kodunu kullanarak kaydedin.
+
+
+Veri: 
+
+| Koordinat | 1. Nokta | 2. Nokta | 3. Nokta | 4. Nokta | 5. Nokta |
+|:---------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+| x | $1$ | $2$ | $3$ | $4$ | $5$ |
+| y | $-1$ | $1$ | $-2$ | $2$ | $-6$ |

@@ -2,8 +2,6 @@
 title: "BDP - Euler Yöntemi"
 ---
 
-## Başlangıç Değer Problemi - Euler Yöntemi
-
 - Euler yöntemi diferansiyel denklem çözümü için kullanılan en basit yöntemdir.
 - Alternatif isimleri Euler-Cauchy veya nokta-eğim (point-slope) yöntemidir.
 - Kabaca türevin tanımını kullanır.
@@ -182,6 +180,7 @@ plt.show()
 ## Problemler
 
 ### Problem 1
+
 1. Basit bir RC devresi ele alalım. Bu devrede voltaj kaynağı olmasın, kondansatör $t=0$ s'de $V_{0}=10$ V gerilime sahip olsun. Devrede $R=220$ k $\Omega$ direnci ve $C=10$ $\mu$ F kondansatörü olsun. Devre bu haldeyken devreyi tamamlayalım. Devrenin voltajı-zaman grafiğini Euler yöntemi kullanarak çiziniz.
 
 $$
